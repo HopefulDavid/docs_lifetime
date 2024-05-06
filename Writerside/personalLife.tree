@@ -6,6 +6,7 @@
                   start-page="coffee_frenchPress.md">
 
     <toc-element toc-title="Jídlo">
+        <toc-element topic="food_america.md"/>
         <toc-element topic="food_czech.md"/>
         <toc-element topic="food_greece.md"/>
         <toc-element topic="food_mexico.md"/>
