@@ -3,7 +3,7 @@ title: Řecko
 ---
 ## Řecká směs
 
-### Ingredience
+Ingredience:
 
 - Máslo
 - Kuřecí maso
