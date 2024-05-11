@@ -36,22 +36,20 @@ Ingredience:
 
 Ingredience:
 
-- Okurka 
+- 1/2 Okurka 
 - Limetka 
 - Malý řecký jogurt
 - 1/2 Zakysané smetany
 - 1x stroužek česneku 
 
 <procedure title="Postup" collapsible="true">
-<step> Nastrouhat okurku 
-
-> Okurka může být i celá
+<step> Nastrouhat okurku
 </step>
 <step>
 
-Vymačkat šťávu z půlky okurky, dokud nezbyde jen okurka
+Vymačkat šťávu z okurky
 </step>
 <step> Zamíchat okurku s řeckým jogurtem a přidat tři střiky z limetky </step>
-<step> Zamíchat předchozí směs s 1/2 zakysané smetany </step>
+<step> Zamíchat s 1/2 zakysané smetany </step>
 <step> Nakonec přidat vymačkaný 1 stroužek česneku a vše promíchat </step>
 </procedure>
