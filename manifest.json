@@ -1,0 +1,168 @@
+{
+  "source_base_path": "/home/runner/work/Docs_Lifetime/Docs_Lifetime",
+  "xrefmap": "xrefmap.yml",
+  "files": [
+    {
+      "type": "Resource",
+      "output": {
+        "resource": {
+          "relative_path": "index.json"
+        }
+      }
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "drink/Coffee/frenchPress.md",
+      "output": {
+        ".html": {
+          "relative_path": "drink/Coffee/frenchPress.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "drink/Coffee/pumpkinSpice.md",
+      "output": {
+        ".html": {
+          "relative_path": "drink/Coffee/pumpkinSpice.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "drink/Coffee/vietnamCoffee.md",
+      "output": {
+        ".html": {
+          "relative_path": "drink/Coffee/vietnamCoffee.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "drink/toc.yml",
+      "output": {
+        ".json": {
+          "relative_path": "drink/toc.json"
+        },
+        ".html": {
+          "relative_path": "drink/toc.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "food/America/steak.md",
+      "output": {
+        ".html": {
+          "relative_path": "food/America/steak.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "food/Czech/burtGulas.md",
+      "output": {
+        ".html": {
+          "relative_path": "food/Czech/burtGulas.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "food/Czech/misaRezy.md",
+      "output": {
+        ".html": {
+          "relative_path": "food/Czech/misaRezy.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "food/Czech/rajskaOmacka.md",
+      "output": {
+        ".html": {
+          "relative_path": "food/Czech/rajskaOmacka.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "food/Greece/reckaSmes.md",
+      "output": {
+        ".html": {
+          "relative_path": "food/Greece/reckaSmes.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "food/Mexico/TortillySVeprovoHovezimMasemASalsou.md",
+      "output": {
+        ".html": {
+          "relative_path": "food/Mexico/TortillySVeprovoHovezimMasemASalsou.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "food/Portugal/pasteisDeNata.md",
+      "output": {
+        ".html": {
+          "relative_path": "food/Portugal/pasteisDeNata.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "food/toc.yml",
+      "output": {
+        ".json": {
+          "relative_path": "food/toc.json"
+        },
+        ".html": {
+          "relative_path": "food/toc.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "index.md",
+      "output": {
+        ".html": {
+          "relative_path": "index.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "toc.yml",
+      "output": {
+        ".json": {
+          "relative_path": "toc.json"
+        },
+        ".html": {
+          "relative_path": "toc.html"
+        }
+      },
+      "version": ""
+    }
+  ],
+  "groups": [
+    {
+      "xrefmap": "xrefmap.yml"
+    }
+  ]
+}
