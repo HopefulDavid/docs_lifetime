@@ -39,6 +39,11 @@
     "title": "| Život",
     "keywords": "Řecká směs Ingredience Máslo Kuřecí maso Barbecue omáčka smoky chilly (Lidl) Koření Kotányi paprika uzená sladká Koření Avokádo kuře gril Tip Nejlépe den předem marinovat maso v koření. Postup Příprava masa Kuřecí maso nakrájet na nudličky. Kuřecí maso vymazlit v koření. Kuřecí maso smažit na másle. Warning Pustí-li maso vodu, okamžitě ji vylijeme, aby maso neztratilo veškerou chuť. Dochucení Přidat po troškách barbecue smoky chilly. Tip Nepřidávat vše naráz. Dokončení Kuřecí maso prosmažíme až do konce."
   },
+  "food/India/chickenCurryWithRice.html": {
+    "href": "food/India/chickenCurryWithRice.html",
+    "title": "| Život",
+    "keywords": "Kuřecí na kari s rýží Ingredience Rýže 250g Máslo Kuřecí prsa 400 g 1 ks cibule Čerstvý zázvor 10g 2 stroužky česneku Kokosové mléko 400 ml Mango/Broskev 1 ks Koriandr Voda Kurkuma Sůl Pepř Sladká paprika koření Guláš koření Kari koření Bazalka koření Postup Na pánvi máslo, na kterém orestujeme nadrobno nakrájenou cibuli s česnekem a zázvorem. Orestovanou cibuli s česnekem a zázvorem vložíme do mixéru. Přidáme nakrájené mango/broskev, kokosové mléko a veškeré koření. Celou směs rozmixujeme dohladka. Omáčku přelijeme na pánev a přidáme do ní na kostičky nakrájené kuřecí maso a trochu vody. Vaříme přibližně 20 minut, dokud se maso neuvaří. Můžeme podávat s rýží a posypat nasekaným koriandrem."
+  },
   "food/Mexico/TortillySVeprovoHovezimMasemASalsou.html": {
     "href": "food/Mexico/TortillySVeprovoHovezimMasemASalsou.html",
     "title": "| Život",
@@ -52,6 +57,6 @@
   "index.html": {
     "href": "index.html",
     "title": "| Život",
-    "keywords": "Changelog 2024-12-05 Initialize changelog \uD83D\uDD27 Remove index.md for changelog generation before generating the new changelog. \uD83D\uDD27 update changelog"
+    "keywords": "Changelog 2024-12-06 ✨ Add chicken curry with rice recipe and update menu. (India) \uD83C\uDFA8 Update food table of contents structure. 2024-12-05 Initialize changelog \uD83D\uDD27 Remove index.md for changelog generation before generating the new changelog. \uD83D\uDD27 update changelog \uD83D\uDD27 update changelog"
   }
 }

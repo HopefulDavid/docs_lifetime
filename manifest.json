@@ -105,6 +105,16 @@
     },
     {
       "type": "Conceptual",
+      "source_relative_path": "food/India/chickenCurryWithRice.md",
+      "output": {
+        ".html": {
+          "relative_path": "food/India/chickenCurryWithRice.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
       "source_relative_path": "food/Mexico/TortillySVeprovoHovezimMasemASalsou.md",
       "output": {
         ".html": {
@@ -132,6 +142,16 @@
         },
         ".html": {
           "relative_path": "food/toc.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/JmLSBL3E3G.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/JmLSBL3E3G.png"
         }
       },
       "version": ""
