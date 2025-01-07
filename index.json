@@ -22,7 +22,7 @@
   "food/Asia/coconut_chicken.html": {
     "href": "food/Asia/coconut_chicken.html",
     "title": "| Život",
-    "keywords": "Kokosové kuře Ingredience Rýže Máslo 1 Cibule 500g kuřecích prsou 200g mrkve 200g zelené papriky 2 lžíce kari koření 150g bílé cibule (nakrájet najemno) 400g drcených loupaných rajčat v plechovce 400ml kokosového mléka sůl pepř Postup Kuřecí maso očistěte a nakrájejte na nudličky. Mrkev očistěte a nakrájejte na tenká kolečka. Papriku očistěte a nakrájejte na větší kostky. Cibuli nakrájejte na jemno. V hlubší pánvi rozpalte máslo na středním plameni. Následně do pánve přidejte cibuli a restujte ji 3–4 minuty stále na středním plameni. K cibuli přidejte kuřecí maso, papriku, mrkev, kari koření, sůl a pepř a vše restujte dalších 4–5 minut. Nakonec ztlumte plamen na mírný stupeň, do pánve přilijte rajčata a kokosové mléko, pánev přiklopte pokličkou a směs vařte 25–27 minut."
+    "keywords": "Kokosové kuře Ingredience Rýže Máslo 1 cibule 500g kuřečí prsa 200g mrkev 200g zelené papriky 2 lžíce kari koření 150g bílé cibule (nakrájet najemno) 400g drcených loupaných rajčat v plechovce 400ml kokosového mléka sůl pepř Postup Kuřecí maso očistěte a nakrájejte na nudličky. Mrkev očistěte a nakrájejte na tenká kolečka. Papriku očistěte a nakrájejte na větší kostky. Cibuli nakrájejte na jemno. V hlubší pánvi rozpalte máslo na středním plameni. Následně do pánve přidejte cibuli a restujte ji 3–4 minuty stále na středním plameni. K cibuli přidejte kuřecí maso, papriku, mrkev, kari koření, sůl a pepř a vše restujte dalších 4–5 minut. Nakonec ztlumte plamen na mírný stupeň, do pánve přilijte rajčata a kokosové mléko, pánev přiklopte pokličkou a směs vařte 25–27 minut."
   },
   "food/Czech/burtGulas.html": {
     "href": "food/Czech/burtGulas.html",
@@ -62,6 +62,6 @@
   "index.html": {
     "href": "index.html",
     "title": "| Život",
-    "keywords": "Changelog 2025-01-07 ✨ Add coconut chicken recipe under Asian dishes. (food) 2024-12-29 \uD83D\uDD27 Update .NET version to 8.x in workflow config. \uD83D\uDD27 update changelog 2024-12-06 ✨ Add chicken curry with rice recipe and update menu. (India) \uD83D\uDD27 update changelog \uD83C\uDFA8 Update food table of contents structure. 2024-12-05 Initialize changelog \uD83D\uDD27 Remove index.md for changelog generation before generating the new changelog. \uD83D\uDD27 update changelog \uD83D\uDD27 update changelog"
+    "keywords": "Changelog 2025-01-07 \uD83C\uDFA8 Enhance ingredient list formatting. (coconut-chicken) ✨ Add coconut chicken recipe under Asian dishes. (food) \uD83D\uDD27 update changelog 2024-12-29 \uD83D\uDD27 Update .NET version to 8.x in workflow config. \uD83D\uDD27 update changelog 2024-12-06 ✨ Add chicken curry with rice recipe and update menu. (India) \uD83D\uDD27 update changelog \uD83C\uDFA8 Update food table of contents structure. 2024-12-05 Initialize changelog \uD83D\uDD27 Remove index.md for changelog generation before generating the new changelog. \uD83D\uDD27 update changelog \uD83D\uDD27 update changelog"
   }
 }
