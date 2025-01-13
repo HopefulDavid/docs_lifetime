@@ -55,90 +55,110 @@
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "food/America/steak.md",
+      "source_relative_path": "food/dips/herbWithSweetPepper.md",
       "output": {
         ".html": {
-          "relative_path": "food/America/steak.html"
+          "relative_path": "food/dips/herbWithSweetPepper.html"
         }
       },
       "version": ""
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "food/Asia/coconut_chicken.md",
+      "source_relative_path": "food/main_dish/america/steak.md",
       "output": {
         ".html": {
-          "relative_path": "food/Asia/coconut_chicken.html"
+          "relative_path": "food/main_dish/america/steak.html"
         }
       },
       "version": ""
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "food/Czech/burtGulas.md",
+      "source_relative_path": "food/main_dish/asia/coconut_chicken.md",
       "output": {
         ".html": {
-          "relative_path": "food/Czech/burtGulas.html"
+          "relative_path": "food/main_dish/asia/coconut_chicken.html"
         }
       },
       "version": ""
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "food/Czech/misaRezy.md",
+      "source_relative_path": "food/main_dish/czech/burtGulas.md",
       "output": {
         ".html": {
-          "relative_path": "food/Czech/misaRezy.html"
+          "relative_path": "food/main_dish/czech/burtGulas.html"
         }
       },
       "version": ""
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "food/Czech/rajskaOmacka.md",
+      "source_relative_path": "food/main_dish/czech/misaRezy.md",
       "output": {
         ".html": {
-          "relative_path": "food/Czech/rajskaOmacka.html"
+          "relative_path": "food/main_dish/czech/misaRezy.html"
         }
       },
       "version": ""
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "food/Greece/reckaSmes.md",
+      "source_relative_path": "food/main_dish/czech/rajskaOmacka.md",
       "output": {
         ".html": {
-          "relative_path": "food/Greece/reckaSmes.html"
+          "relative_path": "food/main_dish/czech/rajskaOmacka.html"
         }
       },
       "version": ""
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "food/India/chickenCurryWithRice.md",
+      "source_relative_path": "food/main_dish/greece/reckaSmes.md",
       "output": {
         ".html": {
-          "relative_path": "food/India/chickenCurryWithRice.html"
+          "relative_path": "food/main_dish/greece/reckaSmes.html"
         }
       },
       "version": ""
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "food/Mexico/TortillySVeprovoHovezimMasemASalsou.md",
+      "source_relative_path": "food/main_dish/india/chickenCurryWithRice.md",
       "output": {
         ".html": {
-          "relative_path": "food/Mexico/TortillySVeprovoHovezimMasemASalsou.html"
+          "relative_path": "food/main_dish/india/chickenCurryWithRice.html"
         }
       },
       "version": ""
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "food/Portugal/pasteisDeNata.md",
+      "source_relative_path": "food/main_dish/mexico/TortillySVeprovoHovezimMasemASalsou.md",
       "output": {
         ".html": {
-          "relative_path": "food/Portugal/pasteisDeNata.html"
+          "relative_path": "food/main_dish/mexico/TortillySVeprovoHovezimMasemASalsou.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "food/main_dish/portugal/pasteisDeNata.md",
+      "output": {
+        ".html": {
+          "relative_path": "food/main_dish/portugal/pasteisDeNata.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "food/soups/czech/brothBeefSoup.md",
+      "output": {
+        ".html": {
+          "relative_path": "food/soups/czech/brothBeefSoup.html"
         }
       },
       "version": ""
