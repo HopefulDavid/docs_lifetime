@@ -1,6 +1,10 @@
 Changelog
+## 2025-02-13
+  - 📝 aktualizace receptu na buřtguláš
+  - ✨ přidání receptu na šunkofleky (food)
 ## 2025-01-26
   - 🔧 aktualizace seznamu příjemců e-mailu
+  - 🔧 update changelog
 ## 2025-01-13
   - 🔨 Update file paths for main dish recipes (food/toc)
   - ✨ Add Czech beef broth recipe and update table of contents (food)
