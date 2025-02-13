@@ -3,48 +3,45 @@
 <details>
 <summary><span style="color:#1E90FF;">Ingredience</span></summary>
 
-- Buřty <span style="color:#228B22;">8 kusů</span>
-- Cibule <span style="color:#228B22;">2 kusy</span>
-- Paprika <span style="color:#228B22;">4 lžičky</span>
-- Česnek <span style="color:#228B22;">4 stroužky</span>
-- Mouka <span style="color:#228B22;">4 lžíce</span>
-- Voda <span style="color:#228B22;">800 ml</span>
-- Sůl podle chuti
-- Pepř podle chuti
+- Máslo <span style="color:#228B22;">60 g</span>
+- Špekáčky (kvalitní) <span style="color:#228B22;">600 g</span>
+- Cibule (velké) <span style="color:#228B22;">2 ks</span>
+- Česnek <span style="color:#228B22;">5 stroužků</span>
+- Mletá sladká paprika (nebo uzená) <span style="color:#228B22;">2 lžíce</span>
+- Drcený kmín <span style="color:#228B22;">2 lžičky</span>
+- Maďarský guláš koření
+- Uzená paprika koření
+- Hladká mouka <span style="color:#228B22;">3 lžíce</span>
+- Vývar (nebo voda) <span style="color:#228B22;">2,5 až 3 litry</span>
+- Brambory (typu B) <span style="color:#228B22;">800 g</span>
+- Majoránka (sušená) <span style="color:#228B22;">1 lžíce</span>
+- Sůl
+- Čerstvě namletý pepř
 
 </details>
 
 <details>
-<summary><span style="color:#1E90FF;">Postup</span></summary>
+<summary><span style="color:#1E90FF;">Postup přípravy</span></summary>
 
-#### Příprava buřtů a cibule
+1. Rozehřejte v kastrolu polovinu másla a opékejte na něm špekáčky nakrájené na čtvrtkolečka ze všech stran. 
 
-1. Buřty nakrájejte na kolečka.
-2. Cibuli nakrájejte nadrobno a orestujte na pánvi bez oleje dozlatova.
+   Jakmile se zbarví lehce dohněda, dejte je stranou.
+2. Do kastrolu přidejte máslo a cibuli nakrájenou na kostičky, restujte asi 10 minut, až bude cibule lehce zlatavá.
+   
+   Přidejte nahrubo nasekaný česnek a restujte další 3 minuty.
+3. Zasypte kmínem, mletou paprikou a hladkou moukou. 
 
-> [!TIP]
-> Můžete použít nepřilnavou pánev nebo pánev s keramickým povrchem, které jsou ideální pro smažení bez oleje.
->
-> Pokud nemáte k dispozici takovou pánev, můžete použít velmi malé množství oleje, aby se cibule nepřipálila.
+   > [!WARNING]
+   > Vše krátce zarestujte, jen ať se koření rozvoní, ale nesmí se připálit, paprika by zhořkla.
+4. Základ zalijte vývarem nebo vodou a metličkou rozmíchejte dohladka. 
 
-#### Příprava guláše
+   V této chvíli můžete základ promixovat ponorným mixérem, aby byl guláš hladký, ale není to nutné.
+5. Do základu dejte orestované špekáčky a na kostky nakrájené brambory. 
 
-1. Přidejte nakrájené buřty a orestujte je společně s cibulí.
-2. Přidejte papriku a promíchejte.
-3. Přidejte prolisovaný česnek a promíchejte.
-4. Přidejte mouku a promíchejte, aby se všechny ingredience spojily.
+   Guláš osolte, opepřete, přiveďte k varu a na mírném ohni vařte 20 minut, až budou brambory měkké.
+6. Nakonec vmíchejte rozemnutou majoránku, případně dochuťte šplíchancem octa. 
 
-> [!NOTE]
-> Mouku pomalu promíchejte, aby se zabránilo vzniku hrudek.
->
-> Pokud se objeví nějaké hrudky, pokračujte v míchání, dokud nezmizí.
->
-> - Tímto krokem vytvoříte vlastní jíšku pro guláš.
+   >[!NOTE]
+   > Podávejte s dobrým kváskovým chlebem.
 
-#### Dokončení guláše
-
-1. Přidejte vodu (nebo vývar, pokud máte) a promíchejte. Vařte na mírném ohni, dokud omáčka nezhoustne.
-2. Dochutíte solí a pepřem podle chuti.
-3. Vařte ještě pár minut, aby se všechny chutě propojily.
-
- </details>
+</details>
