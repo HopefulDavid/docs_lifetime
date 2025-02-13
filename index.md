@@ -1,7 +1,9 @@
 Changelog
 ## 2025-02-13
+  - 🔧 aktualizace příjemců v workflow emailu
   - 📝 aktualizace receptu na buřtguláš
   - ✨ přidání receptu na šunkofleky (food)
+  - 🔧 update changelog
 ## 2025-01-26
   - 🔧 aktualizace seznamu příjemců e-mailu
   - 🔧 update changelog
