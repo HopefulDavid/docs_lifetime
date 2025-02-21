@@ -55,6 +55,16 @@
     },
     {
       "type": "Conceptual",
+      "source_relative_path": "food/dips/creamSweet.md",
+      "output": {
+        ".html": {
+          "relative_path": "food/dips/creamSweet.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
       "source_relative_path": "food/dips/herbWithSweetPepper.md",
       "output": {
         ".html": {
