@@ -1,6 +1,6 @@
 ﻿## Kuřecí na kari s rýží
 
-<img src="../../images/JmLSBL3E3G.png" width="150" height="100">
+<img src="../../../images/JmLSBL3E3G.png" width="150" height="100">
 
 <details>
 <summary><span style="color:#1E90FF;">Ingredience</span></summary>
