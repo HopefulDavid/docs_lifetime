@@ -1,6 +1,12 @@
 Changelog
+## 2025-03-02
+  - 📝 přidání receptu na gulášovou polévku
+## 2025-02-22
+  - 📝 aktualizace receptu na rajskou omáčku, změněna struktura ingrediencí a postupu pro lepší přehlednost. (czech)
+  - 📝 opravená cesta k obrázku pro správné zobrazení v receptu kuřecího na kari s rýží. (india)
 ## 2025-02-21
   - ✨ přidání receptu na smetanový dip na sladko
+  - 🔧 update changelog
 ## 2025-02-13
   - 🔧 aktualizace příjemců v workflow emailu
   - 📝 aktualizace receptu na buřtguláš
