@@ -40,6 +40,8 @@
           items:
             - name: Kuřecí na kari s rýží
               href: main_dish/india/chickenCurryWithRice.md
+            - name: Indická kuřecí Tikka Masala
+              href: main_dish/india/chickenTikkaMasala.md
     - name: Mexická jídla
       items:
         - name: Slané
