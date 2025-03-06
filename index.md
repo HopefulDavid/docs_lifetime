@@ -1,6 +1,9 @@
 Changelog
+## 2025-03-06
+  - ✨ přidání receptu na kuřecí Tikka Masala (india)
 ## 2025-03-02
   - 📝 přidání receptu na gulášovou polévku
+  - 🔧 update changelog
 ## 2025-02-22
   - 📝 aktualizace receptu na rajskou omáčku, změněna struktura ingrediencí a postupu pro lepší přehlednost. (czech)
   - 📝 opravená cesta k obrázku pro správné zobrazení v receptu kuřecího na kari s rýží. (india)
