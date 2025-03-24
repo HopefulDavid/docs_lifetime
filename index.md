@@ -1,6 +1,9 @@
 Changelog
+## 2025-03-24
+  - 🐛 upravení názvu receptu a ingrediencí (india)
 ## 2025-03-06
   - ✨ přidání receptu na kuřecí Tikka Masala (india)
+  - 🔧 update changelog
 ## 2025-03-02
   - 📝 přidání receptu na gulášovou polévku
   - 🔧 update changelog
