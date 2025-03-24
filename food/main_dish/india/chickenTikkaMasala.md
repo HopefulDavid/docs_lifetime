@@ -1,4 +1,4 @@
-﻿## Kuřecí Tikka Masala
+﻿## Kuřecí tikka masala
 
 <details>
 <summary><span style="color:#1E90FF;">Ingredience</span></summary>
@@ -37,9 +37,9 @@ Naaan:
 
 - Hladká mouka <span style="color:#228B22;">250 g</span>
 - Smetana na vaření 12% <span style="color:#228B22;">100 ml</span>
-- Voda
+- Jogurt <span style="color:#228B22;">100 ml</span>
+- Voda <span style="color:#228B22;">50 ml</span>
 - Sůl <span style="color:#228B22;">1/2 lžičky</span>
-- Černá sezamová semínka
 - Máslo <span style="color:#228B22;">1 lžíce</span>
 - Kypřicí prášek
 
@@ -73,10 +73,10 @@ Naaan jako příloha:
 
 1. Do mísy nasypeme mouku s kypřicím práškem a solí.
 2. Přilijeme smetanu a promícháme.
-3. Po troškách přidáváme vodu, dokud nevznikne kompaktní nelepivé těsto.
-4. Těsto rozdělíme na 5 částí a každou vyválíme na tenkou placku.
-5. Placky položíme na plech s pečicím papírem a propícháme vidličkou.
+3. Po troškách přidáváme vodu asi 50 ml.
+4. Přidáme jogurt asi 100 ml a promícháme.
+5. Těsto rozetřeme na pečící papír.
 6. Pečeme v troubě na nejvyšší stupeň asi 3 minuty, dokud se nenafouknou a nezhnědnou.
-7. Hotové placky potřeme máslem a posypeme sezamem.
+7. Hotové placky potřeme máslem.
 
 </details>
