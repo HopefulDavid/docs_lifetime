@@ -204,6 +204,16 @@
       "version": ""
     },
     {
+      "type": "Conceptual",
+      "source_relative_path": "food/soups/spain/gazpacho.md",
+      "output": {
+        ".html": {
+          "relative_path": "food/soups/spain/gazpacho.html"
+        }
+      },
+      "version": ""
+    },
+    {
       "type": "Toc",
       "source_relative_path": "food/toc.yml",
       "output": {
