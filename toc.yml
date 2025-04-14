@@ -1,0 +1,4 @@
+- name: Jídlo
+  href: food/
+- name: Nápoje
+  href: drink/

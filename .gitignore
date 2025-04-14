@@ -1,0 +1,5 @@
+.idea/
+private/
+_site/
+*.bak
+node_modules/

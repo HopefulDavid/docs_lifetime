@@ -1,0 +1,74 @@
+name: Documentation CI
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+jobs:
+  publish-docs:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Configure Git
+        run: |
+          git config --global user.name "GitHub Actions Bot"
+          git config --global user.email "actions@github.com"
+
+      - name: Dotnet Setup
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.x
+
+      - name: Generate Changelog
+        if: github.actor != 'github-actions[bot]'
+        run: |
+          rm -f index.md
+          npm install -g conventional-changelog-cli
+          conventional-changelog -i index.md -s --config ./changelog-config.js
+          git add index.md
+          git commit -m "chore: update changelog"
+          git push origin main
+
+      - name: Read index.md content
+        id: read_index_md
+        run: |
+          echo "index<<EOF" >> $GITHUB_ENV
+          cat index.md >> $GITHUB_ENV
+          echo "EOF" >> $GITHUB_ENV
+
+      - name: Send email with index.md content
+        uses: dawidd6/action-send-mail@v4
+        with:
+          server_address: smtp.gmail.com
+          server_port: 465
+          secure: true
+          username: ${{ secrets.MAIL_USERNAME }}
+          password: ${{ secrets.MAIL_PASSWORD }}
+          from: "dslavik29@outlook.com"
+          subject: "Nové změny v dokumentaci"
+          to: "dslavik29@outlook.com,lucie.slavikova33@outlook.com, rslavikova9@seznam.cz, d.pochova@seznam.cz, vslavik19@seznam.cz"
+          convert_markdown: true
+          html_body: |
+            <p>Nové změny v dokumentaci jsou k dispozici. Podívejte se na ně <a href="https://hopefuldavid.github.io/docs_lifetime/">zde</a>.</p>
+            <hr>
+            ${{ env.index }}  
+
+      - run: dotnet tool update -g docfx
+      - run: docfx docfx.json
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: _site

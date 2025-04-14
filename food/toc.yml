@@ -1,0 +1,72 @@
+- name: Polévky
+  items:
+    - name: České polévky
+      items:
+        -  name: Gulášová polévka
+           href: soups/czech/goulashSoup.md
+        - name: Hovězí vývar
+          href: soups/czech/brothBeefSoup.md
+    - name: Španělské polévky
+      items:
+        - name: Gazpacho
+          href: soups/spain/gazpacho.md
+- name: Hlavní jídla
+  items:
+    - name: Česká jídla
+      items:
+        - name: Sladké
+          items:
+            - name: Míša řezy
+              href: main_dish/czech/misaRezy.md
+        - name: Slané
+          items:
+            - name: Buřtguláš
+              href: main_dish/czech/burtGulas.md
+            - name: Rajská omáčka
+              href: main_dish/czech/rajskaOmacka.md
+            - name: Šunkofleky
+              href: main_dish/czech/sunkoFleky.md
+    - name: Americká jídla
+      items:
+        - name: Slané
+          items:
+            - name: Stejky
+              href: main_dish/america/steak.md
+    - name: Asijská jídla
+      items:
+        - name: Slané
+          items:
+            - name: Kokosové kuře
+              href: main_dish/asia/coconut_chicken.md
+    - name: Indická jídla
+      items:
+        - name: Slané
+          items:
+            - name: Kuřecí na kari s rýží
+              href: main_dish/india/chickenCurryWithRice.md
+            - name: Indická kuřecí Tikka Masala
+              href: main_dish/india/chickenTikkaMasala.md
+    - name: Mexická jídla
+      items:
+        - name: Slané
+          items:
+            - name: Tortilly s vepřovo hovězím masem a salsou
+              href: main_dish/mexico/TortillySVeprovoHovezimMasemASalsou.md
+    - name: Portugalská jídla
+      items:
+        - name: Sladké
+          items:
+            - name: Pastéis de Nata
+              href: main_dish/portugal/pasteisDeNata.md
+    - name: Řecká jídla
+      items:
+        - name: Slané
+          items:
+            - name: Řecká směs
+              href: main_dish/greece/reckaSmes.md
+- name: Dipy
+  items:
+    - name: Bylinka se sladkou paprikou
+      href: dips/herbWithSweetPepper.md
+    - name: Smetanový na sladko
+      href: dips/creamSweet.md
