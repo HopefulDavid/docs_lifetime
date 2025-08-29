@@ -57,7 +57,7 @@ jobs:
           password: ${{ secrets.MAIL_PASSWORD }}
           from: "dslavik29@outlook.com"
           subject: "Nové změny v dokumentaci"
-          to: "dslavik29@outlook.com,lucie.slavikova33@outlook.com, rslavikova9@seznam.cz, d.pochova@seznam.cz, vslavik19@seznam.cz"
+          to: "dslavik29@outlook.com,lucie.slavikova33@outlook.com, rslavikova9@seznam.cz, d.pochova@seznam.cz"
           convert_markdown: true
           html_body: |
             <p>Nové změny v dokumentaci jsou k dispozici. Podívejte se na ně <a href="https://hopefuldavid.github.io/docs_lifetime/">zde</a>.</p>
