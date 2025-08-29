@@ -2,10 +2,12 @@
   items:
     - name: České polévky
       items:
-        -  name: Gulášová polévka
-           href: soups/czech/goulashSoup.md
+        - name: Gulášová polévka
+          href: soups/czech/goulashSoup.md
         - name: Hovězí vývar
           href: soups/czech/brothBeefSoup.md
+        - name: Zelňačka
+          href: soups/czech/CabbageSoup.md
     - name: Španělské polévky
       items:
         - name: Gazpacho
