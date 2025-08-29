@@ -79,6 +79,11 @@
     "title": "| Život",
     "summary": "Pastéis de Nata Ingredience 500 g listového těsta 100 ml mléka 200 ml smetany na vaření 5 žloutků 3 lžíce krystalového cukru 2 lžíce hladké mouky Kůra z 1 citronu Mletá skořice Postup Rozválejte listové těsto a z delší strany ho zarolujte. Nakrájejte na kousky a z každého kousku vytvarujte dlaní košíček. V hrnci smíchejte mléko, smetanu, žloutky, cukr, mouku, citronovou kůru a skořici. Zahřívejte za stálého míchání, dokud směs nezhoustne na pudink. Naplňte košíčky připravenou směsí. Naskládejte je na plech s pečicím papírem a pečte při 220 °C asi 15 minut."
   },
+  "food/soups/czech/CabbageSoup.html": {
+    "href": "food/soups/czech/CabbageSoup.html",
+    "title": "| Život",
+    "summary": "Zelná polévka / Zelňačka Ingredience máslo cibule klobása brambory voda nebo vývar bobkový list nové koření pepř celý kmín paprika sladká mletá sůl cukr kysané zelí (i trochu láku podle chuti) smetana ke šlehání majoránka Postup Na tuku osmaž cibuli dozlatova. Přidej klobásu nakrájenou na kostičky a orestuj. Přidej brambory nakrájené na kostičky, zalij vodou nebo vývarem. Ochuť bobkovým listem, novým kořením, pepřem, kmínem, paprikou a trochou soli. Vař asi 12–15 minut, dokud brambory téměř nezměknou. Přidej pokrájené kysané zelí (můžeš přidat i trochu láku podle chuti) a vař dalších 10 minut. Vyjmi bobkový list a kuličky koření. Vmíchej smetanu ke šlehání (můžeš ji předem trochu ohřát, aby se nesrazila) a krátce povař. Nakonec dochuť případně solí, čerstvě mletým pepřem a přidej majoránku."
+  },
   "food/soups/czech/brothBeefSoup.html": {
     "href": "food/soups/czech/brothBeefSoup.html",
     "title": "| Život",
@@ -97,6 +102,6 @@
   "index.html": {
     "href": "index.html",
     "title": "| Život",
-    "summary": "Změny 2025-04-14 Vyčištění změn"
+    "summary": "Změny 2025-08-29 ♻️ Refaktorizace kódu: odstranění zbytečné emailové adresy (ci) ✨ Nové funkcionality: přidání receptu na zelňačku (docs) 2025-04-14 Vyčištění změn"
   }
 }

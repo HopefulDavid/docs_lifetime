@@ -185,6 +185,16 @@
     },
     {
       "type": "Conceptual",
+      "source_relative_path": "food/soups/czech/CabbageSoup.md",
+      "output": {
+        ".html": {
+          "relative_path": "food/soups/czech/CabbageSoup.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
       "source_relative_path": "food/soups/czech/brothBeefSoup.md",
       "output": {
         ".html": {
