@@ -92,7 +92,7 @@
   "food/soups/czech/goulashSoup.html": {
     "href": "food/soups/czech/goulashSoup.html",
     "title": "| Život",
-    "summary": "Gulášová polévka Ingredience Máslo Cibule (menší) 1 ks Mletá paprika 4 lžičky Mleté hovězí maso 200 g Hovězí vývar (nebo voda) 1,5 l Maďarský guláš koření Majoránka Sůl Pepř Kmín Hovězí bujón Brambory (větší) 3 ks Česnek 3 stroužky Hladká mouka 2 lžíce Postup přípravy Na pánvi osmahneme mouku až jemně zhnědne - připravíme si tak suchou jíšku. V hrnci na másle osmahneme dorůžova nakrájenou cibuli. Přidáme mleté maso, které za stálého míchání a oddělování kousků restujeme, dokud se neoddělí. Vmícháme papriku, krátce zarestujeme a zalijeme vývarem (případně vodou). Warning Papriku jen zpěníme, jinak zhořkne. Přidáme sůl, pepř, kmín, maďarské koření, bujón a zhruba 30 minut pozvolna vaříme. Doplníme brambory nakrájené na kostky a slisovaný česnek. Krátce povaříme a zahustíme připravenou suchou jíškou. Polévku necháme velmi zvolna dobře provařit, až tuk vystoupí na povrch. Ke konci přidáme majoránku a dochutíme."
+    "summary": "Buřtguláš Ingredience Cibule 2 ks Máslo přepuštěné 2 lžičky Klobásky Lidl 1/2 balení Brambory 500 g Smetana na vaření 1 ks Hladká mouka 1 lžíce Česnek 2 stroužky Mletá červená paprika sladká 2-3 lžíce Bobkový list 1 ks Nové koření 3 kuličky Sůl Pepř Postup přípravy Cibuli oloupejte a nakrájejte najemno. Ve vyšším kastrolu nebo hrnci rozehřejte máslo a osmahněte cibuli dozlatova. Přidejte na kostky nakrájené buřty, restujte, než dostanou barvu. Zaprašte paprikou a přidejte prolisovaný česnek. Warning Papriku a česnek opékejte jen pár vteřin, aby se nepřipálily. Přilijte vodu tak, aby byla směs zhruba do poloviny ponořená (necelá polovina hrnce). Přidejte na kostičky nakrájené brambory, sůl, pepř, nové koření a bobkový list. Přiklopte a vařte asi 15-20 minut, dokud nejsou brambory měkké. Zalejte jíškou, kterou předem vytvoříte smícháním půlky smetany a jedné lžíce mouky."
   },
   "food/soups/spain/gazpacho.html": {
     "href": "food/soups/spain/gazpacho.html",
@@ -102,6 +102,6 @@
   "index.html": {
     "href": "index.html",
     "title": "| Život",
-    "summary": "Změny 2025-08-29 ♻️ Refaktorizace kódu: odstranění zbytečné emailové adresy (ci) ✨ Nové funkcionality: přidání receptu na zelňačku (docs) \uD83D\uDCDA Změny v dokumentaci: vylepšení popisu receptu na zelňačku (soups) 2025-04-14 Vyčištění změn"
+    "summary": "Změny 2025-09-07 ♻️ Refaktorizace kódu: změna receptu na buřtguláš (docs) 2025-08-29 ♻️ Refaktorizace kódu: odstranění zbytečné emailové adresy (ci) ✨ Nové funkcionality: přidání receptu na zelňačku (docs) \uD83D\uDCDA Změny v dokumentaci: vylepšení popisu receptu na zelňačku (soups) 2025-04-14 Vyčištění změn"
   }
 }
