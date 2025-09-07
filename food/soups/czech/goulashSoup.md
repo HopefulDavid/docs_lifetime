@@ -1,47 +1,33 @@
-﻿## Gulášová polévka
+﻿## Buřtguláš
 
 <details>
 <summary><span style="color:#1E90FF;">Ingredience</span></summary>
 
-- Máslo
-- Cibule (menší) <span style="color:#228B22;">1 ks</span>
-- Mletá paprika <span style="color:#228B22;">4 lžičky</span>
-- Mleté hovězí maso <span style="color:#228B22;">200 g</span>
-- Hovězí vývar (nebo voda) <span style="color:#228B22;">1,5 l</span>
-- Maďarský guláš koření
-- Majoránka
+- Cibule <span style="color:#228B22;">2 ks</span>
+- Máslo přepuštěné <span style="color:#228B22;">2 lžičky</span>
+- Klobásky Lidl <span style="color:#228B22;">1/2 balení</span>
+- Brambory <span style="color:#228B22;">500 g</span>
+- Smetana na vaření <span style="color:#228B22;">1 ks</span>
+- Hladká mouka <span style="color:#228B22;">1 lžíce</span>
+- Česnek <span style="color:#228B22;">2 stroužky</span>
+- Mletá červená paprika sladká <span style="color:#228B22;">2-3 lžíce</span>
+- Bobkový list <span style="color:#228B22;">1 ks</span>
+- Nové koření <span style="color:#228B22;">3 kuličky</span>
 - Sůl
 - Pepř
-- Kmín
-- Hovězí bujón
-- Brambory (větší) <span style="color:#228B22;">3 ks</span>
-- Česnek <span style="color:#228B22;">3 stroužky</span>
-- Hladká mouka <span style="color:#228B22;">2 lžíce</span>
 
 </details>
 
 <details>
 <summary><span style="color:#1E90FF;">Postup přípravy</span></summary>
 
-1. Na pánvi osmahneme mouku až jemně zhnědne - připravíme si tak suchou jíšku.
-
-2. V hrnci na másle osmahneme dorůžova nakrájenou cibuli.
-
-3. Přidáme mleté maso, které za stálého míchání a oddělování kousků restujeme, dokud se neoddělí.
-
-4. Vmícháme papriku, krátce zarestujeme a zalijeme vývarem (případně vodou).
+1. Cibuli oloupejte a nakrájejte najemno. Ve vyšším kastrolu nebo hrnci rozehřejte máslo a osmahněte cibuli dozlatova.
+2. Přidejte na kostky nakrájené buřty, restujte, než dostanou barvu. Zaprašte paprikou a přidejte prolisovaný česnek.
 
    > [!WARNING]
-   > Papriku jen zpěníme, jinak zhořkne.
+   > Papriku a česnek opékejte jen pár vteřin, aby se nepřipálily.
 
-5. Přidáme sůl, pepř, kmín, maďarské koření, bujón a zhruba 30 minut pozvolna vaříme.
-
-6. Doplníme brambory nakrájené na kostky a slisovaný česnek.
-
-7. Krátce povaříme a zahustíme připravenou suchou jíškou.
-
-8. Polévku necháme velmi zvolna dobře provařit, až tuk vystoupí na povrch.
-
-9. Ke konci přidáme majoránku a dochutíme.
+3. Přilijte vodu tak, aby byla směs zhruba do poloviny ponořená (necelá polovina hrnce). Přidejte na kostičky nakrájené brambory, sůl, pepř, nové koření a bobkový list. Přiklopte a vařte asi 15-20 minut, dokud nejsou brambory měkké.
+4. Zalejte jíškou, kterou předem vytvoříte smícháním půlky smetany a jedné lžíce mouky.
 
 </details>
