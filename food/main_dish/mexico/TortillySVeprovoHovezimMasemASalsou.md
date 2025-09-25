@@ -1,43 +1,49 @@
-## Tortilly s vepřovo hovězím masem a salsou
+## 🌮 Tortilly s vepřovo-hovězím masem a salsou
 
-<details>
-<summary><span style="color:#1E90FF;">Ingredience</span></summary>
+---
 
-- Malé tortilly (Kaufland)
-- Mleté vepřové hovězí maso (Kaufland)
-- Dle gusta gyros koření (Coop)
-- Česnekový prášek
-- <span style="color:#228B22;">1x</span> středně velká červená cibule
-- <span style="color:#228B22;">2x</span> větší keříková rajčata
-- <span style="color:#228B22;">1x</span> limetka
-- Čerstvý koriandr
-- Zakysaná smetana
-- Olivový olej
-- Pepř
-- Sůl
-- Sýr
+> Tortilly s masem a salsou jsou skvělým rychlým jídlem na party i večeři.
 
-</details>
+### Ingredience
 
-<details>
-<summary><span style="color:#1E90FF;">Postup</span></summary>
+- 🌮 Malé tortilly (Kaufland)
+- 🥩 Mleté vepřové-hovězí maso (Kaufland)
+- 🌶️ Gyros koření (dle chuti, Coop)
+- 🧄 Česnekový prášek
+- 🧅 Červená cibule (1 ks, střední)
+- 🍅 Keříková rajčata (2 ks, větší)
+- 🍋 Limetka (1 ks)
+- 🌿 Čerstvý koriandr
+- 🥛 Zakysaná smetana
+- 🫒 Olivový olej
+- 🧂 Sůl
+- ⚫ Pepř
+- 🧀 Sýr
 
-### Příprava masa
+---
 
-1. Maso osmahneme v pánvi na másle.
-2. Přidáme gyros koření a limetku.
-3. Až je maso hotové, tak jej dáme na tortillku a zasypeme sýrem.
-4. Pozor tortillku nebalíme, pouze ji vložíme na pánev a osmahneme jen spodní stranu.
+### 1. Příprava masa
 
-### Příprava salsy
+- **Maso osmahněte v pánvi na másle.** 🥩🔥
+- **Přidejte gyros koření a šťávu z limetky.** 🌶️🍋
+- **Hotové maso dejte na tortillu a zasypte sýrem.** 🌮🧀
+- **Tortillu nebalte, pouze ji vložte na pánev a osmahněte spodní stranu.** 🔥
 
-1. Nakrájíme rajčata a cibuli na kostičky.
-2. Smícháme vše v misce s vymačkanou šťávou z limetky, lžící oleje a kořením (pepř, sůl, koriandr, česnekový prášek).
-3. Salsu necháme v lednici 30 minut odležet.
+  > ⚠️ **Varování:** Tortilla se smaží jen z jedné strany, aby zůstala vláčná.
 
-### Dokončení
+---
 
-1. Až je tortillka opečená a sýr rozteklý, dáme na tortillku čerstvou salsu.
-2. Podáváme se smetanou.
+### 2. Příprava salsy
 
-</details>
+- **Rajčata a cibuli nakrájejte na kostičky.** 🍅🧅🔪
+- **Smíchejte v misce s limetkovou šťávou, lžící oleje, pepřem, solí, koriandrem a česnekovým práškem.** 🍋🫒🌿🧄🧂⚫
+- **Salsu nechte v lednici 30 minut odležet.** 🕒
+
+  > 💡 **Tip:** Salsa je nejlepší vychlazená, chutě se krásně propojí.
+
+---
+
+### 3. Dokončení
+
+- **Opečenou tortillu se sýrem doplňte čerstvou salsou.** 🌮🍅
+- **Podávejte se zakysanou smetanou.** 🥛

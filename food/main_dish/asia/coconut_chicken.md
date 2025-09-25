@@ -1,32 +1,58 @@
-﻿## Kokosové kuře
+﻿## 🥥 Kokosové kuře
 
-<details>
-<summary><span style="color:#1E90FF;">Ingredience</span></summary>
+---
 
-- Rýže
-- Máslo
-- <span style="color:#228B22;">1</span> cibule
-- <span style="color:#228B22;">500g</span> kuřečí prsa
-- <span style="color:#228B22;">200g</span> mrkev
-- <span style="color:#228B22;">200g</span> zelené papriky
-- <span style="color:#228B22;">2 lžíce</span> kari koření
-- <span style="color:#228B22;">150g</span> bílé cibule (nakrájet najemno)
-- <span style="color:#228B22;">400g</span> drcených loupaných rajčat v plechovce
-- <span style="color:#228B22;">400ml</span> kokosového mléka
-- sůl
-- pepř
-</details>
+> Kokosové kuře je exotické jídlo s jemnou chutí kari a krémovou omáčkou z kokosového mléka.
 
-<details>
-<summary><span style="color:#1E90FF;">Postup</span></summary>
+### Ingredience
 
-1. Kuřecí maso očistěte a nakrájejte na nudličky.
-2. Mrkev očistěte a nakrájejte na tenká kolečka.
-3. Papriku očistěte a nakrájejte na větší kostky.
-4. Cibuli nakrájejte na jemno.
-5. V hlubší pánvi rozpalte máslo na středním plameni. 
+- 🍚 Rýže
+- 🧈 Máslo
+- 🧅 Cibule (1 ks)
+- 🍗 Kuřecí prsa (500 g)
+- 🥕 Mrkev (200 g)
+- 🫑 Zelená paprika (200 g)
+- 🌶️ Kari koření (2 lžíce)
+- 🧅 Bílá cibule, najemno (150 g)
+- 🍅 Drcená loupaná rajčata v plechovce (400 g)
+- 🥥 Kokosové mléko (400 ml)
+- 🧂 Sůl
+- ⚫ Pepř
 
-    Následně do pánve přidejte cibuli a restujte ji 3–4 minuty stále na středním plameni. 
-6. K cibuli přidejte kuřecí maso, papriku, mrkev, kari koření, sůl a pepř a vše restujte dalších 4–5 minut.
-7. Nakonec ztlumte plamen na mírný stupeň, do pánve přilijte rajčata a kokosové mléko, pánev přiklopte pokličkou a směs vařte 25–27 minut.
-</details>
+  > 💡 **Tip:** Použijte kvalitní kokosové mléko pro krémovější omáčku.
+
+---
+
+### 1. Příprava surovin
+
+- **Kuřecí maso očistěte a nakrájejte na nudličky.** 🍗🔪
+- **Mrkev očistěte a nakrájejte na tenká kolečka.** 🥕🔪
+- **Papriky nakrájejte na větší kostky.** 🫑🔪
+- **Cibuli nakrájejte najemno.** 🧅🔪
+
+---
+
+### 2. Restování
+
+- **V hlubší pánvi rozpalte máslo na středním plameni.** 🧈🔥
+- **Přidejte cibuli a restujte ji 3–4 minuty.** 🧅
+- **Přidejte kuřecí maso, papriku, mrkev, kari koření, sůl a pepř. Restujte dalších 4–5 minut.** 🍗🥕🫑🌶️🧂⚫
+
+  > ⚠️ **Varování:** Nepřepékejte maso, aby zůstalo šťavnaté.
+
+---
+
+### 3. Dušení
+
+- **Ztlumte plamen na mírný stupeň.**
+- **Přilijte rajčata a kokosové mléko, pánev přiklopte pokličkou.** 🍅🥥
+- **Směs vařte 25–27 minut.** ⏲️
+
+---
+
+### 4. Servírování
+
+- **Podávejte s rýží.** 🍚
+
+  > [!TIP]
+  > Skvěle chutná s čerstvým koriandrem nebo limetkou navrch.

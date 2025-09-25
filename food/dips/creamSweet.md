@@ -1,13 +1,31 @@
-﻿## Smetanový dip na sladko
+﻿## 🍯 Smetanový dip na sladko
+
+---
+
+> Smetanový dip na sladko je rychlý, jemný a vhodný k masu i zelenině.
 
 ### Ingredience
-- 2 polévkové lžíce kečupu
-- 2 polévkové lžíce smetany
-- 1 lžička medu
 
-### Postup
-Smíchejte všechny ingredience dohromady.
+- 🍅 Kečup (2 polévkové lžíce)
+- 🥛 Smetana (2 polévkové lžíce)
+- 🍯 Med (1 lžička)
 
+  > 💡 **Tip:** Můžete použít zakysanou smetanu pro jemnější chuť.
 
-> [!TIP]
-> Vhodné do tortily s kuřecím masem či grilovaným kuřecím masem, nebo k hranolkům.
+---
+
+### 1. Příprava dipu
+
+- **Všechny ingredience dejte do misky.** 🍅🥛🍯
+- **Důkladně promíchejte do hladké konzistence.** 🥄
+
+  > ⚠️ **Varování:** Med přidávejte postupně, ochutnávejte – dip by neměl být příliš sladký.
+
+---
+
+### 2. Servírování
+
+- **Podávejte vychlazené, ideálně k tortille s kuřecím masem, grilovanému kuřecímu nebo hranolkům.** 🌯🍗🍟
+
+  > [!TIP]
+  > Skvěle chutná i jako sladká omáčka k pečeným bramborám.

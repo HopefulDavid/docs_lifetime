@@ -1,46 +1,55 @@
-## Vietnamská káva
+## 🇻🇳 Vietnamská káva
 
-<details>
-<summary><span style="color:#1E90FF;">Postup</span></summary>
+---
 
-### Příprava kávovaru a mléka
+> Vietnamská káva je výrazná, sladká a silná díky kondenzovanému mléku a specifickému způsobu přípravy.
 
-1. Připravte si kávovar Phin.
-2. Vložte kávové filtry do kávovaru a dejte na ně kondenzované mléko.
-3. Poté vložte kávovar na šálek nebo hrníček.
+### Ingredience
 
-### Příprava filtrování
+- ☕ Středně hrubě mletá káva (2 lžíce)
+- 🥛 Slazené kondenzované mléko
+- 💧 Vroucí voda (2–3 oz / cca 60–90 ml)
+- 🧊 Led (volitelné)
+- 🛠️ Kávovar Phin
 
-1. Připravte si kávu.
-2. Nasypte do kávovaru 2 lžíce středně hrubě mleté kávy.
-3. Poté pomalu přilijte 2-3 oz vroucí vody do kávovaru.
+---
 
-   > [!NOTE]
-   > oz = zkratka pro "unce", což je jednotka objemu.
-   >
-   > 2 oz je přibližně **59, 1471 ml**.
+### 1. Příprava kávovaru & mléka
 
-4. Nechte kávu kapat do šálku.
+- **Připravte kávovar Phin.** 🛠️
+- **Vložte filtr a přidejte kondenzované mléko do šálku.** 🥛
+- **Umístěte kávovar na šálek.**
 
-> [!TIP]
-> Pokud chcete silnější kávu, můžete přidat více kávy.
+  > ℹ️ **Tip:** Kondenzované mléko lze přidat i až po překapání.
 
-### Rychlost a doba kapání
+---
 
-1. Káva by měla kapat do šálku po dobu 4-5 minut.
+### 2. Příprava kávy & filtrování
 
-   > [!NOTE]
-   > Počkejte dokud káva nedokape.
-   >
-   > Pokud káva kape pomalu, můžete přidat více vroucí vody.
-   >
-   > Pokud káva kape rychle, můžete přidat více kávy.
+- **Nasypte 2 lžíce středně hrubě mleté kávy do kávovaru.** ☕
+- **Pomalu přilijte 2–3 oz vroucí vody.** 💧
 
-### Dokončení
+  > [!NOTE]
+  > 1 oz = cca 29,57 ml
 
-1. Kávu promíchejte.
+- **Nechte kávu kapat do šálku.** ⏳
 
-> [!TIP]
-> Můžete také podávat s ledem.
+  > 💡 **Tip:** Pro silnější kávu použijte více kávy.
 
-</details>
+---
+
+### 3. Rychlost & doba kapání
+
+- **Káva by měla kapat 4–5 minut.** ⏲️
+
+  > ⚠️ **Varování:** Pokud káva kape příliš rychle, přidejte více kávy. Pokud příliš pomalu, přidejte více vody.
+
+---
+
+### 4. Dokončení & servírování
+
+- **Kávu promíchejte.** 🥄
+- **Podávejte teplou nebo s ledem.** 🧊
+
+  > [!TIP]
+  > Led dodá nápoji osvěžující chuť.

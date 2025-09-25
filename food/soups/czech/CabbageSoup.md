@@ -1,40 +1,61 @@
-﻿## Zelná polévka / Zelňačka
+﻿## 🥬 Zelňačka (Zelná polévka)
 
-<details>
-<summary><span style="color:#1E90FF;">Ingredience</span></summary>
+---
 
-- máslo
-- cibule
-- klobása
-- brambory
-- voda nebo vývar
-- bobkový list
-- nové koření
-- pepř celý
-- kmín
-- paprika sladká mletá
-- sůl
-- cukr
-- kysané zelí (i trochu láku podle chuti)
-- smetana ke šlehání
-- majoránka
+> Zelňačka je tradiční česká polévka, která zahřeje a zasytí. Skvělá s čerstvým chlebem!
 
-</details>
+### Ingredience
 
-<details>
-<summary><span style="color:#1E90FF;">Postup</span></summary>
+- 🧈 Máslo
+- 🧅 Cibule
+- 🌭 Klobása
+- 🥔 Brambory
+- 💧 Voda nebo vývar
+- 🍃 Bobkový list
+- ⚫ Nové koření
+- ⚫ Pepř celý
+- 🌱 Kmín
+- 🌶️ Paprika sladká mletá
+- 🧂 Sůl
+- 🍬 Cukr
+- 🥬 Kysané zelí (i trochu láku podle chuti)
+- 🥛 Smetana ke šlehání
+- 🍃 Majoránka
 
-1. Na tuku osmaž cibuli dozlatova.
-2. Přidej klobásu nakrájenou na kostičky a orestuj.
-3. Přidej brambory nakrájené na kostičky, zalij vodou nebo vývarem.
+---
 
-    Ochuť bobkovým listem, novým kořením, pepřem, kmínem, paprikou a trochou soli. 
-   
-    Vař asi 12–15 minut, dokud brambory téměř nezměknou.
+### 1. Restování základu
 
-4. Přidej pokrájené kysané zelí (můžeš přidat i trochu láku podle chuti) a vař dalších 10 minut.
-5. Vyjmi bobkový list a kuličky koření.
-6. Vmíchej smetanu ke šlehání (můžeš ji předem trochu ohřát, aby se nesrazila) a krátce povař.
-7. Nakonec dochuť případně solí, čerstvě mletým pepřem a přidej majoránku.
+- **Na másle osmažte cibuli dozlatova.** 🧅🧈
+- **Přidejte klobásu nakrájenou na kostičky a orestujte.** 🌭
 
-</details>
+---
+
+### 2. Vaření brambor & koření
+
+- **Přidejte brambory nakrájené na kostičky, zalijte vodou nebo vývarem.** 🥔💧
+- **Ochuťte bobkovým listem, novým kořením, pepřem, kmínem, paprikou, solí a cukrem.** 🍃⚫🌱🌶️🧂🍬
+- **Vařte asi 12–15 minut, dokud brambory téměř nezměknou.** ⏲️
+
+  > 💡 **Tip:** Cukr vyvažuje kyselost zelí, přidejte dle chuti.
+
+---
+
+### 3. Přidání zelí & další vaření
+
+- **Přidejte pokrájené kysané zelí (můžete přidat i trochu láku podle chuti).** 🥬
+- **Vařte dalších 10 minut.** ⏲️
+
+  > ⚠️ **Varování:** Zelí přidávejte až po změknutí brambor, aby nebyly tvrdé.
+
+---
+
+### 4. Dokončení & dochucení
+
+- **Vyjměte bobkový list a kuličky koření.** 🍃⚫
+- **Vmíchejte smetanu ke šlehání (můžete ji předem ohřát, aby se nesrazila) a krátce povařte.** 🥛
+
+  > [!TIP]
+  > Smetanu přidávejte pomalu za stálého míchání.
+
+- **Dochuťte solí, čerstvě mletým pepřem a přidejte majoránku.** 🧂⚫🍃

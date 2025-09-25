@@ -1,26 +1,45 @@
-﻿## Pastéis de Nata
+﻿## 🥧 Pastéis de Nata
 
-<details>
-<summary><span style="color:#1E90FF;">Ingredience</span></summary>
+---
 
-- <span style="color:#228B22;">500 g</span> listového těsta
-- <span style="color:#228B22;">100 ml</span> mléka
-- <span style="color:#228B22;">200 ml</span> smetany na vaření
-- <span style="color:#228B22;">5</span> žloutků
-- <span style="color:#228B22;">3 lžíce</span> krystalového cukru
-- <span style="color:#228B22;">2 lžíce</span> hladké mouky
-- Kůra z <span style="color:#228B22;">1 citronu</span>
-- Mletá skořice
+> Pastéis de Nata jsou tradiční portugalské koláčky s krémovou náplní, ideální ke kávě nebo jako dezert.
 
-</details>
+### Ingredience
 
-<details>
-<summary><span style="color:#1E90FF;">Postup</span></summary>
+- 🥐 Listové těsto (500 g)
+- 🥛 Mléko (100 ml)
+- 🥛 Smetana na vaření (200 ml)
+- 🥚 Žloutky (5 ks)
+- 🍚 Krystalový cukr (3 lžíce)
+- 🌾 Hladká mouka (2 lžíce)
+- 🍋 Kůra z 1 citronu
+- 🌰 Mletá skořice
 
-1. Rozválejte listové těsto a z delší strany ho zarolujte.
-2. Nakrájejte na kousky a z každého kousku vytvarujte dlaní košíček.
-3. V hrnci smíchejte mléko, smetanu, žloutky, cukr, mouku, citronovou kůru a skořici.
-4. Zahřívejte za stálého míchání, dokud směs nezhoustne na pudink.
-5. Naplňte košíčky připravenou směsí. Naskládejte je na plech s pečicím papírem a pečte při 220 °C asi 15 minut.
+---
 
-</details>
+### 1. Příprava těsta
+
+- **Listové těsto rozválejte a z delší strany zarolujte.** 🥐
+- **Nakrájejte na kousky a z každého vytvarujte dlaní košíček.**
+
+  > 💡 **Tip:** Košíčky můžete vytvarovat i pomocí formiček na muffiny.
+
+---
+
+### 2. Příprava náplně
+
+- **V hrnci smíchejte mléko, smetanu, žloutky, cukr, mouku, citronovou kůru a skořici.** 🥛🥚🍚🌾🍋🌰
+- **Zahřívejte za stálého míchání, dokud směs nezhoustne na pudink.** 🔥🥄
+
+  > ⚠️ **Varování:** Směs nesmí vřít, jinak se žloutky srazí.
+
+---
+
+### 3. Plnění & pečení
+
+- **Košíčky naplňte připravenou směsí.** 🥧
+- **Naskládejte je na plech s pečicím papírem.**
+- **Pečte při 220 °C asi 15 minut, dokud povrch nezezlátne.** 🔥⏲️
+
+  > [!TIP]
+  > Pro autentickou chuť můžete povrch lehce zkaramelizovat flambovací pistolí.

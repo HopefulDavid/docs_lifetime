@@ -1,82 +1,96 @@
-﻿## Kuřecí tikka masala
+﻿## 🍛 Kuřecí tikka masala
 
-<details>
-<summary><span style="color:#1E90FF;">Ingredience</span></summary>
+---
 
-Marináda na maso:
+> Kuřecí tikka masala je ikonické indické jídlo, které skvěle chutná s domácím naanem.
 
-- Kuřecí prsa <span style="color:#228B22;">500 g</span>
-- Bílý jogurt <span style="color:#228B22;">1 kelímek</span>
-- Zázvor (nastrouhaný) <span style="color:#228B22;">1 lžíce</span>
-- Česnek (prolisovaný) <span style="color:#228B22;">1 lžíce</span>
-- Římský kmín (mletý) <span style="color:#228B22;">1 lžička</span>
-- Koření tandoori masála <span style="color:#228B22;">1 lžíce</span>
-- Sůl
+### Ingredience
 
-Omáčka:
+#### Marináda na maso
 
-- Máslo
-- Cibule (velká) <span style="color:#228B22;">1 ks</span>
-- Rajčata <span style="color:#228B22;">2 ks</span>
-- Zázvor (nastrouhaný) <span style="color:#228B22;">1 lžíce</span>
-- Česnek (prolisovaný) <span style="color:#228B22;">1 lžíce</span>
-- Kurkuma <span style="color:#228B22;">1 lžička</span>
-- Římský kmín (mletý) <span style="color:#228B22;">1 lžička</span>
-- Kari koření <span style="color:#228B22;">1 lžička</span>
-- Skořice celá <span style="color:#228B22;">1 svitek</span>
-- Kardamom celý <span style="color:#228B22;">1 ks</span>
-- Badyán <span style="color:#228B22;">2 hvězdičky</span>
-- Bobkový list <span style="color:#228B22;">4 ks</span>
-- Smetana ke šlehání 33%
-- Krájená rajčata <span style="color:#228B22;">1 plechovka</span>
-- Čerstvý koriandr <span style="color:#228B22;">1 hrst</span>
-- Sůl
-- Cukr
+- 🍗 Kuřecí prsa (500 g)
+- 🥣 Bílý jogurt (1 kelímek)
+- 🫚 Zázvor, nastrouhaný (1 lžíce)
+- 🧄 Česnek, prolisovaný (1 lžíce)
+- 🌱 Římský kmín, mletý (1 lžička)
+- 🌶️ Tandoori masála (1 lžíce)
+- 🧂 Sůl
 
-Naaan:
+#### Omáčka
 
-- Hladká mouka <span style="color:#228B22;">250 g</span>
-- Smetana na vaření 12% <span style="color:#228B22;">100 ml</span>
-- Jogurt <span style="color:#228B22;">100 ml</span>
-- Voda <span style="color:#228B22;">50 ml</span>
-- Sůl <span style="color:#228B22;">1/2 lžičky</span>
-- Máslo <span style="color:#228B22;">1 lžíce</span>
-- Kypřicí prášek
+- 🧈 Máslo
+- 🧅 Cibule, velká (1 ks)
+- 🍅 Rajčata (2 ks)
+- 🫚 Zázvor, nastrouhaný (1 lžíce)
+- 🧄 Česnek, prolisovaný (1 lžíce)
+- 🌕 Kurkuma (1 lžička)
+- 🌱 Římský kmín, mletý (1 lžička)
+- 🍛 Kari koření (1 lžička)
+- 🌰 Skořice celá (1 svitek)
+- 🟢 Kardamom celý (1 ks)
+- ⭐ Badyán (2 hvězdičky)
+- 🍃 Bobkový list (4 ks)
+- 🥛 Smetana ke šlehání 33%
+- 🥫 Krájená rajčata (1 plechovka)
+- 🌿 Čerstvý koriandr (1 hrst)
+- 🧂 Sůl
+- 🍬 Cukr
 
-</details>
+#### Naaan
 
-<details>
-<summary><span style="color:#1E90FF;">Postup</span></summary>
+- 🌾 Hladká mouka (250 g)
+- 🥛 Smetana na vaření 12% (100 ml)
+- 🥣 Jogurt (100 ml)
+- 💧 Voda (50 ml)
+- 🧂 Sůl (1/2 lžičky)
+- 🧈 Máslo (1 lžíce)
+- 🥄 Kypřicí prášek
 
-1. Kuřecí maso nakrájíme na kostky (asi 4 × 4 cm).
-2. V misce smícháme všechny ingredience na marinádu s jogurtem a naložíme do ní maso.
-3. Misku zabalíme do potravinové fólie a necháme marinovat ideálně přes noc.
-   > [!IMPORTANT]
-   > Minimálně 2 hodiny
+---
 
-Omáčka:
+### 1. Marinování masa
 
-1. Na másle osmažíme dozlatova najemno nakrájenou cibuli (asi 5 minut).
-2. Přidáme zázvor, česnek, mletý římský kmín, kurkumu a indické kari, restujeme 2 minuty.
-3. Přidáme nakrájená rajčata, skořici, kardamom, badyán, bobkový list, plechovku krájených rajčat, smetanu a sůl.
-4. Vaříme 15 minut, dochutíme cukrem a solí.
-5. Z omáčky vyndáme bobkový list, kardamom, badyán a skořici.
+- **Kuřecí maso nakrájejte na kostky (cca 4 × 4 cm).** 🍗🔪
+- **Smíchejte všechny ingredience na marinádu, maso do ní naložte.** 🥣
+- **Zakryjte fólií a nechte marinovat ideálně přes noc.** 🕒
 
-Dokončení:
+  > ⚠️ **Varování:** Marinujte minimálně 2 hodiny pro lepší chuť.
 
-1. Troubu předehřejeme na 250 °C.
-2. Marinované maso naskládáme na plech s pečicím papírem.
-3. Pečeme doměkka asi 10 minut (kontrolujeme, aby zůstalo šťavnaté).
-4. Hotové maso přidáme do omáčky i se šťávou a provaříme 2 minuty.
+---
 
-Naaan jako příloha:
+### 2. Příprava omáčky
 
-1. Do mísy nasypeme mouku s kypřicím práškem a solí.
-2. Přilijeme smetanu a promícháme.
-3. Po troškách přidáváme vodu asi 50 ml.
-4. Přidáme jogurt asi 100 ml a promícháme.
-5. Těsto rozetřeme na pečící papír.
-6. Pečeme v troubě na nejvyšší stupeň asi 3 minuty, dokud se nenafouknou a nezhnědnou.
-7. Hotové placky potřeme máslem.
+- **Na másle osmažte najemno nakrájenou cibuli dozlatova (cca 5 min).** 🧅🧈
+- **Přidejte zázvor, česnek, římský kmín, kurkumu, kari a restujte 2 minuty.** 🫚🧄🌱🌕🍛
+- **Přidejte nakrájená rajčata, skořici, kardamom, badyán, bobkový list, plechovku rajčat, smetanu a sůl.** 🍅🌰🟢⭐🍃🥫🥛🧂
+- **Vařte 15 minut, dochuťte cukrem a solí.** 🍬🧂
+- **Vyjměte bobkový list, kardamom, badyán a skořici.** 🍃🟢⭐🌰
 
-</details>
+  > 💡 **Tip:** Omáčku můžete rozmixovat pro jemnější konzistenci.
+
+---
+
+### 3. Pečení masa
+
+- **Troubu předehřejte na 250 °C.** 🔥
+- **Marinované maso rozložte na plech s pečicím papírem.** 🍗📄
+- **Pečte doměkka asi 10 minut, kontrolujte šťavnatost.** ⏲️
+
+---
+
+### 4. Spojení masa s omáčkou
+
+- **Hotové maso přidejte do omáčky i se šťávou, provařte 2 minuty.** 🍛🍗
+
+---
+
+### 5. Naaan jako příloha
+
+- **Do mísy nasypte mouku, kypřicí prášek a sůl.** 🌾🥄🧂
+- **Přilijte smetanu, jogurt a vodu, promíchejte.** 🥛🥣💧
+- **Těsto rozetřete na pečicí papír.** 📄
+- **Pečte v troubě na nejvyšší stupeň asi 3 minuty, dokud se nenafouknou a nezhnědnou.** 🔥⏲️
+- **Hotové placky potřete máslem.** 🧈
+
+  > [!TIP]
+  > Naaan můžete posypat čerstvým koriandrem nebo česnekem.

@@ -1,40 +1,62 @@
-﻿## Kuřecí na kari s rýží
+﻿## 🍛 Kuřecí na kari s rýží
 
-<img src="../../../images/JmLSBL3E3G.png" width="150" height="100">
+---
 
-<details>
-<summary><span style="color:#1E90FF;">Ingredience</span></summary>
+Kuřecí na kari s rýží je exotické jídlo s jemně sladkou omáčkou, které potěší milovníky indické kuchyně.
 
-- Rýže <span style="color:#228B22;">250g</span>
-- Máslo
-- Kuřecí prsa <span style="color:#228B22;">400 g</span>
-- <span style="color:#228B22;">1 ks</span> cibule
-- Čerstvý zázvor <span style="color:#228B22;"> 10g</span>
-- <span style="color:#228B22;">2 stroužky</span> česneku
-- Kokosové mléko <span style="color:#228B22;">400 ml</span>
-- Mango/Broskev <span style="color:#228B22;">1 ks</span>
-- Koriandr
-- Voda
-- Kurkuma
-- Sůl
-- Pepř
-- Sladká paprika koření
-- Guláš koření
-- Kari koření
-- Bazalka koření
+### Ingredience
 
-</details>
+- 🍚 Rýže (250 g)
+- 🧈 Máslo
+- 🍗 Kuřecí prsa (400 g)
+- 🧅 Cibule (1 ks)
+- 🫚 Čerstvý zázvor (10 g)
+- 🧄 Česnek (2 stroužky)
+- 🥥 Kokosové mléko (400 ml)
+- 🥭 Mango nebo 🍑 Broskev (1 ks)
+- 🌿 Koriandr
+- 💧 Voda
+- 🌕 Kurkuma
+- 🧂 Sůl
+- ⚫ Pepř
+- 🌶️ Sladká paprika (koření)
+- 🍲 Gulášové koření
+- 🍛 Kari koření
+- 🌱 Bazalka (koření)
 
-<details>
-<summary><span style="color:#1E90FF;">Postup</span></summary>
+---
 
-1. Na pánvi máslo, na kterém orestujeme nadrobno nakrájenou cibuli s česnekem a zázvorem.
-2. Orestovanou cibuli s česnekem a zázvorem vložíme do mixéru. 
-3. Přidáme nakrájené mango/broskev, kokosové mléko a veškeré koření. 
+### 1. Restování základu
 
-    Celou směs rozmixujeme dohladka.
-4. Omáčku přelijeme na pánev a přidáme do ní na kostičky nakrájené kuřecí maso a trochu vody.
-5. Vaříme přibližně 20 minut, dokud se maso neuvaří.
-6. Můžeme podávat s rýží a posypat nasekaným koriandrem.
+- **Na pánvi rozehřejte máslo.** 🧈🔥
+- **Orestujte nadrobno nakrájenou cibuli, česnek a zázvor.** 🧅🧄🫚
 
-</details>
+---
+
+### 2. Mixování omáčky
+
+- **Orestovanou směs vložte do mixéru.** 🥣
+- **Přidejte nakrájené mango/broskev, kokosové mléko a veškeré koření.** 🥭🥥🌕🌶️🍲🍛🌱🧂⚫
+- **Rozmixujte dohladka.** ⚡
+
+  > 💡 **Tip:** Mango dodá omáčce jemnou sladkost, broskev je alternativou.
+
+---
+
+### 3. Vaření masa
+
+- **Omáčku přelijte zpět na pánev.**
+- **Přidejte na kostičky nakrájené kuřecí maso a trochu vody.** 🍗💧
+- **Vařte přibližně 20 minut, dokud se maso neuvaří.** ⏲️
+
+  > ⚠️ **Varování:** Maso vařte na mírném plameni, aby zůstalo šťavnaté.
+
+---
+
+### 4. Servírování
+
+- **Podávejte s uvařenou rýží.** 🍚
+- **Posypte nasekaným koriandrem.** 🌿
+
+  > [!TIP]
+  > Skvěle chutná s naanem nebo pita chlebem.

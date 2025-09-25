@@ -1,45 +1,48 @@
-﻿## Hovězí vývar
+﻿## 🥣 Hovězí vývar
 
-<details>
-<summary><span style="color:#1E90FF;">Ingredience</span></summary>
+---
 
-Maso
-- Hovězí kosti 2ks
-- Masoxové kostky hovězí 2ks
+> Hovězí vývar je základ české kuchyně, skvělý jako polévka nebo základ omáček.
 
-Zelenina
-- Cibule 2ks
-- Česnek 3ks
-- Petržel
-- Celer
-- Mrkev
-- Libeček (čerstvý či sušený)
+### Ingredience
 
-Koření
-- Nové koření 5ks (kuličky)
-- Pepř 8ks (kuličky)
-- Bobkový list 3ks
-- Sůl
-</details>
+- 🦴 Hovězí kosti (2 ks)
+- 🧊 Masoxové kostky hovězí (2 ks)
+- 🧅 Cibule (2 ks)
+- 🧄 Česnek (3 stroužky)
+- 🥕 Mrkev
+- 🌱 Petržel
+- 🥬 Celer
+- 🍃 Libeček (čerstvý nebo sušený)
+- ⚫ Nové koření (5 kuliček)
+- ⚫ Pepř (8 kuliček)
+- 🍃 Bobkový list (3 ks)
+- 🧂 Sůl
 
-<details>
-<summary><span style="color:#1E90FF;">Postup</span></summary>
+---
 
-1. Do vody přidat 2 kusy hovězí kosti (předem dát péct do trouby na 30 min).
-2. Přidat 2 masoxy hovězí.
-3. Přidat kořenovou zeleninu:
-    - 2 cibule
-    - Petržel
-    - Celer
-    - Mrkev
-    - Libeček
-    - 3 kusy česneku
-4. Přidat koření:
-    - 3 bobkové listy
-    - 5 kuliček nového koření
-    - 8 kuliček pepře
-    - Sůl
-5. Sušený libeček přidat až po prvním převaření vývaru v tlakovém hrnci.
-6. Nechat vařit 5 hodin.
+### 1. Příprava kostí
 
-</details>
+- **Hovězí kosti dejte péct do trouby na 30 minut.** 🦴🔥
+
+  > 💡 **Tip:** Pečením kostí získá vývar výraznější chuť a barvu.
+
+---
+
+### 2. Vaření vývaru
+
+- **Vložte upečené kosti do hrnce s vodou.**
+- **Přidejte masoxové kostky.** 🧊
+- **Přidejte kořenovou zeleninu:** 🧅🥕🥬🌱
+   - Cibule, petržel, celer, mrkev, libeček, česnek
+
+- **Přidejte koření:** ⚫🍃🧂
+   - Bobkový list, nové koření, pepř, sůl
+
+---
+
+### 3. Vaření & dochucení
+
+- **Vařte v tlakovém hrnci 5 hodin.** ⏲️
+
+  > ⚠️ **Varování:** Sušený libeček přidávejte až po prvním převaření vývaru.

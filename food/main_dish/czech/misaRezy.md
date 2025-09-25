@@ -1,44 +1,53 @@
-## Míša řezy
+## 🍰 Míša řezy
 
-<details>
-<summary><span style="color:#1E90FF;">Ingredience</span></summary>
+---
 
-- <span style="color:#228B22;">1</span> tvaroh ve vaničce
-- <span style="color:#228B22;">1</span> hrnek vysokoprocentní smetany
+> Míša řezy jsou oblíbený český dezert, který potěší milovníky tvarohu a čokolády.
 
-> [!TIP]
-> cukr dle chuti
+### Ingredience
 
-Poleva:
+- 🥄 Tvaroh ve vaničce (1 ks)
+- 🥛 Vysokoprocentní smetana (1 hrnek)
+- 🍬 Cukr dle chuti
 
-- 2 čokolády (<span style="color:#228B22;">1 hořká</span> a <span style="color:#228B22;">1 mléčná</span>)
-- <span style="color:#228B22;">0,5 hrnku</span> smetany
-- <span style="color:#228B22;">2 lžíce</span> másla
+#### Poleva
 
-Dále:
+- 🍫 Čokoláda hořká (1 ks)
+- 🍫 Čokoláda mléčná (1 ks)
+- 🥛 Smetana (0,5 hrnku)
+- 🧈 Máslo (2 lžíce)
 
-- kakaové sušenky
+#### Dále
 
-</details>
+- 🍪 Kakaové sušenky
 
-<details>
-<summary><span style="color:#1E90FF;">Postup</span></summary>
+  > 💡 **Tip:** Cukr přidávejte postupně a ochutnávejte, aby náplň nebyla příliš sladká.
 
-#### Příprava smetany a tvarohu
+---
 
-1. Smetanu vyšleháme do tuha.
-2. Vedle v jiné míse vyšleháme tvaroh s cukrem a spojíme se smetanou.
-3. Necháme vychladit.
+### 1. Příprava smetany a tvarohu
 
-#### Příprava polevy
+- **Smetanu vyšlehejte do tuha.** 🥛🍥
+- **V jiné míse vyšlehejte tvaroh s cukrem a spojte se smetanou.** 🥄🍬
+- **Nechte vychladit v lednici.** ❄️
 
-1. Na polevu připravíme kastrůlek, do kterého dáme vodu.
-2. Jakmile vaří, položíme na něj misku, do které rozlámeme čokoládu.
-3. Přidáme smetanu a máslo a zahřejeme.
+---
 
-#### Dokončení
+### 2. Příprava polevy
 
-1. Připravíme misky, na dno dáme rozdrobené sušenky, tvarohovou náplň a polevu.
-2. Necháme vychladit.
+- **Do kastrůlku dejte vodu a přiveďte k varu.** 💧🔥
+- **Na kastrůlek položte misku, do které rozlámejte čokoládu.** 🍫
+- **Přidejte smetanu a máslo, zahřívejte do rozpuštění.** 🥛🧈
 
-</details>
+  > ⚠️ **Varování:** Polevu zahřívejte pozvolna, aby se čokoláda nesrazila.
+
+---
+
+### 3. Dokončení
+
+- **Do misek dejte na dno rozdrobené kakaové sušenky.** 🍪
+- **Přidejte tvarohovou náplň a polevu.** 🥄🍫
+- **Nechte vychladit v lednici.** ❄️
+
+  > [!TIP]
+  > Míša řezy jsou nejlepší dobře vychlazené, chutě se krásně propojí.

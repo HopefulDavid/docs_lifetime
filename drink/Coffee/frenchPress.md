@@ -1,32 +1,47 @@
-## French Press
+## ☕ French Press
 
-<details>
-<summary><span style="color:#1E90FF;">Postup</span></summary>
+---
 
-### Předehřívání a mletí kávy
+> French Press je jednoduchý a efektivní způsob přípravy kávy, který umožňuje plně využít chuť a aroma kávových zrn.
 
-1. Předehřejte French Press. (Začněte tím, že vaši French Press předehřejete horkou vodou.)
-2. Namelte své kávové zrna.
+### Ingredience
 
-   > [!NOTE]
-   > Pro French Press by měla být káva mletá na hrubo.
+- Kávová zrna (hrubě mletá)
+- Horká voda (94–96°C)
+- French Press
 
-3. Přidejte namletou kávu do vašeho French Press.
-4. Naplňte rychlovarnou konvici vodou a zapněte ji.
-5. Jakmile voda začne bublat, vypněte konvici a nechte vodu odstát asi 1 minutu.
+---
 
-   > [!TIP]
-   > Tím se teplota vody sníží na ideální rozmezí 94-96°C.
+### 1. Předehřátí & mletí kávy
 
-### Louhování a servírování
+- **Předehřejte French Press** horkou vodou.  
+  🫧 Pomáhá udržet správnou teplotu při extrakci.
 
-1. Pomalu následně přidejte ohřátou vodu do nádoby pro "French Press" s kávou.
-2. Po přidání vody promíchejte směs lžící nebo speciálním nástrojem.
-3. Nastavte si časovač na 4 minuty a nechte kávu louhovat.
-4. Po uplynutí 4 minut stiskněte píst French Press dolů.
-5. Ihned po stisknutí pístu nalijte kávu do šálku.
+- **Namelte kávová zrna na hrubo**.  
+  🪵 Hrubé mletí je klíčové pro správnou chuť.
 
-   > [!WARNING]
-   > Pokud kávu necháte v French Press, může se stát příliš silnou.
+  > 💡 **Tip:** Hrubé mletí zabraňuje přeextrakci a hořkosti.
 
-</details>
+- **Nasypte kávu do French Pressu**.
+
+- **Připravte vodu** v rychlovarné konvici.  
+  💧 Jakmile začne vřít, vypněte ji a nechte odstát 1 minutu.
+
+  > ℹ️ **Ideální teplota:** 94–96°C
+
+---
+
+### 2. Louhování & servírování
+
+- **Pomalu zalijte kávu vodou**. 🚰
+
+- **Promíchejte** lžící nebo speciálním nástrojem. 🥄
+
+- **Nastavte časovač na 4 minuty**. ⏲️  
+  Nechte kávu louhovat bez míchání.
+
+- **Stiskněte píst French Pressu dolů**. 🔽
+
+- **Ihned nalijte kávu do šálku**. 🍶
+
+  > ⚠️ **Varování:** Nenechávejte kávu ve French Pressu, jinak bude příliš silná a hořká.

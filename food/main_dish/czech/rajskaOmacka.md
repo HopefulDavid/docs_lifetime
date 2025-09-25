@@ -1,62 +1,78 @@
-## Rajská omáčka s masovými koulemi
+## 🍅 Rajská omáčka s masovými koulemi
 
-<details>
-<summary><span style="color:#1E90FF;">Ingredience</span></summary>
+---
 
-### Na maso
-- Hovězí mleté maso <span style="color:#228B22;">500 g</span>
-- Vejce <span style="color:#228B22;">1 ks</span>
-- Strouhanka/kukuřičná krupice <span style="color:#228B22;">2 lžíce</span> (podle hustoty masové směsi)
-- Koření na mleté maso
-- Čerstvě namletý pepř
-- Sůl <span style="color:#228B22;">1/2 lžičky</span>
+> Rajská omáčka s masovými koulemi je tradiční české jídlo, které potěší milovníky sladkokyselých omáček.
 
-### Na omáčku
-- Máslo/ghí <span style="color:#228B22;">60 g</span>
-- Hladká mouka <span style="color:#228B22;">50 g</span>
-- Cibule <span style="color:#228B22;">1 ks</span>
-- Loupaná rajčata <span style="color:#228B22;">400 g</span>
-- Hovězí/drůbeží vývar <span style="color:#228B22;">800 ml</span>
-- Mletá skořice <span style="color:#228B22;">1/2 lžičky</span>
-- Bobkový list <span style="color:#228B22;">1 ks</span>
-- Nové koření <span style="color:#228B22;">5 kuliček</span>
-- Sušený tymián <span style="color:#228B22;">1/2 lžičky</span>
-- Rajský protlak <span style="color:#228B22;">140 g</span>
-- Pepř celý <span style="color:#228B22;">5 kuliček</span>
-- Ocet (na dochucení)
-- Cukr (na dochucení)
+### Ingredience
 
-</details>
+#### Na maso
 
-<details>
-<summary><span style="color:#1E90FF;">Postup přípravy</span></summary>
+- 🥩 Hovězí mleté maso (500 g)
+- 🥚 Vejce (1 ks)
+- 🥣 Strouhanka nebo kukuřičná krupice (2 lžíce, dle hustoty)
+- 🌿 Koření na mleté maso
+- ⚫ Čerstvě namletý pepř
+- 🧂 Sůl (1/2 lžičky)
 
-1. Všechny ingredience na maso vložte do mísy a pečlivě promíchejte.
+#### Na omáčku
 
-   > [!TIP]
-   > Pokud je směs příliš řídká, přidejte strouhanku nebo kukuřičnou krupici.
+- 🧈 Máslo nebo ghí (60 g)
+- 🌾 Hladká mouka (50 g)
+- 🧅 Cibule (1 ks)
+- 🍅 Loupaná rajčata (400 g)
+- 🍲 Hovězí nebo drůbeží vývar (800 ml)
+- 🌰 Mletá skořice (1/2 lžičky)
+- 🍃 Bobkový list (1 ks)
+- ⚫ Nové koření (5 kuliček)
+- 🌿 Sušený tymián (1/2 lžičky)
+- 🥫 Rajský protlak (140 g)
+- ⚫ Pepř celý (5 kuliček)
+- 🍶 Ocet (na dochucení)
+- 🍬 Cukr (na dochucení)
 
-2. Ze směsi vytvarujte koule o velikosti ping-pongového míčku a vyskládejte je na tác.
+  > 💡 **Tip:** Mleté maso můžete dochutit čerstvými bylinkami pro výraznější chuť.
 
-3. Vložte je do trouby vyhřáté na 200 °C a pečte dokud nezískají hnědou barvu.
+---
 
-4. V hrnci rozpusťte máslo a orestujte na něm nadrobno nasekanou cibuli dozlatova.
+### 1. Příprava masových koulí
 
-5. Snižte plamen, cibuli zasypejte moukou a minutu opékejte.
+- **Všechny ingredience na maso vložte do mísy a pečlivě promíchejte.** 🥩🥚🥣🌿🧂
+- **Pokud je směs příliš řídká, přidejte strouhanku nebo krupici.** 🥣
 
-6. Přidejte rajčata, promíchejte a zalijte vývarem.
+  > ⚠️ **Varování:** Směs nesmí být příliš tuhá, koule by byly suché.
 
-7. Přidejte všechno koření (bobkový list, pepř, nové koření, tymián a skořici).
+- **Ze směsi vytvarujte koule o velikosti ping-pongového míčku.** 🏓
+- **Vyskládejte je na tác a vložte do trouby vyhřáté na 200 °C.** 🔥
+- **Pečte dokud nezískají hnědou barvu.** ⏲️
 
-   Osolte a přiveďte k varu.
+---
 
-8. Zlehka promíchejte, přikryjte pokličkou, snižte plamen a duste 45 minut.
+### 2. Příprava rajské omáčky
 
-9. Hotovou omáčku přeceďte přes síto.
+- **V hrnci rozpusťte máslo a orestujte nadrobno nasekanou cibuli dozlatova.** 🧈🧅
+- **Snižte plamen, cibuli zasypejte moukou a minutu opékejte.** 🌾
+- **Přidejte rajčata, promíchejte a zalijte vývarem.** 🍅🍲
+- **Přidejte bobkový list, pepř, nové koření, tymián a skořici.** 🍃⚫🌰🌿
+- **Osolte, přiveďte k varu, přikryjte pokličkou a duste 45 minut na mírném plameni.** 🧂⏲️
 
-10. Přidejte rajský protlak a promíchejte metličkou.
+  > 💡 **Tip:** Omáčku můžete rozmixovat pro jemnější konzistenci.
 
-   > [!NOTE]
-   > Dochuťte octem a cukrem – obvykle stačí 1 lžíce octa a 3 lžičky cukru.
+---
 
-</details>
+### 3. Dokončení omáčky
+
+- **Hotovou omáčku přeceďte přes síto.** 🥣
+- **Přidejte rajský protlak a promíchejte metličkou.** 🥫
+- **Dochuťte octem a cukrem – obvykle stačí 1 lžíce octa a 3 lžičky cukru.** 🍶🍬
+
+  > ⚠️ **Varování:** Cukr a ocet přidávejte postupně, ochutnávejte.
+
+---
+
+### 4. Servírování
+
+- **Masové koule podávejte přelité rajskou omáčkou, ideálně s houskovým knedlíkem nebo těstovinami.** 🍅🥩🍞
+
+  > [!TIP]
+  > Skvěle chutná s čerstvou bazalkou nebo petrželkou navrch.

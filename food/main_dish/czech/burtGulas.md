@@ -1,47 +1,73 @@
-## Buřtguláš
+## 🇨🇿 Buřtguláš
 
-<details>
-<summary><span style="color:#1E90FF;">Ingredience</span></summary>
+---
 
-- Máslo <span style="color:#228B22;">60 g</span>
-- Špekáčky (kvalitní) <span style="color:#228B22;">600 g</span>
-- Cibule (velké) <span style="color:#228B22;">2 ks</span>
-- Česnek <span style="color:#228B22;">5 stroužků</span>
-- Mletá sladká paprika (nebo uzená) <span style="color:#228B22;">2 lžíce</span>
-- Drcený kmín <span style="color:#228B22;">2 lžičky</span>
-- Maďarský guláš koření
-- Uzená paprika koření
-- Hladká mouka <span style="color:#228B22;">3 lžíce</span>
-- Vývar (nebo voda) <span style="color:#228B22;">2,5 až 3 litry</span>
-- Brambory (typu B) <span style="color:#228B22;">800 g</span>
-- Majoránka (sušená) <span style="color:#228B22;">1 lžíce</span>
-- Sůl
-- Čerstvě namletý pepř
+> Buřtguláš je klasika české kuchyně, ideální na chalupu nebo rychlou večeři.
 
-</details>
+### Ingredience
 
-<details>
-<summary><span style="color:#1E90FF;">Postup přípravy</span></summary>
+- 🧈 Máslo (60 g)
+- 🥓 Špekáčky, kvalitní (600 g)
+- 🧅 Cibule, velké (2 ks)
+- 🧄 Česnek (5 stroužků)
+- 🌶️ Mletá sladká nebo uzená paprika (2 lžíce)
+- 🌱 Drcený kmín (2 lžičky)
+- 🍲 Maďarské gulášové koření
+- 🌶️ Uzená paprika koření
+- 🌾 Hladká mouka (3 lžíce)
+- 💧 Vývar nebo voda (2,5–3 l)
+- 🥔 Brambory typu B (800 g)
+- 🌿 Majoránka, sušená (1 lžíce)
+- 🧂 Sůl
+- ⚫ Čerstvě namletý pepř
 
-1. Rozehřejte v kastrolu polovinu másla a opékejte na něm špekáčky nakrájené na čtvrtkolečka ze všech stran. 
+---
 
-   Jakmile se zbarví lehce dohněda, dejte je stranou.
-2. Do kastrolu přidejte máslo a cibuli nakrájenou na kostičky, restujte asi 10 minut, až bude cibule lehce zlatavá.
-   
-   Přidejte nahrubo nasekaný česnek a restujte další 3 minuty.
-3. Zasypte kmínem, mletou paprikou a hladkou moukou. 
+### 1. Opékání špekáčků
 
-   > [!WARNING]
-   > Vše krátce zarestujte, jen ať se koření rozvoní, ale nesmí se připálit, paprika by zhořkla.
-4. Základ zalijte vývarem nebo vodou a metličkou rozmíchejte dohladka. 
+- **V kastrolu rozehřejte polovinu másla.** 🧈🔥
+- **Špekáčky nakrájejte na čtvrtkolečka a opečte ze všech stran dozlatova.** 🥓
+- **Opečené špekáčky dejte stranou.**
 
-   V této chvíli můžete základ promixovat ponorným mixérem, aby byl guláš hladký, ale není to nutné.
-5. Do základu dejte orestované špekáčky a na kostky nakrájené brambory. 
+  > 💡 **Tip:** Špekáčky opékejte postupně, aby se dobře zatáhly.
 
-   Guláš osolte, opepřete, přiveďte k varu a na mírném ohni vařte 20 minut, až budou brambory měkké.
-6. Nakonec vmíchejte rozemnutou majoránku, případně dochuťte šplíchancem octa. 
+---
 
-   >[!NOTE]
-   > Podávejte s dobrým kváskovým chlebem.
+### 2. Restování cibule a česneku
 
-</details>
+- **Do kastrolu přidejte zbytek másla a cibuli nakrájenou na kostičky.** 🧅🧈
+- **Restujte asi 10 minut, až bude cibule zlatavá.**
+- **Přidejte nahrubo nasekaný česnek a restujte další 3 minuty.** 🧄
+
+---
+
+### 3. Koření a mouka
+
+- **Zasypte kmínem, mletou paprikou a moukou.** 🌱🌶️🌾
+- **Krátce zarestujte, jen ať se koření rozvoní.**
+
+  > ⚠️ **Varování:** Koření nesmí připálit, paprika by zhořkla!
+
+---
+
+### 4. Základ guláše
+
+- **Zalijte vývarem nebo vodou a metličkou rozmíchejte dohladka.** 💧🍲
+- **Můžete promixovat ponorným mixérem pro hladší konzistenci.**
+
+---
+
+### 5. Vaření s bramborami a špekáčky
+
+- **Do základu dejte orestované špekáčky a na kostky nakrájené brambory.** 🥓🥔
+- **Osolte, opepřete, přiveďte k varu a vařte na mírném ohni 20 minut, až budou brambory měkké.** 🧂⚫⏲️
+
+---
+
+### 6. Dochucení a podávání
+
+- **Vmíchejte rozemnutou majoránku, případně dochuťte šplíchancem octa.** 🌿
+- **Podávejte s dobrým kváskovým chlebem.** 🍞
+
+  > [!TIP]
+  > Skvěle chutná s čerstvou pažitkou nebo cibulkou navrch.
