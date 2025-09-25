@@ -1,6 +1,7 @@
 Změny
 ## 2025-09-25
   - 📚 Změny v dokumentaci: aktualizace názvu sekce o kávě bez kofeinu
+  - oprava názvu French Press
   - 📚 Změny v dokumentaci: změno formátování pro lepší přehlednost.
 ## 2025-09-07
   - ♻️ Refaktorizace kódu: změna receptu na buřtguláš (docs)
