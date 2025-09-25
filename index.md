@@ -1,4 +1,6 @@
 Změny
+## 2025-09-25
+  - 📚 Změny v dokumentaci: změno formátování pro lepší přehlednost.
 ## 2025-09-07
   - ♻️ Refaktorizace kódu: změna receptu na buřtguláš (docs)
 ## 2025-08-29
