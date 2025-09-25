@@ -2,7 +2,7 @@
   items:
     - name: Káva s kofeinem
       items:
-        - name: French Press
+        - name: French Press káva
           href: Coffee/frenchPress.md
         - name: Vietnamská káva
           href: Coffee/vietnamCoffee.md
