@@ -1,4 +1,6 @@
 Změny
+## 2025-09-28
+  - 🐛 Opravy chyb: oprava ingrediencí a přípravy gulášové polévky (docs)
 ## 2025-09-25
   - 📚 Změny v dokumentaci: aktualizace názvu sekce o kávě bez kofeinu
   - oprava názvu French Press
