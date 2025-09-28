@@ -6,58 +6,44 @@
 
 ### Ingredience
 
-- 🧈 Máslo
-- 🧅 Cibule (1 menší)
-- 🌶️ Mletá paprika (4 lžičky)
-- 🥩 Mleté hovězí maso (200 g)
-- 🥣 Hovězí vývar nebo voda (1,5 l)
-- 🧂 Maďarské gulášové koření
-- 🌿 Majoránka
+- 🧅 Cibule (1 kg)
+- 🥔 Brambory (700 g)
+- 🥩 Hovězí maso (200 g)
+- 🧂 Masox / hovězí bujón (2–3 ks)
+- 🌶️ Mletá paprika (půlka sáčku)
+- 🌿 Majoránka (půlka sáčku)
+- 🧄 Česnek (3 stroužky)
 - 🧂 Sůl
 - ⚫ Pepř
-- 🌱 Kmín
-- 🧂 Hovězí bujón
-- 🥔 Brambory (3 větší)
-- 🧄 Česnek (3 stroužky)
-- 🌾 Hladká mouka (2 lžíce)
 
-  > 💡 **Tip:** Domácí vývar dodá polévce výraznější chuť.
+  > 💡 **Tip:** Cibuli krájejte najemno pro lepší chuťový základ.
 
 ---
 
-### 1. Příprava
+### 1. Příprava základu
 
-- **Mouku nasucho osmahněte na pánvi do světle hněda.** 🌾🔥
-- **Cibuli nakrájejte nadrobno, brambory na kostky, česnek prolisujte.** 🧅🥔🧄
-
----
-
-### 2. Vaření základu
-
-- **V hrnci rozpusťte máslo, osmahněte cibuli dorůžova.** 🧈🧅
-- **Přidejte mleté maso, oddělujte kousky a restujte do zatažení.** 🥩
-- **Vmíchejte papriku, krátce zpěňte a zalijte vývarem.** 🌶️🥣
-
-  > ⚠️ **Varování:** Papriku nepřepékejte, jinak zhořkne.
-
-- **Přidejte sůl, pepř, kmín, gulášové koření, bujón. Vařte 30 minut.** 🧂⚫🌱
+- **Cibuli nakrájejte najemno a osmahněte v hrnci do zlatova.** 🧅🔥
+- **Přidejte na kousky nakrájené hovězí maso, osmahněte s cibulí.** 🥩
 
 ---
 
-### 3. Přidání zeleniny
+### 2. Přidání koření
 
-- **Přidejte brambory a česnek, vařte do změknutí brambor.** 🥔🧄
+- **Zasypte červenou paprikou, krátce promíchejte (nesmažte dlouho, aby nezhořkla).** 🌶️
 
----
-
-### 4. Zahuštění a dochucení
-
-- **Zahustěte připravenou jíškou, krátce povařte.** 🌾
-- **Na závěr přidejte majoránku a dochuťte dle potřeby.** 🌿🧂
+  > ⚠️ **Varování:** Papriku opravdu jen zpěňte, jinak bude polévka hořká.
 
 ---
 
-### 5. Servírování
+### 3. Vaření
+
+- **Zalijte vodou – hrnec naplňte trochu víc než do půlky.** 💧
+- **Přidejte sůl, pepř, masox, prolisovaný česnek, brambory na kostky a majoránku.** 🧂⚫🧄🥔🌿
+- **Vařte, dokud brambory nezměknou.** ⏲️
+
+---
+
+### 4. Servírování
 
 - **Podávejte horké, ideálně s čerstvým chlebem.** 🍞
 
