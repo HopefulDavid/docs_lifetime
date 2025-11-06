@@ -215,6 +215,16 @@
     },
     {
       "type": "Conceptual",
+      "source_relative_path": "food/soups/japan/pumpkinHokkaidoSoup.md",
+      "output": {
+        ".html": {
+          "relative_path": "food/soups/japan/pumpkinHokkaidoSoup.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
       "source_relative_path": "food/soups/spain/gazpacho.md",
       "output": {
         ".html": {
