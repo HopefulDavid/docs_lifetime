@@ -1,4 +1,6 @@
 Změny
+## 2025-11-06
+  - ✨ Nové funkcionality: přidání receptu na dýňovou polévku Hokkaidó (recipes)
 ## 2025-09-28
   - 🐛 Opravy chyb: oprava ingrediencí a přípravy gulášové polévky (docs)
 ## 2025-09-25
