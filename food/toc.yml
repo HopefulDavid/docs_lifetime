@@ -8,6 +8,10 @@
           href: soups/czech/brothBeefSoup.md
         - name: Zelňačka
           href: soups/czech/CabbageSoup.md
+    - name: Japonské polévky
+      items:
+        - name: Dýňová polévka
+          href: soups/japan/pumpkinHokkaidoSoup.md
     - name: Španělské polévky
       items:
         - name: Gazpacho
