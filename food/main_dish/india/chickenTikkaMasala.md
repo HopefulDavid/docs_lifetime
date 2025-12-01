@@ -50,47 +50,47 @@
 
 ### 1. Marinování masa
 
-- **Kuřecí maso nakrájejte na kostky (cca 4 × 4 cm).** 🍗🔪
-- **Smíchejte všechny ingredience na marinádu, maso do ní naložte.** 🥣
-- **Zakryjte fólií a nechte marinovat ideálně přes noc.** 🕒
+- Kuřecí maso nakrájejte na kostky (cca 4 × 4 cm). 🍗🔪
+- Smíchejte všechny ingredience na marinádu, maso do ní naložte. 🥣
+- Zakryjte fólií a nechte marinovat ideálně přes noc. 🕒
 
-  > ⚠️ **Varování:** Marinujte minimálně 2 hodiny pro lepší chuť.
+  > ⚠️ Varování: Marinujte minimálně 2 hodiny pro lepší chuť.
 
 ---
 
 ### 2. Příprava omáčky
 
-- **Na másle osmažte najemno nakrájenou cibuli dozlatova (cca 5 min).** 🧅🧈
-- **Přidejte zázvor, česnek, římský kmín, kurkumu, kari a restujte 2 minuty.** 🫚🧄🌱🌕🍛
-- **Přidejte nakrájená rajčata, skořici, kardamom, badyán, bobkový list, plechovku rajčat, smetanu a sůl.** 🍅🌰🟢⭐🍃🥫🥛🧂
-- **Vařte 15 minut, dochuťte cukrem a solí.** 🍬🧂
-- **Vyjměte bobkový list, kardamom, badyán a skořici.** 🍃🟢⭐🌰
+- Na másle osmažte najemno nakrájenou cibuli dozlatova (cca 5 min). 🧅🧈
+- Přidejte zázvor, česnek, římský kmín, kurkumu, kari a restujte 2 minuty. 🫚🧄🌱🌕🍛
+- Přidejte nakrájená rajčata, skořici, kardamom, badyán, bobkový list, plechovku rajčat, smetanu a sůl. 🍅🌰🟢⭐🍃🥫🥛🧂
+- Vařte 15 minut, dochuťte cukrem a solí. 🍬🧂
+- Vyjměte bobkový list, kardamom, badyán a skořici. 🍃🟢⭐🌰
 
-  > 💡 **Tip:** Omáčku můžete rozmixovat pro jemnější konzistenci.
+  > 💡 Tip: Omáčku můžete rozmixovat pro jemnější konzistenci.
 
 ---
 
 ### 3. Pečení masa
 
-- **Troubu předehřejte na 250 °C.** 🔥
-- **Marinované maso rozložte na plech s pečicím papírem.** 🍗📄
-- **Pečte doměkka asi 10 minut, kontrolujte šťavnatost.** ⏲️
+- Troubu předehřejte na 250 °C. 🔥
+- Marinované maso rozložte na plech s pečicím papírem. 🍗📄
+- Pečte doměkka asi 10 minut, kontrolujte šťavnatost. ⏲️
 
 ---
 
 ### 4. Spojení masa s omáčkou
 
-- **Hotové maso přidejte do omáčky i se šťávou, provařte 2 minuty.** 🍛🍗
+- Hotové maso přidejte do omáčky i se šťávou, provařte 2 minuty. 🍛🍗
 
 ---
 
 ### 5. Naaan jako příloha
 
-- **Do mísy nasypte mouku, kypřicí prášek a sůl.** 🌾🥄🧂
-- **Přilijte smetanu, jogurt a vodu, promíchejte.** 🥛🥣💧
-- **Těsto rozetřete na pečicí papír.** 📄
-- **Pečte v troubě na nejvyšší stupeň asi 3 minuty, dokud se nenafouknou a nezhnědnou.** 🔥⏲️
-- **Hotové placky potřete máslem.** 🧈
+- Do mísy nasypte mouku, kypřicí prášek a sůl. 🌾🥄🧂
+- Přilijte smetanu, jogurt a vodu, promíchejte. 🥛🥣💧
+- Těsto rozetřete na pečicí papír. 📄
+- Pečte v troubě na nejvyšší stupeň asi 3 minuty, dokud se nenafouknou a nezhnědnou. 🔥⏲️
+- Hotové placky potřete máslem. 🧈
 
   > [!TIP]
   > Naaan můžete posypat čerstvým koriandrem nebo česnekem.

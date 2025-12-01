@@ -28,35 +28,35 @@ Kuřecí na kari s rýží je exotické jídlo s jemně sladkou omáčkou, kter�
 
 ### 1. Restování základu
 
-- **Na pánvi rozehřejte máslo.** 🧈🔥
-- **Orestujte nadrobno nakrájenou cibuli, česnek a zázvor.** 🧅🧄🫚
+- Na pánvi rozehřejte máslo. 🧈🔥
+- Orestujte nadrobno nakrájenou cibuli, česnek a zázvor. 🧅🧄🫚
 
 ---
 
 ### 2. Mixování omáčky
 
-- **Orestovanou směs vložte do mixéru.** 🥣
-- **Přidejte nakrájené mango/broskev, kokosové mléko a veškeré koření.** 🥭🥥🌕🌶️🍲🍛🌱🧂⚫
-- **Rozmixujte dohladka.** ⚡
+- Orestovanou směs vložte do mixéru. 🥣
+- Přidejte nakrájené mango/broskev, kokosové mléko a veškeré koření. 🥭🥥🌕🌶️🍲🍛🌱🧂⚫
+- Rozmixujte dohladka. ⚡
 
-  > 💡 **Tip:** Mango dodá omáčce jemnou sladkost, broskev je alternativou.
+  > 💡 Tip: Mango dodá omáčce jemnou sladkost, broskev je alternativou.
 
 ---
 
 ### 3. Vaření masa
 
-- **Omáčku přelijte zpět na pánev.**
-- **Přidejte na kostičky nakrájené kuřecí maso a trochu vody.** 🍗💧
-- **Vařte přibližně 20 minut, dokud se maso neuvaří.** ⏲️
+- Omáčku přelijte zpět na pánev.
+- Přidejte na kostičky nakrájené kuřecí maso a trochu vody. 🍗💧
+- Vařte přibližně 20 minut, dokud se maso neuvaří. ⏲️
 
-  > ⚠️ **Varování:** Maso vařte na mírném plameni, aby zůstalo šťavnaté.
+  > ⚠️ Varování: Maso vařte na mírném plameni, aby zůstalo šťavnaté.
 
 ---
 
 ### 4. Servírování
 
-- **Podávejte s uvařenou rýží.** 🍚
-- **Posypte nasekaným koriandrem.** 🌿
+- Podávejte s uvařenou rýží. 🍚
+- Posypte nasekaným koriandrem. 🌿
 
   > [!TIP]
   > Skvěle chutná s naanem nebo pita chlebem.

@@ -19,27 +19,27 @@
 
 ### 1. Příprava těsta
 
-- **Listové těsto rozválejte a z delší strany zarolujte.** 🥐
-- **Nakrájejte na kousky a z každého vytvarujte dlaní košíček.**
+- Listové těsto rozválejte a z delší strany zarolujte. 🥐
+- Nakrájejte na kousky a z každého vytvarujte dlaní košíček.
 
-  > 💡 **Tip:** Košíčky můžete vytvarovat i pomocí formiček na muffiny.
+  > 💡 Tip: Košíčky můžete vytvarovat i pomocí formiček na muffiny.
 
 ---
 
 ### 2. Příprava náplně
 
-- **V hrnci smíchejte mléko, smetanu, žloutky, cukr, mouku, citronovou kůru a skořici.** 🥛🥚🍚🌾🍋🌰
-- **Zahřívejte za stálého míchání, dokud směs nezhoustne na pudink.** 🔥🥄
+- V hrnci smíchejte mléko, smetanu, žloutky, cukr, mouku, citronovou kůru a skořici. 🥛🥚🍚🌾🍋🌰
+- Zahřívejte za stálého míchání, dokud směs nezhoustne na pudink. 🔥🥄
 
-  > ⚠️ **Varování:** Směs nesmí vřít, jinak se žloutky srazí.
+  > ⚠️ Varování: Směs nesmí vřít, jinak se žloutky srazí.
 
 ---
 
 ### 3. Plnění & pečení
 
-- **Košíčky naplňte připravenou směsí.** 🥧
-- **Naskládejte je na plech s pečicím papírem.**
-- **Pečte při 220 °C asi 15 minut, dokud povrch nezezlátne.** 🔥⏲️
+- Košíčky naplňte připravenou směsí. 🥧
+- Naskládejte je na plech s pečicím papírem.
+- Pečte při 220 °C asi 15 minut, dokud povrch nezezlátne. 🔥⏲️
 
   > [!TIP]
   > Pro autentickou chuť můžete povrch lehce zkaramelizovat flambovací pistolí.

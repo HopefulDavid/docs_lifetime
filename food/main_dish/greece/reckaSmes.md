@@ -12,24 +12,24 @@
 - 🌶️ Koření Kotányi paprika uzená sladká
 - 🌿 Koření Avokádo kuře gril
 
-  > 💡 **Tip:** Maso nejlépe marinujte v koření den předem pro intenzivnější chuť.
+  > 💡 Tip: Maso nejlépe marinujte v koření den předem pro intenzivnější chuť.
 
 ---
 
 ### 1. Příprava masa
 
-- **Kuřecí maso nakrájejte na nudličky.** 🍗🔪
-- **Důkladně obalte v koření.** 🌶️🌿
-- **Smažte na másle dozlatova.** 🧈🔥
+- Kuřecí maso nakrájejte na nudličky. 🍗🔪
+- Důkladně obalte v koření. 🌶️🌿
+- Smažte na másle dozlatova. 🧈🔥
 
-  > ⚠️ **Varování:** Pokud maso pustí vodu, ihned ji slijte, aby neztratilo chuť.
+  > ⚠️ Varování: Pokud maso pustí vodu, ihned ji slijte, aby neztratilo chuť.
 
 ---
 
 ### 2. Dochucení
 
-- **Přidávejte barbecue omáčku smoky chilly po troškách.** 🥫
-- **Promíchejte a nechte krátce provařit.**
+- Přidávejte barbecue omáčku smoky chilly po troškách. 🥫
+- Promíchejte a nechte krátce provařit.
 
   > [!TIP]
   > Omáčku nepřidávejte vše najednou, lépe se propojí chutě.
@@ -38,4 +38,4 @@
 
 ### 3. Dokončení
 
-- **Maso prosmažte až do konce, aby bylo šťavnaté a dobře ochucené.** 🍗🔥
+- Maso prosmažte až do konce, aby bylo šťavnaté a dobře ochucené. 🍗🔥

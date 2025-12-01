@@ -15,38 +15,38 @@
 - 🍷 Olivový olej (na potření)
 - 🥗 Příloha: zelenina, brambory, salát
 
-  > 💡 **Tip:** Vyberte maso s vyšším podílem tuku pro šťavnatější steak.
+  > 💡 Tip: Vyberte maso s vyšším podílem tuku pro šťavnatější steak.
 
 ---
 
 ### 1. Příprava masa
 
-- **Maso vyndejte z lednice alespoň 30 minut před přípravou, aby mělo pokojovou teplotu.** 🥩❄️
-- **Opláchněte, osušte papírovou utěrkou.**
-- **Potřete olivovým olejem, osolte a opepřete z obou stran.** 🍷🧂⚫
+- Maso vyndejte z lednice alespoň 30 minut před přípravou, aby mělo pokojovou teplotu. 🥩❄️
+- Opláchněte, osušte papírovou utěrkou.
+- Potřete olivovým olejem, osolte a opepřete z obou stran. 🍷🧂⚫
 
 ---
 
 ### 2. Grilování / smažení
 
-- **Rozpalte pánev nebo gril na maximum.** 🔥
-- **Steak vložte na rozpálený povrch a nechte bez pohybu 2–3 minuty.**
-- **Otočte a opékejte další 2–3 minuty (dle tloušťky a požadovaného stupně propečení).**
-- **Přidejte bylinky, česnek a kousek másla ke steaku na poslední minutu.** 🌿🧄🧈
+- Rozpalte pánev nebo gril na maximum. 🔥
+- Steak vložte na rozpálený povrch a nechte bez pohybu 2–3 minuty.
+- Otočte a opékejte další 2–3 minuty (dle tloušťky a požadovaného stupně propečení).
+- Přidejte bylinky, česnek a kousek másla ke steaku na poslední minutu. 🌿🧄🧈
 
-  > ⚠️ **Varování:** Steak nepropékejte příliš dlouho, jinak bude tuhý.
+  > ⚠️ Varování: Steak nepropékejte příliš dlouho, jinak bude tuhý.
 
 ---
 
 ### 3. Odpočinek
 
-- **Steak přendejte na talíř, přikryjte alobalem a nechte 5 minut odpočinout.** ⏲️
+- Steak přendejte na talíř, přikryjte alobalem a nechte 5 minut odpočinout. ⏲️
 
 ---
 
 ### 4. Servírování
 
-- **Podávejte nakrájený na plátky, s oblíbenou přílohou.** 🥗🥔
+- Podávejte nakrájený na plátky, s oblíbenou přílohou. 🥗🥔
 
   > [!TIP]
   > Skvěle chutná s pečenými bramborami, grilovanou zeleninou nebo čerstvým salátem.

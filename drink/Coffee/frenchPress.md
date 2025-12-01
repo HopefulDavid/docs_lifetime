@@ -14,34 +14,34 @@
 
 ### 1. Předehřátí & mletí kávy
 
-- **Předehřejte French Press** horkou vodou.  
+- Předehřejte French Press horkou vodou.  
   🫧 Pomáhá udržet správnou teplotu při extrakci.
 
-- **Namelte kávová zrna na hrubo**.  
+- Namelte kávová zrna na hrubo.  
   🪵 Hrubé mletí je klíčové pro správnou chuť.
 
-  > 💡 **Tip:** Hrubé mletí zabraňuje přeextrakci a hořkosti.
+  > 💡 Tip: Hrubé mletí zabraňuje přeextrakci a hořkosti.
 
-- **Nasypte kávu do French Pressu**.
+- Nasypte kávu do French Pressu.
 
-- **Připravte vodu** v rychlovarné konvici.  
+- Připravte vodu v rychlovarné konvici.  
   💧 Jakmile začne vřít, vypněte ji a nechte odstát 1 minutu.
 
-  > ℹ️ **Ideální teplota:** 94–96°C
+  > ℹ️ Ideální teplota: 94–96°C
 
 ---
 
 ### 2. Louhování & servírování
 
-- **Pomalu zalijte kávu vodou**. 🚰
+- Pomalu zalijte kávu vodou. 🚰
 
-- **Promíchejte** lžící nebo speciálním nástrojem. 🥄
+- Promíchejte lžící nebo speciálním nástrojem. 🥄
 
-- **Nastavte časovač na 4 minuty**. ⏲️  
+- Nastavte časovač na 4 minuty. ⏲️  
   Nechte kávu louhovat bez míchání.
 
-- **Stiskněte píst French Pressu dolů**. 🔽
+- Stiskněte píst French Pressu dolů. 🔽
 
-- **Ihned nalijte kávu do šálku**. 🍶
+- Ihned nalijte kávu do šálku. 🍶
 
-  > ⚠️ **Varování:** Nenechávejte kávu ve French Pressu, jinak bude příliš silná a hořká.
+  > ⚠️ Varování: Nenechávejte kávu ve French Pressu, jinak bude příliš silná a hořká.

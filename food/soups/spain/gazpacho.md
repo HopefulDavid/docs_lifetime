@@ -21,18 +21,18 @@
 
 ### 1. Příprava zeleniny
 
-- **Všechnu zeleninu důkladně omyjte.** 💧
-- **Nakrájejte na menší kousky.** 🔪
+- Všechnu zeleninu důkladně omyjte. 💧
+- Nakrájejte na menší kousky. 🔪
 
-  > 💡 **Tip:** Okurku můžete oloupat pro jemnější chuť.
+  > 💡 Tip: Okurku můžete oloupat pro jemnější chuť.
 
 ---
 
 ### 2. Mixování & dochucení
 
-- **Vložte nakrájenou zeleninu do mixéru.** 🥣
-- **Přidejte vinný ocet a sůl.** 🍇🧂
-- **Rozmixujte dohladka.** ⚡
+- Vložte nakrájenou zeleninu do mixéru. 🥣
+- Přidejte vinný ocet a sůl. 🍇🧂
+- Rozmixujte dohladka. ⚡
 
   > [!TIP]
   > Pokud je směs příliš hustá, přidejte trochu studené vody.
@@ -41,7 +41,7 @@
 
 ### 3. Servírování
 
-- **Podávejte vychlazené, ideálně s kostkami ledu.** 🧊
-- **Ozdobte nasekanou zeleninou nebo krutony.** 🥖
+- Podávejte vychlazené, ideálně s kostkami ledu. 🧊
+- Ozdobte nasekanou zeleninou nebo krutony. 🥖
 
-  > ⚠️ **Varování:** Gazpacho se nesmí vařit, ztratilo by svěžest.
+  > ⚠️ Varování: Gazpacho se nesmí vařit, ztratilo by svěžest.

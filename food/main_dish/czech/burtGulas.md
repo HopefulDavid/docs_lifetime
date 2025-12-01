@@ -25,49 +25,49 @@
 
 ### 1. Opékání špekáčků
 
-- **V kastrolu rozehřejte polovinu másla.** 🧈🔥
-- **Špekáčky nakrájejte na čtvrtkolečka a opečte ze všech stran dozlatova.** 🥓
-- **Opečené špekáčky dejte stranou.**
+- V kastrolu rozehřejte polovinu másla. 🧈🔥
+- Špekáčky nakrájejte na čtvrtkolečka a opečte ze všech stran dozlatova. 🥓
+- Opečené špekáčky dejte stranou.
 
-  > 💡 **Tip:** Špekáčky opékejte postupně, aby se dobře zatáhly.
+  > 💡 Tip: Špekáčky opékejte postupně, aby se dobře zatáhly.
 
 ---
 
 ### 2. Restování cibule a česneku
 
-- **Do kastrolu přidejte zbytek másla a cibuli nakrájenou na kostičky.** 🧅🧈
-- **Restujte asi 10 minut, až bude cibule zlatavá.**
-- **Přidejte nahrubo nasekaný česnek a restujte další 3 minuty.** 🧄
+- Do kastrolu přidejte zbytek másla a cibuli nakrájenou na kostičky. 🧅🧈
+- Restujte asi 10 minut, až bude cibule zlatavá.
+- Přidejte nahrubo nasekaný česnek a restujte další 3 minuty. 🧄
 
 ---
 
 ### 3. Koření a mouka
 
-- **Zasypte kmínem, mletou paprikou a moukou.** 🌱🌶️🌾
-- **Krátce zarestujte, jen ať se koření rozvoní.**
+- Zasypte kmínem, mletou paprikou a moukou. 🌱🌶️🌾
+- Krátce zarestujte, jen ať se koření rozvoní.
 
-  > ⚠️ **Varování:** Koření nesmí připálit, paprika by zhořkla!
+  > ⚠️ Varování: Koření nesmí připálit, paprika by zhořkla!
 
 ---
 
 ### 4. Základ guláše
 
-- **Zalijte vývarem nebo vodou a metličkou rozmíchejte dohladka.** 💧🍲
-- **Můžete promixovat ponorným mixérem pro hladší konzistenci.**
+- Zalijte vývarem nebo vodou a metličkou rozmíchejte dohladka. 💧🍲
+- Můžete promixovat ponorným mixérem pro hladší konzistenci.
 
 ---
 
 ### 5. Vaření s bramborami a špekáčky
 
-- **Do základu dejte orestované špekáčky a na kostky nakrájené brambory.** 🥓🥔
-- **Osolte, opepřete, přiveďte k varu a vařte na mírném ohni 20 minut, až budou brambory měkké.** 🧂⚫⏲️
+- Do základu dejte orestované špekáčky a na kostky nakrájené brambory. 🥓🥔
+- Osolte, opepřete, přiveďte k varu a vařte na mírném ohni 20 minut, až budou brambory měkké. 🧂⚫⏲️
 
 ---
 
 ### 6. Dochucení a podávání
 
-- **Vmíchejte rozemnutou majoránku, případně dochuťte šplíchancem octa.** 🌿
-- **Podávejte s dobrým kváskovým chlebem.** 🍞
+- Vmíchejte rozemnutou majoránku, případně dochuťte šplíchancem octa. 🌿
+- Podávejte s dobrým kváskovým chlebem. 🍞
 
   > [!TIP]
   > Skvěle chutná s čerstvou pažitkou nebo cibulkou navrch.

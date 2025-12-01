@@ -19,40 +19,40 @@
 - 🧂 Sůl
 - ⚫ Pepř
 
-  > 💡 **Tip:** Použijte kvalitní kokosové mléko pro krémovější omáčku.
+  > 💡 Tip: Použijte kvalitní kokosové mléko pro krémovější omáčku.
 
 ---
 
 ### 1. Příprava surovin
 
-- **Kuřecí maso očistěte a nakrájejte na nudličky.** 🍗🔪
-- **Mrkev očistěte a nakrájejte na tenká kolečka.** 🥕🔪
-- **Papriky nakrájejte na větší kostky.** 🫑🔪
-- **Cibuli nakrájejte najemno.** 🧅🔪
+- Kuřecí maso očistěte a nakrájejte na nudličky. 🍗🔪
+- Mrkev očistěte a nakrájejte na tenká kolečka. 🥕🔪
+- Papriky nakrájejte na větší kostky. 🫑🔪
+- Cibuli nakrájejte najemno. 🧅🔪
 
 ---
 
 ### 2. Restování
 
-- **V hlubší pánvi rozpalte máslo na středním plameni.** 🧈🔥
-- **Přidejte cibuli a restujte ji 3–4 minuty.** 🧅
-- **Přidejte kuřecí maso, papriku, mrkev, kari koření, sůl a pepř. Restujte dalších 4–5 minut.** 🍗🥕🫑🌶️🧂⚫
+- V hlubší pánvi rozpalte máslo na středním plameni. 🧈🔥
+- Přidejte cibuli a restujte ji 3–4 minuty. 🧅
+- Přidejte kuřecí maso, papriku, mrkev, kari koření, sůl a pepř. Restujte dalších 4–5 minut. 🍗🥕🫑🌶️🧂⚫
 
-  > ⚠️ **Varování:** Nepřepékejte maso, aby zůstalo šťavnaté.
+  > ⚠️ Varování: Nepřepékejte maso, aby zůstalo šťavnaté.
 
 ---
 
 ### 3. Dušení
 
-- **Ztlumte plamen na mírný stupeň.**
-- **Přilijte rajčata a kokosové mléko, pánev přiklopte pokličkou.** 🍅🥥
-- **Směs vařte 25–27 minut.** ⏲️
+- Ztlumte plamen na mírný stupeň.
+- Přilijte rajčata a kokosové mléko, pánev přiklopte pokličkou. 🍅🥥
+- Směs vařte 25–27 minut. ⏲️
 
 ---
 
 ### 4. Servírování
 
-- **Podávejte s rýží.** 🍚
+- Podávejte s rýží. 🍚
 
   > [!TIP]
   > Skvěle chutná s čerstvým koriandrem nebo limetkou navrch.

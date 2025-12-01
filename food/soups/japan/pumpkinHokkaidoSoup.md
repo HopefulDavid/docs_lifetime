@@ -14,7 +14,7 @@
 - 🧂 Sůl
 - ⚫ Pepř (čerstvě mletý)
 
-  > 💡 **Tip:** Dýni není potřeba loupat, slupka změkne a dodá polévce barvu.
+  > 💡 Tip: Dýni není potřeba loupat, slupka změkne a dodá polévce barvu.
 
 ---
 
@@ -32,33 +32,33 @@
 
 ### 1. Příprava základu
 
-- **V hrnci rozehřejte přepuštěné máslo, pozvolna osmahněte cibuli do zesklovatění.** 🧈🧅
+- V hrnci rozehřejte přepuštěné máslo, pozvolna osmahněte cibuli do zesklovatění. 🧈🧅
 
 ---
 
 ### 2. Restování dýně
 
-- **Přidejte na kostky nakrájenou dýni, opékejte dalších 10 minut.** 🎃⏲️
+- Přidejte na kostky nakrájenou dýni, opékejte dalších 10 minut. 🎃⏲️
 
 ---
 
 ### 3. Vaření
 
-- **Zalijte zeleninovým vývarem, vařte cca 15 minut do změknutí dýně.** 🥣⏲️
+- Zalijte zeleninovým vývarem, vařte cca 15 minut do změknutí dýně. 🥣⏲️
 
 ---
 
 ### 4. Mixování a dochucení
 
-- **Směs rozmixujte ručním mixérem, přilijte smetanu, dochuťte solí a pepřem. Pár minut povařte.** 🥛🧂⚫
+- Směs rozmixujte ručním mixérem, přilijte smetanu, dochuťte solí a pepřem. Pár minut povařte. 🥛🧂⚫
 
-  > ⚠️ **Varování:** Smetanu přidávejte až po rozmixování, aby se nesrazila.
+  > ⚠️ Varování: Smetanu přidávejte až po rozmixování, aby se nesrazila.
 
 ---
 
 ### 5. Servírování
 
-- **Podávejte horké, ozdobené dýňovými semínky nebo kapkou smetany.** 🥄
+- Podávejte horké, ozdobené dýňovými semínky nebo kapkou smetany. 🥄
 
   > [!TIP]
   > Skvěle chutná s opečeným chlebem nebo krutony.

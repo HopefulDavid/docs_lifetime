@@ -24,26 +24,26 @@
 
 ### 1. Příprava masa
 
-- **Maso osmahněte v pánvi na másle.** 🥩🔥
-- **Přidejte gyros koření a šťávu z limetky.** 🌶️🍋
-- **Hotové maso dejte na tortillu a zasypte sýrem.** 🌮🧀
-- **Tortillu nebalte, pouze ji vložte na pánev a osmahněte spodní stranu.** 🔥
+- Maso osmahněte v pánvi na másle. 🥩🔥
+- Přidejte gyros koření a šťávu z limetky. 🌶️🍋
+- Hotové maso dejte na tortillu a zasypte sýrem. 🌮🧀
+- Tortillu nebalte, pouze ji vložte na pánev a osmahněte spodní stranu. 🔥
 
-  > ⚠️ **Varování:** Tortilla se smaží jen z jedné strany, aby zůstala vláčná.
+  > ⚠️ Varování: Tortilla se smaží jen z jedné strany, aby zůstala vláčná.
 
 ---
 
 ### 2. Příprava salsy
 
-- **Rajčata a cibuli nakrájejte na kostičky.** 🍅🧅🔪
-- **Smíchejte v misce s limetkovou šťávou, lžící oleje, pepřem, solí, koriandrem a česnekovým práškem.** 🍋🫒🌿🧄🧂⚫
-- **Salsu nechte v lednici 30 minut odležet.** 🕒
+- Rajčata a cibuli nakrájejte na kostičky. 🍅🧅🔪
+- Smíchejte v misce s limetkovou šťávou, lžící oleje, pepřem, solí, koriandrem a česnekovým práškem. 🍋🫒🌿🧄🧂⚫
+- Salsu nechte v lednici 30 minut odležet. 🕒
 
-  > 💡 **Tip:** Salsa je nejlepší vychlazená, chutě se krásně propojí.
+  > 💡 Tip: Salsa je nejlepší vychlazená, chutě se krásně propojí.
 
 ---
 
 ### 3. Dokončení
 
-- **Opečenou tortillu se sýrem doplňte čerstvou salsou.** 🌮🍅
-- **Podávejte se zakysanou smetanou.** 🥛
+- Opečenou tortillu se sýrem doplňte čerstvou salsou. 🌮🍅
+- Podávejte se zakysanou smetanou. 🥛

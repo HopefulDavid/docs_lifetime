@@ -23,26 +23,26 @@
 
 ### 1. Příprava kostí
 
-- **Hovězí kosti dejte péct do trouby na 30 minut.** 🦴🔥
+- Hovězí kosti dejte péct do trouby na 30 minut. 🦴🔥
 
-  > 💡 **Tip:** Pečením kostí získá vývar výraznější chuť a barvu.
+  > 💡 Tip: Pečením kostí získá vývar výraznější chuť a barvu.
 
 ---
 
 ### 2. Vaření vývaru
 
-- **Vložte upečené kosti do hrnce s vodou.**
-- **Přidejte masoxové kostky.** 🧊
-- **Přidejte kořenovou zeleninu:** 🧅🥕🥬🌱
-   - Cibule, petržel, celer, mrkev, libeček, česnek
+- Vložte upečené kosti do hrnce s vodou.
+- Přidejte masoxové kostky. 🧊
+- Přidejte kořenovou zeleninu: 🧅🥕🥬🌱
+  - Cibule, petržel, celer, mrkev, libeček, česnek
 
-- **Přidejte koření:** ⚫🍃🧂
-   - Bobkový list, nové koření, pepř, sůl
+- Přidejte koření: ⚫🍃🧂
+  - Bobkový list, nové koření, pepř, sůl
 
 ---
 
 ### 3. Vaření & dochucení
 
-- **Vařte v tlakovém hrnci 5 hodin.** ⏲️
+- Vařte v tlakovém hrnci 5 hodin. ⏲️
 
-  > ⚠️ **Varování:** Sušený libeček přidávejte až po prvním převaření vývaru.
+  > ⚠️ Varování: Sušený libeček přidávejte až po prvním převaření vývaru.

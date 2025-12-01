@@ -16,36 +16,36 @@
 - 🧂 Sůl
 - ⚫ Pepř
 
-  > 💡 **Tip:** Cibuli krájejte najemno pro lepší chuťový základ.
+  > 💡 Tip: Cibuli krájejte najemno pro lepší chuťový základ.
 
 ---
 
 ### 1. Příprava základu
 
-- **Cibuli nakrájejte najemno a osmahněte v hrnci do zlatova.** 🧅🔥
-- **Přidejte na kousky nakrájené hovězí maso, osmahněte s cibulí.** 🥩
+- Cibuli nakrájejte najemno a osmahněte v hrnci do zlatova. 🧅🔥
+- Přidejte na kousky nakrájené hovězí maso, osmahněte s cibulí. 🥩
 
 ---
 
 ### 2. Přidání koření
 
-- **Zasypte červenou paprikou, krátce promíchejte (nesmažte dlouho, aby nezhořkla).** 🌶️
+- Zasypte červenou paprikou, krátce promíchejte (nesmažte dlouho, aby nezhořkla). 🌶️
 
-  > ⚠️ **Varování:** Papriku opravdu jen zpěňte, jinak bude polévka hořká.
+  > ⚠️ Varování: Papriku opravdu jen zpěňte, jinak bude polévka hořká.
 
 ---
 
 ### 3. Vaření
 
-- **Zalijte vodou – hrnec naplňte trochu víc než do půlky.** 💧
-- **Přidejte sůl, pepř, masox, prolisovaný česnek, brambory na kostky a majoránku.** 🧂⚫🧄🥔🌿
-- **Vařte, dokud brambory nezměknou.** ⏲️
+- Zalijte vodou – hrnec naplňte trochu víc než do půlky. 💧
+- Přidejte sůl, pepř, masox, prolisovaný česnek, brambory na kostky a majoránku. 🧂⚫🧄🥔🌿
+- Vařte, dokud brambory nezměknou. ⏲️
 
 ---
 
 ### 4. Servírování
 
-- **Podávejte horké, ideálně s čerstvým chlebem.** 🍞
+- Podávejte horké, ideálně s čerstvým chlebem. 🍞
 
   > [!TIP]
   > Skvěle chutná s čerstvou petrželkou navrch.
