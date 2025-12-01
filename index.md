@@ -1,6 +1,7 @@
 Změny
 ## 2025-12-01
   - ✨ Nové funkcionality: přidání receptu na italské noky se špenátem (docs)
+  - Odebrání tučných textů z postupů
 ## 2025-11-06
   - ✨ Nové funkcionality: přidání receptu na dýňovou polévku Hokkaidó (recipes)
 ## 2025-09-28
