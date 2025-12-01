@@ -52,6 +52,12 @@
               href: main_dish/india/chickenCurryWithRice.md
             - name: Indická kuřecí Tikka Masala
               href: main_dish/india/chickenTikkaMasala.md
+    - name: Italská jídla
+      items:
+        - name: Slané
+          items:
+            - name: Noky se špenátem
+              href: main_dish/italy/gnocchi_agli_spinaci.md
     - name: Mexická jídla
       items:
         - name: Slané
