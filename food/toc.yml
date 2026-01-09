@@ -60,6 +60,8 @@
           items:
             - name: Noky se špenátem
               href: main_dish/italy/gnocchi_agli_spinaci.md
+            - name: Penne Quattro Formaggi
+              href: main_dish/italy/penne_quattro_formaggi.md
     - name: Mexická jídla
       items:
         - name: Slané
