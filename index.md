@@ -1,4 +1,7 @@
 Změny
+## 2026-01-09
+  - ✨ Nové funkcionality: přidání receptu na Ďábelskou topinku (food)
+  - ✨ Nové funkcionality: přidání receptu na Penne Quattro Formaggi (food)
 ## 2025-12-01
   - ✨ Nové funkcionality: přidání receptu na italské noky se špenátem (docs)
   - Odebrání tučných textů z postupů
