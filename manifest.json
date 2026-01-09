@@ -105,6 +105,16 @@
     },
     {
       "type": "Conceptual",
+      "source_relative_path": "food/main_dish/czech/devilToast.md",
+      "output": {
+        ".html": {
+          "relative_path": "food/main_dish/czech/devilToast.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
       "source_relative_path": "food/main_dish/czech/misaRezy.md",
       "output": {
         ".html": {
@@ -169,6 +179,16 @@
       "output": {
         ".html": {
           "relative_path": "food/main_dish/italy/gnocchi_agli_spinaci.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "food/main_dish/italy/penne_quattro_formaggi.md",
+      "output": {
+        ".html": {
+          "relative_path": "food/main_dish/italy/penne_quattro_formaggi.html"
         }
       },
       "version": ""
