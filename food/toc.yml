@@ -28,6 +28,8 @@
           items:
             - name: Buřtguláš
               href: main_dish/czech/burtGulas.md
+            - name: Ďábelská topinka
+              href: main_dish/czech/devilToast.md
             - name: Rajská omáčka
               href: main_dish/czech/rajskaOmacka.md
             - name: Šunkofleky
