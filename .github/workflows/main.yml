@@ -16,7 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           fetch-depth: 0
 
@@ -26,7 +26,7 @@ jobs:
           git config --global user.email "actions@github.com"
 
       - name: Dotnet Setup
-        uses: actions/setup-dotnet@v4
+        uses: actions/setup-dotnet@v5
         with:
           dotnet-version: 8.x
 
@@ -52,7 +52,8 @@ jobs:
           echo "EOF" >> $GITHUB_ENV
 
       - name: Send email with index.md content
-        uses: dawidd6/action-send-mail@v4
+        uses: dawidd6/action-send-mail@v17
+        continue-on-error: true
         with:
           server_address: smtp.gmail.com
           server_port: 465
