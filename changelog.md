@@ -4,6 +4,7 @@ uid: docs-lifetime.changelog
 
 # Změny
 ## 2026-06-21
+  - oprava ve workflow
   - změna přehlednosti v rámci vzájemného propojení a zjednodušené čtení
 ## 2026-01-09
   - ✨ Nové funkcionality: přidání receptu na Ďábelskou topinku (food)
