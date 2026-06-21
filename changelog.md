@@ -5,7 +5,11 @@ uid: docs-lifetime.changelog
 # Změny
 ## 2026-06-21
   - aktualizace balíčků workflow
+  - Automatizace přehledu a navigace dokumentace
+  - Očistěn changelog v e-mailu
+  - oprava "naaan" na "naan"
   - oprava ve workflow
+  - Sjednocení formátu receptů a nápojů
   - změna přehlednosti v rámci vzájemného propojení a zjednodušené čtení
 ## 2026-01-09
   - ✨ Nové funkcionality: přidání receptu na Ďábelskou topinku (food)
