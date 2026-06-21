@@ -1,41 +1,32 @@
-## 🇬🇷 Řecká směs
+# 🇬🇷 Řecká směs
 
----
+Řecká směs je jednoduché a rychlé jídlo, které vyniká výraznou chutí koření a barbecue omáčky.
 
-> Řecká směs je jednoduché a rychlé jídlo, které vyniká výraznou chutí koření a barbecue omáčky.
+## Ingredience
 
-### Ingredience
+- Máslo
+- Kuřecí maso
+- Barbecue omáčka smoky chilly (Lidl)
+- Koření Kotányi paprika uzená sladká
+- Koření Avokádo kuře gril
 
-- 🧈 Máslo
-- 🍗 Kuřecí maso
-- 🥫 Barbecue omáčka smoky chilly (Lidl)
-- 🌶️ Koření Kotányi paprika uzená sladká
-- 🌿 Koření Avokádo kuře gril
+  > **Tip:** Maso nejlépe marinujte v koření den předem pro intenzivnější chuť.
 
-  > 💡 Tip: Maso nejlépe marinujte v koření den předem pro intenzivnější chuť.
+## 1. Příprava masa
 
----
+- Kuřecí maso nakrájejte na nudličky.
+- Důkladně obalte v koření.
+- Smažte na másle dozlatova.
 
-### 1. Příprava masa
+  > **Varování:** Pokud maso pustí vodu, ihned ji slijte, aby neztratilo chuť.
 
-- Kuřecí maso nakrájejte na nudličky. 🍗🔪
-- Důkladně obalte v koření. 🌶️🌿
-- Smažte na másle dozlatova. 🧈🔥
+## 2. Dochucení
 
-  > ⚠️ Varování: Pokud maso pustí vodu, ihned ji slijte, aby neztratilo chuť.
-
----
-
-### 2. Dochucení
-
-- Přidávejte barbecue omáčku smoky chilly po troškách. 🥫
+- Přidávejte barbecue omáčku smoky chilly po troškách.
 - Promíchejte a nechte krátce provařit.
 
-  > [!TIP]
-  > Omáčku nepřidávejte vše najednou, lépe se propojí chutě.
+  > **Tip:** Omáčku nepřidávejte vše najednou, lépe se propojí chutě.
 
----
+## 3. Dokončení
 
-### 3. Dokončení
-
-- Maso prosmažte až do konce, aby bylo šťavnaté a dobře ochucené. 🍗🔥
+- Maso prosmažte až do konce, aby bylo šťavnaté a dobře ochucené.
