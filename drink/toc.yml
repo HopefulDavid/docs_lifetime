@@ -1,23 +1,32 @@
-- name: Přehled
-  href: index.md
-- name: Evropa
-  href: europe/index.md
+- name: "Přehled"
+  href: "index.md"
+- name: "Evropa"
+  href: "europe/index.md"
   items:
-    - name: Francie
+    - name: "Francie"
+      href: "europe/france/index.md"
       items:
-        - name: French Press káva
-          href: europe/france/coffee/french-press.md
-- name: Asie
-  href: asia/index.md
+        - name: "Káva"
+          items:
+            - name: "French Press"
+              href: "europe/france/coffee/french-press.md"
+- name: "Asie"
+  href: "asia/index.md"
   items:
-    - name: Vietnam
+    - name: "Vietnam"
+      href: "asia/vietnam/index.md"
       items:
-        - name: Vietnamská káva
-          href: asia/vietnam/coffee/vietnamska-kava.md
-- name: Severní Amerika
-  href: north-america/index.md
+        - name: "Káva"
+          items:
+            - name: "Vietnamská káva"
+              href: "asia/vietnam/coffee/vietnamska-kava.md"
+- name: "Severní Amerika"
+  href: "north-america/index.md"
   items:
-    - name: USA
+    - name: "USA"
+      href: "north-america/usa/index.md"
       items:
-        - name: Pumpkin Spice
-          href: north-america/usa/coffee/pumpkin-spice.md
+        - name: "Káva"
+          items:
+            - name: "Pumpkin Spice"
+              href: "north-america/usa/coffee/pumpkin-spice.md"

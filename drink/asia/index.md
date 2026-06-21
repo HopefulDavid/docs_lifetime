@@ -1,9 +1,19 @@
+<!-- Tento soubor generuje npm run docs:generate. Neupravujte seznamy odkazů ručně. -->
+
 # Asie
 
-Asijská nápojová část zatím obsahuje vietnamskou kávu. Je výrazná, sladká a stojí hlavně na kombinaci silné kávy a kondenzovaného mléka.
+Asie obsahuje 1 nápoj podle zemí a typu.
+
+## Přehled
+
+| Země / styl | Počet | Typy |
+| --- | --- | --- |
+| [Vietnam](vietnam/index.md) | 1 nápoj | Káva |
 
 ## Vietnam
 
-| Nápoj | Charakter |
-| --- | --- |
-| [Vietnamská káva](vietnam/coffee/vietnamska-kava.md) | Silná sladká káva s kondenzovaným mlékem |
+### Káva
+
+| Nápoj | Původ | Popis |
+| --- | --- | --- |
+| [Vietnamská káva](vietnam/coffee/vietnamska-kava.md) | Asie, Vietnam | Vietnamská káva je výrazná, sladká a silná díky kondenzovanému mléku a specifickému způsobu přípravy. |

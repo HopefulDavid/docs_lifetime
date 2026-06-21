@@ -1,6 +1,6 @@
-- name: Jídlo
-  href: food/
-- name: Nápoje
-  href: drink/
-- name: Změny
-  href: changelog.md
+- name: "Jídlo"
+  href: "food/"
+- name: "Nápoje"
+  href: "drink/"
+- name: "Změny"
+  href: "changelog.md"

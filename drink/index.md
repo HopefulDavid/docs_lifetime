@@ -2,28 +2,24 @@
 uid: docs-lifetime.drink
 ---
 
+<!-- Tento soubor generuje npm run docs:generate. Neupravujte seznamy odkazů ručně. -->
+
 # Nápoje
 
-Nápoje jsou rozdělené podle původu nebo stylu přípravy. U kávy je důležitá hlavně metoda, proto je přehled postavený tak, aby šlo rychle vybrat mezi čistou kávou, sladším nápojem a výraznou specialitou.
+Nápoje jsou uspořádané podle původu a způsobu přípravy. Přehledy vycházejí přímo ze souborů v této části.
 
-## Kontinenty
+## Přehled oblastí
 
-| Kontinent | Obsah | Přehled |
+| Oblast | Počet | Země / styl | Typy |
+| --- | --- | --- | --- |
+| [Evropa](europe/index.md) | 1 nápoj | Francie | Káva |
+| [Asie](asia/index.md) | 1 nápoj | Vietnam | Káva |
+| [Severní Amerika](north-america/index.md) | 1 nápoj | USA | Káva |
+
+## Káva
+
+| Nápoj | Původ | Popis |
 | --- | --- | --- |
-| Evropa | French Press | [Otevřít Evropu](europe/index.md) |
-| Asie | Vietnamská káva | [Otevřít Asii](asia/index.md) |
-| Severní Amerika | Pumpkin Spice | [Otevřít Severní Ameriku](north-america/index.md) |
-
-## Rychlá volba
-
-| Chci | Nápoj |
-| --- | --- |
-| Jednoduchou čistou kávu | [French Press](europe/france/coffee/french-press.md) |
-| Výraznou sladkou kávu | [Vietnamská káva](asia/vietnam/coffee/vietnamska-kava.md) |
-| Sladký kořeněný nápoj | [Pumpkin Spice](north-america/usa/coffee/pumpkin-spice.md) |
-
-## Všechny nápoje
-
-- [French Press káva](europe/france/coffee/french-press.md) - evropský styl přípravy filtrované kávy.
-- [Vietnamská káva](asia/vietnam/coffee/vietnamska-kava.md) - silná káva se sladkým kondenzovaným mlékem.
-- [Pumpkin Spice](north-america/usa/coffee/pumpkin-spice.md) - sladký kořeněný kávový nápoj.
+| [French Press](europe/france/coffee/french-press.md) | Evropa, Francie | French Press je jednoduchý a efektivní způsob přípravy kávy, který umožňuje plně využít chuť a aroma kávových zrn. |
+| [Vietnamská káva](asia/vietnam/coffee/vietnamska-kava.md) | Asie, Vietnam | Vietnamská káva je výrazná, sladká a silná díky kondenzovanému mléku a specifickému způsobu přípravy. |
+| [Pumpkin Spice](north-america/usa/coffee/pumpkin-spice.md) | Severní Amerika, USA | Sladký kořeněný nápoj s mlékem, medem, skořicí a jemnou kávovou chutí. |

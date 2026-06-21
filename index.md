@@ -2,50 +2,45 @@
 uid: docs-lifetime.home
 ---
 
+<!-- Tento soubor generuje npm run docs:generate. Neupravujte seznamy odkazů ručně. -->
+
 # Dokumentace ze života
 
-Přehledná osobní kuchařka a sbírka postupů, které mají být rychle dohledatelné přímo při vaření. Obsah je uspořádaný podle původu, ale přehledy zároveň ukazují i praktické typy jídel.
+Přehledná osobní kuchařka a sbírka postupů pro rychlé dohledání při vaření.
 
 ## Hlavní sekce
 
-| Sekce | Co v ní najdete | Kdy ji otevřít |
+| Sekce | Počet | Typy |
 | --- | --- | --- |
-| [Jídlo](xref:docs-lifetime.food) | Recepty podle kontinentů, zemí a typu jídla | Když hledáte polévku, hlavní jídlo, dezert nebo dip |
-| [Nápoje](xref:docs-lifetime.drink) | Kávové postupy podle původu nebo stylu | Když chcete připravit kávu nebo sladký kávový nápoj |
-| [Změny](xref:docs-lifetime.changelog) | Historie úprav dokumentace | Když chcete zjistit, co se nedávno přidalo nebo přesunulo |
+| [Jídlo](food/index.md) | 22 receptů | Polévky, Hlavní jídla, Dezerty, Dipy |
+| [Nápoje](drink/index.md) | 3 nápoje | Káva |
 
-## Rychlý vstup
+## Kompletní přehled
 
-### Podle kontinentu
-
-- [Evropské recepty](food/europe/index.md) - česká kuchyně, italská jídla, gazpacho, Pastéis de Nata a řecká směs.
-- [Asijské recepty](food/asia/index.md) - indická kuřecí jídla, dýňová polévka Hokkaidó a kokosové kuře.
-- [Severoamerické recepty](food/north-america/index.md) - steak a tortilly s masem a salsou.
-- [Univerzální recepty](food/universal/index.md) - dipy bez vazby na konkrétní zemi.
-
-### Podle potřeby
-
-- Polévka: [Gulášová polévka](food/europe/czech/soups/gulasova-polevka.md), [Hovězí vývar](food/europe/czech/soups/hovezi-vyvar.md), [Zelňačka](food/europe/czech/soups/zelnacka.md), [Gazpacho](food/europe/spain/soups/gazpacho.md).
-- Syté hlavní jídlo: [Buřtguláš](food/europe/czech/main-dishes/burtgulas.md), [Rajská omáčka](food/europe/czech/main-dishes/rajska-omacka.md), [Kuřecí Tikka Masala](food/asia/india/main-dishes/kureci-tikka-masala.md), [Steak](food/north-america/usa/main-dishes/steak.md).
-- Něco sýrového: [Penne Quattro Formaggi](food/europe/italy/main-dishes/penne-quattro-formaggi.md), [Pizza Quattro Formaggi](food/europe/italy/main-dishes/pizza-quattro-formaggi.md), [Noky se špenátem](food/europe/italy/main-dishes/gnocchi-se-spenatem.md).
-- Sladké: [Míša řezy](food/europe/czech/desserts/misa-rezy.md), [Pastéis de Nata](food/europe/portugal/desserts/pasteis-de-nata.md), [Pumpkin Spice](drink/north-america/usa/coffee/pumpkin-spice.md).
-
-## Jak jsou recepty psané
-
-Každý recept má stejnou základní logiku:
-
-1. Krátký popis, aby bylo hned jasné, o jaký výsledek jde.
-2. Ingredience s množstvím nebo praktickou poznámkou.
-3. Postup rozdělený na menší kroky.
-4. Tipy a upozornění tam, kde se dá snadno něco pokazit.
-
-## Poslední změny
-
-### 2026-06-21
-
-- Přidán recept na Pizza Quattro Formaggi.
-- Recepty a nápoje jsou přestavěné do kontinentální struktury.
-- Přepracované přehledové stránky pro rychlejší orientaci.
-- Upraveno nastavení DocFX, aby se do dokumentace nemíchaly technické soubory.
-
-Starší změny jsou v samostatném [changelogu](xref:docs-lifetime.changelog).
+| Název | Sekce | Typ | Původ |
+| --- | --- | --- | --- |
+| [Gulášová polévka](food/europe/czech/soups/gulasova-polevka.md) | Jídlo | Polévky | Evropa, Česko |
+| [Hovězí vývar](food/europe/czech/soups/hovezi-vyvar.md) | Jídlo | Polévky | Evropa, Česko |
+| [Zelňačka](food/europe/czech/soups/zelnacka.md) | Jídlo | Polévky | Evropa, Česko |
+| [Buřtguláš](food/europe/czech/main-dishes/burtgulas.md) | Jídlo | Hlavní jídla | Evropa, Česko |
+| [Ďábelská topinka](food/europe/czech/main-dishes/dabelska-topinka.md) | Jídlo | Hlavní jídla | Evropa, Česko |
+| [Rajská omáčka s masovými koulemi](food/europe/czech/main-dishes/rajska-omacka.md) | Jídlo | Hlavní jídla | Evropa, Česko |
+| [Šunkofleky](food/europe/czech/main-dishes/sunkofleky.md) | Jídlo | Hlavní jídla | Evropa, Česko |
+| [Míša řezy](food/europe/czech/desserts/misa-rezy.md) | Jídlo | Dezerty | Evropa, Česko |
+| [Noky se špenátem](food/europe/italy/main-dishes/gnocchi-se-spenatem.md) | Jídlo | Hlavní jídla | Evropa, Itálie |
+| [Penne Quattro Formaggi](food/europe/italy/main-dishes/penne-quattro-formaggi.md) | Jídlo | Hlavní jídla | Evropa, Itálie |
+| [Pizza Quattro Formaggi](food/europe/italy/main-dishes/pizza-quattro-formaggi.md) | Jídlo | Hlavní jídla | Evropa, Itálie |
+| [Pastéis de Nata](food/europe/portugal/desserts/pasteis-de-nata.md) | Jídlo | Dezerty | Evropa, Portugalsko |
+| [Řecká směs](food/europe/greece/main-dishes/recka-smes.md) | Jídlo | Hlavní jídla | Evropa, Řecko |
+| [Gazpacho](food/europe/spain/soups/gazpacho.md) | Jídlo | Polévky | Evropa, Španělsko |
+| [Kuřecí na kari s rýží](food/asia/india/main-dishes/kureci-kari-s-ryzi.md) | Jídlo | Hlavní jídla | Asie, Indie |
+| [Kuřecí tikka masala](food/asia/india/main-dishes/kureci-tikka-masala.md) | Jídlo | Hlavní jídla | Asie, Indie |
+| [Dýňová polévka Hokkaidó](food/asia/japan/soups/dynova-polevka-hokkaido.md) | Jídlo | Polévky | Asie, Japonsko |
+| [Kokosové kuře](food/asia/general/main-dishes/kokosove-kure.md) | Jídlo | Hlavní jídla | Asie, Obecně asijská kuchyně |
+| [Tortilly s vepřovo-hovězím masem a salsou](food/north-america/mexico/main-dishes/tortilly-s-masem-a-salsou.md) | Jídlo | Hlavní jídla | Severní Amerika, Mexiko |
+| [Steak](food/north-america/usa/main-dishes/steak.md) | Jídlo | Hlavní jídla | Severní Amerika, USA |
+| [Bylinkový dip se sladkou paprikou](food/universal/dips/bylinkovy-dip-se-sladkou-paprikou.md) | Jídlo | Dipy | Univerzální |
+| [Smetanový dip na sladko](food/universal/dips/smetanovy-dip-na-sladko.md) | Jídlo | Dipy | Univerzální |
+| [French Press](drink/europe/france/coffee/french-press.md) | Nápoje | Káva | Evropa, Francie |
+| [Vietnamská káva](drink/asia/vietnam/coffee/vietnamska-kava.md) | Nápoje | Káva | Asie, Vietnam |
+| [Pumpkin Spice](drink/north-america/usa/coffee/pumpkin-spice.md) | Nápoje | Káva | Severní Amerika, USA |

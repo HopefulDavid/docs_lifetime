@@ -1,86 +1,114 @@
-- name: Přehled
-  href: index.md
-- name: Evropa
-  href: europe/index.md
+- name: "Přehled"
+  href: "index.md"
+- name: "Evropa"
+  href: "europe/index.md"
   items:
-    - name: Česko
+    - name: "Česko"
+      href: "europe/czech/index.md"
       items:
-        - name: Polévky
+        - name: "Polévky"
           items:
-            - name: Gulášová polévka
-              href: europe/czech/soups/gulasova-polevka.md
-            - name: Hovězí vývar
-              href: europe/czech/soups/hovezi-vyvar.md
-            - name: Zelňačka
-              href: europe/czech/soups/zelnacka.md
-        - name: Hlavní jídla
+            - name: "Gulášová polévka"
+              href: "europe/czech/soups/gulasova-polevka.md"
+            - name: "Hovězí vývar"
+              href: "europe/czech/soups/hovezi-vyvar.md"
+            - name: "Zelňačka"
+              href: "europe/czech/soups/zelnacka.md"
+        - name: "Hlavní jídla"
           items:
-            - name: Buřtguláš
-              href: europe/czech/main-dishes/burtgulas.md
-            - name: Ďábelská topinka
-              href: europe/czech/main-dishes/dabelska-topinka.md
-            - name: Rajská omáčka
-              href: europe/czech/main-dishes/rajska-omacka.md
-            - name: Šunkofleky
-              href: europe/czech/main-dishes/sunkofleky.md
-        - name: Dezerty
+            - name: "Buřtguláš"
+              href: "europe/czech/main-dishes/burtgulas.md"
+            - name: "Ďábelská topinka"
+              href: "europe/czech/main-dishes/dabelska-topinka.md"
+            - name: "Rajská omáčka s masovými koulemi"
+              href: "europe/czech/main-dishes/rajska-omacka.md"
+            - name: "Šunkofleky"
+              href: "europe/czech/main-dishes/sunkofleky.md"
+        - name: "Dezerty"
           items:
-            - name: Míša řezy
-              href: europe/czech/desserts/misa-rezy.md
-    - name: Itálie
+            - name: "Míša řezy"
+              href: "europe/czech/desserts/misa-rezy.md"
+    - name: "Itálie"
+      href: "europe/italy/index.md"
       items:
-        - name: Noky se špenátem
-          href: europe/italy/main-dishes/gnocchi-se-spenatem.md
-        - name: Penne Quattro Formaggi
-          href: europe/italy/main-dishes/penne-quattro-formaggi.md
-        - name: Pizza Quattro Formaggi
-          href: europe/italy/main-dishes/pizza-quattro-formaggi.md
-    - name: Portugalsko
+        - name: "Hlavní jídla"
+          items:
+            - name: "Noky se špenátem"
+              href: "europe/italy/main-dishes/gnocchi-se-spenatem.md"
+            - name: "Penne Quattro Formaggi"
+              href: "europe/italy/main-dishes/penne-quattro-formaggi.md"
+            - name: "Pizza Quattro Formaggi"
+              href: "europe/italy/main-dishes/pizza-quattro-formaggi.md"
+    - name: "Portugalsko"
+      href: "europe/portugal/index.md"
       items:
-        - name: Pastéis de Nata
-          href: europe/portugal/desserts/pasteis-de-nata.md
-    - name: Řecko
+        - name: "Dezerty"
+          items:
+            - name: "Pastéis de Nata"
+              href: "europe/portugal/desserts/pasteis-de-nata.md"
+    - name: "Řecko"
+      href: "europe/greece/index.md"
       items:
-        - name: Řecká směs
-          href: europe/greece/main-dishes/recka-smes.md
-    - name: Španělsko
+        - name: "Hlavní jídla"
+          items:
+            - name: "Řecká směs"
+              href: "europe/greece/main-dishes/recka-smes.md"
+    - name: "Španělsko"
+      href: "europe/spain/index.md"
       items:
-        - name: Gazpacho
-          href: europe/spain/soups/gazpacho.md
-- name: Asie
-  href: asia/index.md
+        - name: "Polévky"
+          items:
+            - name: "Gazpacho"
+              href: "europe/spain/soups/gazpacho.md"
+- name: "Asie"
+  href: "asia/index.md"
   items:
-    - name: Indie
+    - name: "Indie"
+      href: "asia/india/index.md"
       items:
-        - name: Kuřecí na kari s rýží
-          href: asia/india/main-dishes/kureci-kari-s-ryzi.md
-        - name: Kuřecí Tikka Masala
-          href: asia/india/main-dishes/kureci-tikka-masala.md
-    - name: Japonsko
+        - name: "Hlavní jídla"
+          items:
+            - name: "Kuřecí na kari s rýží"
+              href: "asia/india/main-dishes/kureci-kari-s-ryzi.md"
+            - name: "Kuřecí tikka masala"
+              href: "asia/india/main-dishes/kureci-tikka-masala.md"
+    - name: "Japonsko"
+      href: "asia/japan/index.md"
       items:
-        - name: Dýňová polévka Hokkaidó
-          href: asia/japan/soups/dynova-polevka-hokkaido.md
-    - name: Obecně asijská kuchyně
+        - name: "Polévky"
+          items:
+            - name: "Dýňová polévka Hokkaidó"
+              href: "asia/japan/soups/dynova-polevka-hokkaido.md"
+    - name: "Obecně asijská kuchyně"
+      href: "asia/general/index.md"
       items:
-        - name: Kokosové kuře
-          href: asia/general/main-dishes/kokosove-kure.md
-- name: Severní Amerika
-  href: north-america/index.md
+        - name: "Hlavní jídla"
+          items:
+            - name: "Kokosové kuře"
+              href: "asia/general/main-dishes/kokosove-kure.md"
+- name: "Severní Amerika"
+  href: "north-america/index.md"
   items:
-    - name: USA
+    - name: "Mexiko"
+      href: "north-america/mexico/index.md"
       items:
-        - name: Steak
-          href: north-america/usa/main-dishes/steak.md
-    - name: Mexiko
+        - name: "Hlavní jídla"
+          items:
+            - name: "Tortilly s vepřovo-hovězím masem a salsou"
+              href: "north-america/mexico/main-dishes/tortilly-s-masem-a-salsou.md"
+    - name: "USA"
+      href: "north-america/usa/index.md"
       items:
-        - name: Tortilly s vepřovo-hovězím masem a salsou
-          href: north-america/mexico/main-dishes/tortilly-s-masem-a-salsou.md
-- name: Univerzální recepty
-  href: universal/index.md
+        - name: "Hlavní jídla"
+          items:
+            - name: "Steak"
+              href: "north-america/usa/main-dishes/steak.md"
+- name: "Univerzální recepty"
+  href: "universal/index.md"
   items:
-    - name: Dipy
+    - name: "Dipy"
       items:
-        - name: Bylinkový dip se sladkou paprikou
-          href: universal/dips/bylinkovy-dip-se-sladkou-paprikou.md
-        - name: Smetanový dip na sladko
-          href: universal/dips/smetanovy-dip-na-sladko.md
+        - name: "Bylinkový dip se sladkou paprikou"
+          href: "universal/dips/bylinkovy-dip-se-sladkou-paprikou.md"
+        - name: "Smetanový dip na sladko"
+          href: "universal/dips/smetanovy-dip-na-sladko.md"

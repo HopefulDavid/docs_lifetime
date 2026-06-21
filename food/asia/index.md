@@ -1,16 +1,38 @@
+<!-- Tento soubor generuje npm run docs:generate. Neupravujte seznamy odkazů ručně. -->
+
 # Asie
 
-Asijská část drží recepty s výraznějším kořením, krémovými omáčkami a jemnější polévkou. Recepty jsou rozdělené podle zemí, pokud je původ jasný.
+Asie obsahuje 4 recepty podle zemí a typu.
 
-## Rychlá orientace
+## Přehled
 
-| Země nebo styl | Recepty | Charakter |
+| Země / styl | Počet | Typy |
 | --- | --- | --- |
-| Indie | [Kuřecí na kari s rýží](india/main-dishes/kureci-kari-s-ryzi.md), [Kuřecí Tikka Masala](india/main-dishes/kureci-tikka-masala.md) | Kořeněná kuřecí jídla s omáčkou |
-| Japonsko | [Dýňová polévka Hokkaidó](japan/soups/dynova-polevka-hokkaido.md) | Jemná krémová polévka |
-| Obecně asijská kuchyně | [Kokosové kuře](general/main-dishes/kokosove-kure.md) | Krémové kokosové jídlo |
+| [Indie](india/index.md) | 2 recepty | Hlavní jídla |
+| [Japonsko](japan/index.md) | 1 recept | Polévky |
+| [Obecně asijská kuchyně](general/index.md) | 1 recept | Hlavní jídla |
 
-## Podle nálady
+## Indie
 
-- Krémové a jemnější: [Kokosové kuře](general/main-dishes/kokosove-kure.md), [Dýňová polévka Hokkaidó](japan/soups/dynova-polevka-hokkaido.md).
-- Kořeněné a syté: [Kuřecí Tikka Masala](india/main-dishes/kureci-tikka-masala.md), [Kuřecí na kari s rýží](india/main-dishes/kureci-kari-s-ryzi.md).
+### Hlavní jídla
+
+| Recept | Původ | Popis |
+| --- | --- | --- |
+| [Kuřecí na kari s rýží](india/main-dishes/kureci-kari-s-ryzi.md) | Asie, Indie | Kuřecí na kari s rýží je exotické jídlo s jemně sladkou omáčkou, které potěší milovníky indické kuchyně. |
+| [Kuřecí tikka masala](india/main-dishes/kureci-tikka-masala.md) | Asie, Indie | Kuřecí tikka masala je ikonické indické jídlo, které skvěle chutná s domácím naanem. |
+
+## Japonsko
+
+### Polévky
+
+| Recept | Původ | Popis |
+| --- | --- | --- |
+| [Dýňová polévka Hokkaidó](japan/soups/dynova-polevka-hokkaido.md) | Asie, Japonsko | Krémová dýňová polévka je jemná, sytá a zahřeje v chladných dnech. |
+
+## Obecně asijská kuchyně
+
+### Hlavní jídla
+
+| Recept | Původ | Popis |
+| --- | --- | --- |
+| [Kokosové kuře](general/main-dishes/kokosove-kure.md) | Asie, Obecně asijská kuchyně | Kokosové kuře je exotické jídlo s jemnou chutí kari a krémovou omáčkou z kokosového mléka. |
