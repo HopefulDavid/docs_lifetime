@@ -44,14 +44,18 @@ jobs:
             git push origin main
           fi
 
-      - name: Read changelog.md content
+      - name: Read changelog.md content for email
         id: read_changelog_md
         run: |
           echo "changelog<<EOF" >> $GITHUB_ENV
-          cat changelog.md >> $GITHUB_ENV
+          awk '
+            NR == 1 && $0 == "---" { frontmatter = 1; next }
+            frontmatter && $0 == "---" { frontmatter = 0; next }
+            !frontmatter { print }
+          ' changelog.md >> $GITHUB_ENV
           echo "EOF" >> $GITHUB_ENV
 
-      - name: Send email with index.md content
+      - name: Send email with changelog content
         uses: dawidd6/action-send-mail@v17
         continue-on-error: true
         with:
@@ -68,6 +72,9 @@ jobs:
             <p>Nové změny v dokumentaci jsou k dispozici. Podívejte se na ně <a href="https://hopefuldavid.github.io/docs_lifetime/">zde</a>.</p>
             <hr>
             ${{ env.changelog }}
+
+      - name: Generate documentation navigation
+        run: npm run docs:generate
 
       - run: dotnet tool update -g docfx
       - run: docfx docfx.json
