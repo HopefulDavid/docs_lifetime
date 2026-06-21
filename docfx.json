@@ -3,11 +3,12 @@
     "content": [
       {
         "files": [
-		  "index.md",
           "**/*.{md,yml}"
         ],
         "exclude": [
-          "_site/**"
+          ".github/**",
+          "_site/**",
+          "node_modules/**"
         ]
       }
     ],

@@ -33,18 +33,18 @@ jobs:
       - name: Generate Changelog
         if: github.actor != 'github-actions[bot]'
         run: |
-          rm -f index.md
+          rm -f changelog.md
           npm install -g conventional-changelog-cli
-          conventional-changelog -i index.md -s --config ./changelog-config.js
-          git add index.md
+          conventional-changelog -i changelog.md -s --config ./changelog-config.js
+          git add changelog.md
           git commit -m "chore: update changelog"
           git push origin main
 
-      - name: Read index.md content
-        id: read_index_md
+      - name: Read changelog.md content
+        id: read_changelog_md
         run: |
-          echo "index<<EOF" >> $GITHUB_ENV
-          cat index.md >> $GITHUB_ENV
+          echo "changelog<<EOF" >> $GITHUB_ENV
+          cat changelog.md >> $GITHUB_ENV
           echo "EOF" >> $GITHUB_ENV
 
       - name: Send email with index.md content
@@ -57,12 +57,12 @@ jobs:
           password: ${{ secrets.MAIL_PASSWORD }}
           from: "dslavik29@outlook.com"
           subject: "Nové změny v dokumentaci"
-          to: "dslavik29@outlook.com,lucie.slavikova33@outlook.com, rslavikova9@seznam.cz, d.pochova@seznam.cz"
+          to: "dslavik29@outlook.com,lucie.slavikova33@outlook.com, rslavikova9@seznam.cz, d.pochova@seznam.cz, vslavik19@seznam.cz"
           convert_markdown: true
           html_body: |
             <p>Nové změny v dokumentaci jsou k dispozici. Podívejte se na ně <a href="https://hopefuldavid.github.io/docs_lifetime/">zde</a>.</p>
             <hr>
-            ${{ env.index }}  
+            ${{ env.changelog }}
 
       - run: dotnet tool update -g docfx
       - run: docfx docfx.json

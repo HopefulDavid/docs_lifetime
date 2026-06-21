@@ -1,8 +1,8 @@
-﻿## 🍝 Penne Quattro formaggi
+## 🍝 Penne Quattro Formaggi
 
 ---
 
-> Italské těstoviny penne s omáčkou ze čtyř druhů sýrů, v tomto případě s nivou jako hlavní ingrediencí.
+> Italské těstoviny penne s krémovou sýrovou omáčkou, v tomto případě s nivou jako hlavní ingrediencí.
 
 ### Ingredience
 

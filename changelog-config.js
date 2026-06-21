@@ -69,7 +69,11 @@ const transformCommit = (commit) => {
 /**
  * Šablona pro výstupní changelog
  */
-const CHANGELOG_TEMPLATE = `Změny
+const CHANGELOG_TEMPLATE = `---
+uid: docs-lifetime.changelog
+---
+
+# Změny
 {{#each commitGroups}}
   {{#if title}}
 ## {{title}}

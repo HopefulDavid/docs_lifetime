@@ -1,12 +1,23 @@
-- name: Káva
+- name: Přehled
+  href: index.md
+- name: Evropa
+  href: europe/index.md
   items:
-    - name: Káva s kofeinem
+    - name: Francie
       items:
         - name: French Press káva
-          href: Coffee/frenchPress.md
+          href: europe/france/coffee/french-press.md
+- name: Asie
+  href: asia/index.md
+  items:
+    - name: Vietnam
+      items:
         - name: Vietnamská káva
-          href: Coffee/vietnamCoffee.md
-    - name: Káva bez kofeinu (Decaf)
+          href: asia/vietnam/coffee/vietnamska-kava.md
+- name: Severní Amerika
+  href: north-america/index.md
+  items:
+    - name: USA
       items:
         - name: Pumpkin Spice
-          href: Coffee/pumpkinSpice.md
+          href: north-america/usa/coffee/pumpkin-spice.md
