@@ -4,6 +4,7 @@ uid: docs-lifetime.changelog
 
 # Změny
 ## 2026-06-21
+  - aktualizace balíčků workflow
   - oprava ve workflow
   - změna přehlednosti v rámci vzájemného propojení a zjednodušené čtení
 ## 2026-01-09
