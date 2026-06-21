@@ -9,6 +9,7 @@ uid: docs-lifetime.changelog
   - Očistěn changelog v e-mailu
   - oprava "naaan" na "naan"
   - oprava ve workflow
+  - Předělán design
   - Sjednocení formátu receptů a nápojů
   - změna přehlednosti v rámci vzájemného propojení a zjednodušené čtení
 ## 2026-01-09
