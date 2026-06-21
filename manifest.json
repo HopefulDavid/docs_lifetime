@@ -12,30 +12,80 @@
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "drink/Coffee/frenchPress.md",
+      "source_relative_path": "changelog.md",
       "output": {
         ".html": {
-          "relative_path": "drink/Coffee/frenchPress.html"
+          "relative_path": "changelog.html"
         }
       },
       "version": ""
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "drink/Coffee/pumpkinSpice.md",
+      "source_relative_path": "drink/asia/index.md",
       "output": {
         ".html": {
-          "relative_path": "drink/Coffee/pumpkinSpice.html"
+          "relative_path": "drink/asia/index.html"
         }
       },
       "version": ""
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "drink/Coffee/vietnamCoffee.md",
+      "source_relative_path": "drink/asia/vietnam/coffee/vietnamska-kava.md",
       "output": {
         ".html": {
-          "relative_path": "drink/Coffee/vietnamCoffee.html"
+          "relative_path": "drink/asia/vietnam/coffee/vietnamska-kava.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "drink/europe/france/coffee/french-press.md",
+      "output": {
+        ".html": {
+          "relative_path": "drink/europe/france/coffee/french-press.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "drink/europe/index.md",
+      "output": {
+        ".html": {
+          "relative_path": "drink/europe/index.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "drink/index.md",
+      "output": {
+        ".html": {
+          "relative_path": "drink/index.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "drink/north-america/index.md",
+      "output": {
+        ".html": {
+          "relative_path": "drink/north-america/index.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "drink/north-america/usa/coffee/pumpkin-spice.md",
+      "output": {
+        ".html": {
+          "relative_path": "drink/north-america/usa/coffee/pumpkin-spice.html"
         }
       },
       "version": ""
@@ -55,210 +105,240 @@
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "food/dips/creamSweet.md",
+      "source_relative_path": "food/asia/general/main-dishes/kokosove-kure.md",
       "output": {
         ".html": {
-          "relative_path": "food/dips/creamSweet.html"
+          "relative_path": "food/asia/general/main-dishes/kokosove-kure.html"
         }
       },
       "version": ""
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "food/dips/herbWithSweetPepper.md",
+      "source_relative_path": "food/asia/index.md",
       "output": {
         ".html": {
-          "relative_path": "food/dips/herbWithSweetPepper.html"
+          "relative_path": "food/asia/index.html"
         }
       },
       "version": ""
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "food/main_dish/america/steak.md",
+      "source_relative_path": "food/asia/india/main-dishes/kureci-kari-s-ryzi.md",
       "output": {
         ".html": {
-          "relative_path": "food/main_dish/america/steak.html"
+          "relative_path": "food/asia/india/main-dishes/kureci-kari-s-ryzi.html"
         }
       },
       "version": ""
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "food/main_dish/asia/coconut_chicken.md",
+      "source_relative_path": "food/asia/india/main-dishes/kureci-tikka-masala.md",
       "output": {
         ".html": {
-          "relative_path": "food/main_dish/asia/coconut_chicken.html"
+          "relative_path": "food/asia/india/main-dishes/kureci-tikka-masala.html"
         }
       },
       "version": ""
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "food/main_dish/czech/burtGulas.md",
+      "source_relative_path": "food/asia/japan/soups/dynova-polevka-hokkaido.md",
       "output": {
         ".html": {
-          "relative_path": "food/main_dish/czech/burtGulas.html"
+          "relative_path": "food/asia/japan/soups/dynova-polevka-hokkaido.html"
         }
       },
       "version": ""
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "food/main_dish/czech/devilToast.md",
+      "source_relative_path": "food/europe/czech/desserts/misa-rezy.md",
       "output": {
         ".html": {
-          "relative_path": "food/main_dish/czech/devilToast.html"
+          "relative_path": "food/europe/czech/desserts/misa-rezy.html"
         }
       },
       "version": ""
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "food/main_dish/czech/misaRezy.md",
+      "source_relative_path": "food/europe/czech/main-dishes/burtgulas.md",
       "output": {
         ".html": {
-          "relative_path": "food/main_dish/czech/misaRezy.html"
+          "relative_path": "food/europe/czech/main-dishes/burtgulas.html"
         }
       },
       "version": ""
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "food/main_dish/czech/rajskaOmacka.md",
+      "source_relative_path": "food/europe/czech/main-dishes/dabelska-topinka.md",
       "output": {
         ".html": {
-          "relative_path": "food/main_dish/czech/rajskaOmacka.html"
+          "relative_path": "food/europe/czech/main-dishes/dabelska-topinka.html"
         }
       },
       "version": ""
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "food/main_dish/czech/sunkoFleky.md",
+      "source_relative_path": "food/europe/czech/main-dishes/rajska-omacka.md",
       "output": {
         ".html": {
-          "relative_path": "food/main_dish/czech/sunkoFleky.html"
+          "relative_path": "food/europe/czech/main-dishes/rajska-omacka.html"
         }
       },
       "version": ""
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "food/main_dish/greece/reckaSmes.md",
+      "source_relative_path": "food/europe/czech/main-dishes/sunkofleky.md",
       "output": {
         ".html": {
-          "relative_path": "food/main_dish/greece/reckaSmes.html"
+          "relative_path": "food/europe/czech/main-dishes/sunkofleky.html"
         }
       },
       "version": ""
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "food/main_dish/india/chickenCurryWithRice.md",
+      "source_relative_path": "food/europe/czech/soups/gulasova-polevka.md",
       "output": {
         ".html": {
-          "relative_path": "food/main_dish/india/chickenCurryWithRice.html"
+          "relative_path": "food/europe/czech/soups/gulasova-polevka.html"
         }
       },
       "version": ""
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "food/main_dish/india/chickenTikkaMasala.md",
+      "source_relative_path": "food/europe/czech/soups/hovezi-vyvar.md",
       "output": {
         ".html": {
-          "relative_path": "food/main_dish/india/chickenTikkaMasala.html"
+          "relative_path": "food/europe/czech/soups/hovezi-vyvar.html"
         }
       },
       "version": ""
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "food/main_dish/italy/gnocchi_agli_spinaci.md",
+      "source_relative_path": "food/europe/czech/soups/zelnacka.md",
       "output": {
         ".html": {
-          "relative_path": "food/main_dish/italy/gnocchi_agli_spinaci.html"
+          "relative_path": "food/europe/czech/soups/zelnacka.html"
         }
       },
       "version": ""
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "food/main_dish/italy/penne_quattro_formaggi.md",
+      "source_relative_path": "food/europe/greece/main-dishes/recka-smes.md",
       "output": {
         ".html": {
-          "relative_path": "food/main_dish/italy/penne_quattro_formaggi.html"
+          "relative_path": "food/europe/greece/main-dishes/recka-smes.html"
         }
       },
       "version": ""
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "food/main_dish/mexico/TortillySVeprovoHovezimMasemASalsou.md",
+      "source_relative_path": "food/europe/index.md",
       "output": {
         ".html": {
-          "relative_path": "food/main_dish/mexico/TortillySVeprovoHovezimMasemASalsou.html"
+          "relative_path": "food/europe/index.html"
         }
       },
       "version": ""
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "food/main_dish/portugal/pasteisDeNata.md",
+      "source_relative_path": "food/europe/italy/main-dishes/gnocchi-se-spenatem.md",
       "output": {
         ".html": {
-          "relative_path": "food/main_dish/portugal/pasteisDeNata.html"
+          "relative_path": "food/europe/italy/main-dishes/gnocchi-se-spenatem.html"
         }
       },
       "version": ""
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "food/soups/czech/CabbageSoup.md",
+      "source_relative_path": "food/europe/italy/main-dishes/penne-quattro-formaggi.md",
       "output": {
         ".html": {
-          "relative_path": "food/soups/czech/CabbageSoup.html"
+          "relative_path": "food/europe/italy/main-dishes/penne-quattro-formaggi.html"
         }
       },
       "version": ""
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "food/soups/czech/brothBeefSoup.md",
+      "source_relative_path": "food/europe/italy/main-dishes/pizza-quattro-formaggi.md",
       "output": {
         ".html": {
-          "relative_path": "food/soups/czech/brothBeefSoup.html"
+          "relative_path": "food/europe/italy/main-dishes/pizza-quattro-formaggi.html"
         }
       },
       "version": ""
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "food/soups/czech/goulashSoup.md",
+      "source_relative_path": "food/europe/portugal/desserts/pasteis-de-nata.md",
       "output": {
         ".html": {
-          "relative_path": "food/soups/czech/goulashSoup.html"
+          "relative_path": "food/europe/portugal/desserts/pasteis-de-nata.html"
         }
       },
       "version": ""
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "food/soups/japan/pumpkinHokkaidoSoup.md",
+      "source_relative_path": "food/europe/spain/soups/gazpacho.md",
       "output": {
         ".html": {
-          "relative_path": "food/soups/japan/pumpkinHokkaidoSoup.html"
+          "relative_path": "food/europe/spain/soups/gazpacho.html"
         }
       },
       "version": ""
     },
     {
       "type": "Conceptual",
-      "source_relative_path": "food/soups/spain/gazpacho.md",
+      "source_relative_path": "food/index.md",
       "output": {
         ".html": {
-          "relative_path": "food/soups/spain/gazpacho.html"
+          "relative_path": "food/index.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "food/north-america/index.md",
+      "output": {
+        ".html": {
+          "relative_path": "food/north-america/index.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "food/north-america/mexico/main-dishes/tortilly-s-masem-a-salsou.md",
+      "output": {
+        ".html": {
+          "relative_path": "food/north-america/mexico/main-dishes/tortilly-s-masem-a-salsou.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "food/north-america/usa/main-dishes/steak.md",
+      "output": {
+        ".html": {
+          "relative_path": "food/north-america/usa/main-dishes/steak.html"
         }
       },
       "version": ""
@@ -272,6 +352,36 @@
         },
         ".json": {
           "relative_path": "food/toc.json"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "food/universal/dips/bylinkovy-dip-se-sladkou-paprikou.md",
+      "output": {
+        ".html": {
+          "relative_path": "food/universal/dips/bylinkovy-dip-se-sladkou-paprikou.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "food/universal/dips/smetanovy-dip-na-sladko.md",
+      "output": {
+        ".html": {
+          "relative_path": "food/universal/dips/smetanovy-dip-na-sladko.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "food/universal/index.md",
+      "output": {
+        ".html": {
+          "relative_path": "food/universal/index.html"
         }
       },
       "version": ""

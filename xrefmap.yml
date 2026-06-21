@@ -1,3 +1,15 @@
 ### YamlMime:XRefMap
 sorted: true
-references: []
+references:
+- uid: docs-lifetime.changelog
+  name: Změny
+  href: changelog.html
+- uid: docs-lifetime.drink
+  name: Nápoje
+  href: drink/index.html
+- uid: docs-lifetime.food
+  name: Jídlo
+  href: food/index.html
+- uid: docs-lifetime.home
+  name: Dokumentace ze života
+  href: index.html
