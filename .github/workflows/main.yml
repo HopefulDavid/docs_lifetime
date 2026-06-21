@@ -37,8 +37,12 @@ jobs:
           npm install -g conventional-changelog-cli
           conventional-changelog -i changelog.md -s --config ./changelog-config.js
           git add changelog.md
-          git commit -m "chore: update changelog"
-          git push origin main
+          if git diff --cached --quiet; then
+            echo "Changelog is already up to date."
+          else
+            git commit -m "chore: update changelog"
+            git push origin main
+          fi
 
       - name: Read changelog.md content
         id: read_changelog_md
