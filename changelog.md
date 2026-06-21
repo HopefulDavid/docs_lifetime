@@ -3,50 +3,27 @@ uid: docs-lifetime.changelog
 ---
 
 # Změny
-
 ## 2026-06-21
-
-- Přidán recept na Pizza Quattro Formaggi.
-- Recepty a nápoje jsou fyzicky přesunuté do kontinentální struktury.
-- Přidány přehledové stránky pro hlavní sekce i jednotlivé kontinenty.
-- Přepracované přehledové stránky pro rychlejší orientaci podle kontinentu, typu jídla a potřeby.
-- Upraveno nastavení DocFX, aby se do dokumentace nemíchaly technické soubory.
-- Changelog přesunut do samostatného souboru, aby GitHub workflow nepřepisoval úvodní stránku.
-
+  - změna přehlednosti v rámci vzájemného propojení a zjednodušené čtení
 ## 2026-01-09
-
-- Přidán recept na Ďábelskou topinku.
-- Přidán recept na Penne Quattro Formaggi.
-
+  - ✨ Nové funkcionality: přidání receptu na Ďábelskou topinku (food)
+  - ✨ Nové funkcionality: přidání receptu na Penne Quattro Formaggi (food)
 ## 2025-12-01
-
-- Přidán recept na italské noky se špenátem.
-- Odebrány tučné texty z postupů.
-
+  - ✨ Nové funkcionality: přidání receptu na italské noky se špenátem (docs)
+  - Odebrání tučných textů z postupů
 ## 2025-11-06
-
-- Přidán recept na dýňovou polévku Hokkaidó.
-
+  - ✨ Nové funkcionality: přidání receptu na dýňovou polévku Hokkaidó (recipes)
 ## 2025-09-28
-
-- Opraveny ingredience a příprava gulášové polévky.
-
+  - 🐛 Opravy chyb: oprava ingrediencí a přípravy gulášové polévky (docs)
 ## 2025-09-25
-
-- Aktualizován název sekce o kávě bez kofeinu.
-- Opraven název French Press.
-- Upraveno formátování pro lepší přehlednost.
-
+  - 📚 Změny v dokumentaci: aktualizace názvu sekce o kávě bez kofeinu
+  - oprava názvu French Press
+  - 📚 Změny v dokumentaci: změno formátování pro lepší přehlednost.
 ## 2025-09-07
-
-- Změněn recept na buřtguláš.
-
+  - ♻️ Refaktorizace kódu: změna receptu na buřtguláš (docs)
 ## 2025-08-29
-
-- Odebrána zbytečná e-mailová adresa.
-- Přidán recept na zelňačku.
-- Vylepšen popis receptu na zelňačku.
-
+  - ♻️ Refaktorizace kódu: odstranění zbytečné emailové adresy (ci)
+  - ✨ Nové funkcionality: přidání receptu na zelňačku (docs)
+  - 📚 Změny v dokumentaci: vylepšení popisu receptu na zelňačku (soups)
 ## 2025-04-14
-
-- Vyčištěny změny.
+  - Vyčištění změn
