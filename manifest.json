@@ -42,10 +42,30 @@
     },
     {
       "type": "Conceptual",
+      "source_relative_path": "drink/asia/vietnam/index.md",
+      "output": {
+        ".html": {
+          "relative_path": "drink/asia/vietnam/index.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
       "source_relative_path": "drink/europe/france/coffee/french-press.md",
       "output": {
         ".html": {
           "relative_path": "drink/europe/france/coffee/french-press.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "drink/europe/france/index.md",
+      "output": {
+        ".html": {
+          "relative_path": "drink/europe/france/index.html"
         }
       },
       "version": ""
@@ -91,6 +111,16 @@
       "version": ""
     },
     {
+      "type": "Conceptual",
+      "source_relative_path": "drink/north-america/usa/index.md",
+      "output": {
+        ".html": {
+          "relative_path": "drink/north-america/usa/index.html"
+        }
+      },
+      "version": ""
+    },
+    {
       "type": "Toc",
       "source_relative_path": "drink/toc.yml",
       "output": {
@@ -99,6 +129,16 @@
         },
         ".json": {
           "relative_path": "drink/toc.json"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "food/asia/general/index.md",
+      "output": {
+        ".html": {
+          "relative_path": "food/asia/general/index.html"
         }
       },
       "version": ""
@@ -125,6 +165,16 @@
     },
     {
       "type": "Conceptual",
+      "source_relative_path": "food/asia/india/index.md",
+      "output": {
+        ".html": {
+          "relative_path": "food/asia/india/index.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
       "source_relative_path": "food/asia/india/main-dishes/kureci-kari-s-ryzi.md",
       "output": {
         ".html": {
@@ -145,6 +195,16 @@
     },
     {
       "type": "Conceptual",
+      "source_relative_path": "food/asia/japan/index.md",
+      "output": {
+        ".html": {
+          "relative_path": "food/asia/japan/index.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
       "source_relative_path": "food/asia/japan/soups/dynova-polevka-hokkaido.md",
       "output": {
         ".html": {
@@ -159,6 +219,16 @@
       "output": {
         ".html": {
           "relative_path": "food/europe/czech/desserts/misa-rezy.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "food/europe/czech/index.md",
+      "output": {
+        ".html": {
+          "relative_path": "food/europe/czech/index.html"
         }
       },
       "version": ""
@@ -235,6 +305,16 @@
     },
     {
       "type": "Conceptual",
+      "source_relative_path": "food/europe/greece/index.md",
+      "output": {
+        ".html": {
+          "relative_path": "food/europe/greece/index.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
       "source_relative_path": "food/europe/greece/main-dishes/recka-smes.md",
       "output": {
         ".html": {
@@ -249,6 +329,16 @@
       "output": {
         ".html": {
           "relative_path": "food/europe/index.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "food/europe/italy/index.md",
+      "output": {
+        ".html": {
+          "relative_path": "food/europe/italy/index.html"
         }
       },
       "version": ""
@@ -295,6 +385,26 @@
     },
     {
       "type": "Conceptual",
+      "source_relative_path": "food/europe/portugal/index.md",
+      "output": {
+        ".html": {
+          "relative_path": "food/europe/portugal/index.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "food/europe/spain/index.md",
+      "output": {
+        ".html": {
+          "relative_path": "food/europe/spain/index.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
       "source_relative_path": "food/europe/spain/soups/gazpacho.md",
       "output": {
         ".html": {
@@ -325,10 +435,30 @@
     },
     {
       "type": "Conceptual",
+      "source_relative_path": "food/north-america/mexico/index.md",
+      "output": {
+        ".html": {
+          "relative_path": "food/north-america/mexico/index.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
       "source_relative_path": "food/north-america/mexico/main-dishes/tortilly-s-masem-a-salsou.md",
       "output": {
         ".html": {
           "relative_path": "food/north-america/mexico/main-dishes/tortilly-s-masem-a-salsou.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "food/north-america/usa/index.md",
+      "output": {
+        ".html": {
+          "relative_path": "food/north-america/usa/index.html"
         }
       },
       "version": ""
