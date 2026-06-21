@@ -7,7 +7,7 @@
         ],
         "exclude": [
           ".github/**",
-          "_site/**",
+          "_site*/**",
           "node_modules/**"
         ]
       }
@@ -22,7 +22,8 @@
     "output": "_site",
     "template": [
       "default",
-      "modern"
+      "modern",
+      "templates/kitchen"
     ],
     "globalMetadata": {
       "_appName": "Dokumentace ze života",
