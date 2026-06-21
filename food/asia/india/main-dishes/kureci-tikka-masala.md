@@ -36,7 +36,7 @@
 - 🧂 Sůl
 - 🍬 Cukr
 
-#### Naaan
+#### naann
 
 - 🌾 Hladká mouka (250 g)
 - 🥛 Smetana na vaření 12% (100 ml)
@@ -84,7 +84,7 @@
 
 ---
 
-### 5. Naaan jako příloha
+### 5. naann jako příloha
 
 - Do mísy nasypte mouku, kypřicí prášek a sůl. 🌾🥄🧂
 - Přilijte smetanu, jogurt a vodu, promíchejte. 🥛🥣💧
@@ -93,4 +93,4 @@
 - Hotové placky potřete máslem. 🧈
 
   > [!TIP]
-  > Naaan můžete posypat čerstvým koriandrem nebo česnekem.
+  > naann můžete posypat čerstvým koriandrem nebo česnekem.
