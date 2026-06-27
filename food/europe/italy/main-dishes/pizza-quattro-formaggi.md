@@ -6,12 +6,9 @@ Pizza se smetanovým základem a výraznými sýry. Nejlepší je dát smetany j
 
 - Pizza těsto nebo listové těsto
 - Smetana ke šlehání (3–5 lžic)
-- Mozzarella
-- Mini mozzarella
+- Mozarella (kuličky)
 - Gorgonzola
-- Gran Moravia
-- Česnek (volitelně, malé množství)
-- Olivový olej (volitelně na dokončení)
+- Parmazán
 - Sůl
 - Pepř
 
@@ -24,10 +21,10 @@ Pizza se smetanovým základem a výraznými sýry. Nejlepší je dát smetany j
 ## 2. Smetanový základ
 
 - Do misky dejte 3–5 lžic smetany ke šlehání.
-- Přidejte špetku soli, trochu pepře a případně malé množství česneku.
-- Pro hustší základ můžete do smetany nastrouhat trochu Gran Moravie.
+- Přidejte špetku soli, trochu pepře.
+- Pro hustší základ můžete do smetany nastrouhat trochu Parmazánu
 
-  > **Varování:** Smetany dejte jen tenkou vrstvu. Když jí bude moc, těsto zůstane mokré.
+  > **Varování:** Smetany dejte jen tenkou vrstvu.
 
 ## 3. Příprava těsta
 
@@ -39,7 +36,7 @@ Pizza se smetanovým základem a výraznými sýry. Nejlepší je dát smetany j
 
 - Těsto potřete tenkou vrstvou smetanového základu a kraje nechte volné.
 - Mozzarellu předem osušte ubrouskem, aby nepustila příliš vody.
-- Navrch dejte nejdřív mozzarellu, potom kousky gorgonzoly, nastrouhanou Gran Moravii a nakonec pár kousků mini mozzarelly.
+- Navrch dejte nejdřív rozkrojené napůl mozzarella kuličky, potom kousky gorgonzoly, nastrouhaný parmazán.
 
 ## 5. Pečení
 
@@ -49,6 +46,3 @@ Pizza se smetanovým základem a výraznými sýry. Nejlepší je dát smetany j
 ## 6. Dokončení
 
 - Po vytažení nechte pizzu 2–3 minuty stát a až potom ji krájejte.
-- Navrch můžete dát trochu pepře nebo pár kapek olivového oleje.
-
-  > **Tip:** Se solí opatrně. Gorgonzola i Gran Moravia jsou samy o sobě výrazné.
