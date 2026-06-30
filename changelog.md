@@ -3,6 +3,8 @@ uid: docs-lifetime.changelog
 ---
 
 # Změny
+## 2026-06-30
+  - ✨ Nové funkcionality: přidán recept pro nakládaný hermelín
 ## 2026-06-27
   - 🐛 Opravy chyb: úprava v receptu sýrovo smetanové pizzy
 ## 2026-06-21
