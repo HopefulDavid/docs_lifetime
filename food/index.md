@@ -12,7 +12,7 @@ Jídlo je uspořádané podle původu a typu. Přehledy se skládají automatick
 
 | Oblast | Počet | Země / styl | Typy |
 | --- | --- | --- | --- |
-| [Evropa](europe/index.md) | 14 receptů | Česko, Itálie, Portugalsko, Řecko, Španělsko | Polévky, Hlavní jídla, Dezerty |
+| [Evropa](europe/index.md) | 15 receptů | Česko, Itálie, Portugalsko, Řecko, Španělsko | Polévky, Hlavní jídla, Dezerty |
 | [Asie](asia/index.md) | 4 recepty | Indie, Japonsko, Obecně asijská kuchyně | Polévky, Hlavní jídla |
 | [Severní Amerika](north-america/index.md) | 2 recepty | Mexiko, USA | Hlavní jídla |
 | [Univerzální recepty](universal/index.md) | 2 recepty | Univerzální recepty | Dipy |
@@ -33,6 +33,7 @@ Jídlo je uspořádané podle původu a typu. Přehledy se skládají automatick
 | --- | --- | --- |
 | [Buřtguláš](europe/czech/main-dishes/burtgulas.md) | Evropa, Česko | Buřtguláš je klasika české kuchyně, ideální na chalupu nebo rychlou večeři. |
 | [Ďábelská topinka](europe/czech/main-dishes/dabelska-topinka.md) | Evropa, Česko | Pikantní česká pochoutka ideální na svačinu nebo lehkou večeři. |
+| [Nakládaný hermelín](europe/czech/main-dishes/nakladany-hermelin.md) | Evropa, Česko | Nakládaný hermelín je pikantní česká pochoutka, která se nechává několik dní uležet v oleji s cibulí, česnekem a kořením. |
 | [Rajská omáčka s masovými koulemi](europe/czech/main-dishes/rajska-omacka.md) | Evropa, Česko | Rajská omáčka s masovými koulemi je tradiční české jídlo, které potěší milovníky sladkokyselých omáček. |
 | [Šunkofleky](europe/czech/main-dishes/sunkofleky.md) | Evropa, Česko | Šunkofleky jsou tradiční české jídlo, které potěší milovníky jednoduchých a sytých pokrmů. |
 | [Noky se špenátem](europe/italy/main-dishes/gnocchi-se-spenatem.md) | Evropa, Itálie | Tato lahodná kombinace jemných noků, krémové špenátové omáčky a parmezánu potěší každého milovníka italské kuchyně. |

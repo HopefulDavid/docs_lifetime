@@ -12,7 +12,7 @@ Přehledná osobní kuchařka a sbírka postupů pro rychlé dohledání při va
 
 | Sekce | Počet | Typy |
 | --- | --- | --- |
-| [Jídlo](food/index.md) | 22 receptů | Polévky, Hlavní jídla, Dezerty, Dipy |
+| [Jídlo](food/index.md) | 23 receptů | Polévky, Hlavní jídla, Dezerty, Dipy |
 | [Nápoje](drink/index.md) | 3 nápoje | Káva |
 
 ## Kompletní přehled
@@ -24,6 +24,7 @@ Přehledná osobní kuchařka a sbírka postupů pro rychlé dohledání při va
 | [Zelňačka](food/europe/czech/soups/zelnacka.md) | Jídlo | Polévky | Evropa, Česko |
 | [Buřtguláš](food/europe/czech/main-dishes/burtgulas.md) | Jídlo | Hlavní jídla | Evropa, Česko |
 | [Ďábelská topinka](food/europe/czech/main-dishes/dabelska-topinka.md) | Jídlo | Hlavní jídla | Evropa, Česko |
+| [Nakládaný hermelín](food/europe/czech/main-dishes/nakladany-hermelin.md) | Jídlo | Hlavní jídla | Evropa, Česko |
 | [Rajská omáčka s masovými koulemi](food/europe/czech/main-dishes/rajska-omacka.md) | Jídlo | Hlavní jídla | Evropa, Česko |
 | [Šunkofleky](food/europe/czech/main-dishes/sunkofleky.md) | Jídlo | Hlavní jídla | Evropa, Česko |
 | [Míša řezy](food/europe/czech/desserts/misa-rezy.md) | Jídlo | Dezerty | Evropa, Česko |

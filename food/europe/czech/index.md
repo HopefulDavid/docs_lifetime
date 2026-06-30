@@ -2,7 +2,7 @@
 
 # Česko
 
-Česko obsahuje 8 receptů.
+Česko obsahuje 9 receptů.
 
 ## Polévky
 
@@ -18,6 +18,7 @@
 | --- | --- | --- |
 | [Buřtguláš](main-dishes/burtgulas.md) | Evropa, Česko | Buřtguláš je klasika české kuchyně, ideální na chalupu nebo rychlou večeři. |
 | [Ďábelská topinka](main-dishes/dabelska-topinka.md) | Evropa, Česko | Pikantní česká pochoutka ideální na svačinu nebo lehkou večeři. |
+| [Nakládaný hermelín](main-dishes/nakladany-hermelin.md) | Evropa, Česko | Nakládaný hermelín je pikantní česká pochoutka, která se nechává několik dní uležet v oleji s cibulí, česnekem a kořením. |
 | [Rajská omáčka s masovými koulemi](main-dishes/rajska-omacka.md) | Evropa, Česko | Rajská omáčka s masovými koulemi je tradiční české jídlo, které potěší milovníky sladkokyselých omáček. |
 | [Šunkofleky](main-dishes/sunkofleky.md) | Evropa, Česko | Šunkofleky jsou tradiční české jídlo, které potěší milovníky jednoduchých a sytých pokrmů. |
 

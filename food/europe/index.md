@@ -2,13 +2,13 @@
 
 # Evropa
 
-Evropa obsahuje 14 receptů podle zemí a typu.
+Evropa obsahuje 15 receptů podle zemí a typu.
 
 ## Přehled
 
 | Země / styl | Počet | Typy |
 | --- | --- | --- |
-| [Česko](czech/index.md) | 8 receptů | Polévky, Hlavní jídla, Dezerty |
+| [Česko](czech/index.md) | 9 receptů | Polévky, Hlavní jídla, Dezerty |
 | [Itálie](italy/index.md) | 3 recepty | Hlavní jídla |
 | [Portugalsko](portugal/index.md) | 1 recept | Dezerty |
 | [Řecko](greece/index.md) | 1 recept | Hlavní jídla |
@@ -30,6 +30,7 @@ Evropa obsahuje 14 receptů podle zemí a typu.
 | --- | --- | --- |
 | [Buřtguláš](czech/main-dishes/burtgulas.md) | Evropa, Česko | Buřtguláš je klasika české kuchyně, ideální na chalupu nebo rychlou večeři. |
 | [Ďábelská topinka](czech/main-dishes/dabelska-topinka.md) | Evropa, Česko | Pikantní česká pochoutka ideální na svačinu nebo lehkou večeři. |
+| [Nakládaný hermelín](czech/main-dishes/nakladany-hermelin.md) | Evropa, Česko | Nakládaný hermelín je pikantní česká pochoutka, která se nechává několik dní uležet v oleji s cibulí, česnekem a kořením. |
 | [Rajská omáčka s masovými koulemi](czech/main-dishes/rajska-omacka.md) | Evropa, Česko | Rajská omáčka s masovými koulemi je tradiční české jídlo, které potěší milovníky sladkokyselých omáček. |
 | [Šunkofleky](czech/main-dishes/sunkofleky.md) | Evropa, Česko | Šunkofleky jsou tradiční české jídlo, které potěší milovníky jednoduchých a sytých pokrmů. |
 
