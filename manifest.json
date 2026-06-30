@@ -255,6 +255,16 @@
     },
     {
       "type": "Conceptual",
+      "source_relative_path": "food/europe/czech/main-dishes/nakladany-hermelin.md",
+      "output": {
+        ".html": {
+          "relative_path": "food/europe/czech/main-dishes/nakladany-hermelin.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
       "source_relative_path": "food/europe/czech/main-dishes/rajska-omacka.md",
       "output": {
         ".html": {
