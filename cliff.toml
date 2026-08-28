@@ -10,38 +10,121 @@ body = """
 > Zdrojový stav: `{{ commit_id | truncate(length=7, end="") }}`. Zahrnuté commity: **{{ statistics.commit_count }}**.
 
 ---
-{% for group, commits in commits | group_by(attribute="group") %}\
+{% if commits | length == 0 %}\
+> V dostupné historii nejsou žádné změny.
+{% else %}\
+{% set newest_commit = commits | first %}\
+{% set latest_period = newest_commit.author.timestamp | date(format="%Y", timezone="Europe/Prague") %}\
+{% set_global rendered_period = "" %}\
+{% set_global features_anchor_rendered = false %}\
+{% set_global fixes_anchor_rendered = false %}\
+{% set_global performance_anchor_rendered = false %}\
+{% set_global documentation_anchor_rendered = false %}\
+{% set_global reverts_anchor_rendered = false %}\
+{% set_global other_anchor_rendered = false %}\
+{% set_global technical_anchor_rendered = false %}\
+{% for period_marker in commits %}\
+{% set period = period_marker.author.timestamp | date(format="%Y", timezone="Europe/Prague") %}\
+{% if period != rendered_period %}\
+{% set_global rendered_period = period %}\
+{% set_global period_count = 0 %}\
+{% for period_commit in commits %}\
+{% set period_commit_year = period_commit.author.timestamp | date(format="%Y", timezone="Europe/Prague") %}\
+{% if period_commit_year == period %}\
+{% set_global period_count = period_count + 1 %}\
+{% endif %}\
+{% endfor %}\
+<a id="obdobi-{{ period }}"></a>
+{% if period == latest_period %}\
+## Nejnovější období · {{ period }}
+
+> Počet změn v období: **{{ period_count }}**.
+> Zobrazují se pouze roky, ve kterých vznikla změna; prázdné roky se vynechávají.
+
+{% else %}\
+<details>
+<summary><strong>{{ period }}</strong> · počet změn: {{ period_count }}</summary>
+
+{% endif %}\
+{% for group, grouped_commits in commits | group_by(attribute="group") %}\
+{% set_global category_count = 0 %}\
+{% for grouped_commit in grouped_commits %}\
+{% set grouped_commit_year = grouped_commit.author.timestamp | date(format="%Y", timezone="Europe/Prague") %}\
+{% if grouped_commit_year == period %}\
+{% set_global category_count = category_count + 1 %}\
+{% endif %}\
+{% endfor %}\
+{% if category_count > 0 %}\
 {% set title = group | striptags | trim %}\
 {% if title == "✨ Nové funkce" %}\
+{% if not features_anchor_rendered %}\
 <a id="nove-funkce"></a>
-{% elif title == "🐛 Opravy" %}\
-<a id="opravy"></a>
-{% elif title == "⚡ Výkon" %}\
-<a id="vykon"></a>
-{% elif title == "📚 Dokumentace" %}\
-<a id="dokumentace"></a>
-{% elif title == "⏪ Vrácené změny" %}\
-<a id="vracene-zmeny"></a>
-{% elif title == "🧾 Ostatní změny" %}\
-<a id="ostatni-zmeny"></a>
-{% elif title == "🔩 Technické změny" %}\
-<a id="technicke-zmeny"></a>
+{% set_global features_anchor_rendered = true %}\
 {% endif %}\
-## {{ title }}
+<a id="nove-funkce-{{ period }}"></a>
+{% elif title == "🐛 Opravy" %}\
+{% if not fixes_anchor_rendered %}\
+<a id="opravy"></a>
+{% set_global fixes_anchor_rendered = true %}\
+{% endif %}\
+<a id="opravy-{{ period }}"></a>
+{% elif title == "⚡ Výkon" %}\
+{% if not performance_anchor_rendered %}\
+<a id="vykon"></a>
+{% set_global performance_anchor_rendered = true %}\
+{% endif %}\
+<a id="vykon-{{ period }}"></a>
+{% elif title == "📚 Dokumentace" %}\
+{% if not documentation_anchor_rendered %}\
+<a id="dokumentace"></a>
+{% set_global documentation_anchor_rendered = true %}\
+{% endif %}\
+<a id="dokumentace-{{ period }}"></a>
+{% elif title == "⏪ Vrácené změny" %}\
+{% if not reverts_anchor_rendered %}\
+<a id="vracene-zmeny"></a>
+{% set_global reverts_anchor_rendered = true %}\
+{% endif %}\
+<a id="vracene-zmeny-{{ period }}"></a>
+{% elif title == "🧾 Ostatní změny" %}\
+{% if not other_anchor_rendered %}\
+<a id="ostatni-zmeny"></a>
+{% set_global other_anchor_rendered = true %}\
+{% endif %}\
+<a id="ostatni-zmeny-{{ period }}"></a>
+{% elif title == "🔩 Technické změny" %}\
+{% if not technical_anchor_rendered %}\
+<a id="technicke-zmeny"></a>
+{% set_global technical_anchor_rendered = true %}\
+{% endif %}\
+<a id="technicke-zmeny-{{ period }}"></a>
+{% endif %}\
+### {{ title }}
 
 {% if title == "🔩 Technické změny" %}\
 <details>
-<summary>Zobrazit technické záznamy ({{ commits | length }})</summary>
+<summary>Zobrazit technické záznamy ({{ category_count }})</summary>
 
 {% endif %}\
-{% for commit in commits %}\
+{% for commit in grouped_commits %}\
+{% set commit_year = commit.author.timestamp | date(format="%Y", timezone="Europe/Prague") %}\
+{% if commit_year == period %}\
 - {% if commit.breaking %}⚠️ **Nekompatibilní změna:** {% endif %}{% if commit.scope %}**{{ commit.scope }}:** {% endif %}{{ commit.message | upper_first }} · {{ commit.author.timestamp | date(format="%Y-%m-%d", timezone="Europe/Prague") }} · `{{ commit.id | truncate(length=7, end="") }}`
+{% endif %}\
 {% endfor %}
 {% if title == "🔩 Technické změny" %}\
 </details>
 
 {% endif %}\
+{% endif %}\
 {% endfor %}
+{% if period != latest_period %}\
+</details>
+
+{% endif %}\
+{% endif %}\
+{% endfor %}\
+{% endif %}
 """
 trim = true
 render_always = true

@@ -89,18 +89,20 @@ Strategie výběru testů je v [`../quality/testing.md`](../quality/testing.md).
 
 Každé sestavení odvozuje ignorovaný `changelog.md` z úplné Git historie a zahrne jej do statického artefaktu.
 
-Konfigurace v [`../../cliff.toml`](../../cliff.toml) zachovává nekonvenční commity, uvádí přesný zdrojový commit a počet záznamů, řadí čtenářské Conventional Commits do českých kategorií a technické typy zachovává ve sbalené sekci.
+Konfigurace v [`../../cliff.toml`](../../cliff.toml) zachovává nekonvenční commity, uvádí přesný zdrojový commit a celkový počet záznamů a seskupuje změny podle kalendářního roku v časovém pásmu `Europe/Prague`.
 
-Každá kategorie má stabilní explicitní kotvu, breaking changes zůstávají zvýrazněné a commity se zobrazují pouze krátkým neklikacím hashem.
+Rok nejnovějšího zahrnutého commitu je nejnovější otevřené období a uvádí vlastní počet změn; roky bez zahrnutých změn se nevykreslují a každý starší zobrazený rok je samostatný sbalený blok `<details>` se stejným údajem.
 
-Release tagy historii nerozdělují a datum se deterministicky zobrazuje v projektovém časovém pásmu `Europe/Prague`.
+Uvnitř každého období zůstávají české kategorie, zvýrazněné breaking changes a sbalené technické typy; dosavadní stabilní kotva každé kategorie směřuje na její nejnovější výskyt a všechna období přidávají kotvy rozlišené rokem.
+
+Release tagy historii nerozdělují a commity se zobrazují pouze krátkým neklikacím hashem.
 
 Soubor není verzovaný a nevytváří samostatný commit.
 
 | Účel | Přesný příkaz | Vedlejší účinek | Očekávaný výsledek |
 |---|---|---|---|
 | Náhled bez zápisu | `npm exec -- git-cliff --config cliff.toml` | Žádný soubor se nezmění | Úplný Markdown na standardním výstupu |
-| Vytvoření vstupu pro sestavení | `npm run changelog:generate` | Přepíše pouze ignorovaný `changelog.md` | Přehled aktuální historie s identitou zdroje, stabilními kotvami a sbalenými technickými záznamy |
+| Vytvoření vstupu pro sestavení | `npm run changelog:generate` | Přepíše pouze ignorovaný `changelog.md` | Úplný přehled s identitou zdroje, otevřeným nejnovějším obdobím, sdělením o vynechávání roků bez změn, sbalenými staršími roky, počty změn a kategoriemi |
 
 `npm run docs:build` tento krok spouští automaticky před DocFX.
 

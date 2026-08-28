@@ -54,7 +54,7 @@ Projekt poskytuje veřejnou českou kuchařku, ve které čtenář najde jídlo 
 | `REQ-001` | Čtenář otevřel úvodní stránku | Zvolí sekci, oblast, zemi nebo typ | Uvidí odpovídající přehled se jmény, původem, typem a stručnými popisy dostupného obsahu | Kritická | Vizuální tok úvod → sekce → oblast |
 | `REQ-002` | Čtenář našel konkrétní položku | Otevře odkaz receptu nebo nápoje | Uvidí název, úvod, ingredience, očíslované kroky a relevantní tipy či varování | Kritická | Vizuální detail reprezentativního receptu a nápoje |
 | `REQ-003` | Správce přidal nebo upravil platný obsahový soubor | Spustí generování | Generované přehledy a navigace se deterministicky sjednotí se zdrojovým obsahem | Vysoká | `npm run docs:generate` a následné `npm run docs:check` |
-| `REQ-004` | Přijatá změna je na větvi `main` | Proběhne publikační workflow | Ověřený statický web je dostupný na kanonické adrese a changelog popisuje změny | Vysoká | GitHub Actions, veřejný smoke a kontrola changelogu |
+| `REQ-004` | Přijatá změna je na větvi `main` | Proběhne publikační workflow | Ověřený statický web je dostupný na kanonické adrese a changelog zachovává úplnou historii, nejnovější rok změn nechává otevřený, roky bez změn vynechává a starší zobrazené roky balí | Vysoká | GitHub Actions, veřejný smoke a víceletý changelogový test |
 | `REQ-005` | Čtenář hledá český nebo anglický termín obsažený v indexu | Odešle libovolnou kombinaci indexovaných slov bez ohledu na velikost písmen a diakritiku | Uvidí položky obsahující všechna stejná normalizovaná slova nebo jednoznačnou informaci, že výsledek nebyl nalezen | Střední | Automatické české i anglické názvy a slova z obsahu, poté vizuální smoke a dotaz bez shody |
 
 ## Chybové a hraniční scénáře

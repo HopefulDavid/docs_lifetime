@@ -39,7 +39,7 @@ Rozhodnutí podporuje `REQ-004` a `QLT-001` v [`../../product/requirements.md`](
 | Schopnosti nad Git historií | [git-cliff: Git konfigurace](https://git-cliff.org/docs/configuration/git/) a [šablony changelogu](https://git-cliff.org/docs/configuration/changelog/) | 2026-08-28 | Nástroj parsuje Conventional Commits, zachová nekonvenční záznamy a umožní vlastní skupiny i Tera šablonu | Přesný výstup je odpovědností projektového `cliff.toml` |
 | Původní ekosystém zůstává aktivní, ale zachovává transformační vrstvu | [Conventional Changelog](https://github.com/conventional-changelog/conventional-changelog) | 2026-08-28 | Původní projekt je udržovaný a umí generovat z Git metadat | Pokračování by zachovalo vlastní JavaScript transformace a rozdílný tok obou repozitářů |
 | Changesets řeší jiný životní cyklus | [Changesets](https://github.com/changesets/changesets) | 2026-08-28 | Nástroj spojuje ruční changesety s verzováním a publikováním balíčků | Projekty nemají balíčkové release ani požadavek na ruční změnová metadata |
-| Zvolená cesta funguje v projektových podmínkách | Lokální fixture experiment s `git-cliff` 2.13.1, tagem, conventional i legacy commitem a dvěma hodnotami `TZ` | 2026-08-28 | Výstup obsahoval celou historii, shodný text v obou prostředích, breaking marker, scope a krátké identifikátory bez commit URL | Linux potvrzuje průběžně stejný integrační test v CI |
+| Zvolená cesta funguje v projektových podmínkách | Lokální víceletý fixture experiment s `git-cliff` 2.13.1, tagem, conventional i legacy commitem, přelomem roku a dvěma hodnotami `TZ` | 2026-08-28 | Výstup obsahoval celou historii, otevřel nejnovější rok, starší roky sbalil s počty a kategoriemi a zůstal shodný v obou prostředích bez commit URL | Linux potvrzuje průběžně stejný integrační test v CI |
 
 Výzkum splňuje [`../../governance/research.md`](../../governance/research.md) kombinací projektových důkazů, primárních zdrojů a lokálního experimentu.
 
@@ -79,7 +79,11 @@ Oba dokumentační projekty používají shodnou šablonu, parsery, pořadí sku
 
 Generování běží v offline režimu a nepotřebuje konfiguraci vzdáleného repozitáře; zdroj i položky zobrazují krátký hash jako neklikací kód.
 
-Výstup uvádí zdrojový commit a počet zahrnutých commitů, čtenářské kategorie zobrazuje přímo a technické typy zachovává ve sbaleném bloku se stabilními kotvami.
+Výstup uvádí zdrojový commit a celkový počet zahrnutých commitů a změny rozděluje podle kalendářního roku v `Europe/Prague`.
+
+Rok nejnovějšího zahrnutého commitu zůstává jako nejnovější období otevřený; roky bez zahrnutých změn se nevykreslují a každý starší zobrazený rok je samostatný blok `<details>` s počtem změn a uvnitř zachovává stejné kategorie i sbalené technické typy.
+
+Dosavadní stabilní kotva každé kategorie směřuje na její nejnovější výskyt a každé období má navíc kotvy rozlišené rokem.
 
 Aktivní `changelog.md` je ignorovaný build vstup a při každém sestavení se celý přepíše.
 
@@ -90,7 +94,7 @@ Aktivní `changelog.md` je ignorovaný build vstup a při každém sestavení se
 - Oba projekty mají jeden reprodukovatelný a testovaný způsob generování.
 - Deklarativní konfigurace nahrazuje vlastní transformační JavaScript a pomocné čistící skripty.
 - Každý záznam ukazuje kategorii, scope, projektové datum, breaking stav a krátký neklikací hash commitu.
-- Čtenář ihned pozná zdrojový stav výstupu, zatímco technické commity nezatěžují hlavní přehled a přesto zůstávají dostupné.
+- Čtenář ihned pozná zdrojový stav a rozsah období, nejnovější rok vidí přímo a z doprovodného textu pochopí, že prázdné roky se vynechávají; starší roky může otevírat jednotlivě bez ztráty kategorií.
 - Tag ani nekonvenční historická zpráva tiše neodříznou starší změny.
 
 ### Negativní
@@ -98,6 +102,7 @@ Aktivní `changelog.md` je ignorovaný build vstup a při každém sestavení se
 - Čistá instalace stahuje npm obal a platformní binárku `git-cliff`.
 - Údržba šablony vyžaduje znalost TOML a Tera syntaxe.
 - Datum je normalizované do projektového časového pásma, nikoli zobrazené v původním offsetu autora.
+- Celá historie zůstává v jediném Markdownu a výsledném HTML, takže sbalení zlepšuje orientaci, ale neomezuje velikost dokumentu.
 
 ### Rizika a opatření
 
@@ -106,6 +111,7 @@ Aktivní `changelog.md` je ignorovaný build vstup a při každém sestavení se
 | Mělký checkout vynechá historii | Vysoký dopad | CI používá `fetch-depth: 0` | Review workflow a fixture test přes tag |
 | Nový typ commitu zmizí | Nízká pravděpodobnost, střední dopad | Poslední parser zachová každý nekonvenční nebo neznámý záznam v kategorii Ostatní | Integrační test legacy commitu |
 | Breaking change nebude patrná | Vysoký dopad pro čtenáře | Šablona kontroluje strukturovaný příznak `breaking` | Integrační fixture s `feat(scope)!` |
+| Commit na přelomu roku skončí v jiném období podle prostředí | Střední dopad na determinismus | Datum položky i rok období používají `Europe/Prague` | Hraniční commit a shoda výstupu ve dvou hodnotách `TZ` |
 | Platformní npm balíček nebude dostupný | Nízká pravděpodobnost, střední dopad | Přesný lockfile, npm cache a podporované platformy projektu | `npm ci`, Windows regrese a linuxové CI |
 
 ## Migrace a kompatibilita
@@ -121,7 +127,7 @@ Návrat vyžaduje obnovení předchozí konfigurace, závislosti a testu v jedno
 ## Ověření rozhodnutí
 
 - `npm run changelog:generate` vždy přepíše ignorovaný výstup z dosažitelné historie.
-- `tests/changelog.test.mjs` ověřuje tag, conventional i legacy commit, zdrojový stav, stabilní kotvy, sbalené technické změny, breaking marker, krátké hashe, nepřítomnost commit URL a shodu mezi dvěma prostředími.
+- `tests/changelog.test.mjs` ověřuje víceletou historii, tag, conventional i legacy commit, otevřené nejnovější období, sdělení o vynechávání prázdných roků, sbalené starší roky, jejich počty a kategorie, stabilní kotvy, přelom roku, breaking marker, krátké hashe, nepřítomnost commit URL a shodu mezi dvěma prostředími.
 - Úplný projektový profil ověřuje, že DocFX zahrne stejný výstup do statického webu.
 - Při upgradu se znovu ověří oficiální platformní podpora, lockfile, fixture a oba projektové buildy.
 
