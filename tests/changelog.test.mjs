@@ -28,7 +28,7 @@ test('používá uzamčený git-cliff v automatickém build toku', () => {
   assert.match(gitignore, /^changelog\.md$/m);
 });
 
-test('generuje úplnou moderní historii nezávisle na tagu a prostředí', (context) => {
+test('generuje úplnou čtenářskou historii nezávisle na tagu a prostředí', (context) => {
   const fixtureRoot = createFixture(context);
 
   run(fixtureRoot, 'git', ['init', '--quiet']);
@@ -54,13 +54,23 @@ test('generuje úplnou moderní historii nezávisle na tagu a prostředí', (con
 
   const utc = generateChangelog(fixtureRoot, 'UTC');
   const prague = generateChangelog(fixtureRoot, 'Europe/Prague');
+  const head = run(fixtureRoot, 'git', ['rev-parse', 'HEAD']).output.trim();
 
   assert.equal(prague, utc);
   assert.match(utc, /^# Změny/m);
   assert.match(utc, /automaticky generuje z úplné Git historie/);
+  assert.match(utc, new RegExp(`> Zdrojový stav:.*${head}`));
+  assert.match(utc, /Zahrnuté commity: \*\*4\*\*\./);
+  assert.match(utc, /<a id="nove-funkce"><\/a>\r?\n## ✨ Nové funkce/u);
+  assert.match(utc, /<a id="technicke-zmeny"><\/a>\r?\n## 🔩 Technické změny/u);
   assert.match(utc, /## ✨ Nové funkce/);
-  assert.match(utc, /## 🏗️ Sestavení a CI/);
   assert.match(utc, /## 🧾 Ostatní změny/);
+  assert.match(
+    utc,
+    /<details>\s*<summary>Zobrazit technické záznamy \(1\)<\/summary>[\s\S]*Ověř druhou změnu[\s\S]*<\/details>/u,
+  );
+  assert.ok(utc.indexOf('## ✨ Nové funkce') < utc.indexOf('## 🔩 Technické změny'));
+  assert.doesNotMatch(utc, /## 🏗️ Sestavení a CI/);
   assert.match(utc, /⚠️ \*\*Nekompatibilní změna:\*\*/u);
   assert.match(utc, /\*\*core:\*\* Změň veřejný kontrakt/);
   assert.match(utc, /Přidej první změnu/);

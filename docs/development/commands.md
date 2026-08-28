@@ -89,7 +89,9 @@ Strategie výběru testů je v [`../quality/testing.md`](../quality/testing.md).
 
 Každé sestavení odvozuje ignorovaný `changelog.md` z úplné Git historie a zahrne jej do statického artefaktu.
 
-Konfigurace v [`../../cliff.toml`](../../cliff.toml) zachovává nekonvenční commity, řadí Conventional Commits do českých kategorií, zvýrazňuje breaking changes a skládá odkazy bez volání GitHub API.
+Konfigurace v [`../../cliff.toml`](../../cliff.toml) zachovává nekonvenční commity, uvádí přesný zdrojový commit a počet záznamů, řadí čtenářské Conventional Commits do českých kategorií a technické typy zachovává ve sbalené sekci.
+
+Každá kategorie má stabilní explicitní kotvu, breaking changes zůstávají zvýrazněné a odkazy na commity vznikají bez volání GitHub API.
 
 Release tagy historii nerozdělují a datum se deterministicky zobrazuje v projektovém časovém pásmu `Europe/Prague`.
 
@@ -98,7 +100,7 @@ Soubor není verzovaný a nevytváří samostatný commit.
 | Účel | Přesný příkaz | Vedlejší účinek | Očekávaný výsledek |
 |---|---|---|---|
 | Náhled bez zápisu | `npm exec -- git-cliff --config cliff.toml` | Žádný soubor se nezmění | Úplný Markdown na standardním výstupu |
-| Vytvoření vstupu pro sestavení | `npm run changelog:generate` | Přepíše pouze ignorovaný `changelog.md` | Kategorizovaný přehled aktuální historie s odkazy na commity |
+| Vytvoření vstupu pro sestavení | `npm run changelog:generate` | Přepíše pouze ignorovaný `changelog.md` | Přehled aktuální historie s identitou zdroje, stabilními kotvami a sbalenými technickými záznamy |
 
 `npm run docs:build` tento krok spouští automaticky před DocFX.
 

@@ -5,16 +5,42 @@ header = """
 # Změny
 
 > Tento soubor se automaticky generuje z úplné Git historie. Neupravujte jej ručně.
-
----
 """
 body = """
-{% for group, commits in commits | group_by(attribute="group") %}\
-## {{ group | striptags | trim }}
+> Zdrojový stav: [`{{ commit_id | truncate(length=7, end="") }}`](https://github.com/{{ remote.github.owner }}/{{ remote.github.repo }}/commit/{{ commit_id }}). Zahrnuté commity: **{{ statistics.commit_count }}**.
 
+---
+{% for group, commits in commits | group_by(attribute="group") %}\
+{% set title = group | striptags | trim %}\
+{% if title == "✨ Nové funkce" %}\
+<a id="nove-funkce"></a>
+{% elif title == "🐛 Opravy" %}\
+<a id="opravy"></a>
+{% elif title == "⚡ Výkon" %}\
+<a id="vykon"></a>
+{% elif title == "📚 Dokumentace" %}\
+<a id="dokumentace"></a>
+{% elif title == "⏪ Vrácené změny" %}\
+<a id="vracene-zmeny"></a>
+{% elif title == "🧾 Ostatní změny" %}\
+<a id="ostatni-zmeny"></a>
+{% elif title == "🔩 Technické změny" %}\
+<a id="technicke-zmeny"></a>
+{% endif %}\
+## {{ title }}
+
+{% if title == "🔩 Technické změny" %}\
+<details>
+<summary>Zobrazit technické záznamy ({{ commits | length }})</summary>
+
+{% endif %}\
 {% for commit in commits %}\
 - {% if commit.breaking %}⚠️ **Nekompatibilní změna:** {% endif %}{% if commit.scope %}**{{ commit.scope }}:** {% endif %}{{ commit.message | upper_first }} · {{ commit.author.timestamp | date(format="%Y-%m-%d", timezone="Europe/Prague") }} · [`{{ commit.id | truncate(length=7, end="") }}`](https://github.com/{{ remote.github.owner }}/{{ remote.github.repo }}/commit/{{ commit.id }})
 {% endfor %}
+{% if title == "🔩 Technické změny" %}\
+</details>
+
+{% endif %}\
 {% endfor %}
 """
 trim = true
@@ -35,13 +61,9 @@ commit_parsers = [
   { message = "^fix", group = "<!-- 1 -->🐛 Opravy" },
   { message = "^perf", group = "<!-- 2 -->⚡ Výkon" },
   { message = "^docs?", group = "<!-- 3 -->📚 Dokumentace" },
-  { message = "^refactor", group = "<!-- 4 -->♻️ Refaktorizace" },
-  { message = "^(?:build|ci)", group = "<!-- 5 -->🏗️ Sestavení a CI" },
-  { message = "^test", group = "<!-- 6 -->🧪 Testy" },
-  { message = "^style", group = "<!-- 7 -->🎨 Styl" },
-  { message = "^chore", group = "<!-- 8 -->🔧 Údržba" },
-  { message = "^revert", group = "<!-- 9 -->⏪ Vrácené změny" },
-  { message = ".*", group = "<!-- 10 -->🧾 Ostatní změny" },
+  { message = "^revert", group = "<!-- 4 -->⏪ Vrácené změny" },
+  { message = "^(?:refactor|build|ci|test|style|chore)", group = "<!-- 9 -->🔩 Technické změny" },
+  { message = ".*", group = "<!-- 5 -->🧾 Ostatní změny" },
 ]
 protect_breaking_commits = true
 filter_commits = false

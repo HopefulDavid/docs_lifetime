@@ -79,6 +79,8 @@ Oba dokumentační projekty používají stejnou šablonu, parsery, pořadí sku
 
 Generování běží v offline režimu, takže odkazy se skládají z deklarované identity repozitáře bez volání GitHub API.
 
+Výstup uvádí zdrojový commit a počet zahrnutých commitů, čtenářské kategorie zobrazuje přímo a technické typy zachovává ve sbaleném bloku se stabilními kotvami.
+
 Aktivní `changelog.md` je ignorovaný build vstup a při každém sestavení se celý přepíše.
 
 ## Důsledky
@@ -88,6 +90,7 @@ Aktivní `changelog.md` je ignorovaný build vstup a při každém sestavení se
 - Oba projekty mají jeden reprodukovatelný a testovaný způsob generování.
 - Deklarativní konfigurace nahrazuje vlastní transformační JavaScript a pomocné čistící skripty.
 - Každý záznam ukazuje kategorii, scope, projektové datum, breaking stav a odkaz na úplný commit.
+- Čtenář ihned pozná zdrojový stav výstupu, zatímco technické commity nezatěžují hlavní přehled a přesto zůstávají dostupné.
 - Tag ani nekonvenční historická zpráva tiše neodříznou starší změny.
 
 ### Negativní
@@ -118,7 +121,7 @@ Návrat vyžaduje obnovení předchozí konfigurace, závislosti a testu v jedno
 ## Ověření rozhodnutí
 
 - `npm run changelog:generate` vždy přepíše ignorovaný výstup z dosažitelné historie.
-- `tests/changelog.test.mjs` ověřuje tag, conventional i legacy commit, breaking marker, odkazy a shodu mezi dvěma prostředími.
+- `tests/changelog.test.mjs` ověřuje tag, conventional i legacy commit, zdrojový stav, stabilní kotvy, sbalené technické změny, breaking marker, odkazy a shodu mezi dvěma prostředími.
 - Úplný projektový profil ověřuje, že DocFX zahrne stejný výstup do statického webu.
 - Při upgradu se znovu ověří oficiální platformní podpora, lockfile, fixture a oba projektové buildy.
 
