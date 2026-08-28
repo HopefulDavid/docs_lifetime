@@ -107,18 +107,24 @@ Publikační job nikdy nezapisuje do `main`; changelog vzniká pouze v jeho doč
 
 ### Ochrana větví
 
-Veřejné GitHub API dne 2026-08-28 vrátilo `protected: false` pro větve [`main`](https://api.github.com/repos/HopefulDavid/Docs_Lifetime/branches/main) i [`develop`](https://api.github.com/repos/HopefulDavid/Docs_Lifetime/branches/develop).
+GitHub dne 2026-08-28 vynucuje dva aktivní repozitářové rulesety pro zdrojové větve.
 
-Workflow proto ověřuje každý zachycený push, ale nastavení hostingu samo nevynucuje pull request, schválení ani předchozí úspěšný status check.
+| Větev | Cílení rulesetu | Vynucené podmínky | Povolený tok |
+|---|---|---|---|
+| `main` | [`Ochrana main`](https://api.github.com/repos/HopefulDavid/Docs_Lifetime/rulesets/21745379) na výchozí větev | Pull request, vyřešené konverzace, aktuální větev a úspěšná kontrola `Ověření dokumentace` z GitHub Actions, zákaz smazání a force pushe | Merge commit bez povinného schválení |
+| `develop` | [`Ochrana develop`](https://api.github.com/repos/HopefulDavid/Docs_Lifetime/rulesets/21745490) přesně na `refs/heads/develop` | Zákaz smazání a force pushe | Přímý push, po kterém běží `verify-docs` |
+| `gh-pages` | Bez rulesetu | Žádná ochrana větve | Publikační job přepisuje větev pomocí `force_orphan` |
 
-Změna branch protection je administrativní zásah do oprávnění a musí vycházet z výslovného rozhodnutí maintainera o chráněných větvích a požadovaných kontrolách.
+Oba zdrojové rulesety mají prázdný bypass seznam a nejsou doplněné klasickou branch protection.
+
+Nechráněná nasazovací větev `gh-pages` je záměrná, protože její ochrana proti non-fast-forward aktualizaci by blokovala současný publikační mechanismus.
 
 ## Prostředí a propagace
 
 | Prostředí | Účel | Zdroj artefaktu | Schválení | Ověření po nasazení | Rollback |
 |---|---|---|---|---|---|
 | Lokální `_site/` | Vývojový náhled a vizuální kontrola | Aktuální checkout | Žádné | Reprezentativní smoke v prohlížeči | Odstranit a znovu sestavit |
-| GitHub Actions | Ověření a vytvoření artefaktu | Commit události | `main` ani `develop` nejsou chráněné branch protection | Log sestavení a obsah `_site/` | Opravit nebo revertovat zdrojovou změnu |
+| GitHub Actions | Ověření a vytvoření artefaktu | Commit události | `main` vyžaduje pull request a úspěšné `Ověření dokumentace`; `develop` povoluje přímý push | Log sestavení a obsah `_site/` | Opravit nebo revertovat zdrojovou změnu |
 | GitHub Pages | Veřejné čtení | `_site/` z `publish-docs` | Úspěšný `verify-docs` a větev `main` | Veřejná úvodní stránka a reprezentativní recept | [`../operations/runbook.md`](../operations/runbook.md#rollback-a-bezpečné-pokračování) |
 
 Projekt nemá staging prostředí ani runtime datovou migraci.

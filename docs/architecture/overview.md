@@ -19,7 +19,7 @@ Důvody významných voleb jsou zaznamenané v [`decisions/`](decisions/README.m
 
 **Záměr:** Zachovat jednoduchou statickou architekturu, deterministické generování a jediný autoritativní zdroj obsahu bez databáze a aplikačního serveru.
 
-**Přechody:** Technické přechody uvnitř repozitáře jsou uzavřené, ale externí ochrana větví zůstává neaktivní podle části [Zbytková rizika a trvalé kontroly](#11-zbytková-rizika-a-trvalé-kontroly).
+**Přechody:** V dotčené architektuře nejsou otevřené technické přechody a ochranu zdrojových větví vynucují GitHub rulesety popsané v [`../delivery/ci-cd.md`](../delivery/ci-cd.md#ochrana-větví).
 
 ## 1. Účel architektury a kvalitativní cíle
 
@@ -156,10 +156,11 @@ Přesné kroky nasazení jsou v [`../delivery/ci-cd.md`](../delivery/ci-cd.md) a
 
 Technické přechody původně vedené jako `ARCH-RISK-001` a `ARCH-RISK-005` uzavřelo přijaté [`ADR-0002`](decisions/ADR-0002-vyhledavani-nad-docfx-indexem.md), automatické scénáře a ověřený upgrade DocFX.
 
+Dřívější `DELIVERY-RISK-001` uzavřely aktivní GitHub rulesety pro `main` a `develop`, jejichž aktuální nastavení vlastní [`../delivery/ci-cd.md`](../delivery/ci-cd.md#ochrana-větví).
+
 | ID | Skutečnost | Dopad | Povinná kontrola nebo cílový stav | Vlastník | Podmínka změny nebo přezkoumání |
 |---|---|---|---|---|---|
 | `CONTENT-CONTROL-001` | Technické kontroly neumějí spolehlivě posoudit kulinářskou správnost ingrediencí, množství a postupu | Věcná chyba může projít sestavením | Každou věcnou obsahovou změnu potvrdí člověk znalý receptu | Správce obsahu | Při změně produktového modelu nebo zavedení odborného validačního zdroje |
-| `DELIVERY-RISK-001` | Veřejné GitHub API dne 2026-08-28 uvedlo `protected: false` pro `main` i `develop` | Přímý push nemusí projít pull requestem ani schválením, přestože následný workflow stále ověřuje commit | Maintainer výslovně rozhodne o pravidlech a případnou branch protection nastaví mimo repozitář | Maintainers | Ověřená ochrana vhodných větví nebo zdokumentované přijetí přímých pushů |
 
 ## 12. Architektonický slovník
 
