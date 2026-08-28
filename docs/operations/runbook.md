@@ -30,6 +30,8 @@ Kontroly prováděj v uvedeném pořadí od nejméně invazivní.
 |---|---|---|---|---|
 | Veřejný vstup | Otevři `https://hopefuldavid.github.io/docs_lifetime/` | HTTP úspěch, nadpis `Dokumentace ze života` a katalog | 404, 5xx, starý nebo prázdný obsah | Ověř detail a poslední workflow |
 | Reprezentativní detail | Otevři známý recept z katalogu | Nadpis, ingredience a kroky se vykreslí bez chyb konzole | Odkaz 404, chybějící styly nebo prázdný článek | Porovnej zdroj, TOC a `_site/` |
+| České a anglické hledání | Vyhledej `Rajská`, `rajska`, `PIZZA`, `French Press`, `coffee` a dotaz bez shody | Správné výsledky, český nulový stav a konzole bez chyb | Prázdný výsledek pro známé slovo, anglický stav nebo chyba workeru | Ověř vlastní assety, `index.json` a verzi DocFX |
+| Changelog | Otevři stránku `Změny` z hlavní navigace | Zdrojový stav odpovídá `HEAD`, nejnovější rok je otevřený, roky bez změn nejsou zobrazené a každý starší zobrazený rok je sbalený s vlastním počtem a uvnitř zůstávají kategorie i technické záznamy | Chybějící starší změny, chybný roční přechod, zastaralý zdrojový stav, posunuté datum nebo neformátovaný podporovaný typ | Reprodukuj generátor podle diagnostického stromu |
 | Lokální reprodukce | Spusť úplnou lokální kontrolu z [`../development/commands.md`](../development/commands.md) | `npm test` a build projdou bez varování | Zastaralý generovaný soubor, vadný odkaz nebo neobnovený nástroj | Oprav nejbližší potvrzenou příčinu |
 | CI | Otevři běh workflow `Dokumentace` pro dotčený commit | `verify-docs` a u `main` také `publish-docs` jsou úspěšné | Registry, oprávnění, sestavení, Pages nebo SMTP | Postupuj podle názvu prvního selhaného kroku |
 
@@ -73,6 +75,34 @@ Projekt nemá serverový health endpoint, protože na Pages běží pouze static
 **Bezpečná náprava:** Oprav autoritativní zdroj nebo generátor a nech odvozené soubory znovu vytvořit.
 
 **Eskalace:** Změna již publikované stabilní URL vyžaduje rozhodnutí o kompatibilitě a případném přesměrování.
+
+### Symptom: známý český nebo anglický termín nemá výsledek nebo hledání hlásí klientskou chybu
+
+1. Spusť `npm test` a potvrď cílené scénáře normalizace i nulového výsledku.
+2. Sestav web a ověř, že `_site/public/search-worker.min.js` a `_site/public/search-core.mjs` odpovídají souborům vlastní šablony.
+3. Ověř, že hledaná položka existuje v `_site/index.json` a stránka má `lang="cs"` i český popisek hledání.
+4. Spusť lokální náhled a zopakuj celý scénář z [`../development/commands.md`](../development/commands.md#reprezentativní-smoke-scénář) s otevřenou konzolí.
+5. Pokud závada vznikla po upgradu DocFX, porovnej workerový kontrakt s [`ADR-0002`](../architecture/decisions/ADR-0002-vyhledavani-nad-docfx-indexem.md) a oprav kompatibilní integrační hranici.
+
+**Potvrzení příčiny:** Konkrétní rozdíl je reprodukovaný v čisté funkci, statickém assetu, indexu nebo zprávě mezi stránkou a workerem.
+
+**Bezpečná náprava:** Kompatibilní oprava vlastní šablony s automatickými testy, čistým buildem a skutečným smoke scénářem.
+
+**Eskalace:** Změna rozsahu hledání, přidání jazykové knihovny nebo odstranění fulltextu vyžaduje nové produktové či architektonické rozhodnutí.
+
+### Symptom: changelog chybí, je neúplný nebo se liší mezi prostředími
+
+1. Spusť `npm run test:unit` a potvrď víceletou fixture, počty období, typy commitů, časová pásma a historii oddělenou Git tagem.
+2. Spusť `npm run changelog:generate`, porovnej hlavičku s `git rev-parse HEAD` a ignorovaný `changelog.md` s `git log` bez ruční úpravy výstupu.
+3. Ověř úplný checkout a hodnotu `tag_pattern = "^$"` v kanonickém `cliff.toml`.
+4. Spusť `npm run docs:build` a potvrď, že `_site/changelog.html` obsahuje stejnou historii, otevřené nejnovější období, sdělení o vynechávání prázdných roků, sbalené starší roky, počty, kategorie a stabilní kotvy.
+5. V CI ověř `fetch-depth: 0` a první selhaný krok `verify-docs` nebo `publish-docs`.
+
+**Potvrzení příčiny:** Konkrétní commit chybí nebo má jinou skupinu v reprodukovaném CLI výstupu nad stejnou Git historií.
+
+**Bezpečná náprava:** Oprav zdrojovou commit zprávu pouze novým commitem, nebo kompatibilně oprav generátor a znovu sestav artefakt; vygenerovaný soubor necommituj.
+
+**Eskalace:** Přepis publikované Git historie, změna verzovacího modelu nebo ruční udržování changelogu vyžaduje samostatné rozhodnutí maintainera.
 
 ### Symptom: web je nasazený, ale oznámení nepřišlo
 

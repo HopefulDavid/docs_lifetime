@@ -35,9 +35,15 @@ Přesné lokální příkazy jsou v [`../development/commands.md`](../developmen
 |---|---|---|---|
 | Obnova JavaScript nástrojů | `npm ci --ignore-scripts --no-audit --no-fund` | Node.js z `actions/setup-node` a npm cache podle lockfilu | Úspěšná čistá instalace |
 | Obnova DocFX | `dotnet tool restore` | .NET 8 z `actions/setup-dotnet` | Přesná verze z tool manifestu |
-| Kontrola zdrojů | `npm test` | Čtecí checkout s úplnou historií | Generované soubory a strukturální validace projdou |
+| Kontrola zdrojů | `npm test` | Čtecí checkout s úplnou historií | Hledací, negativní a changelogové testy, generované soubory a strukturální validace projdou |
 | Sestavení | `npm run docs:build` | Varování DocFX jsou chybou | `_site/` z jednoho checkoutu |
 | Changelog | `npm run changelog:generate` jako součást sestavení | Každý build s úplnou historií | Ignorovaný `changelog.md` zahrnutý do `_site/` |
+
+Generátor vždy přepisuje changelog z celé dosažitelné historie a `tag_pattern = "^$"` záměrně vypíná release segmentaci, takže Git tag neodřízne starší záznamy.
+
+Šablona používá projektové časové pásmo `Europe/Prague`, stejný commit proto dostane shodné datum bez ohledu na `TZ` lokálního procesu nebo GitHub runneru.
+
+Konfigurace jednotně zobrazuje typy povolené vývojovým workflow, zachovává neznámé hlavičky, uvádí krátké neklikací hashe a nekompatibilní změnu označuje varovným symbolem.
 
 ## Názvy workflow a kroků
 
@@ -99,12 +105,26 @@ Statický artefakt se v publikačním jobu sestaví jednou a beze změny se ode�
 
 Publikační job nikdy nezapisuje do `main`; changelog vzniká pouze v jeho dočasném workspace a nasazovací větev obsahuje jediný orphan commit posledního artefaktu.
 
+### Ochrana větví
+
+GitHub dne 2026-08-28 vynucuje dva aktivní repozitářové rulesety pro zdrojové větve.
+
+| Větev | Cílení rulesetu | Vynucené podmínky | Povolený tok |
+|---|---|---|---|
+| `main` | [`Ochrana main`](https://api.github.com/repos/HopefulDavid/Docs_Lifetime/rulesets/21745379) na výchozí větev | Pull request, vyřešené konverzace, aktuální větev a úspěšná kontrola `Ověření dokumentace` z GitHub Actions, zákaz smazání a force pushe | Merge commit bez povinného schválení |
+| `develop` | [`Ochrana develop`](https://api.github.com/repos/HopefulDavid/Docs_Lifetime/rulesets/21745490) přesně na `refs/heads/develop` | Zákaz smazání a force pushe | Přímý push, po kterém běží `verify-docs` |
+| `gh-pages` | Bez rulesetu | Žádná ochrana větve | Publikační job přepisuje větev pomocí `force_orphan` |
+
+Oba zdrojové rulesety mají prázdný bypass seznam a nejsou doplněné klasickou branch protection.
+
+Nechráněná nasazovací větev `gh-pages` je záměrná, protože její ochrana proti non-fast-forward aktualizaci by blokovala současný publikační mechanismus.
+
 ## Prostředí a propagace
 
 | Prostředí | Účel | Zdroj artefaktu | Schválení | Ověření po nasazení | Rollback |
 |---|---|---|---|---|---|
 | Lokální `_site/` | Vývojový náhled a vizuální kontrola | Aktuální checkout | Žádné | Reprezentativní smoke v prohlížeči | Odstranit a znovu sestavit |
-| GitHub Actions | Ověření a vytvoření artefaktu | Commit události | Ochrany větve mimo repozitář nebyly ověřené | Log sestavení a obsah `_site/` | Opravit nebo revertovat zdrojovou změnu |
+| GitHub Actions | Ověření a vytvoření artefaktu | Commit události | `main` vyžaduje pull request a úspěšné `Ověření dokumentace`; `develop` povoluje přímý push | Log sestavení a obsah `_site/` | Opravit nebo revertovat zdrojovou změnu |
 | GitHub Pages | Veřejné čtení | `_site/` z `publish-docs` | Úspěšný `verify-docs` a větev `main` | Veřejná úvodní stránka a reprezentativní recept | [`../operations/runbook.md`](../operations/runbook.md#rollback-a-bezpečné-pokračování) |
 
 Projekt nemá staging prostředí ani runtime datovou migraci.
@@ -116,7 +136,7 @@ Projekt používá průběžné vydávání z větve `main` bez samostatného č
 | Krok | Spouštěč | Kanonický nástroj nebo soubor | Ověření |
 |---|---|---|---|
 | Ověření zdroje | Push nebo ruční běh na `main` | `npm test` a `npm run docs:build` | Job `verify-docs` projde |
-| Vytvoření historie změn | Sestavení artefaktu | `changelog-config.js` a `npm run changelog:generate` | Ignorovaný changelog odpovídá úplné zdrojové historii |
+| Vytvoření historie změn | Sestavení artefaktu | `cliff.toml`, uzamčený `git-cliff` a `npm run changelog:generate` | Ignorovaný changelog odpovídá úplné dosažitelné historii bez ohledu na tag a časové pásmo procesu |
 | Sestavení artefaktu | Ověřený checkout publikačního jobu | `npm run docs:build` | DocFX skončí bez varování a chyb |
 | Publikování | Úspěšné sestavení | `peaceiris/actions-gh-pages` | Veřejný smoke GitHub Pages |
 | Oznámení | Úspěšné nasazení | `dawidd6/action-send-mail` | Výsledek kroku v logu, selhání je neblokující |

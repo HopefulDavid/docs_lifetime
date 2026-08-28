@@ -12,19 +12,21 @@ owner: engineering
 | Závislost | Úloha | Kanonická verze | Důvod a hranice |
 |---|---|---|---|
 | Node.js | Spouští generátor, validátor a changelog nástroj | Řada v [`../../package.json`](../../package.json) | Node.js 24 je k datu ověření LTS a projekt používá pouze jeho standardní knihovnu pro vlastní skripty |
-| `conventional-changelog-cli` | Odvozuje veřejný changelog z Git historie | [`../../package-lock.json`](../../package-lock.json) | Je vývojovou závislostí a nevstupuje do publikovaného webu |
+| `git-cliff` | Odvozuje kategorizovaný veřejný changelog z Git historie | [`../../package.json`](../../package.json) a [`../../package-lock.json`](../../package-lock.json) | Přesně uzamčená vývojová závislost; běží offline a nevstupuje do publikovaného webu jako runtime kód |
 | DocFX | Převádí produktový Markdown a YAML do statického webu | [`../../.config/dotnet-tools.json`](../../.config/dotnet-tools.json) | Lokální .NET tool manifest připíná stejný nástroj pro vývoj i CI |
 | GitHub Actions | Připravují prostředí, nasazují Pages a odesílají oznámení | [Workflow](../../.github/workflows/main.yml) | Každá akce je připnutá na ověřený commit SHA a čitelný hlavní tag zůstává v komentáři |
 
 Node.js 24 byl dne 2026-08-28 ověřený jako podporovaná LTS řada podle [oficiálního přehledu vydání](https://nodejs.org/en/about/previous-releases).
 
-DocFX 2.76.0 je projektově připnutá kompatibilní verze.
+DocFX 2.78.5 byl dne 2026-08-28 přijat po ověření [oficiálního vydání](https://github.com/dotnet/docfx/releases/tag/v2.78.5), sestavení bez varování a klientských hledacích scénářů.
 
-Upgrade na DocFX 2.78.5 byl dne 2026-08-28 ověřený proti [oficiálnímu vydání](https://github.com/dotnet/docfx/releases/tag/v2.78.5), ale v tomto projektu způsobil klientskou chybu vestavěného hledání, a proto nebyl přijat.
+Vestavěný worker DocFX nepodporuje češtinu, a proto jej vlastní jazykově nezávislá šablona nahrazuje podle [`ADR-0002`](../architecture/decisions/ADR-0002-vyhledavani-nad-docfx-indexem.md).
 
 Lokální manifest a `dotnet tool restore` odpovídají [podporovanému modelu .NET nástrojů](https://learn.microsoft.com/en-us/dotnet/core/tools/global-tools).
 
-Vlastní generátor a validátor záměrně nepřidávají runtime knihovnu, protože jejich současné potřeby pokrývá standardní knihovna Node.js.
+Vlastní generátor, validátor, testy a klientské hledání záměrně nepřidávají runtime knihovnu, protože jejich současné potřeby pokrývají standardní API Node.js a prohlížeče.
+
+Volbu changelog nástroje a její migrační hranice přijímá [`ADR-0003`](../architecture/decisions/ADR-0003-generovani-changelogu-pomoci-git-cliff.md).
 
 Nepoužívaná přímá závislost `argparse` byla při inicializaci odstraněná z manifestu i lockfilu.
 
