@@ -91,7 +91,7 @@ Diagram ukazuje jednosměrné odvozování výstupů a odděluje obsahovou a zm�
 | Zdrojový obsah | Definuje recept nebo nápoj | Markdown soubor v podporované cestě | Žádná generovaná stránka | Správce obsahu |
 | `scripts/generate-docs.js` | Normalizuje obsah a sestavuje katalog, přehledy a TOC | npm skripty `docs:generate` a `docs:check` | Node.js standardní knihovna a zdrojový obsah | Engineering |
 | Generované přehledy | Poskytují odvozenou navigaci a katalog | `index.md` a `toc.yml` v produktovém stromu | Pouze generátor | Generátor |
-| Changelog | Odvozuje veřejný přehled změn z historie | `changelog-config.js` a npm skript | Git historie a uzamčený CLI balíček; výstup je ignorovaný build vstup | Delivery |
+| Changelog | Odvozuje kategorizovaný veřejný přehled změn z historie | `cliff.toml` a npm skript | Git historie a `git-cliff` uzamčený npm lockfilem; výstup je ignorovaný build vstup | Delivery |
 | DocFX sestavení | Čistí starý výstup a převádí produktový Markdown a YAML do HTML a indexu hledání | `docs:clean`, `docfx.json` a lokální .NET tool manifest | Obsah, přehledy, changelog a šablona | Engineering |
 | Vlastní šablona | Přizpůsobuje vzhled, české popisky a klientské vstupy moderního tématu | `templates/kitchen/` | Podporované veřejné assety a tokeny šablony DocFX | Design a engineering |
 | Klientské hledání | Normalizuje libovolné české nebo anglické termíny, porovnává je s `index.json` a vrací výsledky rendereru DocFX | `templates/kitchen/public/search-core.mjs` a workerový kontrakt DocFX | Standardní webová API a statický index vytvořený DocFX | Engineering |
@@ -116,7 +116,7 @@ Závislosti tečou pouze směrem ke generovanému výstupu a zdrojový obsah nik
 |---|---|---|---|---|---|
 | Recepty a nápoje | Verzované Markdown soubory pod `food/` a `drink/` | Správce obsahu | Git commit | Git historie podle repozitáře, odstranění přes běžnou změnu | Přesuny cest musí aktualizovat nebo přesměrovat veřejné odkazy |
 | Katalog a navigace | Generátor a zdrojový obsah | Generátor | Přepočet při každé změně | Výstupy lze odstranit a znovu vytvořit | Změna struktury vyžaduje kompatibilní úpravu parseru cest |
-| Changelog | Git historie a `changelog-config.js` | Delivery | Regenerace při každém sestavení | Ignorovaný lokální výstup a kopie ve statickém artefaktu | Změna formátu nesmí ztratit existující historii |
+| Changelog | Git historie a `cliff.toml` | Delivery | Regenerace při každém sestavení | Ignorovaný lokální výstup a kopie ve statickém artefaktu | Změna formátu nesmí skrýt dosažitelný commit |
 | Statický web | `_site/` vytvořený z jednoho checkoutu | Build | Neměnný artefakt jednoho běhu | Lokálně ignorovaný, publikovaná kopie se nahrazuje nasazením | Nová verze se nasazuje bez runtime datové migrace |
 | Tajemství CI | GitHub Actions secrets | Maintainers | Mimo repozitář | Rotace podle správy účtu | Přesun poskytovatele vyžaduje nové řízené identity |
 

@@ -1,0 +1,59 @@
+# Sdílená konfigurace generátoru changelogu pro oba dokumentační projekty.
+
+[changelog]
+header = """
+# Změny
+
+> Tento soubor se automaticky generuje z úplné Git historie. Neupravujte jej ručně.
+
+---
+"""
+body = """
+{% for group, commits in commits | group_by(attribute="group") %}\
+## {{ group | striptags | trim }}
+
+{% for commit in commits %}\
+- {% if commit.breaking %}⚠️ **Nekompatibilní změna:** {% endif %}{% if commit.scope %}**{{ commit.scope }}:** {% endif %}{{ commit.message | upper_first }} · {{ commit.author.timestamp | date(format="%Y-%m-%d", timezone="Europe/Prague") }} · [`{{ commit.id | truncate(length=7, end="") }}`](https://github.com/{{ remote.github.owner }}/{{ remote.github.repo }}/commit/{{ commit.id }})
+{% endfor %}
+{% endfor %}
+"""
+trim = true
+render_always = true
+footer = """
+<!-- Vygenerováno pomocí git-cliff; zdrojem pravdy je Git historie a cliff.toml. -->
+"""
+
+[git]
+conventional_commits = true
+filter_unconventional = false
+require_conventional = false
+split_commits = false
+commit_parsers = [
+  { message = "(?i)^chore(?:\\([^)]*\\))?: (?:update changelog|release)", skip = true },
+  { message = "^Merge ", skip = true },
+  { message = "^feat", group = "<!-- 0 -->✨ Nové funkce" },
+  { message = "^fix", group = "<!-- 1 -->🐛 Opravy" },
+  { message = "^perf", group = "<!-- 2 -->⚡ Výkon" },
+  { message = "^docs?", group = "<!-- 3 -->📚 Dokumentace" },
+  { message = "^refactor", group = "<!-- 4 -->♻️ Refaktorizace" },
+  { message = "^(?:build|ci)", group = "<!-- 5 -->🏗️ Sestavení a CI" },
+  { message = "^test", group = "<!-- 6 -->🧪 Testy" },
+  { message = "^style", group = "<!-- 7 -->🎨 Styl" },
+  { message = "^chore", group = "<!-- 8 -->🔧 Údržba" },
+  { message = "^revert", group = "<!-- 9 -->⏪ Vrácené změny" },
+  { message = ".*", group = "<!-- 10 -->🧾 Ostatní změny" },
+]
+protect_breaking_commits = true
+filter_commits = false
+fail_on_unmatched_commit = false
+tag_pattern = "^$"
+topo_order = false
+topo_order_commits = false
+sort_commits = "newest"
+
+[remote]
+offline = true
+
+[remote.github]
+owner = "HopefulDavid"
+repo = "Docs_Lifetime"

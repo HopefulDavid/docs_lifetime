@@ -12,7 +12,7 @@ owner: engineering
 | Závislost | Úloha | Kanonická verze | Důvod a hranice |
 |---|---|---|---|
 | Node.js | Spouští generátor, validátor a changelog nástroj | Řada v [`../../package.json`](../../package.json) | Node.js 24 je k datu ověření LTS a projekt používá pouze jeho standardní knihovnu pro vlastní skripty |
-| `conventional-changelog-cli` | Odvozuje veřejný changelog z Git historie | [`../../package-lock.json`](../../package-lock.json) | Je vývojovou závislostí a nevstupuje do publikovaného webu |
+| `git-cliff` | Odvozuje kategorizovaný veřejný changelog z Git historie | [`../../package.json`](../../package.json) a [`../../package-lock.json`](../../package-lock.json) | Přesně uzamčená vývojová závislost; běží offline a nevstupuje do publikovaného webu jako runtime kód |
 | DocFX | Převádí produktový Markdown a YAML do statického webu | [`../../.config/dotnet-tools.json`](../../.config/dotnet-tools.json) | Lokální .NET tool manifest připíná stejný nástroj pro vývoj i CI |
 | GitHub Actions | Připravují prostředí, nasazují Pages a odesílají oznámení | [Workflow](../../.github/workflows/main.yml) | Každá akce je připnutá na ověřený commit SHA a čitelný hlavní tag zůstává v komentáři |
 
@@ -25,6 +25,8 @@ Vestavěný worker DocFX nepodporuje češtinu, a proto jej vlastní jazykově n
 Lokální manifest a `dotnet tool restore` odpovídají [podporovanému modelu .NET nástrojů](https://learn.microsoft.com/en-us/dotnet/core/tools/global-tools).
 
 Vlastní generátor, validátor, testy a klientské hledání záměrně nepřidávají runtime knihovnu, protože jejich současné potřeby pokrývají standardní API Node.js a prohlížeče.
+
+Volbu changelog nástroje a její migrační hranice přijímá [`ADR-0003`](../architecture/decisions/ADR-0003-generovani-changelogu-pomoci-git-cliff.md).
 
 Nepoužívaná přímá závislost `argparse` byla při inicializaci odstraněná z manifestu i lockfilu.
 

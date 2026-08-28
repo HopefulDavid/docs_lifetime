@@ -31,3 +31,4 @@ Nový záznam vzniká ze šablony [`../../templates/adr.md`](../../templates/adr
 |---|---|---|---|
 | [`ADR-0001-kanonicky-system-dokumentace.md`](ADR-0001-kanonicky-system-dokumentace.md) | Kanonický systém dokumentace pro lidi a AI agenty | Přijato | — |
 | [`ADR-0002-vyhledavani-nad-docfx-indexem.md`](ADR-0002-vyhledavani-nad-docfx-indexem.md) | Vyhledávání nad indexem DocFX | Přijato | — |
+| [`ADR-0003-generovani-changelogu-pomoci-git-cliff.md`](ADR-0003-generovani-changelogu-pomoci-git-cliff.md) | Generování changelogu pomocí git-cliff | Přijato | — |

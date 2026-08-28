@@ -62,8 +62,8 @@ Po změně zdroje web znovu sestav a stránku obnov.
 
 | Kontrola | Přesný příkaz | Rozsah | Oprava formátu | Očekávaný výsledek |
 |---|---|---|---|---|
-| Cílené automatické testy | `npm run test:unit` | České i anglické hledání a chybové vstupy generátoru v dočasných kopiích | Ruční oprava modulu, workeru nebo generátoru | Devět scénářů projde a dočasné kopie se odstraní |
-| Konzistence generovaných souborů | `npm run docs:check` | Recepty, nápoje, katalog, přehledy a TOC | `npm run docs:generate` | `Dokumentace je aktuální.` a kód 0 |
+| Cílené automatické testy | `npm run test:unit` | České i anglické hledání, chybové vstupy generátoru a automatický changelog v dočasném Git repozitáři | Ruční oprava modulu, workeru, generátoru nebo konfigurace changelogu | Jedenáct scénářů projde a dočasné kopie se odstraní |
+| Konzistence generovaných souborů | `npm run docs:check` | Nejprve obnoví ignorovaný changelog, potom ověří recepty, nápoje, katalog, přehledy a TOC | `npm run docs:generate` | `Dokumentace je aktuální.` a kód 0 |
 | Struktura dokumentace | `npm run docs:validate` | Interní odkazy, kanonická metadata, adaptéry, pracovní záznamy a zakázané artefakty | Ruční oprava zdroje | Souhrn platných Markdown souborů a kód 0 |
 | Úplná rychlá kontrola | `npm test` | Cílené testy, generované soubory a strukturální validace | Podle konkrétního výstupu | Všechny tři vrstvy projdou |
 | DocFX s varováními jako chybami | `npm run docs:build` | Produktový docset a vlastní šablona | Ruční oprava zdroje nebo konfigurace | `Build succeeded`, 0 varování a 0 chyb |
@@ -78,8 +78,8 @@ Strategie výběru testů je v [`../quality/testing.md`](../quality/testing.md).
 
 | Úroveň | Přesný příkaz nebo scénář | Potřebné služby | Výstupní artefakty | Typická doba nebo rozsah |
 |---|---|---|---|---|
-| Rychlé chování | `npm run test:unit` | Žádné | Konzolový výstup devíti scénářů | Přibližně jedna sekunda bez obnovy nástrojů |
-| Cílený test generátoru | `npm run docs:check` | Žádné | Konzolový seznam očekávaných změn při selhání | Sekundy, celý obsahový katalog |
+| Rychlé chování | `npm run test:unit` | Lokální Git a obnovený `git-cliff` | Konzolový výstup jedenácti scénářů | Jednotky sekund bez obnovy nástrojů |
+| Cílený test generátoru | `npm run docs:check` | Obnovený `git-cliff` a lokální Git | Konzolový seznam očekávaných změn při selhání | Sekundy, changelog a celý obsahový katalog |
 | Automatizované testy | `npm test` | Žádné | Konzolový výstup | Sekundy, celý repozitář |
 | Integrační sestavení | `npm run docs:build` | Obnovený lokální DocFX | `_site/`, `index.json` a `manifest.json` | Jednotky sekund |
 | Vizuální scénáře | `npm run docs:serve`, poté kroky z reprezentativního smoke scénáře | Lokální HTTP port 8765 a prohlížeč | Viditelná stránka, volitelný screenshot a konzole | Úvod, hledání, detail a chybová cesta |
@@ -89,12 +89,16 @@ Strategie výběru testů je v [`../quality/testing.md`](../quality/testing.md).
 
 Každé sestavení odvozuje ignorovaný `changelog.md` z úplné Git historie a zahrne jej do statického artefaktu.
 
+Konfigurace v [`../../cliff.toml`](../../cliff.toml) zachovává nekonvenční commity, řadí Conventional Commits do českých kategorií, zvýrazňuje breaking changes a skládá odkazy bez volání GitHub API.
+
+Release tagy historii nerozdělují a datum se deterministicky zobrazuje v projektovém časovém pásmu `Europe/Prague`.
+
 Soubor není verzovaný a nevytváří samostatný commit.
 
 | Účel | Přesný příkaz | Vedlejší účinek | Očekávaný výsledek |
 |---|---|---|---|
-| Náhled bez zápisu | `npx --no-install conventional-changelog --config ./changelog-config.js -r 1` | Žádný verzovaný zápis | Markdown na standardní výstup |
-| Vytvoření vstupu pro sestavení | `npm run changelog:generate` | Nejprve odstraní a poté vytvoří ignorovaný `changelog.md` | Changelog odpovídající aktuální historii |
+| Náhled bez zápisu | `npm exec -- git-cliff --config cliff.toml` | Žádný soubor se nezmění | Úplný Markdown na standardním výstupu |
+| Vytvoření vstupu pro sestavení | `npm run changelog:generate` | Přepíše pouze ignorovaný `changelog.md` | Kategorizovaný přehled aktuální historie s odkazy na commity |
 
 `npm run docs:build` tento krok spouští automaticky před DocFX.
 

@@ -16,6 +16,7 @@ Projekt kombinuje deterministickou kontrolu generovaných souborů, strukturáln
 | Zastaralý katalog nebo TOC, `REQ-003` a `REQ-E002` | Generátor v režimu bez zápisu | `npm run docs:check` |
 | Vadné odkazy, metadata nebo cache artefakty, `QLT-002` | Strukturální Node.js validátor | `npm run docs:validate` |
 | Nekompatibilní Markdown, šablona nebo DocFX konfigurace, `QLT-001` | Sestavení s varováními jako chybami | `npm run docs:build` |
+| Neúplný nebo nedeterministický changelog, `REQ-004` | Skutečný `git-cliff` nad dočasnou historií s tagem, conventional, breaking i legacy commitem ve dvou časových prostředích | `npm run test:unit` |
 | Procházení katalogu a čitelnost detailu, `REQ-001`, `REQ-002`, `QLT-003` | Krokovatelný lokální scénář v prohlížeči | `npm run docs:serve` po sestavení |
 | České a anglické vyhledání i nulový výsledek, `REQ-005` | Automatické termíny ze všech reprezentativních názvů, obsahu a cest, následované vizuálním smoke | `npm run test:unit` a lokální web |
 | Vadná cesta nebo chybějící nadpis, `REQ-E001` | Izolované negativní obsahové fixture | `npm run test:unit` nad dočasnými kopiemi |
@@ -99,7 +100,7 @@ Databázi, frontu nebo protokol nahrazuj pouze tehdy, když test neztrácí rizi
 
 Preferuj malou sadu rychlých testů pro čistá pravidla, dostatečné integrační testy pro hranice a několik reprezentativních end-to-end scénářů.
 
-Projekt používá vestavěný Node.js test runner pro čisté vyhledávací funkce a spouští generátor nad dočasnou kopií obsahu pro negativní vstupy bez změny pracovního stromu.
+Projekt používá vestavěný Node.js test runner pro čisté vyhledávací funkce, spouští generátor nad dočasnou kopií obsahu pro negativní vstupy a ověřuje skutečný uzamčený `git-cliff` nad dočasnou Git historií bez změny pracovního stromu.
 
 Přesný poměr není univerzální a vychází z architektury projektu.
 

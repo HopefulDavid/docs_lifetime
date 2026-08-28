@@ -35,9 +35,15 @@ Přesné lokální příkazy jsou v [`../development/commands.md`](../developmen
 |---|---|---|---|
 | Obnova JavaScript nástrojů | `npm ci --ignore-scripts --no-audit --no-fund` | Node.js z `actions/setup-node` a npm cache podle lockfilu | Úspěšná čistá instalace |
 | Obnova DocFX | `dotnet tool restore` | .NET 8 z `actions/setup-dotnet` | Přesná verze z tool manifestu |
-| Kontrola zdrojů | `npm test` | Čtecí checkout s úplnou historií | Hledací a negativní testy, generované soubory a strukturální validace projdou |
+| Kontrola zdrojů | `npm test` | Čtecí checkout s úplnou historií | Hledací, negativní a changelogové testy, generované soubory a strukturální validace projdou |
 | Sestavení | `npm run docs:build` | Varování DocFX jsou chybou | `_site/` z jednoho checkoutu |
 | Changelog | `npm run changelog:generate` jako součást sestavení | Každý build s úplnou historií | Ignorovaný `changelog.md` zahrnutý do `_site/` |
+
+Generátor vždy přepisuje changelog z celé dosažitelné historie a `tag_pattern = "^$"` záměrně vypíná release segmentaci, takže Git tag neodřízne starší záznamy.
+
+Šablona používá projektové časové pásmo `Europe/Prague`, stejný commit proto dostane shodné datum bez ohledu na `TZ` lokálního procesu nebo GitHub runneru.
+
+Konfigurace jednotně zobrazuje typy povolené vývojovým workflow, zachovává neznámé hlavičky, odkazuje na úplné commity a nekompatibilní změnu označuje varovným symbolem.
 
 ## Názvy workflow a kroků
 
@@ -124,7 +130,7 @@ Projekt používá průběžné vydávání z větve `main` bez samostatného č
 | Krok | Spouštěč | Kanonický nástroj nebo soubor | Ověření |
 |---|---|---|---|
 | Ověření zdroje | Push nebo ruční běh na `main` | `npm test` a `npm run docs:build` | Job `verify-docs` projde |
-| Vytvoření historie změn | Sestavení artefaktu | `changelog-config.js` a `npm run changelog:generate` | Ignorovaný changelog odpovídá úplné zdrojové historii |
+| Vytvoření historie změn | Sestavení artefaktu | `cliff.toml`, uzamčený `git-cliff` a `npm run changelog:generate` | Ignorovaný changelog odpovídá úplné dosažitelné historii bez ohledu na tag a časové pásmo procesu |
 | Sestavení artefaktu | Ověřený checkout publikačního jobu | `npm run docs:build` | DocFX skončí bez varování a chyb |
 | Publikování | Úspěšné sestavení | `peaceiris/actions-gh-pages` | Veřejný smoke GitHub Pages |
 | Oznámení | Úspěšné nasazení | `dawidd6/action-send-mail` | Výsledek kroku v logu, selhání je neblokující |
