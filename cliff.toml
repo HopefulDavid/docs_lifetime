@@ -7,7 +7,7 @@ header = """
 > Tento soubor se automaticky generuje z úplné Git historie. Neupravujte jej ručně.
 """
 body = """
-> Zdrojový stav: [`{{ commit_id | truncate(length=7, end="") }}`](https://github.com/{{ remote.github.owner }}/{{ remote.github.repo }}/commit/{{ commit_id }}). Zahrnuté commity: **{{ statistics.commit_count }}**.
+> Zdrojový stav: `{{ commit_id | truncate(length=7, end="") }}`. Zahrnuté commity: **{{ statistics.commit_count }}**.
 
 ---
 {% for group, commits in commits | group_by(attribute="group") %}\
@@ -35,7 +35,7 @@ body = """
 
 {% endif %}\
 {% for commit in commits %}\
-- {% if commit.breaking %}⚠️ **Nekompatibilní změna:** {% endif %}{% if commit.scope %}**{{ commit.scope }}:** {% endif %}{{ commit.message | upper_first }} · {{ commit.author.timestamp | date(format="%Y-%m-%d", timezone="Europe/Prague") }} · [`{{ commit.id | truncate(length=7, end="") }}`](https://github.com/{{ remote.github.owner }}/{{ remote.github.repo }}/commit/{{ commit.id }})
+- {% if commit.breaking %}⚠️ **Nekompatibilní změna:** {% endif %}{% if commit.scope %}**{{ commit.scope }}:** {% endif %}{{ commit.message | upper_first }} · {{ commit.author.timestamp | date(format="%Y-%m-%d", timezone="Europe/Prague") }} · `{{ commit.id | truncate(length=7, end="") }}`
 {% endfor %}
 {% if title == "🔩 Technické změny" %}\
 </details>
@@ -75,7 +75,3 @@ sort_commits = "newest"
 
 [remote]
 offline = true
-
-[remote.github]
-owner = "HopefulDavid"
-repo = "Docs_Lifetime"

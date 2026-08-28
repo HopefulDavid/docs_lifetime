@@ -43,7 +43,7 @@ Generátor vždy přepisuje changelog z celé dosažitelné historie a `tag_patt
 
 Šablona používá projektové časové pásmo `Europe/Prague`, stejný commit proto dostane shodné datum bez ohledu na `TZ` lokálního procesu nebo GitHub runneru.
 
-Konfigurace jednotně zobrazuje typy povolené vývojovým workflow, zachovává neznámé hlavičky, odkazuje na úplné commity a nekompatibilní změnu označuje varovným symbolem.
+Konfigurace jednotně zobrazuje typy povolené vývojovým workflow, zachovává neznámé hlavičky, uvádí krátké neklikací hashe a nekompatibilní změnu označuje varovným symbolem.
 
 ## Názvy workflow a kroků
 

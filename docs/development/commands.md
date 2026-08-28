@@ -91,7 +91,7 @@ Každé sestavení odvozuje ignorovaný `changelog.md` z úplné Git historie a 
 
 Konfigurace v [`../../cliff.toml`](../../cliff.toml) zachovává nekonvenční commity, uvádí přesný zdrojový commit a počet záznamů, řadí čtenářské Conventional Commits do českých kategorií a technické typy zachovává ve sbalené sekci.
 
-Každá kategorie má stabilní explicitní kotvu, breaking changes zůstávají zvýrazněné a odkazy na commity vznikají bez volání GitHub API.
+Každá kategorie má stabilní explicitní kotvu, breaking changes zůstávají zvýrazněné a commity se zobrazují pouze krátkým neklikacím hashem.
 
 Release tagy historii nerozdělují a datum se deterministicky zobrazuje v projektovém časovém pásmu `Europe/Prague`.
 

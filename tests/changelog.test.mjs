@@ -1,7 +1,6 @@
 import assert from 'node:assert/strict';
 import { spawnSync } from 'node:child_process';
 import {
-  copyFileSync,
   mkdtempSync,
   readFileSync,
   rmSync,
@@ -59,7 +58,7 @@ test('generuje úplnou čtenářskou historii nezávisle na tagu a prostředí',
   assert.equal(prague, utc);
   assert.match(utc, /^# Změny/m);
   assert.match(utc, /automaticky generuje z úplné Git historie/);
-  assert.match(utc, new RegExp(`> Zdrojový stav:.*${head}`));
+  assert.ok(utc.includes(`> Zdrojový stav: \`${head.slice(0, 7)}\`.`));
   assert.match(utc, /Zahrnuté commity: \*\*4\*\*\./);
   assert.match(utc, /<a id="nove-funkce"><\/a>\r?\n## ✨ Nové funkce/u);
   assert.match(utc, /<a id="technicke-zmeny"><\/a>\r?\n## 🔩 Technické změny/u);
@@ -78,10 +77,8 @@ test('generuje úplnou čtenářskou historii nezávisle na tagu a prostředí',
   assert.match(utc, /Historický záznam/);
   assert.match(utc, /2026-08-27/);
   assert.match(utc, /2026-08-28/);
-  assert.match(
-    utc,
-    /https:\/\/github\.com\/example\/changelog-fixture\/commit\/[0-9a-f]{40}/,
-  );
+  assert.match(utc, /· `[0-9a-f]{7}`/);
+  assert.doesNotMatch(utc, /https:\/\/github\.com\/.+\/commit\//);
   assert.doesNotMatch(utc, /## 1\.0\.0/);
 });
 
@@ -89,9 +86,7 @@ function createFixture(context) {
   const fixtureRoot = mkdtempSync(path.join(tmpdir(), 'docs-changelog-'));
   context.after(() => rmSync(fixtureRoot, { recursive: true, force: true }));
 
-  const fixtureConfig = readFileSync(path.join(repositoryRoot, 'cliff.toml'), 'utf8')
-    .replace(/^owner = ".*"$/m, 'owner = "example"')
-    .replace(/^repo = ".*"$/m, 'repo = "changelog-fixture"');
+  const fixtureConfig = readFileSync(path.join(repositoryRoot, 'cliff.toml'), 'utf8');
   writeFileSync(path.join(fixtureRoot, 'cliff.toml'), fixtureConfig, 'utf8');
   writeFileSync(
     path.join(fixtureRoot, 'package.json'),
