@@ -30,3 +30,4 @@ Nový záznam vzniká ze šablony [`../../templates/adr.md`](../../templates/adr
 | ADR | Název | Stav | Nahrazeno |
 |---|---|---|---|
 | [`ADR-0001-kanonicky-system-dokumentace.md`](ADR-0001-kanonicky-system-dokumentace.md) | Kanonický systém dokumentace pro lidi a AI agenty | Přijato | — |
+| [`ADR-0002-vyhledavani-nad-docfx-indexem.md`](ADR-0002-vyhledavani-nad-docfx-indexem.md) | Vyhledávání nad indexem DocFX | Přijato | — |

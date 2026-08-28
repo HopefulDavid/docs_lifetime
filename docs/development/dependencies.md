@@ -18,13 +18,13 @@ owner: engineering
 
 Node.js 24 byl dne 2026-08-28 ověřený jako podporovaná LTS řada podle [oficiálního přehledu vydání](https://nodejs.org/en/about/previous-releases).
 
-DocFX 2.76.0 je projektově připnutá kompatibilní verze.
+DocFX 2.78.5 byl dne 2026-08-28 přijat po ověření [oficiálního vydání](https://github.com/dotnet/docfx/releases/tag/v2.78.5), sestavení bez varování a klientských hledacích scénářů.
 
-Upgrade na DocFX 2.78.5 byl dne 2026-08-28 ověřený proti [oficiálnímu vydání](https://github.com/dotnet/docfx/releases/tag/v2.78.5), ale v tomto projektu způsobil klientskou chybu vestavěného hledání, a proto nebyl přijat.
+Vestavěný worker DocFX nepodporuje češtinu, a proto jej vlastní jazykově nezávislá šablona nahrazuje podle [`ADR-0002`](../architecture/decisions/ADR-0002-vyhledavani-nad-docfx-indexem.md).
 
 Lokální manifest a `dotnet tool restore` odpovídají [podporovanému modelu .NET nástrojů](https://learn.microsoft.com/en-us/dotnet/core/tools/global-tools).
 
-Vlastní generátor a validátor záměrně nepřidávají runtime knihovnu, protože jejich současné potřeby pokrývá standardní knihovna Node.js.
+Vlastní generátor, validátor, testy a klientské hledání záměrně nepřidávají runtime knihovnu, protože jejich současné potřeby pokrývají standardní API Node.js a prohlížeče.
 
 Nepoužívaná přímá závislost `argparse` byla při inicializaci odstraněná z manifestu i lockfilu.
 

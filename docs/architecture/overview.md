@@ -19,7 +19,7 @@ Důvody významných voleb jsou zaznamenané v [`decisions/`](decisions/README.m
 
 **Záměr:** Zachovat jednoduchou statickou architekturu, deterministické generování a jediný autoritativní zdroj obsahu bez databáze a aplikačního serveru.
 
-**Přechody:** Známé odchylky od cíle jsou výslovně uvedené v části [Známá rizika, dluh a přechodové stavy](#11-známá-rizika-dluh-a-přechodové-stavy).
+**Přechody:** Technické přechody uvnitř repozitáře jsou uzavřené, ale externí ochrana větví zůstává neaktivní podle části [Zbytková rizika a trvalé kontroly](#11-zbytková-rizika-a-trvalé-kontroly).
 
 ## 1. Účel architektury a kvalitativní cíle
 
@@ -78,7 +78,7 @@ flowchart LR
     G --> I[Generované indexy a TOC]
     S --> D[DocFX]
     I --> D
-    T[Vizuální šablona] --> D
+    T[Vlastní šablona] --> D
     D --> W[Statický web]
     H[Git historie] --> C[Generátor changelogu]
     C --> D
@@ -93,7 +93,8 @@ Diagram ukazuje jednosměrné odvozování výstupů a odděluje obsahovou a zm�
 | Generované přehledy | Poskytují odvozenou navigaci a katalog | `index.md` a `toc.yml` v produktovém stromu | Pouze generátor | Generátor |
 | Changelog | Odvozuje veřejný přehled změn z historie | `changelog-config.js` a npm skript | Git historie a uzamčený CLI balíček; výstup je ignorovaný build vstup | Delivery |
 | DocFX sestavení | Čistí starý výstup a převádí produktový Markdown a YAML do HTML a indexu hledání | `docs:clean`, `docfx.json` a lokální .NET tool manifest | Obsah, přehledy, changelog a šablona | Engineering |
-| Vizuální šablona | Přizpůsobuje vzhled výchozího moderního tématu | `templates/kitchen/public/main.css` | Stabilní selektory šablony DocFX | Design |
+| Vlastní šablona | Přizpůsobuje vzhled, české popisky a klientské vstupy moderního tématu | `templates/kitchen/` | Podporované veřejné assety a tokeny šablony DocFX | Design a engineering |
+| Klientské hledání | Normalizuje libovolné české nebo anglické termíny, porovnává je s `index.json` a vrací výsledky rendereru DocFX | `templates/kitchen/public/search-core.mjs` a workerový kontrakt DocFX | Standardní webová API a statický index vytvořený DocFX | Engineering |
 | GitHub workflow | Ověřuje, sestavuje, publikuje a oznamuje | `.github/workflows/main.yml` | Projektové příkazy, GitHub Actions, Pages a SMTP | Delivery |
 
 Závislosti tečou pouze směrem ke generovanému výstupu a zdrojový obsah nikdy nezávisí na `_site/`.
@@ -106,6 +107,7 @@ Závislosti tečou pouze směrem ke generovanému výstupu a zdrojový obsah nik
 | Ověření změny | `QLT-001`, `QLT-002` | `npm test` ověřuje nulový rozdíl generátoru a strukturu repozitáře | Pull request ani větev se nesmějí publikovat při selhání |
 | Publikování `main` | `REQ-004` | Jeden publikační job v dočasném workspace vygeneruje changelog, sestaví `_site/` a nasadí tentýž artefakt bez změny `main` | Selhání před nasazením zachová předchozí web, po opravě lze workflow bezpečně zopakovat |
 | Čtení receptu | `REQ-001`, `REQ-002` | Jedna verze statických souborů na GitHub Pages | Chybějící cesta vrátí 404 a správce ověří zdroj, TOC a nasazený commit |
+| Hledání | `REQ-005` | Worker jednou připraví statický `index.json` a každý dotaz vyžaduje shodu všech normalizovaných slov | Dotaz bez shody zobrazí českou nulovou informaci a klientská chyba se diagnostikuje konzolí a smoke scénářem |
 | Oznámení | `REQ-E004` | E-mail následuje až po nasazení | SMTP chyba nezmění výsledek nasazení a zůstane v logu Actions |
 
 ## 7. Data a jejich životní cyklus
@@ -135,7 +137,7 @@ Přesné kroky nasazení jsou v [`../delivery/ci-cd.md`](../delivery/ci-cd.md) a
 | Koncept | Kanonický princip | Vynucení | Výjimky |
 |---|---|---|---|
 | Cesty obsahu | Sekce, oblast, země a typ mají stabilní segmenty definované generátorem | Parser cest a strukturální kontrola | Univerzální jídla nemají zemi |
-| Lokalizace | Vlastní obsah, navigace a názvy CI jsou české | Zdrojový Markdown a projektová konfigurace | Vestavěné popisky, HTML metadata a vyhledávací tokenizér DocFX zůstávají ve výchozím jazyce |
+| Lokalizace | Obsah, navigace, popisky šablony a HTML jazyk jsou české, zatímco hledání zpracuje české i anglické termíny z indexu | Zdrojový Markdown, `token.json`, `_lang` a jazykově nezávislá normalizace Unicode | Skloňování, stemming, překlad, synonyma a tolerance překlepů zůstávají mimo rozsah |
 | Determinismus | Stejný zdroj a verze nástrojů vytvářejí stejný katalog a web | Lockfile, tool manifest a režim `--check` | Changelog se mění s Git historií |
 | Konfigurace | Strojové volby zůstávají v manifestech a workflow | `package.json`, `.config/dotnet-tools.json`, `docfx.json` a workflow | Význam a použití vysvětlují kanonické dokumenty |
 | Chyby | Vadný zdroj zastaví ověření před publikováním | Nenulové exit kódy a závislost publikačního jobu na ověření | E-mailové oznámení je záměrně neblokující |
@@ -150,13 +152,14 @@ Přesné kroky nasazení jsou v [`../delivery/ci-cd.md`](../delivery/ci-cd.md) a
 | SMTP přihlašovací údaje | Únik tajemství do logu nebo artefaktu | Hodnoty jsou pouze v GitHub Secrets a předávají se jednomu kroku | Akce třetí strany tajemství zpracovává | Review akce, logů a rotace při incidentu |
 | Čtenář | Sledování nebo únik osobních dat | Projekt nemá účet, serverovou telemetrii ani vlastní cookies | Hosting může používat vlastní provozní logy podle podmínek GitHubu | Revize produktu a hostingu při změně rozsahu |
 
-## 11. Známá rizika, dluh a přechodové stavy
+## 11. Zbytková rizika a trvalé kontroly
 
-| ID | Skutečnost nebo přechod | Dopad | Cílový záměr | Vlastník | Podmínka uzavření |
+Technické přechody původně vedené jako `ARCH-RISK-001` a `ARCH-RISK-005` uzavřelo přijaté [`ADR-0002`](decisions/ADR-0002-vyhledavani-nad-docfx-indexem.md), automatické scénáře a ověřený upgrade DocFX.
+
+| ID | Skutečnost | Dopad | Povinná kontrola nebo cílový stav | Vlastník | Podmínka změny nebo přezkoumání |
 |---|---|---|---|---|---|
-| `ARCH-RISK-001` | Vestavěné DocFX hledání ve výchozím jazyce najde výraz `pizza`, ale při ověření nenašlo český výraz `Rajská` | Pomocné hledání nemusí spolehlivě najít český obsah a vestavěná lokalizace není úplná | Katalog zůstává úplnou cestou a budoucí lokalizace má test funkčního hledání i české normalizace | Product a engineering | Přijaté řešení českého tokenizéru a lokalizace nebo výslovné odstranění fulltextu |
-| `ARCH-RISK-004` | Automatické kontroly ověřují strukturu a sestavení, nikoli kulinářskou správnost | Chybná ingredience nebo krok může projít technickým CI | Věcnou změnu vždy potvrzuje člověk znalý receptu | Správce obsahu | Riziko je trvalá review odpovědnost a uzavírá se pouze změnou produktového modelu |
-| `ARCH-RISK-005` | Projekt zůstává na DocFX 2.76.0, protože sestavení 2.78.5 při hledání vyvolalo klientskou chybu `TypeError` a prázdnou stránku výsledků | Upgrade nástroje je blokovaný a projekt zatím nepřebírá novější opravy | Každý pokus o upgrade zahrne lokální hledání `pizza`, kontrolu konzole a český hledací scénář | Engineering | Novější stabilní DocFX projde sestavením i všemi hledacími scénáři bez klientské chyby |
+| `CONTENT-CONTROL-001` | Technické kontroly neumějí spolehlivě posoudit kulinářskou správnost ingrediencí, množství a postupu | Věcná chyba může projít sestavením | Každou věcnou obsahovou změnu potvrdí člověk znalý receptu | Správce obsahu | Při změně produktového modelu nebo zavedení odborného validačního zdroje |
+| `DELIVERY-RISK-001` | Veřejné GitHub API dne 2026-08-28 uvedlo `protected: false` pro `main` i `develop` | Přímý push nemusí projít pull requestem ani schválením, přestože následný workflow stále ověřuje commit | Maintainer výslovně rozhodne o pravidlech a případnou branch protection nastaví mimo repozitář | Maintainers | Ověřená ochrana vhodných větví nebo zdokumentované přijetí přímých pushů |
 
 ## 12. Architektonický slovník
 

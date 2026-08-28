@@ -30,6 +30,7 @@ Kontroly prováděj v uvedeném pořadí od nejméně invazivní.
 |---|---|---|---|---|
 | Veřejný vstup | Otevři `https://hopefuldavid.github.io/docs_lifetime/` | HTTP úspěch, nadpis `Dokumentace ze života` a katalog | 404, 5xx, starý nebo prázdný obsah | Ověř detail a poslední workflow |
 | Reprezentativní detail | Otevři známý recept z katalogu | Nadpis, ingredience a kroky se vykreslí bez chyb konzole | Odkaz 404, chybějící styly nebo prázdný článek | Porovnej zdroj, TOC a `_site/` |
+| České a anglické hledání | Vyhledej `Rajská`, `rajska`, `PIZZA`, `French Press`, `coffee` a dotaz bez shody | Správné výsledky, český nulový stav a konzole bez chyb | Prázdný výsledek pro známé slovo, anglický stav nebo chyba workeru | Ověř vlastní assety, `index.json` a verzi DocFX |
 | Lokální reprodukce | Spusť úplnou lokální kontrolu z [`../development/commands.md`](../development/commands.md) | `npm test` a build projdou bez varování | Zastaralý generovaný soubor, vadný odkaz nebo neobnovený nástroj | Oprav nejbližší potvrzenou příčinu |
 | CI | Otevři běh workflow `Dokumentace` pro dotčený commit | `verify-docs` a u `main` také `publish-docs` jsou úspěšné | Registry, oprávnění, sestavení, Pages nebo SMTP | Postupuj podle názvu prvního selhaného kroku |
 
@@ -73,6 +74,20 @@ Projekt nemá serverový health endpoint, protože na Pages běží pouze static
 **Bezpečná náprava:** Oprav autoritativní zdroj nebo generátor a nech odvozené soubory znovu vytvořit.
 
 **Eskalace:** Změna již publikované stabilní URL vyžaduje rozhodnutí o kompatibilitě a případném přesměrování.
+
+### Symptom: známý český nebo anglický termín nemá výsledek nebo hledání hlásí klientskou chybu
+
+1. Spusť `npm test` a potvrď cílené scénáře normalizace i nulového výsledku.
+2. Sestav web a ověř, že `_site/public/search-worker.min.js` a `_site/public/search-core.mjs` odpovídají souborům vlastní šablony.
+3. Ověř, že hledaná položka existuje v `_site/index.json` a stránka má `lang="cs"` i český popisek hledání.
+4. Spusť lokální náhled a zopakuj celý scénář z [`../development/commands.md`](../development/commands.md#reprezentativní-smoke-scénář) s otevřenou konzolí.
+5. Pokud závada vznikla po upgradu DocFX, porovnej workerový kontrakt s [`ADR-0002`](../architecture/decisions/ADR-0002-vyhledavani-nad-docfx-indexem.md) a oprav kompatibilní integrační hranici.
+
+**Potvrzení příčiny:** Konkrétní rozdíl je reprodukovaný v čisté funkci, statickém assetu, indexu nebo zprávě mezi stránkou a workerem.
+
+**Bezpečná náprava:** Kompatibilní oprava vlastní šablony s automatickými testy, čistým buildem a skutečným smoke scénářem.
+
+**Eskalace:** Změna rozsahu hledání, přidání jazykové knihovny nebo odstranění fulltextu vyžaduje nové produktové či architektonické rozhodnutí.
 
 ### Symptom: web je nasazený, ale oznámení nepřišlo
 

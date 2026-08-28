@@ -17,12 +17,16 @@ Projekt kombinuje deterministickou kontrolu generovaných souborů, strukturáln
 | Vadné odkazy, metadata nebo cache artefakty, `QLT-002` | Strukturální Node.js validátor | `npm run docs:validate` |
 | Nekompatibilní Markdown, šablona nebo DocFX konfigurace, `QLT-001` | Sestavení s varováními jako chybami | `npm run docs:build` |
 | Procházení katalogu a čitelnost detailu, `REQ-001`, `REQ-002`, `QLT-003` | Krokovatelný lokální scénář v prohlížeči | `npm run docs:serve` po sestavení |
-| Vyhledání a nulový výsledek, `REQ-005` | Dotaz `pizza` a dotaz bez shody | Lokální nebo veřejný web |
-| Vadná cesta nebo chybějící nadpis, `REQ-E001` | Izolovaný negativní obsahový fixture | Přímé spuštění generátoru v dočasné kopii |
+| České a anglické vyhledání i nulový výsledek, `REQ-005` | Automatické termíny ze všech reprezentativních názvů, obsahu a cest, následované vizuálním smoke | `npm run test:unit` a lokální web |
+| Vadná cesta nebo chybějící nadpis, `REQ-E001` | Izolované negativní obsahové fixture | `npm run test:unit` nad dočasnými kopiemi |
 | Neexistující veřejná cesta, `REQ-E003` | HTTP 404 bez náhradního obsahu | Lokální server nebo GitHub Pages |
 | Oprávnění, neměnné akce a publikační pořadí, `QLT-004` | Automatická strukturální kontrola workflow a review oddělených jobů | `npm run docs:validate` a `.github/workflows/main.yml` |
 
+### Trvalá obsahová kontrola
+
 Věcnou správnost ingrediencí, množství a kulinářského postupu potvrzuje člověk znalý receptu, protože ji technický build neumí spolehlivě odvodit.
+
+Tato odpovědnost je provozní podmínka obsahové změny, nikoli technický úkol s nepravdivým stavem dokončení.
 
 Přesné příkazy a smoke kroky jsou v [`../development/commands.md`](../development/commands.md).
 
@@ -94,6 +98,8 @@ Mock použij pro kontrolovanou hranici, nikoli jako kopii interní implementace.
 Databázi, frontu nebo protokol nahrazuj pouze tehdy, když test neztrácí riziko, které má chránit.
 
 Preferuj malou sadu rychlých testů pro čistá pravidla, dostatečné integrační testy pro hranice a několik reprezentativních end-to-end scénářů.
+
+Projekt používá vestavěný Node.js test runner pro čisté vyhledávací funkce a spouští generátor nad dočasnou kopií obsahu pro negativní vstupy bez změny pracovního stromu.
 
 Přesný poměr není univerzální a vychází z architektury projektu.
 

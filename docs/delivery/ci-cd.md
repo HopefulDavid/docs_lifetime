@@ -35,7 +35,7 @@ Přesné lokální příkazy jsou v [`../development/commands.md`](../developmen
 |---|---|---|---|
 | Obnova JavaScript nástrojů | `npm ci --ignore-scripts --no-audit --no-fund` | Node.js z `actions/setup-node` a npm cache podle lockfilu | Úspěšná čistá instalace |
 | Obnova DocFX | `dotnet tool restore` | .NET 8 z `actions/setup-dotnet` | Přesná verze z tool manifestu |
-| Kontrola zdrojů | `npm test` | Čtecí checkout s úplnou historií | Generované soubory a strukturální validace projdou |
+| Kontrola zdrojů | `npm test` | Čtecí checkout s úplnou historií | Hledací a negativní testy, generované soubory a strukturální validace projdou |
 | Sestavení | `npm run docs:build` | Varování DocFX jsou chybou | `_site/` z jednoho checkoutu |
 | Changelog | `npm run changelog:generate` jako součást sestavení | Každý build s úplnou historií | Ignorovaný `changelog.md` zahrnutý do `_site/` |
 
@@ -99,12 +99,20 @@ Statický artefakt se v publikačním jobu sestaví jednou a beze změny se ode�
 
 Publikační job nikdy nezapisuje do `main`; changelog vzniká pouze v jeho dočasném workspace a nasazovací větev obsahuje jediný orphan commit posledního artefaktu.
 
+### Ochrana větví
+
+Veřejné GitHub API dne 2026-08-28 vrátilo `protected: false` pro větve [`main`](https://api.github.com/repos/HopefulDavid/Docs_Lifetime/branches/main) i [`develop`](https://api.github.com/repos/HopefulDavid/Docs_Lifetime/branches/develop).
+
+Workflow proto ověřuje každý zachycený push, ale nastavení hostingu samo nevynucuje pull request, schválení ani předchozí úspěšný status check.
+
+Změna branch protection je administrativní zásah do oprávnění a musí vycházet z výslovného rozhodnutí maintainera o chráněných větvích a požadovaných kontrolách.
+
 ## Prostředí a propagace
 
 | Prostředí | Účel | Zdroj artefaktu | Schválení | Ověření po nasazení | Rollback |
 |---|---|---|---|---|---|
 | Lokální `_site/` | Vývojový náhled a vizuální kontrola | Aktuální checkout | Žádné | Reprezentativní smoke v prohlížeči | Odstranit a znovu sestavit |
-| GitHub Actions | Ověření a vytvoření artefaktu | Commit události | Ochrany větve mimo repozitář nebyly ověřené | Log sestavení a obsah `_site/` | Opravit nebo revertovat zdrojovou změnu |
+| GitHub Actions | Ověření a vytvoření artefaktu | Commit události | `main` ani `develop` nejsou chráněné branch protection | Log sestavení a obsah `_site/` | Opravit nebo revertovat zdrojovou změnu |
 | GitHub Pages | Veřejné čtení | `_site/` z `publish-docs` | Úspěšný `verify-docs` a větev `main` | Veřejná úvodní stránka a reprezentativní recept | [`../operations/runbook.md`](../operations/runbook.md#rollback-a-bezpečné-pokračování) |
 
 Projekt nemá staging prostředí ani runtime datovou migraci.

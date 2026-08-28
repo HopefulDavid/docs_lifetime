@@ -18,7 +18,8 @@
     "docs:clean": "node scripts/clean-site.js",
     "docs:build": "npm run changelog:generate && npm run docs:generate && npm run docs:clean && dotnet tool run docfx build docfx.json --warningsAsErrors",
     "docs:serve": "dotnet tool run docfx serve _site --hostname 127.0.0.1 --port 8765",
-    "test": "npm run docs:check && npm run docs:validate"
+    "test:unit": "node --test",
+    "test": "npm run test:unit && npm run docs:check && npm run docs:validate"
   },
   "keywords": [],
   "author": "",
