@@ -1,0 +1,27 @@
+{
+  "name": "docs_lifetime",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Zdroj osobní kuchařky publikované jako statický web.",
+  "main": "changelog-config.js",
+  "engines": {
+    "node": "24.x"
+  },
+  "devDependencies": {
+    "conventional-changelog-cli": "^5.0.0"
+  },
+  "scripts": {
+    "changelog:generate": "node scripts/clean-changelog.js && conventional-changelog -i changelog.md -s --config ./changelog-config.js",
+    "docs:generate": "node scripts/generate-docs.js",
+    "docs:check": "node scripts/generate-docs.js --check",
+    "docs:validate": "node scripts/validate-docs.js",
+    "docs:clean": "node scripts/clean-site.js",
+    "docs:build": "npm run changelog:generate && npm run docs:generate && npm run docs:clean && dotnet tool run docfx build docfx.json --warningsAsErrors",
+    "docs:serve": "dotnet tool run docfx serve _site --hostname 127.0.0.1 --port 8765",
+    "test": "npm run docs:check && npm run docs:validate"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "repository": "git@github.com:HopefulDavid/Docs_Lifetime.git"
+}

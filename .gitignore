@@ -1,0 +1,8 @@
+.idea/
+private/
+_site/
+changelog.md
+*.bak
+node_modules/
+__pycache__/
+*.py[cod]

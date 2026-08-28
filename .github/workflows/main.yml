@@ -1,0 +1,121 @@
+name: Dokumentace
+
+on:
+  push:
+    branches:
+      - develop
+      - main
+  pull_request:
+    branches:
+      - develop
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify-docs:
+    name: Ověření dokumentace
+    runs-on: ubuntu-latest
+    steps:
+      - name: Načte repozitář
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          fetch-depth: 0
+
+      - name: Připraví Node.js
+        uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
+        with:
+          node-version-file: package.json
+          cache: npm
+          cache-dependency-path: package-lock.json
+
+      - name: Připraví .NET
+        uses: actions/setup-dotnet@26b0ec14cb23fa6904739307f278c14f94c95bf1 # v5
+        with:
+          dotnet-version: 8.x
+
+      - name: Obnoví npm závislosti
+        run: npm ci --ignore-scripts --no-audit --no-fund
+
+      - name: Obnoví DocFX
+        run: dotnet tool restore
+
+      - name: Ověří zdroje dokumentace
+        run: npm test
+
+      - name: Sestaví web
+        run: npm run docs:build
+
+  publish-docs:
+    name: Publikování dokumentace
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+    needs: verify-docs
+    runs-on: ubuntu-latest
+    concurrency:
+      group: publikovani-dokumentace
+      cancel-in-progress: false
+    permissions:
+      contents: write
+    steps:
+      - name: Načte repozitář
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          fetch-depth: 0
+
+      - name: Připraví Node.js
+        uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
+        with:
+          node-version-file: package.json
+          cache: npm
+          cache-dependency-path: package-lock.json
+
+      - name: Připraví .NET
+        uses: actions/setup-dotnet@26b0ec14cb23fa6904739307f278c14f94c95bf1 # v5
+        with:
+          dotnet-version: 8.x
+
+      - name: Obnoví npm závislosti
+        run: npm ci --ignore-scripts --no-audit --no-fund
+
+      - name: Obnoví DocFX
+        run: dotnet tool restore
+
+      - name: Sestaví web
+        run: npm run docs:build
+
+      - name: Připraví obsah oznámení
+        run: |
+          echo "changelog<<EOF" >> "$GITHUB_ENV"
+          awk '
+            NR == 1 && $0 == "---" { frontmatter = 1; next }
+            frontmatter && $0 == "---" { frontmatter = 0; next }
+            !frontmatter { print }
+          ' changelog.md >> "$GITHUB_ENV"
+          echo "EOF" >> "$GITHUB_ENV"
+
+      - name: Publikuje GitHub Pages
+        uses: peaceiris/actions-gh-pages@84c30a85c19949d7eee79c4ff27748b70285e453 # v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: _site
+          force_orphan: true
+
+      - name: Odešle oznámení o změnách
+        uses: dawidd6/action-send-mail@42942bc2f8fba4e611b459a018967a6a7c78c68c # v17
+        continue-on-error: true
+        with:
+          server_address: smtp.gmail.com
+          server_port: 465
+          secure: true
+          username: ${{ secrets.MAIL_USERNAME }}
+          password: ${{ secrets.MAIL_PASSWORD }}
+          from: ${{ secrets.MAIL_USERNAME }}
+          subject: "Nové změny v dokumentaci"
+          to: ${{ secrets.MAIL_RECIPIENTS }}
+          convert_markdown: true
+          html_body: |
+            <p>Nové změny v dokumentaci jsou k dispozici. Podívejte se na ně <a href="https://hopefuldavid.github.io/docs_lifetime/">zde</a>.</p>
+            <hr>
+            ${{ env.changelog }}
