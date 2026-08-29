@@ -1,7 +1,7 @@
 ---
 canonical_for: product-requirements
 status: accepted
-last_verified: 2026-08-28
+last_verified: 2026-08-29
 owner: product
 ---
 
@@ -43,6 +43,7 @@ Projekt poskytuje veřejnou českou kuchařku, ve které čtenář najde jídlo 
 ## Produktová omezení
 
 - Primárním jazykem obsahu a rozhraní je čeština.
+- Veřejné rozhraní nenabízí odkaz pro editaci stránky ani zobrazení zdrojového souboru.
 - Publikovaný obsah je veřejný a neobsahuje soukromé poznámky ani tajemství.
 - Zdrojový recept je Markdown soubor umístěný v přijaté adresářové struktuře.
 - Vestavěné fulltextové vyhledávání je pomocná cesta a nenahrazuje úplný katalog ani hierarchickou navigaci.

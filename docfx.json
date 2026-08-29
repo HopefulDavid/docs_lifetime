@@ -22,6 +22,7 @@
       "_appTitle": "Život",
       "_enableSearch": true,
       "_lang": "cs",
+      "_disableContribution": true,
       "pdf": true
     }
   }
