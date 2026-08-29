@@ -1,7 +1,7 @@
 ---
 canonical_for: system-architecture
 status: accepted
-last_verified: 2026-08-28
+last_verified: 2026-08-29
 owner: architecture
 ---
 
@@ -93,7 +93,7 @@ Diagram ukazuje jednosměrné odvozování výstupů a odděluje obsahovou a zm�
 | Generované přehledy | Poskytují odvozenou navigaci a katalog | `index.md` a `toc.yml` v produktovém stromu | Pouze generátor | Generátor |
 | Changelog | Odvozuje veřejný přehled úplné historie po ročních obdobích a uvnitř zachovává kategorie | `cliff.toml` a npm skript | Git historie a `git-cliff` uzamčený npm lockfilem; výstup je ignorovaný build vstup | Delivery |
 | DocFX sestavení | Čistí starý výstup a převádí produktový Markdown a YAML do HTML a indexu hledání | `docs:clean`, `docfx.json` a lokální .NET tool manifest | Obsah, přehledy, changelog a šablona | Engineering |
-| Vlastní šablona | Přizpůsobuje vzhled, české popisky a klientské vstupy moderního tématu | `templates/kitchen/` | Podporované veřejné assety a tokeny šablony DocFX | Design a engineering |
+| Vlastní šablona | Přizpůsobuje vzhled, české popisky a klientské vstupy moderního tématu a ponechává příspěvkový blok DocFX vypnutý | `templates/kitchen/` a `docfx.json` | Podporované veřejné assety, tokeny a globální metadata DocFX | Design a engineering |
 | Klientské hledání | Normalizuje libovolné české nebo anglické termíny, porovnává je s `index.json` a vrací výsledky rendereru DocFX | `templates/kitchen/public/search-core.mjs` a workerový kontrakt DocFX | Standardní webová API a statický index vytvořený DocFX | Engineering |
 | GitHub workflow | Ověřuje, sestavuje, publikuje a oznamuje | `.github/workflows/main.yml` | Projektové příkazy, GitHub Actions, Pages a SMTP | Delivery |
 
@@ -137,7 +137,7 @@ Přesné kroky nasazení jsou v [`../delivery/ci-cd.md`](../delivery/ci-cd.md) a
 | Koncept | Kanonický princip | Vynucení | Výjimky |
 |---|---|---|---|
 | Cesty obsahu | Sekce, oblast, země a typ mají stabilní segmenty definované generátorem | Parser cest a strukturální kontrola | Univerzální jídla nemají zemi |
-| Lokalizace | Obsah, navigace, popisky šablony a HTML jazyk jsou české, zatímco hledání zpracuje české i anglické termíny z indexu | Zdrojový Markdown, `token.json`, `_lang` a jazykově nezávislá normalizace Unicode | Skloňování, stemming, překlad, synonyma a tolerance překlepů zůstávají mimo rozsah |
+| Lokalizace | Obsah, navigace, popisky šablony a HTML jazyk jsou české, příspěvkový blok se negeneruje a hledání zpracuje české i anglické termíny z indexu | Zdrojový Markdown, `token.json`, `_lang`, `_disableContribution` a jazykově nezávislá normalizace Unicode | Skloňování, stemming, překlad, synonyma a tolerance překlepů zůstávají mimo rozsah |
 | Determinismus | Stejný zdroj a verze nástrojů vytvářejí stejný katalog a web | Lockfile, tool manifest a režim `--check` | Changelog se mění s Git historií |
 | Konfigurace | Strojové volby zůstávají v manifestech a workflow | `package.json`, `.config/dotnet-tools.json`, `docfx.json` a workflow | Význam a použití vysvětlují kanonické dokumenty |
 | Chyby | Vadný zdroj zastaví ověření před publikováním | Nenulové exit kódy a závislost publikačního jobu na ověření | E-mailové oznámení je záměrně neblokující |

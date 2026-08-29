@@ -1,7 +1,7 @@
 ---
 canonical_for: testing-strategy
 status: accepted
-last_verified: 2026-08-28
+last_verified: 2026-08-29
 owner: quality
 ---
 
@@ -16,6 +16,7 @@ Projekt kombinuje deterministickou kontrolu generovaných souborů, strukturáln
 | Zastaralý katalog nebo TOC, `REQ-003` a `REQ-E002` | Generátor v režimu bez zápisu | `npm run docs:check` |
 | Vadné odkazy, metadata nebo cache artefakty, `QLT-002` | Strukturální Node.js validátor | `npm run docs:validate` |
 | Nekompatibilní Markdown, šablona nebo DocFX konfigurace, `QLT-001` | Sestavení s varováními jako chybami | `npm run docs:build` |
+| České rozhraní bez editačních odkazů | Node test globálních metadat a tokenů, poté skutečný DocFX build | `npm run test:unit` a `npm run docs:build` |
 | Neúplný, nečitelný nebo nedeterministický changelog, `REQ-004` | Skutečný `git-cliff` nad víceletou dočasnou historií s tagem, conventional, breaking i legacy commitem a přelomem roku ve dvou časových prostředích; kontroluje zdrojový commit, otevřené nejnovější období, sdělení o vynechávání prázdných roků, sbalené starší roky, jejich počty a kategorie i stabilní kotvy | `npm run test:unit` |
 | Procházení katalogu a čitelnost detailu, `REQ-001`, `REQ-002`, `QLT-003` | Krokovatelný lokální scénář v prohlížeči | `npm run docs:serve` po sestavení |
 | České a anglické vyhledání i nulový výsledek, `REQ-005` | Automatické termíny ze všech reprezentativních názvů, obsahu a cest, následované vizuálním smoke | `npm run test:unit` a lokální web |

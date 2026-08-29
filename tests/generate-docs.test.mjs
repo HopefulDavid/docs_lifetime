@@ -5,6 +5,7 @@ import {
   cpSync,
   mkdirSync,
   mkdtempSync,
+  readFileSync,
   rmSync,
   writeFileSync,
 } from 'node:fs';
@@ -14,6 +15,19 @@ import test from 'node:test';
 import { fileURLToPath } from 'node:url';
 
 const repositoryRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+const docfx = JSON.parse(readFileSync(path.join(repositoryRoot, 'docfx.json'), 'utf8'));
+
+test('DocFX používá české rozhraní bez editačních odkazů', () => {
+  const customTemplate = docfx.build.template.at(-1);
+  const tokens = JSON.parse(
+    readFileSync(path.join(repositoryRoot, customTemplate, 'token.json'), 'utf8')
+  );
+
+  assert.equal(docfx.build.globalMetadata._lang, 'cs');
+  assert.equal(docfx.build.globalMetadata._disableContribution, true);
+  assert.equal(tokens.inThisArticle, 'V tomto článku');
+  assert.equal(tokens.improveThisDoc, 'Upravit tuto stránku');
+});
 
 test('odmítne recept bez hlavního nadpisu a vypíše jeho cestu', (context) => {
   const fixtureRoot = createFixture(context);

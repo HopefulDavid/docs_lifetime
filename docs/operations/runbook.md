@@ -1,7 +1,7 @@
 ---
 canonical_for: operations-runbook
 status: accepted
-last_verified: 2026-08-28
+last_verified: 2026-08-29
 owner: operations
 ---
 
@@ -29,7 +29,7 @@ Kontroly prováděj v uvedeném pořadí od nejméně invazivní.
 | Kontrola | Jak ji provést | Zdravý výsledek | Typické selhání | Další krok |
 |---|---|---|---|---|
 | Veřejný vstup | Otevři `https://hopefuldavid.github.io/docs_lifetime/` | HTTP úspěch, nadpis `Dokumentace ze života` a katalog | 404, 5xx, starý nebo prázdný obsah | Ověř detail a poslední workflow |
-| Reprezentativní detail | Otevři známý recept z katalogu | Nadpis, ingredience a kroky se vykreslí bez chyb konzole | Odkaz 404, chybějící styly nebo prázdný článek | Porovnej zdroj, TOC a `_site/` |
+| Reprezentativní detail | Otevři známý recept z katalogu | Nadpis, ingredience a kroky se vykreslí, ovládací texty jsou české a editační odkaz chybí | Odkaz 404, anglický token, editační odkaz, chybějící styly nebo prázdný článek | Porovnej zdroj, TOC, `docfx.json`, tokeny šablony a `_site/` |
 | České a anglické hledání | Vyhledej `Rajská`, `rajska`, `PIZZA`, `French Press`, `coffee` a dotaz bez shody | Správné výsledky, český nulový stav a konzole bez chyb | Prázdný výsledek pro známé slovo, anglický stav nebo chyba workeru | Ověř vlastní assety, `index.json` a verzi DocFX |
 | Changelog | Otevři stránku `Změny` z hlavní navigace | Zdrojový stav odpovídá `HEAD`, nejnovější rok je otevřený, roky bez změn nejsou zobrazené a každý starší zobrazený rok je sbalený s vlastním počtem a uvnitř zůstávají kategorie i technické záznamy | Chybějící starší změny, chybný roční přechod, zastaralý zdrojový stav, posunuté datum nebo neformátovaný podporovaný typ | Reprodukuj generátor podle diagnostického stromu |
 | Lokální reprodukce | Spusť úplnou lokální kontrolu z [`../development/commands.md`](../development/commands.md) | `npm test` a build projdou bez varování | Zastaralý generovaný soubor, vadný odkaz nebo neobnovený nástroj | Oprav nejbližší potvrzenou příčinu |
