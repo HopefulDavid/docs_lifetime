@@ -15,6 +15,14 @@ function localizeAriaLabels(root) {
       .querySelectorAll(`[aria-label="${source}"]`)
       .forEach((element) => element.setAttribute('aria-label', translation));
   }
+  for (const control of root.querySelectorAll('a[data-bs-toggle="dropdown"][title]:not([role])')) {
+    control.setAttribute('role', 'button');
+    control.setAttribute('aria-label', control.title);
+    control.tabIndex = 0;
+    control.addEventListener('keydown', event => {
+      if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); control.click(); }
+    });
+  }
 }
 
 /** Poskytuje české popisky a spouštěcí chování veřejnému kontraktu šablony DocFX. */
@@ -24,6 +32,18 @@ const docfxOptions = {
   },
   start() {
     localizeAriaLabels(document);
+    const main = document.querySelector('main');
+    if (main) {
+      main.id = 'main-content';
+      main.tabIndex = -1;
+      const skip = document.createElement('a');
+      skip.href = '#main-content';
+      skip.className = 'skip-to-content';
+      skip.textContent = 'Přejít k obsahu';
+      skip.addEventListener('click', event => { event.preventDefault(); main.focus(); });
+      document.body.prepend(skip);
+    }
+    document.getElementById('logo')?.setAttribute('alt', '');
     startKitchen().catch(error => {
       console.error('Kuchařka:', error);
       const target = document.getElementById('kitchen-catalog') || document.getElementById('kitchen-planner');
@@ -38,9 +58,8 @@ const docfxOptions = {
       }
     });
 
-    const searchResults = document.getElementById('search-results');
-    if (searchResults) {
-      new MutationObserver(() => localizeAriaLabels(searchResults)).observe(searchResults, {
+    for (const root of [document.getElementById('search-results'), document.querySelector('header')].filter(Boolean)) {
+      new MutationObserver(() => localizeAriaLabels(root)).observe(root, {
         childList: true,
         subtree: true,
       });

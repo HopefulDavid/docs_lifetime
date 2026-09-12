@@ -2,13 +2,48 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { createRequire } from 'node:module';
 import test from 'node:test';
-import { buildShoppingList, parseQuantity, recipeSettings, restoreState, selectedIngredients, shoppingAmount, shoppingText } from '../templates/kitchen/public/kitchen-core.mjs';
+import { buildShoppingList, cookingProgress, filterShoppingItems, parseQuantity, recipeSettings, restoreState, selectedIngredients, shoppingAmount, shoppingNeedsAmount, shoppingText } from '../templates/kitchen/public/kitchen-core.mjs';
 
 const require = createRequire(import.meta.url);
 const { parseRecipeContent } = require('../scripts/recipe-content.cjs');
 const catalog = JSON.parse(readFileSync(new URL('../data/recipes.json', import.meta.url), 'utf8'));
 const recipe = slug => catalog.recipes.find(item => item.id.endsWith(`/${slug}`));
 const list = selections => buildShoppingList(catalog.recipes, selections, catalog.departments);
+
+test('nákupní filtry kombinují české hledání, oddělení a platné odškrtnutí', () => {
+  const items = list({ [recipe('sunkofleky').id]: {} });
+  const onion = items.find(item => item.name === 'Cibule');
+  assert.deepEqual(filterShoppingItems(items, { search: '  CIBu  ', category: onion.category }), [onion]);
+  assert.deepEqual(filterShoppingItems(items, { search: 'cibule', hideDone: true }, { [onion.key]: onion.signature }), []);
+  assert.deepEqual(filterShoppingItems(items, { search: 'cibule', hideDone: true }, { [onion.key]: 'stará dávka' }), [onion]);
+  assert.equal(filterShoppingItems(items, { search: 'uzen', category: 'neexistující' }).length, 0);
+  assert(filterShoppingItems(items, { search: 'uzen' }).some(item => item.name.includes('Uzen')));
+});
+
+test('filtr chybějícího množství respektuje doplnění a jeho zneplatnění změnou dávky', () => {
+  const items = list({ [recipe('kokosove-kure').id]: {} });
+  const rice = items.find(item => item.name === 'Rýže');
+  const amounts = { [rice.key]: { text: '1 balení', signature: rice.signature } };
+  assert(shoppingNeedsAmount(rice));
+  assert(!shoppingNeedsAmount(rice, amounts));
+  assert(!filterShoppingItems(items, { missing: true }, {}, amounts).includes(rice));
+  const changed = list({ [recipe('kokosove-kure').id]: { factor: 2 } }).find(item => item.name === 'Rýže');
+  assert(shoppingNeedsAmount(changed, amounts));
+  assert(!shoppingNeedsAmount({ ...rice, text: 'dle chuti' }));
+});
+
+test('dokončení vaření nevyžaduje vynechanou přílohu a po jejím zapnutí se přepočítá', () => {
+  const tikka = recipe('kureci-tikka-masala');
+  const config = recipeSettings(tikka);
+  const initial = cookingProgress(tikka, config, { done: [] });
+  assert(initial.active.length < tikka.steps.length);
+  const saved = { done: [...initial.active] };
+  assert(cookingProgress(tikka, config, saved).complete);
+  const optional = tikka.steps.find(step => step.optionalGroup).optionalGroup;
+  config.enabled[optional] = true;
+  assert(!cookingProgress(tikka, config, saved).complete);
+  assert(cookingProgress(tikka, config, { done: tikka.steps.map((_, index) => index) }).complete);
+});
 
 test('spojí nákup rajské a šunkofleků, ale nemíchá gramy a lžičky másla', () => {
   const rajska = recipe('rajska-omacka');

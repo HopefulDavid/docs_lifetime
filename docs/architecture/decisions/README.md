@@ -33,3 +33,4 @@ Nový záznam vzniká ze šablony [`../../templates/adr.md`](../../templates/adr
 | [`ADR-0002-vyhledavani-nad-docfx-indexem.md`](ADR-0002-vyhledavani-nad-docfx-indexem.md) | Vyhledávání nad indexem DocFX | Přijato | — |
 | [`ADR-0003-generovani-changelogu-pomoci-git-cliff.md`](ADR-0003-generovani-changelogu-pomoci-git-cliff.md) | Generování changelogu pomocí git-cliff | Přijato | — |
 | [`ADR-0004-nakup-a-vareni-nad-markdownem.md`](ADR-0004-nakup-a-vareni-nad-markdownem.md) | Nákup a vaření nad jednotným Markdownem | Přijato | — |
+| [`ADR-0005-pdf-export-v-prohlizeci.md`](ADR-0005-pdf-export-v-prohlizeci.md) | Přímý export PDF v prohlížeči | Přijato; doplňuje ADR-0004 | — |

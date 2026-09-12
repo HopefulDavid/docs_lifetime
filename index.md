@@ -4,9 +4,9 @@ uid: docs-lifetime.home
 
 <!-- Tento soubor generuje npm run docs:generate. Neupravujte seznamy odkazů ručně. -->
 
-# Dokumentace ze života
+# Co dnes uvaříte?
 
-Vyberte jídla, nakupte společně a vařte krok za krokem.
+Vyberte několik receptů a připravte si společný nákup.
 
 <div id="kitchen-catalog"></div>
 

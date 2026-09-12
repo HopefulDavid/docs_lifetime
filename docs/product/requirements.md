@@ -1,7 +1,7 @@
 ---
 canonical_for: product-requirements
 status: accepted
-last_verified: 2026-09-12
+last_verified: 2026-09-13
 owner: product
 ---
 
@@ -77,7 +77,19 @@ Projekt poskytuje veřejnou českou kuchařku, ve které čtenář najde jídlo 
 | `REQ-E005` | Úložiště je poškozené nebo zápis není dostupný | Výběr funguje v aktuální stránce, rozhraní přizná omezení a nabídne export | Uživatel nesmí spoléhat na neprovedené uložení | Test obnovy a klientské chybové větve |
 | `REQ-E006` | JavaScript nebo klientský katalog nejsou dostupné | Zdrojové recepty a statické odkazy zůstanou čitelné, společný nákup přizná nedostupnost | Obsah nesmí zmizet kvůli pomocné funkci | Statický HTML výstup a chybová větev |
 
-## Obsahový kontrakt
+## Ovládání a PDF
+
+- Katalog zachová hledání, typ a filtr vybraných jídel při návratu z receptu.
+- Nákup nabídne režim pro obchod, hledání surovin bez diakritiky, filtr oddělení, skrytí hotových a filtr množství k doplnění.
+- Odškrtnutí nesmí zahodit rozepsané vlastní množství; změna dávky zneplatní údaj podle původního kontraktu.
+- Vaření zachová dostupné ovládání mimo posouvaný obsah a započítá pouze zahrnuté kroky.
+- Recept i celý nákup nabídnou čitelný náhled, přímé stažení PDF a samostatný tisk.
+- Receptové PDF respektuje zvolenou dávku, alternativy a přílohy, obsahuje přípravné poznámky a pomůcky.
+- Nákupní PDF a text obsahují i skryté a hotové položky; rozhraní to při aktivním filtru vysvětlí.
+
+Tyto scénáře rozvíjejí `REQ-006`, `REQ-008`, `REQ-009`, `REQ-010` a `QLT-003` podle upřesnění uživatele, který zdůraznil celkový design a zachování PDF.
+
+## Obsahový kontrakt receptů
 
 Jednotný zápis surovin, dávky, alternativ a postupu vlastní [formát receptu](recipe-format.md).
 

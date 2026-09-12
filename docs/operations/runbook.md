@@ -1,7 +1,7 @@
 ---
 canonical_for: operations-runbook
 status: accepted
-last_verified: 2026-08-29
+last_verified: 2026-09-13
 owner: operations
 ---
 
@@ -161,6 +161,12 @@ Přesné diagnostické příkazy vlastní [ověření Git a SSH](../development/
 Samostatná databázová záloha není použitelná, protože projekt nemá serverovou databázi.
 
 Místní nákupní data chrání uživatel stažením nebo zkopírováním seznamu; vymazání dat prohlížeče není obnovitelné z Gitu.
+
+PDF nebo text slouží ke čtení mimo web, nikoli k importu editovatelného stavu nákupu.
+
+Při selhání PDF otevři náhled znovu nebo použij jeho tlačítko „Tisk“ a systémovou volbu uložení PDF.
+
+Při diagnostice ověř po `npm ci` a čistém sestavení dostupnost `public/kitchen-pdf.mjs`, `public/pdfmake.min.js` a `public/vfs_fonts.js`; jejich cesty musí fungovat i pod podsložkou GitHub Pages.
 
 ## Rollback a bezpečné pokračování
 

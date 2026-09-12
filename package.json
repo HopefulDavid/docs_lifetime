@@ -7,7 +7,8 @@
     "node": "24.x"
   },
   "devDependencies": {
-    "git-cliff": "2.13.1"
+    "git-cliff": "2.13.1",
+    "pdfmake": "0.3.11"
   },
   "scripts": {
     "changelog:generate": "git-cliff --config cliff.toml --output changelog.md",

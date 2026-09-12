@@ -1,7 +1,7 @@
 ---
 canonical_for: system-architecture
 status: accepted
-last_verified: 2026-09-12
+last_verified: 2026-09-13
 owner: architecture
 ---
 
@@ -96,6 +96,7 @@ Diagram ukazuje jednosměrné odvozování výstupů a odděluje obsahovou a zm�
 | Parser receptů | Ověřuje tabulky, kanonické názvy, stabilní identifikátory a navazující kroky | `scripts/recipe-content.cjs` | Zdrojové recepty a `data/ingredients.json` | Engineering |
 | Klientská kuchařka | Řídí výběr, nákup, vlastní množství a vaření | `templates/kitchen/public/kitchen.mjs` | DOM, standardní webová API, `kitchen-core.mjs` a generovaný `data/recipes.json` | Engineering |
 | Doménové jádro nákupu | Slučuje množství a validuje lokální stav | `templates/kitchen/public/kitchen-core.mjs` | Pouze standardní JavaScript | Engineering |
+| PDF export | Převádí aktuální exportní náhled na stránkovaný soubor | `templates/kitchen/public/kitchen-pdf.mjs` | DOM náhledu a odloženě načtené lokální assety pdfmake podle [ADR-0005](decisions/ADR-0005-pdf-export-v-prohlizeci.md) | Engineering |
 | Generované přehledy | Poskytují odvozenou navigaci a katalog | `index.md` a `toc.yml` v produktovém stromu | Pouze generátor | Generátor |
 | Changelog | Odvozuje veřejný přehled úplné historie po ročních obdobích a uvnitř zachovává kategorie | `cliff.toml` a npm skript | Git historie a `git-cliff` uzamčený npm lockfilem; výstup je ignorovaný build vstup | Delivery |
 | DocFX sestavení | Čistí starý výstup a převádí produktový Markdown a YAML do HTML a indexu hledání | `docs:clean`, `docfx.json` a lokální .NET tool manifest | Obsah, přehledy, changelog a šablona | Engineering |

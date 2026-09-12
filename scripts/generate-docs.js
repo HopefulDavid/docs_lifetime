@@ -364,12 +364,12 @@ function renderHome(catalog) {
     origin(entry),
   ]);
 
-  const body = `Vyberte jídla, nakupte společně a vařte krok za krokem.\n\n<div id="kitchen-catalog"></div>\n\n<div class="catalog-fallback">\n\n## Hlavní sekce\n\n${table(
+  const body = `Vyberte několik receptů a připravte si společný nákup.\n\n<div id="kitchen-catalog"></div>\n\n<div class="catalog-fallback">\n\n## Hlavní sekce\n\n${table(
     ['Sekce', 'Počet', 'Typy'],
     sectionRows
   )}\n## Kompletní přehled\n\n${table(['Název', 'Sekce', 'Typ', 'Původ'], allRows)}\n</div>`;
 
-  writeFile(file, page(file, 'Dokumentace ze života', body, 'docs-lifetime.home'));
+  writeFile(file, page(file, 'Co dnes uvaříte?', body, 'docs-lifetime.home'));
 }
 
 function renderSection(section, entries) {

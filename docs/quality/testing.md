@@ -1,7 +1,7 @@
 ---
 canonical_for: testing-strategy
 status: accepted
-last_verified: 2026-09-12
+last_verified: 2026-09-13
 owner: quality
 ---
 
@@ -61,6 +61,25 @@ Po obnovení skutečné Git historie dne 2026-09-12 prošel celý `npm test`, v�
 Prošel také standardní `npm run docs:build` s nově odvozeným changelogem, čistým výstupním adresářem a nulovým počtem varování a chyb.
 
 Trvalé obsahové nejistoty a odpovědnost za jejich doplnění vlastní [obsahová revize](../product/recipe-format.md#obsahová-revize).
+
+### Navazující audit rozhraní a PDF, 2026-09-12 až 2026-09-13
+
+Audit navazuje na commit `77a9ea9`, kterým byly nejprve uložené všechny předchozí změny podle zadání uživatele.
+
+| Oblast | Skutečný důkaz | Hranice |
+|---|---|---|
+| Automatická regrese | `npm test` prošel se všemi 26 testy, kontrolou generovaných souborů a strukturální validací | Obsahové nejistoty nejsou dopočítávané testem |
+| Rozvržení | Katalog, detail, nákup a vaření byly vizuálně zkontrolované v reprezentativních scénářích na 320, 390, 768 a 1440 px; opravena stlačená tabletová nabídka | Nejde o kompletní matici zařízení ani certifikaci WCAG |
+| Nákup | Zachování rozepsaného množství při odškrtnutí, filtr neznámých množství, přesun fokusu po uložení a skrytí hotových potvrzené skutečným ovládáním | Více současně otevřených nákupních oken zůstává provozním omezením |
+| Vaření | Nezvolený naan nezablokuje dokončení čtyř hlavních kroků; přeskočení poslední volitelné přílohy vrátí první nedokončený krok | Tlačítka zůstávají mimo posouvaný obsah; skutečný čas přípravy se neměří |
+| PDF v rozhraní | Prohlížeč vytvořil datový odkaz PDF nákupu i receptu s 2× dávkou; náhled ukázal správný výběr bez naanu | Vestavěný prohlížeč nepotvrzuje uložení do systémové složky stažených souborů; nativní tiskový dialog nebyl ovládaný |
+| PDF stránky | Stejný exportér a připnutý klientský engine vytvořily lokální kontrolní soubory; dvě stránky receptu a tři stránky nákupu byly vyrenderované Popplerem a vizuálně prohlédnuté | Receptový vstup byl převzat ze skutečného DOM náhledu, nákup sestaven ze stejných tří receptů a jejich konfigurace |
+| PDF obsah a sazba | pypdf ověřil český text, původní údaje a konec postupu; kontrola PNG opravila osamocené nadpisy a odstupy | Opakované nadpisy oddělení a nedělitelné řádky zajišťuje tabulkový renderer knihovny |
+| Úplnost sbírky | Nový závěrečný průchod všech 27 URL na 390 px potvrdil suroviny, vaření a PDF tlačítko bez vodorovného přesahu a chyb konzole | U všech položek je kontrolovaná struktura DOM; podrobné snímky patří reprezentativním scénářům |
+| Přístupnost a úklid | Tab zobrazí „Přejít k obsahu“, Enter přesune fokus do obsahu, nabídku motivu lze otevřít klávesnicí a Escape vrátí fokus z PDF náhledu | Zkušební nákup byl vymazán, motiv vrácen na automatický a testovací rozměry prohlížeče zrušeny |
+| Export při filtrování | Filtr osmi mléčných položek vyexportoval všech 44 surovin včetně vlastního údaje; French Press PDF obsahuje pomůcky | Stažení do systémové složky omezuje vestavěný náhled popsaný výše |
+
+Při auditu byly použité principy [viditelného fokusu](https://www.w3.org/WAI/WCAG22/Understanding/focus-not-obscured-minimum.html) a [shody viditelného a přístupného názvu](https://www.w3.org/WAI/WCAG22/Understanding/label-in-name.html), ověřené v dokumentaci W3C dne 2026-09-12.
 
 ## Cíl
 

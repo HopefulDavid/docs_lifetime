@@ -654,6 +654,7 @@ body.kitchen-catalog-page:not([data-search]) > main > .content { max-width: 1140
 body.kitchen-catalog-page:not([data-search]) article { max-width: none; }
 body.kitchen-catalog-page:not([data-search]) .affix { display: none; }
 body:has(.cooking-dialog[open]) { overflow: hidden; }
+body:has(.shopping-print-dialog[open]) { overflow: hidden; }
 @media (min-width: 1200px) { .kitchen-catalog-page .recipe-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
 .recipe-card { display: flex; flex-direction: column; padding: 1.4rem; background: var(--kitchen-surface); border: 1px solid var(--kitchen-line); border-radius: .8rem; box-shadow: 0 3px 12px rgba(55,43,28,.035); }
 .recipe-card-meta { display: flex; align-items: center; gap: .65rem; color: var(--kitchen-muted); font-size: .78rem; }
@@ -741,7 +742,7 @@ article h3[id], article h2[id] { scroll-margin-top: 6rem; }
   .recipe-grid { grid-template-columns: 1fr; }
   .catalog-tools { grid-template-columns: 1fr; }
   .kitchen-workflow { gap: .7rem; }
-  .kitchen-workflow > * { flex-direction: column; align-items: start; gap: .1rem; }
+  .kitchen-workflow > * { gap: .4rem; }
   .kitchen-workflow span { font-size: .85rem; }
   .kitchen-tray { justify-content: space-between; gap: .8rem; padding-inline: 1rem; font-size: .8rem; }
   .kitchen-tray > span { max-width: 48%; }
@@ -763,6 +764,145 @@ article h3[id], article h2[id] { scroll-margin-top: 6rem; }
   .cook-content { font-size: 1.07rem; }
   .cook-navigation .kitchen-button { font-size: .9rem; padding-inline: .6rem; }
   article:has(.kitchen-app) h1 { font-size: 2rem; }
+}
+
+/* Kompaktní orientace nechává na telefonu prostor pro samotná jídla a nákup. */
+html { scroll-padding-block: 5rem 7rem; }
+.kitchen-app :where(input, select, button, summary, a) { scroll-margin-block: 5rem 7rem; }
+.kitchen-app [tabindex="-1"]:focus { outline: none; }
+body.kitchen-catalog-page > main, body.kitchen-shopping-page > main { padding-top: 1.3rem; }
+.kitchen-catalog-page article > h1, .kitchen-shopping-page article > h1 { max-width: none; margin-bottom: .7rem; }
+.kitchen-catalog-page article > h1::after, .kitchen-shopping-page article > h1::after { display: none; }
+.kitchen-catalog-page article > p:first-of-type, .kitchen-shopping-page article > p:first-of-type { margin-bottom: 1rem; }
+.kitchen-workflow { margin: 1rem 0; padding: .25rem 0; }
+.catalog-tools { grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); align-items: end; gap: 1rem; }
+.catalog-filter-row { display: flex; gap: 1rem; align-items: center; }
+.catalog-filter-row > label:first-child { flex: 1; min-width: 0; }
+.catalog-filter-row .check-label { flex-direction: row; white-space: nowrap; font-weight: 400; }
+.recipe-grid { margin-top: 1rem; }
+body.kitchen-shopping-page:not([data-search]) > main { display: block; }
+body.kitchen-shopping-page:not([data-search]) > main > .content { max-width: 960px; margin-inline: auto; }
+body.kitchen-shopping-page:not([data-search]) article { max-width: none; }
+body.kitchen-shopping-page:not([data-search]) .affix { display: none; }
+.selected-recipes { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .75rem; }
+.selected-recipes > .section-heading { grid-column: 1 / -1; margin-bottom: 0; }
+.selected-recipe-card { background: var(--kitchen-surface); border: 1px solid var(--kitchen-line); border-radius: .65rem; align-self: start; overflow: hidden; }
+.selected-recipe-title { display: flex; align-items: center; justify-content: space-between; gap: .75rem; padding: .8rem 1rem .3rem; }
+.selected-recipe-title h3 { margin: 0; font: 700 1.05rem/1.35 "Segoe UI", sans-serif; }
+.selected-recipe-title h3 a { text-decoration: none; color: var(--kitchen-ink); }
+.selected-recipe-title > a { flex-shrink: 0; }
+.selected-recipe-card .selected-recipe { border: 0; margin: 0; border-radius: 0; }
+.selected-recipe-card summary { padding: .6rem 1rem; font-size: .9rem; font-weight: 400; color: var(--kitchen-muted); }
+.selected-recipe-card summary:hover { background: var(--kitchen-sage-soft); }
+.shopping-summary { margin-top: 1.5rem; padding: 1.15rem 1.3rem; }
+.shopping-summary h2 { font-size: 1.6rem; }
+.shopping-summary .kitchen-button { margin-top: .8rem; background: transparent; }
+.shopping-filters { display: grid; grid-template-columns: minmax(0, 1fr); gap: .65rem; padding-block: 1rem .5rem; }
+.shopping-filter-row { display: flex; align-items: center; gap: 1rem; }
+.shopping-filter-row > label:first-child { flex: 1; min-width: 0; }
+.shopping-filter-status { margin: 0; }
+.shopping-exports { padding-bottom: .75rem; border-bottom: 1px solid var(--kitchen-line); }
+.shopping-filters > label:first-child { grid-column: 1 / -1; }
+.shopping-filters label:not(.check-label) { display: flex; flex-direction: column; gap: .35rem; font-size: .85rem; font-weight: 650; }
+.shopping-filters .check-label { align-self: end; font-size: .9rem; }
+.shopping-results { font-size: .85rem; color: var(--kitchen-muted); margin-block: .5rem; }
+.shopping-item.needs-amount .shopping-sources summary { color: var(--kitchen-tomato); font-weight: 650; }
+.shopping-check { min-height: 56px; }
+.shopping-sources { margin-bottom: 0; }
+.shopping-sources summary { padding-block: .5rem; }
+.shopping-empty { padding: 2rem 1rem; margin-block: 1rem; }
+.kitchen-shopping-mode article > h1, .kitchen-shopping-mode article > p:first-of-type,
+.kitchen-shopping-mode .actionbar, .kitchen-shopping-mode .kitchen-workflow,
+.kitchen-shopping-mode .selected-recipes, .kitchen-shopping-mode .next-article { display: none; }
+.kitchen-shopping-mode .actionbar { display: none !important; }
+.kitchen-shopping-mode .shopping-department { margin-top: 1.3rem; }
+.kitchen-shopping-mode .shopping-summary { margin-top: 0; }
+.kitchen-shopping-mode .shopping-summary .eyebrow { display: none; }
+.kitchen-shopping-mode .shopping-hint { display: none; }
+.kitchen-shopping-mode > main { padding-top: .75rem !important; }
+.recipe-secondary-actions { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-top: .75rem; }
+.recipe-secondary-actions > a { display: inline-flex; align-items: center; min-height: 44px; }
+.recipe-preparation { background: var(--kitchen-sage-soft); border-left: 3px solid var(--kitchen-sage); border-radius: .3rem; padding: 1rem 1.2rem; margin-block: 1.5rem; }
+article .recipe-preparation h2 { font: 700 1.1rem/1.4 "Segoe UI", sans-serif; border: 0; margin: 0 0 .5rem; padding: 0; }
+.recipe-preparation p:last-child, .recipe-preparation ul:last-child { margin-bottom: 0; }
+.cooking-dialog[open], .shopping-print-dialog[open] { display: flex; flex-direction: column; padding: 0; overflow: hidden; }
+.cooking-dialog { height: min(900px, calc(100dvh - 2rem)); }
+.cook-header { flex-shrink: 0; padding: 1rem 1.5rem; border-bottom: 1px solid var(--kitchen-line); }
+.cook-header p { margin-bottom: .6rem; }
+.cook-scroll { min-height: 0; flex: 1; overflow-y: auto; overscroll-behavior: contain; padding: .5rem 1.5rem 1.5rem; }
+.cook-scroll :where(input, select, button, summary, a) { scroll-margin-block: 1rem; }
+.cook-navigation { flex-shrink: 0; padding: 1rem 1.5rem; border-top: 1px solid var(--kitchen-line); background: var(--kitchen-surface); }
+.cook-navigation .primary { flex: 1; max-width: 65%; }
+.cook-preparation { margin-top: .5rem; padding: .25rem .8rem; background: var(--kitchen-sage-soft); border-radius: .5rem; font-size: .95rem; }
+.cook-preparation summary { min-height: 44px; padding-block: .6rem; cursor: pointer; font-weight: 650; }
+.shopping-print-dialog { width: min(900px, calc(100vw - 2rem)); height: calc(100dvh - 2rem); max-height: none; border: 1px solid var(--kitchen-line); border-radius: .8rem; background: var(--kitchen-surface); color: var(--kitchen-ink); }
+.shopping-print-dialog::backdrop { background: rgba(15, 24, 15, .65); backdrop-filter: blur(4px); }
+.print-controls { padding: 1rem 1.5rem; flex-shrink: 0; border-bottom: 1px solid var(--kitchen-line); }
+.print-controls p { margin-bottom: .5rem; }
+.print-preview-scroll { flex: 1; min-height: 0; overflow: auto; background: var(--kitchen-sage-soft); padding: 1.5rem; }
+.shopping-print-sheet { background: white; color: #222; padding: 2rem; margin: 0 auto; font: 1rem/1.5 "Segoe UI", sans-serif; }
+.shopping-print-sheet h1 { font: 700 2rem/1.2 Georgia, serif; color: #293e28; }
+.shopping-print-sheet h2 { font: 700 1.25rem/1.4 "Segoe UI", sans-serif; color: #293e28; margin: 1.5rem 0 .6rem; }
+.shopping-print-sheet h3 { font: 700 1.1rem/1.4 "Segoe UI", sans-serif; margin: 1.2rem 0 .5rem; }
+.shopping-print-sheet p { margin: 0 0 .7rem; }
+.shopping-print-sheet small { color: #555; font-size: .8rem; }
+.shopping-print-sheet ul { padding-left: 1.3rem; }
+.shopping-print-sheet blockquote { color: #333; background: #f5f5f0; box-shadow: none; font-size: .95rem; padding: .7rem; }
+@media (max-width: 767px) {
+  .catalog-tools { grid-template-columns: 1fr; gap: .65rem; }
+  .selected-recipes { grid-template-columns: 1fr; }
+}
+/* Nabídka se sbalí i na tabletu, aby hledání a názvy nebyly stlačené. */
+@media (max-width: 991.98px) {
+  body > header, .navbar { height: auto; min-height: 60px; }
+  body > header { display: block; }
+  .navbar #navpanel.show { max-height: calc(100dvh - 80px); overflow-y: auto; }
+  .navbar > .container-xxl { display: flex; flex-wrap: wrap !important; align-items: center; }
+  .navbar .navbar-brand { flex: 1; max-width: calc(100% - 3rem); margin-right: 0; font-size: 1.02rem; line-height: 1.25; }
+  .navbar > .container-xxl > button { display: inline-flex !important; align-items: center; justify-content: center; width: 44px; min-height: 44px; padding: .5rem; }
+  .navbar #navpanel { flex-basis: 100%; width: 100%; }
+  .navbar #navpanel.collapse:not(.show) { display: none !important; }
+  .navbar #navpanel.show { display: block !important; }
+  .navbar #navbar { display: flex; flex-direction: column; align-items: stretch; gap: .5rem; padding-block: .5rem; }
+  .navbar .navbar-nav { flex-direction: column; align-items: stretch; width: 100%; }
+  .navbar #navbar form.search { width: 100%; }
+  .navbar .navbar-nav .nav-link { min-height: 44px; display: flex; align-items: center; }
+}
+.skip-to-content { position: fixed; z-index: 1100; left: 1rem; top: .5rem; padding: .7rem 1rem; background: var(--kitchen-surface); border: 2px solid var(--kitchen-sage); border-radius: .4rem; transform: translateY(-200%); }
+.skip-to-content:focus { transform: none; }
+main:focus { outline: none; }
+@media (max-width: 600px) {
+  .kitchen-catalog-page article > h1, .kitchen-shopping-page article > h1 { font-size: 1.95rem; }
+  .kitchen-workflow { gap: .35rem; }
+  .catalog-filter-row { gap: .65rem; }
+  .catalog-filter-row .check-label { font-size: .85rem; }
+  .kitchen-app input, .kitchen-app select, .kitchen-app textarea { font-size: 1rem; }
+  .shopping-filters { gap: .6rem; }
+  .shopping-filters .check-label { font-size: .8rem; gap: .4rem; }
+  .shopping-summary { padding: 1rem; }
+  .shopping-summary h2 { font-size: 1.4rem; }
+  .shopping-exports .kitchen-button { font-size: .85rem; padding-inline: .7rem; }
+  .selected-recipe-title { padding-inline: .8rem; }
+  .cooking-dialog, .shopping-print-dialog { width: 100vw; height: 100dvh; max-width: none; max-height: none; margin: 0; border: 0; border-radius: 0; }
+  .cook-header, .print-controls { padding: max(.8rem, env(safe-area-inset-top)) 1rem .8rem; }
+  .cook-scroll { padding-inline: 1rem; }
+  .cook-navigation { padding: .8rem 1rem max(.8rem, env(safe-area-inset-bottom)); }
+  .cook-navigation .kitchen-button { min-height: 50px; }
+  .cook-top .eyebrow { font-size: .7rem; letter-spacing: .05em; }
+  .cooking-dialog h2 { margin-top: 1.2rem; }
+  .print-preview-scroll { padding: .6rem; }
+  .shopping-print-sheet { padding: 1rem; }
+  .recipe-secondary-actions { font-size: .9rem; }
+  .recipe-secondary-actions .kitchen-button { font-size: .85rem; padding-inline: .8rem; }
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+@media print {
+  body:has(.shopping-print-dialog[open]) > *:not(.shopping-print-dialog) { display: none !important; }
+  .shopping-print-dialog[open] { display: block; position: static; width: 100%; height: auto; max-height: none; border: 0; margin: 0; overflow: visible; }
+  .shopping-print-dialog .print-controls { display: none !important; }
+  .print-preview-scroll, .shopping-print-sheet { overflow: visible; padding: 0; }
+  .shopping-print-sheet h2, .shopping-print-sheet h3 { break-after: avoid; }
+  .shopping-print-sheet p, .shopping-print-sheet li { break-inside: avoid; }
 }
 @media print {
   body { padding: 0; }

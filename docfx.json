@@ -13,7 +13,11 @@
       }
     ],
     "output": "_site",
-    "resource": [{ "files": ["data/recipes.json"] }],
+    "resource": [
+      { "files": ["data/recipes.json"] },
+      { "files": ["pdfmake.min.js", "vfs_fonts.js"], "src": "node_modules/pdfmake/build", "dest": "public" },
+      { "files": ["LICENSE"], "src": "node_modules/pdfmake", "dest": "public/licenses/pdfmake" }
+    ],
     "template": [
       "default",
       "modern",
@@ -25,7 +29,7 @@
       "_enableSearch": true,
       "_lang": "cs",
       "_disableContribution": true,
-      "pdf": true
+      "pdf": false
     }
   }
 }

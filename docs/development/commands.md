@@ -1,7 +1,7 @@
 ---
 canonical_for: project-commands
 status: accepted
-last_verified: 2026-09-12
+last_verified: 2026-09-13
 owner: engineering
 ---
 
@@ -123,7 +123,7 @@ Soubor není verzovaný a nevytváří samostatný commit.
 
 ### Výběr, nákup a vaření
 
-Po sestavení ověř úvodní katalog, nákup a detail na šířkách 390 a 1440 px, včetně klávesnice a mobilního dialogu.
+Po sestavení ověř úvodní katalog, nákup a detail na šířkách 320, 390, 768 a 1440 px, včetně klávesnice a mobilního dialogu.
 
 | Požadavek | Kroky | Očekávaný výsledek |
 |---|---|---|
@@ -131,8 +131,13 @@ Po sestavení ověř úvodní katalog, nákup a detail na šířkách 390 a 1440
 | `REQ-007`, `REQ-011` | Odškrtni cibuli a změň šunkofleky na 2× dávku | Cibule 3 ks a vejce 5 ks; dotčené odškrtnutí se zruší |
 | `REQ-007` | U rajské zvol ghí a zapni přílohu; u kari zvol broskev | Nákup obsahuje zvolené varianty, nikoli zároveň jejich náhrady |
 | `REQ-009` | U neznámého množství rozbal zdroje, doplň vlastní množství a ulož; zkopíruj nebo stáhni seznam | Vlastní text je označený a export obsahuje také původní údaj a poznámky |
-| `REQ-010`, `REQ-011` | Otevři šunkofleky přes „Začít vařit“, dokonči první krok, zavři a otevři dialog znovu | Zobrazí se druhý krok a první zůstává označený |
+| `REQ-010`, `REQ-011` | Otevři šunkofleky přes „Vařit krok za krokem“, dokonči první krok, zavři a otevři dialog znovu | Zobrazí se druhý krok a první zůstává označený |
 | `REQ-010` | Přeskoč přímo na poslední krok a dokonči jej | Celé vaření není označené jako hotové, pokud zbývají neoznačené kroky |
+| `REQ-006` | Vyhledej `tikka`, otevři recept a vrať se zpět | Katalog zachová hledání a odpovídající výsledek |
+| `REQ-008` | Zvol „Začít nakupovat“, filtruj oddělení i název a skryj hotové | Výběr jídel ustoupí surovinám; prázdný výsledek nabídne zrušení filtrů |
+| `REQ-009` | Rozepsané množství ponech neuložené a odškrtni jinou surovinu | Rozepsaný údaj a otevřená editace zůstanou zachované |
+| `REQ-009` | V receptu nastav 2× dávku a otevři „PDF / tisk receptu“; totéž proveď v nákupu | Náhled nabídne „Stáhnout PDF“, zachová češtinu, zdroje a skutečný výběr i při aktivním filtru |
+| `REQ-010` | V tikka masale nech naan vypnutý, přeskoč na jeho krok a potom dokonči zahrnuté kroky | Přílohu lze přeskočit a celý recept dokončit po čtyřech zahrnutých krocích |
 | `REQ-E006` | Ověř statické HTML před klientským rozšířením | Obsahuje tabulky a celý postup, katalog má základní odkazy |
 
 ### Zdrojová kopie bez Git metadat

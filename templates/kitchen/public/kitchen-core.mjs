@@ -92,13 +92,37 @@ export function shoppingAmount(item, amounts = {}) {
   return custom?.signature === item.signature && custom.text.trim() ? `${custom.text.trim()} (vlastní)` : item.amount;
 }
 
+/** Určí neznámé množství, které ještě nemá platné vlastní doplnění. */
+export function shoppingNeedsAmount(item, amounts = {}) {
+  const custom = amounts[item.key];
+  return item.text === 'neuvedeno' && !(custom?.signature === item.signature && custom.text.trim());
+}
+
+/** Vyfiltruje nákup podle oddělení, názvu, doplnění a hotových položek bez změny celkového seznamu. */
+export function filterShoppingItems(items, filters = {}, checked = {}, amounts = {}) {
+  const normalize = value => value.normalize('NFD').replace(/\p{M}/gu, '').toLocaleLowerCase('cs');
+  const words = normalize(filters.search || '').split(/\s+/).filter(Boolean);
+  return items.filter(item => (!filters.category || item.category === filters.category)
+    && (!filters.hideDone || checked[item.key] !== item.signature)
+    && (!filters.missing || shoppingNeedsAmount(item, amounts))
+    && words.every(word => normalize(item.name).includes(word)));
+}
+
+/** Počítá průběh pouze ze zahrnutých kroků; vynechaná příloha nemůže bránit dokončení. */
+export function cookingProgress(recipe, saved, cooking) {
+  const config = recipeSettings(recipe, saved);
+  const active = recipe.steps.flatMap((step, index) => !step.optionalGroup || config.enabled[step.optionalGroup] ? [index] : []);
+  const done = active.filter(index => cooking.done.includes(index));
+  return { active, done, complete: active.length > 0 && done.length === active.length };
+}
+
 /** Exportuje celý nákup včetně poznámek a nejistých množství do textu použitelného bez připojení. */
 export function shoppingText(items, checked, amounts = {}) {
   let category = '';
   return ['NÁKUPNÍ SEZNAM', '', ...items.flatMap(item => {
     const heading = item.category === category ? [] : ['', item.category.toLocaleUpperCase('cs')];
     category = item.category;
-    const notes = [...new Set(item.sources.map(source => `${source.recipe}: ${source.quantity}${source.note ? ` (${source.note})` : ''}`))];
+    const notes = item.sources.map(source => `${source.recipe}${source.group !== 'Základ' ? ` (${source.group})` : ''}: ${source.quantity}${source.note ? ` (${source.note})` : ''}`);
     return [...heading, `${checked[item.key] === item.signature ? '[x]' : '[ ]'} ${item.name} — ${shoppingAmount(item, amounts)}`, ...notes.map(note => `    ${note}`)];
   })].join('\n');
 }
