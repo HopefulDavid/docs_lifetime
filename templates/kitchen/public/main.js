@@ -1,3 +1,5 @@
+import { startKitchen } from './kitchen.mjs';
+
 const ariaLabels = {
   'Toggle navigation': 'Přepnout navigaci',
   Search: 'Hledat',
@@ -22,6 +24,19 @@ const docfxOptions = {
   },
   start() {
     localizeAriaLabels(document);
+    startKitchen().catch(error => {
+      console.error('Kuchařka:', error);
+      const target = document.getElementById('kitchen-catalog') || document.getElementById('kitchen-planner');
+      if (target) {
+        const message = document.createElement('p');
+        message.textContent = 'Výběr a nákup se nepodařilo načíst. Obnovte stránku nebo otevřete recepty.';
+        const link = document.createElement('a');
+        link.href = new URL('../index.html', import.meta.url).href;
+        link.textContent = 'Prohlédnout recepty';
+        target.replaceChildren(message, link);
+        document.querySelector('.catalog-fallback')?.removeAttribute('hidden');
+      }
+    });
 
     const searchResults = document.getElementById('search-results');
     if (searchResults) {

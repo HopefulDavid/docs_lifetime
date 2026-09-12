@@ -1,7 +1,7 @@
 ---
 canonical_for: testing-strategy
 status: accepted
-last_verified: 2026-08-29
+last_verified: 2026-09-12
 owner: quality
 ---
 
@@ -22,15 +22,45 @@ Projekt kombinuje deterministickou kontrolu generovaných souborů, strukturáln
 | České a anglické vyhledání i nulový výsledek, `REQ-005` | Automatické termíny ze všech reprezentativních názvů, obsahu a cest, následované vizuálním smoke | `npm run test:unit` a lokální web |
 | Vadná cesta nebo chybějící nadpis, `REQ-E001` | Izolované negativní obsahové fixture | `npm run test:unit` nad dočasnými kopiemi |
 | Neexistující veřejná cesta, `REQ-E003` | HTTP 404 bez náhradního obsahu | Lokální server nebo GitHub Pages |
+| Chybný společný nákup, `REQ-007` až `REQ-009` | Součty skutečných receptů, alternativy, volitelné přílohy, neslučitelné jednotky a vlastní množství | `tests/kitchen-core.test.mjs` |
+| Zastaralé odškrtnutí a poškozený místní stav, `REQ-011`, `REQ-E005` | Změna dávky a zdrojů, validace uložených dat, export | `tests/kitchen-core.test.mjs` |
+| Zápis při vadném vstupu | Neplatný recept nesmí přepsat zdroje ani katalog | `tests/generate-docs.test.mjs` |
+| Mobilní nákup a vaření, `REQ-006` až `REQ-010` | Skutečné ovládání katalogu, nastavení, checklistu a dialogu | [Smoke scénáře](../development/commands.md#výběr-nákup-a-vaření) |
 | Oprávnění, neměnné akce a publikační pořadí, `QLT-004` | Automatická strukturální kontrola workflow a review oddělených jobů | `npm run docs:validate` a `.github/workflows/main.yml` |
 
 ### Trvalá obsahová kontrola
+
+Jednotnou podobu receptů a otevřené obsahové otázky vlastní [formát receptu](../product/recipe-format.md).
 
 Věcnou správnost ingrediencí, množství a kulinářského postupu potvrzuje člověk znalý receptu, protože ji technický build neumí spolehlivě odvodit.
 
 Tato odpovědnost je provozní podmínka obsahové změny, nikoli technický úkol s nepravdivým stavem dokončení.
 
 Přesné příkazy a smoke kroky jsou v [`../development/commands.md`](../development/commands.md).
+
+### Ověření rozšíření o nákup a vaření, 2026-09-12
+
+Ověření proběhlo na Windows s Node.js 24.13.0, npm 11.6.2, .NET SDK 10.0.401 a připnutým DocFX 2.78.5.
+
+| Vrstva | Skutečný výsledek | Omezení důkazu |
+|---|---|---|
+| Automatické scénáře | Všech 21 testů prošlo, včetně changelog fixture, hledání, generátoru, nákupních součtů a obnovy stavu | `git-cliff` potřeboval spuštění mimo sandbox kvůli přístupu k dočasné Git fixture |
+| Standardní `npm test` před obnovou Git | Testy prošly, následné generování changelogu skončilo chybou chybějícího repozitáře | Tehdejší kopie neměla `.git`; překážku odstranila [obnova propojení](../operations/runbook.md#obnova-lokálního-git-propojení) |
+| Samostatné kontroly před obnovou Git | Generátor v režimu `--check`, strukturální validátor a DocFX sestavení s varováními jako chybami prošly | Tehdejší artefakt používal existující changelog bez ověřitelné shody s historií |
+| Celá sbírka | Všech 27 receptů má ve skutečném mobilním prohlížeči vykreslené suroviny a postup bez vodorovného přesahu na šířce 390 px | Jde o kontrolu DOM a průchod stránek, nikoli pixelové snímky každé kombinace nastavení |
+| Reprezentativní vizuální scénáře | Katalog, nákup a vaření byly ovládané a vizuálně zkontrolované na šířkách 320, 390 a 1440 px, včetně světlého a tmavého motivu | Nejde o úplný audit WCAG ani test všech prohlížečů |
+| Nákup a místní stav | Součty cibule a vajec, změna dávky, alternativy, příloha, odškrtnutí, skrytí hotových, vlastní množství, obnovení po načtení a vrácení vymazaného výběru odpovídají scénářům | Souběžná práce v několika oknech není podporovaná |
+| Vaření | Přechod kroků, zapamatování postupu, vynechaná příloha, kontrola přeskočených kroků, zavření klávesou Escape a přepočet po zavření dialogu fungují | Časy a množství uvnitř původního textu zůstávají beze změny |
+| Export | Kopírovaný text obsahuje společné součty, původní údaje a vlastní množství | Vestavěný prohlížeč po stisku „Stáhnout“ nepotvrdil událost stažení; tiskový dialog nebyl vizuálně ověřen |
+| Statický obsah a regrese | HTML všech receptů obsahuje tabulky i postup bez klientského rozšíření, katalog má náhradní odkazy a původní hledání funguje bez chyby konzole | Odmítnutí úložiště bylo zkontrolováno v kódu, nikoli simulováno v prohlížeči |
+
+Zkušební výběr jídel byl po průchodu odstraněn přes rozhraní a motiv vrácen na automatický.
+
+Po obnovení skutečné Git historie dne 2026-09-12 prošel celý `npm test`, včetně všech 21 testů, generování aktuálního changelogu, kontroly katalogu a strukturální validace.
+
+Prošel také standardní `npm run docs:build` s nově odvozeným changelogem, čistým výstupním adresářem a nulovým počtem varování a chyb.
+
+Trvalé obsahové nejistoty a odpovědnost za jejich doplnění vlastní [obsahová revize](../product/recipe-format.md#obsahová-revize).
 
 ## Cíl
 

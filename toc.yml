@@ -1,3 +1,7 @@
+- name: "Recepty"
+  href: "index.md"
+- name: "Můj nákup"
+  href: "nakup.md"
 - name: "Jídlo"
   href: "food/"
 - name: "Nápoje"

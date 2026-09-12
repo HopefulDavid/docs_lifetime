@@ -1,7 +1,7 @@
 ---
 canonical_for: project-commands
 status: accepted
-last_verified: 2026-08-28
+last_verified: 2026-09-12
 owner: engineering
 ---
 
@@ -16,12 +16,25 @@ Skripty, manifesty a build konfigurace zůstávají kanonické pro prováděnou 
 | Nástroj nebo služba | Podporovaná verze | Kanonický zdroj verze | Lokální nebo řízená dostupnost | Ověření |
 |---|---|---|---|---|
 | Node.js | Řada 24 LTS | [`../../package.json`](../../package.json) | Lokální instalace a `actions/setup-node` | `node --version` |
-| npm | Verze kompatibilní s Node.js 24 a lockfile v3, ověřeno s 9.9.4 | Distribuce Node.js a [`../../package-lock.json`](../../package-lock.json) | Lokální instalace a `actions/setup-node` | `npm --version` |
-| .NET SDK | 8.0 nebo vyšší, lokálně ověřeno s 10.0.301 | [Workflow](../../.github/workflows/main.yml) a požadavek DocFX | Lokální instalace a `actions/setup-dotnet` | `dotnet --version` |
+| npm | Verze kompatibilní s Node.js 24 a lockfile v3, ověřeno s 11.6.2 | Distribuce Node.js a [`../../package-lock.json`](../../package-lock.json) | Lokální instalace a `actions/setup-node` | `npm --version` |
+| .NET SDK | 8.0 nebo vyšší, lokálně ověřeno s 10.0.401 | [Workflow](../../.github/workflows/main.yml) a požadavek DocFX | Lokální instalace a `actions/setup-dotnet` | `dotnet --version` |
 | DocFX | Přesná verze z manifestu, ověřeno s 2.78.5 | [`../../.config/dotnet-tools.json`](../../.config/dotnet-tools.json) | Lokální .NET tool cache nebo NuGet.org | `dotnet tool run docfx --version` |
 | Git | Verze podporující běžné checkout a log operace | Systémová instalace | Lokální prostředí a GitHub Actions | `git --version` |
 
 Generování changelogu vyžaduje úplnou Git historii, nikoli mělký checkout.
+
+### Ověření Git a SSH
+
+| Kontrola | Přesný příkaz | Očekávaný výsledek |
+|---|---|---|
+| Přihlášení existujícím SSH klíčem | `ssh -T -o BatchMode=yes -o StrictHostKeyChecking=yes -o ConnectTimeout=15 git@github.com` | GitHub potvrdí účet `HopefulDavid`; návratový kód 1 je u tohoto testu normální, protože GitHub neposkytuje shell |
+| Adresa vzdáleného repozitáře | `git remote -v` | `origin` používá `git@github.com:HopefulDavid/docs_lifetime.git` pro fetch i push |
+| Vývojová větev a sledování | `git branch -vv` | Aktivní `develop` sleduje `origin/develop` a `main` sleduje `origin/main` |
+| Ověření přístupu pro zápis bez publikování | `git push --dry-run origin develop` | Kód 0 a přehled zamýšlené operace; žádné commity se neodešlou |
+| Úplnost stažené historie | `git rev-parse --is-shallow-repository` | `false` |
+| Integrita Git objektů | `git fsck --full` | Kód 0 bez chyb |
+
+Obnova chybějících metadat a zachování pracovních souborů jsou zaznamenané v [runbooku](../operations/runbook.md#obnova-lokálního-git-propojení).
 
 ## Inicializace prostředí
 
@@ -39,7 +52,7 @@ Spusť příkazy z kořene repozitáře v uvedeném pořadí.
 
 | Varianta | Pracovní adresář | Přesný příkaz | Výstup | Úspěch znamená |
 |---|---|---|---|---|
-| Přepočet katalogu a navigace | Kořen repozitáře | `npm run docs:generate` | Verzované `index.md` a `toc.yml` soubory | Generátor skončí kódem 0 a vypíše změněné cesty nebo aktuální stav |
+| Přepočet katalogu a navigace | Kořen repozitáře | `npm run docs:generate` | Verzované `index.md`, `toc.yml`, `nakup.md` a `data/recipes.json` | Generátor skončí kódem 0 a vypíše změněné cesty nebo aktuální stav |
 | Vyčištění statického výstupu | Kořen repozitáře | `npm run docs:clean` | Odstraněný ignorovaný adresář `_site/` | Staré stránky nemohou zůstat v následujícím artefaktu |
 | Vývojové sestavení | Kořen repozitáře | `npm run docs:build` | Ignorovaný `changelog.md` a adresář `_site/` | Changelog, katalog, navigace a připnutý DocFX projdou bez varování |
 | Produkční sestavení | Kořen repozitáře | `npm run docs:build` | Stejný ignorovaný changelog a adresář `_site/` | Vznikne tentýž typ artefaktu, který publikuje CI |
@@ -62,7 +75,7 @@ Po změně zdroje web znovu sestav a stránku obnov.
 
 | Kontrola | Přesný příkaz | Rozsah | Oprava formátu | Očekávaný výsledek |
 |---|---|---|---|---|
-| Cílené automatické testy | `npm run test:unit` | České i anglické hledání, chybové vstupy generátoru a automatický changelog v dočasném Git repozitáři | Ruční oprava modulu, workeru, generátoru nebo konfigurace changelogu | Jedenáct scénářů projde a dočasné kopie se odstraní |
+| Cílené automatické testy | `npm run test:unit` | Hledání, obsahový kontrakt, nákup, obnova stavu, chybové vstupy generátoru a changelog v dočasném Git repozitáři | Ruční oprava příslušného modulu nebo konfigurace | Všechny scénáře projdou a dočasné kopie se odstraní |
 | Konzistence generovaných souborů | `npm run docs:check` | Nejprve obnoví ignorovaný changelog, potom ověří recepty, nápoje, katalog, přehledy a TOC | `npm run docs:generate` | `Dokumentace je aktuální.` a kód 0 |
 | Struktura dokumentace | `npm run docs:validate` | Interní odkazy, kanonická metadata, adaptéry, pracovní záznamy a zakázané artefakty | Ruční oprava zdroje | Souhrn platných Markdown souborů a kód 0 |
 | Úplná rychlá kontrola | `npm test` | Cílené testy, generované soubory a strukturální validace | Podle konkrétního výstupu | Všechny tři vrstvy projdou |
@@ -78,9 +91,9 @@ Strategie výběru testů je v [`../quality/testing.md`](../quality/testing.md).
 
 | Úroveň | Přesný příkaz nebo scénář | Potřebné služby | Výstupní artefakty | Typická doba nebo rozsah |
 |---|---|---|---|---|
-| Rychlé chování | `npm run test:unit` | Lokální Git a obnovený `git-cliff` | Konzolový výstup jedenácti scénářů | Jednotky sekund bez obnovy nástrojů |
+| Rychlé chování | `npm run test:unit` | Lokální Git a obnovený `git-cliff` | Konzolový výstup všech scénářů | Jednotky sekund bez obnovy nástrojů |
 | Cílený test generátoru | `npm run docs:check` | Obnovený `git-cliff` a lokální Git | Konzolový seznam očekávaných změn při selhání | Sekundy, changelog a celý obsahový katalog |
-| Automatizované testy | `npm test` | Žádné | Konzolový výstup | Sekundy, celý repozitář |
+| Automatizované testy | `npm test` | Lokální Git historie a obnovený `git-cliff` | Konzolový výstup | Sekundy, celý repozitář |
 | Integrační sestavení | `npm run docs:build` | Obnovený lokální DocFX | `_site/`, `index.json` a `manifest.json` | Jednotky sekund |
 | Vizuální scénáře | `npm run docs:serve`, poté kroky z reprezentativního smoke scénáře | Lokální HTTP port 8765 a prohlížeč | Viditelná stránka, volitelný screenshot a konzole | Úvod, hledání, detail a chybová cesta |
 | Úplná lokální kontrola | Inicializace prostředí, `npm test` a `npm run docs:build` v tomto pořadí | npm a NuGet pouze při prázdné cache | Čistý Git diff a `_site/` | Desítky sekund bez prvního stahování |
@@ -107,6 +120,44 @@ Soubor není verzovaný a nevytváří samostatný commit.
 `npm run docs:build` tento krok spouští automaticky před DocFX.
 
 ## Reprezentativní smoke scénář
+
+### Výběr, nákup a vaření
+
+Po sestavení ověř úvodní katalog, nákup a detail na šířkách 390 a 1440 px, včetně klávesnice a mobilního dialogu.
+
+| Požadavek | Kroky | Očekávaný výsledek |
+|---|---|---|
+| `REQ-006`, `REQ-008` | Vyhledej `rajska` a `sunkofleky`, oba recepty přidej a otevři „Můj nákup“ | Cibule 2 ks a vejce 3 ks; máslo v gramech a lžičkách zůstává oddělené |
+| `REQ-007`, `REQ-011` | Odškrtni cibuli a změň šunkofleky na 2× dávku | Cibule 3 ks a vejce 5 ks; dotčené odškrtnutí se zruší |
+| `REQ-007` | U rajské zvol ghí a zapni přílohu; u kari zvol broskev | Nákup obsahuje zvolené varianty, nikoli zároveň jejich náhrady |
+| `REQ-009` | U neznámého množství rozbal zdroje, doplň vlastní množství a ulož; zkopíruj nebo stáhni seznam | Vlastní text je označený a export obsahuje také původní údaj a poznámky |
+| `REQ-010`, `REQ-011` | Otevři šunkofleky přes „Začít vařit“, dokonči první krok, zavři a otevři dialog znovu | Zobrazí se druhý krok a první zůstává označený |
+| `REQ-010` | Přeskoč přímo na poslední krok a dokonči jej | Celé vaření není označené jako hotové, pokud zbývají neoznačené kroky |
+| `REQ-E006` | Ověř statické HTML před klientským rozšířením | Obsahuje tabulky a celý postup, katalog má základní odkazy |
+
+### Zdrojová kopie bez Git metadat
+
+Následující postup slouží pouze pro exportovanou zdrojovou kopii bez `.git`; aktuální pracovní kopie má propojení již [obnovené](../operations/runbook.md#obnova-lokálního-git-propojení).
+
+V takové kopii nelze přepnout na `develop`, vytvářet projektové commity ani znovu odvodit úplný changelog.
+
+Standardní `npm test`, `docs:check` a `docs:build` nadále vyžadují skutečnou Git historii; nevytvářej náhradní historii a neskrývej tuto překážku.
+
+Pro lokální kontrolu změn s již existujícím `changelog.md` byly samostatně ověřeny následující příkazy:
+
+```powershell
+npm run test:unit
+node scripts/generate-docs.js --check
+npm run docs:validate
+npm run docs:clean
+dotnet tool run docfx build docfx.json --warningsAsErrors
+```
+
+Tento postup ověřuje lokální artefakt, nikoli aktuálnost changelogu nebo způsobilost publikovat nový zdrojový commit.
+
+Na Windows může sandbox odepřít `git-cliff` přístup k dočasné testovací Git fixture; dne 2026-09-12 prošla stejná sada mimo sandbox bez změny testu.
+
+### Původní katalog a hledání
 
 | Požadavek | Příprava | Kroky nebo příkaz | Očekávaný technický důkaz | Úklid |
 |---|---|---|---|---|

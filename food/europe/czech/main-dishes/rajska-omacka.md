@@ -1,37 +1,52 @@
 # 🍅 Rajská omáčka s masovými koulemi
 
-Rajská omáčka s masovými koulemi je tradiční české jídlo, které potěší milovníky sladkokyselých omáček.
+Hovězí masové koule se sladkokyselou rajčatovou omáčkou a přílohou podle výběru.
 
 ## Ingredience
 
+Množství platí pro jednu původní dávku; počet porcí není uveden.
+
 ### Na maso
 
-- Hovězí mleté maso (500 g)
-- Vejce (1 ks)
-- Strouhanka nebo kukuřičná krupice (2 lžíce, dle hustoty)
-- Koření na mleté maso
-- Čerstvě namletý pepř
-- Sůl (1/2 lžičky)
+| Surovina | Množství | Upřesnění |
+|---|---|---|
+| Mleté hovězí maso | 500 g | — |
+| Vejce | 1 ks | — |
+| Strouhanka nebo Kukuřičná krupice | 2 lžíce | podle hustoty |
+| Koření na mleté maso | dle chuti | — |
+| Pepř mletý | dle chuti | čerstvě namletý |
+| Sůl | 0,5 lžičky | — |
 
 ### Na omáčku
 
-- Máslo nebo ghí (60 g)
-- Hladká mouka (50 g)
-- Cibule (1 ks)
-- Loupaná rajčata (400 g)
-- Hovězí nebo drůbeží vývar (800 ml)
-- Mletá skořice (1/2 lžičky)
-- Bobkový list (1 ks)
-- Nové koření (5 kuliček)
-- Sušený tymián (1/2 lžičky)
-- Rajský protlak (140 g)
-- Pepř celý (5 kuliček)
-- Ocet (na dochucení)
-- Cukr (na dochucení)
+| Surovina | Množství | Upřesnění |
+|---|---|---|
+| Máslo nebo Ghí | 60 g | — |
+| Hladká mouka | 50 g | — |
+| Cibule | 1 ks | — |
+| Loupaná rajčata v konzervě | 400 g | — |
+| Hovězí vývar nebo Drůbeží vývar | 800 ml | — |
+| Skořice mletá | 0,5 lžičky | — |
+| Bobkový list | 1 ks | — |
+| Nové koření | 5 kuliček | — |
+| Tymián sušený | 0,5 lžičky | — |
+| Rajčatový protlak | 140 g | — |
+| Pepř celý | 5 kuliček | — |
+| Sůl | dle chuti | na omáčku |
+| Ocet | dle chuti | — |
+| Cukr | dle chuti | — |
 
-  > **Tip:** Mleté maso můžete dochutit čerstvými bylinkami pro výraznější chuť.
+### Příloha (volitelné)
 
-## 1. Příprava masových koulí
+| Surovina | Množství | Upřesnění |
+|---|---|---|
+| Houskový knedlík nebo Těstoviny | neuvedeno | k podávání |
+
+> **Tip:** Mleté maso můžete dochutit čerstvými bylinkami pro výraznější chuť.
+
+## Postup
+
+### 1. Příprava masových koulí
 
 - Všechny ingredience na maso vložte do mísy a pečlivě promíchejte.
 - Pokud je směs příliš řídká, přidejte strouhanku nebo krupici.
@@ -42,7 +57,7 @@ Rajská omáčka s masovými koulemi je tradiční české jídlo, které potě�
 - Vyskládejte je na tác a vložte do trouby vyhřáté na 200 °C.
 - Pečte dokud nezískají hnědou barvu.
 
-## 2. Příprava rajské omáčky
+### 2. Příprava rajské omáčky
 
 - V hrnci rozpusťte máslo a orestujte nadrobno nasekanou cibuli dozlatova.
 - Snižte plamen, cibuli zasypejte moukou a minutu opékejte.
@@ -52,7 +67,7 @@ Rajská omáčka s masovými koulemi je tradiční české jídlo, které potě�
 
   > **Tip:** Omáčku můžete rozmixovat pro jemnější konzistenci.
 
-## 3. Dokončení omáčky
+### 3. Dokončení omáčky
 
 - Hotovou omáčku přeceďte přes síto.
 - Přidejte rajský protlak a promíchejte metličkou.
@@ -60,7 +75,7 @@ Rajská omáčka s masovými koulemi je tradiční české jídlo, které potě�
 
   > **Varování:** Cukr a ocet přidávejte postupně, ochutnávejte.
 
-## 4. Servírování
+### 4. Servírování
 
 - Masové koule podávejte přelité rajskou omáčkou, ideálně s houskovým knedlíkem nebo těstovinami.
 

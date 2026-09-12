@@ -1,31 +1,37 @@
 # 🥬 Zelňačka
 
-Zelňačka je tradiční česká polévka, která zahřeje a zasytí. Skvělá s čerstvým chlebem!
+Sytá polévka z kysaného zelí, klobásy a brambor zjemněná smetanou.
 
 ## Ingredience
 
-- Máslo
-- Cibule
-- Klobása
-- Brambory
-- Voda nebo vývar
-- Bobkový list
-- Nové koření
-- Pepř celý
-- Kmín
-- Paprika sladká mletá
-- Sůl
-- Cukr
-- Kysané zelí (i trochu láku podle chuti)
-- Smetana ke šlehání
-- Majoránka
+Množství platí pro jednu původní dávku; počet porcí není uveden.
 
-## 1. Restování základu
+| Surovina | Množství | Upřesnění |
+|---|---|---|
+| Máslo | neuvedeno | — |
+| Cibule | neuvedeno | — |
+| Klobása | neuvedeno | — |
+| Brambory | neuvedeno | — |
+| Voda nebo Vývar | neuvedeno | — |
+| Bobkový list | dle chuti | — |
+| Nové koření | dle chuti | — |
+| Pepř celý | dle chuti | — |
+| Kmín | dle chuti | — |
+| Sladká paprika mletá | dle chuti | — |
+| Sůl | dle chuti | — |
+| Cukr | dle chuti | — |
+| Kysané zelí | neuvedeno | i trochu láku podle chuti |
+| Smetana ke šlehání | neuvedeno | — |
+| Majoránka | dle chuti | — |
+
+## Postup
+
+### 1. Restování základu
 
 - Na másle osmažte cibuli dozlatova.
 - Přidejte klobásu nakrájenou na kostičky a orestujte.
 
-## 2. Vaření brambor a koření
+### 2. Vaření brambor a koření
 
 - Přidejte brambory nakrájené na kostičky, zalijte vodou nebo vývarem.
 - Ochuťte bobkovým listem, novým kořením, pepřem, kmínem, paprikou, solí a cukrem.
@@ -33,14 +39,14 @@ Zelňačka je tradiční česká polévka, která zahřeje a zasytí. Skvělá s
 
   > **Tip:** Cukr vyvažuje kyselost zelí, přidejte dle chuti.
 
-## 3. Přidání zelí a další vaření
+### 3. Přidání zelí a další vaření
 
 - Přidejte pokrájené kysané zelí (můžete přidat i trochu láku podle chuti).
 - Vařte dalších 10 minut.
 
   > **Varování:** Zelí přidávejte až po změknutí brambor, aby nebyly tvrdé.
 
-## 4. Dokončení a dochucení
+### 4. Dokončení a dochucení
 
 - Vyjměte bobkový list a kuličky koření.
 - Vmíchejte smetanu ke šlehání (můžete ji předem ohřát, aby se nesrazila) a krátce povařte.

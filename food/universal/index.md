@@ -16,5 +16,5 @@ Tato část obsahuje 2 recepty bez vazby na konkrétní zemi.
 
 | Recept | Původ | Popis |
 | --- | --- | --- |
-| [Bylinkový dip se sladkou paprikou](dips/bylinkovy-dip-se-sladkou-paprikou.md) | Univerzální | Tento dip je rychlý, svěží a hodí se na každou party nebo grilování. |
-| [Smetanový dip na sladko](dips/smetanovy-dip-na-sladko.md) | Univerzální | Smetanový dip na sladko je rychlý, jemný a vhodný k ovoci, palačinkám nebo dezertům. |
+| [Bylinkový dip se sladkou paprikou](dips/bylinkovy-dip-se-sladkou-paprikou.md) | Univerzální | Svěží dip ze zakysané smetany, česneku a bylinek k zelenině, pečivu nebo grilovanému masu. |
+| [Smetanový dip na sladko](dips/smetanovy-dip-na-sladko.md) | Univerzální | Jemně nasládlý dip ze smetany, kečupu a medu k tortillám, kuřeti nebo bramborám. |

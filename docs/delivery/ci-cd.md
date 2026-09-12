@@ -15,7 +15,7 @@ Přesná workflow konfigurace zůstává strojově kanonická v [`.github/workfl
 
 | Vlastnost | Ověřená hodnota | Důkaz |
 |---|---|---|
-| Hostingová platforma | GitHub | SSH remote `github.com:HopefulDavid/Docs_Lifetime.git` a adresář `.github/` |
+| Hostingová platforma | GitHub | SSH remote `git@github.com:HopefulDavid/docs_lifetime.git` a adresář `.github/` |
 | VCS | Git | `.git/`, lokální historie a remote `origin` |
 | Výchozí větev hostingu | `main` | `origin/HEAD -> origin/main` |
 | Vývojová větev | `develop` | [`../development/workflow.md`](../development/workflow.md) |

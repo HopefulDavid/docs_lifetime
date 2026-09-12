@@ -8,5 +8,5 @@ Indie obsahuje 2 recepty.
 
 | Recept | Původ | Popis |
 | --- | --- | --- |
-| [Kuřecí na kari s rýží](main-dishes/kureci-kari-s-ryzi.md) | Asie, Indie | Kuřecí na kari s rýží je exotické jídlo s jemně sladkou omáčkou, které potěší milovníky indické kuchyně. |
-| [Kuřecí tikka masala](main-dishes/kureci-tikka-masala.md) | Asie, Indie | Kuřecí tikka masala je ikonické indické jídlo, které skvěle chutná s domácím naanem. |
+| [Kuřecí na kari s rýží](main-dishes/kureci-kari-s-ryzi.md) | Asie, Indie | Kuřecí maso v kokosové kari omáčce s mangem nebo broskví, podávané s rýží. |
+| [Kuřecí tikka masala](main-dishes/kureci-tikka-masala.md) | Asie, Indie | Marinované kuřecí maso v kořeněné rajčatové omáčce se smetanou a volitelným domácím naanem. |

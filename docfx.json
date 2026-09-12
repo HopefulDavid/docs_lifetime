@@ -4,6 +4,7 @@
       {
         "files": [
           "index.md",
+          "nakup.md",
           "changelog.md",
           "toc.yml",
           "food/**/*.{md,yml}",
@@ -12,6 +13,7 @@
       }
     ],
     "output": "_site",
+    "resource": [{ "files": ["data/recipes.json"] }],
     "template": [
       "default",
       "modern",

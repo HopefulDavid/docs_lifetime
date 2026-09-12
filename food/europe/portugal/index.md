@@ -8,4 +8,4 @@ Portugalsko obsahuje 1 recept.
 
 | Recept | Původ | Popis |
 | --- | --- | --- |
-| [Pastéis de Nata](desserts/pasteis-de-nata.md) | Evropa, Portugalsko | Pastéis de Nata jsou tradiční portugalské koláčky s krémovou náplní, ideální ke kávě nebo jako dezert. |
+| [Pastéis de Nata](desserts/pasteis-de-nata.md) | Evropa, Portugalsko | Košíčky z listového těsta s mléčnou žloutkovou náplní, citronovou kůrou a skořicí. |

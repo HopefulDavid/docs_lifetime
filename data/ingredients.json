@@ -1,0 +1,11 @@
+{
+  "Zelenina, ovoce a bylinky": ["Cibule", "Bílá cibule", "Červená cibule", "Česnek", "Zázvor", "Mrkev", "Petržel kořen", "Petržel nať", "Celer", "Brambory", "Dýně Hokkaidó", "Paprika", "Červená paprika", "Zelená paprika", "Bílá paprika", "Okurka", "Rajčata", "Rajčata keříková", "Rajčata podlouhlá", "Rajče masité", "Citron", "Limetka", "Mango", "Broskev", "Koriandr", "Bazalka", "Libeček", "Rozmarýn", "Tymián", "Zelenina", "Salát"],
+  "Pečivo a přílohy": ["Chléb", "Tortilly", "Houskový knedlík", "Pizza těsto", "Listové těsto", "Noky"],
+  "Trvanlivé potraviny": ["Rýže", "Penne", "Těstoviny", "Těstoviny fleky", "Hladká mouka", "Strouhanka", "Kukuřičná krupice", "Cukr", "Cukr krystal", "Skořicový cukr", "Med", "Kypřicí prášek", "Hořká čokoláda", "Mléčná čokoláda", "Kakaové sušenky", "Káva", "Caro"],
+  "Konzervy, omáčky a oleje": ["Loupaná rajčata v konzervě", "Krájená rajčata v konzervě", "Rajčatový protlak", "Kokosové mléko", "Kyselé okurky", "Kysané zelí", "Kečup", "Barbecue omáčka", "Chilli pasta", "Sójová omáčka", "Ocet", "Vinný ocet", "Rostlinný olej", "Řepkový olej", "Olivový olej", "Ghí", "Hovězí vývar", "Drůbeží vývar", "Zeleninový vývar", "Vývar", "Hovězí bujón", "Slazené kondenzované mléko", "Pomerančová šťáva"],
+  "Koření": ["Sůl", "Pepř mletý", "Pepř celý", "Sladká paprika mletá", "Uzená paprika mletá", "Pizza koření", "Gyros koření", "Česnekový prášek", "Koření na grilované kuře", "Koření na grilovaný sýr", "Koření na mleté maso", "Ďábelské koření", "Gulášové koření", "Kari koření", "Tandoori masála", "Kurkuma", "Kmín", "Kmín drcený", "Římský kmín mletý", "Skořice mletá", "Skořice celá", "Kardamom celý", "Badyán", "Bobkový list", "Nové koření", "Tymián sušený", "Majoránka"],
+  "Mléčné výrobky a vejce": ["Máslo", "Mléko", "Smetana", "Smetana ke šlehání", "Smetana na vaření", "Zakysaná smetana", "Šlehačka", "Bílý jogurt", "Tvaroh", "Vejce", "Sýr", "Hermelín", "Gouda", "Mozzarella", "Gorgonzola", "Parmezán", "Niva"],
+  "Maso a uzeniny": ["Kuřecí maso", "Kuřecí prsa", "Kuřecí stehenní řízky", "Hovězí maso", "Mleté hovězí maso", "Mleté vepřovo-hovězí maso", "Hovězí kosti", "Hovězí steak", "Uzené vepřové maso", "Špekáčky", "Klobása"],
+  "Mražené": ["Mražený špenát", "Mražený hrášek"],
+  "Doma připravit": ["Voda", "Led"]
+}

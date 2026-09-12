@@ -1,27 +1,40 @@
 # 🥩 Steak
 
-Steak je ikonické americké jídlo, které vynikne jednoduchou přípravou a kvalitními surovinami.
+Hovězí steak z pánve nebo grilu s máslem, bylinkami a přílohou podle výběru.
 
 ## Ingredience
 
-- Hovězí steak (ribeye, sirloin, flank, T-bone, dle chuti)
-- Sůl
-- Čerstvě namletý pepř
-- Máslo (na dochucení)
-- Čerstvé bylinky (rozmarýn, tymián)
-- Česnek (volitelně)
-- Olivový olej (na potření)
-- Příloha: zelenina, brambory, salát
+Množství platí pro jednu původní dávku; počet porcí není uveden.
 
-  > **Tip:** Vyberte maso s vyšším podílem tuku pro šťavnatější steak.
+| Surovina | Množství | Upřesnění |
+|---|---|---|
+| Hovězí steak | neuvedeno | ribeye, sirloin, flank nebo T-bone |
+| Sůl | dle chuti | — |
+| Pepř mletý | dle chuti | čerstvě namletý |
+| Máslo | neuvedeno | na dochucení |
+| Rozmarýn nebo Tymián | neuvedeno | čerstvé bylinky |
+| Česnek | neuvedeno | volitelné |
+| Olivový olej | neuvedeno | na potření |
 
-## 1. Příprava masa
+### Příloha (volitelné)
+
+| Surovina | Množství | Upřesnění |
+|---|---|---|
+| Zelenina nebo Brambory nebo Salát | neuvedeno | k podávání |
+
+> **Tip:** Vyberte maso s vyšším podílem tuku pro šťavnatější steak.
+
+## Postup
+
+### 1. Příprava masa
 
 - Maso vyndejte z lednice alespoň 30 minut před přípravou, aby mělo pokojovou teplotu.
-- Opláchněte, osušte papírovou utěrkou.
+- Maso osušte papírovou utěrkou; syrové hovězí neoplachujte.
+
+  > **Poznámka:** Oplachování může roznést bakterie na okolní povrchy, viz [doporučení USDA](https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/washing-food-does-it-promote-food).
 - Potřete olivovým olejem, osolte a opepřete z obou stran.
 
-## 2. Grilování / smažení
+### 2. Grilování / smažení
 
 - Rozpalte pánev nebo gril na maximum.
 - Steak vložte na rozpálený povrch a nechte bez pohybu 2–3 minuty.
@@ -30,11 +43,11 @@ Steak je ikonické americké jídlo, které vynikne jednoduchou přípravou a kv
 
   > **Varování:** Steak nepropékejte příliš dlouho, jinak bude tuhý.
 
-## 3. Odpočinek
+### 3. Odpočinek
 
 - Steak přendejte na talíř, přikryjte alobalem a nechte 5 minut odpočinout.
 
-## 4. Servírování
+### 4. Servírování
 
 - Podávejte nakrájený na plátky, s oblíbenou přílohou.
 

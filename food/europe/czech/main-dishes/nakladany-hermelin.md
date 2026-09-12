@@ -1,36 +1,46 @@
 # 🧀 Nakládaný hermelín
 
-Nakládaný hermelín je pikantní česká pochoutka, která se nechává několik dní uležet v oleji s cibulí, česnekem a kořením.
+Hermelín plněný cibulí, česnekem a chilli pastou, naložený v oleji a několik dní uleželý v lednici.
 
 ## Ingredience
 
-- Hermelín (7 ks)
-- Cibule (2 ks)
-- Česnek (6 stroužků)
-- Řepkový olej
-- Chilli pasta (tenká vrstva, prodává Kaufland)
-- Koření grilovaný sýr od značky Avokádo
+Množství platí pro jednu původní dávku; počet porcí není uveden.
 
-## 1. Příprava sýrů
+| Surovina | Množství | Upřesnění |
+|---|---|---|
+| Hermelín | 7 ks | — |
+| Cibule | 2 ks | — |
+| Česnek | 6 stroužků | — |
+| Řepkový olej | neuvedeno | na úplné ponoření sýrů |
+| Chilli pasta | neuvedeno | tenká vrstva; původně Kaufland |
+| Koření na grilovaný sýr | dle chuti | původně Avokádo |
+
+## Než začnete
+
+Počítejte s alespoň 5 dny uležení v lednici.
+
+## Postup
+
+### 1. Příprava sýrů
 
 - Každý hermelín podélně rozřízněte tak, aby se dal naplnit.
 - Jednu půlku každého sýra namažte tenkou vrstvou chilli pasty.
 - Namazanou půlku posypte kořením na grilovaný sýr.
 
-## 2. Plnění
+### 2. Plnění
 
 - Česnek nakrájejte na kolečka.
 - Cibuli nakrájejte na proužky.
 - Na namazanou stranu sýra rozložte česnek a cibuli.
 - Přiklopte nenamazanou půlkou sýra a hermelín zase spojte.
 
-## 3. Nakládání
+### 3. Nakládání
 
 - Naplněné hermelíny vložte do mísy nebo sklenice.
 - Pokud zbyde česnek nebo cibule, rozložte je ještě na sýry.
 - Zalijte řepkovým olejem tak, aby byly všechny sýry ponořené.
 
-## 4. Uležení a podávání
+### 4. Uležení a podávání
 
 - Nechte v lednici uležet alespoň 5 dní.
 - Před konzumací nechte sýr asi 15 minut na talíři, aby povolil a změkl.

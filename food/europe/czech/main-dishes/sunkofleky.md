@@ -1,25 +1,31 @@
 # 🇨🇿 Šunkofleky
 
-Šunkofleky jsou tradiční české jídlo, které potěší milovníky jednoduchých a sytých pokrmů.
+Zapečené fleky s uzeným masem, hráškem, goudou a vaječnou zálivkou.
 
 ## Ingredience
 
-- Těstoviny fleky (300 g)
-- Uzené vepřové maso (250 g)
-- Máslo (1 lžička)
-- Cibule (1 ks)
-- Mražený hrášek (3 hrsti)
-- Hladkolistá petržel (1 hrst)
-- Mléko (300 ml)
-- Vejce (2 ks)
-- Gouda, nastrouhaná (100 g)
-- Kyselé okurky
-- Sůl
-- Čerstvě namletý pepř
+Množství platí pro jednu původní dávku; počet porcí není uveden.
 
-  > **Tip:** Můžete použít mladou kozí goudu pro jemnější chuť.
+| Surovina | Množství | Upřesnění |
+|---|---|---|
+| Těstoviny fleky | 300 g | — |
+| Uzené vepřové maso | 250 g | — |
+| Máslo | 1 lžička | — |
+| Cibule | 1 ks | — |
+| Mražený hrášek | 3 hrsti | — |
+| Petržel nať | 1 hrst | hladkolistá |
+| Mléko | 300 ml | — |
+| Vejce | 2 ks | — |
+| Gouda | 100 g | nastrouhaná |
+| Kyselé okurky | neuvedeno | k podávání |
+| Sůl | dle chuti | — |
+| Pepř mletý | dle chuti | čerstvě namletý |
 
-## 1. Příprava základu
+> **Tip:** Můžete použít mladou kozí goudu pro jemnější chuť.
+
+## Postup
+
+### 1. Příprava základu
 
 - Předehřejte troubu na 170 °C.
 - Cibuli oloupejte a nakrájejte nadrobno.
@@ -28,16 +34,16 @@
 
   > **Varování:** Uzené maso nepřepékejte, aby zůstalo šťavnaté.
 
-## 2. Vaření těstovin
+### 2. Vaření těstovin
 
 - Do hrnce dejte vodu, osolte ji a přiveďte k varu.
 - Těstoviny uvařte na skus, sceďte a prolijte ledovou vodou.
 
-## 3. Příprava zálivky
+### 3. Příprava zálivky
 
 - Do mísy odměřte mléko, přidejte vejce, osolte, opepřete a promíchejte vidličkou.
 
-## 4. Skládání do pekáčku
+### 4. Skládání do pekáčku
 
 - Nastrouhejte goudu najemno, část si nechte na posypání vrchu.
 - Těstoviny dejte do pekáčku, přidejte orestovanou cibuli s uzeným, hrášek a většinu sýra.
@@ -47,11 +53,11 @@
 
   > **Tip:** Trochu sýra si nechte na posypání těstovin po upečení.
 
-## 5. Pečení
+### 5. Pečení
 
 - Pečte 25–35 minut na 170 °C, dokud povrch nezezlátne.
 
-## 6. Servírování
+### 6. Servírování
 
 - Podávejte s kyselou okurkou.
 

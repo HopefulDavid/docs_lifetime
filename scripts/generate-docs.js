@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const { parseRecipeContent, departments } = require('./recipe-content.cjs');
 
 const root = path.resolve(__dirname, '..');
 const checkOnly = process.argv.includes('--check');
@@ -16,7 +17,7 @@ const sections = {
     few: 'recepty',
     many: 'receptů',
     intro:
-      'Jídlo je uspořádané podle původu a typu. Přehledy se skládají automaticky z receptů, takže odkazy není potřeba udržovat ručně.',
+      'Vyberte si jídlo podle chuti, přidejte ho do nákupu a otevřete postup při vaření.',
   },
   drink: {
     title: 'Nápoje',
@@ -25,7 +26,7 @@ const sections = {
     few: 'nápoje',
     many: 'nápojů',
     intro:
-      'Nápoje jsou uspořádané podle původu a způsobu přípravy. Přehledy vycházejí přímo ze souborů v této části.',
+      'Káva a další nápoje na jednom místě, od surovin až po poslední krok přípravy.',
   },
 };
 
@@ -66,12 +67,10 @@ const order = {
 };
 
 const emojiPattern = /(?:\p{Extended_Pictographic}|[\u{1F1E6}-\u{1F1FF}]|\uFE0F|\u200D)/gu;
-const hasEmojiPattern = /(?:\p{Extended_Pictographic}|[\u{1F1E6}-\u{1F1FF}])/u;
 
 const generatedFiles = new Set();
 const pendingChanges = [];
 const errors = [];
-const normalizedRecipes = new Map();
 
 function absolute(relPath) {
   return path.join(root, relPath);
@@ -144,165 +143,12 @@ function cleanInline(value) {
     .trim();
 }
 
-function cleanLine(value) {
-  const indent = value.match(/^\s*/)[0];
-  const body = value.slice(indent.length);
-  return `${indent}${cleanInline(body)}`;
-}
-
-function alertLabel(type) {
-  const labels = {
-    IMPORTANT: 'Důležité',
-    NOTE: 'Poznámka',
-    TIP: 'Tip',
-    WARNING: 'Varování',
-  };
-  return labels[type.toUpperCase()] || 'Poznámka';
-}
-
-function splitLeadingIcon(title) {
-  const match = title.trim().match(/^([^\p{L}\p{N}]+)\s*(.+)$/u);
-  if (!match || !hasEmojiPattern.test(match[1])) {
-    return { icon: '', text: cleanInline(title) };
-  }
-
-  return {
-    icon: match[1].replace(/\s+/g, ' ').trim(),
-    text: cleanInline(match[2]),
-  };
-}
-
-function formatPrimaryTitle(rawTitle) {
-  const { icon, text } = splitLeadingIcon(rawTitle);
-  return icon ? `${icon} ${text}` : text;
-}
-
 function plainTitle(rawTitle) {
   return cleanInline(rawTitle);
 }
 
-function normalizeRecipeMarkdown(content) {
-  const lines = content.replace(/\r\n/g, '\n').split('\n');
-  const primaryHeading = lines.findIndex((line) => /^#{1,6}\s+/.test(line));
-  const primaryLevel =
-    primaryHeading === -1 ? 1 : lines[primaryHeading].match(/^(#{1,6})\s+/)[1].length;
-  const headingShift = Math.max(0, primaryLevel - 1);
-  const output = [];
-  let beforeRecipeSections = true;
-  let pendingAlert = null;
-  let insideIngredients = false;
-
-  for (let index = 0; index < lines.length; index += 1) {
-    const line = lines[index];
-
-    if (/^\s*-{3,}\s*$/.test(line)) {
-      pendingAlert = null;
-      continue;
-    }
-
-    const heading = line.match(/^(#{1,6})\s+(.+)$/);
-    if (heading) {
-      pendingAlert = null;
-      if (index === primaryHeading) {
-        output.push(`# ${formatPrimaryTitle(heading[2])}`);
-      } else {
-        beforeRecipeSections = false;
-        const title = cleanInline(heading[2]).replace(/\s&\s/g, ' a ');
-        const isIngredients = /^ingredience$/i.test(title);
-        const isNumberedStep = /^\d+\.\s+/.test(title);
-        let level = Math.max(2, heading[1].length - headingShift);
-
-        if (isIngredients || isNumberedStep) {
-          level = 2;
-        } else if (insideIngredients) {
-          level = 3;
-        }
-
-        output.push(`${'#'.repeat(level)} ${title}`);
-        insideIngredients = isIngredients || (insideIngredients && !isNumberedStep);
-      }
-      continue;
-    }
-
-    const existingAlert = line.match(/^(\s*)>\s*\[!(TIP|NOTE|WARNING|IMPORTANT)\]\s*$/i);
-    if (existingAlert) {
-      pendingAlert = {
-        indent: existingAlert[1],
-        label: alertLabel(existingAlert[2]),
-      };
-      continue;
-    }
-
-    const quote = line.match(/^(\s*)>\s*(.+)$/);
-    if (quote) {
-      const text = removeEmoji(quote[2]).replace(/\*\*/g, '').trim();
-      const alert = text.match(/^(Tip|Varování|Poznámka|Důležité):\s*(.+)$/i);
-
-      if (alert) {
-        const normalizedLabel = alert[1].toLowerCase();
-        const compactLabels = {
-          důležité: 'Důležité',
-          poznámka: 'Poznámka',
-          tip: 'Tip',
-          varování: 'Varování',
-        };
-        const label = compactLabels[normalizedLabel] || 'Tip';
-        output.push(`${quote[1]}> **${label}:** ${cleanInline(alert[2])}`);
-        pendingAlert = null;
-        continue;
-      }
-
-      if (pendingAlert) {
-        output.push(`${pendingAlert.indent}> **${pendingAlert.label}:** ${cleanInline(quote[2])}`);
-        pendingAlert = null;
-        continue;
-      }
-
-      if (beforeRecipeSections && !text.startsWith('[!')) {
-        pendingAlert = null;
-        output.push(cleanInline(text));
-        continue;
-      }
-
-      output.push(`${quote[1]}> ${cleanInline(quote[2])}`);
-      continue;
-    }
-
-    if (line.trim() === '') {
-      pendingAlert = null;
-      output.push('');
-      continue;
-    }
-
-    const cleaned = cleanLine(line).replace(/\s&\s/g, ' a ');
-
-    output.push(cleaned);
-  }
-
-  return `${collapseBlankLines(output).join('\n').trim()}\n`;
-}
-
-function collapseBlankLines(lines) {
-  const result = [];
-  for (const line of lines) {
-    if (line === '' && result[result.length - 1] === '') {
-      continue;
-    }
-    result.push(line);
-  }
-  return result;
-}
-
-function normalizeRecipes() {
-  for (const relPath of recipeFiles()) {
-    const normalized = normalizeRecipeMarkdown(readFile(relPath));
-    normalizedRecipes.set(relPath, normalized);
-    writeFile(relPath, normalized);
-  }
-}
-
 function readRecipe(relPath) {
-  const content = normalizedRecipes.get(relPath) || readFile(relPath);
+  const content = readFile(relPath);
   const heading = content.match(/^#\s+(.+)$/m);
   if (!heading) {
     errors.push(`${relPath}: chybí hlavní nadpis`);
@@ -315,8 +161,14 @@ function readRecipe(relPath) {
     return null;
   }
 
+  let recipe;
+  try { recipe = parseRecipeContent(content, relPath); }
+  catch (error) { errors.push(error.message); return null; }
+
   return {
     ...pathInfo,
+    ...recipe,
+    id: relPath.replace(/\.md$/, ''),
     relPath,
     title: plainTitle(heading[1]),
     pageTitle: heading[1].trim(),
@@ -512,10 +364,10 @@ function renderHome(catalog) {
     origin(entry),
   ]);
 
-  const body = `Přehledná osobní kuchařka a sbírka postupů pro rychlé dohledání při vaření.\n\n## Hlavní sekce\n\n${table(
+  const body = `Vyberte jídla, nakupte společně a vařte krok za krokem.\n\n<div id="kitchen-catalog"></div>\n\n<div class="catalog-fallback">\n\n## Hlavní sekce\n\n${table(
     ['Sekce', 'Počet', 'Typy'],
     sectionRows
-  )}\n## Kompletní přehled\n\n${table(['Název', 'Sekce', 'Typ', 'Původ'], allRows)}`;
+  )}\n## Kompletní přehled\n\n${table(['Název', 'Sekce', 'Typ', 'Původ'], allRows)}\n</div>`;
 
   writeFile(file, page(file, 'Dokumentace ze života', body, 'docs-lifetime.home'));
 }
@@ -596,6 +448,9 @@ function renderCountry(section, continent, country, entries) {
 
 function renderPages(catalog) {
   renderHome(catalog);
+  const plannerFile = 'nakup.md';
+  writeFile(plannerFile, page(plannerFile, 'Můj nákup', 'Všechna vybraná jídla a jejich suroviny na jednom místě.\n\n<div id="kitchen-planner">\n\nPro společný nákup je potřeba povolený JavaScript.\n\n[Prohlédnout všechny recepty](index.md)\n\n</div>'));
+  writeFile('data/recipes.json', JSON.stringify({ version: 1, departments: Object.keys(departments), recipes: catalog.map(entry => ({ ...entry, typeLabel: labelType(entry.type), origin: origin(entry) })) }, null, 2));
 
   for (const section of order.sections) {
     const sectionEntries = catalog.filter((entry) => entry.section === section);
@@ -640,6 +495,8 @@ function renderRootToc() {
   writeFile(
     'toc.yml',
     `${yaml([
+      { name: 'Recepty', href: 'index.md' },
+      { name: 'Můj nákup', href: 'nakup.md' },
       { name: 'Jídlo', href: 'food/' },
       { name: 'Nápoje', href: 'drink/' },
       { name: 'Změny', href: 'changelog.md' },
@@ -722,11 +579,7 @@ function removeObsoleteGeneratedPages() {
 }
 
 function main() {
-  normalizeRecipes();
   const catalog = buildCatalog();
-  renderPages(catalog);
-  renderTocs(catalog);
-  removeObsoleteGeneratedPages();
 
   if (errors.length) {
     for (const error of errors) {
@@ -734,6 +587,10 @@ function main() {
     }
     process.exit(1);
   }
+
+  renderPages(catalog);
+  renderTocs(catalog);
+  removeObsoleteGeneratedPages();
 
   if (!pendingChanges.length) {
     console.log('Dokumentace je aktuální.');

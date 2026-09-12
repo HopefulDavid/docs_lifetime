@@ -8,4 +8,4 @@
 
 | Recept | Původ | Popis |
 | --- | --- | --- |
-| [Gazpacho](soups/gazpacho.md) | Evropa, Španělsko | Gazpacho je tradiční studená polévka ze Španělska, ideální pro horké letní dny. |
+| [Gazpacho](soups/gazpacho.md) | Evropa, Španělsko | Studená rajčatová polévka s paprikou, okurkou a vinným octem, připravená bez vaření. |

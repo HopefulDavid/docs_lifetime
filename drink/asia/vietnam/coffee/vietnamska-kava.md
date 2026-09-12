@@ -1,16 +1,26 @@
 # 🇻🇳 Vietnamská káva
 
-Vietnamská káva je výrazná, sladká a silná díky kondenzovanému mléku a specifickému způsobu přípravy.
+Překapávaná káva ze filtru Phin se slazeným kondenzovaným mlékem, podávaná teplá nebo s ledem.
 
 ## Ingredience
 
-- Středně hrubě mletá káva (2 lžíce)
-- Slazené kondenzované mléko
-- Vroucí voda (2–3 oz / cca 60–90 ml)
-- Led (volitelné)
-- Kávovar Phin
+Množství platí pro jednu původní dávku; počet porcí není uveden.
 
-## 1. Příprava kávovaru a mléka
+| Surovina | Množství | Upřesnění |
+|---|---|---|
+| Káva | 2 lžíce | středně hrubě mletá |
+| Slazené kondenzované mléko | neuvedeno | — |
+| Voda | 60–90 ml | vroucí; přibližně 2–3 fl oz |
+| Led | neuvedeno | volitelné |
+
+## Pomůcky
+
+- Kávový filtr Phin
+- Šálek
+
+## Postup
+
+### 1. Příprava kávovaru a mléka
 
 - Připravte kávovar Phin.
 - Vložte filtr a přidejte kondenzované mléko do šálku.
@@ -18,7 +28,7 @@ Vietnamská káva je výrazná, sladká a silná díky kondenzovanému mléku a 
 
   > **Tip:** Kondenzované mléko lze přidat i až po překapání.
 
-## 2. Příprava kávy a filtrování
+### 2. Příprava kávy a filtrování
 
 - Nasypte 2 lžíce středně hrubě mleté kávy do kávovaru.
 - Pomalu přilijte 2–3 oz vroucí vody.
@@ -29,13 +39,13 @@ Vietnamská káva je výrazná, sladká a silná díky kondenzovanému mléku a 
 
   > **Tip:** Pro silnější kávu použijte více kávy.
 
-## 3. Rychlost a doba kapání
+### 3. Rychlost a doba kapání
 
 - Káva by měla kapat 4–5 minut.
 
   > **Varování:** Pokud káva kape příliš rychle, přidejte více kávy. Pokud příliš pomalu, přidejte více vody.
 
-## 4. Dokončení a servírování
+### 4. Dokončení a servírování
 
 - Kávu promíchejte.
 - Podávejte teplou nebo s ledem.

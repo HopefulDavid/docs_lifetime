@@ -1,0 +1,4809 @@
+{
+  "version": 1,
+  "departments": [
+    "Zelenina, ovoce a bylinky",
+    "Pečivo a přílohy",
+    "Trvanlivé potraviny",
+    "Konzervy, omáčky a oleje",
+    "Koření",
+    "Mléčné výrobky a vejce",
+    "Maso a uzeniny",
+    "Mražené",
+    "Doma připravit"
+  ],
+  "recipes": [
+    {
+      "section": "food",
+      "continent": "europe",
+      "country": "czech",
+      "type": "soups",
+      "ingredients": [
+        {
+          "id": "zaklad-cibule",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Cibule",
+              "category": "Zelenina, ovoce a bylinky"
+            }
+          ],
+          "quantity": "1 kg",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "zaklad-brambory",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Brambory",
+              "category": "Zelenina, ovoce a bylinky"
+            }
+          ],
+          "quantity": "700 g",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "zaklad-hovezi-maso",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Hovězí maso",
+              "category": "Maso a uzeniny"
+            }
+          ],
+          "quantity": "200 g",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "zaklad-hovezi-bujon",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Hovězí bujón",
+              "category": "Konzervy, omáčky a oleje"
+            }
+          ],
+          "quantity": "2–3 ks",
+          "note": "kostky",
+          "optional": false
+        },
+        {
+          "id": "zaklad-sladka-paprika-mleta",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Sladká paprika mletá",
+              "category": "Koření"
+            }
+          ],
+          "quantity": "0,5 sáčku",
+          "note": "hmotnost sáčku zdroj neuvádí",
+          "optional": false
+        },
+        {
+          "id": "zaklad-majoranka",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Majoránka",
+              "category": "Koření"
+            }
+          ],
+          "quantity": "0,5 sáčku",
+          "note": "hmotnost sáčku zdroj neuvádí",
+          "optional": false
+        },
+        {
+          "id": "zaklad-cesnek",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Česnek",
+              "category": "Zelenina, ovoce a bylinky"
+            }
+          ],
+          "quantity": "3 stroužky",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "zaklad-sul",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Sůl",
+              "category": "Koření"
+            }
+          ],
+          "quantity": "dle chuti",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "zaklad-pepr-mlety",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Pepř mletý",
+              "category": "Koření"
+            }
+          ],
+          "quantity": "dle chuti",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "zaklad-voda",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Voda",
+              "category": "Doma připravit"
+            }
+          ],
+          "quantity": "neuvedeno",
+          "note": "podle velikosti hrnce",
+          "optional": false
+        }
+      ],
+      "groups": [
+        {
+          "id": "zaklad",
+          "title": "Základ",
+          "optional": false
+        }
+      ],
+      "steps": [
+        {
+          "number": 1,
+          "title": "Příprava základu"
+        },
+        {
+          "number": 2,
+          "title": "Přidání koření"
+        },
+        {
+          "number": 3,
+          "title": "Vaření"
+        },
+        {
+          "number": 4,
+          "title": "Servírování"
+        }
+      ],
+      "id": "food/europe/czech/soups/gulasova-polevka",
+      "relPath": "food/europe/czech/soups/gulasova-polevka.md",
+      "title": "Gulášová polévka",
+      "pageTitle": "🍲 Gulášová polévka",
+      "description": "Hovězí polévka s cibulovým základem, bramborami, paprikou a majoránkou.",
+      "typeLabel": "Polévky",
+      "origin": "Evropa, Česko"
+    },
+    {
+      "section": "food",
+      "continent": "europe",
+      "country": "czech",
+      "type": "soups",
+      "ingredients": [
+        {
+          "id": "zaklad-hovezi-kosti",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Hovězí kosti",
+              "category": "Maso a uzeniny"
+            }
+          ],
+          "quantity": "2 ks",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "zaklad-hovezi-bujon",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Hovězí bujón",
+              "category": "Konzervy, omáčky a oleje"
+            }
+          ],
+          "quantity": "2 ks",
+          "note": "kostky",
+          "optional": false
+        },
+        {
+          "id": "zaklad-cibule",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Cibule",
+              "category": "Zelenina, ovoce a bylinky"
+            }
+          ],
+          "quantity": "2 ks",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "zaklad-cesnek",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Česnek",
+              "category": "Zelenina, ovoce a bylinky"
+            }
+          ],
+          "quantity": "3 stroužky",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "zaklad-mrkev",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Mrkev",
+              "category": "Zelenina, ovoce a bylinky"
+            }
+          ],
+          "quantity": "neuvedeno",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "zaklad-petrzel-koren",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Petržel kořen",
+              "category": "Zelenina, ovoce a bylinky"
+            }
+          ],
+          "quantity": "neuvedeno",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "zaklad-celer",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Celer",
+              "category": "Zelenina, ovoce a bylinky"
+            }
+          ],
+          "quantity": "neuvedeno",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "zaklad-libecek",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Libeček",
+              "category": "Zelenina, ovoce a bylinky"
+            }
+          ],
+          "quantity": "dle chuti",
+          "note": "čerstvý nebo sušený",
+          "optional": false
+        },
+        {
+          "id": "zaklad-nove-koreni",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Nové koření",
+              "category": "Koření"
+            }
+          ],
+          "quantity": "5 kuliček",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "zaklad-pepr-cely",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Pepř celý",
+              "category": "Koření"
+            }
+          ],
+          "quantity": "8 kuliček",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "zaklad-bobkovy-list",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Bobkový list",
+              "category": "Koření"
+            }
+          ],
+          "quantity": "3 ks",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "zaklad-sul",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Sůl",
+              "category": "Koření"
+            }
+          ],
+          "quantity": "dle chuti",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "zaklad-voda",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Voda",
+              "category": "Doma připravit"
+            }
+          ],
+          "quantity": "neuvedeno",
+          "note": "objem zdroj neuvádí",
+          "optional": false
+        }
+      ],
+      "groups": [
+        {
+          "id": "zaklad",
+          "title": "Základ",
+          "optional": false
+        }
+      ],
+      "steps": [
+        {
+          "number": 1,
+          "title": "Příprava kostí"
+        },
+        {
+          "number": 2,
+          "title": "Vaření vývaru"
+        },
+        {
+          "number": 3,
+          "title": "Vaření a dochucení"
+        }
+      ],
+      "id": "food/europe/czech/soups/hovezi-vyvar",
+      "relPath": "food/europe/czech/soups/hovezi-vyvar.md",
+      "title": "Hovězí vývar",
+      "pageTitle": "🥣 Hovězí vývar",
+      "description": "Vývar z pečených hovězích kostí, kořenové zeleniny a koření jako polévka nebo základ omáček.",
+      "typeLabel": "Polévky",
+      "origin": "Evropa, Česko"
+    },
+    {
+      "section": "food",
+      "continent": "europe",
+      "country": "czech",
+      "type": "soups",
+      "ingredients": [
+        {
+          "id": "zaklad-maslo",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Máslo",
+              "category": "Mléčné výrobky a vejce"
+            }
+          ],
+          "quantity": "neuvedeno",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "zaklad-cibule",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Cibule",
+              "category": "Zelenina, ovoce a bylinky"
+            }
+          ],
+          "quantity": "neuvedeno",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "zaklad-klobasa",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Klobása",
+              "category": "Maso a uzeniny"
+            }
+          ],
+          "quantity": "neuvedeno",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "zaklad-brambory",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Brambory",
+              "category": "Zelenina, ovoce a bylinky"
+            }
+          ],
+          "quantity": "neuvedeno",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "zaklad-voda-nebo-vyvar",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Voda",
+              "category": "Doma připravit"
+            },
+            {
+              "name": "Vývar",
+              "category": "Konzervy, omáčky a oleje"
+            }
+          ],
+          "quantity": "neuvedeno",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "zaklad-bobkovy-list",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Bobkový list",
+              "category": "Koření"
+            }
+          ],
+          "quantity": "dle chuti",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "zaklad-nove-koreni",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Nové koření",
+              "category": "Koření"
+            }
+          ],
+          "quantity": "dle chuti",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "zaklad-pepr-cely",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Pepř celý",
+              "category": "Koření"
+            }
+          ],
+          "quantity": "dle chuti",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "zaklad-kmin",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Kmín",
+              "category": "Koření"
+            }
+          ],
+          "quantity": "dle chuti",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "zaklad-sladka-paprika-mleta",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Sladká paprika mletá",
+              "category": "Koření"
+            }
+          ],
+          "quantity": "dle chuti",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "zaklad-sul",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Sůl",
+              "category": "Koření"
+            }
+          ],
+          "quantity": "dle chuti",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "zaklad-cukr",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Cukr",
+              "category": "Trvanlivé potraviny"
+            }
+          ],
+          "quantity": "dle chuti",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "zaklad-kysane-zeli",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Kysané zelí",
+              "category": "Konzervy, omáčky a oleje"
+            }
+          ],
+          "quantity": "neuvedeno",
+          "note": "i trochu láku podle chuti",
+          "optional": false
+        },
+        {
+          "id": "zaklad-smetana-ke-slehani",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Smetana ke šlehání",
+              "category": "Mléčné výrobky a vejce"
+            }
+          ],
+          "quantity": "neuvedeno",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "zaklad-majoranka",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Majoránka",
+              "category": "Koření"
+            }
+          ],
+          "quantity": "dle chuti",
+          "note": "",
+          "optional": false
+        }
+      ],
+      "groups": [
+        {
+          "id": "zaklad",
+          "title": "Základ",
+          "optional": false
+        }
+      ],
+      "steps": [
+        {
+          "number": 1,
+          "title": "Restování základu"
+        },
+        {
+          "number": 2,
+          "title": "Vaření brambor a koření"
+        },
+        {
+          "number": 3,
+          "title": "Přidání zelí a další vaření"
+        },
+        {
+          "number": 4,
+          "title": "Dokončení a dochucení"
+        }
+      ],
+      "id": "food/europe/czech/soups/zelnacka",
+      "relPath": "food/europe/czech/soups/zelnacka.md",
+      "title": "Zelňačka",
+      "pageTitle": "🥬 Zelňačka",
+      "description": "Sytá polévka z kysaného zelí, klobásy a brambor zjemněná smetanou.",
+      "typeLabel": "Polévky",
+      "origin": "Evropa, Česko"
+    },
+    {
+      "section": "food",
+      "continent": "europe",
+      "country": "czech",
+      "type": "main-dishes",
+      "ingredients": [
+        {
+          "id": "zaklad-maslo",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Máslo",
+              "category": "Mléčné výrobky a vejce"
+            }
+          ],
+          "quantity": "60 g",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "zaklad-spekacky",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Špekáčky",
+              "category": "Maso a uzeniny"
+            }
+          ],
+          "quantity": "600 g",
+          "note": "kvalitní",
+          "optional": false
+        },
+        {
+          "id": "zaklad-cibule",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Cibule",
+              "category": "Zelenina, ovoce a bylinky"
+            }
+          ],
+          "quantity": "2 ks",
+          "note": "velké",
+          "optional": false
+        },
+        {
+          "id": "zaklad-cesnek",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Česnek",
+              "category": "Zelenina, ovoce a bylinky"
+            }
+          ],
+          "quantity": "5 stroužků",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "zaklad-sladka-paprika-mleta-nebo-uzena-paprika-mleta",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Sladká paprika mletá",
+              "category": "Koření"
+            },
+            {
+              "name": "Uzená paprika mletá",
+              "category": "Koření"
+            }
+          ],
+          "quantity": "2 lžíce",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "zaklad-kmin-drceny",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Kmín drcený",
+              "category": "Koření"
+            }
+          ],
+          "quantity": "2 lžičky",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "zaklad-gulasove-koreni",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Gulášové koření",
+              "category": "Koření"
+            }
+          ],
+          "quantity": "dle chuti",
+          "note": "maďarské",
+          "optional": false
+        },
+        {
+          "id": "zaklad-uzena-paprika-mleta",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Uzená paprika mletá",
+              "category": "Koření"
+            }
+          ],
+          "quantity": "dle chuti",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "zaklad-hladka-mouka",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Hladká mouka",
+              "category": "Trvanlivé potraviny"
+            }
+          ],
+          "quantity": "3 lžíce",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "zaklad-vyvar-nebo-voda",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Vývar",
+              "category": "Konzervy, omáčky a oleje"
+            },
+            {
+              "name": "Voda",
+              "category": "Doma připravit"
+            }
+          ],
+          "quantity": "2,5–3 l",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "zaklad-brambory",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Brambory",
+              "category": "Zelenina, ovoce a bylinky"
+            }
+          ],
+          "quantity": "800 g",
+          "note": "varný typ B",
+          "optional": false
+        },
+        {
+          "id": "zaklad-majoranka",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Majoránka",
+              "category": "Koření"
+            }
+          ],
+          "quantity": "1 lžíce",
+          "note": "sušená",
+          "optional": false
+        },
+        {
+          "id": "zaklad-sul",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Sůl",
+              "category": "Koření"
+            }
+          ],
+          "quantity": "dle chuti",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "zaklad-pepr-mlety",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Pepř mletý",
+              "category": "Koření"
+            }
+          ],
+          "quantity": "dle chuti",
+          "note": "čerstvě namletý",
+          "optional": false
+        },
+        {
+          "id": "zaklad-ocet",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Ocet",
+              "category": "Konzervy, omáčky a oleje"
+            }
+          ],
+          "quantity": "dle chuti",
+          "note": "volitelné; na dochucení",
+          "optional": true
+        },
+        {
+          "id": "g-priloha-chleb",
+          "group": "g-priloha",
+          "options": [
+            {
+              "name": "Chléb",
+              "category": "Pečivo a přílohy"
+            }
+          ],
+          "quantity": "neuvedeno",
+          "note": "kváskový",
+          "optional": false
+        }
+      ],
+      "groups": [
+        {
+          "id": "zaklad",
+          "title": "Základ",
+          "optional": false
+        },
+        {
+          "id": "g-priloha",
+          "title": "Příloha",
+          "optional": true
+        }
+      ],
+      "steps": [
+        {
+          "number": 1,
+          "title": "Opékání špekáčků"
+        },
+        {
+          "number": 2,
+          "title": "Restování cibule a česneku"
+        },
+        {
+          "number": 3,
+          "title": "Koření a mouka"
+        },
+        {
+          "number": 4,
+          "title": "Základ guláše"
+        },
+        {
+          "number": 5,
+          "title": "Vaření s bramborami a špekáčky"
+        },
+        {
+          "number": 6,
+          "title": "Dochucení a podávání"
+        }
+      ],
+      "id": "food/europe/czech/main-dishes/burtgulas",
+      "relPath": "food/europe/czech/main-dishes/burtgulas.md",
+      "title": "Buřtguláš",
+      "pageTitle": "🇨🇿 Buřtguláš",
+      "description": "Bramborový guláš se špekáčky, cibulí a paprikou, dochucený česnekem a majoránkou.",
+      "typeLabel": "Hlavní jídla",
+      "origin": "Evropa, Česko"
+    },
+    {
+      "section": "food",
+      "continent": "europe",
+      "country": "czech",
+      "type": "main-dishes",
+      "ingredients": [
+        {
+          "id": "zaklad-chleb",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Chléb",
+              "category": "Pečivo a přílohy"
+            }
+          ],
+          "quantity": "neuvedeno",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "zaklad-dabelske-koreni",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Ďábelské koření",
+              "category": "Koření"
+            }
+          ],
+          "quantity": "dle chuti",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "zaklad-sladka-paprika-mleta",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Sladká paprika mletá",
+              "category": "Koření"
+            }
+          ],
+          "quantity": "dle chuti",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "zaklad-pepr-mlety",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Pepř mletý",
+              "category": "Koření"
+            }
+          ],
+          "quantity": "dle chuti",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "zaklad-sul",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Sůl",
+              "category": "Koření"
+            }
+          ],
+          "quantity": "dle chuti",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "zaklad-vinny-ocet",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Vinný ocet",
+              "category": "Konzervy, omáčky a oleje"
+            }
+          ],
+          "quantity": "1 lžíce",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "zaklad-mrkev",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Mrkev",
+              "category": "Zelenina, ovoce a bylinky"
+            }
+          ],
+          "quantity": "3 ks",
+          "note": "menší",
+          "optional": false
+        },
+        {
+          "id": "zaklad-petrzel-koren",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Petržel kořen",
+              "category": "Zelenina, ovoce a bylinky"
+            }
+          ],
+          "quantity": "1 ks",
+          "note": "menší",
+          "optional": false
+        },
+        {
+          "id": "zaklad-paprika",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Paprika",
+              "category": "Zelenina, ovoce a bylinky"
+            }
+          ],
+          "quantity": "neuvedeno",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "zaklad-mlete-hovezi-maso",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Mleté hovězí maso",
+              "category": "Maso a uzeniny"
+            }
+          ],
+          "quantity": "neuvedeno",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "zaklad-krajena-rajcata-v-konzerve",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Krájená rajčata v konzervě",
+              "category": "Konzervy, omáčky a oleje"
+            }
+          ],
+          "quantity": "neuvedeno",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "zaklad-rajcatovy-protlak",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Rajčatový protlak",
+              "category": "Konzervy, omáčky a oleje"
+            }
+          ],
+          "quantity": "neuvedeno",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "zaklad-cibule",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Cibule",
+              "category": "Zelenina, ovoce a bylinky"
+            }
+          ],
+          "quantity": "1 ks",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "zaklad-ghi",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Ghí",
+              "category": "Konzervy, omáčky a oleje"
+            }
+          ],
+          "quantity": "neuvedeno",
+          "note": "na smažení",
+          "optional": false
+        },
+        {
+          "id": "zaklad-syr",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Sýr",
+              "category": "Mléčné výrobky a vejce"
+            }
+          ],
+          "quantity": "neuvedeno",
+          "note": "",
+          "optional": false
+        }
+      ],
+      "groups": [
+        {
+          "id": "zaklad",
+          "title": "Základ",
+          "optional": false
+        }
+      ],
+      "steps": [
+        {
+          "number": 1,
+          "title": "Příprava zeleniny"
+        },
+        {
+          "number": 2,
+          "title": "Smažení"
+        },
+        {
+          "number": 3,
+          "title": "Servírování"
+        }
+      ],
+      "id": "food/europe/czech/main-dishes/dabelska-topinka",
+      "relPath": "food/europe/czech/main-dishes/dabelska-topinka.md",
+      "title": "Ďábelská topinka",
+      "pageTitle": "🍞 Ďábelská topinka",
+      "description": "Opečený chléb s pikantní směsí mletého hovězího masa, rajčat a kořenové zeleniny, posypaný sýrem.",
+      "typeLabel": "Hlavní jídla",
+      "origin": "Evropa, Česko"
+    },
+    {
+      "section": "food",
+      "continent": "europe",
+      "country": "czech",
+      "type": "main-dishes",
+      "ingredients": [
+        {
+          "id": "zaklad-hermelin",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Hermelín",
+              "category": "Mléčné výrobky a vejce"
+            }
+          ],
+          "quantity": "7 ks",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "zaklad-cibule",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Cibule",
+              "category": "Zelenina, ovoce a bylinky"
+            }
+          ],
+          "quantity": "2 ks",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "zaklad-cesnek",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Česnek",
+              "category": "Zelenina, ovoce a bylinky"
+            }
+          ],
+          "quantity": "6 stroužků",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "zaklad-repkovy-olej",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Řepkový olej",
+              "category": "Konzervy, omáčky a oleje"
+            }
+          ],
+          "quantity": "neuvedeno",
+          "note": "na úplné ponoření sýrů",
+          "optional": false
+        },
+        {
+          "id": "zaklad-chilli-pasta",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Chilli pasta",
+              "category": "Konzervy, omáčky a oleje"
+            }
+          ],
+          "quantity": "neuvedeno",
+          "note": "tenká vrstva; původně Kaufland",
+          "optional": false
+        },
+        {
+          "id": "zaklad-koreni-na-grilovany-syr",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Koření na grilovaný sýr",
+              "category": "Koření"
+            }
+          ],
+          "quantity": "dle chuti",
+          "note": "původně Avokádo",
+          "optional": false
+        }
+      ],
+      "groups": [
+        {
+          "id": "zaklad",
+          "title": "Základ",
+          "optional": false
+        }
+      ],
+      "steps": [
+        {
+          "number": 1,
+          "title": "Příprava sýrů"
+        },
+        {
+          "number": 2,
+          "title": "Plnění"
+        },
+        {
+          "number": 3,
+          "title": "Nakládání"
+        },
+        {
+          "number": 4,
+          "title": "Uležení a podávání"
+        }
+      ],
+      "id": "food/europe/czech/main-dishes/nakladany-hermelin",
+      "relPath": "food/europe/czech/main-dishes/nakladany-hermelin.md",
+      "title": "Nakládaný hermelín",
+      "pageTitle": "🧀 Nakládaný hermelín",
+      "description": "Hermelín plněný cibulí, česnekem a chilli pastou, naložený v oleji a několik dní uleželý v lednici.",
+      "typeLabel": "Hlavní jídla",
+      "origin": "Evropa, Česko"
+    },
+    {
+      "section": "food",
+      "continent": "europe",
+      "country": "czech",
+      "type": "main-dishes",
+      "ingredients": [
+        {
+          "id": "g-na-maso-mlete-hovezi-maso",
+          "group": "g-na-maso",
+          "options": [
+            {
+              "name": "Mleté hovězí maso",
+              "category": "Maso a uzeniny"
+            }
+          ],
+          "quantity": "500 g",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "g-na-maso-vejce",
+          "group": "g-na-maso",
+          "options": [
+            {
+              "name": "Vejce",
+              "category": "Mléčné výrobky a vejce"
+            }
+          ],
+          "quantity": "1 ks",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "g-na-maso-strouhanka-nebo-kukuricna-krupice",
+          "group": "g-na-maso",
+          "options": [
+            {
+              "name": "Strouhanka",
+              "category": "Trvanlivé potraviny"
+            },
+            {
+              "name": "Kukuřičná krupice",
+              "category": "Trvanlivé potraviny"
+            }
+          ],
+          "quantity": "2 lžíce",
+          "note": "podle hustoty",
+          "optional": false
+        },
+        {
+          "id": "g-na-maso-koreni-na-mlete-maso",
+          "group": "g-na-maso",
+          "options": [
+            {
+              "name": "Koření na mleté maso",
+              "category": "Koření"
+            }
+          ],
+          "quantity": "dle chuti",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "g-na-maso-pepr-mlety",
+          "group": "g-na-maso",
+          "options": [
+            {
+              "name": "Pepř mletý",
+              "category": "Koření"
+            }
+          ],
+          "quantity": "dle chuti",
+          "note": "čerstvě namletý",
+          "optional": false
+        },
+        {
+          "id": "g-na-maso-sul",
+          "group": "g-na-maso",
+          "options": [
+            {
+              "name": "Sůl",
+              "category": "Koření"
+            }
+          ],
+          "quantity": "0,5 lžičky",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "g-na-omacku-maslo-nebo-ghi",
+          "group": "g-na-omacku",
+          "options": [
+            {
+              "name": "Máslo",
+              "category": "Mléčné výrobky a vejce"
+            },
+            {
+              "name": "Ghí",
+              "category": "Konzervy, omáčky a oleje"
+            }
+          ],
+          "quantity": "60 g",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "g-na-omacku-hladka-mouka",
+          "group": "g-na-omacku",
+          "options": [
+            {
+              "name": "Hladká mouka",
+              "category": "Trvanlivé potraviny"
+            }
+          ],
+          "quantity": "50 g",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "g-na-omacku-cibule",
+          "group": "g-na-omacku",
+          "options": [
+            {
+              "name": "Cibule",
+              "category": "Zelenina, ovoce a bylinky"
+            }
+          ],
+          "quantity": "1 ks",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "g-na-omacku-loupana-rajcata-v-konzerve",
+          "group": "g-na-omacku",
+          "options": [
+            {
+              "name": "Loupaná rajčata v konzervě",
+              "category": "Konzervy, omáčky a oleje"
+            }
+          ],
+          "quantity": "400 g",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "g-na-omacku-hovezi-vyvar-nebo-drubezi-vyvar",
+          "group": "g-na-omacku",
+          "options": [
+            {
+              "name": "Hovězí vývar",
+              "category": "Konzervy, omáčky a oleje"
+            },
+            {
+              "name": "Drůbeží vývar",
+              "category": "Konzervy, omáčky a oleje"
+            }
+          ],
+          "quantity": "800 ml",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "g-na-omacku-skorice-mleta",
+          "group": "g-na-omacku",
+          "options": [
+            {
+              "name": "Skořice mletá",
+              "category": "Koření"
+            }
+          ],
+          "quantity": "0,5 lžičky",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "g-na-omacku-bobkovy-list",
+          "group": "g-na-omacku",
+          "options": [
+            {
+              "name": "Bobkový list",
+              "category": "Koření"
+            }
+          ],
+          "quantity": "1 ks",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "g-na-omacku-nove-koreni",
+          "group": "g-na-omacku",
+          "options": [
+            {
+              "name": "Nové koření",
+              "category": "Koření"
+            }
+          ],
+          "quantity": "5 kuliček",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "g-na-omacku-tymian-suseny",
+          "group": "g-na-omacku",
+          "options": [
+            {
+              "name": "Tymián sušený",
+              "category": "Koření"
+            }
+          ],
+          "quantity": "0,5 lžičky",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "g-na-omacku-rajcatovy-protlak",
+          "group": "g-na-omacku",
+          "options": [
+            {
+              "name": "Rajčatový protlak",
+              "category": "Konzervy, omáčky a oleje"
+            }
+          ],
+          "quantity": "140 g",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "g-na-omacku-pepr-cely",
+          "group": "g-na-omacku",
+          "options": [
+            {
+              "name": "Pepř celý",
+              "category": "Koření"
+            }
+          ],
+          "quantity": "5 kuliček",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "g-na-omacku-sul",
+          "group": "g-na-omacku",
+          "options": [
+            {
+              "name": "Sůl",
+              "category": "Koření"
+            }
+          ],
+          "quantity": "dle chuti",
+          "note": "na omáčku",
+          "optional": false
+        },
+        {
+          "id": "g-na-omacku-ocet",
+          "group": "g-na-omacku",
+          "options": [
+            {
+              "name": "Ocet",
+              "category": "Konzervy, omáčky a oleje"
+            }
+          ],
+          "quantity": "dle chuti",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "g-na-omacku-cukr",
+          "group": "g-na-omacku",
+          "options": [
+            {
+              "name": "Cukr",
+              "category": "Trvanlivé potraviny"
+            }
+          ],
+          "quantity": "dle chuti",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "g-priloha-houskovy-knedlik-nebo-testoviny",
+          "group": "g-priloha",
+          "options": [
+            {
+              "name": "Houskový knedlík",
+              "category": "Pečivo a přílohy"
+            },
+            {
+              "name": "Těstoviny",
+              "category": "Trvanlivé potraviny"
+            }
+          ],
+          "quantity": "neuvedeno",
+          "note": "k podávání",
+          "optional": false
+        }
+      ],
+      "groups": [
+        {
+          "id": "g-na-maso",
+          "title": "Na maso",
+          "optional": false
+        },
+        {
+          "id": "g-na-omacku",
+          "title": "Na omáčku",
+          "optional": false
+        },
+        {
+          "id": "g-priloha",
+          "title": "Příloha",
+          "optional": true
+        }
+      ],
+      "steps": [
+        {
+          "number": 1,
+          "title": "Příprava masových koulí"
+        },
+        {
+          "number": 2,
+          "title": "Příprava rajské omáčky"
+        },
+        {
+          "number": 3,
+          "title": "Dokončení omáčky"
+        },
+        {
+          "number": 4,
+          "title": "Servírování"
+        }
+      ],
+      "id": "food/europe/czech/main-dishes/rajska-omacka",
+      "relPath": "food/europe/czech/main-dishes/rajska-omacka.md",
+      "title": "Rajská omáčka s masovými koulemi",
+      "pageTitle": "🍅 Rajská omáčka s masovými koulemi",
+      "description": "Hovězí masové koule se sladkokyselou rajčatovou omáčkou a přílohou podle výběru.",
+      "typeLabel": "Hlavní jídla",
+      "origin": "Evropa, Česko"
+    },
+    {
+      "section": "food",
+      "continent": "europe",
+      "country": "czech",
+      "type": "main-dishes",
+      "ingredients": [
+        {
+          "id": "zaklad-testoviny-fleky",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Těstoviny fleky",
+              "category": "Trvanlivé potraviny"
+            }
+          ],
+          "quantity": "300 g",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "zaklad-uzene-veprove-maso",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Uzené vepřové maso",
+              "category": "Maso a uzeniny"
+            }
+          ],
+          "quantity": "250 g",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "zaklad-maslo",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Máslo",
+              "category": "Mléčné výrobky a vejce"
+            }
+          ],
+          "quantity": "1 lžička",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "zaklad-cibule",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Cibule",
+              "category": "Zelenina, ovoce a bylinky"
+            }
+          ],
+          "quantity": "1 ks",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "zaklad-mrazeny-hrasek",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Mražený hrášek",
+              "category": "Mražené"
+            }
+          ],
+          "quantity": "3 hrsti",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "zaklad-petrzel-nat",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Petržel nať",
+              "category": "Zelenina, ovoce a bylinky"
+            }
+          ],
+          "quantity": "1 hrst",
+          "note": "hladkolistá",
+          "optional": false
+        },
+        {
+          "id": "zaklad-mleko",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Mléko",
+              "category": "Mléčné výrobky a vejce"
+            }
+          ],
+          "quantity": "300 ml",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "zaklad-vejce",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Vejce",
+              "category": "Mléčné výrobky a vejce"
+            }
+          ],
+          "quantity": "2 ks",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "zaklad-gouda",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Gouda",
+              "category": "Mléčné výrobky a vejce"
+            }
+          ],
+          "quantity": "100 g",
+          "note": "nastrouhaná",
+          "optional": false
+        },
+        {
+          "id": "zaklad-kysele-okurky",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Kyselé okurky",
+              "category": "Konzervy, omáčky a oleje"
+            }
+          ],
+          "quantity": "neuvedeno",
+          "note": "k podávání",
+          "optional": false
+        },
+        {
+          "id": "zaklad-sul",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Sůl",
+              "category": "Koření"
+            }
+          ],
+          "quantity": "dle chuti",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "zaklad-pepr-mlety",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Pepř mletý",
+              "category": "Koření"
+            }
+          ],
+          "quantity": "dle chuti",
+          "note": "čerstvě namletý",
+          "optional": false
+        }
+      ],
+      "groups": [
+        {
+          "id": "zaklad",
+          "title": "Základ",
+          "optional": false
+        }
+      ],
+      "steps": [
+        {
+          "number": 1,
+          "title": "Příprava základu"
+        },
+        {
+          "number": 2,
+          "title": "Vaření těstovin"
+        },
+        {
+          "number": 3,
+          "title": "Příprava zálivky"
+        },
+        {
+          "number": 4,
+          "title": "Skládání do pekáčku"
+        },
+        {
+          "number": 5,
+          "title": "Pečení"
+        },
+        {
+          "number": 6,
+          "title": "Servírování"
+        }
+      ],
+      "id": "food/europe/czech/main-dishes/sunkofleky",
+      "relPath": "food/europe/czech/main-dishes/sunkofleky.md",
+      "title": "Šunkofleky",
+      "pageTitle": "🇨🇿 Šunkofleky",
+      "description": "Zapečené fleky s uzeným masem, hráškem, goudou a vaječnou zálivkou.",
+      "typeLabel": "Hlavní jídla",
+      "origin": "Evropa, Česko"
+    },
+    {
+      "section": "food",
+      "continent": "europe",
+      "country": "czech",
+      "type": "desserts",
+      "ingredients": [
+        {
+          "id": "zaklad-tvaroh",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Tvaroh",
+              "category": "Mléčné výrobky a vejce"
+            }
+          ],
+          "quantity": "1 vanička",
+          "note": "velikost vaničky zdroj neuvádí",
+          "optional": false
+        },
+        {
+          "id": "zaklad-smetana-ke-slehani",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Smetana ke šlehání",
+              "category": "Mléčné výrobky a vejce"
+            }
+          ],
+          "quantity": "1 hrnek",
+          "note": "vysokoprocentní; velikost hrnku zdroj neuvádí",
+          "optional": false
+        },
+        {
+          "id": "zaklad-cukr",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Cukr",
+              "category": "Trvanlivé potraviny"
+            }
+          ],
+          "quantity": "dle chuti",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "g-poleva-horka-cokolada",
+          "group": "g-poleva",
+          "options": [
+            {
+              "name": "Hořká čokoláda",
+              "category": "Trvanlivé potraviny"
+            }
+          ],
+          "quantity": "1 tabulka",
+          "note": "hmotnost tabulky zdroj neuvádí",
+          "optional": false
+        },
+        {
+          "id": "g-poleva-mlecna-cokolada",
+          "group": "g-poleva",
+          "options": [
+            {
+              "name": "Mléčná čokoláda",
+              "category": "Trvanlivé potraviny"
+            }
+          ],
+          "quantity": "1 tabulka",
+          "note": "hmotnost tabulky zdroj neuvádí",
+          "optional": false
+        },
+        {
+          "id": "g-poleva-smetana",
+          "group": "g-poleva",
+          "options": [
+            {
+              "name": "Smetana",
+              "category": "Mléčné výrobky a vejce"
+            }
+          ],
+          "quantity": "0,5 hrnku",
+          "note": "velikost hrnku zdroj neuvádí",
+          "optional": false
+        },
+        {
+          "id": "g-poleva-maslo",
+          "group": "g-poleva",
+          "options": [
+            {
+              "name": "Máslo",
+              "category": "Mléčné výrobky a vejce"
+            }
+          ],
+          "quantity": "2 lžíce",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "g-susenkovy-zaklad-kakaove-susenky",
+          "group": "g-susenkovy-zaklad",
+          "options": [
+            {
+              "name": "Kakaové sušenky",
+              "category": "Trvanlivé potraviny"
+            }
+          ],
+          "quantity": "neuvedeno",
+          "note": "",
+          "optional": false
+        }
+      ],
+      "groups": [
+        {
+          "id": "zaklad",
+          "title": "Základ",
+          "optional": false
+        },
+        {
+          "id": "g-poleva",
+          "title": "Poleva",
+          "optional": false
+        },
+        {
+          "id": "g-susenkovy-zaklad",
+          "title": "Sušenkový základ",
+          "optional": false
+        }
+      ],
+      "steps": [
+        {
+          "number": 1,
+          "title": "Příprava smetany a tvarohu"
+        },
+        {
+          "number": 2,
+          "title": "Příprava polevy"
+        },
+        {
+          "number": 3,
+          "title": "Dokončení"
+        }
+      ],
+      "id": "food/europe/czech/desserts/misa-rezy",
+      "relPath": "food/europe/czech/desserts/misa-rezy.md",
+      "title": "Míša řezy",
+      "pageTitle": "🍰 Míša řezy",
+      "description": "Nepečený tvarohový dezert do misek s kakaovými sušenkami a čokoládovou polevou.",
+      "typeLabel": "Dezerty",
+      "origin": "Evropa, Česko"
+    },
+    {
+      "section": "food",
+      "continent": "europe",
+      "country": "italy",
+      "type": "main-dishes",
+      "ingredients": [
+        {
+          "id": "zaklad-mrazeny-spenat",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Mražený špenát",
+              "category": "Mražené"
+            }
+          ],
+          "quantity": "neuvedeno",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "zaklad-noky",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Noky",
+              "category": "Pečivo a přílohy"
+            }
+          ],
+          "quantity": "neuvedeno",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "zaklad-parmezan",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Parmezán",
+              "category": "Mléčné výrobky a vejce"
+            }
+          ],
+          "quantity": "neuvedeno",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "zaklad-smetana-ke-slehani",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Smetana ke šlehání",
+              "category": "Mléčné výrobky a vejce"
+            }
+          ],
+          "quantity": "neuvedeno",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "zaklad-cesnek",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Česnek",
+              "category": "Zelenina, ovoce a bylinky"
+            }
+          ],
+          "quantity": "neuvedeno",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "zaklad-rostlinny-olej",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Rostlinný olej",
+              "category": "Konzervy, omáčky a oleje"
+            }
+          ],
+          "quantity": "neuvedeno",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "zaklad-pepr-mlety",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Pepř mletý",
+              "category": "Koření"
+            }
+          ],
+          "quantity": "dle chuti",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "zaklad-sul",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Sůl",
+              "category": "Koření"
+            }
+          ],
+          "quantity": "dle chuti",
+          "note": "",
+          "optional": false
+        }
+      ],
+      "groups": [
+        {
+          "id": "zaklad",
+          "title": "Základ",
+          "optional": false
+        }
+      ],
+      "steps": [
+        {
+          "number": 1,
+          "title": "Příprava sýra a noků"
+        },
+        {
+          "number": 2,
+          "title": "Příprava omáčky"
+        },
+        {
+          "number": 3,
+          "title": "Dokončení a podávání"
+        }
+      ],
+      "id": "food/europe/italy/main-dishes/gnocchi-se-spenatem",
+      "relPath": "food/europe/italy/main-dishes/gnocchi-se-spenatem.md",
+      "title": "Noky se špenátem",
+      "pageTitle": "🥬 Noky se špenátem",
+      "description": "Noky se špenátem, česnekem a smetanovou omáčkou, posypané parmezánem.",
+      "typeLabel": "Hlavní jídla",
+      "origin": "Evropa, Itálie"
+    },
+    {
+      "section": "food",
+      "continent": "europe",
+      "country": "italy",
+      "type": "main-dishes",
+      "ingredients": [
+        {
+          "id": "zaklad-penne",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Penne",
+              "category": "Trvanlivé potraviny"
+            }
+          ],
+          "quantity": "neuvedeno",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "zaklad-niva",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Niva",
+              "category": "Mléčné výrobky a vejce"
+            }
+          ],
+          "quantity": "neuvedeno",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "zaklad-maslo",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Máslo",
+              "category": "Mléčné výrobky a vejce"
+            }
+          ],
+          "quantity": "1 lžička",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "zaklad-smetana-ke-slehani",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Smetana ke šlehání",
+              "category": "Mléčné výrobky a vejce"
+            }
+          ],
+          "quantity": "neuvedeno",
+          "note": "",
+          "optional": false
+        }
+      ],
+      "groups": [
+        {
+          "id": "zaklad",
+          "title": "Základ",
+          "optional": false
+        }
+      ],
+      "steps": [
+        {
+          "number": 1,
+          "title": "Vaření těstovin"
+        },
+        {
+          "number": 2,
+          "title": "Příprava omáčky"
+        },
+        {
+          "number": 3,
+          "title": "Dokončení"
+        }
+      ],
+      "id": "food/europe/italy/main-dishes/penne-quattro-formaggi",
+      "relPath": "food/europe/italy/main-dishes/penne-quattro-formaggi.md",
+      "title": "Penne Quattro Formaggi",
+      "pageTitle": "🍝 Penne Quattro Formaggi",
+      "description": "Penne s krémovou omáčkou ze smetany, másla a nivy; domácí varianta sýrových těstovin.",
+      "typeLabel": "Hlavní jídla",
+      "origin": "Evropa, Itálie"
+    },
+    {
+      "section": "food",
+      "continent": "europe",
+      "country": "italy",
+      "type": "main-dishes",
+      "ingredients": [
+        {
+          "id": "zaklad-pizza-testo-nebo-listove-testo",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Pizza těsto",
+              "category": "Pečivo a přílohy"
+            },
+            {
+              "name": "Listové těsto",
+              "category": "Pečivo a přílohy"
+            }
+          ],
+          "quantity": "neuvedeno",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "zaklad-smetana-ke-slehani",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Smetana ke šlehání",
+              "category": "Mléčné výrobky a vejce"
+            }
+          ],
+          "quantity": "3–5 lžic",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "zaklad-mozzarella",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Mozzarella",
+              "category": "Mléčné výrobky a vejce"
+            }
+          ],
+          "quantity": "neuvedeno",
+          "note": "kuličky",
+          "optional": false
+        },
+        {
+          "id": "zaklad-gorgonzola",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Gorgonzola",
+              "category": "Mléčné výrobky a vejce"
+            }
+          ],
+          "quantity": "neuvedeno",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "zaklad-parmezan",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Parmezán",
+              "category": "Mléčné výrobky a vejce"
+            }
+          ],
+          "quantity": "neuvedeno",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "zaklad-sul",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Sůl",
+              "category": "Koření"
+            }
+          ],
+          "quantity": "dle chuti",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "zaklad-pepr-mlety",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Pepř mletý",
+              "category": "Koření"
+            }
+          ],
+          "quantity": "dle chuti",
+          "note": "",
+          "optional": false
+        }
+      ],
+      "groups": [
+        {
+          "id": "zaklad",
+          "title": "Základ",
+          "optional": false
+        }
+      ],
+      "steps": [
+        {
+          "number": 1,
+          "title": "Předehřátí trouby"
+        },
+        {
+          "number": 2,
+          "title": "Smetanový základ"
+        },
+        {
+          "number": 3,
+          "title": "Příprava těsta"
+        },
+        {
+          "number": 4,
+          "title": "Skládání pizzy"
+        },
+        {
+          "number": 5,
+          "title": "Pečení"
+        },
+        {
+          "number": 6,
+          "title": "Dokončení"
+        }
+      ],
+      "id": "food/europe/italy/main-dishes/pizza-quattro-formaggi",
+      "relPath": "food/europe/italy/main-dishes/pizza-quattro-formaggi.md",
+      "title": "Pizza Quattro Formaggi",
+      "pageTitle": "🍕 Pizza Quattro Formaggi",
+      "description": "Domácí pizza s tenkým smetanovým základem, mozzarellou, gorgonzolou a parmezánem.",
+      "typeLabel": "Hlavní jídla",
+      "origin": "Evropa, Itálie"
+    },
+    {
+      "section": "food",
+      "continent": "europe",
+      "country": "portugal",
+      "type": "desserts",
+      "ingredients": [
+        {
+          "id": "zaklad-listove-testo",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Listové těsto",
+              "category": "Pečivo a přílohy"
+            }
+          ],
+          "quantity": "500 g",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "zaklad-mleko",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Mléko",
+              "category": "Mléčné výrobky a vejce"
+            }
+          ],
+          "quantity": "100 ml",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "zaklad-smetana-na-vareni",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Smetana na vaření",
+              "category": "Mléčné výrobky a vejce"
+            }
+          ],
+          "quantity": "200 ml",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "zaklad-vejce",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Vejce",
+              "category": "Mléčné výrobky a vejce"
+            }
+          ],
+          "quantity": "5 ks",
+          "note": "použijte pouze žloutky",
+          "optional": false
+        },
+        {
+          "id": "zaklad-cukr-krystal",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Cukr krystal",
+              "category": "Trvanlivé potraviny"
+            }
+          ],
+          "quantity": "3 lžíce",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "zaklad-hladka-mouka",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Hladká mouka",
+              "category": "Trvanlivé potraviny"
+            }
+          ],
+          "quantity": "2 lžíce",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "zaklad-citron",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Citron",
+              "category": "Zelenina, ovoce a bylinky"
+            }
+          ],
+          "quantity": "1 ks",
+          "note": "použijte kůru",
+          "optional": false
+        },
+        {
+          "id": "zaklad-skorice-mleta",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Skořice mletá",
+              "category": "Koření"
+            }
+          ],
+          "quantity": "dle chuti",
+          "note": "",
+          "optional": false
+        }
+      ],
+      "groups": [
+        {
+          "id": "zaklad",
+          "title": "Základ",
+          "optional": false
+        }
+      ],
+      "steps": [
+        {
+          "number": 1,
+          "title": "Příprava těsta"
+        },
+        {
+          "number": 2,
+          "title": "Příprava náplně"
+        },
+        {
+          "number": 3,
+          "title": "Plnění a pečení"
+        }
+      ],
+      "id": "food/europe/portugal/desserts/pasteis-de-nata",
+      "relPath": "food/europe/portugal/desserts/pasteis-de-nata.md",
+      "title": "Pastéis de Nata",
+      "pageTitle": "🥧 Pastéis de Nata",
+      "description": "Košíčky z listového těsta s mléčnou žloutkovou náplní, citronovou kůrou a skořicí.",
+      "typeLabel": "Dezerty",
+      "origin": "Evropa, Portugalsko"
+    },
+    {
+      "section": "food",
+      "continent": "europe",
+      "country": "greece",
+      "type": "main-dishes",
+      "ingredients": [
+        {
+          "id": "zaklad-maslo",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Máslo",
+              "category": "Mléčné výrobky a vejce"
+            }
+          ],
+          "quantity": "neuvedeno",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "zaklad-kureci-maso",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Kuřecí maso",
+              "category": "Maso a uzeniny"
+            }
+          ],
+          "quantity": "neuvedeno",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "zaklad-barbecue-omacka",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Barbecue omáčka",
+              "category": "Konzervy, omáčky a oleje"
+            }
+          ],
+          "quantity": "dle chuti",
+          "note": "smoky chilly, původně Lidl",
+          "optional": false
+        },
+        {
+          "id": "zaklad-uzena-paprika-mleta",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Uzená paprika mletá",
+              "category": "Koření"
+            }
+          ],
+          "quantity": "dle chuti",
+          "note": "sladká, původně Kotányi",
+          "optional": false
+        },
+        {
+          "id": "zaklad-koreni-na-grilovane-kure",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Koření na grilované kuře",
+              "category": "Koření"
+            }
+          ],
+          "quantity": "dle chuti",
+          "note": "původně Avokádo",
+          "optional": false
+        }
+      ],
+      "groups": [
+        {
+          "id": "zaklad",
+          "title": "Základ",
+          "optional": false
+        }
+      ],
+      "steps": [
+        {
+          "number": 1,
+          "title": "Příprava masa"
+        },
+        {
+          "number": 2,
+          "title": "Dochucení"
+        },
+        {
+          "number": 3,
+          "title": "Dokončení"
+        }
+      ],
+      "id": "food/europe/greece/main-dishes/recka-smes",
+      "relPath": "food/europe/greece/main-dishes/recka-smes.md",
+      "title": "Řecká směs",
+      "pageTitle": "🇬🇷 Řecká směs",
+      "description": "Kuřecí nudličky na másle s uzenou paprikou a pikantní barbecue omáčkou.",
+      "typeLabel": "Hlavní jídla",
+      "origin": "Evropa, Řecko"
+    },
+    {
+      "section": "food",
+      "continent": "europe",
+      "country": "spain",
+      "type": "soups",
+      "ingredients": [
+        {
+          "id": "zaklad-rajcata-podlouhla",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Rajčata podlouhlá",
+              "category": "Zelenina, ovoce a bylinky"
+            }
+          ],
+          "quantity": "3 ks",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "zaklad-rajcata",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Rajčata",
+              "category": "Zelenina, ovoce a bylinky"
+            }
+          ],
+          "quantity": "3 ks",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "zaklad-rajce-masite",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Rajče masité",
+              "category": "Zelenina, ovoce a bylinky"
+            }
+          ],
+          "quantity": "1 ks",
+          "note": "červené",
+          "optional": false
+        },
+        {
+          "id": "zaklad-cervena-paprika",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Červená paprika",
+              "category": "Zelenina, ovoce a bylinky"
+            }
+          ],
+          "quantity": "1 ks",
+          "note": "masitá",
+          "optional": false
+        },
+        {
+          "id": "zaklad-zelena-paprika-nebo-bila-paprika",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Zelená paprika",
+              "category": "Zelenina, ovoce a bylinky"
+            },
+            {
+              "name": "Bílá paprika",
+              "category": "Zelenina, ovoce a bylinky"
+            }
+          ],
+          "quantity": "2 ks",
+          "note": "nemasitá",
+          "optional": false
+        },
+        {
+          "id": "zaklad-okurka",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Okurka",
+              "category": "Zelenina, ovoce a bylinky"
+            }
+          ],
+          "quantity": "1 ks",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "zaklad-cibule",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Cibule",
+              "category": "Zelenina, ovoce a bylinky"
+            }
+          ],
+          "quantity": "1 ks",
+          "note": "střední",
+          "optional": false
+        },
+        {
+          "id": "zaklad-cesnek",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Česnek",
+              "category": "Zelenina, ovoce a bylinky"
+            }
+          ],
+          "quantity": "1 stroužek",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "zaklad-vinny-ocet",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Vinný ocet",
+              "category": "Konzervy, omáčky a oleje"
+            }
+          ],
+          "quantity": "2 lžíce",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "zaklad-sul",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Sůl",
+              "category": "Koření"
+            }
+          ],
+          "quantity": "1 lžička",
+          "note": "malá",
+          "optional": false
+        }
+      ],
+      "groups": [
+        {
+          "id": "zaklad",
+          "title": "Základ",
+          "optional": false
+        }
+      ],
+      "steps": [
+        {
+          "number": 1,
+          "title": "Příprava zeleniny"
+        },
+        {
+          "number": 2,
+          "title": "Mixování a dochucení"
+        },
+        {
+          "number": 3,
+          "title": "Servírování"
+        }
+      ],
+      "id": "food/europe/spain/soups/gazpacho",
+      "relPath": "food/europe/spain/soups/gazpacho.md",
+      "title": "Gazpacho",
+      "pageTitle": "🥒 Gazpacho",
+      "description": "Studená rajčatová polévka s paprikou, okurkou a vinným octem, připravená bez vaření.",
+      "typeLabel": "Polévky",
+      "origin": "Evropa, Španělsko"
+    },
+    {
+      "section": "food",
+      "continent": "asia",
+      "country": "india",
+      "type": "main-dishes",
+      "ingredients": [
+        {
+          "id": "zaklad-ryze",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Rýže",
+              "category": "Trvanlivé potraviny"
+            }
+          ],
+          "quantity": "250 g",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "zaklad-maslo",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Máslo",
+              "category": "Mléčné výrobky a vejce"
+            }
+          ],
+          "quantity": "neuvedeno",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "zaklad-kureci-prsa",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Kuřecí prsa",
+              "category": "Maso a uzeniny"
+            }
+          ],
+          "quantity": "400 g",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "zaklad-cibule",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Cibule",
+              "category": "Zelenina, ovoce a bylinky"
+            }
+          ],
+          "quantity": "1 ks",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "zaklad-zazvor",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Zázvor",
+              "category": "Zelenina, ovoce a bylinky"
+            }
+          ],
+          "quantity": "10 g",
+          "note": "čerstvý",
+          "optional": false
+        },
+        {
+          "id": "zaklad-cesnek",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Česnek",
+              "category": "Zelenina, ovoce a bylinky"
+            }
+          ],
+          "quantity": "2 stroužky",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "zaklad-kokosove-mleko",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Kokosové mléko",
+              "category": "Konzervy, omáčky a oleje"
+            }
+          ],
+          "quantity": "400 ml",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "zaklad-mango-nebo-broskev",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Mango",
+              "category": "Zelenina, ovoce a bylinky"
+            },
+            {
+              "name": "Broskev",
+              "category": "Zelenina, ovoce a bylinky"
+            }
+          ],
+          "quantity": "1 ks",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "zaklad-koriandr",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Koriandr",
+              "category": "Zelenina, ovoce a bylinky"
+            }
+          ],
+          "quantity": "dle chuti",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "zaklad-voda",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Voda",
+              "category": "Doma připravit"
+            }
+          ],
+          "quantity": "neuvedeno",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "zaklad-kurkuma",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Kurkuma",
+              "category": "Koření"
+            }
+          ],
+          "quantity": "dle chuti",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "zaklad-sul",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Sůl",
+              "category": "Koření"
+            }
+          ],
+          "quantity": "dle chuti",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "zaklad-pepr-mlety",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Pepř mletý",
+              "category": "Koření"
+            }
+          ],
+          "quantity": "dle chuti",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "zaklad-sladka-paprika-mleta",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Sladká paprika mletá",
+              "category": "Koření"
+            }
+          ],
+          "quantity": "dle chuti",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "zaklad-gulasove-koreni",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Gulášové koření",
+              "category": "Koření"
+            }
+          ],
+          "quantity": "dle chuti",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "zaklad-kari-koreni",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Kari koření",
+              "category": "Koření"
+            }
+          ],
+          "quantity": "dle chuti",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "zaklad-bazalka",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Bazalka",
+              "category": "Zelenina, ovoce a bylinky"
+            }
+          ],
+          "quantity": "dle chuti",
+          "note": "",
+          "optional": false
+        }
+      ],
+      "groups": [
+        {
+          "id": "zaklad",
+          "title": "Základ",
+          "optional": false
+        }
+      ],
+      "steps": [
+        {
+          "number": 1,
+          "title": "Restování základu"
+        },
+        {
+          "number": 2,
+          "title": "Mixování omáčky"
+        },
+        {
+          "number": 3,
+          "title": "Vaření masa"
+        },
+        {
+          "number": 4,
+          "title": "Servírování"
+        }
+      ],
+      "id": "food/asia/india/main-dishes/kureci-kari-s-ryzi",
+      "relPath": "food/asia/india/main-dishes/kureci-kari-s-ryzi.md",
+      "title": "Kuřecí na kari s rýží",
+      "pageTitle": "🍛 Kuřecí na kari s rýží",
+      "description": "Kuřecí maso v kokosové kari omáčce s mangem nebo broskví, podávané s rýží.",
+      "typeLabel": "Hlavní jídla",
+      "origin": "Asie, Indie"
+    },
+    {
+      "section": "food",
+      "continent": "asia",
+      "country": "india",
+      "type": "main-dishes",
+      "ingredients": [
+        {
+          "id": "g-marinada-na-maso-kureci-prsa",
+          "group": "g-marinada-na-maso",
+          "options": [
+            {
+              "name": "Kuřecí prsa",
+              "category": "Maso a uzeniny"
+            }
+          ],
+          "quantity": "500 g",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "g-marinada-na-maso-bily-jogurt",
+          "group": "g-marinada-na-maso",
+          "options": [
+            {
+              "name": "Bílý jogurt",
+              "category": "Mléčné výrobky a vejce"
+            }
+          ],
+          "quantity": "1 kelímek",
+          "note": "velikost kelímku zdroj neuvádí",
+          "optional": false
+        },
+        {
+          "id": "g-marinada-na-maso-zazvor",
+          "group": "g-marinada-na-maso",
+          "options": [
+            {
+              "name": "Zázvor",
+              "category": "Zelenina, ovoce a bylinky"
+            }
+          ],
+          "quantity": "1 lžíce",
+          "note": "nastrouhaný",
+          "optional": false
+        },
+        {
+          "id": "g-marinada-na-maso-cesnek",
+          "group": "g-marinada-na-maso",
+          "options": [
+            {
+              "name": "Česnek",
+              "category": "Zelenina, ovoce a bylinky"
+            }
+          ],
+          "quantity": "1 lžíce",
+          "note": "prolisovaný",
+          "optional": false
+        },
+        {
+          "id": "g-marinada-na-maso-rimsky-kmin-mlety",
+          "group": "g-marinada-na-maso",
+          "options": [
+            {
+              "name": "Římský kmín mletý",
+              "category": "Koření"
+            }
+          ],
+          "quantity": "1 lžička",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "g-marinada-na-maso-tandoori-masala",
+          "group": "g-marinada-na-maso",
+          "options": [
+            {
+              "name": "Tandoori masála",
+              "category": "Koření"
+            }
+          ],
+          "quantity": "1 lžíce",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "g-marinada-na-maso-sul",
+          "group": "g-marinada-na-maso",
+          "options": [
+            {
+              "name": "Sůl",
+              "category": "Koření"
+            }
+          ],
+          "quantity": "dle chuti",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "g-omacka-maslo",
+          "group": "g-omacka",
+          "options": [
+            {
+              "name": "Máslo",
+              "category": "Mléčné výrobky a vejce"
+            }
+          ],
+          "quantity": "neuvedeno",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "g-omacka-cibule",
+          "group": "g-omacka",
+          "options": [
+            {
+              "name": "Cibule",
+              "category": "Zelenina, ovoce a bylinky"
+            }
+          ],
+          "quantity": "1 ks",
+          "note": "velká",
+          "optional": false
+        },
+        {
+          "id": "g-omacka-rajcata",
+          "group": "g-omacka",
+          "options": [
+            {
+              "name": "Rajčata",
+              "category": "Zelenina, ovoce a bylinky"
+            }
+          ],
+          "quantity": "2 ks",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "g-omacka-zazvor",
+          "group": "g-omacka",
+          "options": [
+            {
+              "name": "Zázvor",
+              "category": "Zelenina, ovoce a bylinky"
+            }
+          ],
+          "quantity": "1 lžíce",
+          "note": "nastrouhaný",
+          "optional": false
+        },
+        {
+          "id": "g-omacka-cesnek",
+          "group": "g-omacka",
+          "options": [
+            {
+              "name": "Česnek",
+              "category": "Zelenina, ovoce a bylinky"
+            }
+          ],
+          "quantity": "1 lžíce",
+          "note": "prolisovaný",
+          "optional": false
+        },
+        {
+          "id": "g-omacka-kurkuma",
+          "group": "g-omacka",
+          "options": [
+            {
+              "name": "Kurkuma",
+              "category": "Koření"
+            }
+          ],
+          "quantity": "1 lžička",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "g-omacka-rimsky-kmin-mlety",
+          "group": "g-omacka",
+          "options": [
+            {
+              "name": "Římský kmín mletý",
+              "category": "Koření"
+            }
+          ],
+          "quantity": "1 lžička",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "g-omacka-kari-koreni",
+          "group": "g-omacka",
+          "options": [
+            {
+              "name": "Kari koření",
+              "category": "Koření"
+            }
+          ],
+          "quantity": "1 lžička",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "g-omacka-skorice-cela",
+          "group": "g-omacka",
+          "options": [
+            {
+              "name": "Skořice celá",
+              "category": "Koření"
+            }
+          ],
+          "quantity": "1 svitek",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "g-omacka-kardamom-cely",
+          "group": "g-omacka",
+          "options": [
+            {
+              "name": "Kardamom celý",
+              "category": "Koření"
+            }
+          ],
+          "quantity": "1 ks",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "g-omacka-badyan",
+          "group": "g-omacka",
+          "options": [
+            {
+              "name": "Badyán",
+              "category": "Koření"
+            }
+          ],
+          "quantity": "2 hvězdičky",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "g-omacka-bobkovy-list",
+          "group": "g-omacka",
+          "options": [
+            {
+              "name": "Bobkový list",
+              "category": "Koření"
+            }
+          ],
+          "quantity": "4 ks",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "g-omacka-smetana-ke-slehani",
+          "group": "g-omacka",
+          "options": [
+            {
+              "name": "Smetana ke šlehání",
+              "category": "Mléčné výrobky a vejce"
+            }
+          ],
+          "quantity": "neuvedeno",
+          "note": "33 % tuku",
+          "optional": false
+        },
+        {
+          "id": "g-omacka-krajena-rajcata-v-konzerve",
+          "group": "g-omacka",
+          "options": [
+            {
+              "name": "Krájená rajčata v konzervě",
+              "category": "Konzervy, omáčky a oleje"
+            }
+          ],
+          "quantity": "1 plechovka",
+          "note": "velikost plechovky zdroj neuvádí",
+          "optional": false
+        },
+        {
+          "id": "g-omacka-koriandr",
+          "group": "g-omacka",
+          "options": [
+            {
+              "name": "Koriandr",
+              "category": "Zelenina, ovoce a bylinky"
+            }
+          ],
+          "quantity": "1 hrst",
+          "note": "čerstvý",
+          "optional": false
+        },
+        {
+          "id": "g-omacka-sul",
+          "group": "g-omacka",
+          "options": [
+            {
+              "name": "Sůl",
+              "category": "Koření"
+            }
+          ],
+          "quantity": "dle chuti",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "g-omacka-cukr",
+          "group": "g-omacka",
+          "options": [
+            {
+              "name": "Cukr",
+              "category": "Trvanlivé potraviny"
+            }
+          ],
+          "quantity": "dle chuti",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "g-naan-hladka-mouka",
+          "group": "g-naan",
+          "options": [
+            {
+              "name": "Hladká mouka",
+              "category": "Trvanlivé potraviny"
+            }
+          ],
+          "quantity": "250 g",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "g-naan-smetana-na-vareni",
+          "group": "g-naan",
+          "options": [
+            {
+              "name": "Smetana na vaření",
+              "category": "Mléčné výrobky a vejce"
+            }
+          ],
+          "quantity": "100 ml",
+          "note": "12 % tuku",
+          "optional": false
+        },
+        {
+          "id": "g-naan-bily-jogurt",
+          "group": "g-naan",
+          "options": [
+            {
+              "name": "Bílý jogurt",
+              "category": "Mléčné výrobky a vejce"
+            }
+          ],
+          "quantity": "100 ml",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "g-naan-voda",
+          "group": "g-naan",
+          "options": [
+            {
+              "name": "Voda",
+              "category": "Doma připravit"
+            }
+          ],
+          "quantity": "50 ml",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "g-naan-sul",
+          "group": "g-naan",
+          "options": [
+            {
+              "name": "Sůl",
+              "category": "Koření"
+            }
+          ],
+          "quantity": "0,5 lžičky",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "g-naan-maslo",
+          "group": "g-naan",
+          "options": [
+            {
+              "name": "Máslo",
+              "category": "Mléčné výrobky a vejce"
+            }
+          ],
+          "quantity": "1 lžíce",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "g-naan-kyprici-prasek",
+          "group": "g-naan",
+          "options": [
+            {
+              "name": "Kypřicí prášek",
+              "category": "Trvanlivé potraviny"
+            }
+          ],
+          "quantity": "neuvedeno",
+          "note": "",
+          "optional": false
+        }
+      ],
+      "groups": [
+        {
+          "id": "g-marinada-na-maso",
+          "title": "Marináda na maso",
+          "optional": false
+        },
+        {
+          "id": "g-omacka",
+          "title": "Omáčka",
+          "optional": false
+        },
+        {
+          "id": "g-naan",
+          "title": "Naan",
+          "optional": true
+        }
+      ],
+      "steps": [
+        {
+          "number": 1,
+          "title": "Marinování masa"
+        },
+        {
+          "number": 2,
+          "title": "Příprava omáčky"
+        },
+        {
+          "number": 3,
+          "title": "Pečení masa"
+        },
+        {
+          "number": 4,
+          "title": "Spojení masa s omáčkou"
+        },
+        {
+          "number": 5,
+          "title": "Naan jako příloha",
+          "optionalGroup": "g-naan"
+        }
+      ],
+      "id": "food/asia/india/main-dishes/kureci-tikka-masala",
+      "relPath": "food/asia/india/main-dishes/kureci-tikka-masala.md",
+      "title": "Kuřecí tikka masala",
+      "pageTitle": "🍛 Kuřecí tikka masala",
+      "description": "Marinované kuřecí maso v kořeněné rajčatové omáčce se smetanou a volitelným domácím naanem.",
+      "typeLabel": "Hlavní jídla",
+      "origin": "Asie, Indie"
+    },
+    {
+      "section": "food",
+      "continent": "asia",
+      "country": "japan",
+      "type": "soups",
+      "ingredients": [
+        {
+          "id": "zaklad-dyne-hokkaido",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Dýně Hokkaidó",
+              "category": "Zelenina, ovoce a bylinky"
+            }
+          ],
+          "quantity": "neuvedeno",
+          "note": "nakrájená na kostky, neloupe se",
+          "optional": false
+        },
+        {
+          "id": "zaklad-cibule",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Cibule",
+              "category": "Zelenina, ovoce a bylinky"
+            }
+          ],
+          "quantity": "2 ks",
+          "note": "najemno",
+          "optional": false
+        },
+        {
+          "id": "zaklad-ghi",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Ghí",
+              "category": "Konzervy, omáčky a oleje"
+            }
+          ],
+          "quantity": "2 lžíce",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "zaklad-zeleninovy-vyvar",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Zeleninový vývar",
+              "category": "Konzervy, omáčky a oleje"
+            }
+          ],
+          "quantity": "700 ml",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "zaklad-smetana-ke-slehani",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Smetana ke šlehání",
+              "category": "Mléčné výrobky a vejce"
+            }
+          ],
+          "quantity": "neuvedeno",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "zaklad-sul",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Sůl",
+              "category": "Koření"
+            }
+          ],
+          "quantity": "dle chuti",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "zaklad-pepr-mlety",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Pepř mletý",
+              "category": "Koření"
+            }
+          ],
+          "quantity": "dle chuti",
+          "note": "čerstvě namletý",
+          "optional": false
+        }
+      ],
+      "groups": [
+        {
+          "id": "zaklad",
+          "title": "Základ",
+          "optional": false
+        }
+      ],
+      "steps": [
+        {
+          "number": 1,
+          "title": "Příprava základu"
+        },
+        {
+          "number": 2,
+          "title": "Restování dýně"
+        },
+        {
+          "number": 3,
+          "title": "Vaření"
+        },
+        {
+          "number": 4,
+          "title": "Mixování a dochucení"
+        },
+        {
+          "number": 5,
+          "title": "Servírování"
+        }
+      ],
+      "id": "food/asia/japan/soups/dynova-polevka-hokkaido",
+      "relPath": "food/asia/japan/soups/dynova-polevka-hokkaido.md",
+      "title": "Dýňová polévka Hokkaidó",
+      "pageTitle": "🎃 Dýňová polévka Hokkaidó",
+      "description": "Krémová polévka z dýně Hokkaidó, zeleninového vývaru a smetany.",
+      "typeLabel": "Polévky",
+      "origin": "Asie, Japonsko"
+    },
+    {
+      "section": "food",
+      "continent": "asia",
+      "country": "general",
+      "type": "main-dishes",
+      "ingredients": [
+        {
+          "id": "zaklad-ryze",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Rýže",
+              "category": "Trvanlivé potraviny"
+            }
+          ],
+          "quantity": "neuvedeno",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "zaklad-maslo",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Máslo",
+              "category": "Mléčné výrobky a vejce"
+            }
+          ],
+          "quantity": "neuvedeno",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "zaklad-cibule",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Cibule",
+              "category": "Zelenina, ovoce a bylinky"
+            }
+          ],
+          "quantity": "1 ks",
+          "note": "zdroj uvádí také bílou cibuli níže",
+          "optional": false
+        },
+        {
+          "id": "zaklad-kureci-prsa",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Kuřecí prsa",
+              "category": "Maso a uzeniny"
+            }
+          ],
+          "quantity": "500 g",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "zaklad-mrkev",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Mrkev",
+              "category": "Zelenina, ovoce a bylinky"
+            }
+          ],
+          "quantity": "200 g",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "zaklad-zelena-paprika",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Zelená paprika",
+              "category": "Zelenina, ovoce a bylinky"
+            }
+          ],
+          "quantity": "200 g",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "zaklad-kari-koreni",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Kari koření",
+              "category": "Koření"
+            }
+          ],
+          "quantity": "2 lžíce",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "zaklad-bila-cibule",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Bílá cibule",
+              "category": "Zelenina, ovoce a bylinky"
+            }
+          ],
+          "quantity": "150 g",
+          "note": "najemno; ověřte, zda jde o další cibuli",
+          "optional": false
+        },
+        {
+          "id": "zaklad-loupana-rajcata-v-konzerve",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Loupaná rajčata v konzervě",
+              "category": "Konzervy, omáčky a oleje"
+            }
+          ],
+          "quantity": "400 g",
+          "note": "drcená",
+          "optional": false
+        },
+        {
+          "id": "zaklad-kokosove-mleko",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Kokosové mléko",
+              "category": "Konzervy, omáčky a oleje"
+            }
+          ],
+          "quantity": "400 ml",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "zaklad-sul",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Sůl",
+              "category": "Koření"
+            }
+          ],
+          "quantity": "dle chuti",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "zaklad-pepr-mlety",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Pepř mletý",
+              "category": "Koření"
+            }
+          ],
+          "quantity": "dle chuti",
+          "note": "",
+          "optional": false
+        }
+      ],
+      "groups": [
+        {
+          "id": "zaklad",
+          "title": "Základ",
+          "optional": false
+        }
+      ],
+      "steps": [
+        {
+          "number": 1,
+          "title": "Příprava surovin"
+        },
+        {
+          "number": 2,
+          "title": "Restování"
+        },
+        {
+          "number": 3,
+          "title": "Dušení"
+        },
+        {
+          "number": 4,
+          "title": "Servírování"
+        }
+      ],
+      "id": "food/asia/general/main-dishes/kokosove-kure",
+      "relPath": "food/asia/general/main-dishes/kokosove-kure.md",
+      "title": "Kokosové kuře",
+      "pageTitle": "🥥 Kokosové kuře",
+      "description": "Kuřecí nudličky se zeleninou, rajčaty a kokosovým mlékem, podávané s rýží.",
+      "typeLabel": "Hlavní jídla",
+      "origin": "Asie, Obecně asijská kuchyně"
+    },
+    {
+      "section": "food",
+      "continent": "asia",
+      "country": "general",
+      "type": "main-dishes",
+      "ingredients": [
+        {
+          "id": "zaklad-kureci-prsa-nebo-kureci-stehenni-rizky",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Kuřecí prsa",
+              "category": "Maso a uzeniny"
+            },
+            {
+              "name": "Kuřecí stehenní řízky",
+              "category": "Maso a uzeniny"
+            }
+          ],
+          "quantity": "500 g",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "zaklad-hladka-mouka",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Hladká mouka",
+              "category": "Trvanlivé potraviny"
+            }
+          ],
+          "quantity": "neuvedeno",
+          "note": "na obalení",
+          "optional": false
+        },
+        {
+          "id": "zaklad-sul",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Sůl",
+              "category": "Koření"
+            }
+          ],
+          "quantity": "dle chuti",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "zaklad-pepr-mlety",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Pepř mletý",
+              "category": "Koření"
+            }
+          ],
+          "quantity": "dle chuti",
+          "note": "černý",
+          "optional": false
+        },
+        {
+          "id": "zaklad-ghi-nebo-rostlinny-olej",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Ghí",
+              "category": "Konzervy, omáčky a oleje"
+            },
+            {
+              "name": "Rostlinný olej",
+              "category": "Konzervy, omáčky a oleje"
+            }
+          ],
+          "quantity": "2 lžíce",
+          "note": "na smažení",
+          "optional": false
+        },
+        {
+          "id": "zaklad-maslo",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Máslo",
+              "category": "Mléčné výrobky a vejce"
+            }
+          ],
+          "quantity": "2 lžíce",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "zaklad-cesnek",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Česnek",
+              "category": "Zelenina, ovoce a bylinky"
+            }
+          ],
+          "quantity": "1 stroužek",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "zaklad-med",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Med",
+              "category": "Trvanlivé potraviny"
+            }
+          ],
+          "quantity": "1 lžíce",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "zaklad-pomerancova-stava",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Pomerančová šťáva",
+              "category": "Konzervy, omáčky a oleje"
+            }
+          ],
+          "quantity": "2 lžíce",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "zaklad-sojova-omacka",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Sójová omáčka",
+              "category": "Konzervy, omáčky a oleje"
+            }
+          ],
+          "quantity": "2 lžíce",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "zaklad-sladka-paprika-mleta",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Sladká paprika mletá",
+              "category": "Koření"
+            }
+          ],
+          "quantity": "0,5 lžičky",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "zaklad-ryze",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Rýže",
+              "category": "Trvanlivé potraviny"
+            }
+          ],
+          "quantity": "neuvedeno",
+          "note": "k podávání",
+          "optional": false
+        }
+      ],
+      "groups": [
+        {
+          "id": "zaklad",
+          "title": "Základ",
+          "optional": false
+        }
+      ],
+      "steps": [
+        {
+          "number": 1,
+          "title": "Příprava masa"
+        },
+        {
+          "number": 2,
+          "title": "Opékání masa"
+        },
+        {
+          "number": 3,
+          "title": "Příprava omáčky"
+        },
+        {
+          "number": 4,
+          "title": "Dokončení a servírování"
+        }
+      ],
+      "id": "food/asia/general/main-dishes/kureci-maso-na-medu",
+      "relPath": "food/asia/general/main-dishes/kureci-maso-na-medu.md",
+      "title": "Kuřecí maso na medu",
+      "pageTitle": "🍯 Kuřecí maso na medu",
+      "description": "Kuřecí kousky v omáčce z medu, sójové omáčky a pomerančové šťávy, podávané s rýží.",
+      "typeLabel": "Hlavní jídla",
+      "origin": "Asie, Obecně asijská kuchyně"
+    },
+    {
+      "section": "food",
+      "continent": "north-america",
+      "country": "mexico",
+      "type": "main-dishes",
+      "ingredients": [
+        {
+          "id": "zaklad-tortilly",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Tortilly",
+              "category": "Pečivo a přílohy"
+            }
+          ],
+          "quantity": "neuvedeno",
+          "note": "malé; původně z Kauflandu",
+          "optional": false
+        },
+        {
+          "id": "zaklad-mlete-veprovo-hovezi-maso",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Mleté vepřovo-hovězí maso",
+              "category": "Maso a uzeniny"
+            }
+          ],
+          "quantity": "neuvedeno",
+          "note": "původně z Kauflandu",
+          "optional": false
+        },
+        {
+          "id": "zaklad-maslo",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Máslo",
+              "category": "Mléčné výrobky a vejce"
+            }
+          ],
+          "quantity": "neuvedeno",
+          "note": "na opékání masa, uvedeno v postupu",
+          "optional": false
+        },
+        {
+          "id": "zaklad-gyros-koreni",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Gyros koření",
+              "category": "Koření"
+            }
+          ],
+          "quantity": "dle chuti",
+          "note": "původně z Coopu",
+          "optional": false
+        },
+        {
+          "id": "zaklad-cesnekovy-prasek",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Česnekový prášek",
+              "category": "Koření"
+            }
+          ],
+          "quantity": "dle chuti",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "zaklad-cervena-cibule",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Červená cibule",
+              "category": "Zelenina, ovoce a bylinky"
+            }
+          ],
+          "quantity": "1 ks",
+          "note": "střední",
+          "optional": false
+        },
+        {
+          "id": "zaklad-rajcata-kerikova",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Rajčata keříková",
+              "category": "Zelenina, ovoce a bylinky"
+            }
+          ],
+          "quantity": "2 ks",
+          "note": "větší",
+          "optional": false
+        },
+        {
+          "id": "zaklad-limetka",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Limetka",
+              "category": "Zelenina, ovoce a bylinky"
+            }
+          ],
+          "quantity": "1 ks",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "zaklad-koriandr",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Koriandr",
+              "category": "Zelenina, ovoce a bylinky"
+            }
+          ],
+          "quantity": "neuvedeno",
+          "note": "čerstvý",
+          "optional": false
+        },
+        {
+          "id": "zaklad-zakysana-smetana",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Zakysaná smetana",
+              "category": "Mléčné výrobky a vejce"
+            }
+          ],
+          "quantity": "neuvedeno",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "zaklad-olivovy-olej",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Olivový olej",
+              "category": "Konzervy, omáčky a oleje"
+            }
+          ],
+          "quantity": "1 lžíce",
+          "note": "do salsy",
+          "optional": false
+        },
+        {
+          "id": "zaklad-sul",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Sůl",
+              "category": "Koření"
+            }
+          ],
+          "quantity": "dle chuti",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "zaklad-pepr-mlety",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Pepř mletý",
+              "category": "Koření"
+            }
+          ],
+          "quantity": "dle chuti",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "zaklad-syr",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Sýr",
+              "category": "Mléčné výrobky a vejce"
+            }
+          ],
+          "quantity": "neuvedeno",
+          "note": "nastrouhaný",
+          "optional": false
+        }
+      ],
+      "groups": [
+        {
+          "id": "zaklad",
+          "title": "Základ",
+          "optional": false
+        }
+      ],
+      "steps": [
+        {
+          "number": 1,
+          "title": "Příprava salsy"
+        },
+        {
+          "number": 2,
+          "title": "Příprava masa"
+        },
+        {
+          "number": 3,
+          "title": "Dokončení"
+        }
+      ],
+      "id": "food/north-america/mexico/main-dishes/tortilly-s-masem-a-salsou",
+      "relPath": "food/north-america/mexico/main-dishes/tortilly-s-masem-a-salsou.md",
+      "title": "Tortilly s vepřovo-hovězím masem a salsou",
+      "pageTitle": "🌮 Tortilly s vepřovo-hovězím masem a salsou",
+      "description": "Opečené tortilly s mletým masem, sýrem, rajčatovou salsou a zakysanou smetanou.",
+      "typeLabel": "Hlavní jídla",
+      "origin": "Severní Amerika, Mexiko"
+    },
+    {
+      "section": "food",
+      "continent": "north-america",
+      "country": "usa",
+      "type": "main-dishes",
+      "ingredients": [
+        {
+          "id": "zaklad-hovezi-steak",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Hovězí steak",
+              "category": "Maso a uzeniny"
+            }
+          ],
+          "quantity": "neuvedeno",
+          "note": "ribeye, sirloin, flank nebo T-bone",
+          "optional": false
+        },
+        {
+          "id": "zaklad-sul",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Sůl",
+              "category": "Koření"
+            }
+          ],
+          "quantity": "dle chuti",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "zaklad-pepr-mlety",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Pepř mletý",
+              "category": "Koření"
+            }
+          ],
+          "quantity": "dle chuti",
+          "note": "čerstvě namletý",
+          "optional": false
+        },
+        {
+          "id": "zaklad-maslo",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Máslo",
+              "category": "Mléčné výrobky a vejce"
+            }
+          ],
+          "quantity": "neuvedeno",
+          "note": "na dochucení",
+          "optional": false
+        },
+        {
+          "id": "zaklad-rozmaryn-nebo-tymian",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Rozmarýn",
+              "category": "Zelenina, ovoce a bylinky"
+            },
+            {
+              "name": "Tymián",
+              "category": "Zelenina, ovoce a bylinky"
+            }
+          ],
+          "quantity": "neuvedeno",
+          "note": "čerstvé bylinky",
+          "optional": false
+        },
+        {
+          "id": "zaklad-cesnek",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Česnek",
+              "category": "Zelenina, ovoce a bylinky"
+            }
+          ],
+          "quantity": "neuvedeno",
+          "note": "volitelné",
+          "optional": true
+        },
+        {
+          "id": "zaklad-olivovy-olej",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Olivový olej",
+              "category": "Konzervy, omáčky a oleje"
+            }
+          ],
+          "quantity": "neuvedeno",
+          "note": "na potření",
+          "optional": false
+        },
+        {
+          "id": "g-priloha-zelenina-nebo-brambory-nebo-salat",
+          "group": "g-priloha",
+          "options": [
+            {
+              "name": "Zelenina",
+              "category": "Zelenina, ovoce a bylinky"
+            },
+            {
+              "name": "Brambory",
+              "category": "Zelenina, ovoce a bylinky"
+            },
+            {
+              "name": "Salát",
+              "category": "Zelenina, ovoce a bylinky"
+            }
+          ],
+          "quantity": "neuvedeno",
+          "note": "k podávání",
+          "optional": false
+        }
+      ],
+      "groups": [
+        {
+          "id": "zaklad",
+          "title": "Základ",
+          "optional": false
+        },
+        {
+          "id": "g-priloha",
+          "title": "Příloha",
+          "optional": true
+        }
+      ],
+      "steps": [
+        {
+          "number": 1,
+          "title": "Příprava masa"
+        },
+        {
+          "number": 2,
+          "title": "Grilování / smažení"
+        },
+        {
+          "number": 3,
+          "title": "Odpočinek"
+        },
+        {
+          "number": 4,
+          "title": "Servírování"
+        }
+      ],
+      "id": "food/north-america/usa/main-dishes/steak",
+      "relPath": "food/north-america/usa/main-dishes/steak.md",
+      "title": "Steak",
+      "pageTitle": "🥩 Steak",
+      "description": "Hovězí steak z pánve nebo grilu s máslem, bylinkami a přílohou podle výběru.",
+      "typeLabel": "Hlavní jídla",
+      "origin": "Severní Amerika, USA"
+    },
+    {
+      "section": "food",
+      "continent": "universal",
+      "country": null,
+      "type": "dips",
+      "ingredients": [
+        {
+          "id": "zaklad-zakysana-smetana",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Zakysaná smetana",
+              "category": "Mléčné výrobky a vejce"
+            }
+          ],
+          "quantity": "0,5 kelímku",
+          "note": "velký kelímek; jeho hmotnost zdroj neuvádí",
+          "optional": false
+        },
+        {
+          "id": "zaklad-sladka-paprika-mleta",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Sladká paprika mletá",
+              "category": "Koření"
+            }
+          ],
+          "quantity": "dle chuti",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "zaklad-pizza-koreni",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Pizza koření",
+              "category": "Koření"
+            }
+          ],
+          "quantity": "dle chuti",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "zaklad-bazalka",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Bazalka",
+              "category": "Zelenina, ovoce a bylinky"
+            }
+          ],
+          "quantity": "dle chuti",
+          "note": "čerstvá nasekaná nebo sušená",
+          "optional": false
+        },
+        {
+          "id": "zaklad-cesnek",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Česnek",
+              "category": "Zelenina, ovoce a bylinky"
+            }
+          ],
+          "quantity": "1 stroužek",
+          "note": "větší",
+          "optional": false
+        },
+        {
+          "id": "zaklad-sul",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Sůl",
+              "category": "Koření"
+            }
+          ],
+          "quantity": "dle chuti",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "zaklad-pepr-mlety",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Pepř mletý",
+              "category": "Koření"
+            }
+          ],
+          "quantity": "dle chuti",
+          "note": "",
+          "optional": false
+        }
+      ],
+      "groups": [
+        {
+          "id": "zaklad",
+          "title": "Základ",
+          "optional": false
+        }
+      ],
+      "steps": [
+        {
+          "number": 1,
+          "title": "Příprava dipu"
+        },
+        {
+          "number": 2,
+          "title": "Servírování"
+        }
+      ],
+      "id": "food/universal/dips/bylinkovy-dip-se-sladkou-paprikou",
+      "relPath": "food/universal/dips/bylinkovy-dip-se-sladkou-paprikou.md",
+      "title": "Bylinkový dip se sladkou paprikou",
+      "pageTitle": "🌿 Bylinkový dip se sladkou paprikou",
+      "description": "Svěží dip ze zakysané smetany, česneku a bylinek k zelenině, pečivu nebo grilovanému masu.",
+      "typeLabel": "Dipy",
+      "origin": "Univerzální"
+    },
+    {
+      "section": "food",
+      "continent": "universal",
+      "country": null,
+      "type": "dips",
+      "ingredients": [
+        {
+          "id": "zaklad-kecup",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Kečup",
+              "category": "Konzervy, omáčky a oleje"
+            }
+          ],
+          "quantity": "2 lžíce",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "zaklad-smetana-nebo-zakysana-smetana",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Smetana",
+              "category": "Mléčné výrobky a vejce"
+            },
+            {
+              "name": "Zakysaná smetana",
+              "category": "Mléčné výrobky a vejce"
+            }
+          ],
+          "quantity": "2 lžíce",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "zaklad-med",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Med",
+              "category": "Trvanlivé potraviny"
+            }
+          ],
+          "quantity": "1 lžička",
+          "note": "",
+          "optional": false
+        }
+      ],
+      "groups": [
+        {
+          "id": "zaklad",
+          "title": "Základ",
+          "optional": false
+        }
+      ],
+      "steps": [
+        {
+          "number": 1,
+          "title": "Příprava dipu"
+        },
+        {
+          "number": 2,
+          "title": "Servírování"
+        }
+      ],
+      "id": "food/universal/dips/smetanovy-dip-na-sladko",
+      "relPath": "food/universal/dips/smetanovy-dip-na-sladko.md",
+      "title": "Smetanový dip na sladko",
+      "pageTitle": "🍯 Smetanový dip na sladko",
+      "description": "Jemně nasládlý dip ze smetany, kečupu a medu k tortillám, kuřeti nebo bramborám.",
+      "typeLabel": "Dipy",
+      "origin": "Univerzální"
+    },
+    {
+      "section": "drink",
+      "continent": "europe",
+      "country": "france",
+      "type": "coffee",
+      "ingredients": [
+        {
+          "id": "zaklad-kava",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Káva",
+              "category": "Trvanlivé potraviny"
+            }
+          ],
+          "quantity": "neuvedeno",
+          "note": "hrubě mletá",
+          "optional": false
+        },
+        {
+          "id": "zaklad-voda",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Voda",
+              "category": "Doma připravit"
+            }
+          ],
+          "quantity": "neuvedeno",
+          "note": "94–96 °C",
+          "optional": false
+        }
+      ],
+      "groups": [
+        {
+          "id": "zaklad",
+          "title": "Základ",
+          "optional": false
+        }
+      ],
+      "steps": [
+        {
+          "number": 1,
+          "title": "Předehřátí a mletí kávy"
+        },
+        {
+          "number": 2,
+          "title": "Louhování a servírování"
+        }
+      ],
+      "id": "drink/europe/france/coffee/french-press",
+      "relPath": "drink/europe/france/coffee/french-press.md",
+      "title": "French Press",
+      "pageTitle": "☕ French Press",
+      "description": "Káva z hrubě mletých zrn připravená louhováním ve French Pressu.",
+      "typeLabel": "Káva",
+      "origin": "Evropa, Francie"
+    },
+    {
+      "section": "drink",
+      "continent": "asia",
+      "country": "vietnam",
+      "type": "coffee",
+      "ingredients": [
+        {
+          "id": "zaklad-kava",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Káva",
+              "category": "Trvanlivé potraviny"
+            }
+          ],
+          "quantity": "2 lžíce",
+          "note": "středně hrubě mletá",
+          "optional": false
+        },
+        {
+          "id": "zaklad-slazene-kondenzovane-mleko",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Slazené kondenzované mléko",
+              "category": "Konzervy, omáčky a oleje"
+            }
+          ],
+          "quantity": "neuvedeno",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "zaklad-voda",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Voda",
+              "category": "Doma připravit"
+            }
+          ],
+          "quantity": "60–90 ml",
+          "note": "vroucí; přibližně 2–3 fl oz",
+          "optional": false
+        },
+        {
+          "id": "zaklad-led",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Led",
+              "category": "Doma připravit"
+            }
+          ],
+          "quantity": "neuvedeno",
+          "note": "volitelné",
+          "optional": true
+        }
+      ],
+      "groups": [
+        {
+          "id": "zaklad",
+          "title": "Základ",
+          "optional": false
+        }
+      ],
+      "steps": [
+        {
+          "number": 1,
+          "title": "Příprava kávovaru a mléka"
+        },
+        {
+          "number": 2,
+          "title": "Příprava kávy a filtrování"
+        },
+        {
+          "number": 3,
+          "title": "Rychlost a doba kapání"
+        },
+        {
+          "number": 4,
+          "title": "Dokončení a servírování"
+        }
+      ],
+      "id": "drink/asia/vietnam/coffee/vietnamska-kava",
+      "relPath": "drink/asia/vietnam/coffee/vietnamska-kava.md",
+      "title": "Vietnamská káva",
+      "pageTitle": "🇻🇳 Vietnamská káva",
+      "description": "Překapávaná káva ze filtru Phin se slazeným kondenzovaným mlékem, podávaná teplá nebo s ledem.",
+      "typeLabel": "Káva",
+      "origin": "Asie, Vietnam"
+    },
+    {
+      "section": "drink",
+      "continent": "north-america",
+      "country": "usa",
+      "type": "coffee",
+      "ingredients": [
+        {
+          "id": "zaklad-mleko",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Mléko",
+              "category": "Mléčné výrobky a vejce"
+            }
+          ],
+          "quantity": "0,5 hrnku",
+          "note": "velikost hrnku zdroj neuvádí",
+          "optional": false
+        },
+        {
+          "id": "zaklad-caro",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Caro",
+              "category": "Trvanlivé potraviny"
+            }
+          ],
+          "quantity": "1 lžíce",
+          "note": "obilný nápoj",
+          "optional": false
+        },
+        {
+          "id": "zaklad-skoricovy-cukr",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Skořicový cukr",
+              "category": "Trvanlivé potraviny"
+            }
+          ],
+          "quantity": "dle chuti",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "zaklad-med",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Med",
+              "category": "Trvanlivé potraviny"
+            }
+          ],
+          "quantity": "1 lžíce",
+          "note": "",
+          "optional": false
+        },
+        {
+          "id": "zaklad-slehacka",
+          "group": "zaklad",
+          "options": [
+            {
+              "name": "Šlehačka",
+              "category": "Mléčné výrobky a vejce"
+            }
+          ],
+          "quantity": "neuvedeno",
+          "note": "na dokončení",
+          "optional": false
+        }
+      ],
+      "groups": [
+        {
+          "id": "zaklad",
+          "title": "Základ",
+          "optional": false
+        }
+      ],
+      "steps": [
+        {
+          "number": 1,
+          "title": "Ohřátí mléka"
+        },
+        {
+          "number": 2,
+          "title": "Smíchání ingrediencí"
+        },
+        {
+          "number": 3,
+          "title": "Zamíchání a servírování"
+        }
+      ],
+      "id": "drink/north-america/usa/coffee/pumpkin-spice",
+      "relPath": "drink/north-america/usa/coffee/pumpkin-spice.md",
+      "title": "Pumpkin Spice",
+      "pageTitle": "🎃 Pumpkin Spice",
+      "description": "Teplý mléčný nápoj s obilným Caro, medem, skořicovým cukrem a šlehačkou.",
+      "typeLabel": "Káva",
+      "origin": "Severní Amerika, USA"
+    }
+  ]
+}

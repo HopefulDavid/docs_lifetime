@@ -1,7 +1,7 @@
 ---
 canonical_for: product-requirements
 status: accepted
-last_verified: 2026-08-29
+last_verified: 2026-09-12
 owner: product
 ---
 
@@ -31,11 +31,13 @@ Projekt poskytuje veřejnou českou kuchařku, ve které čtenář najde jídlo 
 - Umožnit procházení od obecné sekce přes původ a typ až ke konkrétnímu postupu.
 - Generovat katalog, navigaci a popisy z autoritativních obsahových souborů.
 - Zpřístupnit ověřenou verzi jako statický veřejný web s historií změn.
+- Podporovat výběr několika jídel, společný nákup podle oddělení obchodu a vaření krok za krokem.
 
 ## Mimo rozsah
 
 - Uživatelské účty, soukromé kolekce, komentáře a editace přímo ve webu.
-- Nákupní seznamy, plánování jídel, výpočet výživových hodnot a správa zásob.
+- Účty, synchronizace mezi zařízeními, kalendářní plánování, výpočet výživových hodnot a správa zásob.
+- Plná dostupnost celého webu bez připojení; pro obchod bez připojení slouží stažení textového seznamu nebo tisk.
 - Odborná garance alergenů, zdravotní vhodnosti nebo původnosti receptu.
 - Obecné jazykové vyhledávání se skloňováním, stemmingem, automatickým překladem, synonymy nebo tolerancí překlepů.
 - Programové API nebo databáze receptů pro jiné aplikace.
@@ -57,6 +59,12 @@ Projekt poskytuje veřejnou českou kuchařku, ve které čtenář najde jídlo 
 | `REQ-003` | Správce přidal nebo upravil platný obsahový soubor | Spustí generování | Generované přehledy a navigace se deterministicky sjednotí se zdrojovým obsahem | Vysoká | `npm run docs:generate` a následné `npm run docs:check` |
 | `REQ-004` | Přijatá změna je na větvi `main` | Proběhne publikační workflow | Ověřený statický web je dostupný na kanonické adrese a changelog zachovává úplnou historii, nejnovější rok změn nechává otevřený, roky bez změn vynechává a starší zobrazené roky balí | Vysoká | GitHub Actions, veřejný smoke a víceletý changelogový test |
 | `REQ-005` | Čtenář hledá český nebo anglický termín obsažený v indexu | Odešle libovolnou kombinaci indexovaných slov bez ohledu na velikost písmen a diakritiku | Uvidí položky obsahující všechna stejná normalizovaná slova nebo jednoznačnou informaci, že výsledek nebyl nalezen | Střední | Automatické české i anglické názvy a slova z obsahu, poté vizuální smoke a dotaz bez shody |
+| `REQ-006` | Čtenář vybírá jídla | Filtruje katalog podle názvu, suroviny nebo typu a vybere více položek | Karty ukazují stručný popis a postup, výběr je viditelný a dostupný v „Můj nákup“ | Vysoká | Mobilní katalog, filtr bez diakritiky a nulový stav |
+| `REQ-007` | Čtenář má vybraná jídla | Změní násobek dávky, surovinovou alternativu nebo volitelnou část | Nákup obsahuje pouze zvolenou alternativu a zahrnuté části, uvedená čísla se přepočítají a chybějící množství zůstane přiznané | Kritická | Doménové testy a skutečné ovládání výběru |
+| `REQ-008` | Čtenář nakupuje více jídel | Otevře nákup a označí připravené položky | Slučitelné suroviny jsou sečtené, uspořádané podle oddělení a mají dohledatelné zdrojové recepty; rozdílné jednotky se nemíchají | Kritická | Součet rajské a šunkofleků, koření, pomůcky a změna dávky |
+| `REQ-009` | Čtenář má neúplné množství nebo jde do obchodu bez připojení | Doplní vlastní množství, kopíruje, stáhne nebo vytiskne seznam | Vlastní údaj je označený, textový export zachová suroviny, poznámky, původní nejistotu i odškrtnutí | Vysoká | Test exportu a prohlížeč |
+| `REQ-010` | Čtenář začíná vařit | Otevře režim po krocích, přepíná kroky a označuje hotové | Vidí celý aktuální krok včetně poznámek, může otevřít suroviny a po návratu pokračovat; poslední krok nepředstírá dokončení přeskočených kroků | Vysoká | Mobilní dialog, návrat a dokončení |
+| `REQ-011` | Čtenář obnoví stránku | Prohlížeč má dostupné místní úložiště | Výběr, vlastní množství, odškrtnutí a krok vaření se obnoví; změna nákupního požadavku zneplatní staré potvrzení dotčené položky | Vysoká | Obnova stavu, změna dávky a kontrola prohlížečem |
 
 ## Chybové a hraniční scénáře
 
@@ -66,6 +74,14 @@ Projekt poskytuje veřejnou českou kuchařku, ve které čtenář najde jídlo 
 | `REQ-E002` | Generované soubory neodpovídají zdrojovému obsahu | Kontrola skončí nenulovým kódem a vypíše všechny očekávané změny bez jejich zápisu | CI by jinak publikovalo zastaralou navigaci | `npm run docs:check` nad řízenou odchylkou |
 | `REQ-E003` | Čtenář otevře neexistující veřejnou cestu | Hosting vrátí HTTP 404 a nezobrazí jiný recept jako náhradu | Čtenář musí rozpoznat neplatný nebo zastaralý odkaz | HTTP požadavek na neexistující cestu |
 | `REQ-E004` | Odeslání informačního e-mailu selže po úspěšném nasazení | Workflow zachová úspěšně publikovaný web a označí oznámení jako neblokující selhání | Nedostupnost SMTP nesmí vrátit zveřejněný obsah | Kontrola podmínky `continue-on-error` a logu workflow |
+| `REQ-E005` | Úložiště je poškozené nebo zápis není dostupný | Výběr funguje v aktuální stránce, rozhraní přizná omezení a nabídne export | Uživatel nesmí spoléhat na neprovedené uložení | Test obnovy a klientské chybové větve |
+| `REQ-E006` | JavaScript nebo klientský katalog nejsou dostupné | Zdrojové recepty a statické odkazy zůstanou čitelné, společný nákup přizná nedostupnost | Obsah nesmí zmizet kvůli pomocné funkci | Statický HTML výstup a chybová větev |
+
+## Obsahový kontrakt
+
+Jednotný zápis surovin, dávky, alternativ a postupu vlastní [formát receptu](recipe-format.md).
+
+Výběr jídel a nákupní seznam jsou přijatým rozšířením na základě zadání uživatele ze dne 2026-09-12, které nahrazuje jejich původní vyloučení z rozsahu.
 
 ## Kvalitativní očekávání
 

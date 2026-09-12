@@ -24,7 +24,9 @@ Vestavěný worker DocFX nepodporuje češtinu, a proto jej vlastní jazykově n
 
 Lokální manifest a `dotnet tool restore` odpovídají [podporovanému modelu .NET nástrojů](https://learn.microsoft.com/en-us/dotnet/core/tools/global-tools).
 
-Vlastní generátor, validátor, testy a klientské hledání záměrně nepřidávají runtime knihovnu, protože jejich současné potřeby pokrývají standardní API Node.js a prohlížeče.
+Vlastní generátor, validátor, testy, klientské hledání, nákup a režim vaření záměrně nepřidávají runtime knihovnu, protože jejich současné potřeby pokrývají standardní API Node.js a prohlížeče.
+
+Rozdělení čistého doménového modulu a nativního klientského rozhraní přijímá [`ADR-0004`](../architecture/decisions/ADR-0004-nakup-a-vareni-nad-markdownem.md).
 
 Volbu changelog nástroje a její migrační hranice přijímá [`ADR-0003`](../architecture/decisions/ADR-0003-generovani-changelogu-pomoci-git-cliff.md).
 

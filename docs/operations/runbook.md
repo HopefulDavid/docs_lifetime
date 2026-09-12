@@ -17,9 +17,9 @@ Architektura je v [`../architecture/overview.md`](../architecture/overview.md) a
 |---|---|
 | Provozní vlastník | Maintainers repozitáře |
 | Eskalační kontakt nebo kanál | Správce repozitáře prostřednictvím používaného interního kontaktu, neveřejné údaje zůstávají mimo Git |
-| Kritičnost služby | Nízká, veřejná osobní kuchařka bez transakcí a uživatelských dat |
+| Kritičnost služby | Nízká, veřejná osobní kuchařka bez transakcí a serverových uživatelských dat |
 | Podporovaná prostředí | Lokální náhled a GitHub Pages podle [`../delivery/ci-cd.md`](../delivery/ci-cd.md) |
-| Hlavní uživatelské scénáře | `REQ-001`, `REQ-002`, `REQ-004` |
+| Hlavní uživatelské scénáře | `REQ-001`, `REQ-002`, `REQ-004`, `REQ-006` až `REQ-011` |
 | Cíle dostupnosti a obnovy | Projekt nemá smluvní SLA, RPO ani RTO a chrání především obnovitelnost z Git historie |
 
 ## Ověření zdraví
@@ -48,6 +48,18 @@ Kontroly prováděj v uvedeném pořadí od nejméně invazivní.
 Projekt nemá serverový health endpoint, protože na Pages běží pouze statické soubory.
 
 ## Nejčastější diagnostické stromy
+
+### Symptom: nákup nebo rozpracovaný krok chybí
+
+1. Ověř stejný prohlížeč a stejnou adresu webu, protože lokální náhled, GitHub Pages a jiný profil nesdílejí úložiště.
+2. Zkontroluj viditelnou informaci o uložení a dostupnost `data/recipes.json` i vlastních modulů šablony.
+3. Před vymazáním dat prohlížeče nabídni kopii nebo stažení seznamu, pokud je stále dostupný v otevřené stránce.
+4. Je-li soubor katalogu nedostupný, proveď čisté sestavení a ověř resource glob v `docfx.json`.
+5. Rozdílné úpravy ve více současně otevřených oknech mohou přepsat dřívější stav, proto pro jeden nákup používej jedno okno.
+
+**Hranice obnovy:** Bez dostupného úložiště nebo staženého exportu neexistuje serverová záloha nákupního stavu.
+
+**Očekávané zrušení odškrtnutí:** Po změně jídel, dávky, alternativy nebo poznámek se dotčená surovina musí znovu ověřit.
 
 ### Symptom: veřejný web je nedostupný nebo vrací chybný obsah
 
@@ -119,6 +131,26 @@ Projekt nemá serverový health endpoint, protože na Pages běží pouze static
 
 ## Zálohování a obnova
 
+### Obnova lokálního Git propojení
+
+Dne 2026-09-12 chyběl v pracovní kopii adresář `.git`, zatímco existující SSH přihlášení ke GitHubu fungovalo pod účtem `HopefulDavid`.
+
+Metadata byla obnovena stažením úplné skutečné historie z kanonického SSH repozitáře uvedeného v [hostingu a VCS](../delivery/ci-cd.md#hosting-a-vcs).
+
+V době obnovy ukazovaly vzdálené `main` a `develop` shodně na `74dfda67507926ad6f3c864af113acb3a513e864`, z něhož bylo dosažitelných 10 commitů.
+
+Index byl načten z `origin/main` bez aktualizace pracovních souborů a lokální `develop` vznikl z obnoveného `main` se sledováním `origin/develop`.
+
+Kontrolní součty SHA-256 všech 107 kontrolovaných projektových souborů před obnovou a bezprostředně po ní byly shodné; existující úpravy zůstaly necommitované a index neobsahoval připravené změny.
+
+SSH klíče ani globální nastavení se neměnily, neproběhl push a kontrola `git fsck --full` nezjistila chyby.
+
+Přístup pro push byl ověřen pomocí `git push --dry-run origin develop`, který skončil kódem 0 bez odeslání změn.
+
+Přesné diagnostické příkazy vlastní [ověření Git a SSH](../development/commands.md#ověření-git-a-ssh).
+
+### Oblasti záloh
+
 | Datová oblast | Způsob zálohy | Frekvence | Retence | Šifrování | Poslední ověřená obnova |
 |---|---|---|---|---|---|
 | Zdrojový obsah a konfigurace | Git remote a existující lokální klony | Každý push | Git historie podle hostingu a klonů | Přenos přes SSH nebo HTTPS, veřejný obsah není šifrovaný v repozitáři | 2026-08-28 lokální checkout sestavil úplný web |
@@ -126,7 +158,9 @@ Projekt nemá serverový health endpoint, protože na Pages běží pouze static
 | Statický web | Nové sestavení a nasazení z vybraného zdrojového commitu | Každý publish | Pages větev a Git historie nasazení | Veřejný artefakt | 2026-08-28 veřejný smoke prošel |
 | GitHub Secrets | Řízená správa GitHubu a poskytovatele identity | Mimo repozitář | Podle správce účtu | Spravuje platforma | Obnovu hodnot nelze z repozitáře ověřit |
 
-Samostatná databázová záloha není použitelná, protože projekt žádnou databázi ani uživatelská data nemá.
+Samostatná databázová záloha není použitelná, protože projekt nemá serverovou databázi.
+
+Místní nákupní data chrání uživatel stažením nebo zkopírováním seznamu; vymazání dat prohlížeče není obnovitelné z Gitu.
 
 ## Rollback a bezpečné pokračování
 

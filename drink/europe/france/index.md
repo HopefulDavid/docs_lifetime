@@ -8,4 +8,4 @@ Francie obsahuje 1 nápoj.
 
 | Nápoj | Původ | Popis |
 | --- | --- | --- |
-| [French Press](coffee/french-press.md) | Evropa, Francie | French Press je jednoduchý a efektivní způsob přípravy kávy, který umožňuje plně využít chuť a aroma kávových zrn. |
+| [French Press](coffee/french-press.md) | Evropa, Francie | Káva z hrubě mletých zrn připravená louhováním ve French Pressu. |

@@ -8,4 +8,4 @@
 
 | Recept | Původ | Popis |
 | --- | --- | --- |
-| [Řecká směs](main-dishes/recka-smes.md) | Evropa, Řecko | Řecká směs je jednoduché a rychlé jídlo, které vyniká výraznou chutí koření a barbecue omáčky. |
+| [Řecká směs](main-dishes/recka-smes.md) | Evropa, Řecko | Kuřecí nudličky na másle s uzenou paprikou a pikantní barbecue omáčkou. |

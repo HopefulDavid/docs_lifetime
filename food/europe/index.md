@@ -20,25 +20,25 @@ Evropa obsahuje 15 receptů podle zemí a typu.
 
 | Recept | Původ | Popis |
 | --- | --- | --- |
-| [Gulášová polévka](czech/soups/gulasova-polevka.md) | Evropa, Česko | Gulášová polévka je sytá, kořeněná a zahřeje v každém ročním období. |
-| [Hovězí vývar](czech/soups/hovezi-vyvar.md) | Evropa, Česko | Hovězí vývar je základ české kuchyně, skvělý jako polévka nebo základ omáček. |
-| [Zelňačka](czech/soups/zelnacka.md) | Evropa, Česko | Zelňačka je tradiční česká polévka, která zahřeje a zasytí. Skvělá s čerstvým chlebem! |
+| [Gulášová polévka](czech/soups/gulasova-polevka.md) | Evropa, Česko | Hovězí polévka s cibulovým základem, bramborami, paprikou a majoránkou. |
+| [Hovězí vývar](czech/soups/hovezi-vyvar.md) | Evropa, Česko | Vývar z pečených hovězích kostí, kořenové zeleniny a koření jako polévka nebo základ omáček. |
+| [Zelňačka](czech/soups/zelnacka.md) | Evropa, Česko | Sytá polévka z kysaného zelí, klobásy a brambor zjemněná smetanou. |
 
 ### Hlavní jídla
 
 | Recept | Původ | Popis |
 | --- | --- | --- |
-| [Buřtguláš](czech/main-dishes/burtgulas.md) | Evropa, Česko | Buřtguláš je klasika české kuchyně, ideální na chalupu nebo rychlou večeři. |
-| [Ďábelská topinka](czech/main-dishes/dabelska-topinka.md) | Evropa, Česko | Pikantní česká pochoutka ideální na svačinu nebo lehkou večeři. |
-| [Nakládaný hermelín](czech/main-dishes/nakladany-hermelin.md) | Evropa, Česko | Nakládaný hermelín je pikantní česká pochoutka, která se nechává několik dní uležet v oleji s cibulí, česnekem a kořením. |
-| [Rajská omáčka s masovými koulemi](czech/main-dishes/rajska-omacka.md) | Evropa, Česko | Rajská omáčka s masovými koulemi je tradiční české jídlo, které potěší milovníky sladkokyselých omáček. |
-| [Šunkofleky](czech/main-dishes/sunkofleky.md) | Evropa, Česko | Šunkofleky jsou tradiční české jídlo, které potěší milovníky jednoduchých a sytých pokrmů. |
+| [Buřtguláš](czech/main-dishes/burtgulas.md) | Evropa, Česko | Bramborový guláš se špekáčky, cibulí a paprikou, dochucený česnekem a majoránkou. |
+| [Ďábelská topinka](czech/main-dishes/dabelska-topinka.md) | Evropa, Česko | Opečený chléb s pikantní směsí mletého hovězího masa, rajčat a kořenové zeleniny, posypaný sýrem. |
+| [Nakládaný hermelín](czech/main-dishes/nakladany-hermelin.md) | Evropa, Česko | Hermelín plněný cibulí, česnekem a chilli pastou, naložený v oleji a několik dní uleželý v lednici. |
+| [Rajská omáčka s masovými koulemi](czech/main-dishes/rajska-omacka.md) | Evropa, Česko | Hovězí masové koule se sladkokyselou rajčatovou omáčkou a přílohou podle výběru. |
+| [Šunkofleky](czech/main-dishes/sunkofleky.md) | Evropa, Česko | Zapečené fleky s uzeným masem, hráškem, goudou a vaječnou zálivkou. |
 
 ### Dezerty
 
 | Recept | Původ | Popis |
 | --- | --- | --- |
-| [Míša řezy](czech/desserts/misa-rezy.md) | Evropa, Česko | Míša řezy jsou oblíbený český dezert, který potěší milovníky tvarohu a čokolády. |
+| [Míša řezy](czech/desserts/misa-rezy.md) | Evropa, Česko | Nepečený tvarohový dezert do misek s kakaovými sušenkami a čokoládovou polevou. |
 
 ## Itálie
 
@@ -46,9 +46,9 @@ Evropa obsahuje 15 receptů podle zemí a typu.
 
 | Recept | Původ | Popis |
 | --- | --- | --- |
-| [Noky se špenátem](italy/main-dishes/gnocchi-se-spenatem.md) | Evropa, Itálie | Tato lahodná kombinace jemných noků, krémové špenátové omáčky a parmezánu potěší každého milovníka italské kuchyně. |
-| [Penne Quattro Formaggi](italy/main-dishes/penne-quattro-formaggi.md) | Evropa, Itálie | Italské těstoviny penne s krémovou sýrovou omáčkou, v tomto případě s nivou jako hlavní ingrediencí. |
-| [Pizza Quattro Formaggi](italy/main-dishes/pizza-quattro-formaggi.md) | Evropa, Itálie | Pizza se smetanovým základem a výraznými sýry. Nejlepší je dát smetany jen tenkou vrstvu, aby se těsto nepromočilo a spodek zůstal dobře propečený. |
+| [Noky se špenátem](italy/main-dishes/gnocchi-se-spenatem.md) | Evropa, Itálie | Noky se špenátem, česnekem a smetanovou omáčkou, posypané parmezánem. |
+| [Penne Quattro Formaggi](italy/main-dishes/penne-quattro-formaggi.md) | Evropa, Itálie | Penne s krémovou omáčkou ze smetany, másla a nivy; domácí varianta sýrových těstovin. |
+| [Pizza Quattro Formaggi](italy/main-dishes/pizza-quattro-formaggi.md) | Evropa, Itálie | Domácí pizza s tenkým smetanovým základem, mozzarellou, gorgonzolou a parmezánem. |
 
 ## Portugalsko
 
@@ -56,7 +56,7 @@ Evropa obsahuje 15 receptů podle zemí a typu.
 
 | Recept | Původ | Popis |
 | --- | --- | --- |
-| [Pastéis de Nata](portugal/desserts/pasteis-de-nata.md) | Evropa, Portugalsko | Pastéis de Nata jsou tradiční portugalské koláčky s krémovou náplní, ideální ke kávě nebo jako dezert. |
+| [Pastéis de Nata](portugal/desserts/pasteis-de-nata.md) | Evropa, Portugalsko | Košíčky z listového těsta s mléčnou žloutkovou náplní, citronovou kůrou a skořicí. |
 
 ## Řecko
 
@@ -64,7 +64,7 @@ Evropa obsahuje 15 receptů podle zemí a typu.
 
 | Recept | Původ | Popis |
 | --- | --- | --- |
-| [Řecká směs](greece/main-dishes/recka-smes.md) | Evropa, Řecko | Řecká směs je jednoduché a rychlé jídlo, které vyniká výraznou chutí koření a barbecue omáčky. |
+| [Řecká směs](greece/main-dishes/recka-smes.md) | Evropa, Řecko | Kuřecí nudličky na másle s uzenou paprikou a pikantní barbecue omáčkou. |
 
 ## Španělsko
 
@@ -72,4 +72,4 @@ Evropa obsahuje 15 receptů podle zemí a typu.
 
 | Recept | Původ | Popis |
 | --- | --- | --- |
-| [Gazpacho](spain/soups/gazpacho.md) | Evropa, Španělsko | Gazpacho je tradiční studená polévka ze Španělska, ideální pro horké letní dny. |
+| [Gazpacho](spain/soups/gazpacho.md) | Evropa, Španělsko | Studená rajčatová polévka s paprikou, okurkou a vinným octem, připravená bez vaření. |

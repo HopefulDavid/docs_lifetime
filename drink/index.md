@@ -6,7 +6,7 @@ uid: docs-lifetime.drink
 
 # Nápoje
 
-Nápoje jsou uspořádané podle původu a způsobu přípravy. Přehledy vycházejí přímo ze souborů v této části.
+Káva a další nápoje na jednom místě, od surovin až po poslední krok přípravy.
 
 ## Přehled oblastí
 
@@ -20,6 +20,6 @@ Nápoje jsou uspořádané podle původu a způsobu přípravy. Přehledy vychá
 
 | Nápoj | Původ | Popis |
 | --- | --- | --- |
-| [French Press](europe/france/coffee/french-press.md) | Evropa, Francie | French Press je jednoduchý a efektivní způsob přípravy kávy, který umožňuje plně využít chuť a aroma kávových zrn. |
-| [Vietnamská káva](asia/vietnam/coffee/vietnamska-kava.md) | Asie, Vietnam | Vietnamská káva je výrazná, sladká a silná díky kondenzovanému mléku a specifickému způsobu přípravy. |
-| [Pumpkin Spice](north-america/usa/coffee/pumpkin-spice.md) | Severní Amerika, USA | Sladký kořeněný nápoj s mlékem, medem, skořicí a jemnou kávovou chutí. |
+| [French Press](europe/france/coffee/french-press.md) | Evropa, Francie | Káva z hrubě mletých zrn připravená louhováním ve French Pressu. |
+| [Vietnamská káva](asia/vietnam/coffee/vietnamska-kava.md) | Asie, Vietnam | Překapávaná káva ze filtru Phin se slazeným kondenzovaným mlékem, podávaná teplá nebo s ledem. |
+| [Pumpkin Spice](north-america/usa/coffee/pumpkin-spice.md) | Severní Amerika, USA | Teplý mléčný nápoj s obilným Caro, medem, skořicovým cukrem a šlehačkou. |

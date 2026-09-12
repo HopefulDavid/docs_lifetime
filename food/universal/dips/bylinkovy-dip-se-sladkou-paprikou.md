@@ -1,20 +1,26 @@
 # 🌿 Bylinkový dip se sladkou paprikou
 
-Tento dip je rychlý, svěží a hodí se na každou party nebo grilování.
+Svěží dip ze zakysané smetany, česneku a bylinek k zelenině, pečivu nebo grilovanému masu.
 
 ## Ingredience
 
-- Zakysaná smetana (půlka velkého kelímku)
-- Červená sladká paprika (koření)
-- Pizza koření
-- Bazalka (nasekaná, koření)
-- Česnek (1 větší stroužek)
-- Sůl
-- Pepř
+Množství platí pro jednu původní dávku; počet porcí není uveden.
 
-  > **Tip:** Použijte čerstvou bazalku pro výraznější chuť.
+| Surovina | Množství | Upřesnění |
+|---|---|---|
+| Zakysaná smetana | 0,5 kelímku | velký kelímek; jeho hmotnost zdroj neuvádí |
+| Sladká paprika mletá | dle chuti | — |
+| Pizza koření | dle chuti | — |
+| Bazalka | dle chuti | čerstvá nasekaná nebo sušená |
+| Česnek | 1 stroužek | větší |
+| Sůl | dle chuti | — |
+| Pepř mletý | dle chuti | — |
 
-## 1. Příprava dipu
+> **Tip:** Použijte čerstvou bazalku pro výraznější chuť.
+
+## Postup
+
+### 1. Příprava dipu
 
 - Zakysanou smetanu dejte do misky.
 - Přidejte sladkou papriku, pizza koření, nasekanou bazalku, prolisovaný česnek, sůl a pepř.
@@ -22,7 +28,7 @@ Tento dip je rychlý, svěží a hodí se na každou party nebo grilování.
 
   > **Varování:** Česnek přidávejte postupně, aby dip nebyl příliš ostrý.
 
-## 2. Servírování
+### 2. Servírování
 
 - Podávejte vychlazené, ideálně s čerstvou zeleninou, pečivem nebo chipsy.
 

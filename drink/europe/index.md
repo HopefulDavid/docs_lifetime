@@ -16,4 +16,4 @@ Evropa obsahuje 1 nápoj podle zemí a typu.
 
 | Nápoj | Původ | Popis |
 | --- | --- | --- |
-| [French Press](france/coffee/french-press.md) | Evropa, Francie | French Press je jednoduchý a efektivní způsob přípravy kávy, který umožňuje plně využít chuť a aroma kávových zrn. |
+| [French Press](france/coffee/french-press.md) | Evropa, Francie | Káva z hrubě mletých zrn připravená louhováním ve French Pressu. |

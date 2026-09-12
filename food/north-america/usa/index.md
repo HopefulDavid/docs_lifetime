@@ -8,4 +8,4 @@ USA obsahuje 1 recept.
 
 | Recept | Původ | Popis |
 | --- | --- | --- |
-| [Steak](main-dishes/steak.md) | Severní Amerika, USA | Steak je ikonické americké jídlo, které vynikne jednoduchou přípravou a kvalitními surovinami. |
+| [Steak](main-dishes/steak.md) | Severní Amerika, USA | Hovězí steak z pánve nebo grilu s máslem, bylinkami a přílohou podle výběru. |

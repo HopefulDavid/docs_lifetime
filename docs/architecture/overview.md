@@ -1,7 +1,7 @@
 ---
 canonical_for: system-architecture
 status: accepted
-last_verified: 2026-08-29
+last_verified: 2026-09-12
 owner: architecture
 ---
 
@@ -15,7 +15,7 @@ Důvody významných voleb jsou zaznamenané v [`decisions/`](decisions/README.m
 
 ## Stav architektonických tvrzení
 
-**Skutečnost k 2026-08-28:** Projekt je statický dokumentační web sestavovaný z Markdownu jedním Node.js generátorem a DocFX.
+**Skutečnost k 2026-09-12:** Projekt je statická kuchařka sestavovaná z Markdownu Node.js generátorem a DocFX, s klientským výběrem jídel, nákupem a režimem vaření.
 
 **Záměr:** Zachovat jednoduchou statickou architekturu, deterministické generování a jediný autoritativní zdroj obsahu bez databáze a aplikačního serveru.
 
@@ -38,7 +38,7 @@ Důvody významných voleb jsou zaznamenané v [`decisions/`](decisions/README.m
 | Výstup je veřejný český web | Produktové požadavky | Interní a citlivé materiály nesmějí vstoupit do DocFX content globu | Záměr |
 | Hosting používá GitHub Pages | Remote, workflow a veřejná URL | Publikování závisí na GitHub Actions a větvi spravované nasazovací akcí | Skutečnost |
 | Oznámení používá SMTP třetí strany | Workflow | Selhání oznámení musí zůstat oddělené od dostupnosti webu | Skutečnost |
-| Web nemá runtime úložiště ani autentizaci | Repozitář a veřejný smoke | Veškerý stav vzniká před publikováním | Skutečnost a záměr |
+| Web nemá serverové úložiště ani autentizaci | Repozitář a lokální smoke | Čtenářský výběr žije pouze v místním úložišti prohlížeče | Skutečnost a záměr |
 
 ## 3. Kontext a hranice systému
 
@@ -80,6 +80,9 @@ flowchart LR
     I --> D
     T[Vlastní šablona] --> D
     D --> W[Statický web]
+    G --> J[Klientský katalog JSON]
+    J --> W
+    W --> B[Prohlížeč a místní nákupní stav]
     H[Git historie] --> C[Generátor changelogu]
     C --> D
 ```
@@ -89,7 +92,10 @@ Diagram ukazuje jednosměrné odvozování výstupů a odděluje obsahovou a zm�
 | Blok | Odpovědnost | Veřejná hranice | Povolené závislosti | Vlastník dat |
 |---|---|---|---|---|
 | Zdrojový obsah | Definuje recept nebo nápoj | Markdown soubor v podporované cestě | Žádná generovaná stránka | Správce obsahu |
-| `scripts/generate-docs.js` | Normalizuje obsah a sestavuje katalog, přehledy a TOC | npm skripty `docs:generate` a `docs:check` | Node.js standardní knihovna a zdrojový obsah | Engineering |
+| `scripts/generate-docs.js` | Ověří celý obsah a poté sestaví katalog, přehledy, TOC a klientská data bez změn receptů | npm skripty `docs:generate` a `docs:check` | Node.js standardní knihovna a zdrojový obsah | Engineering |
+| Parser receptů | Ověřuje tabulky, kanonické názvy, stabilní identifikátory a navazující kroky | `scripts/recipe-content.cjs` | Zdrojové recepty a `data/ingredients.json` | Engineering |
+| Klientská kuchařka | Řídí výběr, nákup, vlastní množství a vaření | `templates/kitchen/public/kitchen.mjs` | DOM, standardní webová API, `kitchen-core.mjs` a generovaný `data/recipes.json` | Engineering |
+| Doménové jádro nákupu | Slučuje množství a validuje lokální stav | `templates/kitchen/public/kitchen-core.mjs` | Pouze standardní JavaScript | Engineering |
 | Generované přehledy | Poskytují odvozenou navigaci a katalog | `index.md` a `toc.yml` v produktovém stromu | Pouze generátor | Generátor |
 | Changelog | Odvozuje veřejný přehled úplné historie po ročních obdobích a uvnitř zachovává kategorie | `cliff.toml` a npm skript | Git historie a `git-cliff` uzamčený npm lockfilem; výstup je ignorovaný build vstup | Delivery |
 | DocFX sestavení | Čistí starý výstup a převádí produktový Markdown a YAML do HTML a indexu hledání | `docs:clean`, `docfx.json` a lokální .NET tool manifest | Obsah, přehledy, changelog a šablona | Engineering |
@@ -120,7 +126,11 @@ Závislosti tečou pouze směrem ke generovanému výstupu a zdrojový obsah nik
 | Statický web | `_site/` vytvořený z jednoho checkoutu | Build | Neměnný artefakt jednoho běhu | Lokálně ignorovaný, publikovaná kopie se nahrazuje nasazením | Nová verze se nasazuje bez runtime datové migrace |
 | Tajemství CI | GitHub Actions secrets | Maintainers | Mimo repozitář | Rotace podle správy účtu | Přesun poskytovatele vyžaduje nové řízené identity |
 
-Projekt neukládá čtenářská data, účty, cookies aplikace ani produkční databázi.
+Projekt nemá účty, aplikační cookies, serverovou databázi ani vzdálené ukládání čtenářských dat.
+
+Výběr, vlastní množství, odškrtnutí a průběh vaření se ukládají v prohlížeči pod verzovaným klíčem odděleným podle cesty webu; data lze odstranit novým nákupem nebo vymazáním dat prohlížeče.
+
+Přesnou datovou hranici a rizika přijímá [ADR-0004](decisions/ADR-0004-nakup-a-vareni-nad-markdownem.md).
 
 ## 8. Nasazení a provozní topologie
 
@@ -150,7 +160,7 @@ Přesné kroky nasazení jsou v [`../delivery/ci-cd.md`](../delivery/ci-cd.md) a
 | Pull request a `develop` | Zneužití zapisovacího tokenu nebo tajemství | Ověřovací job má pouze `contents: read`, bez SMTP secrets a s akcemi připnutými na SHA | Připnutá revize externí akce stále vykonává kód třetí strany | Automatická strukturální kontrola a review změn SHA |
 | Publikační job | Změna `main` nebo nasazené větve | `contents: write` má pouze job po úspěšném ověření a workflow do `main` nezapisuje | Externí nasazovací akce zpracovává krátkodobý token | Připnuté SHA, oddělený job a kontrola oprávnění |
 | SMTP přihlašovací údaje | Únik tajemství do logu nebo artefaktu | Hodnoty jsou pouze v GitHub Secrets a předávají se jednomu kroku | Akce třetí strany tajemství zpracovává | Review akce, logů a rotace při incidentu |
-| Čtenář | Sledování nebo únik osobních dat | Projekt nemá účet, serverovou telemetrii ani vlastní cookies | Hosting může používat vlastní provozní logy podle podmínek GitHubu | Revize produktu a hostingu při změně rozsahu |
+| Čtenář | Sledování nebo únik osobních dat | Projekt nemá účet, serverovou telemetrii ani vlastní cookies; nákupní stav neposílá na server | Hosting může používat vlastní provozní logy podle podmínek GitHubu | Revize produktu a hostingu při změně rozsahu |
 
 ## 11. Zbytková rizika a trvalé kontroly
 
@@ -160,7 +170,7 @@ Dřívější `DELIVERY-RISK-001` uzavřely aktivní GitHub rulesety pro `main` 
 
 | ID | Skutečnost | Dopad | Povinná kontrola nebo cílový stav | Vlastník | Podmínka změny nebo přezkoumání |
 |---|---|---|---|---|---|
-| `CONTENT-CONTROL-001` | Technické kontroly neumějí spolehlivě posoudit kulinářskou správnost ingrediencí, množství a postupu | Věcná chyba může projít sestavením | Každou věcnou obsahovou změnu potvrdí člověk znalý receptu | Správce obsahu | Při změně produktového modelu nebo zavedení odborného validačního zdroje |
+| `CONTENT-CONTROL-001` | Technické kontroly neumějí spolehlivě posoudit kulinářskou správnost ingrediencí, množství a postupu | Věcná chyba může projít sestavením | Každou věcnou obsahovou změnu potvrdí člověk znalý receptu; konkrétní nejasnosti vlastní [formát receptu](../product/recipe-format.md#obsahová-revize) | Správce obsahu | Při změně produktového modelu nebo zavedení odborného validačního zdroje |
 
 ## 12. Architektonický slovník
 

@@ -1,14 +1,25 @@
 # ☕ French Press
 
-French Press je jednoduchý a efektivní způsob přípravy kávy, který umožňuje plně využít chuť a aroma kávových zrn.
+Káva z hrubě mletých zrn připravená louhováním ve French Pressu.
 
 ## Ingredience
 
-- Kávová zrna (hrubě mletá)
-- Horká voda (94–96°C)
-- French Press
+Množství platí pro jednu původní dávku; počet porcí není uveden.
 
-## 1. Předehřátí a mletí kávy
+| Surovina | Množství | Upřesnění |
+|---|---|---|
+| Káva | neuvedeno | hrubě mletá |
+| Voda | neuvedeno | 94–96 °C |
+
+## Pomůcky
+
+- French Press
+- Mlýnek na kávu
+- Rychlovarná konvice
+
+## Postup
+
+### 1. Předehřátí a mletí kávy
 
 - Předehřejte French Press horkou vodou.
   Pomáhá udržet správnou teplotu při extrakci.
@@ -23,9 +34,9 @@ French Press je jednoduchý a efektivní způsob přípravy kávy, který umož�
 - Připravte vodu v rychlovarné konvici.
   Jakmile začne vřít, vypněte ji a nechte odstát 1 minutu.
 
-  > Ideální teplota: 94–96°C
+  > Ideální teplota: 94–96 °C
 
-## 2. Louhování a servírování
+### 2. Louhování a servírování
 
 - Pomalu zalijte kávu vodou.
 

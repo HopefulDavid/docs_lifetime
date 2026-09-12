@@ -54,11 +54,25 @@ test('odmítne recept mimo podporovanou adresářovou strukturu', (context) => {
   );
 });
 
+test('vadný recept nesmí při generování přepsat zdroje ani rozpracovaný katalog', (context) => {
+  const fixtureRoot = createFixture(context);
+  const home = readFileSync(path.join(fixtureRoot, 'index.md'), 'utf8');
+  const relativePath = 'food/europe/czech/main-dishes/vadny.md';
+  const invalid = '# Vadný recept\n\n## Ingredience\n\n- Máslo\n';
+  writeFileSync(path.join(fixtureRoot, relativePath), invalid);
+  const result = spawnSync(process.execPath, ['scripts/generate-docs.js'], { cwd: fixtureRoot, encoding: 'utf8' });
+  assert.equal(result.status, 1);
+  assert.equal(readFileSync(path.join(fixtureRoot, 'index.md'), 'utf8'), home);
+  assert.equal(readFileSync(path.join(fixtureRoot, relativePath), 'utf8'), invalid);
+});
+
 function createFixture(context) {
   const fixtureRoot = mkdtempSync(path.join(tmpdir(), 'docs-lifetime-generator-'));
   context.after(() => rmSync(fixtureRoot, { recursive: true, force: true }));
 
   mkdirSync(path.join(fixtureRoot, 'scripts'));
+  cpSync(path.join(repositoryRoot, 'data'), path.join(fixtureRoot, 'data'), { recursive: true });
+  copyFileSync(path.join(repositoryRoot, 'scripts/recipe-content.cjs'), path.join(fixtureRoot, 'scripts/recipe-content.cjs'));
   cpSync(path.join(repositoryRoot, 'food'), path.join(fixtureRoot, 'food'), { recursive: true });
   cpSync(path.join(repositoryRoot, 'drink'), path.join(fixtureRoot, 'drink'), { recursive: true });
   copyFileSync(path.join(repositoryRoot, 'index.md'), path.join(fixtureRoot, 'index.md'));

@@ -18,8 +18,8 @@ Asie obsahuje 5 receptů podle zemí a typu.
 
 | Recept | Původ | Popis |
 | --- | --- | --- |
-| [Kuřecí na kari s rýží](india/main-dishes/kureci-kari-s-ryzi.md) | Asie, Indie | Kuřecí na kari s rýží je exotické jídlo s jemně sladkou omáčkou, které potěší milovníky indické kuchyně. |
-| [Kuřecí tikka masala](india/main-dishes/kureci-tikka-masala.md) | Asie, Indie | Kuřecí tikka masala je ikonické indické jídlo, které skvěle chutná s domácím naanem. |
+| [Kuřecí na kari s rýží](india/main-dishes/kureci-kari-s-ryzi.md) | Asie, Indie | Kuřecí maso v kokosové kari omáčce s mangem nebo broskví, podávané s rýží. |
+| [Kuřecí tikka masala](india/main-dishes/kureci-tikka-masala.md) | Asie, Indie | Marinované kuřecí maso v kořeněné rajčatové omáčce se smetanou a volitelným domácím naanem. |
 
 ## Japonsko
 
@@ -27,7 +27,7 @@ Asie obsahuje 5 receptů podle zemí a typu.
 
 | Recept | Původ | Popis |
 | --- | --- | --- |
-| [Dýňová polévka Hokkaidó](japan/soups/dynova-polevka-hokkaido.md) | Asie, Japonsko | Krémová dýňová polévka je jemná, sytá a zahřeje v chladných dnech. |
+| [Dýňová polévka Hokkaidó](japan/soups/dynova-polevka-hokkaido.md) | Asie, Japonsko | Krémová polévka z dýně Hokkaidó, zeleninového vývaru a smetany. |
 
 ## Obecně asijská kuchyně
 
@@ -35,5 +35,5 @@ Asie obsahuje 5 receptů podle zemí a typu.
 
 | Recept | Původ | Popis |
 | --- | --- | --- |
-| [Kokosové kuře](general/main-dishes/kokosove-kure.md) | Asie, Obecně asijská kuchyně | Kokosové kuře je exotické jídlo s jemnou chutí kari a krémovou omáčkou z kokosového mléka. |
-| [Kuřecí maso na medu](general/main-dishes/kureci-maso-na-medu.md) | Asie, Obecně asijská kuchyně | Kuřecí maso na medu je rychlé asijsky laděné jídlo s jemně sladkou omáčkou ze sójové omáčky, medu a pomerančové šťávy. |
+| [Kokosové kuře](general/main-dishes/kokosove-kure.md) | Asie, Obecně asijská kuchyně | Kuřecí nudličky se zeleninou, rajčaty a kokosovým mlékem, podávané s rýží. |
+| [Kuřecí maso na medu](general/main-dishes/kureci-maso-na-medu.md) | Asie, Obecně asijská kuchyně | Kuřecí kousky v omáčce z medu, sójové omáčky a pomerančové šťávy, podávané s rýží. |

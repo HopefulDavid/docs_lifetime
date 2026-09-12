@@ -8,4 +8,4 @@ USA obsahuje 1 nápoj.
 
 | Nápoj | Původ | Popis |
 | --- | --- | --- |
-| [Pumpkin Spice](coffee/pumpkin-spice.md) | Severní Amerika, USA | Sladký kořeněný nápoj s mlékem, medem, skořicí a jemnou kávovou chutí. |
+| [Pumpkin Spice](coffee/pumpkin-spice.md) | Severní Amerika, USA | Teplý mléčný nápoj s obilným Caro, medem, skořicovým cukrem a šlehačkou. |

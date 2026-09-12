@@ -6,7 +6,11 @@ uid: docs-lifetime.home
 
 # Dokumentace ze života
 
-Přehledná osobní kuchařka a sbírka postupů pro rychlé dohledání při vaření.
+Vyberte jídla, nakupte společně a vařte krok za krokem.
+
+<div id="kitchen-catalog"></div>
+
+<div class="catalog-fallback">
 
 ## Hlavní sekce
 
@@ -46,3 +50,5 @@ Přehledná osobní kuchařka a sbírka postupů pro rychlé dohledání při va
 | [French Press](drink/europe/france/coffee/french-press.md) | Nápoje | Káva | Evropa, Francie |
 | [Vietnamská káva](drink/asia/vietnam/coffee/vietnamska-kava.md) | Nápoje | Káva | Asie, Vietnam |
 | [Pumpkin Spice](drink/north-america/usa/coffee/pumpkin-spice.md) | Nápoje | Káva | Severní Amerika, USA |
+
+</div>
