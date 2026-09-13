@@ -6,6 +6,10 @@ USA obsahuje 1 nápoj.
 
 ## Káva
 
-| Nápoj | Původ | Popis |
-| --- | --- | --- |
-| [Pumpkin Spice](coffee/pumpkin-spice.md) | Severní Amerika, USA | Teplý mléčný nápoj s obilným Caro, medem, skořicovým cukrem a šlehačkou. |
+<div class="content-overview">
+
+- [Pumpkin Spice](coffee/pumpkin-spice.md)
+  <span>Severní Amerika, USA</span>
+  <span>Teplý mléčný nápoj s obilným Caro, medem, skořicovým cukrem a šlehačkou.</span>
+
+</div>

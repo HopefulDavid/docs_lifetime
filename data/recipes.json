@@ -1,5 +1,6 @@
 {
   "version": 1,
+  "generatedFrom": "food/**/*.md, drink/**/*.md, data/ingredients.json; npm run docs:generate",
   "departments": [
     "Zelenina, ovoce a bylinky",
     "Pečivo a přílohy",
@@ -179,6 +180,8 @@
       "title": "Gulášová polévka",
       "pageTitle": "🍲 Gulášová polévka",
       "description": "Hovězí polévka s cibulovým základem, bramborami, paprikou a majoránkou.",
+      "revision": "3480d46d3c70748487432ed27ab33118450474167fde4cb6470d26fc586f0ca2",
+      "preparation": "",
       "typeLabel": "Polévky",
       "origin": "Evropa, Česko"
     },
@@ -384,6 +387,8 @@
       "title": "Hovězí vývar",
       "pageTitle": "🥣 Hovězí vývar",
       "description": "Vývar z pečených hovězích kostí, kořenové zeleniny a koření jako polévka nebo základ omáček.",
+      "revision": "42291333a3b14c23b0dde7fa85870bb1587aa00195d20a8e8b8dc2788656ede1",
+      "preparation": "Původní poznámka uvádí 5 hodin v tlakovém hrnci, ale neupřesňuje jeho typ, objem vody ani režim vaření.",
       "typeLabel": "Polévky",
       "origin": "Evropa, Česko"
     },
@@ -623,6 +628,8 @@
       "title": "Zelňačka",
       "pageTitle": "🥬 Zelňačka",
       "description": "Sytá polévka z kysaného zelí, klobásy a brambor zjemněná smetanou.",
+      "revision": "777d21d22621c9141279908b912cf214c34ef3f309aa8822f19b2b358a2fe3c0",
+      "preparation": "",
       "typeLabel": "Polévky",
       "origin": "Evropa, Česko"
     },
@@ -892,6 +899,8 @@
       "title": "Buřtguláš",
       "pageTitle": "🇨🇿 Buřtguláš",
       "description": "Bramborový guláš se špekáčky, cibulí a paprikou, dochucený česnekem a majoránkou.",
+      "revision": "aac229c2a558b593e5f2389e929b44303150bb29a89c789a18b01ef7f44129e2",
+      "preparation": "",
       "typeLabel": "Hlavní jídla",
       "origin": "Evropa, Česko"
     },
@@ -1123,6 +1132,8 @@
       "title": "Ďábelská topinka",
       "pageTitle": "🍞 Ďábelská topinka",
       "description": "Opečený chléb s pikantní směsí mletého hovězího masa, rajčat a kořenové zeleniny, posypaný sýrem.",
+      "revision": "8e832d013102026b4d5ec772be3233be1e5d4dcb8bc9cdc66c23b4a690c2cba2",
+      "preparation": "",
       "typeLabel": "Hlavní jídla",
       "origin": "Evropa, Česko"
     },
@@ -1241,6 +1252,8 @@
       "title": "Nakládaný hermelín",
       "pageTitle": "🧀 Nakládaný hermelín",
       "description": "Hermelín plněný cibulí, česnekem a chilli pastou, naložený v oleji a několik dní uleželý v lednici.",
+      "revision": "46d006f9b66ea367ba7f3b0babce4d561f6ee41490d28468dd7e192e3e304e08",
+      "preparation": "Počítejte s alespoň 5 dny uležení v lednici.",
       "typeLabel": "Hlavní jídla",
       "origin": "Evropa, Česko"
     },
@@ -1580,6 +1593,8 @@
       "title": "Rajská omáčka s masovými koulemi",
       "pageTitle": "🍅 Rajská omáčka s masovými koulemi",
       "description": "Hovězí masové koule se sladkokyselou rajčatovou omáčkou a přílohou podle výběru.",
+      "revision": "f60f15e6580fb32d6170ca85c94625c2e56655b1bbd9df21df91cb9808cc383c",
+      "preparation": "",
       "typeLabel": "Hlavní jídla",
       "origin": "Evropa, Česko"
     },
@@ -1784,6 +1799,8 @@
       "title": "Šunkofleky",
       "pageTitle": "🇨🇿 Šunkofleky",
       "description": "Zapečené fleky s uzeným masem, hráškem, goudou a vaječnou zálivkou.",
+      "revision": "c7459b0529685ec5a19e5c4b6a0204b43ac69373e8c8c1f62e9187e2e02f55d9",
+      "preparation": "",
       "typeLabel": "Hlavní jídla",
       "origin": "Evropa, Česko"
     },
@@ -1934,6 +1951,8 @@
       "title": "Míša řezy",
       "pageTitle": "🍰 Míša řezy",
       "description": "Nepečený tvarohový dezert do misek s kakaovými sušenkami a čokoládovou polevou.",
+      "revision": "af9475cf870366a21b52398d334c4a95954ec8ef25c8628d3cc51ddfaf6f439e",
+      "preparation": "",
       "typeLabel": "Dezerty",
       "origin": "Evropa, Česko"
     },
@@ -2074,6 +2093,8 @@
       "title": "Noky se špenátem",
       "pageTitle": "🥬 Noky se špenátem",
       "description": "Noky se špenátem, česnekem a smetanovou omáčkou, posypané parmezánem.",
+      "revision": "cd7cafa64b2a618e6b709f55d772bda8a648cb44e5ece7774191876d72d17e14",
+      "preparation": "",
       "typeLabel": "Hlavní jídla",
       "origin": "Evropa, Itálie"
     },
@@ -2162,6 +2183,8 @@
       "title": "Penne Quattro Formaggi",
       "pageTitle": "🍝 Penne Quattro Formaggi",
       "description": "Penne s krémovou omáčkou ze smetany, másla a nivy; domácí varianta sýrových těstovin.",
+      "revision": "6e60f37f865ed7427bfc66f59c7f914336a199f48a63b9a24e86c2e15a48dea9",
+      "preparation": "",
       "typeLabel": "Hlavní jídla",
       "origin": "Evropa, Itálie"
     },
@@ -2305,6 +2328,8 @@
       "title": "Pizza Quattro Formaggi",
       "pageTitle": "🍕 Pizza Quattro Formaggi",
       "description": "Domácí pizza s tenkým smetanovým základem, mozzarellou, gorgonzolou a parmezánem.",
+      "revision": "1bd500a691c0090a278d2c30c0d302070c453834a82c74a9b8f8176c98b9e87d",
+      "preparation": "",
       "typeLabel": "Hlavní jídla",
       "origin": "Evropa, Itálie"
     },
@@ -2445,6 +2470,8 @@
       "title": "Pastéis de Nata",
       "pageTitle": "🥧 Pastéis de Nata",
       "description": "Košíčky z listového těsta s mléčnou žloutkovou náplní, citronovou kůrou a skořicí.",
+      "revision": "2f7a7d4e12c84cc64484e1d37821d2a7292bd0f6fb5774974e106884ac538c02",
+      "preparation": "",
       "typeLabel": "Dezerty",
       "origin": "Evropa, Portugalsko"
     },
@@ -2546,6 +2573,8 @@
       "title": "Řecká směs",
       "pageTitle": "🇬🇷 Řecká směs",
       "description": "Kuřecí nudličky na másle s uzenou paprikou a pikantní barbecue omáčkou.",
+      "revision": "d1de5fc0cbe6c699fad3843913abfa99a6f1eea169c8f9855145825aeec2b65c",
+      "preparation": "",
       "typeLabel": "Hlavní jídla",
       "origin": "Evropa, Řecko"
     },
@@ -2716,6 +2745,8 @@
       "title": "Gazpacho",
       "pageTitle": "🥒 Gazpacho",
       "description": "Studená rajčatová polévka s paprikou, okurkou a vinným octem, připravená bez vaření.",
+      "revision": "86b9837f0d51358d8a5af6253703b7369adbfb53a7da231a2ebb8a855dbe48cc",
+      "preparation": "",
       "typeLabel": "Polévky",
       "origin": "Evropa, Španělsko"
     },
@@ -2981,6 +3012,8 @@
       "title": "Kuřecí na kari s rýží",
       "pageTitle": "🍛 Kuřecí na kari s rýží",
       "description": "Kuřecí maso v kokosové kari omáčce s mangem nebo broskví, podávané s rýží.",
+      "revision": "3e41c13ec9754e3c51f17ffcd930f4a5b3957a0c88716d4c6532fa8d3b0b2530",
+      "preparation": "",
       "typeLabel": "Hlavní jídla",
       "origin": "Asie, Indie"
     },
@@ -3439,6 +3472,8 @@
       "title": "Kuřecí tikka masala",
       "pageTitle": "🍛 Kuřecí tikka masala",
       "description": "Marinované kuřecí maso v kořeněné rajčatové omáčce se smetanou a volitelným domácím naanem.",
+      "revision": "c7b75dcdc256a88ed362c4543b5acf7e97c9c4b08034ebccae84826b9111cc59",
+      "preparation": "Maso potřebuje marinovat alespoň 2 hodiny, ideálně přes noc.",
       "typeLabel": "Hlavní jídla",
       "origin": "Asie, Indie"
     },
@@ -3574,6 +3609,8 @@
       "title": "Dýňová polévka Hokkaidó",
       "pageTitle": "🎃 Dýňová polévka Hokkaidó",
       "description": "Krémová polévka z dýně Hokkaidó, zeleninového vývaru a smetany.",
+      "revision": "d1e0997320a84c1a05344a3b002b6bbc615abd57fc97a480ca0594246e9e9684",
+      "preparation": "",
       "typeLabel": "Polévky",
       "origin": "Asie, Japonsko"
     },
@@ -3770,6 +3807,8 @@
       "title": "Kokosové kuře",
       "pageTitle": "🥥 Kokosové kuře",
       "description": "Kuřecí nudličky se zeleninou, rajčaty a kokosovým mlékem, podávané s rýží.",
+      "revision": "4acc43f495b31b9fefb8ad3ae6d31ddcb000400c4ae5bb075ab77f6d3fd69f33",
+      "preparation": "Zdroj uvádí zároveň 1 cibuli a 150 g bílé cibule.",
       "typeLabel": "Hlavní jídla",
       "origin": "Asie, Obecně asijská kuchyně"
     },
@@ -3974,6 +4013,8 @@
       "title": "Kuřecí maso na medu",
       "pageTitle": "🍯 Kuřecí maso na medu",
       "description": "Kuřecí kousky v omáčce z medu, sójové omáčky a pomerančové šťávy, podávané s rýží.",
+      "revision": "926869a79fe3395b0d0ba3ca862ff71b67f07107282d0007906d6550ee930279",
+      "preparation": "",
       "typeLabel": "Hlavní jídla",
       "origin": "Asie, Obecně asijská kuchyně"
     },
@@ -4192,6 +4233,8 @@
       "title": "Tortilly s vepřovo-hovězím masem a salsou",
       "pageTitle": "🌮 Tortilly s vepřovo-hovězím masem a salsou",
       "description": "Opečené tortilly s mletým masem, sýrem, rajčatovou salsou a zakysanou smetanou.",
+      "revision": "626fb9d7784310cab189ebc98ebd7eac90b63b0b0ce470b5c04d8fb86b9572cf",
+      "preparation": "",
       "typeLabel": "Hlavní jídla",
       "origin": "Severní Amerika, Mexiko"
     },
@@ -4353,6 +4396,8 @@
       "title": "Steak",
       "pageTitle": "🥩 Steak",
       "description": "Hovězí steak z pánve nebo grilu s máslem, bylinkami a přílohou podle výběru.",
+      "revision": "d35a697660d4570f5cd3906ea7ae230a898f49fad6317c950c217c7ac4cd4278",
+      "preparation": "",
       "typeLabel": "Hlavní jídla",
       "origin": "Severní Amerika, USA"
     },
@@ -4476,6 +4521,8 @@
       "title": "Bylinkový dip se sladkou paprikou",
       "pageTitle": "🌿 Bylinkový dip se sladkou paprikou",
       "description": "Svěží dip ze zakysané smetany, česneku a bylinek k zelenině, pečivu nebo grilovanému masu.",
+      "revision": "683c6d8f5b5450dbe62c14df35cd2ab1c7301648a89bb4dbc9fdcfd0c1a095b2",
+      "preparation": "",
       "typeLabel": "Dipy",
       "origin": "Univerzální"
     },
@@ -4551,6 +4598,8 @@
       "title": "Smetanový dip na sladko",
       "pageTitle": "🍯 Smetanový dip na sladko",
       "description": "Jemně nasládlý dip ze smetany, kečupu a medu k tortillám, kuřeti nebo bramborám.",
+      "revision": "2722749d6b3904599553593939130880a656c71c9f1ac70c8036be24f2a891f9",
+      "preparation": "",
       "typeLabel": "Dipy",
       "origin": "Univerzální"
     },
@@ -4609,6 +4658,8 @@
       "title": "French Press",
       "pageTitle": "☕ French Press",
       "description": "Káva z hrubě mletých zrn připravená louhováním ve French Pressu.",
+      "revision": "446b9bdb4d8f6d03fb6e736122be83254987e7da14186bc80f4b6d0fbdec1608",
+      "preparation": "",
       "typeLabel": "Káva",
       "origin": "Evropa, Francie"
     },
@@ -4701,6 +4752,8 @@
       "title": "Vietnamská káva",
       "pageTitle": "🇻🇳 Vietnamská káva",
       "description": "Překapávaná káva ze filtru Phin se slazeným kondenzovaným mlékem, podávaná teplá nebo s ledem.",
+      "revision": "c69ddf3ce8ddcaa7c9614cf02485850292c68e1c29679328ca3e3d9448de79ad",
+      "preparation": "",
       "typeLabel": "Káva",
       "origin": "Asie, Vietnam"
     },
@@ -4802,6 +4855,8 @@
       "title": "Pumpkin Spice",
       "pageTitle": "🎃 Pumpkin Spice",
       "description": "Teplý mléčný nápoj s obilným Caro, medem, skořicovým cukrem a šlehačkou.",
+      "revision": "53dfa91cf8006ce879aecad66a88ae02f712ef8645302701a36b3244cbf3bc78",
+      "preparation": "",
       "typeLabel": "Káva",
       "origin": "Severní Amerika, USA"
     }

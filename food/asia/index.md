@@ -6,34 +6,62 @@ Asie obsahuje 5 receptů podle zemí a typu.
 
 ## Přehled
 
-| Země / styl | Počet | Typy |
-| --- | --- | --- |
-| [Indie](india/index.md) | 2 recepty | Hlavní jídla |
-| [Japonsko](japan/index.md) | 1 recept | Polévky |
-| [Obecně asijská kuchyně](general/index.md) | 2 recepty | Hlavní jídla |
+<div class="content-overview overview-cards">
+
+- [Indie](india/index.md)
+  <span>2 recepty</span>
+  <span>Hlavní jídla</span>
+
+- [Japonsko](japan/index.md)
+  <span>1 recept</span>
+  <span>Polévky</span>
+
+- [Obecně asijská kuchyně](general/index.md)
+  <span>2 recepty</span>
+  <span>Hlavní jídla</span>
+
+</div>
 
 ## Indie
 
 ### Hlavní jídla
 
-| Recept | Původ | Popis |
-| --- | --- | --- |
-| [Kuřecí na kari s rýží](india/main-dishes/kureci-kari-s-ryzi.md) | Asie, Indie | Kuřecí maso v kokosové kari omáčce s mangem nebo broskví, podávané s rýží. |
-| [Kuřecí tikka masala](india/main-dishes/kureci-tikka-masala.md) | Asie, Indie | Marinované kuřecí maso v kořeněné rajčatové omáčce se smetanou a volitelným domácím naanem. |
+<div class="content-overview">
+
+- [Kuřecí na kari s rýží](india/main-dishes/kureci-kari-s-ryzi.md)
+  <span>Asie, Indie</span>
+  <span>Kuřecí maso v kokosové kari omáčce s mangem nebo broskví, podávané s rýží.</span>
+
+- [Kuřecí tikka masala](india/main-dishes/kureci-tikka-masala.md)
+  <span>Asie, Indie</span>
+  <span>Marinované kuřecí maso v kořeněné rajčatové omáčce se smetanou a volitelným domácím naanem.</span>
+
+</div>
 
 ## Japonsko
 
 ### Polévky
 
-| Recept | Původ | Popis |
-| --- | --- | --- |
-| [Dýňová polévka Hokkaidó](japan/soups/dynova-polevka-hokkaido.md) | Asie, Japonsko | Krémová polévka z dýně Hokkaidó, zeleninového vývaru a smetany. |
+<div class="content-overview">
+
+- [Dýňová polévka Hokkaidó](japan/soups/dynova-polevka-hokkaido.md)
+  <span>Asie, Japonsko</span>
+  <span>Krémová polévka z dýně Hokkaidó, zeleninového vývaru a smetany.</span>
+
+</div>
 
 ## Obecně asijská kuchyně
 
 ### Hlavní jídla
 
-| Recept | Původ | Popis |
-| --- | --- | --- |
-| [Kokosové kuře](general/main-dishes/kokosove-kure.md) | Asie, Obecně asijská kuchyně | Kuřecí nudličky se zeleninou, rajčaty a kokosovým mlékem, podávané s rýží. |
-| [Kuřecí maso na medu](general/main-dishes/kureci-maso-na-medu.md) | Asie, Obecně asijská kuchyně | Kuřecí kousky v omáčce z medu, sójové omáčky a pomerančové šťávy, podávané s rýží. |
+<div class="content-overview">
+
+- [Kokosové kuře](general/main-dishes/kokosove-kure.md)
+  <span>Asie, Obecně asijská kuchyně</span>
+  <span>Kuřecí nudličky se zeleninou, rajčaty a kokosovým mlékem, podávané s rýží.</span>
+
+- [Kuřecí maso na medu](general/main-dishes/kureci-maso-na-medu.md)
+  <span>Asie, Obecně asijská kuchyně</span>
+  <span>Kuřecí kousky v omáčce z medu, sójové omáčky a pomerančové šťávy, podávané s rýží.</span>
+
+</div>

@@ -6,14 +6,22 @@ Severní Amerika obsahuje 1 nápoj podle zemí a typu.
 
 ## Přehled
 
-| Země / styl | Počet | Typy |
-| --- | --- | --- |
-| [USA](usa/index.md) | 1 nápoj | Káva |
+<div class="content-overview overview-cards">
+
+- [USA](usa/index.md)
+  <span>1 nápoj</span>
+  <span>Káva</span>
+
+</div>
 
 ## USA
 
 ### Káva
 
-| Nápoj | Původ | Popis |
-| --- | --- | --- |
-| [Pumpkin Spice](usa/coffee/pumpkin-spice.md) | Severní Amerika, USA | Teplý mléčný nápoj s obilným Caro, medem, skořicovým cukrem a šlehačkou. |
+<div class="content-overview">
+
+- [Pumpkin Spice](usa/coffee/pumpkin-spice.md)
+  <span>Severní Amerika, USA</span>
+  <span>Teplý mléčný nápoj s obilným Caro, medem, skořicovým cukrem a šlehačkou.</span>
+
+</div>

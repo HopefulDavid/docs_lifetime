@@ -6,14 +6,22 @@ Evropa obsahuje 1 nápoj podle zemí a typu.
 
 ## Přehled
 
-| Země / styl | Počet | Typy |
-| --- | --- | --- |
-| [Francie](france/index.md) | 1 nápoj | Káva |
+<div class="content-overview overview-cards">
+
+- [Francie](france/index.md)
+  <span>1 nápoj</span>
+  <span>Káva</span>
+
+</div>
 
 ## Francie
 
 ### Káva
 
-| Nápoj | Původ | Popis |
-| --- | --- | --- |
-| [French Press](france/coffee/french-press.md) | Evropa, Francie | Káva z hrubě mletých zrn připravená louhováním ve French Pressu. |
+<div class="content-overview">
+
+- [French Press](france/coffee/french-press.md)
+  <span>Evropa, Francie</span>
+  <span>Káva z hrubě mletých zrn připravená louhováním ve French Pressu.</span>
+
+</div>

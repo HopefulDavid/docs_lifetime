@@ -6,6 +6,10 @@ Francie obsahuje 1 nápoj.
 
 ## Káva
 
-| Nápoj | Původ | Popis |
-| --- | --- | --- |
-| [French Press](coffee/french-press.md) | Evropa, Francie | Káva z hrubě mletých zrn připravená louhováním ve French Pressu. |
+<div class="content-overview">
+
+- [French Press](coffee/french-press.md)
+  <span>Evropa, Francie</span>
+  <span>Káva z hrubě mletých zrn připravená louhováním ve French Pressu.</span>
+
+</div>

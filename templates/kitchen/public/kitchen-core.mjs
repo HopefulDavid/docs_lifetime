@@ -79,11 +79,22 @@ export function restoreState(raw, recipes) {
   for (const recipe of recipes) {
     if (raw.selections && Object.hasOwn(raw.selections, recipe.id)) empty.selections[recipe.id] = recipeSettings(recipe, raw.selections[recipe.id]);
     const cooking = raw.cooking?.[recipe.id];
-    if (cooking && Number.isInteger(cooking.step)) empty.cooking[recipe.id] = { step: Math.max(0, Math.min(recipe.steps.length - 1, cooking.step)), done: Array.isArray(cooking.done) ? [...new Set(cooking.done.filter(n => Number.isInteger(n) && n >= 0 && n < recipe.steps.length))] : [] };
+    if (cooking && typeof recipe.revision === 'string' && cooking.revision === recipe.revision && Number.isInteger(cooking.step)) empty.cooking[recipe.id] = { revision: recipe.revision, step: Math.max(0, Math.min(recipe.steps.length - 1, cooking.step)), done: Array.isArray(cooking.done) ? [...new Set(cooking.done.filter(n => Number.isInteger(n) && n >= 0 && n < recipe.steps.length))] : [] };
   }
   if (raw.checked && typeof raw.checked === 'object') for (const [key, value] of Object.entries(raw.checked)) if (typeof value === 'string') empty.checked[key] = value;
   if (raw.amounts && typeof raw.amounts === 'object') for (const [key, value] of Object.entries(raw.amounts)) if (typeof value?.text === 'string' && typeof value?.signature === 'string') empty.amounts[key] = { text: value.text.slice(0, 120), signature: value.signature };
   return empty;
+}
+
+/** Odstraní potvrzení a vlastní množství po změně požadavku, aby je návrat ke staré dávce neoživil. */
+export function pruneShoppingState(state, items) {
+  const signatures = new Map(items.map(item => [item.key, item.signature]));
+  for (const [key, signature] of Object.entries(state.checked)) {
+    if (signatures.get(key) !== signature) delete state.checked[key];
+  }
+  for (const [key, value] of Object.entries(state.amounts)) {
+    if (signatures.get(key) !== value.signature) delete state.amounts[key];
+  }
 }
 
 /** Použije vlastní nákupní množství jen pro nezměněný výběr a dávku. */

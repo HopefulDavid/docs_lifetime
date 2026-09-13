@@ -17,9 +17,9 @@ Architektura je v [`../architecture/overview.md`](../architecture/overview.md) a
 |---|---|
 | Provozní vlastník | Maintainers repozitáře |
 | Eskalační kontakt nebo kanál | Správce repozitáře prostřednictvím používaného interního kontaktu, neveřejné údaje zůstávají mimo Git |
-| Kritičnost služby | Nízká, veřejná osobní kuchařka bez transakcí a serverových uživatelských dat |
+| Kritičnost služby | Nízká, veřejné životní návody bez transakcí a serverových uživatelských dat |
 | Podporovaná prostředí | Lokální náhled a GitHub Pages podle [`../delivery/ci-cd.md`](../delivery/ci-cd.md) |
-| Hlavní uživatelské scénáře | `REQ-001`, `REQ-002`, `REQ-004`, `REQ-006` až `REQ-011` |
+| Hlavní uživatelské scénáře | `REQ-001`, `REQ-002`, `REQ-004`, `REQ-006` až `REQ-012` |
 | Cíle dostupnosti a obnovy | Projekt nemá smluvní SLA, RPO ani RTO a chrání především obnovitelnost z Git historie |
 
 ## Ověření zdraví
@@ -161,6 +161,14 @@ Přesné diagnostické příkazy vlastní [ověření Git a SSH](../development/
 Samostatná databázová záloha není použitelná, protože projekt nemá serverovou databázi.
 
 Místní nákupní data chrání uživatel stažením nebo zkopírováním seznamu; vymazání dat prohlížeče není obnovitelné z Gitu.
+
+Při oznámeném selhání ukládání nejprve exportuj aktuální nákup a teprve potom obnovuj stránku nebo opravuj oprávnění úložiště.
+
+Průběh vaření se při změně zdrojové revize receptu obnoví od začátku; totéž nastane jednou u staršího uloženého postupu bez revize.
+
+Jde o ochranu proti potvrzení jiných kroků po aktualizaci, nikoli o důvod vracet starý klientský stav ruční úpravou úložiště.
+
+Při nečekané ztrátě odškrtnutí ověř změnu dávky, varianty, přílohy nebo zdrojového množství podle [datového životního cyklu](../architecture/overview.md#odvozená-data-a-rozsah-automatizace).
 
 PDF nebo text slouží ke čtení mimo web, nikoli k importu editovatelného stavu nákupu.
 

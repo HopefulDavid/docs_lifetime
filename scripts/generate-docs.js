@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const { createHash } = require('node:crypto');
 const { parseRecipeContent, departments } = require('./recipe-content.cjs');
 
 const root = path.resolve(__dirname, '..');
@@ -173,6 +174,8 @@ function readRecipe(relPath) {
     title: plainTitle(heading[1]),
     pageTitle: heading[1].trim(),
     description: descriptionFromMarkdown(content),
+    revision: createHash('sha256').update(content.trim()).digest('hex'),
+    preparation: cleanInline(content.match(/^## Než začnete\n+([^#][^\n]*)/m)?.[1] || ''),
   };
 }
 
@@ -313,9 +316,11 @@ function link(fromFile, text, targetFile) {
   return `[${text}](${rel || path.posix.basename(targetFile)})`;
 }
 
-function table(headers, rows) {
-  const divider = headers.map(() => '---');
-  return `${[headers, divider, ...rows].map((row) => `| ${row.join(' | ')} |`).join('\n')}\n`;
+function overviewList(rows, cards = false) {
+  const escape = value => value.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  return `<div class="content-overview${cards ? ' overview-cards' : ''}">\n\n${rows.map(([target, ...details]) =>
+    `- ${target}\n  ${details.filter(Boolean).map(text => `<span>${escape(text)}</span>`).join('\n  ')}`
+  ).join('\n\n')}\n\n</div>\n`;
 }
 
 function page(file, title, body, uid = null) {
@@ -324,11 +329,8 @@ function page(file, title, body, uid = null) {
   return `${frontMatter}${generatedNotice}\n\n# ${title}\n\n${body.trim()}\n`;
 }
 
-function recipeTable(fromFile, entries, section) {
-  const noun = sections[section].singular;
-  const headers = [noun[0].toUpperCase() + noun.slice(1), 'Původ', 'Popis'];
-  return table(
-    headers,
+function recipeList(fromFile, entries) {
+  return overviewList(
     entries.map((entry) => [
       link(fromFile, entry.title, entry.relPath),
       origin(entry),
@@ -342,7 +344,7 @@ function typeBlocks(fromFile, entries, section, headingLevel = 2) {
   return sortedKeys(byType, order.types, labelType)
     .map((type) => {
       const heading = `${'#'.repeat(headingLevel)} ${labelType(type)}`;
-      return `${heading}\n\n${recipeTable(fromFile, byType.get(type), section)}`;
+      return `${heading}\n\n${recipeList(fromFile, byType.get(type))}`;
     })
     .join('\n');
 }
@@ -364,12 +366,9 @@ function renderHome(catalog) {
     origin(entry),
   ]);
 
-  const body = `Vyberte několik receptů a připravte si společný nákup.\n\n<div id="kitchen-catalog"></div>\n\n<div class="catalog-fallback">\n\n## Hlavní sekce\n\n${table(
-    ['Sekce', 'Počet', 'Typy'],
-    sectionRows
-  )}\n## Kompletní přehled\n\n${table(['Název', 'Sekce', 'Typ', 'Původ'], allRows)}\n</div>`;
+  const body = `Praktické návody pro každodenní život, které máte po ruce, když je potřebujete.\n\n<div class="home-actions">\n\n[Vybrat recept](#recepty)\n\n[Můj nákup](nakup.md)\n\n[Jak dokumentaci používat](pruvodce.md)\n\n</div>\n\n## Oblasti života\n\n${overviewList(sectionRows, true)}\n<div id="recepty"></div>\n\n## Recepty a nápoje\n\nVyberte si z aktuální sbírky, připravte společný nákup a pokračujte přípravou krok za krokem.\n\n<div id="kitchen-catalog"></div>\n\n<div class="catalog-fallback">\n\n${overviewList(allRows)}\n</div>`;
 
-  writeFile(file, page(file, 'Co dnes uvaříte?', body, 'docs-lifetime.home'));
+  writeFile(file, page(file, 'Dokumentace ze života', body, 'docs-lifetime.home'));
 }
 
 function renderSection(section, entries) {
@@ -393,10 +392,7 @@ function renderSection(section, entries) {
     ];
   });
 
-  const body = `${sections[section].intro}\n\n## Přehled oblastí\n\n${table(
-    ['Oblast', 'Počet', 'Země / styl', 'Typy'],
-    rows
-  )}\n${typeBlocks(file, entries, section)}`;
+  const body = `${sections[section].intro}\n\n## Přehled oblastí\n\n${overviewList(rows, true)}\n${typeBlocks(file, entries, section)}`;
 
   writeFile(file, page(file, sections[section].title, body, sections[section].uid));
 }
@@ -426,7 +422,7 @@ function renderContinent(section, continent, entries) {
     })
     .join('\n');
 
-  const body = `${intro}\n\n## Přehled\n\n${table(['Země / styl', 'Počet', 'Typy'], rows)}\n${countryBlocks}`;
+  const body = `${intro}\n\n${continent === 'universal' ? typeBlocks(file, entries, section) : `## Přehled\n\n${overviewList(rows, true)}\n${countryBlocks}`}`;
 
   writeFile(file, page(file, labelContinent(continent), body));
 }
@@ -450,7 +446,7 @@ function renderPages(catalog) {
   renderHome(catalog);
   const plannerFile = 'nakup.md';
   writeFile(plannerFile, page(plannerFile, 'Můj nákup', 'Všechna vybraná jídla a jejich suroviny na jednom místě.\n\n<div id="kitchen-planner">\n\nPro společný nákup je potřeba povolený JavaScript.\n\n[Prohlédnout všechny recepty](index.md)\n\n</div>'));
-  writeFile('data/recipes.json', JSON.stringify({ version: 1, departments: Object.keys(departments), recipes: catalog.map(entry => ({ ...entry, typeLabel: labelType(entry.type), origin: origin(entry) })) }, null, 2));
+  writeFile('data/recipes.json', JSON.stringify({ version: 1, generatedFrom: 'food/**/*.md, drink/**/*.md, data/ingredients.json; npm run docs:generate', departments: Object.keys(departments), recipes: catalog.map(entry => ({ ...entry, typeLabel: labelType(entry.type), origin: origin(entry) })) }, null, 2));
 
   for (const section of order.sections) {
     const sectionEntries = catalog.filter((entry) => entry.section === section);
@@ -495,7 +491,7 @@ function renderRootToc() {
   writeFile(
     'toc.yml',
     `${yaml([
-      { name: 'Recepty', href: 'index.md' },
+      { name: 'Úvod', href: 'index.md' },
       { name: 'Můj nákup', href: 'nakup.md' },
       { name: 'Jídlo', href: 'food/' },
       { name: 'Nápoje', href: 'drink/' },

@@ -5,6 +5,7 @@
         "files": [
           "index.md",
           "nakup.md",
+          "pruvodce.md",
           "changelog.md",
           "toc.yml",
           "food/**/*.{md,yml}",
@@ -26,6 +27,7 @@
     "globalMetadata": {
       "_appName": "Dokumentace ze života",
       "_appTitle": "Život",
+      "_appFooter": "Praktické návody pro každý den.",
       "_enableSearch": true,
       "_lang": "cs",
       "_disableContribution": true,

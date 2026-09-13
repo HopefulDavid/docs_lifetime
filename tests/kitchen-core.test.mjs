@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { createRequire } from 'node:module';
 import test from 'node:test';
-import { buildShoppingList, cookingProgress, filterShoppingItems, parseQuantity, recipeSettings, restoreState, selectedIngredients, shoppingAmount, shoppingNeedsAmount, shoppingText } from '../templates/kitchen/public/kitchen-core.mjs';
+import { buildShoppingList, cookingProgress, filterShoppingItems, parseQuantity, pruneShoppingState, recipeSettings, restoreState, selectedIngredients, shoppingAmount, shoppingNeedsAmount, shoppingText } from '../templates/kitchen/public/kitchen-core.mjs';
 
 const require = createRequire(import.meta.url);
 const { parseRecipeContent } = require('../scripts/recipe-content.cjs');
@@ -93,11 +93,38 @@ test('zvýšení dávky nebo změna zdroje zneplatní staré odškrtnutí, nezm�
 test('poškozené lokální hodnoty nevyřadí recepty ani nezavedou neznámá ID', () => {
   const selected = recipe('sunkofleky');
   assert.deepEqual(restoreState(null, catalog.recipes).selections, {});
-  const restored = restoreState({ version: 1, selections: { [selected.id]: { factor: -2, choices: {} }, unknown: {} }, cooking: { [selected.id]: { step: 100, done: [0, -1, 99] } } }, catalog.recipes);
+  const restored = restoreState({ version: 1, selections: { [selected.id]: { factor: -2, choices: {} }, unknown: {} }, cooking: { [selected.id]: { revision: selected.revision, step: 100, done: [0, -1, 99] } } }, catalog.recipes);
   assert.equal(restored.selections[selected.id].factor, 1);
   assert.equal(Object.keys(restored.selections).length, 1);
   assert.equal(restored.cooking[selected.id].step, selected.steps.length - 1);
   assert.deepEqual(restored.cooking[selected.id].done, [0]);
+});
+
+test('změna receptu nebo neznámá starší verze zruší průběh, ale zachová výběr jídel', () => {
+  const selected = recipe('sunkofleky');
+  const raw = { version: 1, selections: { [selected.id]: { factor: 2 } }, cooking: { [selected.id]: { revision: selected.revision, step: 1, done: [0] } } };
+  assert.equal(restoreState(raw, catalog.recipes).cooking[selected.id].step, 1);
+  const changed = catalog.recipes.map(item => item.id === selected.id ? { ...item, revision: 'nový obsah' } : item);
+  const restored = restoreState(raw, changed);
+  assert.deepEqual(restored.cooking, {});
+  assert.equal(restored.selections[selected.id].factor, 2);
+  delete raw.cooking[selected.id].revision;
+  assert.deepEqual(restoreState(raw, catalog.recipes).cooking, {});
+});
+
+test('návrat ke staré dávce neoživí odškrtnutí ani vlastní množství a nezměněné zdroje zachová', () => {
+  const id = recipe('sunkofleky').id;
+  const original = list({ [id]: {} });
+  const eggs = original.find(item => item.name === 'Vejce');
+  const pickles = original.find(item => item.name === 'Kyselé okurky');
+  const state = { checked: { [eggs.key]: eggs.signature }, amounts: { [pickles.key]: { text: '1 sklenice', signature: pickles.signature } } };
+  pruneShoppingState(state, original);
+  assert.equal(state.checked[eggs.key], eggs.signature);
+  assert.equal(shoppingAmount(pickles, state.amounts), '1 sklenice (vlastní)');
+  pruneShoppingState(state, list({ [id]: { factor: 2 } }));
+  pruneShoppingState(state, original);
+  assert.deepEqual(state.checked, {});
+  assert.deepEqual(state.amounts, {});
 });
 
 test('nákup obsahuje všechny vybrané suroviny včetně dochucení, ale žádný French Press ani Phin', () => {
@@ -114,8 +141,12 @@ test('nákup obsahuje všechny vybrané suroviny včetně dochucení, ale žádn
 test('odmítne neznámou surovinu a neúplný postup ještě před generováním', () => {
   const source = '# Recept\n\n## Ingredience\n\n| Surovina | Množství | Upřesnění |\n|---|---|---|\n| Máslo | 10 g | — |\n\n## Postup\n\n### 1. Příprava\n\n- Rozpusťte máslo.\n';
   assert.equal(parseRecipeContent(source, 'test.md').ingredients.length, 1);
+  assert.equal(parseRecipeContent(`${source}\n## Poznámky\n\n### 1. Další tip\n\n- Nejde o krok.\n`, 'test.md').steps.length, 1);
   assert.throws(() => parseRecipeContent(source.replace('Máslo |', 'Neznámá surovina |'), 'test.md'), /neznámá surovina/);
   assert.throws(() => parseRecipeContent(source.replace('1. Příprava', '2. Příprava'), 'test.md'), /navazující/);
+  assert.throws(() => parseRecipeContent(source.replace('- Rozpusťte máslo.', ''), 'test.md'), /žádný obsah/);
+  assert.throws(() => parseRecipeContent(source.replace('## Postup', '## Poznámky'), 'test.md'), /navazující/);
+  assert.throws(() => parseRecipeContent(`${source}\n# Druhý recept\n`, 'test.md'), /právě jeden hlavní/);
 });
 
 test('vlastní množství přežije obnovení a export, ale nepřejde na jinou dávku', () => {

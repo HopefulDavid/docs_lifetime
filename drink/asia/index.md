@@ -6,14 +6,22 @@ Asie obsahuje 1 nápoj podle zemí a typu.
 
 ## Přehled
 
-| Země / styl | Počet | Typy |
-| --- | --- | --- |
-| [Vietnam](vietnam/index.md) | 1 nápoj | Káva |
+<div class="content-overview overview-cards">
+
+- [Vietnam](vietnam/index.md)
+  <span>1 nápoj</span>
+  <span>Káva</span>
+
+</div>
 
 ## Vietnam
 
 ### Káva
 
-| Nápoj | Původ | Popis |
-| --- | --- | --- |
-| [Vietnamská káva](vietnam/coffee/vietnamska-kava.md) | Asie, Vietnam | Překapávaná káva ze filtru Phin se slazeným kondenzovaným mlékem, podávaná teplá nebo s ledem. |
+<div class="content-overview">
+
+- [Vietnamská káva](vietnam/coffee/vietnamska-kava.md)
+  <span>Asie, Vietnam</span>
+  <span>Překapávaná káva ze filtru Phin se slazeným kondenzovaným mlékem, podávaná teplá nebo s ledem.</span>
+
+</div>

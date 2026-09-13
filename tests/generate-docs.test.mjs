@@ -85,6 +85,30 @@ function createFixture(context) {
   return fixtureRoot;
 }
 
+test('obecný návod nevstoupí do receptů a generované přehledy i revize pocházejí ze zdroje', (context) => {
+  const fixtureRoot = createFixture(context);
+  const guide = '# Obecný návod\n\nText bez ingrediencí a vaření.\n';
+  writeFileSync(path.join(fixtureRoot, 'pruvodce.md'), guide);
+  const generate = () => spawnSync(process.execPath, ['scripts/generate-docs.js'], { cwd: fixtureRoot, encoding: 'utf8' });
+  assert.equal(generate().status, 0);
+  const catalog = () => JSON.parse(readFileSync(path.join(fixtureRoot, 'data/recipes.json'), 'utf8'));
+  const before = catalog();
+  assert(!before.recipes.some(item => item.id === 'pruvodce'));
+  assert.equal(readFileSync(path.join(fixtureRoot, 'pruvodce.md'), 'utf8'), guide);
+  const original = before.recipes.find(item => item.preparation);
+  assert(original, 'sbírka má alespoň jeden recept s přípravou předem');
+  const sourcePath = path.join(fixtureRoot, original.relPath);
+  writeFileSync(sourcePath, readFileSync(sourcePath, 'utf8').replace(original.preparation, 'Připravte si vše den předem.'));
+  assert.equal(generate().status, 0);
+  const updated = catalog().recipes.find(item => item.id === original.id);
+  assert.notEqual(updated.revision, original.revision);
+  assert.equal(updated.preparation, 'Připravte si vše den předem.');
+  const overview = readFileSync(path.join(fixtureRoot, 'food/index.md'), 'utf8');
+  assert.match(overview, /content-overview/);
+  assert(!overview.includes('| Recept |'), 'mobilní přehled nepoužívá širokou tabulku');
+  assert.equal(runGenerator(fixtureRoot).status, 0, 'opakované generování je deterministické');
+});
+
 function runGenerator(fixtureRoot) {
   const result = spawnSync(process.execPath, ['scripts/generate-docs.js', '--check'], {
     cwd: fixtureRoot,

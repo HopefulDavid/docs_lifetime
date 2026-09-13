@@ -6,6 +6,10 @@ Vietnam obsahuje 1 nápoj.
 
 ## Káva
 
-| Nápoj | Původ | Popis |
-| --- | --- | --- |
-| [Vietnamská káva](coffee/vietnamska-kava.md) | Asie, Vietnam | Překapávaná káva ze filtru Phin se slazeným kondenzovaným mlékem, podávaná teplá nebo s ledem. |
+<div class="content-overview">
+
+- [Vietnamská káva](coffee/vietnamska-kava.md)
+  <span>Asie, Vietnam</span>
+  <span>Překapávaná káva ze filtru Phin se slazeným kondenzovaným mlékem, podávaná teplá nebo s ledem.</span>
+
+</div>

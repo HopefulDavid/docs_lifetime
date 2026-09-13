@@ -139,6 +139,15 @@ Po sestavení ověř úvodní katalog, nákup a detail na šířkách 320, 390, 
 | `REQ-009` | V receptu nastav 2× dávku a otevři „PDF / tisk receptu“; totéž proveď v nákupu | Náhled nabídne „Stáhnout PDF“, zachová češtinu, zdroje a skutečný výběr i při aktivním filtru |
 | `REQ-010` | V tikka masale nech naan vypnutý, přeskoč na jeho krok a potom dokonči zahrnuté kroky | Přílohu lze přeskočit a celý recept dokončit po čtyřech zahrnutých krocích |
 | `REQ-E006` | Ověř statické HTML před klientským rozšířením | Obsahuje tabulky a celý postup, katalog má základní odkazy |
+| `REQ-001`, `REQ-012` | Z úvodu otevři oblast i „Jak dokumentaci používat“ na 320 px | Přehledy neztrácejí sloupce; obecný průvodce neobsahuje nákupní lištu ani receptový editor |
+| `REQ-005` | V mobilním Menu odešli `maslo`, otevři druhou stránku výsledků a „Upravit hledání“, pak hledání zavři | Výsledky mají čitelný název a stručný úryvek; fokus se vrátí do vstupu a po zavření do obsahu |
+| `REQ-010` | V rozměru 844 × 390 otevři tikka masalu a přejdi na další krok | Nadpis a začátek aktuální činnosti jsou viditelné, navigace zůstává mimo posouvaný obsah |
+| `REQ-011` | Po zneplatnění cibule změnou dávky vrať původní dávku | Staré odškrtnutí se nevrátí; totéž platí pro dříve zneplatněné vlastní množství |
+| `REQ-E005` | V izolované kopii sestavené stránky simuluj odmítnutí zápisu klíče `kitchen-plan-v1:` a odškrtni položku | Aktuální stránka funguje a lišta trvale ukazuje neprovedené uložení; export zůstává dostupný |
+
+Poruchové fixture patří pouze do ignorovaného lokálního výstupu a následující `npm run docs:build` je odstraní čistým sestavením.
+
+Nesimuluj poruchy v nasazeném webu ani nad skutečným osobním nákupem.
 
 ### Zdrojová kopie bez Git metadat
 

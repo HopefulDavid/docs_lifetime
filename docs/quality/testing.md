@@ -24,6 +24,8 @@ Projekt kombinuje deterministickou kontrolu generovaných souborů, strukturáln
 | Neexistující veřejná cesta, `REQ-E003` | HTTP 404 bez náhradního obsahu | Lokální server nebo GitHub Pages |
 | Chybný společný nákup, `REQ-007` až `REQ-009` | Součty skutečných receptů, alternativy, volitelné přílohy, neslučitelné jednotky a vlastní množství | `tests/kitchen-core.test.mjs` |
 | Zastaralé odškrtnutí a poškozený místní stav, `REQ-011`, `REQ-E005` | Změna dávky a zdrojů, validace uložených dat, export | `tests/kitchen-core.test.mjs` |
+| Návrat starého potvrzení nebo posunutý postup po aktualizaci, `REQ-011` | Změna dávky a návrat, shodná a neshodná revize, starší stav bez revize | `tests/kitchen-core.test.mjs` |
+| Obecný návod zaměněný za recept, `REQ-012` | Izolovaný návod bez ingrediencí zůstane mimo JSON a beze změn; návštěva skutečného průvodce | `tests/generate-docs.test.mjs` a lokální web |
 | Zápis při vadném vstupu | Neplatný recept nesmí přepsat zdroje ani katalog | `tests/generate-docs.test.mjs` |
 | Mobilní nákup a vaření, `REQ-006` až `REQ-010` | Skutečné ovládání katalogu, nastavení, checklistu a dialogu | [Smoke scénáře](../development/commands.md#výběr-nákup-a-vaření) |
 | Oprávnění, neměnné akce a publikační pořadí, `QLT-004` | Automatická strukturální kontrola workflow a review oddělených jobů | `npm run docs:validate` a `.github/workflows/main.yml` |
@@ -80,6 +82,31 @@ Audit navazuje na commit `77a9ea9`, kterým byly nejprve uložené všechny pře
 | Export při filtrování | Filtr osmi mléčných položek vyexportoval všech 44 surovin včetně vlastního údaje; French Press PDF obsahuje pomůcky | Stažení do systémové složky omezuje vestavěný náhled popsaný výše |
 
 Při auditu byly použité principy [viditelného fokusu](https://www.w3.org/WAI/WCAG22/Understanding/focus-not-obscured-minimum.html) a [shody viditelného a přístupného názvu](https://www.w3.org/WAI/WCAG22/Understanding/label-in-name.html), ověřené v dokumentaci W3C dne 2026-09-12.
+
+### Celková revize použitelnosti a dat, 2026-09-13
+
+Revize vycházela z čistého `develop` na `9a5c13b` a zachovala původních 27 zdrojových receptů i jejich URL.
+
+| Oblast | Skutečný důkaz | Hranice ověření |
+|---|---|---|
+| Celá sbírka | V prohlížeči prošlo všech 27 receptů, jejich suroviny, PDF tlačítka a přepnutí všech 100 kroků; žádný krok není prázdný ani vodorovně přetečený na 390 px | Struktura DOM celé sbírky doplněná snímky reprezentativních krátkých, dlouhých, nepovinných a nápojových kroků |
+| Všechny přehledy | Všech 22 generovaných přehledů má funkční obsahové odkazy bez vodorovného přesahu na 320 px; průchod sekce → oblast → země → detail ověřen klikáním | Mobilní seznamy nahrazují původní tabulky se skrytými sloupci |
+| Obecný obsah | Úvod, veřejný průvodce a changelog prošly vizuálně; průvodce a changelog nemají receptový editor ani nákupní lištu | Budoucí odborná témata nebyla vytvořena ani věcně posuzována |
+| Reprezentativní rozměry | Vizuální kontrola na 320, 390, 768 a 1440 px, světlý a tmavý motiv, vaření na 844 × 390 | Prohlížeč Chromium v Codex; fyzické iOS/Android, další enginy a úplný audit WCAG nejsou zahrnuty |
+| Hledání a klávesnice | Český dotaz bez diakritiky, anglický `coffee`, nulový výsledek, druhá stránka výsledků, úprava a zavření hledání, filtr obsahu sekce, Tab → přeskočení do obsahu | Ověřen viditelný výsledek i fokus; nikoli certifikace všech čteček obrazovky |
+| Nákup | Součty dvou jídel, 2× dávka, ghí místo másla, zapnutí přílohy, vlastní množství, zachování rozepsaného textu při odškrtnutí a úplný export při filtru | Množství neuváděná zdrojem zůstávají přiznaná |
+| Vaření | Obnova druhého kroku po načtení, popisek „Pokračovat ve vaření“, odstranění otevírací kotvy po zavření, přeskočení nezvolené přílohy a dokončení všech čtyř zahrnutých kroků | Zdrojové časy a teploty se nepřepočítávají |
+| Selhání pomocných funkcí | Izolovaný zápis úložiště odmítnutý výjimkou ponechá funkční checklist a viditelné upozornění; HTTP 503 katalogu odkryje 27 náhradních odkazů; kopie úvodu bez skriptů zůstane čitelná | Chyba HTTP 503 je v konzoli poruchové fixture očekávaná |
+| Skutečné PDF soubory | Datové PDF odkazy z náhledu receptu a nákupu byly uloženy lokálně, čtyři stránky A4 vyrenderovány Popplerem a vizuálně zkontrolovány | Uložení do systémové složky stažených souborů a nativní tiskový dialog nebyly potvrzeny |
+| Automatická regrese | `npm test`: všech 29 testů, deterministická kontrola generátoru a validace dokumentace prošly; `npm run docs:build`: 0 varování a 0 chyb | `git-cliff` opět potřeboval přístup mimo sandbox; nástroje ani testy se kvůli tomu neoslabovaly |
+
+Lokální diagnostické artefakty byly uložené v ignorovaném `private/ux-audit/`; trvalý důkaz scénářů představuje tento záznam a [krokovatelný smoke](../development/commands.md#výběr-nákup-a-vaření).
+
+Finální průchod potvrdil vrácení vymazaného výběru a fokus na surovině po uložení množství; zkušební výběr byl následně vyčištěný a motiv vrácený na automatický.
+
+Čisté sestavení odstranilo všechny poruchové fixture; v konzoli běžných stránek nebyla zaznamenána chyba.
+
+Rozhodnutí pro responzivní přehledy a nativní dialog vychází z [W3C reflow](https://www.w3.org/WAI/WCAG22/Understanding/reflow.html), [minimálních dotykových cílů](https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum.html) a [dokumentace dialogu](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/dialog), ověřených 2026-09-13.
 
 ## Cíl
 

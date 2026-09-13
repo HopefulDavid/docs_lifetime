@@ -6,6 +6,10 @@ Portugalsko obsahuje 1 recept.
 
 ## Dezerty
 
-| Recept | Původ | Popis |
-| --- | --- | --- |
-| [Pastéis de Nata](desserts/pasteis-de-nata.md) | Evropa, Portugalsko | Košíčky z listového těsta s mléčnou žloutkovou náplní, citronovou kůrou a skořicí. |
+<div class="content-overview">
+
+- [Pastéis de Nata](desserts/pasteis-de-nata.md)
+  <span>Evropa, Portugalsko</span>
+  <span>Košíčky z listového těsta s mléčnou žloutkovou náplní, citronovou kůrou a skořicí.</span>
+
+</div>

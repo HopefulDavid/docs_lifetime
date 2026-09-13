@@ -6,6 +6,10 @@
 
 ## Polévky
 
-| Recept | Původ | Popis |
-| --- | --- | --- |
-| [Gazpacho](soups/gazpacho.md) | Evropa, Španělsko | Studená rajčatová polévka s paprikou, okurkou a vinným octem, připravená bez vaření. |
+<div class="content-overview">
+
+- [Gazpacho](soups/gazpacho.md)
+  <span>Evropa, Španělsko</span>
+  <span>Studená rajčatová polévka s paprikou, okurkou a vinným octem, připravená bez vaření.</span>
+
+</div>

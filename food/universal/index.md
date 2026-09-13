@@ -4,17 +4,16 @@
 
 Tato část obsahuje 2 recepty bez vazby na konkrétní zemi.
 
-## Přehled
+## Dipy
 
-| Země / styl | Počet | Typy |
-| --- | --- | --- |
-| [Univerzální recepty](index.md) | 2 recepty | Dipy |
+<div class="content-overview">
 
-## Univerzální recepty
+- [Bylinkový dip se sladkou paprikou](dips/bylinkovy-dip-se-sladkou-paprikou.md)
+  <span>Univerzální</span>
+  <span>Svěží dip ze zakysané smetany, česneku a bylinek k zelenině, pečivu nebo grilovanému masu.</span>
 
-### Dipy
+- [Smetanový dip na sladko](dips/smetanovy-dip-na-sladko.md)
+  <span>Univerzální</span>
+  <span>Jemně nasládlý dip ze smetany, kečupu a medu k tortillám, kuřeti nebo bramborám.</span>
 
-| Recept | Původ | Popis |
-| --- | --- | --- |
-| [Bylinkový dip se sladkou paprikou](dips/bylinkovy-dip-se-sladkou-paprikou.md) | Univerzální | Svěží dip ze zakysané smetany, česneku a bylinek k zelenině, pečivu nebo grilovanému masu. |
-| [Smetanový dip na sladko](dips/smetanovy-dip-na-sladko.md) | Univerzální | Jemně nasládlý dip ze smetany, kečupu a medu k tortillám, kuřeti nebo bramborám. |
+</div>

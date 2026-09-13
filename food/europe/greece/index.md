@@ -6,6 +6,10 @@
 
 ## Hlavní jídla
 
-| Recept | Původ | Popis |
-| --- | --- | --- |
-| [Řecká směs](main-dishes/recka-smes.md) | Evropa, Řecko | Kuřecí nudličky na másle s uzenou paprikou a pikantní barbecue omáčkou. |
+<div class="content-overview">
+
+- [Řecká směs](main-dishes/recka-smes.md)
+  <span>Evropa, Řecko</span>
+  <span>Kuřecí nudličky na másle s uzenou paprikou a pikantní barbecue omáčkou.</span>
+
+</div>

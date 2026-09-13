@@ -1,4 +1,4 @@
-- name: "Recepty"
+- name: "Úvod"
   href: "index.md"
 - name: "Můj nákup"
   href: "nakup.md"

@@ -1,6 +1,6 @@
 # Dokumentace ze života
 
-Dokumentace ze života je česká osobní kuchařka pro výběr jídel, společný nákup surovin a vaření krok za krokem.
+Dokumentace ze života je česká sbírka praktických návodů pro běžný život, která nyní pomáhá s výběrem jídel, společným nákupem a vařením krok za krokem.
 
 ## Stav
 
@@ -10,6 +10,7 @@ Zdrojový obsah, generátor navigace a sestavení DocFX jsou udržované v tomto
 
 ## Rychlá orientace
 
+- Čtenářský průvodce je v [`pruvodce.md`](pruvodce.md).
 - Produktový záměr a chování jsou v [`docs/product/requirements.md`](docs/product/requirements.md).
 - Jednotný zápis a obsahová revize receptů jsou v [`docs/product/recipe-format.md`](docs/product/recipe-format.md).
 - Architektura je v [`docs/architecture/overview.md`](docs/architecture/overview.md).

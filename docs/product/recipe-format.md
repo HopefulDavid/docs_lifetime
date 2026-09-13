@@ -1,7 +1,7 @@
 ---
 canonical_for: recipe-content-format
 status: accepted
-last_verified: 2026-09-12
+last_verified: 2026-09-13
 owner: content
 ---
 
@@ -24,6 +24,12 @@ Postup používá rozkazovací způsob v množném čísle, například „Nakr�
 Každý bod popisuje srozumitelnou činnost, související tip či upozornění zůstává u příslušného kroku.
 
 Dlouhé marinování, chlazení nebo uležení patří také do sekce „Než začnete“, aby čtenář zjistil čekání před zahájením vaření.
+
+První odstavec této sekce je krátká samostatně srozumitelná věta, kterou generátor převezme do katalogové karty jako přípravu předem.
+
+Každý očíslovaný krok patří přímo do `## Postup` a obsahuje vlastní činnost; prázdný krok nebo další hlavní nadpis generátor odmítne.
+
+Obecné životní návody mimo receptové oblasti tento formát nepřebírají; jejich zařazení vlastní [hranice veřejného obsahu](../architecture/overview.md#obecné-návody-a-další-oblasti).
 
 ## Suroviny
 
@@ -59,6 +65,8 @@ Alternativy odděluje přesně ` nebo ` a každý název musí existovat ve slov
 Čtenář z alternativ vybírá jednu; seznam nepřikazuje koupit všechny.
 
 Samostatná volitelná surovina používá upřesnění `volitelné`, celá volitelná skupina nadpis zakončený `(volitelné)`.
+
+Názvy skupin musí zůstat jedinečné i po odstranění diakritiky a sjednocení velikosti písmen, protože z nich vznikají identifikátory uložených voleb.
 
 Pomůcky nejsou potraviny a patří mimo tabulky ingrediencí.
 

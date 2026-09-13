@@ -10,16 +10,39 @@ Káva a další nápoje na jednom místě, od surovin až po poslední krok př�
 
 ## Přehled oblastí
 
-| Oblast | Počet | Země / styl | Typy |
-| --- | --- | --- | --- |
-| [Evropa](europe/index.md) | 1 nápoj | Francie | Káva |
-| [Asie](asia/index.md) | 1 nápoj | Vietnam | Káva |
-| [Severní Amerika](north-america/index.md) | 1 nápoj | USA | Káva |
+<div class="content-overview overview-cards">
+
+- [Evropa](europe/index.md)
+  <span>1 nápoj</span>
+  <span>Francie</span>
+  <span>Káva</span>
+
+- [Asie](asia/index.md)
+  <span>1 nápoj</span>
+  <span>Vietnam</span>
+  <span>Káva</span>
+
+- [Severní Amerika](north-america/index.md)
+  <span>1 nápoj</span>
+  <span>USA</span>
+  <span>Káva</span>
+
+</div>
 
 ## Káva
 
-| Nápoj | Původ | Popis |
-| --- | --- | --- |
-| [French Press](europe/france/coffee/french-press.md) | Evropa, Francie | Káva z hrubě mletých zrn připravená louhováním ve French Pressu. |
-| [Vietnamská káva](asia/vietnam/coffee/vietnamska-kava.md) | Asie, Vietnam | Překapávaná káva ze filtru Phin se slazeným kondenzovaným mlékem, podávaná teplá nebo s ledem. |
-| [Pumpkin Spice](north-america/usa/coffee/pumpkin-spice.md) | Severní Amerika, USA | Teplý mléčný nápoj s obilným Caro, medem, skořicovým cukrem a šlehačkou. |
+<div class="content-overview">
+
+- [French Press](europe/france/coffee/french-press.md)
+  <span>Evropa, Francie</span>
+  <span>Káva z hrubě mletých zrn připravená louhováním ve French Pressu.</span>
+
+- [Vietnamská káva](asia/vietnam/coffee/vietnamska-kava.md)
+  <span>Asie, Vietnam</span>
+  <span>Překapávaná káva ze filtru Phin se slazeným kondenzovaným mlékem, podávaná teplá nebo s ledem.</span>
+
+- [Pumpkin Spice](north-america/usa/coffee/pumpkin-spice.md)
+  <span>Severní Amerika, USA</span>
+  <span>Teplý mléčný nápoj s obilným Caro, medem, skořicovým cukrem a šlehačkou.</span>
+
+</div>

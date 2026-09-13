@@ -1,4 +1,4 @@
-import { buildShoppingList, cookingProgress, filterShoppingItems, formatQuantity, parseQuantity, recipeSettings, restoreState, selectedIngredients, shoppingAmount, shoppingNeedsAmount, shoppingText } from './kitchen-core.mjs';
+import { buildShoppingList, cookingProgress, filterShoppingItems, formatQuantity, parseQuantity, pruneShoppingState, recipeSettings, restoreState, selectedIngredients, shoppingAmount, shoppingNeedsAmount, shoppingText } from './kitchen-core.mjs';
 
 const base = new URL('../', import.meta.url);
 const storageKey = `kitchen-plan-v1:${base.pathname}`;
@@ -33,8 +33,12 @@ function announce(message) {
 }
 
 function save() {
+  pruneShoppingState(state, buildShoppingList(catalog.recipes, state.selections, catalog.departments));
   try { localStorage.setItem(storageKey, JSON.stringify(state)); }
-  catch { storageMessage = 'Uložení není dostupné; před zavřením si nákup stáhněte nebo zkopírujte.'; }
+  catch {
+    storageMessage = 'Uložení není dostupné; před zavřením si nákup stáhněte nebo zkopírujte.';
+    document.body.classList.add('kitchen-storage-unavailable');
+  }
   document.querySelectorAll('.storage-message').forEach(node => { node.textContent = storageMessage; });
   updateTray();
 }
@@ -54,8 +58,9 @@ function toggle(recipe, control) {
 function updateTray() {
   if (!tray) return;
   const count = Object.keys(state.selections).length;
-  if (plannerController && count) { plannerController.updateTray(); return; }
-  tray.replaceChildren(el('span', {}, count ? `${count} ${count === 1 ? 'recept' : count < 5 ? 'recepty' : 'receptů'} v nákupu` : 'Vyberte si jídla na příští vaření'), el('a', { href: url('nakup.html'), className: 'kitchen-button primary' }, 'Můj nákup', el('span', { className: 'count-badge' }, String(count))));
+  if (plannerController && count) plannerController.updateTray();
+  else tray.replaceChildren(el('span', {}, count ? `${count} ${count === 1 ? 'recept' : count < 5 ? 'recepty' : 'receptů'} v nákupu` : 'Vyberte si jídla na příští vaření'), el('a', { href: url('nakup.html'), className: 'kitchen-button primary' }, 'Můj nákup', el('span', { className: 'count-badge' }, String(count))));
+  if (document.body.classList.contains('kitchen-storage-unavailable')) tray.append(el('p', { className: 'tray-storage', role: 'status' }, storageMessage));
 }
 
 function focusSection(node) {
@@ -66,7 +71,7 @@ function focusSection(node) {
 
 function workflow(active) {
   return el('nav', { className: 'kitchen-workflow', 'aria-label': 'Od výběru k vaření' },
-    el('a', { href: url('index.html'), 'aria-current': active === 'recipes' ? 'page' : 'false' }, '01', el('span', {}, 'Vybrat jídla')),
+    el('a', { href: url('index.html#recepty'), 'aria-current': active === 'recipes' ? 'page' : 'false' }, '01', el('span', {}, 'Vybrat jídla')),
     el('a', { href: url('nakup.html'), 'aria-current': active === 'shopping' ? 'page' : 'false' }, '02', el('span', {}, 'Nakoupit')),
     el('span', { className: active === 'cooking' ? 'current' : '' }, '03', el('span', {}, 'Uvařit')));
 }
@@ -91,14 +96,18 @@ function renderCatalog(root) {
     }
     history.replaceState(null, '', address);
     const terms = normalize(search.value).split(/\s+/).filter(Boolean);
-    const recipes = catalog.recipes.filter(recipe => (!type.value || recipe.typeLabel === type.value) && (!onlySelected.checked || selected(recipe)) && terms.every(term => normalize([recipe.title, recipe.description, recipe.origin, ...recipe.ingredients.flatMap(item => item.options.map(option => option.name))].join(' ')).includes(term)));
+    const recipes = catalog.recipes.filter(recipe => (!type.value || recipe.typeLabel === type.value) && (!onlySelected.checked || selected(recipe)) && terms.every(term => normalize([recipe.title, recipe.description, recipe.typeLabel, recipe.origin, ...recipe.ingredients.flatMap(item => item.options.map(option => option.name))].join(' ')).includes(term)));
     resultCount.textContent = `${recipes.length} z ${catalog.recipes.length} receptů a nápojů`;
     grid.replaceChildren(...recipes.map(recipe => {
-      const control = button(selected(recipe) ? '✓ V nákupu' : 'Přidat do nákupu', () => { toggle(recipe, control); if (onlySelected.checked) renderResults(); }, { 'aria-label': `${selected(recipe) ? 'V nákupu' : 'Přidat do nákupu'}: ${recipe.title}`, 'aria-pressed': String(selected(recipe)), className: 'kitchen-button' });
+      const control = button(selected(recipe) ? '✓ V nákupu' : 'Přidat do nákupu', () => {
+        toggle(recipe, control);
+        if (onlySelected.checked) { renderResults(); onlySelected.focus({ preventScroll: true }); }
+      }, { 'aria-label': `${selected(recipe) ? 'V nákupu' : 'Přidat do nákupu'}: ${recipe.title}`, 'aria-pressed': String(selected(recipe)), className: 'kitchen-button' });
       return el('section', { className: 'recipe-card' },
         el('div', { className: 'recipe-card-meta' }, el('span', { className: 'recipe-symbol', 'aria-hidden': 'true' }, recipe.pageTitle.match(/^[^\p{L}\p{N}]+/u)?.[0].trim() || '•'), el('span', {}, recipe.typeLabel), el('span', { className: 'recipe-origin' }, recipe.origin.split(', ').at(-1))),
         el('h2', {}, el('a', { href: url(`${recipe.id}.html`) }, recipe.title)),
         el('p', {}, recipe.description),
+        recipe.preparation ? el('p', { className: 'recipe-card-preparation' }, el('strong', {}, 'Předem: '), recipe.preparation) : null,
         el('div', { className: 'recipe-card-actions' }, el('a', { href: url(`${recipe.id}.html`) }, `Postup · ${recipe.steps.length} ${recipe.steps.length < 5 ? 'kroky' : 'kroků'}`), control));
     }));
     if (!recipes.length) grid.append(el('div', { className: 'kitchen-empty' }, el('h2', {}, 'Tady zatím nic není'), el('p', {}, 'Zkuste jiný název, surovinu nebo zrušte filtr.'), button('Zrušit filtry', () => { search.value = ''; type.value = ''; onlySelected.checked = false; renderResults(); search.focus(); }, { className: 'kitchen-button' })));
@@ -106,7 +115,7 @@ function renderCatalog(root) {
   search.addEventListener('input', renderResults);
   type.addEventListener('change', renderResults);
   onlySelected.addEventListener('change', renderResults);
-  root.replaceChildren(workflow('recipes'), el('div', { className: 'catalog-tools' }, el('label', { htmlFor: search.id }, 'Najít jídlo nebo surovinu', search), el('div', { className: 'catalog-filter-row' }, el('label', { htmlFor: type.id }, el('span', { className: 'visually-hidden' }, 'Druh receptu'), type), el('label', { className: 'check-label' }, onlySelected, 'Jen vybrané'))), resultCount, grid);
+  root.replaceChildren(workflow('recipes'), el('div', { className: 'catalog-tools' }, el('label', { htmlFor: search.id }, 'Najít jídlo nebo surovinu', search), el('div', { className: 'catalog-filter-row' }, el('label', { htmlFor: type.id }, el('span', { className: 'visually-hidden' }, 'Druh receptu'), type), el('label', { className: 'check-label' }, onlySelected, 'Jen vybrané'))), resultCount, grid, el('p', { className: 'storage-message catalog-storage kitchen-muted' }, storageMessage));
   document.querySelector('.catalog-fallback')?.setAttribute('hidden', '');
   renderResults();
 }
@@ -193,7 +202,7 @@ function renderPlanner(root) {
     if (!recipes.length) {
       root.append(el('div', { className: 'kitchen-empty' }, el('div', { className: 'empty-symbol', 'aria-hidden': 'true' }, '⌑'),
         el('h2', {}, 'Co bude dobrého?'), el('p', {}, 'Vyberte si několik jídel a suroviny se spojí do jednoho nákupního seznamu.'),
-        el('a', { className: 'kitchen-button primary', href: url('index.html') }, 'Vybrat recepty')));
+        el('a', { className: 'kitchen-button primary', href: url('index.html#recepty') }, 'Vybrat recepty')));
       if (undoState) root.append(button('Vrátit vymazaný výběr', restoreUndo, { className: 'kitchen-button' }));
       updateTray();
       return;
@@ -201,7 +210,7 @@ function renderPlanner(root) {
 
     const selection = el('section', { className: 'selected-recipes', 'aria-label': 'Vybraná jídla' },
       el('div', { className: 'section-heading' }, el('h2', { id: 'selected-heading', tabIndex: -1 }, `Vybraná jídla (${recipes.length})`),
-        el('a', { href: url('index.html') }, '+ Přidat další')));
+        el('a', { href: url('index.html#recepty') }, '+ Přidat další')));
     for (const recipe of recipes) {
       const id = `selection-${recipe.id.replaceAll('/', '-')}`;
       const card = el('div', { className: 'selected-recipe-card' },
@@ -214,6 +223,7 @@ function renderPlanner(root) {
           undoState = structuredClone(state);
           delete state.selections[recipe.id];
           save(); preserveView(render);
+          focusSection(root.querySelector('#selected-heading') || root.querySelector('.kitchen-empty a'));
           announce(`${recipe.title}: odebráno, změnu lze vrátit.`);
         }, { className: 'kitchen-button' })));
       card.append(details);
@@ -295,7 +305,8 @@ function renderPlanner(root) {
               delete state.checked[item.key];
               save(); preserveView(render);
               const next = root.querySelector('.shopping-item:not([hidden]) input[type="checkbox"]');
-              if (filters.missing) (next || root.querySelector('#shopping-filter')).focus({ preventScroll: true });
+              const target = filters.missing ? next || root.querySelector('#shopping-filter') : document.getElementById(id);
+              target.focus({ preventScroll: true });
               announce('Vlastní množství uloženo.');
             }, { className: 'kitchen-button' }), el('p', {}, 'Při změně jídel nebo dávky se vrátí údaj z receptu.'));
         }
@@ -318,7 +329,7 @@ function renderPlanner(root) {
       button('Začít nový nákup', () => {
         undoState = structuredClone(state);
         state.selections = {}; state.checked = {}; state.amounts = {}; drafts.clear();
-        save(); render(); announce('Nákup vymazán; můžete jej vrátit.');
+        save(); render(); root.querySelector('.kitchen-empty a')?.focus(); announce('Nákup vymazán; můžete jej vrátit.');
       }, { className: 'kitchen-button' })));
     if (undoState) root.append(button('Vrátit poslední odebrání', restoreUndo, { className: 'kitchen-button' }));
 
@@ -366,7 +377,7 @@ function renderPlanner(root) {
   function restoreUndo() {
     Object.assign(state, { selections: undoState.selections, checked: undoState.checked, amounts: undoState.amounts });
     undoState = null;
-    save(); render(); announce('Původní výběr obnoven.');
+    save(); render(); focusSection(root.querySelector('#selected-heading')); announce('Původní výběr obnoven.');
   }
   render();
 }
@@ -432,7 +443,11 @@ function enhanceRecipe(recipe) {
   const article = document.querySelector('article');
   const ingredientsHeading = [...article.querySelectorAll('h2')].find(node => node.textContent.trim().startsWith('Ingredience'));
   if (!ingredientsHeading) return;
-  const stepHeadings = [...article.querySelectorAll('h3')].filter(node => /^\d+\. /.test(node.textContent.trim()));
+  const stepHeadings = [];
+  for (let node = article.querySelector('#postup')?.nextElementSibling; node && !/^H[12]$/.test(node.tagName); node = node.nextElementSibling) {
+    if (node.tagName === 'H3' && /^\d+\. /.test(node.textContent.trim())) stepHeadings.push(node);
+  }
+  if (stepHeadings.length !== recipe.steps.length) throw new Error('Obsah receptu neodpovídá katalogu; sestavte celý web znovu.');
   const stepContents = stepHeadings.map(heading => {
     const nodes = [];
     for (let node = heading.nextElementSibling; node && !/^H[123]$/.test(node.tagName); node = node.nextElementSibling) nodes.push(node.cloneNode(true));
@@ -464,14 +479,15 @@ function enhanceRecipe(recipe) {
   const repaint = () => {
     editor.replaceChildren(recipeEditor(recipe, config, () => { if (selected(recipe)) state.selections[recipe.id] = structuredClone(config); save(); preserveView(repaint); }, 'detail'));
     controls.replaceChildren(workflow('cooking'), el('div', { className: 'recipe-actions' },
-      button('Vařit krok za krokem', () => openCooking(recipe, stepContents, config, preparation, repaint), { className: 'kitchen-button primary', id: 'start-cooking' }),
+      button(state.cooking[recipe.id]?.done.length ? 'Pokračovat ve vaření' : 'Vařit krok za krokem', () => openCooking(recipe, stepContents, config, preparation, repaint), { className: 'kitchen-button primary', id: 'start-cooking' }),
       button(selected(recipe) ? '✓ V nákupu' : 'Přidat do nákupu', () => {
         if (selected(recipe)) delete state.selections[recipe.id]; else state.selections[recipe.id] = structuredClone(config);
-        save(); repaint(); announce(selected(recipe) ? 'Recept je v nákupu.' : 'Recept byl odebrán.');
-      }, { className: 'kitchen-button', 'aria-pressed': String(selected(recipe)) })),
+        save(); preserveView(repaint); announce(selected(recipe) ? 'Recept je v nákupu.' : 'Recept byl odebrán.');
+      }, { id: 'detail-select', className: 'kitchen-button', 'aria-pressed': String(selected(recipe)) })),
       el('div', { className: 'recipe-secondary-actions' },
         el('a', { href: '#postup', onClick: event => { event.preventDefault(); const heading = document.getElementById('postup'); heading.tabIndex = -1; focusSection(heading); } }, 'Celý postup'),
-        button('PDF / tisk receptu', () => openRecipePrint(recipe, stepContents, config, preparation), { className: 'kitchen-button' })));
+        button('PDF / tisk receptu', () => openRecipePrint(recipe, stepContents, config, preparation), { className: 'kitchen-button' })),
+      el('p', { className: 'storage-message recipe-storage kitchen-muted' }, storageMessage));
   };
   ingredientsHeading.before(controls);
   ingredientsHeading.after(editor);
@@ -480,12 +496,21 @@ function enhanceRecipe(recipe) {
 }
 
 function openCooking(recipe, contents, config, preparation, closed) {
-  const cooking = state.cooking[recipe.id] ||= { step: 0, done: [] };
+  const cooking = state.cooking[recipe.id] ||= { revision: recipe.revision, step: 0, done: [] };
   const dialog = el('dialog', { className: 'kitchen-app cooking-dialog', 'aria-labelledby': 'cook-title' });
+  const focusStep = () => {
+    const title = dialog.querySelector('#cook-title');
+    title.focus({ preventScroll: true });
+    // Na nízké obrazovce musí být vidět krok, i když jsou nad ním přípravné nabídky.
+    if (matchMedia('(max-height: 500px)').matches) {
+      const scroll = dialog.querySelector('.cook-scroll');
+      scroll.scrollTop += title.getBoundingClientRect().top - scroll.getBoundingClientRect().top;
+    }
+  };
   const move = index => {
     cooking.step = index;
     save(); render();
-    dialog.querySelector('#cook-title').focus({ preventScroll: true });
+    focusStep();
   };
   const render = () => {
     const progress = cookingProgress(recipe, config, cooking);
@@ -530,7 +555,7 @@ function openCooking(recipe, contents, config, preparation, closed) {
         const pending = updated.active.find(index => !updated.done.includes(index));
         announce('Pokračujte nedokončeným krokem.');
         move(pending);
-      } else { save(); render(); }
+      } else { save(); render(); focusStep(); }
     };
     dialog.replaceChildren(el('header', { className: 'cook-header' },
       el('div', { className: 'cook-top' }, el('p', { className: 'eyebrow' }, recipe.title),
@@ -541,16 +566,24 @@ function openCooking(recipe, contents, config, preparation, closed) {
         button('← Předchozí', () => move(previous), { disabled: previous === undefined, className: 'kitchen-button' }),
         button(actionLabel, advance, { className: 'kitchen-button primary' })));
   };
-  dialog.addEventListener('close', () => { dialog.remove(); closed(); document.getElementById('start-cooking')?.focus({ preventScroll: true }); });
+  dialog.addEventListener('close', () => {
+    dialog.remove(); closed();
+    if (location.hash === '#vareni') { const address = new URL(location.href); address.hash = ''; history.replaceState(null, '', address); }
+    document.getElementById('start-cooking')?.focus({ preventScroll: true });
+  });
   document.body.append(dialog);
   render();
   dialog.showModal();
-  dialog.querySelector('#cook-title').focus({ preventScroll: true });
+  focusStep();
 }
 
 
 /** Přidá výběr, společný nákup a vaření jako progresivní rozšíření statického webu DocFX. */
 export async function startKitchen() {
+  const home = document.getElementById('kitchen-catalog');
+  const planner = document.getElementById('kitchen-planner');
+  const relativePath = decodeURI(location.pathname).slice(base.pathname.length);
+  if (!home && !planner && !/^(food|drink)\//.test(relativePath)) return;
   const response = await fetch(url('data/recipes.json'));
   if (!response.ok) throw new Error(`Katalog receptů: HTTP ${response.status}`);
   catalog = await response.json();
@@ -559,14 +592,15 @@ export async function startKitchen() {
   try { saved = JSON.parse(localStorage.getItem(storageKey)); }
   catch { storageMessage = 'Předchozí výběr nelze načíst; recepty můžete vybrat znovu.'; }
   state = restoreState(saved, catalog.recipes);
+  const resetCooking = Object.keys(saved?.cooking || {}).some(id => catalog.recipes.some(recipe => recipe.id === id) && !state.cooking[id]);
   notification = el('div', { role: 'status', className: 'kitchen-notification', 'aria-live': 'polite' });
   tray = el('div', { className: 'kitchen-tray kitchen-app' });
   document.body.append(notification, tray);
+  document.body.classList.add('has-kitchen-tray');
   updateTray();
-  const home = document.getElementById('kitchen-catalog');
-  const planner = document.getElementById('kitchen-planner');
   if (home) renderCatalog(home);
   if (planner) renderPlanner(planner);
   const recipe = catalog.recipes.find(item => new URL(`${item.id}.html`, base).pathname === decodeURI(location.pathname));
   if (recipe) enhanceRecipe(recipe);
+  if (resetCooking) { save(); announce('Starší průběh vaření byl obnoven od začátku.'); }
 }

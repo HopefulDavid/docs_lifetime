@@ -13,9 +13,13 @@ Technické řešení patří do [`../architecture/overview.md`](../architecture/
 
 ## Problém a očekávaný přínos
 
-Osobní recepty uložené v jednotlivých souborech se bez společného katalogu obtížně procházejí a při vaření se pomalu dohledávají.
+Praktické návody uložené v jednotlivých souborech se bez společné orientace obtížně hledají právě ve chvíli, kdy je člověk potřebuje.
 
-Projekt poskytuje veřejnou českou kuchařku, ve které čtenář najde jídlo nebo nápoj podle sekce, původu, typu či názvu a otevře srozumitelný postup na jednom místě.
+Projekt poskytuje veřejnou českou dokumentaci pro běžný život.
+
+Současnou obsahovou oblastí je jídlo a pití s výběrem receptů, nákupem a přípravou doma nebo jinde.
+
+Další oblasti osobního života mohou přibývat jako samostatné návody, které nepotřebují ingredience ani režim vaření.
 
 ## Uživatelé a další aktéři
 
@@ -27,7 +31,7 @@ Projekt poskytuje veřejnou českou kuchařku, ve které čtenář najde jídlo 
 
 ## Cíle
 
-- Udržovat jednu snadno prohledatelnou sbírku jídel a nápojů v češtině.
+- Udržovat snadno prohledatelnou sbírku praktických návodů v češtině se společným úvodem a srozumitelnými oblastmi.
 - Umožnit procházení od obecné sekce přes původ a typ až ke konkrétnímu postupu.
 - Generovat katalog, navigaci a popisy z autoritativních obsahových souborů.
 - Zpřístupnit ověřenou verzi jako statický veřejný web s historií změn.
@@ -37,7 +41,7 @@ Projekt poskytuje veřejnou českou kuchařku, ve které čtenář najde jídlo 
 
 - Uživatelské účty, soukromé kolekce, komentáře a editace přímo ve webu.
 - Účty, synchronizace mezi zařízeními, kalendářní plánování, výpočet výživových hodnot a správa zásob.
-- Plná dostupnost celého webu bez připojení; pro obchod bez připojení slouží stažení textového seznamu nebo tisk.
+- Plná dostupnost celého webu bez připojení; pro obchod bez připojení slouží stažení textového seznamu, PDF nebo tisk.
 - Odborná garance alergenů, zdravotní vhodnosti nebo původnosti receptu.
 - Obecné jazykové vyhledávání se skloňováním, stemmingem, automatickým překladem, synonymy nebo tolerancí překlepů.
 - Programové API nebo databáze receptů pro jiné aplikace.
@@ -65,6 +69,7 @@ Projekt poskytuje veřejnou českou kuchařku, ve které čtenář najde jídlo 
 | `REQ-009` | Čtenář má neúplné množství nebo jde do obchodu bez připojení | Doplní vlastní množství, kopíruje, stáhne nebo vytiskne seznam | Vlastní údaj je označený, textový export zachová suroviny, poznámky, původní nejistotu i odškrtnutí | Vysoká | Test exportu a prohlížeč |
 | `REQ-010` | Čtenář začíná vařit | Otevře režim po krocích, přepíná kroky a označuje hotové | Vidí celý aktuální krok včetně poznámek, může otevřít suroviny a po návratu pokračovat; poslední krok nepředstírá dokončení přeskočených kroků | Vysoká | Mobilní dialog, návrat a dokončení |
 | `REQ-011` | Čtenář obnoví stránku | Prohlížeč má dostupné místní úložiště | Výběr, vlastní množství, odškrtnutí a krok vaření se obnoví; změna nákupního požadavku zneplatní staré potvrzení dotčené položky | Vysoká | Obnova stavu, změna dávky a kontrola prohlížečem |
+| `REQ-012` | Čtenář otevře obecný návod nebo úvod | Orientuje se v dokumentaci života | Úvod ukazuje dostupné oblasti a rychlé cesty; obecný návod nemá suroviny, vaření ani nákupní lištu | Vysoká | Úvod a veřejný průvodce bez kuchařských ovládacích prvků |
 
 ## Chybové a hraniční scénáře
 
@@ -86,6 +91,15 @@ Projekt poskytuje veřejnou českou kuchařku, ve které čtenář najde jídlo 
 - Recept i celý nákup nabídnou čitelný náhled, přímé stažení PDF a samostatný tisk.
 - Receptové PDF respektuje zvolenou dávku, alternativy a přílohy, obsahuje přípravné poznámky a pomůcky.
 - Nákupní PDF a text obsahují i skryté a hotové položky; rozhraní to při aktivním filtru vysvětlí.
+- Přehledy zachovají všechny názvy a popisy i na šířce 320 px bez skrytých sloupců.
+- Katalog předem ukáže přípravnou poznámku ze zdroje, například nutnost marinování.
+- Mobilní nabídka má viditelný popisek „Menu“; odeslání hledání odkryje výsledky a umožní dotaz upravit nebo hledání zavřít.
+- Výsledky fulltextu otevírají obsah ve stejném panelu a zachovávají srozumitelnou cestu zpět.
+- Vaření na nízké obrazovce při otevření a přechodu zobrazí aktuální krok nad trvale dostupným ovládáním.
+- Uložení vlastního množství přesune fokus na příslušnou položku, případně na další výsledek při filtru neúplných množství.
+- Změna zdrojového receptu obnoví jeho rozvařený postup od začátku a oznámí to; zachová výběr jídel.
+- Návrat ke staré dávce neobnoví dříve zneplatněné odškrtnutí ani vlastní množství.
+- Selhání zápisu místního nákupu zůstane viditelné v nákupní liště a nabídnuté exporty zůstanou dostupné.
 
 Tyto scénáře rozvíjejí `REQ-006`, `REQ-008`, `REQ-009`, `REQ-010` a `QLT-003` podle upřesnění uživatele, který zdůraznil celkový design a zachování PDF.
 
@@ -108,9 +122,9 @@ Výběr jídel a nákupní seznam jsou přijatým rozšířením na základě za
 
 | Termín | Kanonický význam |
 |---|---|
-| Obsahová položka | Ručně udržovaný recept nebo nápoj v podporované cestě pod `food/` nebo `drink/` |
+| Obsahová položka | Veřejný praktický návod; recepty a nápoje mají zvláštní obsahový kontrakt pod `food/` a `drink/` |
 | Přehled | Generovaná stránka seskupující obsah podle sekce, oblasti, země nebo typu |
-| Katalog | Úplný generovaný seznam všech obsahových položek na úvodní stránce |
+| Katalog receptů | Úplný generovaný seznam jídel a nápojů v části úvodní stránky |
 | Publikovaný web | Statický výstup dostupný na kanonické adrese GitHub Pages |
 
 ## Pravidla změn požadavků
