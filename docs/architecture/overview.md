@@ -93,6 +93,7 @@ Diagram ukazuje jednosměrné odvozování výstupů a odděluje obsahovou a zm�
 |---|---|---|---|---|
 | Zdrojový obsah | Definuje recept nebo nápoj | Markdown soubor v podporované cestě | Žádná generovaná stránka | Správce obsahu |
 | `scripts/generate-docs.js` | Ověří celý obsah a poté sestaví katalog, přehledy, TOC, changelog a klientská data bez změn receptů | npm skripty `docs:generate` a `docs:check` | Node.js, zdrojový obsah, slovníky a `git-cliff` | Engineering |
+| `scripts/docset/` | Odděluje taxonomii, čtení katalogu, vykreslení přehledů a synchronizaci výstupů | `taxonomy.cjs`, `catalog.cjs`, `pages.cjs`, `output.cjs` | CLI skládá moduly; diagnostika a kolekce souborů patří jedinému běhu | Engineering |
 | Parser receptů | Ověřuje tabulky, kanonické názvy, stabilní identifikátory a navazující kroky | `scripts/recipe-content.cjs` | Zdrojové recepty a `data/ingredients.json` | Engineering |
 | Klientská kuchařka | Řídí výběr, nákup, vlastní množství a vaření | `templates/kitchen/public/kitchen.mjs` | DOM, standardní webová API, `kitchen-core.mjs` a generovaný `data/recipes.json` | Engineering |
 | Doménové jádro nákupu | Slučuje množství a validuje lokální stav | `templates/kitchen/public/kitchen-core.mjs` | Pouze standardní JavaScript | Engineering |
@@ -179,6 +180,10 @@ Přehledy, navigace, nákupní stránka, receptový JSON a changelog se již neu
 Markdown přehledy a TOC mají komentář se zdrojem a příkazem obnovy; receptový JSON obsahuje `generatedFrom`, zatímco kopie receptů zachovávají obsah originálu s normalizovanými konci řádků.
 
 Generátor připraví celý docset a changelog v paměti před prvním zápisem a odstraní nepotřebné soubory pouze uvnitř `_generated/`.
+
+`createContentFiles()` zůstává vstupem pro přípravu obsahu bez Git historie a bez zápisu; renderer vrací novou kolekci souborů a synchronizace vlastní porovnání přesných bajtů, manifest a odstranění zastaralých výstupů.
+
+`verify-site.cjs` samostatně ověřuje inventuru stránek, katalog a fulltext, veřejné odkazy, statické recepty, assety a hranici publikování.
 
 Chybný recept, neznámé zařazení, duplicitní surovina nebo neúplná Git historie tak nezmění dosavadní výstupy; selhání samotného zápisu lze napravit opakováním generování.
 

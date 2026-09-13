@@ -77,6 +77,9 @@ function createFixture(context) {
   context.after(() => rmSync(fixtureRoot, { recursive: true, force: true }));
 
   mkdirSync(path.join(fixtureRoot, 'scripts'));
+  cpSync(path.join(repositoryRoot, 'scripts/docset'), path.join(fixtureRoot, 'scripts/docset'), {
+    recursive: true,
+  });
   // Obsahová fixture izoluje pouze assety; skutečné SVG ověřuje test ikon a build.
   writeFileSync(
     path.join(fixtureRoot, 'scripts/generate-icons.cjs'),

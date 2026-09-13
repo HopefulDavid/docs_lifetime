@@ -1,5 +1,4 @@
 const departments = require('../data/ingredients.json');
-const names = new Map();
 const identifier = (text) =>
   text
     .normalize('NFD')
@@ -8,37 +7,57 @@ const identifier = (text) =>
     .replace(/[^a-z0-9]+/g, '-')
     .replace(/^-|-$/g, '');
 
-if (
-  !departments ||
-  Array.isArray(departments) ||
-  typeof departments !== 'object' ||
-  !Object.keys(departments).length
-) {
-  throw new Error('data/ingredients.json: slovník musí obsahovat nákupní oddělení');
-}
-const normalizedNames = new Set();
-const normalizedCategories = new Set();
-const validName = (value) =>
-  typeof value === 'string' &&
-  identifier(value) &&
-  value === value.trim() &&
-  !/[|<>\r\n\t\u0000-\u001f]/.test(value);
-for (const [category, values] of Object.entries(departments)) {
-  if (!validName(category) || !Array.isArray(values) || !values.length) {
-    throw new Error(`data/ingredients.json: neplatné oddělení '${category}'`);
+function indexIngredientNames(departments) {
+  const names = new Map();
+  if (
+    !departments ||
+    Array.isArray(departments) ||
+    typeof departments !== 'object' ||
+    !Object.keys(departments).length
+  ) {
+    throw new Error('data/ingredients.json: slovník musí obsahovat nákupní oddělení');
   }
-  if (normalizedCategories.has(identifier(category)))
-    throw new Error(`data/ingredients.json: duplicitní oddělení '${category}'`);
-  normalizedCategories.add(identifier(category));
-  for (const name of values) {
-    if (!validName(name) || name.includes(' nebo ')) {
-      throw new Error(`data/ingredients.json: neplatný název suroviny v '${category}'`);
+  const normalizedNames = new Set();
+  const normalizedCategories = new Set();
+  const validName = (value) =>
+    typeof value === 'string' &&
+    identifier(value) &&
+    value === value.trim() &&
+    !/[|<>\r\n\t\u0000-\u001f]/.test(value);
+  for (const [category, values] of Object.entries(departments)) {
+    if (!validName(category) || !Array.isArray(values) || !values.length) {
+      throw new Error(`data/ingredients.json: neplatné oddělení '${category}'`);
     }
-    if (normalizedNames.has(identifier(name)))
-      throw new Error(`data/ingredients.json: duplicitní surovina '${name}'`);
-    names.set(name, category);
-    normalizedNames.add(identifier(name));
+    if (normalizedCategories.has(identifier(category)))
+      throw new Error(`data/ingredients.json: duplicitní oddělení '${category}'`);
+    normalizedCategories.add(identifier(category));
+    for (const name of values) {
+      if (!validName(name) || name.includes(' nebo ')) {
+        throw new Error(`data/ingredients.json: neplatný název suroviny v '${category}'`);
+      }
+      if (normalizedNames.has(identifier(name)))
+        throw new Error(`data/ingredients.json: duplicitní surovina '${name}'`);
+      names.set(name, category);
+      normalizedNames.add(identifier(name));
+    }
   }
+
+  return names;
+}
+
+const names = indexIngredientNames(departments);
+
+function ingredientOptions(name, fail) {
+  const options = name.split(' nebo ');
+  if (new Set(options).size !== options.length) fail(`opakovaná alternativa '${name}'`);
+  for (const option of options)
+    if (!names.has(option)) {
+      const canonical = [...names.keys()].find((name) => identifier(name) === identifier(option));
+      fail(
+        `neznámá surovina '${option}' v data/ingredients.json; ${canonical ? `použijte přesný název '${canonical}'` : 'doplňte ji právě jednou do odpovídajícího nákupního oddělení'}`,
+      );
+    }
+  return options;
 }
 
 /** Ověří receptové tabulky a kroky; chybu lokalizuje řádkem, neznámé množství předá jako neblokující diagnostiku. */
@@ -153,15 +172,7 @@ function parseRecipeContent(content, file, { onWarning = () => {} } = {}) {
     }
     if (cells.every((cell) => /^:?-+:?$/.test(cell))) fail('opakovaný oddělovací řádek tabulky');
     const [name, quantity, rawNote] = cells;
-    const options = name.split(' nebo ');
-    if (new Set(options).size !== options.length) fail(`opakovaná alternativa '${name}'`);
-    for (const option of options)
-      if (!names.has(option)) {
-        const canonical = [...names.keys()].find((name) => identifier(name) === identifier(option));
-        fail(
-          `neznámá surovina '${option}' v data/ingredients.json; ${canonical ? `použijte přesný název '${canonical}'` : 'doplňte ji právě jednou do odpovídajícího nákupního oddělení'}`,
-        );
-      }
+    const options = ingredientOptions(name, fail);
     if (!groups.some((item) => item.id === group.id)) groups.push(group);
     const id = `${group.id}-${identifier(name)}`;
     if (ingredients.some((item) => item.id === id))

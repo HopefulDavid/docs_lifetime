@@ -28,7 +28,14 @@ function stopChild(child) {
   }
 }
 
+function fail(error) {
+  console.error(error.message);
+  process.exitCode = 1;
+  stop();
+}
+
 function stop() {
+  if (stopping) return;
   stopping = true;
   clearTimeout(timer);
   watcher.close();
@@ -46,43 +53,39 @@ function build() {
     windowsHide: true,
     detached: process.platform !== 'win32',
   });
-  building.on('error', (error) => {
-    console.error(error.message);
-    process.exitCode = 1;
-    stop();
-  });
-  building.on('exit', (code) => {
-    building = undefined;
-    if (stopping) return;
-    if (code === 0 && !server) {
-      server = spawn(
-        'dotnet',
-        ['tool', 'run', 'docfx', 'serve', '_site', '--hostname', '127.0.0.1', '--port', '8765'],
-        { cwd: root, stdio: 'inherit', windowsHide: true, detached: process.platform !== 'win32' },
-      );
-      server.on('error', (error) => {
-        console.error(error.message);
-        process.exitCode = 1;
-        stop();
-      });
-      server.on('exit', (code) => {
-        if (!stopping) {
-          process.exitCode = code || 0;
-          stop();
-        }
-      });
+  building.on('error', fail);
+  building.on('exit', finishBuild);
+}
+
+function startServer() {
+  server = spawn(
+    'dotnet',
+    ['tool', 'run', 'docfx', 'serve', '_site', '--hostname', '127.0.0.1', '--port', '8765'],
+    { cwd: root, stdio: 'inherit', windowsHide: true, detached: process.platform !== 'win32' },
+  );
+  server.on('error', fail);
+  server.on('exit', (code) => {
+    if (!stopping) {
+      process.exitCode = code || 0;
+      stop();
     }
-    console.log(
-      code === 0
-        ? 'Náhled je aktuální; obnovte stránku v prohlížeči.'
-        : 'Sestavení selhalo; opravte zdroj, další uložení spustí nové ověření.',
-    );
-    if (pending) build();
   });
 }
 
+function finishBuild(code) {
+  building = undefined;
+  if (stopping) return;
+  if (code === 0 && !server) startServer();
+  console.log(
+    code === 0
+      ? 'Náhled je aktuální; obnovte stránku v prohlížeči.'
+      : 'Sestavení selhalo; opravte zdroj, další uložení spustí nové ověření.',
+  );
+  if (pending) build();
+}
+
 // Jeden sledovač zachytí i nově vytvořené adresáře; odvozené výstupy nikdy nespouštějí další build.
-const watcher = fs.watch(root, { recursive: true }, (_event, filename) => {
+function scheduleSourceChange(_event, filename) {
   const relative = String(filename || '').replace(/\\/g, '/');
   const sourceDirectory = /^(food|drink|data|scripts|templates|docs|\.github|\.config)(\/|$)/.test(
     relative,
@@ -96,12 +99,10 @@ const watcher = fs.watch(root, { recursive: true }, (_event, filename) => {
   pending = true;
   clearTimeout(timer);
   timer = setTimeout(build, 250);
-});
-watcher.on('error', (error) => {
-  console.error(error.message);
-  process.exitCode = 1;
-  stop();
-});
+}
+
+const watcher = fs.watch(root, { recursive: true }, scheduleSourceChange);
+watcher.on('error', fail);
 process.on('SIGINT', stop);
 process.on('SIGTERM', stop);
 build();
