@@ -7,6 +7,9 @@
     "node": "24.x"
   },
   "devDependencies": {
+    "@iconify-json/circle-flags": "1.2.11",
+    "@iconify-json/tabler": "1.2.38",
+    "@iconify/utils": "3.1.7",
     "git-cliff": "2.13.1",
     "pdfmake": "0.3.11"
   },

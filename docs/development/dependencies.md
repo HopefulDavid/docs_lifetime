@@ -15,6 +15,7 @@ owner: engineering
 | `git-cliff` | Odvozuje kategorizovaný veřejný changelog z Git historie | [`../../package.json`](../../package.json) a [`../../package-lock.json`](../../package-lock.json) | Přesně uzamčená vývojová závislost; běží offline a nevstupuje do publikovaného webu jako runtime kód |
 | DocFX | Převádí produktový Markdown a YAML do statického webu | [`../../.config/dotnet-tools.json`](../../.config/dotnet-tools.json) | Lokální .NET tool manifest připíná stejný nástroj pro vývoj i CI |
 | `pdfmake` | Vytváří PDF aktuálního receptu nebo nákupu v prohlížeči | [`../../package.json`](../../package.json) a lockfile | Vývojová závislost dodává statické klientské assety načítané až při exportu; MIT a vložené Roboto pod SIL OFL |
+| Iconify Utils, Tabler a Circle Flags | Sestaví vybrané SVG pro rozhraní | npm manifest a lockfile | Pouze build, bez Iconify API; srovnání, licence a aktualizace vlastní [ADR-0008](../architecture/decisions/ADR-0008-lokalni-svg-ikony.md) |
 | GitHub Actions | Připravují prostředí, nasazují Pages a odesílají oznámení | [Workflow](../../.github/workflows/main.yml) | Každá akce je připnutá na ověřený commit SHA a čitelný hlavní tag zůstává v komentáři |
 
 Node.js 24 byl dne 2026-08-28 ověřený jako podporovaná LTS řada podle [oficiálního přehledu vydání](https://nodejs.org/en/about/previous-releases).

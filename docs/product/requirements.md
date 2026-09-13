@@ -105,6 +105,10 @@ Dialog nabízí kopírování odkazu a dostupné systémové sdílení, přizná
 
 ## Ovládání a PDF
 
+Ikony doplňují textové popisky v navigaci, přehledech, nákupních akcích a receptech; jejich vykreslení nezávisí na systémovém emoji fontu.
+
+Konkrétní země mají vedle názvu SVG vlajku; obecné oblasti používají symbol světa a nepředstírají konkrétní zemi.
+
 - Katalog zachová hledání, typ a filtr vybraných jídel při návratu z receptu.
 - Nákup nabídne režim pro obchod, hledání surovin bez diakritiky, filtr oddělení, skrytí hotových a filtr množství k doplnění.
 - Odškrtnutí nesmí zahodit rozepsané vlastní množství; změna dávky zneplatní údaj podle původního kontraktu.

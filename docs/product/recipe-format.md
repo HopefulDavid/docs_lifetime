@@ -15,6 +15,10 @@ Chování rozhraní vlastní [produktové požadavky](requirements.md), technick
 
 Recept zůstává jedním Markdown souborem na své dosavadní veřejné cestě.
 
+Zemi původu určuje cesta receptu a `data/taxonomy.json`; volitelné pole `flag` země označuje ikonu v připnuté sadě Circle Flags podle [ADR-0008](../architecture/decisions/ADR-0008-lokalni-svg-ikony.md).
+
+Emoji v původním názvu není zdrojem vlajky ani ovládací ikony.
+
 Používá jeden hlavní nadpis, krátký věcný popis, sekci `## Ingredience`, případné `## Pomůcky` a `## Než začnete`, potom `## Postup` s nadpisy `### 1. Název kroku` pokračujícími bez mezer v číslování.
 
 Úvod popisuje skutečné jídlo a jeho hlavní složky; neopakuje obecné pochvaly a neodvozuje dobu přípravy ani počet porcí.

@@ -1,3 +1,4 @@
+import { decoratePage } from './ui-icons.mjs';
 import { startKitchen } from './kitchen.mjs';
 
 const ariaLabels = {
@@ -38,6 +39,7 @@ const docfxOptions = {
       return;
     }
     localizeAriaLabels(document);
+    decoratePage();
     const main = document.querySelector('main');
     if (main) {
       main.id = 'main-content';
@@ -114,7 +116,7 @@ const docfxOptions = {
     });
 
     for (const root of [document.getElementById('search-results'), document.querySelector('header')].filter(Boolean)) {
-      new MutationObserver(() => { localizeAriaLabels(root); showResults(); }).observe(root, {
+      new MutationObserver(() => { localizeAriaLabels(root); decoratePage(root); showResults(); }).observe(root, {
         childList: true,
         subtree: true,
       });

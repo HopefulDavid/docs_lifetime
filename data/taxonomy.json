@@ -6,18 +6,65 @@
     "universal": "Univerzální recepty"
   },
   "countries": {
-    "czech": { "title": "Česko", "continent": "europe" },
-    "france": { "title": "Francie", "continent": "europe" },
-    "general": { "title": "Obecně asijská kuchyně", "continent": "asia" },
-    "greece": { "title": "Řecko", "continent": "europe" },
-    "india": { "title": "Indie", "continent": "asia" },
-    "italy": { "title": "Itálie", "continent": "europe" },
-    "japan": { "title": "Japonsko", "continent": "asia" },
-    "mexico": { "title": "Mexiko", "continent": "north-america" },
-    "portugal": { "title": "Portugalsko", "continent": "europe" },
-    "spain": { "title": "Španělsko", "continent": "europe" },
-    "usa": { "title": "USA", "continent": "north-america" },
-    "vietnam": { "title": "Vietnam", "continent": "asia" }
+    "czech": {
+      "title": "Česko",
+      "continent": "europe",
+      "flag": "cz"
+    },
+    "france": {
+      "title": "Francie",
+      "continent": "europe",
+      "flag": "fr"
+    },
+    "general": {
+      "title": "Obecně asijská kuchyně",
+      "continent": "asia"
+    },
+    "greece": {
+      "title": "Řecko",
+      "continent": "europe",
+      "flag": "gr"
+    },
+    "india": {
+      "title": "Indie",
+      "continent": "asia",
+      "flag": "in"
+    },
+    "italy": {
+      "title": "Itálie",
+      "continent": "europe",
+      "flag": "it"
+    },
+    "japan": {
+      "title": "Japonsko",
+      "continent": "asia",
+      "flag": "jp"
+    },
+    "mexico": {
+      "title": "Mexiko",
+      "continent": "north-america",
+      "flag": "mx"
+    },
+    "portugal": {
+      "title": "Portugalsko",
+      "continent": "europe",
+      "flag": "pt"
+    },
+    "spain": {
+      "title": "Španělsko",
+      "continent": "europe",
+      "flag": "es"
+    },
+    "usa": {
+      "title": "USA",
+      "continent": "north-america",
+      "flag": "us"
+    },
+    "vietnam": {
+      "title": "Vietnam",
+      "continent": "asia",
+      "flag": "vn"
+    }
   },
   "types": {
     "soups": "Polévky",

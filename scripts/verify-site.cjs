@@ -36,8 +36,11 @@ for (const recipe of catalog.recipes) {
   assert.equal([...html.matchAll(/<h3\b[^>]*>\d+\. /g)].length, recipe.steps.length, `${recipe.id}: HTML a katalog mají rozdílný počet kroků`);
 }
 
-for (const resource of ['public/pdfmake.min.js', 'public/vfs_fonts.js', 'public/licenses/pdfmake/LICENSE', 'public/licenses/Roboto-OFL.txt']) {
-  assert(fs.existsSync(path.join(site, resource)), `Chybí PDF asset nebo licence: ${resource}`);
+for (const resource of ['public/pdfmake.min.js', 'public/vfs_fonts.js', 'public/licenses/pdfmake/LICENSE', 'public/licenses/Roboto-OFL.txt', 'public/icons.css', 'public/icon-labels.mjs', 'public/ui-icons.mjs', 'public/licenses/Tabler-MIT.txt', 'public/licenses/Circle-Flags-MIT.txt']) {
+  assert(fs.existsSync(path.join(site, resource)), `Chybí veřejný asset nebo licence: ${resource}`);
+}
+for (const resource of ['public/icons.css', 'public/icon-labels.mjs']) {
+  assert.equal(read(resource), fs.readFileSync(path.join(root, '_generated', resource), 'utf8'), `${resource}: publikované ikony musí odpovídat generování`);
 }
 for (const internal of ['docs', 'private', 'data/ingredients.json', 'data/taxonomy.json', 'content-report.json', '_generated']) {
   assert(!fs.existsSync(path.join(site, internal)), `Interní zdroj nesmí být publikovaný: ${internal}`);

@@ -36,3 +36,4 @@ Nový záznam vzniká ze šablony [`../../templates/adr.md`](../../templates/adr
 | [`ADR-0005-pdf-export-v-prohlizeci.md`](ADR-0005-pdf-export-v-prohlizeci.md) | Přímý export PDF v prohlížeči | Přijato; doplňuje ADR-0004 | — |
 | [`ADR-0006-izolovane-generovani-docsetu.md`](ADR-0006-izolovane-generovani-docsetu.md) | Izolované generování veřejného docsetu | Přijato; doplňuje ADR-0003 a ADR-0004 | — |
 | [`ADR-0007-prenos-nakupu-bez-serveru.md`](ADR-0007-prenos-nakupu-bez-serveru.md) | Předání nákupu bez serverového úložiště | Přijato; doplňuje ADR-0004 a ADR-0005 | — |
+| [`ADR-0008-lokalni-svg-ikony.md`](ADR-0008-lokalni-svg-ikony.md) | Místní SVG ikony z knihoven Iconify | Přijato | — |

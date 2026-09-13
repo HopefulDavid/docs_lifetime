@@ -592,6 +592,8 @@ async function main() {
   if (args.includes('--validate-only')) return console.log(`Obsah je platný; ${warnings.length} neblokujících upozornění na chybějící množství.`);
   const { createChangelog } = require('./generate-changelog.cjs');
   files.set('changelog.md', await createChangelog(root));
+  const { createIconAssets } = require('./generate-icons.cjs');
+  for (const [file, content] of createIconAssets()) files.set(file, content);
   files.set('manifest.json', JSON.stringify({
     generatedBy: 'scripts/generate-docs.js',
     regenerate: 'npm run docs:generate',

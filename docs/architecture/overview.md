@@ -231,6 +231,10 @@ Přesné kroky nasazení jsou v [`../delivery/ci-cd.md`](../delivery/ci-cd.md) a
 
 ## 9. Průřezové koncepty
 
+Vizuální orientaci podporují místní SVG assety generované z `data/icons.json` a taxonomie podle [ADR-0008](decisions/ADR-0008-lokalni-svg-ikony.md).
+
+`scripts/generate-icons.cjs` zpracuje pouze vybrané ikony během přípravy docsetu; `ui-icons.mjs` vytváří dekorativní značky v DOM bez vzdálené služby.
+
 | Koncept | Kanonický princip | Vynucení | Výjimky |
 |---|---|---|---|
 | Cesty obsahu | Sekce, oblast, země a typ mají stabilní segmenty definované generátorem | Parser cest a strukturální kontrola | Univerzální jídla nemají zemi |

@@ -3,14 +3,41 @@
     "content": [
       {
         "src": "_generated",
-        "files": ["**/*.{md,yml}"]
+        "files": [
+          "**/*.{md,yml}"
+        ]
       }
     ],
     "output": "_site",
     "resource": [
-      { "files": ["data/recipes.json"], "src": "_generated" },
-      { "files": ["pdfmake.min.js", "vfs_fonts.js"], "src": "node_modules/pdfmake/build", "dest": "public" },
-      { "files": ["LICENSE"], "src": "node_modules/pdfmake", "dest": "public/licenses/pdfmake" }
+      {
+        "files": [
+          "data/recipes.json"
+        ],
+        "src": "_generated"
+      },
+      {
+        "files": [
+          "pdfmake.min.js",
+          "vfs_fonts.js"
+        ],
+        "src": "node_modules/pdfmake/build",
+        "dest": "public"
+      },
+      {
+        "files": [
+          "LICENSE"
+        ],
+        "src": "node_modules/pdfmake",
+        "dest": "public/licenses/pdfmake"
+      },
+      {
+        "files": [
+          "public/icons.css",
+          "public/icon-labels.mjs"
+        ],
+        "src": "_generated"
+      }
     ],
     "template": [
       "default",

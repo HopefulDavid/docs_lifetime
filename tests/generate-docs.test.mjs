@@ -74,6 +74,8 @@ function createFixture(context) {
   context.after(() => rmSync(fixtureRoot, { recursive: true, force: true }));
 
   mkdirSync(path.join(fixtureRoot, 'scripts'));
+  // Obsahová fixture izoluje pouze assety; skutečné SVG ověřuje test ikon a build.
+  writeFileSync(path.join(fixtureRoot, 'scripts/generate-icons.cjs'), 'exports.createIconAssets = () => new Map();');
   cpSync(path.join(repositoryRoot, 'data'), path.join(fixtureRoot, 'data'), { recursive: true });
   copyFileSync(path.join(repositoryRoot, 'scripts/recipe-content.cjs'), path.join(fixtureRoot, 'scripts/recipe-content.cjs'));
   cpSync(path.join(repositoryRoot, 'food'), path.join(fixtureRoot, 'food'), { recursive: true });
