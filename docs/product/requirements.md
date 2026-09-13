@@ -103,13 +103,19 @@ Odkaz představuje jednorázovou kopii, ne automaticky synchronizovaný seznam; 
 
 Dialog nabízí kopírování odkazu a dostupné systémové sdílení, přiznává délku zprávy i přístup kohokoli s odkazem a neodesílá nákup bez uživatelské akce.
 
-Vysvětlující texty rozhraní oddělují jednotlivé věty do viditelných odstavců; průvodce vysvětluje stabilní principy výběru, nákupu, vaření a sdílené kopie bez přepisování každého názvu tlačítka.
+Vysvětlující texty rozhraní oddělují jednotlivé věty do viditelných odstavců a používají běžné čárky místo středníků.
+
+Průvodce vysvětluje stabilní principy výběru, nákupu, vaření a sdílené kopie bez přepisování každého názvu tlačítka.
 
 ## Ovládání a PDF
 
 Navigace Výběr → Nakoupit → Uvařit propojuje samostatná zobrazení a ukazuje právě otevřenou část.
 
-V nákupu část Uvařit nabídne vybraná jídla s uloženou dávkou a průběhem; karty nastavení ve části Nakoupit neobsahují tlačítko Vařit.
+V nákupu část Uvařit nabídne vybraná jídla s uloženou dávkou, průběhem, přímým vstupem do vaření po krocích a vedlejším odkazem na celý postup.
+
+Spouštěcí akce na kartě i v detailu rozlišuje nové, rozpracované a dokončené vaření, uložený postup při otevření neresetuje.
+
+Z vaření lze spodní lištou přejít zpět k vybraným jídlům v sekci Uvařit, karty nastavení ve části Nakoupit neobsahují tlačítko Vařit.
 
 Detail v části Nakoupit ukazuje ingredience a nastavení, zatímco část Uvařit ukazuje celý postup a vstup do vaření po krocích; pravý obsah článku odkazuje pouze na viditelné části.
 

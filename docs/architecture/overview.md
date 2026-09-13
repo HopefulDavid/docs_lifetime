@@ -157,7 +157,7 @@ Výběr, vlastní množství, odškrtnutí a průběh vaření se ukládají v p
 
 Zobrazení nákupu a vaření přepíná klientská vrstva pomocí fragmentu URL; nákup používá `#nakup`, `#nakupovat` a `#uvarit`, detail `#ingredience` a `#uvarit`.
 
-Původní kotvy postupu odkrývají jeho sekci a `#vareni` nadále přímo otevře krokový dialog; po zavření zůstane zobrazená sekce Uvařit.
+Původní kotvy postupu odkrývají jeho sekci a `#vareni` přímo otevře krokový dialog také z karty vybraného jídla, po zavření zůstane zobrazená sekce Uvařit.
 
 Panely nákupu se při přepnutí pouze skryjí, aby zůstala zachovaná otevřená nastavení, filtry a rozepsaná množství; receptové panely přeskupují existující HTML a synchronizují viditelnost odkazů obsahu článku.
 

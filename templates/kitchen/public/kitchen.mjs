@@ -60,8 +60,9 @@ function toggle(recipe, control) {
 function updateTray() {
   if (!tray) return;
   const count = Object.keys(state.selections).length;
+  const cookingView = Boolean(document.querySelector('.recipe-procedure:not([hidden])'));
   if (plannerController && count) plannerController.updateTray();
-  else tray.replaceChildren(el('span', {}, count ? `${count} ${count === 1 ? 'recept' : count < 5 ? 'recepty' : 'receptů'} v nákupu` : 'Vyberte si jídla na příští vaření'), el('a', { href: url('nakup.html'), className: 'kitchen-button primary' }, icon('basket'), 'Můj nákup', el('span', { className: 'count-badge' }, String(count))));
+  else tray.replaceChildren(el('span', {}, count ? `${count} ${count === 1 ? 'recept' : count < 5 ? 'recepty' : 'receptů'} v nákupu` : 'Vyberte si jídla na příští vaření'), el('a', { href: url(cookingView ? 'nakup.html#uvarit' : 'nakup.html'), className: 'kitchen-button primary' }, icon(cookingView ? 'kitchen' : 'basket'), cookingView ? 'Jídla k vaření' : 'Můj nákup', el('span', { className: 'count-badge' }, String(count))));
   if (document.body.classList.contains('kitchen-storage-unavailable')) tray.append(el('p', { className: 'tray-storage', role: 'status' }, storageMessage));
 }
 
@@ -88,10 +89,17 @@ function workflow(active, destinations = {}, changed) {
   return navigation;
 }
 
+function cookingActionLabel(recipe, config) {
+  const cooking = state.cooking[recipe.id] || { step: 0, done: [] };
+  const progress = cookingProgress(recipe, config, cooking);
+  if (progress.complete) return 'Otevřít hotové vaření';
+  return progress.done.length || cooking.step > 0 ? 'Pokračovat ve vaření' : 'Vařit krok za krokem';
+}
+
 function cookingSelection(recipes) {
   const section = el('section', { id: 'cooking-selection', 'aria-labelledby': 'cooking-selection-heading' },
     el('div', { className: 'section-heading' }, el('h2', { id: 'cooking-selection-heading', tabIndex: -1 }, 'Co budete vařit?')),
-    el('p', { className: 'kitchen-muted' }, 'Vyberte jídlo a otevřete jeho postup.'));
+    el('p', { className: 'kitchen-muted' }, 'Vařte krok za krokem, nebo si prohlédněte celý postup.'));
   if (!recipes.length) {
     section.append(el('div', { className: 'kitchen-empty' }, icon('kitchen'),
       el('h3', {}, 'Nejdřív vyberte něco dobrého'),
@@ -101,12 +109,15 @@ function cookingSelection(recipes) {
   section.append(el('div', { className: 'cooking-selection-grid' }, recipes.map(recipe => {
     const config = recipeSettings(recipe, state.selections[recipe.id]);
     const progress = cookingProgress(recipe, config, state.cooking[recipe.id] || { step: 0, done: [] });
+    const action = cookingActionLabel(recipe, config);
     return el('section', { className: 'cooking-selection-card' },
       el('div', { className: 'recipe-card-meta' }, el('span', { className: 'recipe-symbol' }, labelIcon(recipe.typeLabel, 'food')),
         el('span', {}, recipe.typeLabel), el('span', { className: 'recipe-origin' }, labelIcon(recipe.origin.split(', ').at(-1)), recipe.origin.split(', ').at(-1))),
       el('h3', {}, el('a', { href: url(`${recipe.id}.html#uvarit`) }, recipe.title)),
       el('p', { className: 'kitchen-muted' }, `${String(config.factor).replace('.', ',')}× dávka · ${progress.done.length} z ${progress.active.length} kroků hotovo`),
-      el('a', { href: url(`${recipe.id}.html#uvarit`), className: 'kitchen-button primary', 'aria-label': `Otevřít postup: ${recipe.title}` }, icon('list'), 'Otevřít postup'));
+      el('div', { className: 'recipe-card-actions' },
+        el('a', { href: url(`${recipe.id}.html#vareni`), className: 'kitchen-button primary', 'aria-label': `${action}: ${recipe.title}` }, icon('kitchen'), action),
+        el('a', { href: url(`${recipe.id}.html#uvarit`), 'aria-label': `Celý postup: ${recipe.title}` }, icon('list'), 'Celý postup')));
   })));
   return section;
 }
@@ -722,6 +733,7 @@ function enhanceRecipe(recipe) {
       link.setAttribute('aria-current', link.dataset.phase === (cooking ? 'cooking' : 'shopping') ? 'page' : 'false');
     }
     syncContents();
+    updateTray();
     if (focus) focusSection(location.hash === '#uvarit' || location.hash === '#ingredience' ? navigation : target || navigation);
   };
   const printButton = () => button('PDF / tisk receptu', () => openRecipePrint(recipe, stepContents, config, preparation), { className: 'kitchen-button' });
@@ -733,7 +745,7 @@ function enhanceRecipe(recipe) {
         save(); preserveView(repaint); announce(selected(recipe) ? 'Recept je v nákupu.' : 'Recept byl odebrán.');
       }, { id: 'detail-select', className: 'kitchen-button', 'aria-pressed': String(selected(recipe)) }), printButton());
     cookingActions.replaceChildren(
-      button(state.cooking[recipe.id]?.done.length ? 'Pokračovat ve vaření' : 'Vařit krok za krokem', () => openCooking(recipe, stepContents, config, preparation, repaint), { className: 'kitchen-button primary', id: 'start-cooking' }), printButton());
+      button(cookingActionLabel(recipe, config), () => openCooking(recipe, stepContents, config, preparation, repaint), { className: 'kitchen-button primary', id: 'start-cooking' }), printButton());
     syncView();
   };
   repaint();

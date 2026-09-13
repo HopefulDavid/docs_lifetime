@@ -154,6 +154,7 @@ Po sestavení ověř obecný Úvod, katalog v Kuchyni, nákup a detail na šíř
 | `REQ-009` | U neznámého množství rozbal zdroje, doplň vlastní množství a ulož; zkopíruj text nebo stáhni PDF | Vlastní text je označený a export obsahuje také původní údaj a poznámky |
 | `REQ-002`, `REQ-010` | V nákupu přepni Nakoupit → Uvařit, otevři postup jídla a vrať se do Nakoupit; použij historii a obnov stránku | Viditelná je jediná sekce, nákupní karty nemají Vařit a detail skrývá postup i jeho obsah až do přepnutí |
 | `REQ-002` | Otevři přímou kotvu konkrétního kroku i starý odkaz `#vareni` | Kotva odkryje postup; starý odkaz otevře dialog a po zavření ponechá sekci Uvařit |
+| `REQ-010`, `REQ-011` | Na kartě vybraného jídla v Uvařit spusť vaření po krocích, zavři je a spodní lištou se vrať k jídlům | Dialog se otevře přímo s uloženým průběhem, celý postup má vedlejší odkaz a dokončený recept nenabízí pokračování jako rozvařený |
 | `REQ-010`, `REQ-011` | U šunkofleků otevři Uvařit a „Vařit krok za krokem“, dokonči první krok, zavři a otevři dialog znovu | Zobrazí se druhý krok a první zůstává označený |
 | `REQ-010` | V „Přehledu kroků“ přeskoč na poslední krok a dokonči jej | Celé vaření není označené jako hotové, pokud zbývají neoznačené kroky; hlavní tlačítko nabídne návrat k nedokončenému |
 | `REQ-010` | Otevři již hotový krok a zvol „Vrátit mezi nedokončené“ | Průběh se sníží a jedinou hlavní akcí je opět dokončení kroku |
