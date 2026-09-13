@@ -1,0 +1,29 @@
+{
+  "continents": {
+    "europe": "Evropa",
+    "asia": "Asie",
+    "north-america": "Severní Amerika",
+    "universal": "Univerzální recepty"
+  },
+  "countries": {
+    "czech": { "title": "Česko", "continent": "europe" },
+    "france": { "title": "Francie", "continent": "europe" },
+    "general": { "title": "Obecně asijská kuchyně", "continent": "asia" },
+    "greece": { "title": "Řecko", "continent": "europe" },
+    "india": { "title": "Indie", "continent": "asia" },
+    "italy": { "title": "Itálie", "continent": "europe" },
+    "japan": { "title": "Japonsko", "continent": "asia" },
+    "mexico": { "title": "Mexiko", "continent": "north-america" },
+    "portugal": { "title": "Portugalsko", "continent": "europe" },
+    "spain": { "title": "Španělsko", "continent": "europe" },
+    "usa": { "title": "USA", "continent": "north-america" },
+    "vietnam": { "title": "Vietnam", "continent": "asia" }
+  },
+  "types": {
+    "soups": "Polévky",
+    "main-dishes": "Hlavní jídla",
+    "desserts": "Dezerty",
+    "dips": "Dipy",
+    "coffee": "Káva"
+  }
+}

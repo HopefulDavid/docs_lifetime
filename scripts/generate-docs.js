@@ -8,7 +8,7 @@ const checkOnly = process.argv.includes('--check');
 const collator = new Intl.Collator('cs', { sensitivity: 'base' });
 
 const generatedNotice =
-  '<!-- Tento soubor generuje npm run docs:generate. Neupravujte seznamy odkazů ručně. -->';
+  '<!-- Generováno z food/**/*.md, drink/**/*.md a data/*.json pomocí scripts/generate-docs.js. Obnova: npm run docs:generate. Neupravujte ručně. -->';
 
 const sections = {
   food: {
@@ -31,45 +31,17 @@ const sections = {
   },
 };
 
-const continentNames = {
-  europe: 'Evropa',
-  asia: 'Asie',
-  'north-america': 'Severní Amerika',
-  universal: 'Univerzální recepty',
-};
-
-const countryNames = {
-  czech: 'Česko',
-  france: 'Francie',
-  general: 'Obecně asijská kuchyně',
-  greece: 'Řecko',
-  india: 'Indie',
-  italy: 'Itálie',
-  japan: 'Japonsko',
-  mexico: 'Mexiko',
-  portugal: 'Portugalsko',
-  spain: 'Španělsko',
-  usa: 'USA',
-  vietnam: 'Vietnam',
-};
-
-const typeNames = {
-  soups: 'Polévky',
-  'main-dishes': 'Hlavní jídla',
-  desserts: 'Dezerty',
-  dips: 'Dipy',
-  coffee: 'Káva',
-};
-
+const taxonomy = require('../data/taxonomy.json');
+const { continents: continentNames = {}, countries = {}, types: typeNames = {} } = taxonomy;
 const order = {
-  sections: ['food', 'drink'],
-  continents: ['europe', 'asia', 'north-america', 'universal'],
-  types: ['soups', 'main-dishes', 'desserts', 'dips', 'coffee'],
+  sections: Object.keys(sections),
+  continents: Object.keys(continentNames),
+  types: Object.keys(typeNames),
 };
 
 const emojiPattern = /(?:\p{Extended_Pictographic}|[\u{1F1E6}-\u{1F1FF}]|\uFE0F|\u200D)/gu;
 
-const generatedFiles = new Set();
+const generatedFiles = new Map();
 const pendingChanges = [];
 const errors = [];
 
@@ -86,22 +58,7 @@ function readFile(relPath) {
 }
 
 function writeFile(relPath, content) {
-  const normalized = content.endsWith('\n') ? content : `${content}\n`;
-  const fullPath = absolute(relPath);
-  const current = fs.existsSync(fullPath)
-    ? fs.readFileSync(fullPath, 'utf8').replace(/\r\n/g, '\n')
-    : null;
-
-  if (current === normalized) {
-    return;
-  }
-
-  pendingChanges.push(relPath);
-
-  if (!checkOnly) {
-    fs.mkdirSync(path.dirname(fullPath), { recursive: true });
-    fs.writeFileSync(fullPath, normalized, 'utf8');
-  }
+  generatedFiles.set(relPath, content.endsWith('\n') ? content : content + '\n');
 }
 
 function walkMarkdown(dirRel) {
@@ -111,21 +68,31 @@ function walkMarkdown(dirRel) {
   function walk(dir) {
     for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
       const fullPath = path.join(dir, entry.name);
+      if (entry.isSymbolicLink()) throw new Error(toPosix(path.relative(root, fullPath)) + ': symbolické odkazy nejsou povolené');
       if (entry.isDirectory()) {
         walk(fullPath);
-      } else if (entry.isFile() && entry.name.endsWith('.md')) {
+      } else if (entry.isFile() && /\.md$/i.test(entry.name)) {
         files.push(toPosix(path.relative(root, fullPath)));
       }
     }
   }
 
-  walk(start);
+  if (fs.existsSync(start)) {
+    if (fs.lstatSync(start).isSymbolicLink()) throw new Error(dirRel + ': symbolické odkazy nejsou povolené');
+    walk(start);
+  }
   return files.sort((a, b) => collator.compare(a, b));
 }
 
 function recipeFiles() {
   return [...walkMarkdown('food'), ...walkMarkdown('drink')].filter(
-    (relPath) => path.posix.basename(relPath) !== 'index.md'
+    (relPath) => {
+      if (path.posix.basename(relPath) === 'index.md') {
+        errors.push(relPath + ': index.md je vyhrazený generovanému přehledu v _generated/');
+        return false;
+      }
+      return true;
+    }
   );
 }
 
@@ -158,7 +125,7 @@ function readRecipe(relPath) {
 
   const pathInfo = parseRecipePath(relPath);
   if (!pathInfo) {
-    errors.push(`${relPath}: cesta neodpovídá očekávané struktuře`);
+    errors.push(`${relPath}: cesta neodpovídá očekávané struktuře nebo data/taxonomy.json`);
     return null;
   }
 
@@ -166,6 +133,7 @@ function readRecipe(relPath) {
   try { recipe = parseRecipeContent(content, relPath); }
   catch (error) { errors.push(error.message); return null; }
 
+  writeFile(relPath, content);
   return {
     ...pathInfo,
     ...recipe,
@@ -183,11 +151,12 @@ function parseRecipePath(relPath) {
   const parts = relPath.split('/');
   const section = parts[0];
 
-  if (!sections[section]) {
+  if (!Object.hasOwn(sections, section) || parts.some(part => !/^[a-z0-9]+(?:-[a-z0-9]+)*(?:\.md)?$/.test(part))) {
     return null;
   }
 
   if (section === 'food' && parts[1] === 'universal' && parts.length === 4) {
+    if (!Object.hasOwn(continentNames, 'universal') || !Object.hasOwn(typeNames, parts[2])) return null;
     return {
       section,
       continent: 'universal',
@@ -196,7 +165,8 @@ function parseRecipePath(relPath) {
     };
   }
 
-  if (parts.length === 5) {
+  if (parts.length === 5 && Object.hasOwn(continentNames, parts[1]) && parts[1] !== 'universal' &&
+      Object.hasOwn(countries, parts[2]) && countries[parts[2]].continent === parts[1] && Object.hasOwn(typeNames, parts[3])) {
     return {
       section,
       continent: parts[1],
@@ -242,7 +212,7 @@ function compareEntries(a, b) {
     orderedCompare(a.continent, b.continent, order.continents) ||
     collator.compare(labelCountry(a.country), labelCountry(b.country)) ||
     orderedCompare(a.type, b.type, order.types) ||
-    collator.compare(a.title, b.title)
+    collator.compare(a.title, b.title) || a.relPath.localeCompare(b.relPath, 'en')
   );
 }
 
@@ -250,7 +220,7 @@ function orderedCompare(a, b, values) {
   const aIndex = values.indexOf(a);
   const bIndex = values.indexOf(b);
   if (aIndex === bIndex) {
-    return 0;
+    return collator.compare(a, b);
   }
   if (aIndex === -1) {
     return 1;
@@ -284,7 +254,7 @@ function labelContinent(value) {
 }
 
 function labelCountry(value) {
-  return value ? countryNames[value] || value : '';
+  return value ? countries[value].title : '';
 }
 
 function labelType(value) {
@@ -304,7 +274,7 @@ function countLabel(count, section) {
 
 function origin(entry) {
   if (entry.continent === 'universal') {
-    return 'Univerzální';
+    return labelContinent(entry.continent);
   }
   return [labelContinent(entry.continent), labelCountry(entry.country)].filter(Boolean).join(', ');
 }
@@ -324,7 +294,6 @@ function overviewList(rows, cards = false) {
 }
 
 function page(file, title, body, uid = null) {
-  generatedFiles.add(file);
   const frontMatter = uid ? `---\nuid: ${uid}\n---\n\n` : '';
   return `${frontMatter}${generatedNotice}\n\n# ${title}\n\n${body.trim()}\n`;
 }
@@ -446,7 +415,7 @@ function renderPages(catalog) {
   renderHome(catalog);
   const plannerFile = 'nakup.md';
   writeFile(plannerFile, page(plannerFile, 'Můj nákup', 'Všechna vybraná jídla a jejich suroviny na jednom místě.\n\n<div id="kitchen-planner">\n\nPro společný nákup je potřeba povolený JavaScript.\n\n[Prohlédnout všechny recepty](index.md)\n\n</div>'));
-  writeFile('data/recipes.json', JSON.stringify({ version: 1, generatedFrom: 'food/**/*.md, drink/**/*.md, data/ingredients.json; npm run docs:generate', departments: Object.keys(departments), recipes: catalog.map(entry => ({ ...entry, typeLabel: labelType(entry.type), origin: origin(entry) })) }, null, 2));
+  writeFile('data/recipes.json', JSON.stringify({ version: 1, generatedFrom: 'food/**/*.md, drink/**/*.md, data/ingredients.json, data/taxonomy.json; npm run docs:generate', departments: Object.keys(departments), recipes: catalog.map(entry => ({ ...entry, typeLabel: labelType(entry.type), origin: origin(entry) })) }, null, 2));
 
   for (const section of order.sections) {
     const sectionEntries = catalog.filter((entry) => entry.section === section);
@@ -490,11 +459,12 @@ function yaml(items, indent = 0) {
 function renderRootToc() {
   writeFile(
     'toc.yml',
-    `${yaml([
+    `# Generováno ze zdrojového obsahu a scripts/generate-docs.js; obnova: npm run docs:generate. Neupravujte ručně.
+${yaml([
       { name: 'Úvod', href: 'index.md' },
       { name: 'Můj nákup', href: 'nakup.md' },
-      { name: 'Jídlo', href: 'food/' },
-      { name: 'Nápoje', href: 'drink/' },
+      { name: sections.food.title, href: 'food/' },
+      { name: sections.drink.title, href: 'drink/' },
       { name: 'Změny', href: 'changelog.md' },
     ])}\n`
   );
@@ -543,7 +513,7 @@ function renderSectionToc(section, entries) {
     items.push(continentItem);
   }
 
-  writeFile(`${section}/toc.yml`, `${yaml(items)}\n`);
+  writeFile(`${section}/toc.yml`, `# Generováno ze zdrojového obsahu a scripts/generate-docs.js; obnova: npm run docs:generate. Neupravujte ručně.\n${yaml(items)}\n`);
 }
 
 function renderTocs(catalog) {
@@ -556,51 +526,81 @@ function renderTocs(catalog) {
   }
 }
 
-function removeObsoleteGeneratedPages() {
-  for (const relPath of [...walkMarkdown('food'), ...walkMarkdown('drink')]) {
-    if (!relPath.endsWith('/index.md') || generatedFiles.has(relPath)) {
-      continue;
-    }
-
-    const content = readFile(relPath);
-    if (!content.includes(generatedNotice)) {
-      continue;
-    }
-
-    pendingChanges.push(relPath);
-    if (!checkOnly) {
-      fs.unlinkSync(absolute(relPath));
+function validateTaxonomy() {
+  const validLabel = value => typeof value === 'string' && value.trim() === value && value.length && !/[\r\n|<>]/.test(value);
+  for (const name of ['continents', 'countries', 'types']) {
+    const labels = taxonomy[name];
+    if (!labels || Array.isArray(labels) || typeof labels !== 'object' || !Object.keys(labels).length) throw new Error('data/taxonomy.json: neplatná skupina ' + name);
+    for (const [key, value] of Object.entries(labels)) {
+      if (!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(key) || !validLabel(name === 'countries' ? value?.title : value)) throw new Error('data/taxonomy.json: neplatný štítek ' + key);
+      if (name === 'countries' && (!Object.hasOwn(continentNames, value.continent) || value.continent === 'universal')) throw new Error('data/taxonomy.json: neplatná oblast země ' + key);
     }
   }
 }
 
-function main() {
+/** Připraví odvozené přehledy, klientský katalog a kopie veřejných zdrojů v paměti bez zápisu a bez Git historie. */
+function createContentFiles() {
+  generatedFiles.clear();
+  errors.length = 0;
+  validateTaxonomy();
   const catalog = buildCatalog();
-
-  if (errors.length) {
-    for (const error of errors) {
-      console.error(error);
-    }
-    process.exit(1);
-  }
-
+  if (errors.length) throw new Error(errors.join('\n'));
   renderPages(catalog);
   renderTocs(catalog);
-  removeObsoleteGeneratedPages();
-
-  if (!pendingChanges.length) {
-    console.log('Dokumentace je aktuální.');
-    return;
-  }
-
-  console.log(checkOnly ? 'Dokumentace není aktuální:' : 'Aktualizováno:');
-  for (const relPath of pendingChanges) {
-    console.log(`- ${relPath}`);
-  }
-
-  if (checkOnly) {
-    process.exit(1);
-  }
+  writeFile('pruvodce.md', readFile('pruvodce.md'));
+  return new Map(generatedFiles);
 }
 
-main();
+function outputFiles(directory) {
+  if (!fs.existsSync(directory)) return [];
+  if (fs.lstatSync(directory).isSymbolicLink()) throw new Error(directory + ': symbolické odkazy nejsou povolené');
+  return fs.readdirSync(directory, { withFileTypes: true }).flatMap(entry => {
+    const fullPath = path.join(directory, entry.name);
+    if (entry.isSymbolicLink()) throw new Error(fullPath + ': symbolické odkazy nejsou povolené');
+    return entry.isDirectory() ? outputFiles(fullPath) : [fullPath];
+  });
+}
+
+async function main() {
+  if (process.argv.slice(2).some(arg => arg !== '--check')) throw new Error('Podporovaný přepínač: --check');
+  const files = createContentFiles();
+  const { createChangelog } = require('./generate-changelog.cjs');
+  files.set('changelog.md', await createChangelog(root));
+  files.set('manifest.json', JSON.stringify({
+    generatedBy: 'scripts/generate-docs.js',
+    regenerate: 'npm run docs:generate',
+    files: [...files].map(([file, content]) => {
+      const copied = file === 'pruvodce.md' || /^(food|drink)\/.+\.md$/.test(file) && !file.endsWith('/index.md');
+      return {
+        path: file,
+        source: copied ? file : null,
+        kind: copied ? 'copy' : 'derived',
+        sha256: createHash('sha256').update(content).digest('hex'),
+      };
+    }),
+  }, null, 2) + '\n');
+
+  const output = absolute('_generated');
+  const obsolete = outputFiles(output).filter(file => !files.has(toPosix(path.relative(output, file))));
+  // Ověří celý obsah i historii před první změnou výstupů; nikdy nezapisuje do ručních zdrojů.
+  for (const [file, content] of files) {
+    const target = path.join(output, file);
+    if (fs.existsSync(target) && fs.readFileSync(target, 'utf8') === content) continue;
+    pendingChanges.push('_generated/' + file);
+    if (!checkOnly) {
+      fs.mkdirSync(path.dirname(target), { recursive: true });
+      fs.writeFileSync(target, content, 'utf8');
+    }
+  }
+  for (const file of obsolete) {
+    pendingChanges.push(toPosix(path.relative(root, file)) + ' (odstranit)');
+    if (!checkOnly) fs.unlinkSync(file);
+  }
+  if (!pendingChanges.length) return console.log('Dokumentace je aktuální.');
+  console.log(checkOnly ? 'Dokumentace není aktuální; spusťte npm run docs:generate:' : 'Aktualizováno:');
+  for (const file of pendingChanges) console.log('- ' + file);
+  if (checkOnly) process.exitCode = 1;
+}
+
+module.exports = { createContentFiles };
+if (require.main === module) main().catch(error => { console.error(error.message); process.exitCode = 1; });

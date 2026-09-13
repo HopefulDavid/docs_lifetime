@@ -108,7 +108,7 @@ function renderCatalog(root) {
         el('h2', {}, el('a', { href: url(`${recipe.id}.html`) }, recipe.title)),
         el('p', {}, recipe.description),
         recipe.preparation ? el('p', { className: 'recipe-card-preparation' }, el('strong', {}, 'Předem: '), recipe.preparation) : null,
-        el('div', { className: 'recipe-card-actions' }, el('a', { href: url(`${recipe.id}.html`) }, `Postup · ${recipe.steps.length} ${recipe.steps.length < 5 ? 'kroky' : 'kroků'}`), control));
+        el('div', { className: 'recipe-card-actions' }, el('a', { href: url(`${recipe.id}.html`) }, `Postup · ${recipe.steps.length} ${recipe.steps.length === 1 ? 'krok' : recipe.steps.length < 5 ? 'kroky' : 'kroků'}`), control));
     }));
     if (!recipes.length) grid.append(el('div', { className: 'kitchen-empty' }, el('h2', {}, 'Tady zatím nic není'), el('p', {}, 'Zkuste jiný název, surovinu nebo zrušte filtr.'), button('Zrušit filtry', () => { search.value = ''; type.value = ''; onlySelected.checked = false; renderResults(); search.focus(); }, { className: 'kitchen-button' })));
   };

@@ -13,7 +13,7 @@ Projekt kombinuje deterministickou kontrolu generovaných souborů, strukturáln
 
 | Riziko nebo požadavek | Primární důkaz | Projektový vstup |
 |---|---|---|
-| Zastaralý katalog nebo TOC, `REQ-003` a `REQ-E002` | Generátor v režimu bez zápisu | `npm run docs:check` |
+| Zastaralý nebo chybějící docset, `REQ-003` a `REQ-E002` | Přidání, změna, přesun a odstranění receptu; samostatná kontrola bez zápisu včetně changelogu | `tests/generate-docs.test.mjs` a `npm run docs:check` |
 | Vadné odkazy, metadata nebo cache artefakty, `QLT-002` | Strukturální Node.js validátor | `npm run docs:validate` |
 | Nekompatibilní Markdown, šablona nebo DocFX konfigurace, `QLT-001` | Sestavení s varováními jako chybami | `npm run docs:build` |
 | České rozhraní bez editačních odkazů | Node test globálních metadat a tokenů, poté skutečný DocFX build | `npm run test:unit` a `npm run docs:build` |
@@ -26,7 +26,9 @@ Projekt kombinuje deterministickou kontrolu generovaných souborů, strukturáln
 | Zastaralé odškrtnutí a poškozený místní stav, `REQ-011`, `REQ-E005` | Změna dávky a zdrojů, validace uložených dat, export | `tests/kitchen-core.test.mjs` |
 | Návrat starého potvrzení nebo posunutý postup po aktualizaci, `REQ-011` | Změna dávky a návrat, shodná a neshodná revize, starší stav bez revize | `tests/kitchen-core.test.mjs` |
 | Obecný návod zaměněný za recept, `REQ-012` | Izolovaný návod bez ingrediencí zůstane mimo JSON a beze změn; návštěva skutečného průvodce | `tests/generate-docs.test.mjs` a lokální web |
-| Zápis při vadném vstupu | Neplatný recept nesmí přepsat zdroje ani katalog | `tests/generate-docs.test.mjs` |
+| Zápis při vadném vstupu | Neplatný recept, duplicitní surovina a neznámá taxonomie nesmějí přepsat zdroje ani katalog | `tests/generate-docs.test.mjs` |
+| Výstupy chybí po klonování | Nákupní testy vytvářejí katalog ze zdrojů v paměti; generování vytvoří celý ignorovaný docset | `npm test` nad čistou kopií |
+| HTML a JSON se rozcházejí nebo mají nefunkční odkazy | Kontrola veřejných stránek podle manifestu, shody katalogu, fulltextu, statických surovin a počtu kroků, interních odkazů a PDF assetů | `npm run docs:verify-site` automaticky na konci buildu |
 | Mobilní nákup a vaření, `REQ-006` až `REQ-010` | Skutečné ovládání katalogu, nastavení, checklistu a dialogu | [Smoke scénáře](../development/commands.md#výběr-nákup-a-vaření) |
 | Oprávnění, neměnné akce a publikační pořadí, `QLT-004` | Automatická strukturální kontrola workflow a review oddělených jobů | `npm run docs:validate` a `.github/workflows/main.yml` |
 
@@ -107,6 +109,23 @@ Finální průchod potvrdil vrácení vymazaného výběru a fokus na surovině 
 Čisté sestavení odstranilo všechny poruchové fixture; v konzoli běžných stránek nebyla zaznamenána chyba.
 
 Rozhodnutí pro responzivní přehledy a nativní dialog vychází z [W3C reflow](https://www.w3.org/WAI/WCAG22/Understanding/reflow.html), [minimálních dotykových cílů](https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum.html) a [dokumentace dialogu](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/dialog), ověřených 2026-09-13.
+
+### Audit zdrojů a generování, 2026-09-13
+
+Audit zachoval všech 27 ručních receptů a jejich obsah i veřejné URL.
+
+| Oblast | Skutečný důkaz | Hranice |
+|---|---|---|
+| Výchozí verze | 29 testů a standardní build prošly před implementací | `git-cliff` vyžadoval přístup mimo sandbox |
+| Zdrojové testy | 34 testů včetně nových slovníků, prázdné sbírky, ručního indexu, kontroly bez zápisu a odmítnutí mělké historie prošlo v čisté kopii | Obsahová fixture izoluje pouze changelog; samostatný test volá jeho skutečnou připnutou binárku |
+| Rozsah testů | Runner vybírá projektové `tests/**/*.test.mjs`; přítomnost diagnostické kopie již nespouští její testy podruhé | Nové testovací soubory patří do `tests/` |
+| Čerstvá kopie | Úplná skutečná historie, čisté `npm ci`, `npm test` a build vytvořily chybějící výstupy; všechny kontrolní součty ručních souborů zůstaly shodné | Kopie aktuálních pracovních zdrojů, nikoli nové publikování |
+| Statický artefakt | 53 stránek, 27 receptů, úplný fulltext, všechny statické odkazy a PDF assety prošly automatickou kontrolou; dodatečně vložené staré HTML kontrola odmítla | Podmínky kontroly vlastní skript volaný buildem |
+| Vývojový náhled | Uložení nového receptu vytvořilo 28. položku i nový přehled země, vadný vstup zachoval manifest a odstranění receptu vrátilo 27 položek a odstranilo staré soubory | Stránka se obnovuje ručně; build může krátce zpřístupňovat neúplný lokální výstup |
+| Produkční podsložka | V prohlížeči pod `/docs_lifetime/` fungoval katalog, nákup rajské a šunkofleků, cibule 2 ks, vejce 3 ks, PDF datový odkaz a obnova druhého kroku vaření | Ověřen lokální produkční artefakt; GitHub Pages nebyly tímto auditem nasazené |
+| Fulltext a konzole | Dotaz French Press našel odpovídající nápoj pod podsložkou, konzole běžných stránek neměla chyby ani varování | Chromium v Codex; nejde o novou úplnou matici prohlížečů |
+
+Dočasný recept i zkušební nákup byly odstraněné a lokální diagnostické kopie a logy patří do ignorovaného `private/generation-audit/`.
 
 ## Cíl
 

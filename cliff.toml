@@ -4,6 +4,8 @@
 header = """
 # Změny
 
+<!-- Zdroj: Git historie a cliff.toml. Obnova: npm run docs:generate. -->
+
 > Tento soubor se automaticky generuje z úplné Git historie. Neupravujte jej ručně.
 """
 body = """

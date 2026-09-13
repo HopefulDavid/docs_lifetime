@@ -90,6 +90,48 @@ Přepočet surovin nemění časy, teploty ani číselné údaje uvnitř textu p
 
 Krok odpovídající celé volitelné skupině obsahuje za nadpisem komentář `<!-- recipe-group: Název skupiny -->`, aby režim vaření připomněl vynechanou přílohu.
 
+## Přidání nového receptu
+
+1. Vytvoř jeden ruční Markdown soubor v `food/<oblast>/<země>/<typ>/<nazev>.md` nebo `drink/<oblast>/<země>/<typ>/<nazev>.md`; jídlo bez konkrétního původu používá `food/universal/<typ>/<nazev>.md`.
+2. Segmenty cesty piš malými písmeny bez diakritiky, slova odděluj pomlčkou a nepoužívej název `index.md`, který je vyhrazený odvozeným přehledům.
+3. Oblast, zemi a typ vyber z [`data/taxonomy.json`](../../data/taxonomy.json); novou skutečnou kategorii doplň jednou sem včetně českého názvu a u země její oblasti.
+4. Napiš název, popis, suroviny a postup podle [struktury](#struktura); množství, časy, přípravu předem, pomůcky a alternativy musí dodat autor podle skutečného receptu.
+5. Použij názvy ze [slovníku surovin](../../data/ingredients.json); novou surovinu doplň právě jednou do správného oddělení, existující název do dalšího oddělení nekopíruj.
+6. Spusť vývojový náhled nebo sestavení podle [projektových příkazů](../development/commands.md#spuštění), zkontroluj recept v katalogu, nákupu a režimu vaření a proveď úplnou kontrolu před commitem.
+7. Commituj zdrojový recept, případnou změnu slovníku a související ruční dokumentaci podle [workflow](../development/workflow.md); výstupní adresáře se necommitují.
+
+Pořadí oblastí a typů odpovídá pořadí klíčů v taxonomii, země a recepty se řadí podle českého názvu.
+
+Nová země nebo typ nevyžaduje ruční založení přehledu ani úpravu navigace, konfigurace DocFX, klientského JSON nebo testovacích dat.
+
+Přesný rozsah automaticky odvozovaných údajů a umístění výstupů vlastní [architektura dat](../architecture/overview.md#odvozená-data-a-rozsah-automatizace).
+
+Při úpravě receptu měň stejný zdrojový soubor; odstranění posledního receptu automaticky odstraní také nepotřebný přehled a navigační položku při příštím generování a jeho HTML při čistém sestavení.
+
+Přejmenování souboru změní veřejnou URL a identitu uloženého výběru, proto již publikované cesty měň pouze s promyšlenou [kompatibilitou a obnovou](../operations/runbook.md#rollback-a-bezpečné-pokračování).
+
+### Nejmenší úplný autorský příklad
+
+Následující ukázka demonstruje formát, nikoli nový recept určený k publikování.
+
+```markdown
+# Příprava cibule
+
+Cibule připravená jako základ dalšího vaření.
+
+## Ingredience
+
+| Surovina | Množství | Upřesnění |
+|---|---|---|
+| Cibule | 2 ks | — |
+
+## Postup
+
+### 1. Krájení
+
+- Cibuli oloupejte a nakrájejte nadrobno.
+```
+
 ## Obsahová revize
 
 Množství již uvedené v postupu lze přenést do tabulky, aby nákup neztratil surovinu potřebnou při vaření.

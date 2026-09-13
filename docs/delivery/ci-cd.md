@@ -35,9 +35,9 @@ Přesné lokální příkazy jsou v [`../development/commands.md`](../developmen
 |---|---|---|---|
 | Obnova JavaScript nástrojů | `npm ci --ignore-scripts --no-audit --no-fund` | Node.js z `actions/setup-node` a npm cache podle lockfilu | Úspěšná čistá instalace |
 | Obnova DocFX | `dotnet tool restore` | .NET 8 z `actions/setup-dotnet` | Přesná verze z tool manifestu |
-| Kontrola zdrojů | `npm test` | Čtecí checkout s úplnou historií | Hledací, negativní a changelogové testy, generované soubory a strukturální validace projdou |
-| Sestavení | `npm run docs:build` | Varování DocFX jsou chybou | `_site/` z jednoho checkoutu |
-| Changelog | `npm run changelog:generate` jako součást sestavení | Každý build s úplnou historií | Ignorovaný `changelog.md` zahrnutý do `_site/` |
+| Kontrola zdrojů | `npm test` | Čtecí checkout s úplnou historií | Testy nad zdroji, automatická příprava docsetu, kontrola opakovatelnosti a strukturální validace projdou |
+| Sestavení | `npm run docs:build` | Varování DocFX jsou chybou a následuje kontrola veřejného artefaktu | `_site/` z jednoho checkoutu, platné odkazy, fulltext a shoda receptů |
+| Changelog | Společný generátor jako součást sestavení | Každý build s úplnou historií | `_generated/changelog.md` zahrnutý do `_site/` |
 
 Generátor vždy přepisuje changelog z celé dosažitelné historie a `tag_pattern = "^$"` záměrně vypíná release segmentaci, takže Git tag neodřízne starší záznamy.
 
@@ -103,7 +103,9 @@ Statický artefakt se v publikačním jobu sestaví jednou a beze změny se ode�
 | Ruční spuštění na jiné větvi | Pouze `verify-docs` | Obnova, `npm test`, sestavení bez varování | `contents: read` | Podmínka jobu zabrání publikování |
 | Tag nebo release | Žádný samostatný tok | — | — | Projekt nepoužívá verzované release artefakty |
 
-Publikační job nikdy nezapisuje do `main`; changelog vzniká pouze v jeho dočasném workspace a nasazovací větev obsahuje jediný orphan commit posledního artefaktu.
+Publikační job nikdy nezapisuje do `main`; docset v `_generated/` vzniká automaticky z ručních zdrojů a nasazovací větev obsahuje jediný orphan commit posledního artefaktu.
+
+Oznámení čte `_generated/changelog.md`; jeho cesta je stejná jako vstup sestavení.
 
 ### Ochrana větví
 
@@ -136,7 +138,7 @@ Projekt používá průběžné vydávání z větve `main` bez samostatného č
 | Krok | Spouštěč | Kanonický nástroj nebo soubor | Ověření |
 |---|---|---|---|
 | Ověření zdroje | Push nebo ruční běh na `main` | `npm test` a `npm run docs:build` | Job `verify-docs` projde |
-| Vytvoření historie změn | Sestavení artefaktu | `cliff.toml`, uzamčený `git-cliff` a `npm run changelog:generate` | Ignorovaný changelog odpovídá úplné dosažitelné historii bez ohledu na tag a časové pásmo procesu |
+| Vytvoření historie změn | Sestavení artefaktu | `cliff.toml`, uzamčený `git-cliff` a společný generátor | Ignorovaný changelog odpovídá úplné dosažitelné historii bez ohledu na tag a časové pásmo procesu |
 | Sestavení artefaktu | Ověřený checkout publikačního jobu | `npm run docs:build` | DocFX skončí bez varování a chyb |
 | Publikování | Úspěšné sestavení | `peaceiris/actions-gh-pages` | Veřejný smoke GitHub Pages |
 | Oznámení | Úspěšné nasazení | `dawidd6/action-send-mail` | Výsledek kroku v logu, selhání je neblokující |

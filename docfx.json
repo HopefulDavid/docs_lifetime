@@ -2,20 +2,13 @@
   "build": {
     "content": [
       {
-        "files": [
-          "index.md",
-          "nakup.md",
-          "pruvodce.md",
-          "changelog.md",
-          "toc.yml",
-          "food/**/*.{md,yml}",
-          "drink/**/*.{md,yml}"
-        ]
+        "src": "_generated",
+        "files": ["**/*.{md,yml}"]
       }
     ],
     "output": "_site",
     "resource": [
-      { "files": ["data/recipes.json"] },
+      { "files": ["data/recipes.json"], "src": "_generated" },
       { "files": ["pdfmake.min.js", "vfs_fonts.js"], "src": "node_modules/pdfmake/build", "dest": "public" },
       { "files": ["LICENSE"], "src": "node_modules/pdfmake", "dest": "public/licenses/pdfmake" }
     ],

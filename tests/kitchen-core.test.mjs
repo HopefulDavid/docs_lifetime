@@ -1,12 +1,12 @@
 import assert from 'node:assert/strict';
-import { readFileSync } from 'node:fs';
 import { createRequire } from 'node:module';
 import test from 'node:test';
 import { buildShoppingList, cookingProgress, filterShoppingItems, parseQuantity, pruneShoppingState, recipeSettings, restoreState, selectedIngredients, shoppingAmount, shoppingNeedsAmount, shoppingText } from '../templates/kitchen/public/kitchen-core.mjs';
 
 const require = createRequire(import.meta.url);
 const { parseRecipeContent } = require('../scripts/recipe-content.cjs');
-const catalog = JSON.parse(readFileSync(new URL('../data/recipes.json', import.meta.url), 'utf8'));
+const { createContentFiles } = require('../scripts/generate-docs.js');
+const catalog = JSON.parse(createContentFiles().get('data/recipes.json'));
 const recipe = slug => catalog.recipes.find(item => item.id.endsWith(`/${slug}`));
 const list = selections => buildShoppingList(catalog.recipes, selections, catalog.departments);
 

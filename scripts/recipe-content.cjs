@@ -1,6 +1,24 @@
 const departments = require('../data/ingredients.json');
-const names = new Map(Object.entries(departments).flatMap(([category, values]) => values.map(name => [name, category])));
+const names = new Map();
 const identifier = text => text.normalize('NFD').replace(/\p{M}/gu, '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+
+if (!departments || Array.isArray(departments) || typeof departments !== 'object' || !Object.keys(departments).length) {
+  throw new Error('data/ingredients.json: slovník musí obsahovat nákupní oddělení');
+}
+const normalizedNames = new Set();
+for (const [category, values] of Object.entries(departments)) {
+  if (!category.trim() || category !== category.trim() || !Array.isArray(values) || !values.length) {
+    throw new Error(`data/ingredients.json: neplatné oddělení '${category}'`);
+  }
+  for (const name of values) {
+    if (typeof name !== 'string' || !identifier(name) || name !== name.trim() || /[|\r\n]/.test(name) || name.includes(' nebo ')) {
+      throw new Error(`data/ingredients.json: neplatný název suroviny v '${category}'`);
+    }
+    if (normalizedNames.has(identifier(name))) throw new Error(`data/ingredients.json: duplicitní surovina '${name}'`);
+    names.set(name, category);
+    normalizedNames.add(identifier(name));
+  }
+}
 
 /** Načte jednotné tabulky surovin a kroky z autoritativního Markdownu nebo odmítne neplatný recept. */
 function parseRecipeContent(content, file) {
@@ -47,6 +65,7 @@ function parseRecipeContent(content, file) {
     if (cells.length !== 3 || cells.some(value => !value)) fail('neúplný řádek ingrediencí');
     const [name, quantity, rawNote] = cells;
     const options = name.split(' nebo ');
+    if (new Set(options).size !== options.length) fail(`opakovaná alternativa '${name}'`);
     for (const option of options) if (!names.has(option)) fail(`neznámá surovina '${option}' v data/ingredients.json`);
     if (!groups.some(item => item.id === group.id)) groups.push(group);
     const id = `${group.id}-${identifier(name)}`;

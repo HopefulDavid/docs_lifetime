@@ -65,7 +65,7 @@ Diagram ukazuje vývojový a publikační kontext, nikoli vnitřní kroky gener�
 ## 4. Strategie řešení
 
 - Zdrojové recepty jsou autoritativní a přehledy jsou jejich odstranitelná projekce.
-- Generátor používá pouze standardní knihovnu Node.js a synchronní I/O vhodné pro krátký jednorázový build.
+- Obsahový generátor používá standardní knihovnu Node.js a synchronní I/O; historii odvozuje již přijatý `git-cliff`.
 - DocFX převádí omezený produktový obsah do statického webu a interní projektovou dokumentaci nezahrnuje do veřejného artefaktu.
 - Lokální prostředí i CI volají stejné skripty z [`../development/commands.md`](../development/commands.md).
 - Publikování probíhá až po samostatném ověření a sestavení bez varování.
@@ -74,9 +74,9 @@ Diagram ukazuje vývojový a publikační kontext, nikoli vnitřní kroky gener�
 
 ```mermaid
 flowchart LR
-    S[Zdrojové recepty] --> G[Generátor katalogu]
-    G --> I[Generované indexy a TOC]
-    S --> D[DocFX]
+    S[Zdrojové recepty a slovníky] --> G[Generátor katalogu]
+    G --> I[Izolovaný docset _generated]
+    S -->|obnovitelné kopie| I
     I --> D
     T[Vlastní šablona] --> D
     D --> W[Statický web]
@@ -92,12 +92,12 @@ Diagram ukazuje jednosměrné odvozování výstupů a odděluje obsahovou a zm�
 | Blok | Odpovědnost | Veřejná hranice | Povolené závislosti | Vlastník dat |
 |---|---|---|---|---|
 | Zdrojový obsah | Definuje recept nebo nápoj | Markdown soubor v podporované cestě | Žádná generovaná stránka | Správce obsahu |
-| `scripts/generate-docs.js` | Ověří celý obsah a poté sestaví katalog, přehledy, TOC a klientská data bez změn receptů | npm skripty `docs:generate` a `docs:check` | Node.js standardní knihovna a zdrojový obsah | Engineering |
+| `scripts/generate-docs.js` | Ověří celý obsah a poté sestaví katalog, přehledy, TOC, changelog a klientská data bez změn receptů | npm skripty `docs:generate` a `docs:check` | Node.js, zdrojový obsah, slovníky a `git-cliff` | Engineering |
 | Parser receptů | Ověřuje tabulky, kanonické názvy, stabilní identifikátory a navazující kroky | `scripts/recipe-content.cjs` | Zdrojové recepty a `data/ingredients.json` | Engineering |
 | Klientská kuchařka | Řídí výběr, nákup, vlastní množství a vaření | `templates/kitchen/public/kitchen.mjs` | DOM, standardní webová API, `kitchen-core.mjs` a generovaný `data/recipes.json` | Engineering |
 | Doménové jádro nákupu | Slučuje množství a validuje lokální stav | `templates/kitchen/public/kitchen-core.mjs` | Pouze standardní JavaScript | Engineering |
 | PDF export | Převádí aktuální exportní náhled na stránkovaný soubor | `templates/kitchen/public/kitchen-pdf.mjs` | DOM náhledu a odloženě načtené lokální assety pdfmake podle [ADR-0005](decisions/ADR-0005-pdf-export-v-prohlizeci.md) | Engineering |
-| Generované přehledy | Poskytují odvozenou navigaci a katalog | `index.md` a `toc.yml` v produktovém stromu | Pouze generátor | Generátor |
+| Generovaný docset | Obsahuje odvozenou navigaci, katalog a kopie veřejného Markdownu | Ignorovaný `_generated/`, jeho manifest a `docfx.json` | Pouze ruční zdroje a generátor | Generátor |
 | Changelog | Odvozuje veřejný přehled úplné historie po ročních obdobích a uvnitř zachovává kategorie | `cliff.toml` a npm skript | Git historie a `git-cliff` uzamčený npm lockfilem; výstup je ignorovaný build vstup | Delivery |
 | DocFX sestavení | Čistí starý výstup a převádí produktový Markdown a YAML do HTML a indexu hledání | `docs:clean`, `docfx.json` a lokální .NET tool manifest | Obsah, přehledy, changelog a šablona | Engineering |
 | Vlastní šablona | Přizpůsobuje vzhled, české popisky a klientské vstupy moderního tématu a ponechává příspěvkový blok DocFX vypnutý | `templates/kitchen/` a `docfx.json` | Podporované veřejné assety, tokeny a globální metadata DocFX | Design a engineering |
@@ -110,13 +110,13 @@ Závislosti tečou pouze směrem ke generovanému výstupu a zdrojový obsah nik
 
 Úvod odděluje dostupné oblasti života od katalogu receptů a zachovává jeho přímou kotvu `#recepty`.
 
-Veřejný `pruvodce.md` je ručně udržovaný obecný návod výslovně zahrnutý v `docfx.json`; generátor receptů ho nečte ani nepřepisuje.
+Veřejný `pruvodce.md` je ručně udržovaný obecný návod, jehož kopii generátor výslovně připravuje do veřejného docsetu; neparsuje jej jako recept ani nepřepisuje jeho zdroj.
 
 Klientské kuchařské rozšíření načítá receptový JSON pouze pro katalog, nákup a stromy `food/` a `drink/`.
 
 Ostatní stránky používají společnou navigaci, motiv a fulltext bez nákupní lišty a receptového editoru.
 
-Nová skutečná obsahová oblast dostane vlastní adresář mimo receptové stromy, explicitní vstup v `docfx.json` a odkaz v generátoru úvodu a kořenového TOC.
+Nová skutečná obsahová oblast dostane vlastní adresář mimo receptové stromy, explicitní výběr zdrojů v generátoru docsetu a odkaz v generátoru úvodu a kořenového TOC.
 
 Její obsahový kontrakt se určí podle konkrétního použití; prázdné kategorie, univerzální schéma kroků ani další aplikační framework se předem nezavádějí.
 
@@ -127,7 +127,7 @@ Interní `docs/` a `private/` se kvůli novému tématu nesmějí plošně přid
 | Scénář | Navázaný požadavek | Konzistenční hranice | Selhání a zotavení |
 |---|---|---|---|
 | Lokální změna obsahu | `REQ-003`, `REQ-E001`, `REQ-E002` | Jedno spuštění generátoru nejprve načte a ověří celý katalog a poté zapisuje odvozené soubory | Chyba vypíše soubor a ukončí proces nenulově, správce opraví zdroj a spustí kontrolu znovu |
-| Ověření změny | `QLT-001`, `QLT-002` | `npm test` ověřuje nulový rozdíl generátoru a strukturu repozitáře | Pull request ani větev se nesmějí publikovat při selhání |
+| Ověření změny | `QLT-001`, `QLT-002` | `npm test` odvozuje výstupy z aktuálních zdrojů, ověřuje jejich determinismus a strukturu repozitáře | Pull request ani větev se nesmějí publikovat při selhání |
 | Publikování `main` | `REQ-004` | Jeden publikační job v dočasném workspace vygeneruje changelog, sestaví `_site/` a nasadí tentýž artefakt bez změny `main` | Selhání před nasazením zachová předchozí web, po opravě lze workflow bezpečně zopakovat |
 | Čtení receptu | `REQ-001`, `REQ-002` | Jedna verze statických souborů na GitHub Pages | Chybějící cesta vrátí 404 a správce ověří zdroj, TOC a nasazený commit |
 | Hledání | `REQ-005` | Worker jednou připraví statický `index.json` a každý dotaz vyžaduje shodu všech normalizovaných slov | Dotaz bez shody zobrazí českou nulovou informaci a klientská chyba se diagnostikuje konzolí a smoke scénářem |
@@ -137,7 +137,7 @@ Interní `docs/` a `private/` se kvůli novému tématu nesmějí plošně přid
 
 | Datová oblast | Autoritativní zdroj | Vlastník | Konzistence | Retence a mazání | Migrace |
 |---|---|---|---|---|---|
-| Recepty a nápoje | Verzované Markdown soubory pod `food/` a `drink/` | Správce obsahu | Git commit | Git historie podle repozitáře, odstranění přes běžnou změnu | Přesuny cest musí aktualizovat nebo přesměrovat veřejné odkazy |
+| Recepty a nápoje | Ruční verzované Markdown soubory pod `food/` a `drink/` | Správce obsahu | Git commit | Git historie podle repozitáře, odstranění přes běžnou změnu | Přesuny cest musí aktualizovat nebo přesměrovat veřejné odkazy |
 | Katalog a navigace | Generátor a zdrojový obsah | Generátor | Přepočet při každé změně | Výstupy lze odstranit a znovu vytvořit | Změna struktury vyžaduje kompatibilní úpravu parseru cest |
 | Changelog | Git historie a `cliff.toml` | Delivery | Regenerace při každém sestavení | Ignorovaný lokální výstup a kopie ve statickém artefaktu | Nejnovější rok změn zůstává otevřený, roky bez změn se nezobrazují a starší zobrazené roky jsou sbalené; změna formátu nesmí skrýt dosažitelný commit |
 | Statický web | `_site/` vytvořený z jednoho checkoutu | Build | Neměnný artefakt jednoho běhu | Lokálně ignorovaný, publikovaná kopie se nahrazuje nasazením | Nová verze se nasazuje bez runtime datové migrace |
@@ -151,13 +151,35 @@ Přesnou datovou hranici a rizika přijímá [ADR-0004](decisions/ADR-0004-nakup
 
 ### Odvozená data a rozsah automatizace
 
+Odvozování probíhá výhradně z ručních zdrojů do ignorovaného `_generated/` a odtud přes DocFX do ignorovaného `_site/` podle [ADR-0006](decisions/ADR-0006-izolovane-generovani-docsetu.md).
+
+Přehledy, navigace, nákupní stránka, receptový JSON a changelog se již neudržují ani neverzují mezi ručními zdroji.
+
+`_generated/manifest.json` označuje každý výstup jako odvozený soubor nebo kopii s cestou k ručnímu originálu a uvádí jeho SHA-256 i způsob regenerace.
+
+Markdown přehledy a TOC mají komentář se zdrojem a příkazem obnovy; receptový JSON obsahuje `generatedFrom`, zatímco kopie receptů zachovávají obsah originálu s normalizovanými konci řádků.
+
+Generátor připraví celý docset a changelog v paměti před prvním zápisem a odstraní nepotřebné soubory pouze uvnitř `_generated/`.
+
+Chybný recept, neznámé zařazení, duplicitní surovina nebo neúplná Git historie tak nezmění dosavadní výstupy; selhání samotného zápisu lze napravit opakováním generování.
+
+Kontrolní režim stejným výpočtem porovná chybějící, změněné i nadbytečné soubory a nic nezapisuje ani nemaže.
+
+Před každým sestavením se výstupy automaticky obnoví a ověří, takže čerstvý checkout nepotřebuje předem vytvořený katalog.
+
+Hotový web se ověří proti manifestu docsetu a klientskému katalogu včetně odkazů, fulltextu, kroků a PDF assetů; obě prostředí proto odmítnou stejný neúplný artefakt.
+
+DocFX mapuje `_generated/` na kořen webu, proto se veřejné cesty ani identifikátory receptů přesunem odvozených souborů nemění.
+
+Interní dokumentace, ruční slovníky, manifest původu ani soukromé materiály nejsou veřejnými resource vstupy.
+
 | Údaj | Jediný zdroj | Automatické odvození a kontrola |
 |---|---|---|
 | Název, popis, suroviny, skupiny a kroky receptu | Markdown konkrétního receptu | Parser nejprve ověří celou sbírku a teprve potom generátor zapíše výstupy |
-| Názvy surovin a oddělení obchodu | `data/ingredients.json` | Parser odmítá neznámé názvy; klient slučuje pouze stejný produkt se slučitelnou jednotkou |
-| Počty, odkazy, typy, původ a veřejné přehledy | Cesty a obsah receptů, pojmenování v generátoru | Generované Markdown seznamy, karty a TOC kontroluje `docs:check` |
+| Názvy surovin a oddělení obchodu | `data/ingredients.json` | Parser odmítá neznámé názvy i duplicity mezi odděleními; klient slučuje pouze stejný produkt se slučitelnou jednotkou |
+| Počty, odkazy, typy, původ a veřejné přehledy | Cesty a obsah receptů, české názvy a příslušnost zemí v `data/taxonomy.json` | Generované Markdown seznamy, karty a TOC kontroluje `docs:check` |
 | Příprava předem | První odstavec `## Než začnete` | Katalog přebírá text bez odhadování času |
-| Revize receptu | Celý Markdown s normalizovanými konci řádků a oříznutými okraji | SHA-256 se ukládá do `data/recipes.json` a rozvařeného stavu; neshodná či chybějící revize zahodí pouze starý průběh |
+| Revize receptu | Celý Markdown s normalizovanými konci řádků a oříznutými okraji | SHA-256 se ukládá do `_generated/data/recipes.json` a rozvařeného stavu; neshodná či chybějící revize zahodí pouze starý průběh |
 | Receptový JSON | Stejné zdroje jako přehledy | `generatedFrom` popisuje původ; JSON se neupravuje ručně a je součástí deterministické kontroly |
 | Changelog | Úplná Git historie a `cliff.toml` | Stávající uzamčený `git-cliff` běží v kontrolách, buildu i CI; není potřeba další generátor ani ruční přepis |
 | Fulltext | Veřejné HTML vytvořené DocFX | DocFX sestaví index pro recepty i obecné návody; vlastní worker řeší normalizaci dotazu |
@@ -170,7 +192,11 @@ Změny receptu a JSON se nasazují v jednom statickém artefaktu; nesoulad počt
 
 Počet porcí, chybějící množství, součet doby přípravy, výživa, alergeny a přepočty lžic na gramy se automaticky neodhadují, protože současné zdroje k nim nedávají spolehlivý podklad.
 
-Databáze, CMS, univerzální obsahový registr ani generování druhé kopie receptů by za současného rozsahu zvýšily počet míst údržby bez odpovídajícího přínosu.
+Databáze, CMS ani druhá ručně udržovaná reprezentace receptů nejsou potřeba; build kopie v izolovaném docsetu jsou plně obnovitelné.
+
+Přesné uzamčené závislosti jsou zvláštní případ strojově vytvořeného vstupu: `package-lock.json` se commituje spolu s manifestem, protože určuje reprodukovatelnou obnovu nástrojů.
+
+Kód v `templates/kitchen/` je ruční projektový zdroj i u názvu `search-worker.min.js`; převzaté licence a distribuční assety vlastní [politika závislostí](../development/dependencies.md).
 
 ## 8. Nasazení a provozní topologie
 
@@ -188,7 +214,7 @@ Přesné kroky nasazení jsou v [`../delivery/ci-cd.md`](../delivery/ci-cd.md) a
 |---|---|---|---|
 | Cesty obsahu | Sekce, oblast, země a typ mají stabilní segmenty definované generátorem | Parser cest a strukturální kontrola | Univerzální jídla nemají zemi |
 | Lokalizace | Obsah, navigace, popisky šablony a HTML jazyk jsou české, příspěvkový blok se negeneruje a hledání zpracuje české i anglické termíny z indexu | Zdrojový Markdown, `token.json`, `_lang`, `_disableContribution` a jazykově nezávislá normalizace Unicode | Skloňování, stemming, překlad, synonyma a tolerance překlepů zůstávají mimo rozsah |
-| Determinismus | Stejný zdroj a verze nástrojů vytvářejí stejný katalog a web | Lockfile, tool manifest a režim `--check` | Changelog se mění s Git historií |
+| Determinismus | Stejný zdroj a verze nástrojů vytvářejí stejný docset a obsah webu | Lockfile, tool manifest a režim `--check` | Changelog se mění s Git historií |
 | Konfigurace | Strojové volby zůstávají v manifestech a workflow | `package.json`, `.config/dotnet-tools.json`, `docfx.json` a workflow | Význam a použití vysvětlují kanonické dokumenty |
 | Chyby | Vadný zdroj zastaví ověření před publikováním | Nenulové exit kódy a závislost publikačního jobu na ověření | E-mailové oznámení je záměrně neblokující |
 
@@ -218,7 +244,7 @@ Dřívější `DELIVERY-RISK-001` uzavřely aktivní GitHub rulesety pro `main` 
 |---|---|
 | Zdrojový obsah | Ručně udržovaný veřejný Markdown; recept nebo nápoj je jeho doménový typ |
 | Generovaný přehled | Odstranitelný Markdown nebo YAML soubor vytvořený `scripts/generate-docs.js` |
-| Produktový docset | Soubory explicitně zahrnuté v `docfx.json`, které smějí vstoupit do veřejného webu |
+| Produktový docset | Obnovitelný obsah `_generated/` vybraný generátorem z veřejných zdrojů a zahrnutý v `docfx.json` |
 | Statický artefakt | Obsah `_site/` vytvořený DocFX z jednoho zdrojového stavu |
 | Ověřovací job | CI job bez zapisovacího tokenu a publikačních tajemství |
 | Publikační job | CI job pro `main`, který v dočasném workspace vytvoří changelog, nasadí artefakt a odešle oznámení bez změny zdrojové větve |

@@ -52,33 +52,41 @@ Spusť příkazy z kořene repozitáře v uvedeném pořadí.
 
 | Varianta | Pracovní adresář | Přesný příkaz | Výstup | Úspěch znamená |
 |---|---|---|---|---|
-| Přepočet katalogu a navigace | Kořen repozitáře | `npm run docs:generate` | Verzované `index.md`, `toc.yml`, `nakup.md` a `data/recipes.json` | Generátor skončí kódem 0 a vypíše změněné cesty nebo aktuální stav |
+| Příprava celého docsetu | Kořen repozitáře | `npm run docs:generate` | Ignorovaný `_generated/` včetně changelogu a manifestu původu | Generátor ověří vstupy, obnoví výstupy, odstraní nadbytečné soubory a vypíše změněné cesty nebo aktuální stav |
 | Vyčištění statického výstupu | Kořen repozitáře | `npm run docs:clean` | Odstraněný ignorovaný adresář `_site/` | Staré stránky nemohou zůstat v následujícím artefaktu |
-| Vývojové sestavení | Kořen repozitáře | `npm run docs:build` | Ignorovaný `changelog.md` a adresář `_site/` | Changelog, katalog, navigace a připnutý DocFX projdou bez varování |
-| Produkční sestavení | Kořen repozitáře | `npm run docs:build` | Stejný ignorovaný changelog a adresář `_site/` | Vznikne tentýž typ artefaktu, který publikuje CI |
+| Vývojové sestavení | Kořen repozitáře | `npm run docs:build` | Ignorované `_generated/` a `_site/` | Automatická příprava, validace, připnutý DocFX a kontrola hotového webu projdou bez varování |
+| Produkční sestavení | Kořen repozitáře | `npm run docs:build` | Stejné `_generated/` a `_site/` | Vznikne tentýž typ artefaktu, který publikuje CI |
 
 Vývojové a produkční sestavení se liší pouze prostředím spuštění, nikoli projektovým vstupem.
 
 ## Spuštění
 
-Nejdříve vytvoř `_site/` příkazem `npm run docs:build`.
+Oba náhledové příkazy nejprve automaticky provedou společné sestavení, takže fungují i bez předchozích výstupů.
 
 | Scénář | Pracovní adresář | Přesný příkaz | Adresa nebo rozhraní | Bezpečné zastavení |
 |---|---|---|---|---|
-| Hlavní lokální náhled | Kořen repozitáře | `npm run docs:serve` | `http://127.0.0.1:8765/` | `Ctrl+C` v běžícím terminálu |
+| Jednorázový lokální náhled | Kořen repozitáře | `npm run docs:serve` | `http://127.0.0.1:8765/` | `Ctrl+C` v běžícím terminálu |
+| Průběžné ladění obsahu a šablony | Kořen repozitáře | `npm run docs:dev` | Stejná adresa; změna zdroje automaticky spustí nové sestavení | `Ctrl+C` ukončí sledování i vlastní podprocesy |
 
-Lokální server zpřístupňuje pouze již sestavený statický adresář a neprovádí hot reload.
+`docs:dev` zachytí přidání, změnu a odstranění zdrojových souborů i nové adresáře; ignoruje vlastní výstupy a řadí sestavení za sebou, aby se nepřepisovala souběžně.
 
-Po změně zdroje web znovu sestav a stránku obnov.
+Při chybě vypíše konkrétní příčinu a po dalším uložení zkusí sestavení znovu; úspěch oznámí textem „Náhled je aktuální“.
+
+Prohlížeč po oznámeném úspěchu obnov ručně, protože projekt nevkládá klientský hot reload.
+
+`docs:serve` provede sestavení jednou při spuštění; při dalších úpravách použij průběžný náhled nebo znovu spusť sestavení.
+
+Na stejném portu spouštěj pouze jeden náhled a během průběžného náhledu nespouštěj další build ve stejném checkoutu.
 
 ## Statické kontroly
 
 | Kontrola | Přesný příkaz | Rozsah | Oprava formátu | Očekávaný výsledek |
 |---|---|---|---|---|
 | Cílené automatické testy | `npm run test:unit` | Hledání, obsahový kontrakt, nákup, obnova stavu, chybové vstupy generátoru a changelog v dočasném Git repozitáři | Ruční oprava příslušného modulu nebo konfigurace | Všechny scénáře projdou a dočasné kopie se odstraní |
-| Konzistence generovaných souborů | `npm run docs:check` | Nejprve obnoví ignorovaný changelog, potom ověří recepty, nápoje, katalog, přehledy a TOC | `npm run docs:generate` | `Dokumentace je aktuální.` a kód 0 |
+| Konzistence generovaných souborů | `npm run docs:check` | Bez zápisu porovná celý `_generated/` včetně changelogu, kopií zdrojů, manifestu a nepotřebných souborů | `npm run docs:generate` | `Dokumentace je aktuální.` a kód 0 |
 | Struktura dokumentace | `npm run docs:validate` | Interní odkazy, kanonická metadata, adaptéry, pracovní záznamy a zakázané artefakty | Ruční oprava zdroje | Souhrn platných Markdown souborů a kód 0 |
-| Úplná rychlá kontrola | `npm test` | Cílené testy, generované soubory a strukturální validace | Podle konkrétního výstupu | Všechny tři vrstvy projdou |
+| Úplná rychlá kontrola | `npm test` | Testy nad aktuálními zdroji, automatické generování, kontrola opakovatelnosti a strukturální validace | Podle konkrétního výstupu | Všechny vrstvy projdou i v čerstvém checkoutu |
+| Kontrola hotového webu | `npm run docs:verify-site` | Shoda HTML, JSON a fulltextu, odkazy a PDF assety | Oprava zdrojů a nový build | Souhrn ověřených stránek a receptů; běží automaticky na konci buildu |
 | DocFX s varováními jako chybami | `npm run docs:build` | Produktový docset a vlastní šablona | Ruční oprava zdroje nebo konfigurace | `Build succeeded`, 0 varování a 0 chyb |
 
 Projekt nemá samostatný obecný formatter, JavaScript linter ani typovou kompilaci.
@@ -92,7 +100,7 @@ Strategie výběru testů je v [`../quality/testing.md`](../quality/testing.md).
 | Úroveň | Přesný příkaz nebo scénář | Potřebné služby | Výstupní artefakty | Typická doba nebo rozsah |
 |---|---|---|---|---|
 | Rychlé chování | `npm run test:unit` | Lokální Git a obnovený `git-cliff` | Konzolový výstup všech scénářů | Jednotky sekund bez obnovy nástrojů |
-| Cílený test generátoru | `npm run docs:check` | Obnovený `git-cliff` a lokální Git | Konzolový seznam očekávaných změn při selhání | Sekundy, changelog a celý obsahový katalog |
+| Cílený test generátoru | `npm run docs:check` | Obnovený `git-cliff`, úplný lokální Git a připravený docset | Konzolový seznam očekávaných změn při selhání; nic neopravuje | Sekundy, celý docset |
 | Automatizované testy | `npm test` | Lokální Git historie a obnovený `git-cliff` | Konzolový výstup | Sekundy, celý repozitář |
 | Integrační sestavení | `npm run docs:build` | Obnovený lokální DocFX | `_site/`, `index.json` a `manifest.json` | Jednotky sekund |
 | Vizuální scénáře | `npm run docs:serve`, poté kroky z reprezentativního smoke scénáře | Lokální HTTP port 8765 a prohlížeč | Viditelná stránka, volitelný screenshot a konzole | Úvod, hledání, detail a chybová cesta |
@@ -100,7 +108,7 @@ Strategie výběru testů je v [`../quality/testing.md`](../quality/testing.md).
 
 ## Changelog
 
-Každé sestavení odvozuje ignorovaný `changelog.md` z úplné Git historie a zahrne jej do statického artefaktu.
+Každé sestavení odvozuje `_generated/changelog.md` z úplné Git historie a zahrne jej do statického artefaktu.
 
 Konfigurace v [`../../cliff.toml`](../../cliff.toml) zachovává nekonvenční commity, uvádí přesný zdrojový commit a celkový počet záznamů a seskupuje změny podle kalendářního roku v časovém pásmu `Europe/Prague`.
 
@@ -115,9 +123,11 @@ Soubor není verzovaný a nevytváří samostatný commit.
 | Účel | Přesný příkaz | Vedlejší účinek | Očekávaný výsledek |
 |---|---|---|---|
 | Náhled bez zápisu | `npm exec -- git-cliff --config cliff.toml` | Žádný soubor se nezmění | Úplný Markdown na standardním výstupu |
-| Vytvoření vstupu pro sestavení | `npm run changelog:generate` | Přepíše pouze ignorovaný `changelog.md` | Úplný přehled s identitou zdroje, otevřeným nejnovějším obdobím, sdělením o vynechávání roků bez změn, sbalenými staršími roky, počty změn a kategoriemi |
+| Samostatný náhled changelogu | `npm run changelog:generate` | Přepíše pouze `_generated/changelog.md`; úplný manifest obnovuje `docs:generate` | Úplný přehled s identitou zdroje, otevřeným nejnovějším obdobím, sdělením o vynechávání roků bez změn, sbalenými staršími roky, počty změn a kategoriemi |
 
-`npm run docs:build` tento krok spouští automaticky před DocFX.
+`npm run docs:build` používá stejné odvození changelogu prostřednictvím celkového generování před DocFX.
+
+Chybějící Git metadata nebo mělká historie zastaví generování; nástroj nevytváří náhradní changelog ani nepoužije starý soubor.
 
 ## Reprezentativní smoke scénář
 
@@ -151,25 +161,13 @@ Nesimuluj poruchy v nasazeném webu ani nad skutečným osobním nákupem.
 
 ### Zdrojová kopie bez Git metadat
 
-Následující postup slouží pouze pro exportovanou zdrojovou kopii bez `.git`; aktuální pracovní kopie má propojení již [obnovené](../operations/runbook.md#obnova-lokálního-git-propojení).
+Úplné generování, kontrola i sestavení vyžadují skutečný Git repozitář a úplnou historii; postup [obnovy Git propojení](../operations/runbook.md#obnova-lokálního-git-propojení) nesmí nahradit smyšlené commity.
 
-V takové kopii nelze přepnout na `develop`, vytvářet projektové commity ani znovu odvodit úplný changelog.
+Samostatný `npm run test:unit` připravuje nákupní katalog přímo z ručních zdrojů v paměti a používá vlastní dočasnou historii pro changelogové testy.
 
-Standardní `npm test`, `docs:check` a `docs:build` nadále vyžadují skutečnou Git historii; nevytvářej náhradní historii a neskrývej tuto překážku.
+Test runner objevuje soubory `tests/**/*.test.mjs`; ignorované diagnostické kopie mimo `tests/` se do projektových kontrol nezahrnují.
 
-Pro lokální kontrolu změn s již existujícím `changelog.md` byly samostatně ověřeny následující příkazy:
-
-```powershell
-npm run test:unit
-node scripts/generate-docs.js --check
-npm run docs:validate
-npm run docs:clean
-dotnet tool run docfx build docfx.json --warningsAsErrors
-```
-
-Tento postup ověřuje lokální artefakt, nikoli aktuálnost changelogu nebo způsobilost publikovat nový zdrojový commit.
-
-Na Windows může sandbox odepřít `git-cliff` přístup k dočasné testovací Git fixture; dne 2026-09-12 prošla stejná sada mimo sandbox bez změny testu.
+Na Windows může sandbox odepřít `git-cliff` přístup k repozitáři; dne 2026-09-13 prošly stejné příkazy mimo sandbox bez oslabení kontrol.
 
 ### Původní katalog a hledání
 

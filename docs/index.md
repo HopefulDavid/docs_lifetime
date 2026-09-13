@@ -15,7 +15,7 @@ Neopakuje obsah cílových dokumentů a každou oblast směruje na právě jeden
 |---|---|---|
 | Stručný účel projektu | [`../README.md`](../README.md) | Jednověté vysvětlení projektu a vstupní orientace |
 | Produktový záměr a chování | [`product/requirements.md`](product/requirements.md) | Uživatelé, cíle, rozsah, scénáře a akceptační kritéria |
-| Zápis a obsahová revize receptů | [`product/recipe-format.md`](product/recipe-format.md) | Jednotné suroviny, množství, varianty, kroky a nejasnosti obsahu |
+| Zápis a obsahová revize receptů | [`product/recipe-format.md`](product/recipe-format.md) | Přidání receptu, ruční slovníky, jednotné suroviny, množství, varianty a kroky |
 | Architektura | [`architecture/overview.md`](architecture/overview.md) | Aktuální stav, cílový stav, hranice, toky, nasazení a rizika |
 | Přijatá architektonická rozhodnutí | [`architecture/decisions/README.md`](architecture/decisions/README.md) | Index neměnných ADR a jejich nahrazení |
 | Přesné projektové příkazy | [`development/commands.md`](development/commands.md) | Sestavení, spuštění, kontroly, testy a lokální ověření |

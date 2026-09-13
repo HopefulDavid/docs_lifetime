@@ -42,7 +42,7 @@ Kontroly prováděj v uvedeném pořadí od nejméně invazivní.
 | Build log | GitHub Actions a lokální terminál | Obnova nástrojů, validace, sestavení a nasazení | Podle nastavení GitHubu, lokálně pouze po dobu relace | Nesmí obsahovat hodnoty secrets |
 | HTTP výsledek | Veřejná URL nebo lokální server | Dostupnost konkrétního statického souboru | Bez projektové retence | Veřejný údaj |
 | Konzole prohlížeče | Vývojářské nástroje při smoke scénáři | Klientské chyby šablony, hledání nebo načítání zdrojů | Standardně se neuchovává | Veřejný obsah a technické URL |
-| Git historie | Repozitář; `changelog.md` je její generovaná projekce | Zdrojový stav a posloupnost obsahových změn | Trvalá podle Git hostingu a klonů | Veřejná metadata commitů |
+| Git historie | Repozitář; `_generated/changelog.md` je její generovaná projekce | Zdrojový stav a posloupnost obsahových změn | Trvalá podle Git hostingu a klonů | Veřejná metadata commitů |
 | Aplikační logy, metriky a trasování | Nepoužívá se | Web nemá vlastní runtime proces | Není relevantní | Není relevantní |
 
 Projekt nemá serverový health endpoint, protože na Pages běží pouze statické soubory.
@@ -78,7 +78,7 @@ Projekt nemá serverový health endpoint, protože na Pages běží pouze static
 ### Symptom: recept v katalogu chybí nebo odkaz vrací 404
 
 1. Ověř, že zdrojový soubor existuje v podporované cestě a má právě jeden hlavní nadpis.
-2. Spusť `npm run docs:generate` a zkontroluj očekávaný záznam v příslušném `index.md` a `toc.yml`.
+2. Spusť `npm run docs:generate` a zkontroluj očekávaný záznam v `_generated/data/recipes.json`, příslušném přehledu a TOC uvnitř `_generated/`.
 3. Spusť `npm test` a `npm run docs:build`.
 4. Otevři odpovídající HTML v lokálním náhledu a porovnej URL s publikovaným odkazem.
 
@@ -87,6 +87,19 @@ Projekt nemá serverový health endpoint, protože na Pages běží pouze static
 **Bezpečná náprava:** Oprav autoritativní zdroj nebo generátor a nech odvozené soubory znovu vytvořit.
 
 **Eskalace:** Změna již publikované stabilní URL vyžaduje rozhodnutí o kompatibilitě a případném přesměrování.
+
+### Symptom: změna receptu se neprojevila v lokálním náhledu
+
+1. Ověř zvolený [režim náhledu](../development/commands.md#spuštění); jednorázové spuštění nesleduje další změny.
+2. V průběžném režimu počkej na úspěšné dokončení sestavení v terminálu a ručně obnov stránku prohlížeče.
+3. Pokud generování odmítlo zdroj, oprav uvedený recept nebo slovník; další uložení spustí nové ověření.
+4. Při chybě sledovače jej ukonči, spusť úplný build a náhled znovu; při plném disku nejprve uvolni místo pro obnovitelné výstupy.
+
+**Potvrzení příčiny:** Terminál rozliší neplatný zdroj, nedokončené sestavení a selhaný sledovač; porovnej výsledek s jednorázovým buildem.
+
+**Bezpečná náprava:** Oprav zdroj nebo prostředí a regeneruj; ruční zásah do `_generated/` nebo `_site/` příčinu neřeší.
+
+**Eskalace:** Opakovaně ztracené změny při úspěšném jednorázovém buildu předej engineeringu s operačním systémem, typem disku a konkrétní cestou.
 
 ### Symptom: známý český nebo anglický termín nemá výsledek nebo hledání hlásí klientskou chybu
 
@@ -105,7 +118,7 @@ Projekt nemá serverový health endpoint, protože na Pages běží pouze static
 ### Symptom: changelog chybí, je neúplný nebo se liší mezi prostředími
 
 1. Spusť `npm run test:unit` a potvrď víceletou fixture, počty období, typy commitů, časová pásma a historii oddělenou Git tagem.
-2. Spusť `npm run changelog:generate`, porovnej hlavičku s `git rev-parse HEAD` a ignorovaný `changelog.md` s `git log` bez ruční úpravy výstupu.
+2. Spusť `npm run docs:generate`, porovnej hlavičku s `git rev-parse HEAD` a `_generated/changelog.md` s `git log` bez ruční úpravy výstupu.
 3. Ověř úplný checkout a hodnotu `tag_pattern = "^$"` v kanonickém `cliff.toml`.
 4. Spusť `npm run docs:build` a potvrď, že `_site/changelog.html` obsahuje stejnou historii, otevřené nejnovější období, sdělení o vynechávání prázdných roků, sbalené starší roky, počty, kategorie a stabilní kotvy.
 5. V CI ověř `fetch-depth: 0` a první selhaný krok `verify-docs` nebo `publish-docs`.

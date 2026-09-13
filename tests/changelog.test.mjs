@@ -12,20 +12,6 @@ import test from 'node:test';
 import { fileURLToPath } from 'node:url';
 
 const repositoryRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const packageConfig = JSON.parse(readFileSync(path.join(repositoryRoot, 'package.json'), 'utf8'));
-
-test('používá uzamčený git-cliff v automatickém build toku', () => {
-  const gitignore = readFileSync(path.join(repositoryRoot, '.gitignore'), 'utf8');
-
-  assert.match(packageConfig.devDependencies['git-cliff'], /^\d+\.\d+\.\d+$/);
-  assert.equal(
-    packageConfig.scripts['changelog:generate'],
-    'git-cliff --config cliff.toml --output changelog.md',
-  );
-  assert.match(packageConfig.scripts['docs:build'], /npm run changelog:generate/);
-  assert.match(packageConfig.scripts['docs:check'], /^npm run changelog:generate && /);
-  assert.match(gitignore, /^changelog\.md$/m);
-});
 
 test('generuje úplnou čtenářskou historii po ročních obdobích nezávisle na tagu a prostředí', (context) => {
   const fixtureRoot = createFixture(context);
@@ -116,31 +102,18 @@ function createFixture(context) {
 
   const fixtureConfig = readFileSync(path.join(repositoryRoot, 'cliff.toml'), 'utf8');
   writeFileSync(path.join(fixtureRoot, 'cliff.toml'), fixtureConfig, 'utf8');
-  writeFileSync(
-    path.join(fixtureRoot, 'package.json'),
-    `${JSON.stringify(
-      {
-        name: 'changelog-fixture',
-        private: true,
-        scripts: { 'changelog:generate': packageConfig.scripts['changelog:generate'] },
-      },
-      null,
-      2,
-    )}\n`,
-    'utf8',
-  );
 
   return fixtureRoot;
 }
 
 function generateChangelog(fixtureRoot, timeZone) {
-  const result = runShell(fixtureRoot, packageConfig.scripts['changelog:generate'], {
-    PATH: `${path.join(repositoryRoot, 'node_modules', '.bin')}${path.delimiter}${process.env.PATH}`,
-    TZ: timeZone,
+  const result = spawnSync(process.execPath, ['-e',
+    "require(process.argv[1]).createChangelog(process.cwd()).then(text => process.stdout.write(text)).catch(error => { console.error(error.message); process.exitCode = 1; });",
+    path.join(repositoryRoot, 'scripts/generate-changelog.cjs')], {
+    cwd: fixtureRoot, encoding: 'utf8', env: { ...process.env, TZ: timeZone },
   });
-
-  assert.equal(result.status, 0, result.output);
-  return readFileSync(path.join(fixtureRoot, 'changelog.md'), 'utf8');
+  assert.equal(result.status, 0, result.stderr);
+  return result.stdout;
 }
 
 function commit(fixtureRoot, message, content, date) {
@@ -165,15 +138,15 @@ function run(cwd, command, args, extraEnvironment = {}) {
   return { ...result, output };
 }
 
-function runShell(cwd, command, extraEnvironment = {}) {
-  const result = spawnSync(command, {
-    cwd,
-    encoding: 'utf8',
-    env: { ...process.env, ...extraEnvironment },
-    shell: true,
-  });
-  const output = `${result.stdout ?? ''}${result.stderr ?? ''}`;
-
-  assert.equal(result.error, undefined, output || result.error?.message);
-  return { ...result, output };
-}
+test('changelog odmítne mělkou a chybějící historii', async context => {
+  const { createChangelog } = await import('../scripts/generate-changelog.cjs');
+  const root = createFixture(context);
+  await assert.rejects(createChangelog(root), /skutečný Git repozitář/);
+  run(root, 'git', ['init', '--quiet']);
+  run(root, 'git', ['config', 'user.name', 'Test']);
+  run(root, 'git', ['config', 'user.email', 'test@example.invalid']);
+  commit(root, 'feat: první', 'obsah', '2026-09-13T12:00:00Z');
+  const head = run(root, 'git', ['rev-parse', 'HEAD']).output.trim();
+  writeFileSync(path.join(root, '.git/shallow'), head + '\n');
+  await assert.rejects(createChangelog(root), /mělký checkout/);
+});

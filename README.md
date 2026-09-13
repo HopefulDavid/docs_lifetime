@@ -21,9 +21,9 @@ Zdrojový obsah, generátor navigace a sestavení DocFX jsou udržované v tomto
 
 ## Obsah a generované soubory
 
-Ručně udržované recepty a nápoje jsou v adresářích [`food/`](food/) a [`drink/`](drink/).
+Rozdělení ručních zdrojů a obnovitelných výstupů vlastní [architektura dat](docs/architecture/overview.md#odvozená-data-a-rozsah-automatizace).
 
-Přehledové stránky a navigaci vytváří [`scripts/generate-docs.js`](scripts/generate-docs.js), proto se jejich seznamy odkazů neupravují ručně.
+Přidání receptu popisuje [kanonický autorský postup](docs/product/recipe-format.md#přidání-nového-receptu).
 
 ## První spuštění
 
