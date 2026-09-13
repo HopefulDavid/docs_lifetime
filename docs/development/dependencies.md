@@ -16,6 +16,7 @@ owner: engineering
 | DocFX | Převádí produktový Markdown a YAML do statického webu | [`../../.config/dotnet-tools.json`](../../.config/dotnet-tools.json) | Lokální .NET tool manifest připíná stejný nástroj pro vývoj i CI |
 | `pdfmake` | Vytváří PDF aktuálního receptu nebo nákupu v prohlížeči | [`../../package.json`](../../package.json) a lockfile | Vývojová závislost dodává statické klientské assety načítané až při exportu; MIT a vložené Roboto pod SIL OFL |
 | Iconify Utils, Tabler a Circle Flags | Sestaví vybrané SVG pro rozhraní | npm manifest a lockfile | Pouze build, bez Iconify API; srovnání, licence a aktualizace vlastní [ADR-0008](../architecture/decisions/ADR-0008-lokalni-svg-ikony.md) |
+| Prettier | Formátování scripts a tests v editoru a CI | Přesná verze v npm manifestu a lockfilu | MIT, pouze vývoj; rozsah a výzkumné podklady vlastní [standardy kódu](coding-standards.md#skripty-a-testy-projektu) |
 | GitHub Actions | Připravují prostředí, nasazují Pages a odesílají oznámení | [Workflow](../../.github/workflows/main.yml) | Každá akce je připnutá na ověřený commit SHA a čitelný hlavní tag zůstává v komentáři |
 
 Node.js 24 byl dne 2026-08-28 ověřený jako podporovaná LTS řada podle [oficiálního přehledu vydání](https://nodejs.org/en/about/previous-releases).

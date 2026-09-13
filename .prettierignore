@@ -1,0 +1,4 @@
+# Příkazy formátují jen projektový JavaScript v těchto dvou oblastech.
+/*
+!/scripts/
+!/tests/

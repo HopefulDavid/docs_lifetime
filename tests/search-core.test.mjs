@@ -50,15 +50,17 @@ test('zachová existující hledání pizzy', () => {
 test('najde každý indexovaný český i anglický termín', () => {
   for (const hit of Object.values(data)) {
     const indexedTerms = new Set(
-      normalizeSearchText([hit.title, hit.keywords, hit.summary, hit.href].filter(Boolean).join(' '))
+      normalizeSearchText(
+        [hit.title, hit.keywords, hit.summary, hit.href].filter(Boolean).join(' '),
+      )
         .split(' ')
-        .filter(Boolean)
+        .filter(Boolean),
     );
 
     for (const term of indexedTerms) {
       assert.ok(
         searchIndex(index, term).some((result) => result.href === hit.href),
-        `${term} musí najít ${hit.href}`
+        `${term} musí najít ${hit.href}`,
       );
     }
   }

@@ -50,6 +50,12 @@ Spusť příkazy z kořene repozitáře v uvedeném pořadí.
 
 ## Generování a sestavení
 
+Pro kontrolu stylu skriptů a testů použij `npm run format:check`; pro jejich automatické formátování `npm run format:write`.
+
+Oba příkazy používají lokální připnutý Prettier a nevyžadují síť po obnově závislostí; kontrola vrátí kód 0 při shodě nebo 1 při odlišném formátování a je prvním krokem `npm test`.
+
+Rozsah tvoří JavaScript v `scripts/` a `tests/`; Markdown se řídí vlastním [kanonickým stylem](../governance/documentation.md#styl-markdownu).
+
 | Varianta | Pracovní adresář | Přesný příkaz | Výstup | Úspěch znamená |
 |---|---|---|---|---|
 | Příprava celého docsetu | Kořen repozitáře | `npm run docs:generate` | Ignorovaný `_generated/` včetně changelogu a manifestu původu | Generátor ověří vstupy, obnoví výstupy, odstraní nadbytečné soubory a vypíše změněné cesty nebo aktuální stav |

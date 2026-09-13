@@ -10,7 +10,14 @@ const allowedCanonicalStatuses = new Set([
   'accepted',
   'deprecated',
 ]);
-const ignoredDirectoryNames = new Set(['.git', '.idea', '_site', '_generated', 'node_modules', 'private']);
+const ignoredDirectoryNames = new Set([
+  '.git',
+  '.idea',
+  '_site',
+  '_generated',
+  'node_modules',
+  'private',
+]);
 const initializedProjectDocuments = [
   'README.md',
   'docs/product/requirements.md',
@@ -96,7 +103,7 @@ function validateCanonicalMetadata(markdownFiles) {
     const previous = canonicalKeys.get(metadata.canonical_for);
     if (previous) {
       errors.push(
-        `${relativePath}: canonical_for '${metadata.canonical_for}' už používá ${previous}`
+        `${relativePath}: canonical_for '${metadata.canonical_for}' už používá ${previous}`,
       );
     } else {
       canonicalKeys.set(metadata.canonical_for, relativePath);
@@ -221,11 +228,20 @@ function validateGeneratedArtifacts(allFiles) {
     if (relativePath.endsWith('.pyc') || relativePath.includes('/__pycache__/')) {
       errors.push(`${relativePath}: generovaný Python artefakt nepatří do repozitáře`);
     }
-    if (['index.md', 'nakup.md', 'toc.yml', 'changelog.md', 'data/recipes.json'].includes(relativePath) || /^(food|drink)\/(?:.*\/)?(?:index\.md|toc\.yml)$/.test(relativePath)) {
+    if (
+      ['index.md', 'nakup.md', 'toc.yml', 'changelog.md', 'data/recipes.json'].includes(
+        relativePath,
+      ) ||
+      /^(food|drink)\/(?:.*\/)?(?:index\.md|toc\.yml)$/.test(relativePath)
+    ) {
       errors.push(`${relativePath}: odvozený soubor patří pouze do _generated/`);
     }
   }
-  const trackedOutputs = execFileSync('git', ['ls-files', '--', '_generated/', '_site/', 'node_modules/'], { cwd: root, encoding: 'utf8' }).trim();
+  const trackedOutputs = execFileSync(
+    'git',
+    ['ls-files', '--', '_generated/', '_site/', 'node_modules/'],
+    { cwd: root, encoding: 'utf8' },
+  ).trim();
   if (trackedOutputs) errors.push(`Generované adresáře nesmějí být verzované: ${trackedOutputs}`);
 }
 
@@ -263,8 +279,11 @@ function validateWorkflowSecurity() {
 function main() {
   const allFiles = walkFiles(root);
   const markdownFiles = allFiles.filter((file) => file.endsWith('.md'));
-  const generatedMarkdown = walkFiles(path.join(root, '_generated')).filter(file => file.endsWith('.md'));
-  if (!fs.existsSync(path.join(root, '_generated/manifest.json'))) errors.push('_generated/manifest.json: nejprve spusťte npm run docs:generate');
+  const generatedMarkdown = walkFiles(path.join(root, '_generated')).filter((file) =>
+    file.endsWith('.md'),
+  );
+  if (!fs.existsSync(path.join(root, '_generated/manifest.json')))
+    errors.push('_generated/manifest.json: nejprve spusťte npm run docs:generate');
 
   validateCanonicalMetadata(markdownFiles);
   validateInternalLinks([...markdownFiles, ...generatedMarkdown]);

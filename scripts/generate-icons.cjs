@@ -9,7 +9,8 @@ function createIconAssets() {
   const sets = { tabler, 'circle-flags': flags };
   const icons = { ...registry.icons };
   const labels = { ...registry.labels };
-  for (const [type, label] of Object.entries(taxonomy.types)) labels[label] = icons[type] ? type : 'food';
+  for (const [type, label] of Object.entries(taxonomy.types))
+    labels[label] = icons[type] ? type : 'food';
   for (const label of Object.values(taxonomy.continents)) labels[label] = 'world';
   for (const country of Object.values(taxonomy.countries)) {
     labels[country.title] = country.flag ? `flag-${country.flag}` : 'world';
@@ -31,7 +32,10 @@ function createIconAssets() {
   }
   return new Map([
     ['public/icons.css', rules.join('\n') + '\n'],
-    ['public/icon-labels.mjs', `/** Odvozené popisky ikon z ručního registru a taxonomie. */\nexport default ${JSON.stringify(labels, null, 2)};\n`],
+    [
+      'public/icon-labels.mjs',
+      `/** Odvozené popisky ikon z ručního registru a taxonomie. */\nexport default ${JSON.stringify(labels, null, 2)};\n`,
+    ],
   ]);
 }
 

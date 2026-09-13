@@ -11,7 +11,8 @@
     "@iconify-json/tabler": "1.2.38",
     "@iconify/utils": "3.1.7",
     "git-cliff": "2.13.1",
-    "pdfmake": "0.3.11"
+    "pdfmake": "0.3.11",
+    "prettier": "3.9.6"
   },
   "scripts": {
     "changelog:generate": "node scripts/generate-changelog.cjs",
@@ -25,7 +26,9 @@
     "docs:serve": "npm run docs:build && dotnet tool run docfx serve _site --hostname 127.0.0.1 --port 8765",
     "docs:dev": "node scripts/dev-docs.cjs",
     "test:unit": "node --test \"tests/**/*.test.mjs\"",
-    "test": "npm run test:unit && npm run docs:generate && npm run docs:check && npm run docs:validate"
+    "test": "npm run format:check && npm run test:unit && npm run docs:generate && npm run docs:check && npm run docs:validate",
+    "format:check": "prettier --check \"scripts/**/*.{js,cjs,mjs}\" \"tests/**/*.mjs\"",
+    "format:write": "prettier --write \"scripts/**/*.{js,cjs,mjs}\" \"tests/**/*.mjs\""
   },
   "keywords": [],
   "author": "",

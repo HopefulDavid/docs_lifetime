@@ -111,6 +111,33 @@ Komentář nesmí zakrývat zbytečnou složitost.
 
 ## Čitelnost a hranice odpovědnosti
 
+### Skripty a testy projektu
+
+JavaScript v `scripts/` a `tests/` formátuje připnutý Prettier podle `.prettierrc.json`; kontrola je součástí `npm test` a přesné příkazy vlastní [příkazy](commands.md).
+
+Formátování používá jednotlivé příkazy na samostatných řádcích, šířku 100 znaků a LF včetně checkoutu na Windows; dlouhé textové literály a regulární výrazy mohou limit překročit.
+
+Generování rozlišuje načtení a validaci zdrojů, sestavení odvozených souborů v paměti a jejich zápis; CLI vlastní přepínače, diagnostiku a návratový kód.
+
+Test popisuje pozorovatelný scénář, odděluje přípravu, akci a ověření prázdnými řádky a drží podstatná vstupní data i očekávání u daného scénáře.
+
+Opakované testovací prostředí patří do pojmenované fixture; dočasné soubory uklízí `context.after`, takže úklid proběhne také při selhání tvrzení.
+
+Varianty chybových vstupů mají vlastní názvy; nepřidává se obecný testovací DSL ani helper, který ukrývá předmět testu.
+
+### Podklady volby, ověřeno 2026-09-13
+
+| Podklad | Závěr pro tento projekt | Omezení |
+|---|---|---|
+| [Prettier CLI](https://prettier.io/docs/cli), tým Prettier, 3.9.6 | Připnutý formatter a `--check` sjednotí čitelnost v editoru i CI; globy jsou v uvozovkách kvůli Windows | Formátování neřeší správnost ani hranice modulů |
+| [Node.js test runner](https://nodejs.org/download/release/v24.13.0/docs/api/test.html), Node.js, 24.13.0 | Vestavěné testy, pojmenované subtesty a úklid přes kontext pokrývají potřebnou izolaci | Procesní izolace sama neopraví sdílený měnitelný stav uvnitř souboru |
+| [What to look for in a code review](https://google.github.io/eng-practices/review/reviewer/looking-for.html), Google Engineering Practices | Review posuzuje názvy, jednoduchost, návrh a užitečnost testů; sdílení vychází ze skutečného opakování | Obecné doporučení, konkrétní hranice ověřuje projektová regrese |
+| Lokální migrační experiment na Node.js 24.13.0 | Formátování všech skriptů a testů zachovalo 46 scénářů i odvozený docset | Neprokazuje kompatibilitu s nepodporovanými verzemi Node.js |
+
+Ruční styl bez kontroly byl odmítnut kvůli opakovanému zhušťování kódu a nový testovací framework kvůli absenci požadavku, který by vestavěný runner nepokrýval.
+
+Změna je vratná odebráním formatteru a jeho kontroly; datové formáty ani klientské závislosti se tím nemění.
+
 Jeden prvek má mít srozumitelnou odpovědnost a název odpovídající doménovému nebo technickému významu.
 
 Veřejné hranice mají být menší a stabilnější než jejich interní implementace.

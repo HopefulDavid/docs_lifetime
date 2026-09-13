@@ -1,11 +1,6 @@
 import assert from 'node:assert/strict';
 import { spawnSync } from 'node:child_process';
-import {
-  mkdtempSync,
-  readFileSync,
-  rmSync,
-  writeFileSync,
-} from 'node:fs';
+import { mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
 import test from 'node:test';
@@ -31,12 +26,7 @@ test('generuje úplnou čtenářskou historii po ročních obdobích nezávisle 
   commit(fixtureRoot, 'fix: oprav starší změnu', 'druhá', '2025-05-10T12:00:00+02:00');
   commit(fixtureRoot, 'docs: doplň starší návod', 'třetí', '2025-06-11T12:00:00+02:00');
   commit(fixtureRoot, 'ci: ověř aktuální změnu', 'čtvrtá', '2025-12-31T23:30:00+00:00');
-  commit(
-    fixtureRoot,
-    'feat(core)!: změň veřejný kontrakt',
-    'pátá',
-    '2026-08-28T13:00:00+02:00',
-  );
+  commit(fixtureRoot, 'feat(core)!: změň veřejný kontrakt', 'pátá', '2026-08-28T13:00:00+02:00');
   commit(fixtureRoot, 'historický záznam', 'šestá', '2026-08-28T14:00:00+02:00');
 
   const utc = generateChangelog(fixtureRoot, 'UTC');
@@ -107,11 +97,19 @@ function createFixture(context) {
 }
 
 function generateChangelog(fixtureRoot, timeZone) {
-  const result = spawnSync(process.execPath, ['-e',
-    "require(process.argv[1]).createChangelog(process.cwd()).then(text => process.stdout.write(text)).catch(error => { console.error(error.message); process.exitCode = 1; });",
-    path.join(repositoryRoot, 'scripts/generate-changelog.cjs')], {
-    cwd: fixtureRoot, encoding: 'utf8', env: { ...process.env, TZ: timeZone },
-  });
+  const result = spawnSync(
+    process.execPath,
+    [
+      '-e',
+      'require(process.argv[1]).createChangelog(process.cwd()).then(text => process.stdout.write(text)).catch(error => { console.error(error.message); process.exitCode = 1; });',
+      path.join(repositoryRoot, 'scripts/generate-changelog.cjs'),
+    ],
+    {
+      cwd: fixtureRoot,
+      encoding: 'utf8',
+      env: { ...process.env, TZ: timeZone },
+    },
+  );
   assert.equal(result.status, 0, result.stderr);
   return result.stdout;
 }
@@ -138,7 +136,7 @@ function run(cwd, command, args, extraEnvironment = {}) {
   return { ...result, output };
 }
 
-test('changelog odmítne mělkou a chybějící historii', async context => {
+test('changelog odmítne mělkou a chybějící historii', async (context) => {
   const { createChangelog } = await import('../scripts/generate-changelog.cjs');
   const root = createFixture(context);
   await assert.rejects(createChangelog(root), /skutečný Git repozitář/);
