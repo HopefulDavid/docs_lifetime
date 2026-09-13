@@ -7,7 +7,7 @@ import {
   searchIndex,
 } from '../templates/kitchen/public/search-core.mjs';
 
-const data = {
+const searchDocuments = {
   rajska: {
     href: 'food/europe/czech/main-dishes/rajska-omacka.html',
     title: '🍅 Rajská omáčka s masovými koulemi | Život',
@@ -31,7 +31,7 @@ const data = {
   },
 };
 
-const index = createSearchIndex(data);
+const index = createSearchIndex(searchDocuments);
 
 test('normalizuje českou diakritiku a oddělovače', () => {
   assert.equal(normalizeSearchText('  Rajská—omáčka (ČR)  '), 'rajska omacka cr');
@@ -39,16 +39,16 @@ test('normalizuje českou diakritiku a oddělovače', () => {
 
 test('najde český název s diakritikou i bez ní', () => {
   for (const query of ['Rajská', 'rajska', 'rajska omacka', '+Rajská', '+rajska +omacka']) {
-    assert.equal(searchIndex(index, query)[0]?.href, data.rajska.href);
+    assert.equal(searchIndex(index, query)[0]?.href, searchDocuments.rajska.href, query);
   }
 });
 
 test('zachová existující hledání pizzy', () => {
-  assert.equal(searchIndex(index, 'PIZZA')[0]?.href, data.pizza.href);
+  assert.equal(searchIndex(index, 'PIZZA')[0]?.href, searchDocuments.pizza.href);
 });
 
 test('najde každý indexovaný český i anglický termín', () => {
-  for (const hit of Object.values(data)) {
+  for (const hit of Object.values(searchDocuments)) {
     const indexedTerms = new Set(
       normalizeSearchText(
         [hit.title, hit.keywords, hit.summary, hit.href].filter(Boolean).join(' '),
@@ -67,8 +67,8 @@ test('najde každý indexovaný český i anglický termín', () => {
 });
 
 test('najde český termín z obsahu i anglický termín z cesty', () => {
-  assert.equal(searchIndex(index, 'smetanovým')[0]?.href, data.pizza.href);
-  assert.equal(searchIndex(index, 'coffee')[0]?.href, data.frenchPress.href);
+  assert.equal(searchIndex(index, 'smetanovým')[0]?.href, searchDocuments.pizza.href);
+  assert.equal(searchIndex(index, 'coffee')[0]?.href, searchDocuments.frenchPress.href);
 });
 
 test('vrátí prázdný výsledek pro dotaz bez shody', () => {
@@ -76,6 +76,6 @@ test('vrátí prázdný výsledek pro dotaz bez shody', () => {
 });
 
 test('kratší prefix přijme až od tří znaků', () => {
-  assert.equal(searchIndex(index, 'raj')[0]?.href, data.rajska.href);
+  assert.equal(searchIndex(index, 'raj')[0]?.href, searchDocuments.rajska.href);
   assert.deepEqual(searchIndex(index, 'ra'), []);
 });

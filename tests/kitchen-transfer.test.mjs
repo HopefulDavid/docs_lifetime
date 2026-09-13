@@ -1,28 +1,25 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import { gzipSync } from 'node:zlib';
-import { createContentFiles } from '../scripts/generate-docs.js';
-import {
-  buildShoppingList,
-  recipeSettings,
-  restoreState,
-} from '../templates/kitchen/public/kitchen-core.mjs';
+import { createKitchenFixture } from './fixtures/kitchen.mjs';
+import { recipeSettings, restoreState } from '../templates/kitchen/public/kitchen-core.mjs';
 import {
   exportShopping,
   importShopping,
   previewShoppingImport,
 } from '../templates/kitchen/public/kitchen-transfer.mjs';
 
-const catalog = JSON.parse(createContentFiles().get('data/recipes.json'));
-const pasta = catalog.recipes.find((recipe) => recipe.id.endsWith('/sunkofleky'));
-const sauce = catalog.recipes.find((recipe) => recipe.id.endsWith('/rajska-omacka'));
-const selected = (...recipes) => ({
+const { catalog, recipe, shoppingList } = createKitchenFixture();
+const pasta = recipe('sunkofleky');
+const sauce = recipe('rajska-omacka');
+const createSelection = (...recipes) => ({
   ...restoreState(null, catalog.recipes),
   selections: Object.fromEntries(recipes.map((recipe) => [recipe.id, recipeSettings(recipe)])),
 });
-const items = (state) => buildShoppingList(catalog.recipes, state.selections, catalog.departments);
-const codeFor = (payload) => `NK1j.${Buffer.from(JSON.stringify(payload)).toString('base64url')}`;
-const payloadFor = (recipe) => ({
+const items = (state) => shoppingList(state.selections);
+const plainCodeFor = (payload) =>
+  `NK1j.${Buffer.from(JSON.stringify(payload)).toString('base64url')}`;
+const transferPayloadFor = (recipe) => ({
   version: 1,
   recipes: [{ id: recipe.id, revision: recipe.revision, factor: 1, choices: {}, enabled: {} }],
   checked: [],
@@ -30,7 +27,7 @@ const payloadFor = (recipe) => ({
 });
 
 test('export a odkaz přenesou dávku, volby, hotové a vlastní množství bez filtrů a vaření', async () => {
-  const state = selected(sauce, pasta);
+  const state = createSelection(sauce, pasta);
   state.selections[sauce.id].factor = 2;
   const alternative = sauce.ingredients.find((item) => item.options.length > 1);
   state.selections[sauce.id].choices[alternative.id] = 1;
@@ -41,50 +38,78 @@ test('export a odkaz přenesou dávku, volby, hotové a vlastní množství bez 
   state.checked[unknown.key] = unknown.signature;
   state.cooking[pasta.id] = { step: 2, done: [0, 1], revision: pasta.revision };
   const original = structuredClone(state);
+
   const code = await exportShopping(state, catalog);
+
   assert(code.startsWith('NK1g.'));
+
   const restored = await importShopping(
     `https://example.invalid/docs_lifetime/nakup.html#nakup=${code}`,
     catalog,
   );
+
   assert.deepEqual(restored, { ...state, cooking: {} });
   assert.deepEqual(state, original, 'export nemění nákup');
 });
 
-test('nekomprimovaný formát má stejnou validaci a neplatný vstup nic nepřepisuje', async () => {
-  const payload = payloadFor(pasta);
-  assert.equal(Object.keys((await importShopping(codeFor(payload), catalog)).selections).length, 1);
-  for (const bad of [
-    '',
-    'běžný seznam',
-    'NK1g.xxx',
-    'NK2g.abc',
-    codeFor(null),
-    codeFor({ ...payload, version: 9 }),
-    codeFor({ ...payload, recipes: [...payload.recipes, ...payload.recipes] }),
-  ]) {
-    await assert.rejects(importShopping(bad, catalog));
-  }
-  assert.deepEqual(payload, payloadFor(pasta));
+test('nekomprimovaný formát načte nákup a nezmění vstupní data', async () => {
+  const payload = transferPayloadFor(pasta);
+
+  const imported = await importShopping(plainCodeFor(payload), catalog);
+  assert.equal(Object.keys(imported.selections).length, 1);
+  assert.deepEqual(payload, transferPayloadFor(pasta));
 });
 
-test('odmítne jinou revizi, neznámý recept, chybné volby a cizí suroviny', async () => {
-  for (const patch of [
-    { revision: 'stará' },
-    { id: 'food/unknown/recipe' },
-    { factor: 999 },
-    { choices: { cizi: 0 } },
-    { enabled: { cizi: true } },
-    { enabled: null },
-  ]) {
-    const payload = payloadFor(pasta);
-    Object.assign(payload.recipes[0], patch);
-    await assert.rejects(importShopping(codeFor(payload), catalog));
-  }
-  for (const patch of [{ checked: ['cizí'] }, { amounts: [['cizí', '2 ks']] }, { checked: null }]) {
-    await assert.rejects(importShopping(codeFor({ ...payloadFor(pasta), ...patch }), catalog));
-  }
-});
+const invalidCodes = [
+  ['prázdný vstup', ''],
+  ['běžný seznam místo kódu', 'běžný seznam'],
+  ['poškozená komprese', 'NK1g.xxx'],
+  ['neznámá verze obálky', 'NK2g.abc'],
+  ['prázdný payload', plainCodeFor(null)],
+  ['neznámá verze dat', plainCodeFor({ ...transferPayloadFor(pasta), version: 9 })],
+  [
+    'opakovaný recept',
+    plainCodeFor({
+      ...transferPayloadFor(pasta),
+      recipes: [...transferPayloadFor(pasta).recipes, ...transferPayloadFor(pasta).recipes],
+    }),
+  ],
+];
+for (const [name, code] of invalidCodes) {
+  test(`import odmítne: ${name}`, async () => {
+    await assert.rejects(importShopping(code, catalog));
+  });
+}
+
+const invalidRecipeSettings = [
+  ['jiná revize', { revision: 'stará' }],
+  ['neznámý recept', { id: 'food/unknown/recipe' }],
+  ['nepovolená dávka', { factor: 999 }],
+  ['cizí alternativa', { choices: { cizi: 0 } }],
+  ['cizí příloha', { enabled: { cizi: true } }],
+  ['přílohy nemají podobu objektu', { enabled: null }],
+];
+for (const [name, settings] of invalidRecipeSettings) {
+  test(`import odmítne nastavení: ${name}`, async () => {
+    const payload = transferPayloadFor(pasta);
+    Object.assign(payload.recipes[0], settings);
+
+    await assert.rejects(importShopping(plainCodeFor(payload), catalog));
+  });
+}
+
+const invalidShoppingItems = [
+  ['cizí hotová surovina', { checked: ['cizí'] }],
+  ['cizí vlastní množství', { amounts: [['cizí', '2 ks']] }],
+  ['hotové položky nemají podobu pole', { checked: null }],
+];
+for (const [name, items] of invalidShoppingItems) {
+  test(`import odmítne nákupní položky: ${name}`, async () => {
+    const payload = { ...transferPayloadFor(pasta), ...items };
+
+    await assert.rejects(importShopping(plainCodeFor(payload), catalog));
+  });
+}
 
 test('import omezí vstup i velikost po rozbalení', async () => {
   await assert.rejects(importShopping('x'.repeat(180001), catalog), /velký/);
@@ -93,31 +118,37 @@ test('import omezí vstup i velikost po rozbalení', async () => {
 });
 
 test('sloučení zachová hotové od obou lidí a opakování nezdvojuje dávku', () => {
-  const a = selected(pasta);
-  const b = selected(pasta);
-  const list = items(a);
-  a.checked[list[0].key] = list[0].signature;
-  b.checked[list[1].key] = list[1].signature;
-  const before = structuredClone(a);
-  const plan = previewShoppingImport(a, b, catalog);
+  const local = createSelection(pasta);
+  const incoming = createSelection(pasta);
+  const list = items(local);
+  local.checked[list[0].key] = list[0].signature;
+  incoming.checked[list[1].key] = list[1].signature;
+  const before = structuredClone(local);
+
+  const plan = previewShoppingImport(local, incoming, catalog);
+
   assert(plan.ready);
   assert.equal(plan.summary.checked, 2);
   assert.equal(plan.state.selections[pasta.id].factor, 1);
-  assert.deepEqual(previewShoppingImport(plan.state, b, catalog).state, plan.state);
-  assert.deepEqual(a, before);
+  assert.deepEqual(previewShoppingImport(plan.state, incoming, catalog).state, plan.state);
+  assert.deepEqual(local, before);
 });
 
 test('různé dávky vyžadují výslovnou volbu a staré potvrzení neplatí pro jiné množství', () => {
-  const a = selected(pasta);
-  const b = selected(pasta);
-  const onion = items(a).find((item) => item.name === 'Cibule');
-  a.checked[onion.key] = onion.signature;
-  b.selections[pasta.id].factor = 2;
-  const unresolved = previewShoppingImport(a, b, catalog);
+  const local = createSelection(pasta);
+  const incoming = createSelection(pasta);
+  const onion = items(local).find((item) => item.name === 'Cibule');
+  local.checked[onion.key] = onion.signature;
+  incoming.selections[pasta.id].factor = 2;
+
+  const unresolved = previewShoppingImport(local, incoming, catalog);
+
   assert(!unresolved.ready);
-  const plan = previewShoppingImport(a, b, catalog, 'merge', {
+
+  const plan = previewShoppingImport(local, incoming, catalog, 'merge', {
     [unresolved.conflicts[0].key]: 'incoming',
   });
+
   assert(plan.ready);
   assert.equal(plan.state.selections[pasta.id].factor, 2);
   assert.equal(plan.summary.checked, 0);
@@ -125,11 +156,13 @@ test('různé dávky vyžadují výslovnou volbu a staré potvrzení neplatí pr
 });
 
 test('nové jídlo v součtu zruší staré odškrtnutí společné suroviny', () => {
-  const a = selected(pasta);
-  const b = selected(sauce);
-  const onion = items(a).find((item) => item.name === 'Cibule');
-  a.checked[onion.key] = onion.signature;
-  const plan = previewShoppingImport(a, b, catalog);
+  const local = createSelection(pasta);
+  const incoming = createSelection(sauce);
+  const onion = items(local).find((item) => item.name === 'Cibule');
+  local.checked[onion.key] = onion.signature;
+
+  const plan = previewShoppingImport(local, incoming, catalog);
+
   assert(plan.ready);
   assert.equal(plan.summary.recipes, 2);
   assert(!plan.state.checked[onion.key]);
@@ -137,31 +170,37 @@ test('nové jídlo v součtu zruší staré odškrtnutí společné suroviny', (
 });
 
 test('konflikt vlastních množství neslučuje potvrzení pro jiný nákupní údaj', () => {
-  const a = selected(pasta);
-  const b = selected(pasta);
-  const unknown = items(a).find((item) => item.text === 'neuvedeno');
-  a.amounts[unknown.key] = { text: '1 sklenice', signature: unknown.signature };
-  b.amounts[unknown.key] = { text: '2 sklenice', signature: unknown.signature };
-  a.checked[unknown.key] = unknown.signature;
-  const unresolved = previewShoppingImport(a, b, catalog);
+  const local = createSelection(pasta);
+  const incoming = createSelection(pasta);
+  const unknown = items(local).find((item) => item.text === 'neuvedeno');
+  local.amounts[unknown.key] = { text: '1 sklenice', signature: unknown.signature };
+  incoming.amounts[unknown.key] = { text: '2 sklenice', signature: unknown.signature };
+  local.checked[unknown.key] = unknown.signature;
+
+  const unresolved = previewShoppingImport(local, incoming, catalog);
+
   assert(!unresolved.ready);
-  const plan = previewShoppingImport(a, b, catalog, 'merge', {
+
+  const plan = previewShoppingImport(local, incoming, catalog, 'merge', {
     [unresolved.conflicts[0].key]: 'incoming',
   });
+
   assert(plan.ready);
   assert.equal(plan.state.amounts[unknown.key].text, '2 sklenice');
   assert(!plan.state.checked[unknown.key]);
 });
 
 test('převzetí odstraní vlastní výběr a staré hotové, ale ponechá místní vaření', () => {
-  const a = selected(pasta);
-  const b = selected(sauce);
-  a.cooking[pasta.id] = { step: 1, done: [0], revision: pasta.revision };
-  const item = items(a)[0];
-  a.checked[item.key] = item.signature;
-  const plan = previewShoppingImport(a, b, catalog, 'replace');
+  const local = createSelection(pasta);
+  const incoming = createSelection(sauce);
+  local.cooking[pasta.id] = { step: 1, done: [0], revision: pasta.revision };
+  const item = items(local)[0];
+  local.checked[item.key] = item.signature;
+
+  const plan = previewShoppingImport(local, incoming, catalog, 'replace');
+
   assert(plan.ready);
-  assert.deepEqual(plan.state.selections, b.selections);
+  assert.deepEqual(plan.state.selections, incoming.selections);
   assert.deepEqual(plan.state.checked, {});
-  assert.deepEqual(plan.state.cooking, a.cooking);
+  assert.deepEqual(plan.state.cooking, local.cooking);
 });

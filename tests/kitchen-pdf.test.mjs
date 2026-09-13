@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import test from 'node:test';
 import { kitchenPdfDefinition } from '../templates/kitchen/public/kitchen-pdf.mjs';
 
+// Úzká DOM fixture obsahuje jen kontrakt čtený PDF převodníkem, bez prohlížeče.
 function element(tag, ...content) {
   const childNodes = content.map((item) =>
     typeof item === 'string' ? { nodeType: 3, textContent: item } : item,
@@ -39,6 +40,7 @@ test('PDF zachová text kroku před vnořenou poznámkou, tučné údaje i nezn�
       element('LI', element('STRONG', 'Máslo'), ' — Množství neuvedeno'),
     ),
   );
+
   const document = kitchenPdfDefinition(sheet);
   const text = JSON.stringify(document.content);
   for (const expected of [
@@ -48,7 +50,8 @@ test('PDF zachová text kroku před vnořenou poznámkou, tučné údaje i nezn�
     'Kontrolujte šťavnatost.',
     'Množství neuvedeno',
   ])
-    assert(text.includes(expected));
+    assert(text.includes(expected), `PDF musí zachovat: ${expected}`);
+
   assert(text.includes('"bold":true'));
   assert.equal(document.info.title, 'Kuřecí recept');
 });
@@ -64,10 +67,12 @@ test('nákupní PDF opakuje oddělení na další stránce a nerozdělí název 
     ),
   );
   department.classList.contains = (name) => name === 'print-department';
+
   const document = kitchenPdfDefinition(
     element('DIV', element('H1', 'Nákupní seznam'), department),
   );
   const { table } = document.content[1];
+
   assert.equal(table.headerRows, 1);
   assert.equal(table.keepWithHeaderRows, 1);
   assert.equal(table.dontBreakRows, true);

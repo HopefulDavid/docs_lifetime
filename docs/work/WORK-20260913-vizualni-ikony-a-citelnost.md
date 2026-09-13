@@ -70,8 +70,8 @@ Rutinní vratné úpravy a volbu knihovny autorizuje zadání; nejsou blokujíc�
 | M2 | Spolehlivé SVG ikony a vlajky | done | 46 testů, build, desktop nákupu a mobilní katalog 390 px |
 | M3 | Přehledný režim vaření | done | Build a 46 testů; UI 390 px a 844 × 390, obnova, vrácení, přeskok, příloha a Escape |
 | M4 | Čitelné a rozdělené scripts | done | 46 testů, build, přesná shoda obsahového docsetu před a po rozdělení |
-| M5 | Čitelné, izolované tests | in-progress | — |
-| M6 | Závěrečná regrese a přenos znalostí | pending | — |
+| M5 | Čitelné, izolované tests | done | 73 pojmenovaných testů a subtestů; fixture, parser, přenos i generátor |
+| M6 | Závěrečná regrese a přenos znalostí | in-progress | — |
 
 ## Objevy, neúspěšné pokusy a rizika
 
@@ -89,12 +89,12 @@ Všechny nové změny patří tomuto úkolu.
 
 ## Další bezpečný krok
 
-Refaktorovat scripts podle hranic odpovědností a tests podle izolovaných scénářů.
+Dokončit vizuální průchod desktopu i mobilu, zapsat důkazy a odstranit pracovní záznam.
 
 ## Stav předání
 
 - Poslední ověřený commit: ad8977d.
-- Aktuální milník: M5.
+- Aktuální milník: M6.
 - Náhled: exec session 41969, ukončení Ctrl+C.
 - Cizí změny a blokace: žádné.
 

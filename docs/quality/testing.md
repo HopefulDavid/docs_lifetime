@@ -9,6 +9,14 @@ owner: quality
 
 ## Projektový testovací profil
 
+Testy používají vestavěný `node:test`; sdílené prostředí vlastní `tests/fixtures/`, zatímco konkrétní vstupy a očekávání zůstávají ve scénářích.
+
+Fixture docsetu spouští skutečný generátor nad kopií ručních zdrojů, fixture changelogu skutečný `git-cliff` nad dočasnou historií a nákupní fixture připravuje nový katalog v paměti s kopiemi vyhledaných receptů.
+
+Parser má samostatné scénáře v `tests/recipe-content.test.mjs`; chybné tabulky a přenosové payloady jsou pojmenované, aby výstup runneru určil selhávající variantu.
+
+Dočasné adresáře uklízí kontext testu také po selhání; kontrola formátování přes připnutý Prettier je součástí `npm test`.
+
 Projekt kombinuje deterministickou kontrolu generovaných souborů, strukturální validaci repozitáře, integrační sestavení DocFX a několik reprezentativních vizuálních scénářů.
 
 | Riziko nebo požadavek | Primární důkaz | Projektový vstup |

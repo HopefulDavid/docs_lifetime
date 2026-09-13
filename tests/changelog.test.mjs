@@ -1,20 +1,21 @@
 import assert from 'node:assert/strict';
-import { spawnSync } from 'node:child_process';
-import { mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
-import { tmpdir } from 'node:os';
+import { writeFileSync } from 'node:fs';
 import path from 'node:path';
 import test from 'node:test';
-import { fileURLToPath } from 'node:url';
-
-const repositoryRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+import {
+  createChangelogFixture,
+  generateChangelogInTimezone,
+  commit,
+  runGit,
+} from './fixtures/changelog.mjs';
 
 test('generuje úplnou čtenářskou historii po ročních obdobích nezávisle na tagu a prostředí', (context) => {
-  const fixtureRoot = createFixture(context);
+  const fixtureRoot = createChangelogFixture(context);
 
-  run(fixtureRoot, 'git', ['init', '--quiet']);
-  run(fixtureRoot, 'git', ['config', 'user.name', 'Test']);
-  run(fixtureRoot, 'git', ['config', 'user.email', 'test@example.invalid']);
-  run(fixtureRoot, 'git', [
+  runGit(fixtureRoot, ['init', '--quiet']);
+  runGit(fixtureRoot, ['config', 'user.name', 'Test']);
+  runGit(fixtureRoot, ['config', 'user.email', 'test@example.invalid']);
+  runGit(fixtureRoot, [
     'remote',
     'add',
     'origin',
@@ -22,17 +23,18 @@ test('generuje úplnou čtenářskou historii po ročních obdobích nezávisle 
   ]);
 
   commit(fixtureRoot, 'feat: přidej první změnu', 'první', '2024-08-27T12:00:00+02:00');
-  run(fixtureRoot, 'git', ['tag', 'v1.0.0']);
+  runGit(fixtureRoot, ['tag', 'v1.0.0']);
   commit(fixtureRoot, 'fix: oprav starší změnu', 'druhá', '2025-05-10T12:00:00+02:00');
   commit(fixtureRoot, 'docs: doplň starší návod', 'třetí', '2025-06-11T12:00:00+02:00');
   commit(fixtureRoot, 'ci: ověř aktuální změnu', 'čtvrtá', '2025-12-31T23:30:00+00:00');
   commit(fixtureRoot, 'feat(core)!: změň veřejný kontrakt', 'pátá', '2026-08-28T13:00:00+02:00');
   commit(fixtureRoot, 'historický záznam', 'šestá', '2026-08-28T14:00:00+02:00');
 
-  const utc = generateChangelog(fixtureRoot, 'UTC');
-  const prague = generateChangelog(fixtureRoot, 'Europe/Prague');
-  const head = run(fixtureRoot, 'git', ['rev-parse', 'HEAD']).output.trim();
+  const utc = generateChangelogInTimezone(fixtureRoot, 'UTC');
+  const prague = generateChangelogInTimezone(fixtureRoot, 'Europe/Prague');
+  const head = runGit(fixtureRoot, ['rev-parse', 'HEAD']).output.trim();
 
+  // Přelom roku se má řídit Prahou bez ohledu na časovou zónu procesu.
   assert.equal(prague, utc);
   assert.match(utc, /^# Změny/m);
   assert.match(utc, /automaticky generuje z úplné Git historie/);
@@ -53,6 +55,7 @@ test('generuje úplnou čtenářskou historii po ročních obdobích nezávisle 
     utc,
     /<a id="technicke-zmeny"><\/a>\r?\n<a id="technicke-zmeny-2026"><\/a>\r?\n### 🔩 Technické změny/u,
   );
+  // Starší období mají vlastní kotvy a zůstávají sbalená.
   assert.match(utc, /<a id="opravy"><\/a>\r?\n<a id="opravy-2025"><\/a>/u);
   assert.match(
     utc,
@@ -86,65 +89,15 @@ test('generuje úplnou čtenářskou historii po ročních obdobích nezávisle 
   assert.doesNotMatch(utc, /## 1\.0\.0/);
 });
 
-function createFixture(context) {
-  const fixtureRoot = mkdtempSync(path.join(tmpdir(), 'docs-changelog-'));
-  context.after(() => rmSync(fixtureRoot, { recursive: true, force: true }));
-
-  const fixtureConfig = readFileSync(path.join(repositoryRoot, 'cliff.toml'), 'utf8');
-  writeFileSync(path.join(fixtureRoot, 'cliff.toml'), fixtureConfig, 'utf8');
-
-  return fixtureRoot;
-}
-
-function generateChangelog(fixtureRoot, timeZone) {
-  const result = spawnSync(
-    process.execPath,
-    [
-      '-e',
-      'require(process.argv[1]).createChangelog(process.cwd()).then(text => process.stdout.write(text)).catch(error => { console.error(error.message); process.exitCode = 1; });',
-      path.join(repositoryRoot, 'scripts/generate-changelog.cjs'),
-    ],
-    {
-      cwd: fixtureRoot,
-      encoding: 'utf8',
-      env: { ...process.env, TZ: timeZone },
-    },
-  );
-  assert.equal(result.status, 0, result.stderr);
-  return result.stdout;
-}
-
-function commit(fixtureRoot, message, content, date) {
-  writeFileSync(path.join(fixtureRoot, 'obsah.txt'), `${content}\n`, 'utf8');
-  run(fixtureRoot, 'git', ['add', 'obsah.txt']);
-  run(fixtureRoot, 'git', ['commit', '--quiet', '-m', message], {
-    GIT_AUTHOR_DATE: date,
-    GIT_COMMITTER_DATE: date,
-  });
-}
-
-function run(cwd, command, args, extraEnvironment = {}) {
-  const result = spawnSync(command, args, {
-    cwd,
-    encoding: 'utf8',
-    env: { ...process.env, ...extraEnvironment },
-  });
-  const output = `${result.stdout ?? ''}${result.stderr ?? ''}`;
-
-  assert.equal(result.error, undefined, output || result.error?.message);
-  assert.equal(result.status, 0, output);
-  return { ...result, output };
-}
-
 test('changelog odmítne mělkou a chybějící historii', async (context) => {
   const { createChangelog } = await import('../scripts/generate-changelog.cjs');
-  const root = createFixture(context);
+  const root = createChangelogFixture(context);
   await assert.rejects(createChangelog(root), /skutečný Git repozitář/);
-  run(root, 'git', ['init', '--quiet']);
-  run(root, 'git', ['config', 'user.name', 'Test']);
-  run(root, 'git', ['config', 'user.email', 'test@example.invalid']);
+  runGit(root, ['init', '--quiet']);
+  runGit(root, ['config', 'user.name', 'Test']);
+  runGit(root, ['config', 'user.email', 'test@example.invalid']);
   commit(root, 'feat: první', 'obsah', '2026-09-13T12:00:00Z');
-  const head = run(root, 'git', ['rev-parse', 'HEAD']).output.trim();
+  const head = runGit(root, ['rev-parse', 'HEAD']).output.trim();
   writeFileSync(path.join(root, '.git/shallow'), head + '\n');
   await assert.rejects(createChangelog(root), /mělký checkout/);
 });
