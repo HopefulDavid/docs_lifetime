@@ -8,16 +8,16 @@ Množství platí pro jednu původní dávku.
 
 Počet porcí není uveden.
 
-| Surovina | Množství | Upřesnění |
-|---|---|---|
-| Listové těsto | 500 g | — |
-| Mléko | 100 ml | — |
-| Smetana na vaření | 200 ml | — |
-| Vejce | 5 ks | použijte pouze žloutky |
-| Cukr krystal | 3 lžíce | — |
-| Hladká mouka | 2 lžíce | — |
-| Citron | 1 ks | použijte kůru |
-| Skořice mletá | dle chuti | — |
+| Surovina          | Množství  | Upřesnění              |
+| ----------------- | --------- | ---------------------- |
+| Listové těsto     | 500 g     | —                      |
+| Mléko             | 100 ml    | —                      |
+| Smetana na vaření | 200 ml    | —                      |
+| Vejce             | 5 ks      | použijte pouze žloutky |
+| Cukr krystal      | 3 lžíce   | —                      |
+| Hladká mouka      | 2 lžíce   | —                      |
+| Citron            | 1 ks      | použijte kůru          |
+| Skořice mletá     | dle chuti | —                      |
 
 ## Postup
 

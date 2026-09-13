@@ -10,40 +10,39 @@ Počet porcí není uveden.
 
 ### Na maso
 
-| Surovina | Množství | Upřesnění |
-|---|---|---|
-| Mleté hovězí maso | 500 g | — |
-| Vejce | 1 ks | — |
-| Strouhanka nebo Kukuřičná krupice | 2 lžíce | podle hustoty |
-| Koření na mleté maso | dle chuti | — |
-| Pepř mletý | dle chuti | čerstvě namletý |
-| Sůl | 0,5 lžičky | — |
+| Surovina                          | Množství   | Upřesnění       |
+| --------------------------------- | ---------- | --------------- |
+| Mleté hovězí maso                 | 500 g      | —               |
+| Vejce                             | 1 ks       | —               |
+| Strouhanka nebo Kukuřičná krupice | 2 lžíce    | podle hustoty   |
+| Koření na mleté maso              | dle chuti  | —               |
+| Pepř mletý                        | dle chuti  | čerstvě namletý |
+| Sůl                               | 0,5 lžičky | —               |
 
 ### Na omáčku
 
-| Surovina | Množství | Upřesnění |
-|---|---|---|
-| Máslo nebo Ghí | 60 g | — |
-| Hladká mouka | 50 g | — |
-| Cibule | 1 ks | — |
-| Loupaná rajčata v konzervě | 400 g | — |
-| Hovězí vývar nebo Drůbeží vývar | 800 ml | — |
-| Skořice mletá | 0,5 lžičky | — |
-| Bobkový list | 1 ks | — |
-| Nové koření | 5 kuliček | — |
-| Tymián sušený | 0,5 lžičky | — |
-| Rajčatový protlak | 140 g | — |
-| Pepř celý | 5 kuliček | — |
-| Sůl | dle chuti | na omáčku |
-| Ocet | dle chuti | — |
-| Cukr | dle chuti | — |
+| Surovina                        | Množství   | Upřesnění                                   |
+| ------------------------------- | ---------- | ------------------------------------------- |
+| Máslo nebo Ghí                  | 60 g       | —                                           |
+| Hladká mouka                    | 50 g       | —                                           |
+| Cibule                          | 1 ks       | —                                           |
+| Loupaná rajčata v konzervě      | 400 g      | —                                           |
+| Hovězí vývar nebo Drůbeží vývar | 800 ml     | —                                           |
+| Skořice mletá                   | 0,5 lžičky | —                                           |
+| Bobkový list                    | 1 ks       | —                                           |
+| Nové koření                     | 5 ks       | kuličky                                     |
+| Tymián sušený                   | 0,5 lžičky | —                                           |
+| Rajčatový protlak               | 140 g      | —                                           |
+| Pepř celý                       | 5 ks       | kuličky                                     |
+| Sůl                             | dle chuti  | na omáčku                                   |
+| Ocet                            | 1 lžíce    | orientačně, přidávejte postupně podle chuti |
+| Cukr                            | 3 lžičky   | orientačně, přidávejte postupně podle chuti |
 
 ### Příloha (volitelné)
 
-| Surovina         | Množství | Upřesnění |
-|------------------|----------|---|
-| Houskový knedlík | 1 balení | k podávání |
-| Těstoviny        | 1 balení | k podávání |
+| Surovina                        | Množství | Upřesnění                             |
+| ------------------------------- | -------- | ------------------------------------- |
+| Houskový knedlík nebo Těstoviny | 1 balení | k podávání, hmotnost balení neuvedena |
 
 > **Tip:** Mleté maso můžete dochutit čerstvými bylinkami pro výraznější chuť.
 

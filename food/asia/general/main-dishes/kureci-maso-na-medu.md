@@ -8,20 +8,20 @@ Množství platí pro jednu původní dávku.
 
 Počet porcí není uveden.
 
-| Surovina | Množství   | Upřesnění |
-|---|------------|---|
-| Kuřecí prsa nebo Kuřecí stehenní řízky | 500 g      | — |
-| Hladká mouka | 100 g     | na obalení |
-| Sůl | dle chuti  | — |
-| Pepř mletý | dle chuti  | černý |
-| Ghí nebo Rostlinný olej | 2 lžíce    | na smažení |
-| Máslo | 2 lžíce    | — |
-| Česnek | 1 stroužek | — |
-| Med | 1 lžíce    | — |
-| Pomerančová šťáva | 2 lžíce    | — |
-| Sójová omáčka | 2 lžíce    | — |
-| Sladká paprika mletá | 0,5 lžičky | — |
-| Rýže | 2 sáčky    | k podávání |
+| Surovina                               | Množství   | Upřesnění                            |
+| -------------------------------------- | ---------- | ------------------------------------ |
+| Kuřecí prsa nebo Kuřecí stehenní řízky | 500 g      | —                                    |
+| Hladká mouka                           | 100 g      | na obalení                           |
+| Sůl                                    | dle chuti  | —                                    |
+| Pepř mletý                             | dle chuti  | černý                                |
+| Ghí nebo Rostlinný olej                | 2 lžíce    | na smažení                           |
+| Máslo                                  | 2 lžíce    | —                                    |
+| Česnek                                 | 1 stroužek | —                                    |
+| Med                                    | 1 lžíce    | —                                    |
+| Pomerančová šťáva                      | 2 lžíce    | —                                    |
+| Sójová omáčka                          | 2 lžíce    | —                                    |
+| Sladká paprika mletá                   | 0,5 lžičky | —                                    |
+| Rýže                                   | 2 sáčky    | k podávání, hmotnost sáčku neuvedena |
 
 ## Postup
 

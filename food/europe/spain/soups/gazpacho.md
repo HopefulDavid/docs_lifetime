@@ -8,18 +8,18 @@ Množství platí pro jednu původní dávku.
 
 Počet porcí není uveden.
 
-| Surovina | Množství | Upřesnění |
-|---|---|---|
-| Rajčata podlouhlá | 3 ks | — |
-| Rajčata | 3 ks | — |
-| Rajče masité | 1 ks | červené |
-| Červená paprika | 1 ks | masitá |
-| Zelená paprika nebo Bílá paprika | 2 ks | nemasitá |
-| Okurka | 1 ks | — |
-| Cibule | 1 ks | střední |
-| Česnek | 1 stroužek | — |
-| Vinný ocet | 2 lžíce | — |
-| Sůl | 1 lžička | malá |
+| Surovina                         | Množství   | Upřesnění |
+| -------------------------------- | ---------- | --------- |
+| Rajčata podlouhlá                | 3 ks       | —         |
+| Rajčata                          | 3 ks       | —         |
+| Rajče masité                     | 1 ks       | červené   |
+| Červená paprika                  | 1 ks       | masitá    |
+| Zelená paprika nebo Bílá paprika | 2 ks       | nemasitá  |
+| Okurka                           | 1 ks       | —         |
+| Cibule                           | 1 ks       | střední   |
+| Česnek                           | 1 stroužek | —         |
+| Vinný ocet                       | 2 lžíce    | —         |
+| Sůl                              | 1 lžička   | malá      |
 
 ## Postup
 

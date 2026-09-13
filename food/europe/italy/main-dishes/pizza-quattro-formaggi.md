@@ -8,15 +8,15 @@ Množství platí pro jednu původní dávku.
 
 Počet porcí není uveden.
 
-| Surovina | Množství  | Upřesnění |
-|---|-----------|---|
-| Pizza těsto nebo Listové těsto | 1 ks      | — |
-| Smetana ke šlehání | 3–5 lžic  | — |
-| Mozzarella | 1 balení  | kuličky |
-| Gorgonzola | 1 balení  | — |
-| Parmezán | 1 balení  | — |
-| Sůl | dle chuti | — |
-| Pepř mletý | dle chuti | — |
+| Surovina                       | Množství  | Upřesnění                          |
+| ------------------------------ | --------- | ---------------------------------- |
+| Pizza těsto nebo Listové těsto | 1 ks      | hmotnost kusu neuvedena            |
+| Smetana ke šlehání             | 3–5 lžic  | —                                  |
+| Mozzarella                     | 1 balení  | kuličky, hmotnost balení neuvedena |
+| Gorgonzola                     | 1 balení  | hmotnost balení neuvedena          |
+| Parmezán                       | 1 balení  | hmotnost balení neuvedena          |
+| Sůl                            | dle chuti | —                                  |
+| Pepř mletý                     | dle chuti | —                                  |
 
 ## Postup
 

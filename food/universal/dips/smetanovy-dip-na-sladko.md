@@ -8,11 +8,11 @@ Množství platí pro jednu původní dávku.
 
 Počet porcí není uveden.
 
-| Surovina | Množství | Upřesnění |
-|---|---|---|
-| Kečup | 2 lžíce | — |
-| Smetana nebo Zakysaná smetana | 2 lžíce | — |
-| Med | 1 lžička | — |
+| Surovina                      | Množství | Upřesnění |
+| ----------------------------- | -------- | --------- |
+| Kečup                         | 2 lžíce  | —         |
+| Smetana nebo Zakysaná smetana | 2 lžíce  | —         |
+| Med                           | 1 lžička | —         |
 
 > **Tip:** Můžete použít zakysanou smetanu pro jemnější chuť.
 

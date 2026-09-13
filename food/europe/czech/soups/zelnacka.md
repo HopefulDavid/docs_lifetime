@@ -8,23 +8,23 @@ Množství platí pro jednu původní dávku.
 
 Počet porcí není uveden.
 
-| Surovina | Množství   | Upřesnění |
-|---|------------|---|
-| Máslo | 2 lžíce    | — |
-| Cibule | 1 ks       | — |
-| Klobása | 2 ks       | — |
-| Brambory | 400 g      | — |
-| Voda nebo Vývar | 1,5-2 l    | — |
-| Bobkový list | dle chuti  | — |
-| Nové koření | dle chuti  | — |
-| Pepř celý | dle chuti  | — |
-| Kmín | dle chuti  | — |
-| Sladká paprika mletá | dle chuti  | — |
-| Sůl | dle chuti  | — |
-| Cukr | dle chuti  | — |
-| Kysané zelí | 400-500 g  | i trochu láku podle chuti |
-| Smetana ke šlehání | 200-250 ml | — |
-| Majoránka | dle chuti  | — |
+| Surovina             | Množství   | Upřesnění                 |
+| -------------------- | ---------- | ------------------------- |
+| Máslo                | 2 lžíce    | —                         |
+| Cibule               | 1 ks       | —                         |
+| Klobása              | 2 ks       | —                         |
+| Brambory             | 400 g      | —                         |
+| Voda nebo Vývar      | 1,5–2 l    | —                         |
+| Bobkový list         | dle chuti  | —                         |
+| Nové koření          | dle chuti  | —                         |
+| Pepř celý            | dle chuti  | —                         |
+| Kmín                 | dle chuti  | —                         |
+| Sladká paprika mletá | dle chuti  | —                         |
+| Sůl                  | dle chuti  | —                         |
+| Cukr                 | dle chuti  | —                         |
+| Kysané zelí          | 400–500 g  | i trochu láku podle chuti |
+| Smetana ke šlehání   | 200–250 ml | —                         |
+| Majoránka            | dle chuti  | —                         |
 
 ## Postup
 

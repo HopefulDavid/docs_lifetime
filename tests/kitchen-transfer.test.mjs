@@ -33,7 +33,7 @@ test('export a odkaz přenesou dávku, volby, hotové a vlastní množství bez 
   state.selections[sauce.id].choices[alternative.id] = 1;
   const optional = sauce.groups.find((group) => group.optional);
   state.selections[sauce.id].enabled[optional.id] = true;
-  const unknown = items(state).find((item) => item.text === 'neuvedeno');
+  const unknown = items(state).find((item) => item.name === 'Pepř mletý');
   state.amounts[unknown.key] = { text: '2 balení po 150 g', signature: unknown.signature };
   state.checked[unknown.key] = unknown.signature;
   state.cooking[pasta.id] = { step: 2, done: [0, 1], revision: pasta.revision };
@@ -172,7 +172,7 @@ test('nové jídlo v součtu zruší staré odškrtnutí společné suroviny', (
 test('konflikt vlastních množství neslučuje potvrzení pro jiný nákupní údaj', () => {
   const local = createSelection(pasta);
   const incoming = createSelection(pasta);
-  const unknown = items(local).find((item) => item.text === 'neuvedeno');
+  const unknown = items(local).find((item) => item.name === 'Pepř mletý');
   local.amounts[unknown.key] = { text: '1 sklenice', signature: unknown.signature };
   incoming.amounts[unknown.key] = { text: '2 sklenice', signature: unknown.signature };
   local.checked[unknown.key] = unknown.signature;

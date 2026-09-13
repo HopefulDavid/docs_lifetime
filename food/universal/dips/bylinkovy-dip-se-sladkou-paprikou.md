@@ -8,15 +8,15 @@ Množství platí pro jednu původní dávku.
 
 Počet porcí není uveden.
 
-| Surovina | Množství | Upřesnění |
-|---|---|---|
-| Zakysaná smetana | 0,5 kelímku | velký kelímek, jeho hmotnost zdroj neuvádí |
-| Sladká paprika mletá | dle chuti | — |
-| Pizza koření | dle chuti | — |
-| Bazalka | dle chuti | čerstvá nasekaná nebo sušená |
-| Česnek | 1 stroužek | větší |
-| Sůl | dle chuti | — |
-| Pepř mletý | dle chuti | — |
+| Surovina             | Množství    | Upřesnění                                  |
+| -------------------- | ----------- | ------------------------------------------ |
+| Zakysaná smetana     | 0,5 kelímku | velký kelímek, jeho hmotnost zdroj neuvádí |
+| Sladká paprika mletá | dle chuti   | —                                          |
+| Pizza koření         | dle chuti   | —                                          |
+| Bazalka              | dle chuti   | čerstvá nasekaná nebo sušená               |
+| Česnek               | 1 stroužek  | větší                                      |
+| Sůl                  | dle chuti   | —                                          |
+| Pepř mletý           | dle chuti   | —                                          |
 
 > **Tip:** Použijte čerstvou bazalku pro výraznější chuť.
 

@@ -4,14 +4,18 @@ Káva z hrubě mletých zrn připravená louhováním ve French Pressu.
 
 ## Ingredience
 
-Množství platí pro jednu původní dávku.
+Množství platí pro jednu dávku z 500 ml vody.
 
 Počet porcí není uveden.
 
-| Surovina | Množství | Upřesnění |
-|---|---|---|
-| Káva | neuvedeno | hrubě mletá |
-| Voda | neuvedeno | 94–96 °C |
+| Surovina | Množství | Upřesnění   |
+| -------- | -------- | ----------- |
+| Káva     | 30 g     | hrubě mletá |
+| Voda     | 500 ml   | 94–96 °C    |
+
+## Zdroje množství
+
+Doporučený poměr kávy a vody je doplněný podle [návodu Belco pro French Press](https://www.belco.fr/recettes/frenchpress).
 
 ## Pomůcky
 
@@ -27,7 +31,7 @@ Počet porcí není uveden.
 
   Pomáhá udržet správnou teplotu při extrakci.
 
-- Namelte kávová zrna na hrubo.
+- Namelte 30 g kávových zrn na hrubo.
 
   Hrubé mletí je klíčové pro správnou chuť.
 
@@ -43,7 +47,7 @@ Počet porcí není uveden.
 
 ### 2. Louhování a servírování
 
-- Pomalu zalijte kávu vodou.
+- Pomalu zalijte kávu 500 ml vody.
 
 - Promíchejte lžící nebo speciálním nástrojem.
 

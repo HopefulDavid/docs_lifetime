@@ -8,26 +8,26 @@ Množství platí pro jednu původní dávku.
 
 Počet porcí není uveden.
 
-| Surovina | Množství | Upřesnění |
-|---|---|---|
-| Tvaroh | 1 vanička | velikost vaničky zdroj neuvádí |
-| Smetana ke šlehání | 1 hrnek | vysokoprocentní, velikost hrnku zdroj neuvádí |
-| Cukr | dle chuti | — |
+| Surovina           | Množství  | Upřesnění                                     |
+| ------------------ | --------- | --------------------------------------------- |
+| Tvaroh             | 1 vanička | velikost vaničky zdroj neuvádí                |
+| Smetana ke šlehání | 1 hrnek   | vysokoprocentní, velikost hrnku zdroj neuvádí |
+| Cukr               | dle chuti | —                                             |
 
 ### Poleva
 
-| Surovina | Množství | Upřesnění |
-|---|---|---|
-| Hořká čokoláda | 1 tabulka | hmotnost tabulky zdroj neuvádí |
+| Surovina        | Množství  | Upřesnění                      |
+| --------------- | --------- | ------------------------------ |
+| Hořká čokoláda  | 1 tabulka | hmotnost tabulky zdroj neuvádí |
 | Mléčná čokoláda | 1 tabulka | hmotnost tabulky zdroj neuvádí |
-| Smetana | 0,5 hrnku | velikost hrnku zdroj neuvádí |
-| Máslo | 2 lžíce | — |
+| Smetana         | 0,5 hrnku | velikost hrnku zdroj neuvádí   |
+| Máslo           | 2 lžíce   | —                              |
 
 ### Sušenkový základ
 
-| Surovina | Množství | Upřesnění |
-|---|----------|---|
-| Kakaové sušenky | 1 balení | — |
+| Surovina        | Množství | Upřesnění                 |
+| --------------- | -------- | ------------------------- |
+| Kakaové sušenky | 1 balení | hmotnost balení neuvedena |
 
 > **Tip:** Cukr přidávejte postupně a ochutnávejte, aby náplň nebyla příliš sladká.
 

@@ -8,12 +8,12 @@ Množství platí pro jednu původní dávku.
 
 Počet porcí není uveden.
 
-| Surovina | Množství   | Upřesnění |
-|---|------------|---|
-| Penne | 250 g      | — |
-| Niva | 1 balení   | — |
-| Máslo | 1 lžíce   | — |
-| Smetana ke šlehání | 200-250 ml | — |
+| Surovina           | Množství   | Upřesnění                 |
+| ------------------ | ---------- | ------------------------- |
+| Penne              | 250 g      | —                         |
+| Niva               | 1 balení   | hmotnost balení neuvedena |
+| Máslo              | 1 lžíce    | —                         |
+| Smetana ke šlehání | 200–250 ml | —                         |
 
 ## Postup
 
@@ -23,7 +23,7 @@ Počet porcí není uveden.
 
 ### 2. Příprava omáčky
 
-- Na mírném ohni s lžičkou másla rozehřejte smetanu.
+- Na mírném ohni s 1 lžící másla rozehřejte smetanu.
 - Až se smetana zahřeje, přidejte nivu nakrájenou na menší kousky.
 - Míchejte až do rozpuštění nivy.
 

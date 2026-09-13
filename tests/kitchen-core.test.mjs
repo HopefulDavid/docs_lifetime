@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import {
+  buildShoppingList,
   cookingProgress,
   filterShoppingItems,
   parseQuantity,
@@ -55,7 +56,7 @@ test('dokončení vaření nevyžaduje vynechanou přílohu a po jejím zapnutí
   assert(cookingProgress(tikka, config, { done: tikka.steps.map((_, index) => index) }).complete);
 });
 
-test('spojí nákup rajské a šunkofleků, ale nemíchá gramy a lžičky másla', () => {
+test('spojí nákup rajské a šunkofleků, ale nemíchá gramy a lžíce másla', () => {
   const rajska = recipe('rajska-omacka');
   const sunkofleky = recipe('sunkofleky');
   const items = shoppingList({ [rajska.id]: {}, [sunkofleky.id]: {} });
@@ -67,7 +68,7 @@ test('spojí nákup rajské a šunkofleků, ale nemíchá gramy a lžičky másl
       .filter((item) => item.name === 'Máslo')
       .map((item) => item.amount)
       .sort(),
-    ['1 lžička', '60 g'],
+    ['1 lžíce', '60 g'],
   );
   assert.equal(items.find((item) => item.name === 'Cibule').sources.length, 2);
 });
@@ -86,7 +87,65 @@ test('převádí kg a litry, násobí oba konce rozmezí a neodhaduje balení an
     shoppingList({ [recipe('kokosove-kure').id]: { factor: 2 } }).find(
       (item) => item.name === 'Rýže',
     ).amount,
-    'neuvedeno',
+    '4 sáčky',
+  );
+});
+
+test('číselné množství každé ingredience má podporovanou jednotku pro přepočet dávky', () => {
+  for (const recipe of catalog.recipes) {
+    for (const item of recipe.ingredients) {
+      if (['neuvedeno', 'dle chuti'].includes(item.quantity)) continue;
+      assert(parseQuantity(item.quantity), `${recipe.id}: ${item.quantity}`);
+    }
+  }
+});
+
+test('násobí balení, snítky, svazky i porce a přepočítá dávku kávy', () => {
+  const steak = recipe('steak');
+  const config = recipeSettings(steak, { factor: 3 });
+  config.enabled[steak.groups.find((group) => group.optional).id] = true;
+  const list = shoppingList({
+    [steak.id]: config,
+    [recipe('tortilly-s-masem-a-salsou').id]: { factor: 0.5 },
+    [recipe('gnocchi-se-spenatem').id]: { factor: 2 },
+    [recipe('french-press').id]: { factor: 2 },
+  });
+
+  assert.equal(list.find((item) => item.name === 'Rozmarýn').amount, '3–6 snítek');
+  assert.equal(list.find((item) => item.name === 'Zelenina').amount, '3 porce');
+  assert.equal(list.find((item) => item.name === 'Koriandr').amount, '0,5 svazku');
+  assert.equal(list.find((item) => item.name === 'Mražený špenát').amount, '2 balení');
+  assert.equal(list.find((item) => item.name === 'Káva').amount, '60 g');
+  assert.equal(list.find((item) => item.name === 'Voda').amount, '1 l');
+});
+
+test('neuvedené množství zůstane přiznané v nákupu i exportu při změně dávky', () => {
+  const incomplete = recipe('french-press');
+  incomplete.ingredients.forEach((item) => {
+    item.quantity = 'neuvedeno';
+  });
+  const items = buildShoppingList(
+    [incomplete],
+    { [incomplete.id]: { factor: 2 } },
+    catalog.departments,
+  );
+
+  assert.equal(items.length, 2);
+  assert(items.every((item) => item.amount === 'neuvedeno'));
+  assert.match(shoppingText(items, {}), /Káva — neuvedeno/);
+  assert.match(shoppingText(items, {}), /Voda — neuvedeno/);
+});
+
+test('volitelný led s upřesněním za čárkou se nakoupí až po zapnutí a násobí dávkou', () => {
+  const vietnamese = recipe('vietnamska-kava');
+  const config = recipeSettings(vietnamese, { factor: 2 });
+  const ice = vietnamese.ingredients.find((item) => item.options[0].name === 'Led');
+
+  assert(!shoppingList({ [vietnamese.id]: config }).some((item) => item.name === 'Led'));
+  config.enabled[ice.id] = true;
+  assert.equal(
+    shoppingList({ [vietnamese.id]: config }).find((item) => item.name === 'Led').amount,
+    '8–10 ks',
   );
 });
 
@@ -104,6 +163,11 @@ test('zvolí pouze jednu alternativu a přidá přílohu až na výslovný výb�
   assert(!selectedIngredients(rajska, config).some((item) => item.name === 'Houskový knedlík'));
   config.enabled[rajska.groups.find((group) => group.optional).id] = true;
   assert(selectedIngredients(rajska, config).some((item) => item.name === 'Houskový knedlík'));
+  assert(!selectedIngredients(rajska, config).some((item) => item.name === 'Těstoviny'));
+  const side = rajska.ingredients.find((item) => item.options[0].name === 'Houskový knedlík');
+  config.choices[side.id] = 1;
+  assert(selectedIngredients(rajska, config).some((item) => item.name === 'Těstoviny'));
+  assert(!selectedIngredients(rajska, config).some((item) => item.name === 'Houskový knedlík'));
 });
 
 test('zvýšení dávky nebo změna zdroje zneplatní staré odškrtnutí, nezměněná položka je zachová', () => {
@@ -184,7 +248,7 @@ test('nákup obsahuje všechny vybrané suroviny včetně dochucení, ale žádn
   assert(!items.some((item) => /French Press|Phin/.test(item.name)));
   const text = shoppingText(items, {});
 
-  assert.match(text, /Množství|neuvedeno/);
+  assert.match(text, /Sůl — dle chuti/);
   assert.match(text, /ZELENINA, OVOCE A BYLINKY/);
   assert.match(text, /Cibule/);
 });
@@ -204,5 +268,5 @@ test('dříve uložené vlastní množství přežije obnovení a export, ale ne
     (item) => item.name === 'Kyselé okurky',
   );
 
-  assert.equal(shoppingAmount(changed, restored.amounts), 'neuvedeno');
+  assert.equal(shoppingAmount(changed, restored.amounts), '8 ks');
 });

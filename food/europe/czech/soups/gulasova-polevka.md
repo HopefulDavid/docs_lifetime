@@ -8,18 +8,18 @@ Množství platí pro jednu původní dávku.
 
 Počet porcí není uveden.
 
-| Surovina | Množství   | Upřesnění |
-|---|------------|---|
-| Cibule | 1 kg       | — |
-| Brambory | 700 g      | — |
-| Hovězí maso | 200 g      | — |
-| Hovězí bujón | 2–3 ks     | kostky |
+| Surovina             | Množství   | Upřesnění                    |
+| -------------------- | ---------- | ---------------------------- |
+| Cibule               | 1 kg       | —                            |
+| Brambory             | 700 g      | —                            |
+| Hovězí maso          | 200 g      | —                            |
+| Hovězí bujón         | 2–3 ks     | kostky                       |
 | Sladká paprika mletá | 0,5 sáčku  | hmotnost sáčku zdroj neuvádí |
-| Majoránka | 0,5 sáčku  | hmotnost sáčku zdroj neuvádí |
-| Česnek | 3 stroužky | — |
-| Sůl | dle chuti  | — |
-| Pepř mletý | dle chuti  | — |
-| Voda | 1,5-2 l    | podle velikosti hrnce |
+| Majoránka            | 0,5 sáčku  | hmotnost sáčku zdroj neuvádí |
+| Česnek               | 3 stroužky | —                            |
+| Sůl                  | dle chuti  | —                            |
+| Pepř mletý           | dle chuti  | —                            |
+| Voda                 | 1,5–2 l    | podle velikosti hrnce        |
 
 > **Tip:** Cibuli krájejte najemno pro lepší chuťový základ.
 
@@ -38,7 +38,7 @@ Počet porcí není uveden.
 
 ### 3. Vaření
 
-- Zalijte vodou – hrnec naplňte trochu víc než do půlky.
+- Zalijte 1,5–2 l vody.
 - Přidejte sůl, pepř, masox, prolisovaný česnek, brambory na kostky a majoránku.
 - Vařte, dokud brambory nezměknou.
 

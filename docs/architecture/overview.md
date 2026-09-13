@@ -270,6 +270,8 @@ Nesoulad počtu vykreslených a datových kroků se přizná chybou a ponechá p
 
 Počet porcí, chybějící množství, součet doby přípravy, výživa, alergeny a přepočty lžic na gramy se automaticky neodhadují, protože současné zdroje k nim nedávají spolehlivý podklad.
 
+Klient přepočítává také autorem uvedené počty balení, sáčků, snítek, svazků a přílohových porcí, jejich hmotnost přitom zůstává neurčená, pokud ji zdroj neuvádí.
+
 Databáze, CMS ani druhá ručně udržovaná reprezentace receptů nejsou potřeba.
 
 Build kopie v izolovaném docsetu jsou plně obnovitelné.

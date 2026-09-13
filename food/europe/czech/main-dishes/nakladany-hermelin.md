@@ -8,14 +8,14 @@ Množství platí pro jednu původní dávku.
 
 Počet porcí není uveden.
 
-| Surovina | Množství   | Upřesnění |
-|---|------------|---|
-| Hermelín | 7 ks       | — |
-| Cibule | 2 ks       | — |
-| Česnek | 6 stroužků | — |
-| Řepkový olej | 300 ml     | na úplné ponoření sýrů |
-| Chilli pasta | 2 lžíce    | tenká vrstva, původně Kaufland |
-| Koření na grilovaný sýr | dle chuti  | původně Avokádo |
+| Surovina                | Množství   | Upřesnění                      |
+| ----------------------- | ---------- | ------------------------------ |
+| Hermelín                | 7 ks       | —                              |
+| Cibule                  | 2 ks       | —                              |
+| Česnek                  | 6 stroužků | —                              |
+| Řepkový olej            | 300 ml     | na úplné ponoření sýrů         |
+| Chilli pasta            | 2 lžíce    | tenká vrstva, původně Kaufland |
+| Koření na grilovaný sýr | dle chuti  | původně Avokádo                |
 
 ## Než začnete
 

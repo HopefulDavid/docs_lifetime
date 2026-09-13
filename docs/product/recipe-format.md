@@ -84,6 +84,10 @@ Seznam nepřikazuje koupit všechny.
 
 Samostatná volitelná surovina používá upřesnění `volitelné`, celá volitelná skupina nadpis zakončený `(volitelné)`.
 
+Další upřesnění odděl čárkou, například `volitelné, kostky ledu`.
+
+Parser přijímá i starší oddělení středníkem kvůli kompatibilitě.
+
 Názvy skupin musí zůstat jedinečné i po odstranění diakritiky a sjednocení velikosti písmen, protože z nich vznikají identifikátory uložených voleb.
 
 Pomůcky nejsou potraviny a patří mimo tabulky ingrediencí.
@@ -96,13 +100,35 @@ Hotový vývar a suroviny na jeho domácí výrobu se nesmějí automaticky zapo
 
 Přesné množství lze zapsat číslem a jednotkou, například `500 g`, `0,5 lžičky` nebo `2,5–3 l`.
 
+Mezi číslem a jednotkou je mezera, desetinná čísla používají čárku a rozmezí pomlčku, například `1–2 ks`.
+
+Jednotka musí odpovídat způsobu odměření suroviny.
+
+| Typ údaje | Vhodný zápis | Upřesnění |
+|---|---|---|
+| Hmotnost | `500 g`, `1 kg` | Maso, mouka nebo surovina odvážená autorem |
+| Objem | `100 ml`, `1,5–2 l` | Voda, mléko nebo jiná surovina odměřená objemově |
+| Počet kusů | `2 ks` | Zelenina, vejce nebo celé koření, tvar koření patří do upřesnění |
+| Kuchařská míra | `1 lžíce`, `0,5 lžičky`, `2 stroužky`, `1 hrst`, `1–2 snítky`, `1 svazek` | Zachovat skutečnou autorskou míru bez odhadu gramů |
+| Obal nebo porce | `1 balení`, `2 sáčky`, `1 kelímek`, `1 porce` | Uvést známou hmotnost či objem v upřesnění, jinak výslovně přiznat chybějící velikost |
+
 Podporované převody vlastní [`kitchen-core.mjs`](../../templates/kitchen/public/kitchen-core.mjs).
 
 Převádí pouze kg na g a l na ml, nikdy lžíce na gramy ani kusy na hmotnost.
 
+Počty balení, sáčků, snítek, svazků a porcí se násobí dávkou, aniž by tím byla určená jejich hmotnost.
+
 Autor uvede ověřené množství každé suroviny přímo ve zdrojovém receptu.
 
+Pokud správce požaduje doplnění podle jiného receptu, doporučenou dávku označ a připoj odkaz na konkrétní zdroj do samostatné sekce `## Zdroje množství` mezi ingrediencemi a postupem.
+
+Samostatná sekce zachová zdroje viditelné také při nahrazení původní tabulky interaktivním seznamem.
+
+Převzatý doplněk se nesmí vydávat za původní autorské množství a tabulka i postup musejí uvádět stejnou hodnotu.
+
 `neuvedeno` označuje chybějící autorský údaj, zatímco `dle chuti` znamená skutečné dochucování podle receptu.
+
+Pokud množství není známé, zapiš do celého pole Množství přesně `neuvedeno`, nikoli prázdnou buňku, nulu, otazník nebo náhradní `dle chuti`.
 
 Chybějící údaj se opravuje v receptu, nikoli vlastním nastavením v nákupním rozhraní.
 
@@ -162,15 +188,25 @@ Cibule připravená jako základ dalšího vaření.
 
 Množství již uvedené v postupu lze přenést do tabulky, aby nákup neztratil surovinu potřebnou při vaření.
 
+Při revizi porovnej všechny výslovné počty a jednotky v ingrediencích s postupem.
+
+Orientační doporučení k dochucení lze převzít do tabulky pouze s označením, že se upravuje podle chuti.
+
+Pokud se stejná surovina používá ve více krocích, tabulka uvádí celkové množství a postup vysvětlí jeho rozdělení bez dvojího započítání.
+
+Potvrzená novější oprava autora má přednost před zastaralým údajem a musí se promítnout do tabulky i postupu.
+
 Rozporné údaje se zachovají s viditelnou poznámkou pro čtenáře, dokud je nepotvrdí správce obsahu.
 
 Věcné změny receptu vyžadují kontrolu člověkem znalým receptu podle [testovací strategie](../quality/testing.md#trvalá-obsahová-kontrola).
 
 | Otevřená obsahová otázka | Místo | Vlastník a podmínka uzavření |
 |---|---|---|
-| Není jasné, zda 1 cibule a 150 g bílé cibule představují dvě různé dávky | [Kokosové kuře](../../food/asia/general/main-dishes/kokosove-kure.md) | Správce obsahu potvrdí správné množství a sjednotí tabulku |
-| Chybí parametry tlakového hrnce, množství vody a potvrzení uvedených 5 hodin | [Hovězí vývar](../../food/europe/czech/soups/hovezi-vyvar.md) | Správce obsahu ověří postup pro konkrétní zařízení a opraví čas i objem |
-| Řada receptů neuvádí množství hlavních potravin nebo velikost dávky | Řádky s `neuvedeno` v příslušném receptu | Správce obsahu doplní údaje při skutečné přípravě, do té doby zůstává nejistota viditelná |
+| Chybí parametry tlakového hrnce a potvrzení uvedených 5 hodin | [Hovězí vývar](../../food/europe/czech/soups/hovezi-vyvar.md) | Správce obsahu ověří dobu a režim pro konkrétní zařízení, množství vody již doplnil |
+| Doporučené dávky nápojů potřebují ověření při vlastní přípravě | Zdrojové poznámky u French Pressu, vietnamské kávy a Pumpkin Spice | Správce obsahu případně upraví doložené výchozí dávky podle své přípravy |
+| U části balení, hrnků, kusů a porcí chybí velikost | Upřesnění příslušných ingrediencí | Správce obsahu doplní skutečnou hmotnost nebo objem, nelze je odvodit z běžného obchodního balení |
+
+Duplicitu bílé cibule v kokosovém kuřeti potvrdil uživatel dne 2026-09-13, recept proto obsahuje pouze jednu cibuli.
 
 Generátor zdrojové recepty neformátuje ani nepřepisuje.
 

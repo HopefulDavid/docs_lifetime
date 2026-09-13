@@ -62,6 +62,14 @@ Rozsah tvoří JavaScript v `scripts/` a `tests/`.
 
 Markdown se řídí vlastním [kanonickým stylem](../governance/documentation.md#styl-markdownu).
 
+Pro vyžádané formátování zdrojových receptů použij `npm exec -- prettier --ignore-path .gitignore --write --prose-wrap preserve "food/**/*.md" "drink/**/*.md"`.
+
+Kontrolní varianta nahrazuje `--write` přepínačem `--check` a zachování odstavců zajišťuje `--prose-wrap preserve`.
+
+Výslovný `--ignore-path .gitignore` umožní tento cílený průchod receptů, protože běžný `.prettierignore` omezuje formátování na skripty a testy.
+
+Generované adresáře se tímto příkazem neupravují.
+
 | Varianta | Pracovní adresář | Přesný příkaz | Výstup | Úspěch znamená |
 |---|---|---|---|---|
 | Příprava celého docsetu | Kořen repozitáře | `npm run docs:generate` | Ignorovaný `_generated/` včetně changelogu a manifestu původu | Generátor ověří vstupy, obnoví výstupy, odstraní nadbytečné soubory a vypíše změněné cesty nebo aktuální stav |
@@ -184,10 +192,10 @@ Po sestavení ověř obecný Úvod, katalog v Kuchyni, nákup a detail na šíř
 
 | Požadavek | Kroky | Očekávaný výsledek |
 |---|---|---|
-| `REQ-006`, `REQ-008` | Vyhledej `rajska` a `sunkofleky`, oba recepty přidej a otevři „Můj nákup“ | Cibule 2 ks a vejce 3 ks, máslo v gramech a lžičkách zůstává oddělené |
+| `REQ-006`, `REQ-008` | Vyhledej `rajska` a `sunkofleky`, oba recepty přidej a otevři „Můj nákup“ | Cibule 2 ks a vejce 3 ks, máslo v gramech a lžících zůstává oddělené |
 | `REQ-007`, `REQ-011` | Odškrtni cibuli a změň šunkofleky na 2× dávku | Cibule 3 ks a vejce 5 ks, dotčené odškrtnutí se zruší |
 | `REQ-007` | U rajské zvol ghí a zapni přílohu, u kari zvol broskev | Nákup obsahuje zvolené varianty, nikoli zároveň jejich náhrady |
-| `REQ-009` | U neznámého množství rozbal zdroje, zkopíruj text nebo otevři PDF | Údaj je přiznaný bez editace a filtru množství, export obsahuje původní údaj i poznámky |
+| `REQ-009` | V izolované fixture nastav množství na `neuvedeno`, rozbal zdroje, zkopíruj text nebo otevři PDF | Údaj je přiznaný bez editace a filtru množství, export obsahuje původní údaj i poznámky |
 | `REQ-002`, `REQ-010` | V nákupu přepni Nakoupit → Uvařit, otevři postup jídla a vrať se do Nakoupit, použij historii a obnov stránku | Viditelná je jediná sekce, nákupní karty nemají Vařit a detail skrývá postup i jeho obsah až do přepnutí |
 | `REQ-002` | Otevři přímou kotvu konkrétního kroku i starý odkaz `#vareni` | Kotva odkryje postup, starý odkaz otevře dialog a po zavření ponechá sekci Uvařit |
 | `REQ-010`, `REQ-011` | Na kartě vybraného jídla v Uvařit spusť vaření po krocích, zavři je a spodní lištou se vrať k jídlům | Dialog se otevře přímo s uloženým průběhem, celý postup má vedlejší odkaz a dokončený recept nenabízí pokračování jako rozvařený |

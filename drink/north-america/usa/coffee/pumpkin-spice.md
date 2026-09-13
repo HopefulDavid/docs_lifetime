@@ -8,13 +8,17 @@ Množství platí pro jednu původní dávku.
 
 Počet porcí není uveden.
 
-| Surovina | Množství | Upřesnění |
-|---|---|---|
-| Mléko | 0,5 hrnku | velikost hrnku zdroj neuvádí |
-| Caro | 1 lžíce | obilný nápoj |
-| Skořicový cukr | dle chuti | — |
-| Med | 1 lžíce | — |
-| Šlehačka | neuvedeno | na dokončení |
+| Surovina       | Množství  | Upřesnění                                         |
+| -------------- | --------- | ------------------------------------------------- |
+| Mléko          | 0,5 hrnku | velikost hrnku zdroj neuvádí                      |
+| Caro           | 1 lžíce   | obilný nápoj                                      |
+| Skořicový cukr | dle chuti | —                                                 |
+| Med            | 1 lžíce   | —                                                 |
+| Šlehačka       | 3 lžíce   | hotová ušlehaná, doporučené množství na dokončení |
+
+## Zdroje množství
+
+Pro tuto verzi s Caro je doporučené množství hotové šlehačky doplněné podle servírování v [receptu Jernej Kitchen](https://jernejkitchen.com/recipes/pumpkin-spice-latte).
 
 ## Postup
 
@@ -29,7 +33,7 @@ Počet porcí není uveden.
 
 ### 2. Smíchání ingrediencí
 
-- Přidejte 1 polévkovou lžíci Caro (kávy bez kofeinu).
+- Přidejte 1 polévkovou lžíci obilného nápoje Caro.
 - Přidejte 1 polévkovou lžíci medu.
 - Přidejte skořicový cukr dle chuti.
 
@@ -38,6 +42,6 @@ Počet porcí není uveden.
 ### 3. Zamíchání a servírování
 
 - Vše důkladně zamíchejte.
-- Přidejte šlehačku navrch.
+- Přidejte navrch 3 lžíce hotové šlehačky.
 
   > **Varování:** Nápoj podávejte ihned, aby si zachoval krémovou konzistenci.

@@ -8,30 +8,21 @@ Množství platí pro jednu původní dávku.
 
 Počet porcí není uveden.
 
-| Surovina | Množství  | Upřesnění |
-|---|-----------|---|
-| Rýže | 2 sáčky   | — |
-| Máslo | 1 lžíce      | — |
-| Cibule | 1 ks      | zdroj uvádí také bílou cibuli níže |
-| Kuřecí prsa | 500 g     | — |
-| Mrkev | 200 g     | — |
-| Zelená paprika | 200 g     | — |
-| Kari koření | 2 lžíce   | — |
-| Bílá cibule | 150 g     | najemno, ověřte, zda jde o další cibuli |
-| Loupaná rajčata v konzervě | 400 g     | drcená |
-| Kokosové mléko | 400 ml    | — |
-| Sůl | dle chuti | — |
-| Pepř mletý | dle chuti | — |
+| Surovina                   | Množství  | Upřesnění                |
+| -------------------------- | --------- | ------------------------ |
+| Rýže                       | 2 sáčky   | hmotnost sáčku neuvedena |
+| Máslo                      | 1 lžíce   | —                        |
+| Cibule                     | 1 ks      | najemno                  |
+| Kuřecí prsa                | 500 g     | —                        |
+| Mrkev                      | 200 g     | —                        |
+| Zelená paprika             | 200 g     | —                        |
+| Kari koření                | 2 lžíce   | —                        |
+| Loupaná rajčata v konzervě | 400 g     | drcená                   |
+| Kokosové mléko             | 400 ml    | —                        |
+| Sůl                        | dle chuti | —                        |
+| Pepř mletý                 | dle chuti | —                        |
 
 > **Tip:** Použijte kvalitní kokosové mléko pro krémovější omáčku.
-
-## Než začnete
-
-Zdroj uvádí zároveň 1 cibuli a 150 g bílé cibule.
-
-Nákup zachovává obě položky.
-
-Před přípravou ověřte, zda jde o dvě samostatná množství.
 
 ## Postup
 

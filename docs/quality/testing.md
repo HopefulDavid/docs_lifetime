@@ -48,6 +48,34 @@ Projekt kombinuje deterministickou kontrolu generovaných souborů, strukturáln
 | Mobilní nákup a vaření, `REQ-006` až `REQ-010` | Skutečné ovládání katalogu, nastavení, checklistu a dialogu | [Smoke scénáře](../development/commands.md#výběr-nákup-a-vaření) |
 | Oprávnění, neměnné akce a publikační pořadí, `QLT-004` | Automatická strukturální kontrola workflow a review oddělených jobů | `npm run docs:validate` a `.github/workflows/main.yml` |
 
+### Revize množství a jednotek receptů, 2026-09-13
+
+Výchozí uživatelské změny ve 20 receptech byly nejprve uložené do `078ee05`.
+
+Baseline měl pět obsahových warnings a pět zastaralých testových očekávání z celkových 72 testů.
+
+Revize prošla všech 27 receptů a 279 řádků ingrediencí proti jejich postupům.
+
+Odstranila potvrzenou duplicitní cibuli, dvojí přidání papriky a limetkové šťávy a sjednotila doložené dávky másla, vody a dochucení rajské.
+
+Pět chybějících údajů u nápojů nahradily výslovně označené doporučené dávky s odkazy na zdroje přímo v receptech.
+
+| Oblast | Provedené ověření a výsledek | Hranice důkazu |
+|---|---|---|
+| Automatická regrese | `npm test` prošel se 76 testy, formátováním, generováním, kontrolou shody a strukturální validací | Jeden průběžný běh narazil na odepřený přístup git-cliff k dočasné historii v sandboxu, závěrečný běh mimo sandbox prošel bez změny kontrol |
+| Jednotky | Každé číselné množství ve sbírce má podporovaný přepočet, integrační scénáře ověřují sáčky, balení, snítky, svazky, porce a dávku kávy | Počet obalů nebo porcí neurčuje jejich hmotnost |
+| Nejistota a volitelnost | Izolovaný recept zachová `neuvedeno` při změně dávky i exportu, volitelný led s upřesněním za čárkou se přidá až po zapnutí | Nulový počet warnings neodstraňuje kontrolu ani pravidlo pro budoucí neznámé množství |
+| Sestavení | `npm run docs:build` ověřil 54 veřejných stránek, 27 receptů a 4 navigace, DocFX skončil s 0 warnings a 0 errors, obsahová kontrola s 0 warnings | Neproběhlo nasazení ani vzdálený CI běh |
+| Formát | Připnutý Prettier prošel pro skripty, testy, všech 27 zdrojových receptů a dotčený kitchen-core, recepty neobsahují středníky | Formátování receptů zachovává samostatné odstavce |
+| Mobilní průchod | Všech 27 detailů se načetlo na 320 px s interaktivními surovinami bez vodorovného přetékání a bez chyb či warnings v konzoli | Kontrola DOM doplněná cílenými snímky, nikoli úplná obrazová regrese každého kroku |
+| Vizuální scénáře | Kokosové kuře, rajská, nákup a nápoje ověřené snímky na 320, 390 a 1440 px, včetně dávek 2×, alternativy přílohy, volitelného ledu, zdrojů množství a PDF náhledu nákupu | Chromium v Codex, bez fyzických zařízení a bez nové kontroly vytištěného papíru |
+
+Lokální logy jsou v ignorovaném `private/flow-audit/quantity-final-test.log` a `private/flow-audit/quantity-final-build.log`.
+
+Neznámé velikosti některých balení a hrnků zůstávají viditelně přiznané v upřesnění.
+
+Doložené doporučené dávky nápojů nejsou důkazem osobního vyzkoušení a otevřené obsahové otázky nadále vlastní [formát receptů](../product/recipe-format.md#obsahová-revize).
+
 ### Dokončení odděleného nákupu a vaření, 2026-09-13
 
 Výchozí rozpracované změny byly po načtení pravidel a úspěšných kontrolách uložené do commitu `90c1224`.

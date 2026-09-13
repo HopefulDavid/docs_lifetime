@@ -8,13 +8,13 @@ Množství platí pro jednu původní dávku.
 
 Počet porcí není uveden.
 
-| Surovina | Množství  | Upřesnění |
-|---|-----------|---|
-| Máslo | 2 lžíce   | — |
-| Kuřecí maso | 400 g     | — |
-| Barbecue omáčka | dle chuti | smoky chilly, původně Lidl |
-| Uzená paprika mletá | dle chuti | sladká, původně Kotányi |
-| Koření na grilované kuře | dle chuti | původně Avokádo |
+| Surovina                 | Množství  | Upřesnění                  |
+| ------------------------ | --------- | -------------------------- |
+| Máslo                    | 2 lžíce   | —                          |
+| Kuřecí maso              | 400 g     | —                          |
+| Barbecue omáčka          | dle chuti | smoky chilly, původně Lidl |
+| Uzená paprika mletá      | dle chuti | sladká, původně Kotányi    |
+| Koření na grilované kuře | dle chuti | původně Avokádo            |
 
 > **Tip:** Maso nejlépe marinujte v koření den předem pro intenzivnější chuť.
 

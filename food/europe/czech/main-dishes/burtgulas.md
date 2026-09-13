@@ -8,29 +8,29 @@ Množství platí pro jednu původní dávku.
 
 Počet porcí není uveden.
 
-| Surovina | Množství | Upřesnění |
-|---|---|---|
-| Máslo | 60 g | — |
-| Špekáčky | 600 g | kvalitní |
-| Cibule | 2 ks | velké |
-| Česnek | 5 stroužků | — |
-| Sladká paprika mletá nebo Uzená paprika mletá | 2 lžíce | — |
-| Kmín drcený | 2 lžičky | — |
-| Gulášové koření | dle chuti | maďarské |
-| Uzená paprika mletá | dle chuti | — |
-| Hladká mouka | 3 lžíce | — |
-| Vývar nebo Voda | 2,5–3 l | — |
-| Brambory | 800 g | varný typ B |
-| Majoránka | 1 lžíce | sušená |
-| Sůl | dle chuti | — |
-| Pepř mletý | dle chuti | čerstvě namletý |
-| Ocet | dle chuti | volitelné, na dochucení |
+| Surovina                                      | Množství   | Upřesnění               |
+| --------------------------------------------- | ---------- | ----------------------- |
+| Máslo                                         | 60 g       | —                       |
+| Špekáčky                                      | 600 g      | kvalitní                |
+| Cibule                                        | 2 ks       | velké                   |
+| Česnek                                        | 5 stroužků | —                       |
+| Sladká paprika mletá nebo Uzená paprika mletá | 2 lžíce    | —                       |
+| Kmín drcený                                   | 2 lžičky   | —                       |
+| Gulášové koření                               | dle chuti  | maďarské                |
+| Uzená paprika mletá                           | dle chuti  | —                       |
+| Hladká mouka                                  | 3 lžíce    | —                       |
+| Vývar nebo Voda                               | 2,5–3 l    | —                       |
+| Brambory                                      | 800 g      | varný typ B             |
+| Majoránka                                     | 1 lžíce    | sušená                  |
+| Sůl                                           | dle chuti  | —                       |
+| Pepř mletý                                    | dle chuti  | čerstvě namletý         |
+| Ocet                                          | dle chuti  | volitelné, na dochucení |
 
 ### Příloha (volitelné)
 
-| Surovina | Množství | Upřesnění |
-|---|----------|---|
-| Chléb | 0,5 ks   | kváskový |
+| Surovina | Množství | Upřesnění                         |
+| -------- | -------- | --------------------------------- |
+| Chléb    | 0,5 ks   | kváskový, velikost kusu neuvedena |
 
 ## Postup
 

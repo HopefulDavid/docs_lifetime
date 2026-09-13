@@ -8,16 +8,16 @@ Množství platí pro jednu původní dávku.
 
 Počet porcí není uveden.
 
-| Surovina | Množství   | Upřesnění |
-|---|------------|---|
-| Mražený špenát | 1 balení   | — |
-| Noky | 500 g      | — |
-| Parmezán | 1 balení   | — |
-| Smetana ke šlehání | 200 ml     | — |
-| Česnek | 2 stroužky | — |
-| Rostlinný olej | 1 lžíce    | — |
-| Pepř mletý | dle chuti  | — |
-| Sůl | dle chuti  | — |
+| Surovina           | Množství   | Upřesnění                 |
+| ------------------ | ---------- | ------------------------- |
+| Mražený špenát     | 1 balení   | hmotnost balení neuvedena |
+| Noky               | 500 g      | —                         |
+| Parmezán           | 1 balení   | hmotnost balení neuvedena |
+| Smetana ke šlehání | 200 ml     | —                         |
+| Česnek             | 2 stroužky | —                         |
+| Rostlinný olej     | 1 lžíce    | —                         |
+| Pepř mletý         | dle chuti  | —                         |
+| Sůl                | dle chuti  | —                         |
 
 ## Postup
 

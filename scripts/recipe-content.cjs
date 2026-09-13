@@ -183,7 +183,7 @@ function parseRecipeContent(content, file, { onWarning = () => {} } = {}) {
       options: options.map((name) => ({ name, category: names.get(name) })),
       quantity,
       note: rawNote === '—' ? '' : rawNote,
-      optional: /(?:^|;\s*)volitelné(?:;|$)/.test(rawNote),
+      optional: /(?:^|[;,]\s*)volitelné(?:[;,]|$)/.test(rawNote),
     });
     table.rows++;
     if (quantity === 'neuvedeno')
