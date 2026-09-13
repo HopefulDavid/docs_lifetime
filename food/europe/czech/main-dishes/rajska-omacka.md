@@ -40,9 +40,10 @@ Počet porcí není uveden.
 
 ### Příloha (volitelné)
 
-| Surovina | Množství | Upřesnění |
-|---|---|---|
-| Houskový knedlík nebo Těstoviny | neuvedeno | k podávání |
+| Surovina         | Množství | Upřesnění |
+|------------------|----------|---|
+| Houskový knedlík | 1 balení | k podávání |
+| Těstoviny        | 1 balení | k podávání |
 
 > **Tip:** Mleté maso můžete dochutit čerstvými bylinkami pro výraznější chuť.
 

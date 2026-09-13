@@ -8,18 +8,18 @@ Množství platí pro jednu původní dávku.
 
 Počet porcí není uveden.
 
-| Surovina | Množství | Upřesnění |
-|---|---|---|
-| Těstoviny fleky | 300 g | — |
-| Uzené vepřové maso | 250 g | — |
-| Máslo | 1 lžička | — |
-| Cibule | 1 ks | — |
-| Mražený hrášek | 3 hrsti | — |
-| Petržel nať | 1 hrst | hladkolistá |
-| Mléko | 300 ml | — |
-| Vejce | 2 ks | — |
-| Gouda | 100 g | nastrouhaná |
-| Kyselé okurky | neuvedeno | k podávání |
+| Surovina | Množství  | Upřesnění |
+|---|-----------|---|
+| Těstoviny fleky | 300 g     | — |
+| Uzené vepřové maso | 250 g     | — |
+| Máslo | 1 lžíce  | — |
+| Cibule | 1 ks      | — |
+| Mražený hrášek | 3 hrsti   | — |
+| Petržel nať | 1 hrst    | hladkolistá |
+| Mléko | 300 ml    | — |
+| Vejce | 2 ks      | — |
+| Gouda | 100 g     | nastrouhaná |
+| Kyselé okurky | 4 ks      | k podávání |
 | Sůl | dle chuti | — |
 | Pepř mletý | dle chuti | čerstvě namletý |
 

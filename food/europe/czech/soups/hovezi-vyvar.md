@@ -8,21 +8,21 @@ Množství platí pro jednu původní dávku.
 
 Počet porcí není uveden.
 
-| Surovina | Množství | Upřesnění |
-|---|---|---|
-| Hovězí kosti | 2 ks | — |
-| Hovězí bujón | 2 ks | kostky |
-| Cibule | 2 ks | — |
+| Surovina | Množství   | Upřesnění |
+|---|------------|---|
+| Hovězí kosti | 2 ks       | — |
+| Hovězí bujón | 2 ks       | kostky |
+| Cibule | 2 ks       | — |
 | Česnek | 3 stroužky | — |
-| Mrkev | neuvedeno | — |
-| Petržel kořen | neuvedeno | — |
-| Celer | neuvedeno | — |
-| Libeček | dle chuti | čerstvý nebo sušený |
-| Nové koření | 5 kuliček | — |
-| Pepř celý | 8 kuliček | — |
-| Bobkový list | 3 ks | — |
-| Sůl | dle chuti | — |
-| Voda | neuvedeno | objem zdroj neuvádí |
+| Mrkev | 1-2 ks     | — |
+| Petržel kořen | 1 ks       | — |
+| Celer | 1 ks       | — |
+| Libeček | dle chuti  | čerstvý nebo sušený |
+| Nové koření | 5 kuliček  | — |
+| Pepř celý | 8 kuliček  | — |
+| Bobkový list | 3 ks       | — |
+| Sůl | dle chuti  | — |
+| Voda | 2-3 l      | objem zdroj neuvádí |
 
 ## Než začnete
 

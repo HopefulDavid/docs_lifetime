@@ -8,25 +8,25 @@ Množství platí pro jednu původní dávku.
 
 Počet porcí není uveden.
 
-| Surovina | Množství | Upřesnění |
-|---|---|---|
-| Rýže | 250 g | — |
-| Máslo | neuvedeno | — |
-| Kuřecí prsa | 400 g | — |
-| Cibule | 1 ks | — |
-| Zázvor | 10 g | čerstvý |
+| Surovina | Množství   | Upřesnění |
+|---|------------|---|
+| Rýže | 250 g      | — |
+| Máslo | 1 lžíce       | — |
+| Kuřecí prsa | 400 g      | — |
+| Cibule | 1 ks       | — |
+| Zázvor | 10 g       | čerstvý |
 | Česnek | 2 stroužky | — |
-| Kokosové mléko | 400 ml | — |
-| Mango nebo Broskev | 1 ks | — |
-| Koriandr | dle chuti | — |
-| Voda | neuvedeno | — |
-| Kurkuma | dle chuti | — |
-| Sůl | dle chuti | — |
-| Pepř mletý | dle chuti | — |
-| Sladká paprika mletá | dle chuti | — |
-| Gulášové koření | dle chuti | — |
-| Kari koření | dle chuti | — |
-| Bazalka | dle chuti | — |
+| Kokosové mléko | 400 ml     | — |
+| Mango nebo Broskev | 1 ks       | — |
+| Koriandr | dle chuti  | — |
+| Voda | 50 ml      | — |
+| Kurkuma | dle chuti  | — |
+| Sůl | dle chuti  | — |
+| Pepř mletý | dle chuti  | — |
+| Sladká paprika mletá | dle chuti  | — |
+| Gulášové koření | dle chuti  | — |
+| Kari koření | dle chuti  | — |
+| Bazalka | dle chuti  | — |
 
 ## Postup
 

@@ -8,18 +8,18 @@ Množství platí pro jednu původní dávku.
 
 Počet porcí není uveden.
 
-| Surovina | Množství | Upřesnění |
-|---|---|---|
-| Rýže | neuvedeno | — |
-| Máslo | neuvedeno | — |
-| Cibule | 1 ks | zdroj uvádí také bílou cibuli níže |
-| Kuřecí prsa | 500 g | — |
-| Mrkev | 200 g | — |
-| Zelená paprika | 200 g | — |
-| Kari koření | 2 lžíce | — |
-| Bílá cibule | 150 g | najemno, ověřte, zda jde o další cibuli |
-| Loupaná rajčata v konzervě | 400 g | drcená |
-| Kokosové mléko | 400 ml | — |
+| Surovina | Množství  | Upřesnění |
+|---|-----------|---|
+| Rýže | 2 sáčky   | — |
+| Máslo | 1 lžíce      | — |
+| Cibule | 1 ks      | zdroj uvádí také bílou cibuli níže |
+| Kuřecí prsa | 500 g     | — |
+| Mrkev | 200 g     | — |
+| Zelená paprika | 200 g     | — |
+| Kari koření | 2 lžíce   | — |
+| Bílá cibule | 150 g     | najemno, ověřte, zda jde o další cibuli |
+| Loupaná rajčata v konzervě | 400 g     | drcená |
+| Kokosové mléko | 400 ml    | — |
 | Sůl | dle chuti | — |
 | Pepř mletý | dle chuti | — |
 

@@ -26,8 +26,8 @@ Počet porcí není uveden.
 ### Sušenkový základ
 
 | Surovina | Množství | Upřesnění |
-|---|---|---|
-| Kakaové sušenky | neuvedeno | — |
+|---|----------|---|
+| Kakaové sušenky | 1 balení | — |
 
 > **Tip:** Cukr přidávejte postupně a ochutnávejte, aby náplň nebyla příliš sladká.
 

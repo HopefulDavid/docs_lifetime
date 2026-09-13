@@ -8,21 +8,21 @@ Množství platí pro jednu původní dávku.
 
 Počet porcí není uveden.
 
-| Surovina | Množství | Upřesnění |
-|---|---|---|
-| Hovězí steak | neuvedeno | ribeye, sirloin, flank nebo T-bone |
-| Sůl | dle chuti | — |
-| Pepř mletý | dle chuti | čerstvě namletý |
-| Máslo | neuvedeno | na dochucení |
-| Rozmarýn nebo Tymián | neuvedeno | čerstvé bylinky |
-| Česnek | neuvedeno | volitelné |
-| Olivový olej | neuvedeno | na potření |
+| Surovina | Množství   | Upřesnění |
+|---|------------|---|
+| Hovězí steak | 1 ks       | ribeye, sirloin, flank nebo T-bone |
+| Sůl | dle chuti  | — |
+| Pepř mletý | dle chuti  | čerstvě namletý |
+| Máslo | 2 lžíce    | na dochucení |
+| Rozmarýn nebo Tymián | 1-2 snítky | čerstvé bylinky |
+| Česnek | 1 stroužek | volitelné |
+| Olivový olej | 1 lžíce    | na potření |
 
 ### Příloha (volitelné)
 
 | Surovina | Množství | Upřesnění |
-|---|---|---|
-| Zelenina nebo Brambory nebo Salát | neuvedeno | k podávání |
+|---|----------|---|
+| Zelenina nebo Brambory nebo Salát | 1 porce  | k podávání |
 
 > **Tip:** Vyberte maso s vyšším podílem tuku pro šťavnatější steak.
 

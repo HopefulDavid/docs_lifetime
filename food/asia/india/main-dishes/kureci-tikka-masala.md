@@ -22,37 +22,37 @@ Počet porcí není uveden.
 
 ### Omáčka
 
-| Surovina | Množství | Upřesnění |
-|---|---|---|
-| Máslo | neuvedeno | — |
-| Cibule | 1 ks | velká |
-| Rajčata | 2 ks | — |
-| Zázvor | 1 lžíce | nastrouhaný |
-| Česnek | 1 lžíce | prolisovaný |
-| Kurkuma | 1 lžička | — |
-| Římský kmín mletý | 1 lžička | — |
-| Kari koření | 1 lžička | — |
-| Skořice celá | 1 svitek | — |
-| Kardamom celý | 1 ks | — |
+| Surovina | Množství    | Upřesnění |
+|---|-------------|---|
+| Máslo | 1 lžíce        | — |
+| Cibule | 1 ks        | velká |
+| Rajčata | 2 ks        | — |
+| Zázvor | 1 lžíce     | nastrouhaný |
+| Česnek | 1 lžíce     | prolisovaný |
+| Kurkuma | 1 lžička    | — |
+| Římský kmín mletý | 1 lžička    | — |
+| Kari koření | 1 lžička    | — |
+| Skořice celá | 1 svitek    | — |
+| Kardamom celý | 1 ks        | — |
 | Badyán | 2 hvězdičky | — |
-| Bobkový list | 4 ks | — |
-| Smetana ke šlehání | neuvedeno | 33 % tuku |
+| Bobkový list | 4 ks        | — |
+| Smetana ke šlehání | 100 ml      | 33 % tuku |
 | Krájená rajčata v konzervě | 1 plechovka | velikost plechovky zdroj neuvádí |
-| Koriandr | 1 hrst | čerstvý |
-| Sůl | dle chuti | — |
-| Cukr | dle chuti | — |
+| Koriandr | 1 hrst      | čerstvý |
+| Sůl | dle chuti   | — |
+| Cukr | dle chuti   | — |
 
 ### Naan (volitelné)
 
-| Surovina | Množství | Upřesnění |
-|---|---|---|
-| Hladká mouka | 250 g | — |
-| Smetana na vaření | 100 ml | 12 % tuku |
-| Bílý jogurt | 100 ml | — |
-| Voda | 50 ml | — |
+| Surovina | Množství   | Upřesnění |
+|---|------------|---|
+| Hladká mouka | 250 g      | — |
+| Smetana na vaření | 100 ml     | 12 % tuku |
+| Bílý jogurt | 100 ml     | — |
+| Voda | 50 ml      | — |
 | Sůl | 0,5 lžičky | — |
-| Máslo | 1 lžíce | — |
-| Kypřicí prášek | neuvedeno | — |
+| Máslo | 1 lžíce    | — |
+| Kypřicí prášek | 1 balení  | — |
 
 ## Než začnete
 

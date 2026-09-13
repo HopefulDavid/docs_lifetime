@@ -8,12 +8,12 @@ Množství platí pro jednu původní dávku.
 
 Počet porcí není uveden.
 
-| Surovina | Množství | Upřesnění |
-|---|---|---|
-| Penne | neuvedeno | — |
-| Niva | neuvedeno | — |
-| Máslo | 1 lžička | — |
-| Smetana ke šlehání | neuvedeno | — |
+| Surovina | Množství   | Upřesnění |
+|---|------------|---|
+| Penne | 250 g      | — |
+| Niva | 1 balení   | — |
+| Máslo | 1 lžíce   | — |
+| Smetana ke šlehání | 200-250 ml | — |
 
 ## Postup
 

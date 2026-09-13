@@ -8,23 +8,23 @@ Množství platí pro jednu původní dávku.
 
 Počet porcí není uveden.
 
-| Surovina | Množství | Upřesnění |
-|---|---|---|
-| Chléb | neuvedeno | — |
-| Ďábelské koření | dle chuti | — |
-| Sladká paprika mletá | dle chuti | — |
-| Pepř mletý | dle chuti | — |
-| Sůl | dle chuti | — |
-| Vinný ocet | 1 lžíce | — |
-| Mrkev | 3 ks | menší |
-| Petržel kořen | 1 ks | menší |
-| Paprika | neuvedeno | — |
-| Mleté hovězí maso | neuvedeno | — |
-| Krájená rajčata v konzervě | neuvedeno | — |
-| Rajčatový protlak | neuvedeno | — |
-| Cibule | 1 ks | — |
-| Ghí | neuvedeno | na smažení |
-| Sýr | neuvedeno | — |
+| Surovina | Množství  | Upřesnění   |
+|---|-----------|-------------|
+| Chléb | 1 ks      | —           |
+| Ďábelské koření | dle chuti | —           |
+| Sladká paprika mletá | dle chuti | —           |
+| Pepř mletý | dle chuti | —           |
+| Sůl | dle chuti | —           |
+| Vinný ocet | 1 lžíce   | —           |
+| Mrkev | 3 ks      | menší       |
+| Petržel kořen | 1 ks      | menší       |
+| Paprika | 1 ks      | —           |
+| Mleté hovězí maso | 400 g     | —           |
+| Krájená rajčata v konzervě | 400 g     | —           |
+| Rajčatový protlak | 2 lžíce   | —           |
+| Cibule | 1 ks      | —           |
+| Ghí | 2 lžíce   | na smažení  |
+| Sýr | 150 g     | nastrouhaný |
 
 ## Postup
 

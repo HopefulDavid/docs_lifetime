@@ -8,22 +8,22 @@ Množství platí pro jednu původní dávku.
 
 Počet porcí není uveden.
 
-| Surovina | Množství | Upřesnění |
-|---|---|---|
-| Tortilly | neuvedeno | malé, původně z Kauflandu |
-| Mleté vepřovo-hovězí maso | neuvedeno | původně z Kauflandu |
-| Máslo | neuvedeno | na opékání masa, uvedeno v postupu |
+| Surovina | Množství  | Upřesnění |
+|---|-----------|---|
+| Tortilly | 4 ks      | malé, původně z Kauflandu |
+| Mleté vepřovo-hovězí maso | 400 g     | původně z Kauflandu |
+| Máslo | 1 lžíce   | na opékání masa, uvedeno v postupu |
 | Gyros koření | dle chuti | původně z Coopu |
 | Česnekový prášek | dle chuti | — |
-| Červená cibule | 1 ks | střední |
-| Rajčata keříková | 2 ks | větší |
-| Limetka | 1 ks | — |
-| Koriandr | neuvedeno | čerstvý |
-| Zakysaná smetana | neuvedeno | — |
-| Olivový olej | 1 lžíce | do salsy |
+| Červená cibule | 1 ks      | střední |
+| Rajčata keříková | 2 ks      | větší |
+| Limetka | 1 ks      | — |
+| Koriandr | 1 svazek  | čerstvý |
+| Zakysaná smetana | 100 g     | — |
+| Olivový olej | 1 lžíce   | do salsy |
 | Sůl | dle chuti | — |
 | Pepř mletý | dle chuti | — |
-| Sýr | neuvedeno | nastrouhaný |
+| Sýr | 350 g     | nastrouhaný |
 
 ## Postup
 

@@ -8,13 +8,13 @@ Množství platí pro jednu původní dávku.
 
 Počet porcí není uveden.
 
-| Surovina | Množství | Upřesnění |
-|---|---|---|
-| Dýně Hokkaidó | neuvedeno | nakrájená na kostky, neloupe se |
-| Cibule | 2 ks | najemno |
-| Ghí | 2 lžíce | — |
-| Zeleninový vývar | 700 ml | — |
-| Smetana ke šlehání | neuvedeno | — |
+| Surovina | Množství  | Upřesnění |
+|---|-----------|---|
+| Dýně Hokkaidó | 1 ks      | nakrájená na kostky, neloupe se |
+| Cibule | 2 ks      | najemno |
+| Ghí | 2 lžíce   | — |
+| Zeleninový vývar | 700 ml    | — |
+| Smetana ke šlehání | 100 ml    | — |
 | Sůl | dle chuti | — |
 | Pepř mletý | dle chuti | čerstvě namletý |
 

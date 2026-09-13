@@ -29,8 +29,8 @@ Počet porcí není uveden.
 ### Příloha (volitelné)
 
 | Surovina | Množství | Upřesnění |
-|---|---|---|
-| Chléb | neuvedeno | kváskový |
+|---|----------|---|
+| Chléb | 0,5 ks   | kváskový |
 
 ## Postup
 
