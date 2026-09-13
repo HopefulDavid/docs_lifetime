@@ -38,7 +38,7 @@ function save() {
   pruneShoppingState(state, buildShoppingList(catalog.recipes, state.selections, catalog.departments));
   try { localStorage.setItem(storageKey, JSON.stringify(state)); }
   catch {
-    storageMessage = 'Uložení není dostupné; před zavřením použijte Export nákupu.';
+    storageMessage = 'Před zavřením použijte Export nákupu, protože ukládání není dostupné.';
     document.body.classList.add('kitchen-storage-unavailable');
   }
   document.querySelectorAll('.storage-message').forEach(node => { node.textContent = storageMessage; });
@@ -162,7 +162,7 @@ function quantityLabel(item, factor) {
 
 function recipeEditor(recipe, config, changed, idPrefix) {
   const factor = el('select', { id: `${idPrefix}-factor`, value: String(config.factor), onChange: event => { config.factor = Number(event.target.value); changed(); } }, [0.5, 1, 1.5, 2, 3, 4].map(value => el('option', { value: String(value), selected: config.factor === value }, `${String(value).replace('.', ',')}× původní dávka`)));
-  const editor = el('div', { className: 'recipe-editor' }, el('label', { className: 'factor-label', htmlFor: factor.id }, 'Kolik připravíte', factor), el('p', { className: 'kitchen-muted' }, 'Počet porcí zdroj neuvádí; násobí se pouze uvedená množství.'));
+  const editor = el('div', { className: 'recipe-editor' }, el('label', { className: 'factor-label', htmlFor: factor.id }, 'Kolik připravíte', factor), el('p', { className: 'kitchen-muted' }, 'Protože zdroj neuvádí počet porcí, násobí se pouze uvedená množství.'));
   for (const group of recipe.groups) {
     const groupOn = !group.optional || config.enabled[group.id];
     const groupBox = el('fieldset', { className: `ingredient-group${groupOn ? '' : ' is-omitted'}` });
@@ -409,7 +409,7 @@ function renderPlanner(root) {
       button('Začít nový nákup', () => {
         undoState = structuredClone(state);
         state.selections = {}; state.checked = {}; state.amounts = {}; drafts.clear();
-        save(); render(); root.querySelector('.kitchen-empty a')?.focus(); announce('Nákup vymazán; můžete jej vrátit.');
+        save(); render(); root.querySelector('.kitchen-empty a')?.focus(); announce('Nákup je vymazaný, ale můžete jej vrátit.');
       }, { className: 'kitchen-button' })));
     if (undoState) root.append(button('Vrátit poslední změnu', restoreUndo, { className: 'kitchen-button' }));
 
@@ -481,7 +481,9 @@ function transferDialog(title) {
 async function openShoppingExport() {
   const { dialog, body, footer } = transferDialog('Export nákupu');
   const status = el('p', { role: 'status', className: 'kitchen-muted' }, 'Připravuji nákup ke sdílení…');
-  body.append(el('p', {}, 'Příjemce otevře odkaz a zvolí sloučení nebo převzetí nákupu. Přenesou se jídla, dávky, varianty, uložená vlastní množství a hotové položky.'), status);
+  body.append(el('div', { className: 'transfer-intro' },
+    el('p', {}, 'Příjemce otevře odkaz a zvolí sloučení nebo převzetí nákupu.'),
+    el('p', {}, 'Přenesou se jídla, dávky, varianty, uložená vlastní množství a hotové položky.')), status);
   try {
     const code = await exportShopping(state, catalog);
     if (!dialog.isConnected) return;
@@ -489,16 +491,19 @@ async function openShoppingExport() {
     address.hash = `nakup=${code}`;
     const field = el('textarea', { id: 'shopping-share-link', readOnly: true, rows: 4, value: address.href, spellcheck: false });
     body.append(el('label', { htmlFor: field.id }, 'Odkaz k odeslání', field),
-      el('p', { className: 'kitchen-muted' }, 'Jde o kopii v okamžiku exportu. Další změny pošlete novým exportem; každý, kdo má odkaz, může nákup otevřít.'),
-      el('p', { className: 'kitchen-muted' }, 'Dlouhý odkaz může zpráva rozdělit do více SMS. Posílejte jej celý, případně použijte chat.'));
-    status.textContent = 'Odkaz je připravený. Zkopírujte jej do zprávy nebo použijte sdílení telefonu.';
+      el('aside', { className: 'transfer-notes kitchen-muted', 'aria-label': 'Jak odkaz funguje' },
+        el('p', {}, 'Odkaz je kopie nákupu v okamžiku odeslání.'),
+        el('p', {}, 'Pokud nákup změníte, pošlete nový odkaz.'),
+        el('p', {}, 'Každý, kdo má odkaz, může nákup otevřít.'),
+        el('p', {}, 'Posílejte celý odkaz, nejlépe přes chat, protože SMS jej může rozdělit.')));
+    status.textContent = 'Zkopírujte připravený odkaz do zprávy nebo použijte sdílení telefonu.';
     footer.append(button('Kopírovat odkaz', async () => {
-      try { await navigator.clipboard.writeText(field.value); status.textContent = 'Odkaz zkopírován. Vložte jej do zprávy příjemci.'; }
-      catch { field.focus(); field.select(); status.textContent = 'Prohlížeč kopírování nepovolil. Odkaz je vybraný; zkopírujte jej ručně.'; }
+      try { await navigator.clipboard.writeText(field.value); status.textContent = 'Zkopírovaný odkaz vložte do zprávy příjemci.'; }
+      catch { field.focus(); field.select(); status.textContent = 'Označený odkaz zkopírujte ručně, protože prohlížeč automatické kopírování nepovolil.'; }
     }, { className: 'kitchen-button primary' }));
     if (typeof navigator.share === 'function') footer.append(button('Sdílet…', async () => {
       try { await navigator.share({ title: 'Společný nákup', url: field.value }); status.textContent = 'Odkaz byl předán sdílení zařízení.'; }
-      catch (error) { status.textContent = error.name === 'AbortError' ? 'Sdílení bylo zrušeno. Odkaz je stále připravený.' : 'Sdílení není dostupné; použijte Kopírovat odkaz.'; }
+      catch (error) { status.textContent = error.name === 'AbortError' ? 'Sdílení je zrušené, ale připravený odkaz můžete použít později.' : 'Pokud sdílení není dostupné, zkopírujte odkaz.'; }
     }, { className: 'kitchen-button' }));
   } catch (error) { status.textContent = error.message; }
 }
@@ -524,7 +529,7 @@ function openShoppingImport(initial = '') {
     if (!plan.ready) { renderPreview(); return; }
     plannerController.applyImported(plan.state);
     dialog.close();
-    announce(mode === 'merge' ? 'Nákupy sloučeny; změnu můžete vrátit.' : 'Importovaný nákup převzat; změnu můžete vrátit.');
+    announce(mode === 'merge' ? 'Nákupy jsou sloučené, změnu můžete vrátit.' : 'Importovaný nákup je převzatý, změnu můžete vrátit.');
   }, { disabled: true, className: 'kitchen-button primary' });
 
   function renderPreview() {
@@ -534,10 +539,10 @@ function openShoppingImport(initial = '') {
     apply.disabled = !plan.ready;
     apply.textContent = mode === 'merge' ? 'Sloučit nákupy' : 'Převzít celý nákup';
     preview.replaceChildren(el('fieldset', { className: 'transfer-mode' }, el('legend', {}, 'Jak nákup použít'),
-      ...[['merge', 'Sloučit s mým nákupem', 'Zachová vaše jídla a přidá chybějící. U stejného seznamu spojí hotové položky od obou lidí.'],
-        ['replace', 'Převzít celý nákup', 'Nahradí váš výběr, vlastní množství a hotové položky importovaným stavem.']].map(([value, label, description]) =>
+      ...[['merge', 'Sloučit s mým nákupem', ['Zachová vaše jídla a přidá chybějící.', 'U stejného seznamu spojí hotové položky od obou lidí.']],
+        ['replace', 'Převzít celý nákup', ['Nahradí váš výběr, vlastní množství a hotové položky importovaným stavem.']]].map(([value, label, descriptions]) =>
         el('label', {}, el('input', { type: 'radio', name: 'shopping-import-mode', value, checked: mode === value, onChange: () => { mode = value; renderPreview(); preview.querySelector(`input[value="${value}"]`)?.focus({ preventScroll: true }); } }),
-          el('span', {}, el('strong', {}, label), el('small', {}, description))))),
+          el('span', {}, el('strong', {}, label), descriptions.map(description => el('span', { className: 'transfer-mode-description' }, description)))))),
       el('p', { className: 'transfer-summary', role: 'status' }, `Výsledný nákup · recepty: ${summary.recipes} · položky: ${summary.items} · hotovo: ${summary.checked}`));
     if (summary.recheck) preview.append(el('p', { className: 'shopping-hint' }, `${summary.recheck} ${summary.recheck === 1 ? 'položka vyžaduje' : summary.recheck < 5 ? 'položky vyžadují' : 'položek vyžaduje'} novou kontrolu, protože se změnilo množství nebo složení nákupu.`));
     const imported = catalog.recipes.filter(recipe => Object.hasOwn(incoming.selections, recipe.id));
@@ -549,7 +554,7 @@ function openShoppingImport(initial = '') {
             onChange: () => { resolutions[conflict.key] = side; renderPreview(); document.getElementById(`transfer-conflict-${index}-${side}`)?.focus({ preventScroll: true }); } }),
           el('span', {}, el('strong', {}, label), el('small', {}, conflict.kind === 'recipe' ? settingsDescription(conflict.recipe, conflict[side]) : conflict[side]))))));
     }
-    status.textContent = plan.ready ? 'Náhled je připravený. Nákup se změní až potvrzením tlačítka dole.' : 'Nákupy se liší. U každého konfliktu vyberte, kterou hodnotu použít.';
+    status.textContent = plan.ready ? 'Zkontrolujte náhled a změnu potvrďte tlačítkem dole.' : 'U každého rozdílu vyberte hodnotu, kterou chcete použít.';
   }
 
   async function load() {
@@ -568,7 +573,8 @@ function openShoppingImport(initial = '') {
   const loadButton = button('Načíst nákup', load, { className: 'kitchen-button' });
   const sourceTitle = el('summary', {}, 'Odkaz k importu');
   const sourceBox = el('details', { className: 'transfer-source', open: true }, sourceTitle,
-    el('p', {}, 'Vložte celý odkaz nebo kód z Exportu nákupu. Nejprve uvidíte náhled; svůj nákup tímto krokem nezměníte.'),
+    el('p', {}, 'Vložte celý odkaz nebo kód od druhého člověka.'),
+    el('p', {}, 'Nejprve uvidíte náhled, váš nákup se změní až po potvrzení.'),
     el('label', { htmlFor: field.id }, 'Odkaz nebo kód nákupu', field), loadButton);
   field.addEventListener('input', () => { attempt++; incoming = null; plan = null; apply.disabled = true; loadButton.disabled = false; preview.replaceChildren(); status.textContent = ''; });
   body.append(sourceBox, status, preview);
@@ -593,7 +599,7 @@ function openShoppingPrint(items, recipes) {
 
 function openPrintPreview(sheet, description) {
   const opener = document.activeElement;
-  const status = el('p', { className: 'kitchen-muted', role: 'status' }, 'Připravuje se soubor PDF…');
+  const status = el('div', { className: 'kitchen-muted', role: 'status' }, el('p', {}, 'Připravuje se soubor PDF…'));
   const download = el('a', { className: 'kitchen-button primary', hidden: true,
     download: `${sheet.querySelector('h1').textContent.normalize('NFD').replace(/\p{M}/gu, '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')}.pdf` }, 'Stáhnout PDF');
   const dialog = el('dialog', { className: 'kitchen-app shopping-print-dialog', 'aria-labelledby': 'print-title' },
@@ -608,7 +614,7 @@ function openPrintPreview(sheet, description) {
     download.href = href;
     download.hidden = false;
     status.textContent = 'PDF je připravené ke stažení a použití bez připojení.';
-  }).catch(() => { status.textContent = 'PDF se nepodařilo připravit. Zkuste náhled otevřít znovu nebo použijte Tisk → Uložit jako PDF.'; });
+  }).catch(() => { status.replaceChildren(el('p', {}, 'PDF se nepodařilo připravit.'), el('p', {}, 'Zkuste náhled otevřít znovu nebo použijte Tisk → Uložit jako PDF.')); });
 }
 
 function openRecipePrint(recipe, contents, config, preparation) {
@@ -642,7 +648,7 @@ function enhanceRecipe(recipe) {
   for (let node = article.querySelector('#postup')?.nextElementSibling; node && !/^H[12]$/.test(node.tagName); node = node.nextElementSibling) {
     if (node.tagName === 'H3' && /^\d+\. /.test(node.textContent.trim())) stepHeadings.push(node);
   }
-  if (stepHeadings.length !== recipe.steps.length) throw new Error('Obsah receptu neodpovídá katalogu; sestavte celý web znovu.');
+  if (stepHeadings.length !== recipe.steps.length) throw new Error('Obsah receptu neodpovídá katalogu, proto sestavte celý web znovu.');
   const title = document.querySelector('article h1');
   title.replaceChildren(labelIcon(recipe.typeLabel, 'food'), document.createTextNode(' ' + recipe.title));
   title.after(el('p', { className: 'recipe-provenance' }, labelIcon(recipe.origin.split(', ').at(-1)), recipe.origin, el('span', {}, ' · ' + recipe.typeLabel)));
@@ -805,7 +811,7 @@ function openCooking(recipe, contents, config, preparation, closed) {
           cooking.done = cooking.done.filter(index => index !== cooking.step);
           save(); render(); focusStep();
         }, { className: 'cook-text-button' })));
-      if (config.factor !== 1) body.append(el('p', { className: 'shopping-hint' }, `${String(config.factor).replace('.', ',')}× dávka: suroviny jsou přepočítané; údaje v textu, časy a teploty zůstávají původní.`));
+      if (config.factor !== 1) body.append(el('p', { className: 'shopping-hint' }, `${String(config.factor).replace('.', ',')}× dávka: suroviny jsou přepočítané, ale údaje v textu, časy a teploty zůstávají původní.`));
       if (omitted) body.append(el('p', { className: 'shopping-hint' }, 'Tuto přílohu nemáte vybranou a pro dokončení ji nemusíte připravovat.'));
       if (preparation.length) body.append(el('details', { className: 'cook-preparation', id: 'cook-preparation' },
         el('summary', {}, icon('clock'), 'Než začnete'), preparation.map(node => node.cloneNode(true))));
@@ -862,7 +868,7 @@ export async function startKitchen() {
   if (catalog.version !== 1 || !Array.isArray(catalog.recipes)) throw new Error('Nepodporovaný katalog receptů');
   let saved;
   try { saved = JSON.parse(localStorage.getItem(storageKey)); }
-  catch { storageMessage = 'Předchozí výběr nelze načíst; recepty můžete vybrat znovu.'; }
+  catch { storageMessage = 'Předchozí výběr nelze načíst, ale recepty můžete vybrat znovu.'; }
   state = restoreState(saved, catalog.recipes);
   const resetCooking = Object.keys(saved?.cooking || {}).some(id => catalog.recipes.some(recipe => recipe.id === id) && !state.cooking[id]);
   notification = el('div', { role: 'status', className: 'kitchen-notification', 'aria-live': 'polite' });

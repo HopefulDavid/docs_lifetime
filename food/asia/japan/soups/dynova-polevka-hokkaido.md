@@ -42,7 +42,9 @@ Tyto suroviny proto nejsou přičtené k hotovému vývaru.
 
 ### 4. Mixování a dochucení
 
-- Směs rozmixujte ručním mixérem, přilijte smetanu, dochuťte solí a pepřem. Pár minut povařte.
+- Směs rozmixujte ručním mixérem, přilijte smetanu, dochuťte solí a pepřem.
+
+  Pár minut povařte.
 
   > **Varování:** Smetanu přidávejte až po rozmixování, aby se nesrazila.
 

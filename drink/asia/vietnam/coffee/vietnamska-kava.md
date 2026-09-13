@@ -43,7 +43,9 @@ Množství platí pro jednu původní dávku; počet porcí není uveden.
 
 - Káva by měla kapat 4–5 minut.
 
-  > **Varování:** Pokud káva kape příliš rychle, přidejte více kávy. Pokud příliš pomalu, přidejte více vody.
+  > **Varování:** Pokud káva kape příliš rychle, přidejte více kávy.
+  >
+  > Pokud příliš pomalu, přidejte více vody.
 
 ### 4. Dokončení a servírování
 

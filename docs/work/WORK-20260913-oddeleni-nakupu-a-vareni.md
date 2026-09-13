@@ -32,7 +32,7 @@ Náhled na portu 8765 reprodukuje neklikatelné Uvařit a prázdný nákup.
 ## Milníky a ověření
 
 - [x] Oddělené sekce s historií, přímými odkazy a správným obsahem článku.
-- [ ] Odstavce dialogů a ostatních dotčených uživatelských textů.
+- [x] Odstavce dialogů a ostatních dotčených uživatelských textů.
 - [ ] Obecný a stručný průvodce.
 - [ ] Mobilní i desktopové ovládání, regrese, build a oddělené commity.
 
@@ -47,6 +47,10 @@ Implementovat sekce ve stávající klientské vrstvě; diagnostika patří do p
 První změna prošla 73 testy a buildem 54 stránek; desktop a mobil potvrdily filtrování obsahu, historii, obnovu sekce, zachování rozepsaného celeru, dávku 2× a starý odkaz otevírající druhý krok vývaru.
 
 Následuje úprava odstavců, průvodce a závěrečná širší vizuální kontrola.
+
+Export, import a jeho náhled prošly skutečným mobilním ovládáním; samostatné věty jsou odstavce a stručné stavové zprávy obsahují jedinou větu.
+
+Odstavce byly opravené také ve fallbacku, PDF chybě a třech zdrojových receptech bez změny textu činností; jejich nová zdrojová revize podle stávajícího kontraktu obnoví staré rozvařené kroky.
 
 ## Přenos znalostí
 

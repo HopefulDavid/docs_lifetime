@@ -875,7 +875,7 @@ body.kitchen-shopping-page:not([data-search]) .affix { display: none; }
 .transfer-header { border-bottom: 1px solid var(--kitchen-line); }
 .transfer-header h2 { margin: 0; font: 700 1.6rem/1.2 Georgia, serif; }
 .transfer-footer { border-top: 1px solid var(--kitchen-line); flex-wrap: wrap; }
-.transfer-body { padding: 1.5rem; min-height: 0; overflow-y: auto; overflow-wrap: anywhere; }
+.transfer-body { flex: 1; padding: 1.5rem; min-height: 0; overflow-y: auto; overflow-wrap: anywhere; }
 .transfer-body > label, .transfer-source > label { display: block; font-weight: 650; margin-bottom: .8rem; }
 .transfer-source > summary { font-weight: 650; padding: .5rem 0; cursor: pointer; }
 .transfer-body textarea { display: block; width: 100%; min-height: 6rem; max-height: 12rem; padding: .7rem; margin-top: .5rem; font: .9rem/1.5 system-ui, sans-serif; border: 1px solid var(--kitchen-line); border-radius: .5rem; color: var(--kitchen-ink); background: var(--kitchen-surface); resize: vertical; }
@@ -886,6 +886,11 @@ body.kitchen-shopping-page:not([data-search]) .affix { display: none; }
 .transfer-mode small, .transfer-conflict small { display: block; margin-top: .25rem; }
 .transfer-summary { font-weight: 700; }
 .transfer-status { margin-top: 1rem; }
+.transfer-body p { margin: 0 0 .8rem; }
+.transfer-intro { margin-bottom: 1.2rem; }
+.transfer-notes { margin-top: 1.2rem; padding: 1rem; border-radius: .6rem; background: var(--kitchen-sage-soft); }
+.transfer-notes p:last-child { margin-bottom: 0; }
+.transfer-mode-description { display: block; margin-top: .4rem; font-size: .875em; }
 @media (max-width: 600px), (max-height: 500px) {
   .shopping-transfer-dialog { width: 100vw; height: 100dvh; max-width: none; max-height: none; margin: 0; border: 0; border-radius: 0; }
   .transfer-header, .transfer-footer, .transfer-body { padding: 1rem; }

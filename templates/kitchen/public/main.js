@@ -101,16 +101,22 @@ const docfxOptions = {
       const target = document.getElementById('kitchen-catalog') || document.getElementById('kitchen-planner');
       if (target) {
         const message = document.createElement('p');
-        message.textContent = 'Výběr a nákup se nepodařilo načíst. Obnovte stránku nebo otevřete recepty.';
+        message.textContent = 'Výběr a nákup se nepodařilo načíst.';
+        const recovery = document.createElement('p');
+        recovery.textContent = 'Obnovte stránku nebo otevřete recepty.';
         const link = document.createElement('a');
         link.href = new URL('../kuchyne/index.html', import.meta.url).href;
         link.textContent = 'Prohlédnout recepty';
-        target.replaceChildren(message, link);
+        target.replaceChildren(message, recovery, link);
         document.querySelector('.catalog-fallback')?.removeAttribute('hidden');
       } else if (document.querySelector('article')) {
-        const message = document.createElement('p');
+        const message = document.createElement('div');
         message.setAttribute('role', 'status');
-        message.textContent = 'Nákup a vaření se nepodařilo načíst. Recept můžete číst níže nebo stránku obnovit.';
+        for (const text of ['Nákup a vaření se nepodařilo načíst.', 'Recept můžete číst níže nebo stránku obnovit.']) {
+          const paragraph = document.createElement('p');
+          paragraph.textContent = text;
+          message.append(paragraph);
+        }
         document.querySelector('article h1')?.after(message);
       }
     });

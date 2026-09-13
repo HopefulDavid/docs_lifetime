@@ -74,7 +74,7 @@ export async function exportShopping(state, catalog) {
   }), checked: Object.keys(clean.checked), amounts: Object.entries(clean.amounts).filter(([, value]) => value.text.trim()).map(([key, value]) => [key, value.text.trim()]) };
   validatePayload(payload, catalog);
   let bytes = new TextEncoder().encode(JSON.stringify(payload));
-  if (bytes.byteLength > maxBytes) fail('Nákup je příliš velký pro export; rozdělte jej na menší části.');
+  if (bytes.byteLength > maxBytes) fail('Nákup je příliš velký pro export, proto jej rozdělte na menší části.');
   let encoding = 'j';
   if (typeof CompressionStream === 'function') {
     bytes = await readLimited(new Blob([bytes]).stream().pipeThrough(new CompressionStream('gzip')));
@@ -95,7 +95,7 @@ export async function importShopping(text, catalog) {
     code = address.hash.startsWith('#nakup=') ? address.hash.slice(7) : '';
   }
   const match = code.match(/^NK1([jg])\.([A-Za-z0-9_-]+)$/);
-  if (!match) fail('Vložte celý odkaz nebo kód z tlačítka Export nákupu; běžný textový seznam ani PDF nelze importovat.');
+  if (!match) fail('Vložte celý odkaz nebo kód z Exportu nákupu, protože běžný textový seznam ani PDF nelze importovat.');
   let bytes;
   try {
     const binary = atob(match[2].replace(/-/g, '+').replace(/_/g, '/'));
@@ -103,7 +103,7 @@ export async function importShopping(text, catalog) {
   } catch { fail('Kód nákupu je poškozený nebo neúplný.'); }
   if (bytes.byteLength > maxBytes) fail('Nákup je příliš velký pro bezpečný import.');
   if (match[1] === 'g') {
-    if (typeof DecompressionStream !== 'function') fail('Tento prohlížeč neumí rozbalit nákup; otevřete odkaz v aktuálním prohlížeči.');
+    if (typeof DecompressionStream !== 'function') fail('Tento prohlížeč neumí rozbalit nákup, proto odkaz otevřete v aktuálním prohlížeči.');
     try { bytes = await readLimited(new Blob([bytes]).stream().pipeThrough(new DecompressionStream('gzip'))); }
     catch { fail('Kód nákupu je poškozený, neúplný nebo příliš velký.'); }
   }

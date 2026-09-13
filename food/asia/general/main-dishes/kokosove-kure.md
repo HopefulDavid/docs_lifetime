@@ -42,7 +42,9 @@ Nákup zachovává obě položky; před přípravou ověřte, zda jde o dvě sam
 
 - V hlubší pánvi rozpalte máslo na středním plameni.
 - Přidejte cibuli a restujte ji 3–4 minuty.
-- Přidejte kuřecí maso, papriku, mrkev, kari koření, sůl a pepř. Restujte dalších 4–5 minut.
+- Přidejte kuřecí maso, papriku, mrkev, kari koření, sůl a pepř.
+
+  Restujte dalších 4–5 minut.
 
   > **Varování:** Nepřepékejte maso, aby zůstalo šťavnaté.
 

@@ -103,6 +103,8 @@ Odkaz představuje jednorázovou kopii, ne automaticky synchronizovaný seznam; 
 
 Dialog nabízí kopírování odkazu a dostupné systémové sdílení, přiznává délku zprávy i přístup kohokoli s odkazem a neodesílá nákup bez uživatelské akce.
 
+Vysvětlující texty rozhraní oddělují jednotlivé věty do viditelných odstavců; průvodce vysvětluje stabilní principy výběru, nákupu, vaření a sdílené kopie bez přepisování každého názvu tlačítka.
+
 ## Ovládání a PDF
 
 Navigace Výběr → Nakoupit → Uvařit propojuje samostatná zobrazení a ukazuje právě otevřenou část.
