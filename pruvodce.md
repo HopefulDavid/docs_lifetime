@@ -20,6 +20,14 @@ Vyberte jedno nebo více jídel a otevřete [svůj nákup](nakup.md).
 
 U jídel upravte dávku, zvolte surovinové varianty a případné přílohy.
 
+Přímo u ingrediencí můžete zaškrtnout, co už máte doma nebo připravené, a stejné označení uvidíte ve společném nákupu.
+
+První zaškrtnutí v dosud nevybraném receptu jej přidá do nákupu.
+
+U společné suroviny potvrzujete celkové množství pro všechna její použití, které detail výslovně ukazuje.
+
+Volitelnou přísadu nejprve zahrňte, potom ji můžete označit jako připravenou.
+
 Společné suroviny se sečtou tam, kde mají slučitelná množství a jednotky.
 
 Množství vychází z receptu a případný chybějící údaj zůstává označený.

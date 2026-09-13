@@ -204,6 +204,8 @@ Po sestavení ověř obecný Úvod, katalog v Kuchyni, nákup a detail na šíř
 | `REQ-010` | Otevři již hotový krok a zvol „Vrátit mezi nedokončené“ | Průběh se sníží a jedinou hlavní akcí je opět dokončení kroku |
 | `REQ-006` | Vyhledej `tikka`, otevři recept a vrať se zpět | Katalog zachová hledání a odpovídající výsledek |
 | `REQ-008` | Zvol „Začít nakupovat“, filtruj oddělení i název a skryj hotové | Výběr jídel ustoupí surovinám, prázdný výsledek nabídne zrušení filtrů |
+| `REQ-008`, `REQ-011` | V detailu dosud nevybrané vietnamské kávy potvrď kávu, zahrň led, obnov stránku a otevři nákup | Recept se přidá s aktuálním nastavením, potvrzení se zachová a volitelnost ledu má samostatné ovládání |
+| `REQ-008`, `REQ-011` | Nech otevřené nastavení jídla v nákupu, přepni potvrzení v seznamu i editoru, potom změň dávku a vrať ji | Obě místa ukazují stejný stav a dříve zneplatněné potvrzení se nevrátí |
 | `REQ-009` | Rozbal původ suroviny a odškrtni jinou surovinu | Zdroje zůstanou otevřené a součty se nezmění |
 | `REQ-009` | V receptu nastav 2× dávku a otevři „PDF / tisk receptu“, totéž proveď v nákupu | Náhled nabídne „Stáhnout PDF“, zachová češtinu, zdroje a skutečný výběr i při aktivním filtru |
 | `REQ-010` | V tikka masale nech naan vypnutý, přeskoč na jeho krok a potom dokonči zahrnuté kroky | Přílohu lze přeskočit a celý recept dokončit po čtyřech zahrnutých krocích |

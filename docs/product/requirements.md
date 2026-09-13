@@ -143,6 +143,20 @@ Z vaření lze spodní lištou přejít zpět k vybraným jídlům v sekci Uvař
 
 Detail v části Nakoupit ukazuje ingredience a nastavení, zatímco část Uvařit ukazuje celý postup a vstup do vaření po krocích.
 
+Každá ingredience v detailu i nastavení vybraného jídla má checkbox „Mám připraveno“ se stejným stavem jako ve společném nákupu.
+
+První potvrzení dosud nevybraného receptu jej přidá do nákupu s aktuální dávkou a variantami, na tento účinek upozorňuje text před ingrediencemi.
+
+Pokud se surovina slučuje z více použití, detail výslovně uvádí celkové množství, které zaškrtnutí potvrzuje.
+
+Změna potvrzení se projeví také v již rozbalených nastaveních ostatních jídel.
+
+Zahrnutí volitelné suroviny má samostatnou akci „Zahrnout“ nebo „Vynechat“, u vynechané suroviny je potvrzení přípravy nedostupné.
+
+Volitelná skupina má samostatně popsaný přepínač zahrnutí.
+
+Toto doplnění reaguje na uživatelem nahlášené chybějící checkboxy v detailu dne 2026-09-13 a zachovává pravidla platnosti odškrtnutí podle `REQ-011`.
+
 Pravý obsah článku odkazuje pouze na viditelné části.
 
 Přepínání zachová nastavení, otevřené zdroje a filtry.

@@ -48,6 +48,25 @@ Projekt kombinuje deterministickou kontrolu generovaných souborů, strukturáln
 | Mobilní nákup a vaření, `REQ-006` až `REQ-010` | Skutečné ovládání katalogu, nastavení, checklistu a dialogu | [Smoke scénáře](../development/commands.md#výběr-nákup-a-vaření) |
 | Oprávnění, neměnné akce a publikační pořadí, `QLT-004` | Automatická strukturální kontrola workflow a review oddělených jobů | `npm run docs:validate` a `.github/workflows/main.yml` |
 
+### Zaškrtávání ingrediencí v detailu, 2026-09-13
+
+Výchozí stav `262caae` prošel 76 testy, ale skutečný detail vietnamské kávy obsahoval checkbox pouze pro volitelný led.
+
+Oprava zpřístupnila potvrzení přípravy u všech ingrediencí pomocí stávajícího nákupního stavu a oddělila je od zahrnutí volitelných přísad.
+
+| Oblast | Provedené ověření a výsledek | Hranice důkazu |
+|---|---|---|
+| Inventura rozhraní | Prohlížeč po dokončení klientského načtení zkontroloval 27 receptů a všech 279 ingrediencí, každá měla pojmenovaný checkbox a stránky na 320 px nepřetékaly | Kontrola DOM všech detailů doplněná cílenými snímky |
+| Základní tok | První potvrzení kávy přidalo recept, zahrnutí ledu zpřístupnilo jeho checkbox, potvrzení přežila obnovení a byla stejná v nákupu | Místní testovací nákup bez cizích dat |
+| Synchronizace | Přepnutí v seznamu aktualizovalo otevřený editor a obráceně, společná voda ve dvou receptech zobrazila i potvrdila celkových 560–590 ml | Potvrzení vždy platí pro celý společný požadavek, nikoli jeho část |
+| Zneplatnění | Změna dávky zrušila dotčená potvrzení a návrat je neobnovil, výměna másla za ghí nepřenesla původní potvrzení, přílohu šlo zahrnout a potvrdit samostatně | Použita stávající pravidla podpisů bez změny datového formátu |
+| Vzhled a ovládání | Cílené snímky na 320, 390, 768 a 1440 px, světlý a tmavý motiv, ovládání mezerníkem a zachování fokusu | Chromium v Codex, bez fyzických zařízení a dalších enginů |
+| Regrese a build | Závěrečný `npm test` prošel 76 testy a kontrolami, `npm run docs:build` ověřil 54 stránek a skončil s 0 warnings a 0 errors včetně nulového obsahového souhrnu | Regrese běžela mimo omezení sandboxu pro git-cliff, bez nasazení a vzdáleného CI |
+
+Konzole kontrolovaných stránek neobsahovala warnings ani chyby.
+
+Změněné JavaScript funkce prošly cíleným formátováním přes připnutý Prettier, logy jsou v ignorovaném `private/flow-audit/checkbox-final-test.log` a `private/flow-audit/checkbox-build.log`.
+
 ### Revize množství a jednotek receptů, 2026-09-13
 
 Výchozí uživatelské změny ve 20 receptech byly nejprve uložené do `078ee05`.

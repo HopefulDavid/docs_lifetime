@@ -732,6 +732,16 @@ html[data-bs-theme="dark"] .eyebrow { color: var(--kitchen-sage); }
 .ingredient-row { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 1rem; align-items: center; border-bottom: 1px solid var(--kitchen-line); padding: .9rem 0; }
 .ingredient-row select { width: 100%; }
 .ingredient-row .ingredient-amount { max-width: 10rem; }
+.ingredient-check-help { display: flex; align-items: center; gap: .5rem; font-weight: 600; }
+.ingredient-row.has-prepared-check { grid-template-columns: 1.35rem minmax(0, 1fr) auto; }
+.ingredient-row > .ingredient-prepared { align-self: start; margin-top: .7rem; }
+.ingredient-row.has-prepared-check > .ingredient-amount { align-self: start; padding-top: .7rem; }
+.ingredient-content { min-width: 0; }
+.ingredient-name { display: flex; align-items: center; min-height: 44px; cursor: pointer; }
+.ingredient-row.is-prepared .ingredient-name { color: var(--kitchen-muted); text-decoration: line-through; }
+.ingredient-inclusion.kitchen-button { margin-top: .5rem; min-height: 44px; padding: .35rem .7rem; font-size: .85rem; }
+.ingredient-content .ingredient-optional { display: inline-block; margin-left: .5rem; }
+.ingredient-shared { margin-top: .4rem; }
 .choice-caption { display: block; margin-bottom: .3rem; font-size: .8rem; }
 .is-omitted .ingredient-amount { color: var(--kitchen-muted); font-size: .85rem; font-weight: 400; }
 .is-omitted strong, .is-omitted small { color: var(--kitchen-muted); }
@@ -768,6 +778,7 @@ article h3[id], article h2[id] { scroll-margin-top: 6rem; }
   .selected-recipe > summary > span { display: block; }
   .selected-recipe > summary > span + span { float: none; padding: .25rem 0 0; }
   .ingredient-row { gap: .6rem; grid-template-columns: minmax(0, 1fr) minmax(4.5rem, 30%); }
+  .ingredient-row.has-prepared-check { grid-template-columns: 1.35rem minmax(0, 1fr) minmax(4rem, 26%); }
   .ingredient-amount { font-size: .92rem; overflow-wrap: anywhere; }
   .amount-unknown { font-size: .78rem; }
   .recipe-actions .kitchen-button { flex: 1 1 100%; }

@@ -262,6 +262,12 @@ Pole `amounts` zůstává kompatibilní čtecí a přenosovou hranicí pro dří
 
 Při každém uložení klient odstraňuje odškrtnutí a vlastní množství, jejichž podpis neodpovídá aktuálním zdrojům nákupu.
 
+Editor ingrediencí používá stejný seznam a podpisy pro potvrzení přípravy jako společný nákup a nevytváří druhé úložiště odškrtnutí.
+
+Před přidáním receptu odvozuje množství z výběru rozšířeného o jeho aktuální nastavení, první potvrzení pak uloží tento výběr i odpovídající podpis.
+
+Uložení synchronizuje viditelné checkboxy všech otevřených editorů bez změny jejich rozbalení nebo fokusu.
+
 První přechod ze starého stavu bez revize proto začne rozvařené recepty znovu, zatímco platné volby nákupu zachová.
 
 Změny receptu a JSON se nasazují v jednom statickém artefaktu.

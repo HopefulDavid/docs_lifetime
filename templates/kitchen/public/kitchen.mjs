@@ -35,13 +35,24 @@ function announce(message) {
 }
 
 function save() {
-  pruneShoppingState(state, buildShoppingList(catalog.recipes, state.selections, catalog.departments));
-  try { localStorage.setItem(storageKey, JSON.stringify(state)); }
-  catch {
+  pruneShoppingState(
+    state,
+    buildShoppingList(catalog.recipes, state.selections, catalog.departments),
+  );
+  document.querySelectorAll('.ingredient-prepared').forEach((control) => {
+    control.checked =
+      state.checked[control.dataset.shoppingKey] === control.dataset.shoppingSignature;
+    control.closest('.ingredient-row').classList.toggle('is-prepared', control.checked);
+  });
+  try {
+    localStorage.setItem(storageKey, JSON.stringify(state));
+  } catch {
     storageMessage = 'Před zavřením použijte Export nákupu, protože ukládání není dostupné.';
     document.body.classList.add('kitchen-storage-unavailable');
   }
-  document.querySelectorAll('.storage-message').forEach(node => { node.textContent = storageMessage; });
+  document.querySelectorAll('.storage-message').forEach((node) => {
+    node.textContent = storageMessage;
+  });
   updateTray();
 }
 
@@ -172,24 +183,186 @@ function quantityLabel(item, factor) {
 }
 
 function recipeEditor(recipe, config, changed, idPrefix) {
-  const factor = el('select', { id: `${idPrefix}-factor`, value: String(config.factor), onChange: event => { config.factor = Number(event.target.value); changed(); } }, [0.5, 1, 1.5, 2, 3, 4].map(value => el('option', { value: String(value), selected: config.factor === value }, `${String(value).replace('.', ',')}× původní dávka`)));
-  const editor = el('div', { className: 'recipe-editor' }, el('label', { className: 'factor-label', htmlFor: factor.id }, 'Kolik připravíte', factor), el('p', { className: 'kitchen-muted' }, 'Protože zdroj neuvádí počet porcí, násobí se pouze uvedená množství.'));
+  const plannedItems = new Map(
+    buildShoppingList(
+      catalog.recipes,
+      { ...state.selections, [recipe.id]: config },
+      catalog.departments,
+    ).map((item) => [item.key, item]),
+  );
+  const factor = el(
+    'select',
+    {
+      id: `${idPrefix}-factor`,
+      value: String(config.factor),
+      onChange: (event) => {
+        config.factor = Number(event.target.value);
+        changed();
+      },
+    },
+    [0.5, 1, 1.5, 2, 3, 4].map((value) =>
+      el(
+        'option',
+        { value: String(value), selected: config.factor === value },
+        `${String(value).replace('.', ',')}× původní dávka`,
+      ),
+    ),
+  );
+  const editor = el(
+    'div',
+    { className: 'recipe-editor' },
+    el('label', { className: 'factor-label', htmlFor: factor.id }, 'Kolik připravíte', factor),
+    el(
+      'p',
+      { className: 'kitchen-muted' },
+      'Protože zdroj neuvádí počet porcí, násobí se pouze uvedená množství.',
+    ),
+  );
+  editor.append(
+    el(
+      'p',
+      { className: 'ingredient-check-help' },
+      icon('check'),
+      'Zaškrtněte, co už máte doma nebo připravené.',
+    ),
+  );
+  if (!selected(recipe))
+    editor.append(
+      el('p', { className: 'kitchen-muted' }, 'První zaškrtnutí přidá tento recept do nákupu.'),
+    );
   for (const group of recipe.groups) {
     const groupOn = !group.optional || config.enabled[group.id];
-    const groupBox = el('fieldset', { className: `ingredient-group${groupOn ? '' : ' is-omitted'}` });
+    const groupBox = el('fieldset', {
+      className: `ingredient-group${groupOn ? '' : ' is-omitted'}`,
+    });
     const legend = el('legend', {}, group.title);
-    if (group.optional) legend.replaceChildren(el('label', { className: 'check-label' }, el('input', { type: 'checkbox', id: `${idPrefix}-${group.id}`, checked: groupOn, onChange: event => { config.enabled[group.id] = event.target.checked; changed(); } }), `${group.title} · volitelné`));
+    if (group.optional)
+      legend.replaceChildren(
+        el(
+          'label',
+          { className: 'check-label' },
+          el('input', {
+            type: 'checkbox',
+            id: `${idPrefix}-${group.id}`,
+            checked: groupOn,
+            onChange: (event) => {
+              config.enabled[group.id] = event.target.checked;
+              changed();
+            },
+          }),
+          `Zahrnout: ${group.title} · volitelné`,
+        ),
+      );
     groupBox.append(legend);
-    for (const item of recipe.ingredients.filter(item => item.group === group.id)) {
+    for (const item of recipe.ingredients.filter((item) => item.group === group.id)) {
       const enabled = groupOn && (!item.optional || config.enabled[item.id]);
-      const row = el('div', { className: `ingredient-row${enabled ? '' : ' is-omitted'}` });
-      let name;
+      const option = item.options[config.choices[item.id]];
+      const contribution = buildShoppingList(
+        [{ ...recipe, ingredients: [item] }],
+        { [recipe.id]: config },
+        catalog.departments,
+      )[0];
+      const planned = plannedItems.get(contribution?.key);
+      const ready = Boolean(planned && state.checked[planned.key] === planned.signature);
+      const row = el('div', {
+        className: `ingredient-row has-prepared-check${enabled ? '' : ' is-omitted'}${ready ? ' is-prepared' : ''}`,
+      });
+      const prepared = el('input', {
+        type: 'checkbox',
+        id: `${idPrefix}-${item.id}-prepared`,
+        className: 'ingredient-prepared',
+        checked: ready,
+        disabled: !enabled,
+        'aria-label': `Mám připraveno: ${option.name}`,
+        'data-shopping-key': planned?.key || '',
+        'data-shopping-signature': planned?.signature || '',
+        onChange: (event) => {
+          const added = !selected(recipe);
+          state.selections[recipe.id] = structuredClone(config);
+          if (event.target.checked) state.checked[planned.key] = planned.signature;
+          else delete state.checked[planned.key];
+          changed();
+          announce(
+            `${option.name}: ${event.target.checked ? 'připraveno' : 'zbývá připravit'}${added ? `, recept ${recipe.title} byl přidán do nákupu` : ''}.`,
+          );
+        },
+      });
+      const content = el(
+        'div',
+        { className: 'ingredient-content' },
+        el(
+          'label',
+          { htmlFor: prepared.id, className: 'ingredient-name' },
+          el('strong', {}, option.name),
+        ),
+      );
       if (item.options.length > 1) {
-        name = el('label', {}, el('span', { className: 'kitchen-muted choice-caption' }, 'Vyberte jednu možnost'), el('select', { id: `${idPrefix}-${item.id}-choice`, 'aria-label': `Varianta: ${item.options.map(option => option.name).join(' nebo ')}`, disabled: !enabled, onChange: event => { config.choices[item.id] = Number(event.target.value); changed(); } }, item.options.map((option, index) => el('option', { value: String(index), selected: config.choices[item.id] === index }, option.name))));
-      } else name = el('strong', {}, item.options[0].name);
-      if (item.optional) name = el('label', { className: 'check-label' }, el('input', { type: 'checkbox', id: `${idPrefix}-${item.id}`, checked: Boolean(config.enabled[item.id]), disabled: !groupOn, onChange: event => { config.enabled[item.id] = event.target.checked; changed(); } }), name);
-      const note = item.note.replace(/(?:^|;\s*)volitelné(?:;\s*|$)/, '').trim();
-      row.append(el('div', {}, name, note ? el('small', {}, note) : null), el('span', { className: `ingredient-amount${item.quantity === 'neuvedeno' ? ' amount-unknown' : ''}` }, enabled ? quantityLabel(item, config.factor) : 'Nezahrnuto'));
+        content.append(
+          el(
+            'label',
+            {},
+            el('span', { className: 'kitchen-muted choice-caption' }, 'Vyberte jednu možnost'),
+            el(
+              'select',
+              {
+                id: `${idPrefix}-${item.id}-choice`,
+                'aria-label': `Varianta: ${item.options.map((option) => option.name).join(' nebo ')}`,
+                disabled: !enabled,
+                onChange: (event) => {
+                  config.choices[item.id] = Number(event.target.value);
+                  changed();
+                },
+              },
+              item.options.map((option, index) =>
+                el(
+                  'option',
+                  { value: String(index), selected: config.choices[item.id] === index },
+                  option.name,
+                ),
+              ),
+            ),
+          ),
+        );
+      }
+      const note = item.note.replace(/(?:^|[;,]\s*)volitelné(?:[;,]\s*|$)/, '').trim();
+      if (note) content.append(el('small', {}, note));
+      if (planned && planned.sources.length > 1)
+        content.append(
+          el(
+            'small',
+            { className: 'ingredient-shared' },
+            `V celém nákupu potvrzujete ${planned.amount} ze všech použití této suroviny.`,
+          ),
+        );
+      if (item.optional)
+        content.append(
+          button(
+            config.enabled[item.id] ? 'Vynechat' : 'Zahrnout',
+            () => {
+              config.enabled[item.id] = !config.enabled[item.id];
+              changed();
+            },
+            {
+              id: `${idPrefix}-${item.id}`,
+              className: 'ingredient-inclusion kitchen-button',
+              disabled: !groupOn,
+              'aria-pressed': String(Boolean(config.enabled[item.id])),
+              'aria-label': `${config.enabled[item.id] ? 'Vynechat' : 'Zahrnout'} volitelnou surovinu: ${option.name}`,
+            },
+          ),
+          el('small', { className: 'ingredient-optional' }, 'Volitelné'),
+        );
+      row.append(
+        prepared,
+        content,
+        el(
+          'span',
+          {
+            className: `ingredient-amount${item.quantity === 'neuvedeno' ? ' amount-unknown' : ''}`,
+          },
+          enabled ? quantityLabel(item, config.factor) : 'Nezahrnuto',
+        ),
+      );
       groupBox.append(row);
     }
     editor.append(groupBox);
