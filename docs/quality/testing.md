@@ -34,6 +34,14 @@ Projekt kombinuje deterministickou kontrolu generovaných souborů, strukturáln
 | Mobilní nákup a vaření, `REQ-006` až `REQ-010` | Skutečné ovládání katalogu, nastavení, checklistu a dialogu | [Smoke scénáře](../development/commands.md#výběr-nákup-a-vaření) |
 | Oprávnění, neměnné akce a publikační pořadí, `QLT-004` | Automatická strukturální kontrola workflow a review oddělených jobů | `npm run docs:validate` a `.github/workflows/main.yml` |
 
+### Ověření SVG ikon a zjednodušeného vaření, 2026-09-13
+
+Po zavedení ikon a změně dialogu prošlo 46 Node testů a sestavení 54 stránek s nulovým počtem chyb a varování DocFX; 68 známých upozornění na neuvedené množství zůstalo beze změny.
+
+V prohlížeči Chromium byl ověřen mobilní dialog na 390 px a nízký displej 844 × 390, obnova druhého kroku, vrácení hotového kroku, přechod na poslední krok s návratem k nedokončenému a dokončení čtyř kroků tikka masaly bez volitelného naanu.
+
+Zavření tlačítkem i Escape vrátilo fokus na spouštěcí tlačítko a odstranilo kotvu vaření; tento průchod nenahrazuje test fyzických mobilních zařízení ani úplný audit přístupnosti.
+
 ### Trvalá obsahová kontrola
 
 Jednotnou podobu receptů a otevřené obsahové otázky vlastní [formát receptu](../product/recipe-format.md).

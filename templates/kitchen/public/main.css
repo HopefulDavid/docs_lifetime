@@ -738,12 +738,10 @@ html[data-bs-theme="dark"] .eyebrow { color: var(--kitchen-sage); }
 .cook-top .eyebrow { max-width: 70%; margin-top: .5rem; }
 .cook-top .kitchen-button { flex-shrink: 0; }
 .cooking-dialog h2 { font: 700 2rem/1.2 Georgia, serif; margin: 1.7rem 0 1.2rem; }
-#cook-jump { margin-top: 1.4rem; width: 100%; }
 .cook-content { font-size: 1.15rem; line-height: 1.7; }
 .cook-content li { margin-bottom: .9rem; }
 .cook-content ul { padding-left: 1.4rem; }
 .cook-content blockquote { font-size: .95rem; box-shadow: none; }
-.cook-done { padding: 1rem; margin-block: 1rem; border: 1px solid var(--kitchen-line); border-radius: .5rem; }
 .cook-navigation { display: flex; justify-content: space-between; gap: .6rem; }
 .cook-ingredients { margin-top: 1.5rem; }
 .cook-ingredients > summary { cursor: pointer; padding: 1rem 0; min-height: 44px; font-weight: 650; }
@@ -972,6 +970,48 @@ main:focus { outline: none; }
   .print-controls > p { font-size: .8rem; }
 }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+.cook-top .eyebrow { max-width: none; margin: 0 0 .4rem; font-size: .68rem; }
+.cook-recipe { font-weight: 700; line-height: 1.35; }
+.cook-progress { display: flex; align-items: center; gap: 1rem; font-size: .8rem; color: var(--kitchen-muted); }
+.cook-progress progress { flex: 1; min-width: 0; height: .4rem; border: 0; border-radius: 1rem; overflow: hidden; background: var(--kitchen-sage-soft); accent-color: var(--kitchen-sage); }
+.cook-progress progress::-webkit-progress-bar { background: var(--kitchen-sage-soft); }
+.cook-progress progress::-webkit-progress-value { background: var(--kitchen-sage); border-radius: 1rem; }
+.cook-progress progress::-moz-progress-bar { background: var(--kitchen-sage); border-radius: 1rem; }
+.cook-progress span { white-space: nowrap; }
+.cook-step-heading { padding-top: 1.5rem; }
+.cook-step-heading .eyebrow { margin: 0; color: var(--kitchen-sage); }
+.cooking-dialog .cook-step-heading h2 { margin: .6rem 0 1.3rem; }
+.cook-content { padding-top: 1.2rem; }
+.cook-tools { border-top: 1px solid var(--kitchen-line); margin-top: 2rem; }
+.cook-support { border-bottom: 1px solid var(--kitchen-line); }
+.cook-support > summary { cursor: pointer; min-height: 52px; padding: .9rem .2rem; font-size: .92rem; font-weight: 650; }
+.cook-support > summary .ui-icon, .cook-preparation summary .ui-icon { margin-inline: .2rem .4rem; }
+.cook-support[open] { padding-bottom: 1rem; }
+.cook-step-list { list-style: none; padding: 0; margin: 0; }
+.cook-step-link { width: 100%; display: grid; grid-template-columns: 2rem 1fr auto; gap: .7rem; align-items: center; text-align: left; padding: .7rem; border: 0; border-radius: .5rem; color: inherit; background: transparent; }
+.cook-step-link:hover, .cook-step-link[aria-current] { background: var(--kitchen-sage-soft); }
+.cook-step-number { display: grid; place-items: center; width: 2rem; height: 2rem; border: 1px solid var(--kitchen-line); border-radius: 50%; font-size: .8rem; }
+.cook-step-state { font-size: .72rem; color: var(--kitchen-muted); }
+.cook-finished { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .5rem; padding: .6rem .8rem; border-radius: .5rem; background: var(--kitchen-sage-soft); font-size: .88rem; }
+.cook-text-button { border: 0; padding: .5rem 0; min-height: 44px; background: transparent; color: var(--kitchen-sage); font-size: .8rem; text-decoration: underline; }
+.cook-success { padding: 2.5rem 0 1rem; text-align: center; }
+.cook-success > .ui-icon { width: 4rem; height: 4rem; color: var(--kitchen-sage); }
+.cook-navigation .primary { max-width: none; }
+@media (max-width: 480px) {
+  .cook-header { padding-inline: 1rem; }
+  .cook-top .eyebrow { font-size: .6rem; letter-spacing: .04em; }
+  .cook-top .kitchen-button { font-size: .8rem; padding-inline: .65rem; }
+  .cook-recipe { font-size: .95rem; }
+  .cook-step-link { grid-template-columns: 2rem 1fr; }
+  .cook-step-state { grid-column: 2; margin-top: -.5rem; }
+  .cook-navigation { gap: .5rem; }
+  .cook-navigation .kitchen-button { font-size: .8rem; gap: .3rem; }
+}
+@media (max-height: 500px) {
+  .cook-top .eyebrow { display: none; }
+  .cook-step-heading { padding-top: .7rem; }
+  .cook-progress { font-size: .7rem; }
+}
 @media print {
   html:has(.shopping-print-dialog[open]), body:has(.shopping-print-dialog[open]) { overflow: visible; }
   body:has(.shopping-print-dialog[open]) > *:not(.shopping-print-dialog) { display: none !important; }

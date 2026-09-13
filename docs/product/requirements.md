@@ -113,6 +113,10 @@ Konkrétní země mají vedle názvu SVG vlajku; obecné oblasti používají sy
 - Nákup nabídne režim pro obchod, hledání surovin bez diakritiky, filtr oddělení, skrytí hotových a filtr množství k doplnění.
 - Odškrtnutí nesmí zahodit rozepsané vlastní množství; změna dávky zneplatní údaj podle původního kontraktu.
 - Vaření zachová dostupné ovládání mimo posouvaný obsah a započítá pouze zahrnuté kroky.
+
+- Dokončení kroku má jedinou hlavní akci, která zároveň pokračuje postupem; hotový krok lze vrátit mezi nedokončené.
+
+- Přehled kroků rozlišuje aktuální, hotové, čekající a vynechané kroky; závěrečný souhrn vznikne teprve po dokončení všech zahrnutých kroků.
 - Recept i celý nákup nabídnou čitelný náhled, přímé stažení PDF a samostatný tisk.
 - Receptové PDF respektuje zvolenou dávku, alternativy a přílohy, obsahuje přípravné poznámky a pomůcky.
 - Nákupní PDF a text obsahují i skryté a hotové položky; rozhraní to při aktivním filtru vysvětlí.
