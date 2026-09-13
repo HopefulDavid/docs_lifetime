@@ -10,7 +10,11 @@ Současná sbírka se věnuje jídlu a pití; další témata mohou přibývat j
 
 ## Najděte, co potřebujete
 
-Na [úvodu](index.md) zvolte oblast nebo vyhledejte recept podle názvu, suroviny či původu.
+Na [úvodu](index.md) zvolte oblast, které se chcete věnovat.
+
+V [Kuchyni](kuchyne/index.md) najdete Jídlo, Nápoje, katalog receptů a společný nákup.
+
+Katalog prohledáte podle názvu, suroviny nebo typu receptu.
 
 V nabídce najdete také hledání v celém obsahu dokumentace, které funguje s diakritikou i bez ní.
 
@@ -50,17 +54,41 @@ Přepočet dávky mění seznam surovin, zatímco čísla napsaná uvnitř postu
 
 ## Bez připojení a na jiném zařízení
 
-Před odchodem si v nákupu stáhněte text nebo otevřete „PDF / tisk“ a uložte PDF.
+Před odchodem si v nákupu zkopírujte text nebo otevřete „PDF / tisk“ a uložte PDF.
 
 PDF lze uložit také z detailu receptu a používat při přípravě bez připojení.
 
 Export obsahuje celý nákup včetně právě skrytých a hotových položek.
 
-Výběr i průběh vaření se uchovávají pouze ve stejném prohlížeči na stejné adrese webu a mezi zařízeními se nesynchronizují.
+Výběr i průběh vaření se uchovávají pouze ve stejném prohlížeči na stejné adrese webu a mezi zařízeními se automaticky nesynchronizují.
 
-Pro jeden nákup používejte jedno okno; stažený text a PDF slouží ke čtení a nelze je importovat zpět.
+Pro jeden nákup používejte jedno okno; běžný textový seznam a PDF slouží ke čtení a nelze je importovat zpět.
 
 Pokud prohlížeč ukládání odmítne, rozhraní na to upozorní a je potřeba seznam před zavřením exportovat.
+
+## Pošlete nákup druhému člověku
+
+1. Uložte případné rozepsané vlastní množství a zvolte „Export nákupu“.
+2. Použijte „Kopírovat odkaz“ a vložte jej do SMS nebo chatu, případně zvolte „Sdílet…“ a příjemce v telefonu.
+3. Příjemce otevře odkaz; náhled importu se zobrazí automaticky.
+4. Pokud odkaz neotevírá přímo, může v nákupu zvolit „Import nákupu“, vložit celý odkaz nebo kód a kliknout na „Načíst nákup“.
+5. Zvolí sloučení nebo převzetí celého nákupu, vyřeší případné rozdíly a teprve potom import potvrdí.
+
+Sloučení zachová vaše jídla a spojí platné hotové položky od obou lidí; společný recept nepřidá dvakrát.
+
+Při rozdílné dávce, variantě nebo vlastním množství vyberete, kterou hodnotu použít; změněné součty je potřeba znovu zkontrolovat.
+
+Převzetí celého nákupu nahradí váš výběr a stav přesně přijatým nákupem, včetně nehotových položek; průběh vašeho vaření zůstane místní.
+
+Tlačítko „Vrátit poslední změnu“ umožní poslední import vrátit, dokud jste na stejné stránce.
+
+Odkaz je kopie v okamžiku exportu; při dalším nákupu nebo odškrtávání si pošlete nový export.
+
+Dlouhý odkaz může SMS rozdělit do více zpráv a musí být předaný celý; pro větší nákup je pohodlnější chat.
+
+Každý, kdo má odkaz, může nákup přečíst a použít, proto jej posílejte jen zamýšleným příjemcům.
+
+Při poškozeném odkazu nebo rozdílné verzi receptu se nákup nezmění; zkontrolujte adresu webu, obnovte stránky a požádejte o nový export.
 
 ## Opravy a změny
 

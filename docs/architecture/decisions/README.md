@@ -35,3 +35,4 @@ Nový záznam vzniká ze šablony [`../../templates/adr.md`](../../templates/adr
 | [`ADR-0004-nakup-a-vareni-nad-markdownem.md`](ADR-0004-nakup-a-vareni-nad-markdownem.md) | Nákup a vaření nad jednotným Markdownem | Přijato | — |
 | [`ADR-0005-pdf-export-v-prohlizeci.md`](ADR-0005-pdf-export-v-prohlizeci.md) | Přímý export PDF v prohlížeči | Přijato; doplňuje ADR-0004 | — |
 | [`ADR-0006-izolovane-generovani-docsetu.md`](ADR-0006-izolovane-generovani-docsetu.md) | Izolované generování veřejného docsetu | Přijato; doplňuje ADR-0003 a ADR-0004 | — |
+| [`ADR-0007-prenos-nakupu-bez-serveru.md`](ADR-0007-prenos-nakupu-bez-serveru.md) | Předání nákupu bez serverového úložiště | Přijato; doplňuje ADR-0004 a ADR-0005 | — |

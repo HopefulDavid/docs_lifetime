@@ -68,7 +68,7 @@ Diagram ukazuje vývojový a publikační kontext, nikoli vnitřní kroky gener�
 - Obsahový generátor používá standardní knihovnu Node.js a synchronní I/O; historii odvozuje již přijatý `git-cliff`.
 - DocFX převádí omezený produktový obsah do statického webu a interní projektovou dokumentaci nezahrnuje do veřejného artefaktu.
 - Lokální prostředí i CI volají stejné skripty z [`../development/commands.md`](../development/commands.md).
-- Publikování probíhá až po samostatném ověření a sestavení bez varování.
+- Publikování probíhá až po samostatném ověření a sestavení bez chyb; upozornění na chybějící množství mají přijatý neblokující význam podle [receptového kontraktu](../product/recipe-format.md#automatická-kontrola-obsahu).
 
 ## 5. Stavební bloky a pravidla závislostí
 
@@ -96,6 +96,7 @@ Diagram ukazuje jednosměrné odvozování výstupů a odděluje obsahovou a zm�
 | Parser receptů | Ověřuje tabulky, kanonické názvy, stabilní identifikátory a navazující kroky | `scripts/recipe-content.cjs` | Zdrojové recepty a `data/ingredients.json` | Engineering |
 | Klientská kuchařka | Řídí výběr, nákup, vlastní množství a vaření | `templates/kitchen/public/kitchen.mjs` | DOM, standardní webová API, `kitchen-core.mjs` a generovaný `data/recipes.json` | Engineering |
 | Doménové jádro nákupu | Slučuje množství a validuje lokální stav | `templates/kitchen/public/kitchen-core.mjs` | Pouze standardní JavaScript | Engineering |
+| Přenos nákupu | Ověřuje sdílenou kopii a připravuje výslovné řešení konfliktů | `templates/kitchen/public/kitchen-transfer.mjs` | Doménové jádro, aktuální katalog a standardní kompresní API prohlížeče | Čtenář a zvolený příjemce |
 | PDF export | Převádí aktuální exportní náhled na stránkovaný soubor | `templates/kitchen/public/kitchen-pdf.mjs` | DOM náhledu a odloženě načtené lokální assety pdfmake podle [ADR-0005](decisions/ADR-0005-pdf-export-v-prohlizeci.md) | Engineering |
 | Generovaný docset | Obsahuje odvozenou navigaci, katalog a kopie veřejného Markdownu | Ignorovaný `_generated/`, jeho manifest a `docfx.json` | Pouze ruční zdroje a generátor | Generátor |
 | Changelog | Odvozuje veřejný přehled úplné historie po ročních obdobích a uvnitř zachovává kategorie | `cliff.toml` a npm skript | Git historie a `git-cliff` uzamčený npm lockfilem; výstup je ignorovaný build vstup | Delivery |
@@ -108,7 +109,11 @@ Závislosti tečou pouze směrem ke generovanému výstupu a zdrojový obsah nik
 
 ### Obecné návody a další oblasti
 
-Úvod odděluje dostupné oblasti života od katalogu receptů a zachovává jeho přímou kotvu `#recepty`.
+Obecný Úvod obsahuje dostupné oblasti života a orientaci v celém webu; neobsahuje katalog ani kuchařské rozšíření.
+
+Generovaná `kuchyne/index.md` přebírá katalog a kuchařské rychlé cesty; její TOC zahrnuje existující Jídlo, Nápoje a Můj nákup podporovaným vnořením TOC v DocFX.
+
+Starý klientský odkaz na úvod s `#recepty` nebo katalogovými filtry přejde do Kuchyně a zachová dotaz; adresy receptů a nákupní stránka zůstávají původní.
 
 Veřejný `pruvodce.md` je ručně udržovaný obecný návod, jehož kopii generátor výslovně připravuje do veřejného docsetu; neparsuje jej jako recept ani nepřepisuje jeho zdroj.
 
@@ -121,6 +126,8 @@ Nová skutečná obsahová oblast dostane vlastní adresář mimo receptové str
 Její obsahový kontrakt se určí podle konkrétního použití; prázdné kategorie, univerzální schéma kroků ani další aplikační framework se předem nezavádějí.
 
 Interní `docs/` a `private/` se kvůli novému tématu nesmějí plošně přidat do veřejného docsetu.
+
+Receptová validace se rozhoduje podle explicitně vybraných receptových zdrojů, nikoli podle přítomnosti slova ingredience nebo hodnoty `neuvedeno` v libovolné stránce.
 
 ## 6. Klíčové běhové scénáře
 
@@ -147,6 +154,18 @@ Projekt nemá účty, aplikační cookies, serverovou databázi ani vzdálené u
 
 Výběr, vlastní množství, odškrtnutí a průběh vaření se ukládají v prohlížeči pod verzovaným klíčem odděleným podle cesty webu; data lze odstranit novým nákupem nebo vymazáním dat prohlížeče.
 
+Uživatelem vyžádané předání nákupu doplňuje [ADR-0007](decisions/ADR-0007-prenos-nakupu-bez-serveru.md); příjemce získává samostatnou kopii a nevzniká serverová synchronizace.
+
+Přenosový modul odvozuje kompaktní data z platného nákupu a na příjmu před jakoukoli změnou ověří formát, velikost i po rozbalení, známé recepty, přesné revize, nastavení a příslušnost surovin.
+
+Podpisy nákupních položek se dopočítají z aktuálního katalogu; libovolné podpisy ani text receptů z importu nejsou zdrojem obsahu.
+
+Prohlížeč vytvoří odkaz s kódem ve fragmentu a zpracuje jej bez síťového načítání importované adresy; po otevření náhledu odstraní kód z aktuální adresy stránky.
+
+Kopie není šifrovaná ani odvolatelná; příjemce odkazu ji může dále předat a služba použitá pro zprávu ji může uchovat.
+
+Přesná pravidla sloučení, nahrazení a vrácení vlastní [produktový kontrakt](../product/requirements.md#předání-nákupu), zatímco implementace a číselné limity přenosového formátu jsou kanonické v modulu.
+
 Přesnou datovou hranici a rizika přijímá [ADR-0004](decisions/ADR-0004-nakup-a-vareni-nad-markdownem.md).
 
 ### Odvozená data a rozsah automatizace
@@ -172,6 +191,8 @@ Hotový web se ověří proti manifestu docsetu a klientskému katalogu včetně
 DocFX mapuje `_generated/` na kořen webu, proto se veřejné cesty ani identifikátory receptů přesunem odvozených souborů nemění.
 
 Interní dokumentace, ruční slovníky, manifest původu ani soukromé materiály nejsou veřejnými resource vstupy.
+
+Stejně je neveřejný `_generated/content-report.json`, který deterministicky odvozuje neblokující diagnostiky; CLI je vypíše i bez zápisu a v GitHub Actions k nim přidá anotace zdrojových řádků.
 
 | Údaj | Jediný zdroj | Automatické odvození a kontrola |
 |---|---|---|
@@ -226,7 +247,7 @@ Přesné kroky nasazení jsou v [`../delivery/ci-cd.md`](../delivery/ci-cd.md) a
 | Pull request a `develop` | Zneužití zapisovacího tokenu nebo tajemství | Ověřovací job má pouze `contents: read`, bez SMTP secrets a s akcemi připnutými na SHA | Připnutá revize externí akce stále vykonává kód třetí strany | Automatická strukturální kontrola a review změn SHA |
 | Publikační job | Změna `main` nebo nasazené větve | `contents: write` má pouze job po úspěšném ověření a workflow do `main` nezapisuje | Externí nasazovací akce zpracovává krátkodobý token | Připnuté SHA, oddělený job a kontrola oprávnění |
 | SMTP přihlašovací údaje | Únik tajemství do logu nebo artefaktu | Hodnoty jsou pouze v GitHub Secrets a předávají se jednomu kroku | Akce třetí strany tajemství zpracovává | Review akce, logů a rotace při incidentu |
-| Čtenář | Sledování nebo únik osobních dat | Projekt nemá účet, serverovou telemetrii ani vlastní cookies; nákupní stav neposílá na server | Hosting může používat vlastní provozní logy podle podmínek GitHubu | Revize produktu a hostingu při změně rozsahu |
+| Čtenář | Sledování nebo nechtěné předání dat | Projekt nemá účet ani serverovou telemetrii; sdílený nákup předává čtenář výslovně zvolenému příjemci | Hosting má vlastní logy a příjemce či služba zpráv může kopii uchovat | Revize přenosové hranice, velikostní limity a náhled před importem |
 
 ## 11. Zbytková rizika a trvalé kontroly
 

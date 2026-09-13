@@ -147,3 +147,25 @@ Věcné změny receptu vyžadují kontrolu člověkem znalým receptu podle [tes
 | Řada receptů neuvádí množství hlavních potravin nebo velikost dávky | Řádky s `neuvedeno` v příslušném receptu | Správce obsahu doplní údaje při skutečné přípravě; do té doby zůstává nejistota viditelná |
 
 Generátor zdrojové recepty neformátuje ani nepřepisuje; chybný vstup odmítne před zápisem odvozených souborů.
+
+## Automatická kontrola obsahu
+
+Kontrola receptů platí pouze pro `food/` a `drink/`, které tvoří podsekce Kuchyně; obecné návody ani budoucí negastronomické oblasti nepřebírají tabulky surovin a číslované vaření.
+
+Slovník vyžaduje neprázdná a jednoznačná oddělení i názvy, odmítá duplicity také po sjednocení velikosti písmen a diakritiky a nedovoluje formátovací nebo řídicí znaky v názvech.
+
+Každý název i každá alternativa v tabulce musí přesně odpovídat slovníku; diagnostika uvede soubor, řádek a opravu názvu nebo nutnost doplnění suroviny do oddělení.
+
+Tabulka má přesnou hlavičku, oddělovací řádek a všechny tři buňky každé suroviny mezi krajními svislítky; volně připsaný seznam, opakované suroviny nebo neúplný řádek se nesmějí tiše vynechat.
+
+Každá pojmenovaná skupina surovin, včetně volitelné přílohy, musí obsahovat vlastní neprázdnou tabulku.
+
+Vysvětlující poznámku za tabulkou zapiš jako citaci `>`, případně ji vlož přímo do sloupce Upřesnění.
+
+Každý řádek s přesnou hodnotou `neuvedeno`, včetně volitelné suroviny, vytváří neblokující upozornění `RECIPE_QUANTITY_MISSING` s původem a řádkem.
+
+Upozornění žádá ověřené doplnění zdrojového množství; `dle chuti` se za chybějící množství nepovažuje a čísla se neodhadují.
+
+Souhrnné diagnostiky jsou obnovitelným výstupem `_generated/content-report.json`; přesné spuštění bez zápisu vlastní [příkazy](../development/commands.md#statické-kontroly).
+
+Validátor nepozná surovinu, kterou autor vůbec nezapsal, ani nezaručí kulinářskou správnost oddělení, množství a postupu; tuto hranici nadále vlastní [obsahová revize](#obsahová-revize).

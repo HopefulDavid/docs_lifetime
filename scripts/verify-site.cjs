@@ -39,7 +39,7 @@ for (const recipe of catalog.recipes) {
 for (const resource of ['public/pdfmake.min.js', 'public/vfs_fonts.js', 'public/licenses/pdfmake/LICENSE', 'public/licenses/Roboto-OFL.txt']) {
   assert(fs.existsSync(path.join(site, resource)), `Chybí PDF asset nebo licence: ${resource}`);
 }
-for (const internal of ['docs', 'private', 'data/ingredients.json', 'data/taxonomy.json', '_generated']) {
+for (const internal of ['docs', 'private', 'data/ingredients.json', 'data/taxonomy.json', 'content-report.json', '_generated']) {
   assert(!fs.existsSync(path.join(site, internal)), `Interní zdroj nesmí být publikovaný: ${internal}`);
 }
 

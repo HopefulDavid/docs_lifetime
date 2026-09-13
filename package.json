@@ -15,6 +15,7 @@
     "docs:generate": "node scripts/generate-docs.js",
     "docs:check": "node scripts/generate-docs.js --check",
     "docs:validate": "node scripts/validate-docs.js",
+    "docs:validate-content": "node scripts/generate-docs.js --validate-only",
     "docs:clean": "node scripts/clean-site.js",
     "docs:build": "npm run docs:generate && npm run docs:validate && npm run docs:clean && dotnet tool run docfx build docfx.json --warningsAsErrors && npm run docs:verify-site",
     "docs:verify-site": "node scripts/verify-site.cjs",

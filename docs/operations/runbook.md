@@ -19,7 +19,7 @@ Architektura je v [`../architecture/overview.md`](../architecture/overview.md) a
 | Eskalační kontakt nebo kanál | Správce repozitáře prostřednictvím používaného interního kontaktu, neveřejné údaje zůstávají mimo Git |
 | Kritičnost služby | Nízká, veřejné životní návody bez transakcí a serverových uživatelských dat |
 | Podporovaná prostředí | Lokální náhled a GitHub Pages podle [`../delivery/ci-cd.md`](../delivery/ci-cd.md) |
-| Hlavní uživatelské scénáře | `REQ-001`, `REQ-002`, `REQ-004`, `REQ-006` až `REQ-012` |
+| Hlavní uživatelské scénáře | `REQ-001`, `REQ-002`, `REQ-004`, `REQ-006` až `REQ-014` |
 | Cíle dostupnosti a obnovy | Projekt nemá smluvní SLA, RPO ani RTO a chrání především obnovitelnost z Git historie |
 
 ## Ověření zdraví
@@ -28,11 +28,11 @@ Kontroly prováděj v uvedeném pořadí od nejméně invazivní.
 
 | Kontrola | Jak ji provést | Zdravý výsledek | Typické selhání | Další krok |
 |---|---|---|---|---|
-| Veřejný vstup | Otevři `https://hopefuldavid.github.io/docs_lifetime/` | HTTP úspěch, nadpis `Dokumentace ze života` a katalog | 404, 5xx, starý nebo prázdný obsah | Ověř detail a poslední workflow |
+| Veřejný vstup | Otevři `https://hopefuldavid.github.io/docs_lifetime/` | HTTP úspěch, obecný nadpis `Dokumentace ze života` a odkaz na Kuchyni | 404, 5xx, starý nebo prázdný obsah | Ověř Kuchyni, detail a poslední workflow |
 | Reprezentativní detail | Otevři známý recept z katalogu | Nadpis, ingredience a kroky se vykreslí, ovládací texty jsou české a editační odkaz chybí | Odkaz 404, anglický token, editační odkaz, chybějící styly nebo prázdný článek | Porovnej zdroj, TOC, `docfx.json`, tokeny šablony a `_site/` |
 | České a anglické hledání | Vyhledej `Rajská`, `rajska`, `PIZZA`, `French Press`, `coffee` a dotaz bez shody | Správné výsledky, český nulový stav a konzole bez chyb | Prázdný výsledek pro známé slovo, anglický stav nebo chyba workeru | Ověř vlastní assety, `index.json` a verzi DocFX |
 | Changelog | Otevři stránku `Změny` z hlavní navigace | Zdrojový stav odpovídá `HEAD`, nejnovější rok je otevřený, roky bez změn nejsou zobrazené a každý starší zobrazený rok je sbalený s vlastním počtem a uvnitř zůstávají kategorie i technické záznamy | Chybějící starší změny, chybný roční přechod, zastaralý zdrojový stav, posunuté datum nebo neformátovaný podporovaný typ | Reprodukuj generátor podle diagnostického stromu |
-| Lokální reprodukce | Spusť úplnou lokální kontrolu z [`../development/commands.md`](../development/commands.md) | `npm test` a build projdou bez varování | Zastaralý generovaný soubor, vadný odkaz nebo neobnovený nástroj | Oprav nejbližší potvrzenou příčinu |
+| Lokální reprodukce | Spusť úplnou lokální kontrolu z [`../development/commands.md`](../development/commands.md) | `npm test` a build projdou; obsahová upozornění nezastaví výsledek | Zastaralý generovaný soubor, vadný odkaz nebo neobnovený nástroj | Oprav nejbližší potvrzenou příčinu |
 | CI | Otevři běh workflow `Dokumentace` pro dotčený commit | `verify-docs` a u `main` také `publish-docs` jsou úspěšné | Registry, oprávnění, sestavení, Pages nebo SMTP | Postupuj podle názvu prvního selhaného kroku |
 
 ## Pozorovatelnost
@@ -53,7 +53,7 @@ Projekt nemá serverový health endpoint, protože na Pages běží pouze static
 
 1. Ověř stejný prohlížeč a stejnou adresu webu, protože lokální náhled, GitHub Pages a jiný profil nesdílejí úložiště.
 2. Zkontroluj viditelnou informaci o uložení a dostupnost `data/recipes.json` i vlastních modulů šablony.
-3. Před vymazáním dat prohlížeče nabídni kopii nebo stažení seznamu, pokud je stále dostupný v otevřené stránce.
+3. Před vymazáním dat prohlížeče použij Export nákupu, pokud je stav stále dostupný v otevřené stránce.
 4. Je-li soubor katalogu nedostupný, proveď čisté sestavení a ověř resource glob v `docfx.json`.
 5. Rozdílné úpravy ve více současně otevřených oknech mohou přepsat dřívější stav, proto pro jeden nákup používej jedno okno.
 
@@ -173,7 +173,7 @@ Přesné diagnostické příkazy vlastní [ověření Git a SSH](../development/
 
 Samostatná databázová záloha není použitelná, protože projekt nemá serverovou databázi.
 
-Místní nákupní data chrání uživatel stažením nebo zkopírováním seznamu; vymazání dat prohlížeče není obnovitelné z Gitu.
+Místní nákupní data chrání uživatel exportem přenositelného odkazu; vymazání dat prohlížeče není obnovitelné z Gitu.
 
 Při oznámeném selhání ukládání nejprve exportuj aktuální nákup a teprve potom obnovuj stránku nebo opravuj oprávnění úložiště.
 
@@ -183,7 +183,26 @@ Jde o ochranu proti potvrzení jiných kroků po aktualizaci, nikoli o důvod vr
 
 Při nečekané ztrátě odškrtnutí ověř změnu dávky, varianty, přílohy nebo zdrojového množství podle [datového životního cyklu](../architecture/overview.md#odvozená-data-a-rozsah-automatizace).
 
-PDF nebo text slouží ke čtení mimo web, nikoli k importu editovatelného stavu nákupu.
+PDF nebo běžný textový seznam slouží ke čtení mimo web; editovatelný stav obnoví pouze platný Export nákupu ze stejné revize receptů.
+
+### Symptom: import nákupu je odmítnutý nebo ukazuje rozdíly
+
+1. Ověř, že příjemce vložil celý odkaz nebo kód z Exportu nákupu, nikoli PDF či čitelný seznam.
+2. Při rozdílné revizi obnov oba weby a připrav nový export; při chybějícím receptu ověř shodnou verzi a adresu webu.
+3. Při rozdílných dávkách nebo vlastních množstvích vyřeš každou nabídnutou volbu podle skutečného zamýšleného nákupu.
+4. Při poškození nebo překročení limitu předávej nový úplný odkaz, případně menší nákup; nepřepisuj ručně jeho kód.
+
+**Bezpečná náprava:** Odmítnutý import původní nákup nezmění; potvrzený import lze v otevřené stránce vrátit tlačítkem „Vrátit poslední změnu“.
+
+**Eskalace:** Reprodukovatelný rozpor platné kopie předej engineeringu s neosobní fixture a verzí webu; cizí nákupní odkazy nepatří do veřejných logů.
+
+### Symptom: sestavení vypisuje chybějící množství
+
+1. Rozliš obsahový warning `RECIPE_QUANTITY_MISSING` od chyby slovníku, tabulky nebo samotného DocFX.
+2. Zkontroluj konkrétní soubor a řádek z výpisu nebo z `_generated/content-report.json` a doplň množství podle skutečného receptu.
+3. Zopakuj [samostatnou kontrolu obsahu](../development/commands.md#statické-kontroly); po doplnění warning daného řádku zmizí.
+
+**Hranice:** Obsahové warnings neblokují sestavení a nesmějí vést k odhadu dávky nebo oslabení strukturálních kontrol.
 
 Při selhání PDF otevři náhled znovu nebo použij jeho tlačítko „Tisk“ a systémovou volbu uložení PDF.
 

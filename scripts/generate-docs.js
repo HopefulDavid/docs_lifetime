@@ -10,6 +10,8 @@ const collator = new Intl.Collator('cs', { sensitivity: 'base' });
 const generatedNotice =
   '<!-- Generováno z food/**/*.md, drink/**/*.md a data/*.json pomocí scripts/generate-docs.js. Obnova: npm run docs:generate. Neupravujte ručně. -->';
 
+const kitchen = { title: 'Kuchyně', path: 'kuchyne/index.md', intro: 'Od nápadu na jídlo až k hotovému talíři. Vyberte recepty a nápoje, připravte společný nákup a pusťte se do vaření.' };
+
 const sections = {
   food: {
     title: 'Jídlo',
@@ -44,6 +46,7 @@ const emojiPattern = /(?:\p{Extended_Pictographic}|[\u{1F1E6}-\u{1F1FF}]|\uFE0F|
 const generatedFiles = new Map();
 const pendingChanges = [];
 const errors = [];
+const warnings = [];
 
 function absolute(relPath) {
   return path.join(root, relPath);
@@ -130,7 +133,7 @@ function readRecipe(relPath) {
   }
 
   let recipe;
-  try { recipe = parseRecipeContent(content, relPath); }
+  try { recipe = parseRecipeContent(content, relPath, { onWarning: warning => warnings.push(warning) }); }
   catch (error) { errors.push(error.message); return null; }
 
   writeFile(relPath, content);
@@ -320,6 +323,12 @@ function typeBlocks(fromFile, entries, section, headingLevel = 2) {
 
 function renderHome(catalog) {
   const file = 'index.md';
+  const body = `Praktické návody pro každodenní život, ke kterým se můžete kdykoli vrátit.\n\nNajděte si téma, které právě potřebujete, a postupujte vlastním tempem.\n\n## Prozkoumejte oblasti\n\n${overviewList([[link(file, kitchen.title, kitchen.path), kitchen.intro]], true)}\n## Jak začít\n\nVyberte oblast výše nebo použijte hledání v nabídce pro prohledání celého webu.\n\n[Jak dokumentaci používat](pruvodce.md)\n\n[Co se změnilo](changelog.md)`;
+  writeFile(file, page(file, 'Dokumentace ze života', body, 'docs-lifetime.home'));
+}
+
+function renderKitchen(catalog) {
+  const file = kitchen.path;
   const bySection = groupBy(catalog, (entry) => entry.section);
   const sectionRows = order.sections.map((section) => {
     const entries = bySection.get(section) || [];
@@ -335,9 +344,9 @@ function renderHome(catalog) {
     origin(entry),
   ]);
 
-  const body = `Praktické návody pro každodenní život, které máte po ruce, když je potřebujete.\n\n<div class="home-actions">\n\n[Vybrat recept](#recepty)\n\n[Můj nákup](nakup.md)\n\n[Jak dokumentaci používat](pruvodce.md)\n\n</div>\n\n## Oblasti života\n\n${overviewList(sectionRows, true)}\n<div id="recepty"></div>\n\n## Recepty a nápoje\n\nVyberte si z aktuální sbírky, připravte společný nákup a pokračujte přípravou krok za krokem.\n\n<div id="kitchen-catalog"></div>\n\n<div class="catalog-fallback">\n\n${overviewList(allRows)}\n</div>`;
+  const body = `${kitchen.intro}\n\n<div class="home-actions">\n\n[Vybrat recept](#recepty)\n\n${link(file, 'Můj nákup', 'nakup.md')}\n\n</div>\n\n## Jídlo a nápoje\n\n${overviewList(sectionRows, true)}\n<div id="recepty"></div>\n\n## Recepty a nápoje\n\nVyberte si z aktuální sbírky, připravte společný nákup a pokračujte přípravou krok za krokem.\n\n<div id="kitchen-catalog"></div>\n\n<div class="catalog-fallback">\n\n${overviewList(allRows)}\n</div>`;
 
-  writeFile(file, page(file, 'Dokumentace ze života', body, 'docs-lifetime.home'));
+  writeFile(file, page(file, kitchen.title, body, 'docs-lifetime.kitchen'));
 }
 
 function renderSection(section, entries) {
@@ -413,8 +422,9 @@ function renderCountry(section, continent, country, entries) {
 
 function renderPages(catalog) {
   renderHome(catalog);
+  renderKitchen(catalog);
   const plannerFile = 'nakup.md';
-  writeFile(plannerFile, page(plannerFile, 'Můj nákup', 'Všechna vybraná jídla a jejich suroviny na jednom místě.\n\n<div id="kitchen-planner">\n\nPro společný nákup je potřeba povolený JavaScript.\n\n[Prohlédnout všechny recepty](index.md)\n\n</div>'));
+  writeFile(plannerFile, page(plannerFile, 'Můj nákup', `Všechna vybraná jídla a jejich suroviny na jednom místě.\n\n<div id="kitchen-planner">\n\nPro společný nákup je potřeba povolený JavaScript.\n\n${link(plannerFile, 'Prohlédnout všechny recepty', kitchen.path)}\n\n</div>`));
   writeFile('data/recipes.json', JSON.stringify({ version: 1, generatedFrom: 'food/**/*.md, drink/**/*.md, data/ingredients.json, data/taxonomy.json; npm run docs:generate', departments: Object.keys(departments), recipes: catalog.map(entry => ({ ...entry, typeLabel: labelType(entry.type), origin: origin(entry) })) }, null, 2));
 
   for (const section of order.sections) {
@@ -447,6 +457,7 @@ function yaml(items, indent = 0) {
     if (item.href) {
       lines.push(`${pad}  href: ${yamlString(item.href)}`);
     }
+    if (item.topicHref) lines.push(`${pad}  topicHref: ${yamlString(item.topicHref)}`);
     if (item.items?.length) {
       lines.push(`${pad}  items:`);
       lines.push(yaml(item.items, indent + 4));
@@ -462,9 +473,8 @@ function renderRootToc() {
     `# Generováno ze zdrojového obsahu a scripts/generate-docs.js; obnova: npm run docs:generate. Neupravujte ručně.
 ${yaml([
       { name: 'Úvod', href: 'index.md' },
-      { name: 'Můj nákup', href: 'nakup.md' },
-      { name: sections.food.title, href: 'food/' },
-      { name: sections.drink.title, href: 'drink/' },
+      { name: kitchen.title, href: 'kuchyne/' },
+      { name: 'Průvodce', href: 'pruvodce.md' },
       { name: 'Změny', href: 'changelog.md' },
     ])}\n`
   );
@@ -518,6 +528,11 @@ function renderSectionToc(section, entries) {
 
 function renderTocs(catalog) {
   renderRootToc();
+  writeFile('kuchyne/toc.yml', `# Generováno pomocí scripts/generate-docs.js; obnova: npm run docs:generate. Neupravujte ručně.\n${yaml([
+    { name: kitchen.title, href: 'index.md' },
+    ...order.sections.map(section => ({ name: sections[section].title, href: `../${section}/toc.yml`, topicHref: `../${section}/index.md` })),
+    { name: 'Můj nákup', href: '../nakup.md' },
+  ])}\n`);
   for (const section of order.sections) {
     renderSectionToc(
       section,
@@ -542,12 +557,14 @@ function validateTaxonomy() {
 function createContentFiles() {
   generatedFiles.clear();
   errors.length = 0;
+  warnings.length = 0;
   validateTaxonomy();
   const catalog = buildCatalog();
   if (errors.length) throw new Error(errors.join('\n'));
   renderPages(catalog);
   renderTocs(catalog);
   writeFile('pruvodce.md', readFile('pruvodce.md'));
+  writeFile('content-report.json', JSON.stringify({ generatedBy: 'scripts/generate-docs.js', warnings }, null, 2));
   return new Map(generatedFiles);
 }
 
@@ -562,8 +579,17 @@ function outputFiles(directory) {
 }
 
 async function main() {
-  if (process.argv.slice(2).some(arg => arg !== '--check')) throw new Error('Podporovaný přepínač: --check');
+  const args = process.argv.slice(2);
+  if (args.length > 1 || args.some(arg => !['--check', '--validate-only'].includes(arg))) throw new Error('Podporovaný přepínač: --check nebo --validate-only');
   const files = createContentFiles();
+  for (const warning of warnings) {
+    console.warn(`WARNING ${warning.file}:${warning.line} [${warning.code}] ${warning.message}`);
+    if (process.env.GITHUB_ACTIONS === 'true') {
+      const escape = text => text.replace(/%/g, '%25').replace(/\r/g, '%0D').replace(/\n/g, '%0A').replace(/:/g, '%3A').replace(/,/g, '%2C');
+      console.log(`::warning file=${escape(warning.file)},line=${warning.line},title=${warning.code}::${escape(warning.message)}`);
+    }
+  }
+  if (args.includes('--validate-only')) return console.log(`Obsah je platný; ${warnings.length} neblokujících upozornění na chybějící množství.`);
   const { createChangelog } = require('./generate-changelog.cjs');
   files.set('changelog.md', await createChangelog(root));
   files.set('manifest.json', JSON.stringify({

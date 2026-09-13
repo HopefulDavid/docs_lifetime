@@ -39,6 +39,10 @@ Přesné lokální příkazy jsou v [`../development/commands.md`](../developmen
 | Sestavení | `npm run docs:build` | Varování DocFX jsou chybou a následuje kontrola veřejného artefaktu | `_site/` z jednoho checkoutu, platné odkazy, fulltext a shoda receptů |
 | Changelog | Společný generátor jako součást sestavení | Každý build s úplnou historií | `_generated/changelog.md` zahrnutý do `_site/` |
 
+Obsahová upozornění `RECIPE_QUANTITY_MISSING` jsou podle [receptového kontraktu](../product/recipe-format.md#automatická-kontrola-obsahu) neblokující a generátor je v Actions vypíše jako anotace konkrétních řádků.
+
+Neznámé suroviny, vadné slovníky a neúplné tabulky vracejí chybu před zápisem; varování DocFX se nadále považují za chyby sestavení.
+
 Generátor vždy přepisuje changelog z celé dosažitelné historie a `tag_pattern = "^$"` záměrně vypíná release segmentaci, takže Git tag neodřízne starší záznamy.
 
 Šablona používá projektové časové pásmo `Europe/Prague`, stejný commit proto dostane shodné datum bez ohledu na `TZ` lokálního procesu nebo GitHub runneru.

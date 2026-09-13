@@ -40,8 +40,8 @@ Další oblasti osobního života mohou přibývat jako samostatné návody, kte
 ## Mimo rozsah
 
 - Uživatelské účty, soukromé kolekce, komentáře a editace přímo ve webu.
-- Účty, synchronizace mezi zařízeními, kalendářní plánování, výpočet výživových hodnot a správa zásob.
-- Plná dostupnost celého webu bez připojení; pro obchod bez připojení slouží stažení textového seznamu, PDF nebo tisk.
+- Automatická synchronizace mezi zařízeními, kalendářní plánování, výpočet výživových hodnot a správa zásob; ruční předání nákupu je součástí produktu.
+- Plná dostupnost celého webu bez připojení; pro obchod bez připojení slouží kopie textového seznamu, PDF nebo tisk.
 - Odborná garance alergenů, zdravotní vhodnosti nebo původnosti receptu.
 - Obecné jazykové vyhledávání se skloňováním, stemmingem, automatickým překladem, synonymy nebo tolerancí překlepů.
 - Programové API nebo databáze receptů pro jiné aplikace.
@@ -66,10 +66,12 @@ Další oblasti osobního života mohou přibývat jako samostatné návody, kte
 | `REQ-006` | Čtenář vybírá jídla | Filtruje katalog podle názvu, suroviny nebo typu a vybere více položek | Karty ukazují stručný popis a postup, výběr je viditelný a dostupný v „Můj nákup“ | Vysoká | Mobilní katalog, filtr bez diakritiky a nulový stav |
 | `REQ-007` | Čtenář má vybraná jídla | Změní násobek dávky, surovinovou alternativu nebo volitelnou část | Nákup obsahuje pouze zvolenou alternativu a zahrnuté části, uvedená čísla se přepočítají a chybějící množství zůstane přiznané | Kritická | Doménové testy a skutečné ovládání výběru |
 | `REQ-008` | Čtenář nakupuje více jídel | Otevře nákup a označí připravené položky | Slučitelné suroviny jsou sečtené, uspořádané podle oddělení a mají dohledatelné zdrojové recepty; rozdílné jednotky se nemíchají | Kritická | Součet rajské a šunkofleků, koření, pomůcky a změna dávky |
-| `REQ-009` | Čtenář má neúplné množství nebo jde do obchodu bez připojení | Doplní vlastní množství, kopíruje, stáhne nebo vytiskne seznam | Vlastní údaj je označený, textový export zachová suroviny, poznámky, původní nejistotu i odškrtnutí | Vysoká | Test exportu a prohlížeč |
+| `REQ-009` | Čtenář má neúplné množství nebo jde do obchodu bez připojení | Doplní vlastní množství, kopíruje text, uloží PDF nebo vytiskne seznam | Vlastní údaj je označený, export zachová suroviny, poznámky, původní nejistotu i odškrtnutí; samostatné stažení TXT se nenabízí | Vysoká | Test exportu a prohlížeč |
 | `REQ-010` | Čtenář začíná vařit | Otevře režim po krocích, přepíná kroky a označuje hotové | Vidí celý aktuální krok včetně poznámek, může otevřít suroviny a po návratu pokračovat; poslední krok nepředstírá dokončení přeskočených kroků | Vysoká | Mobilní dialog, návrat a dokončení |
 | `REQ-011` | Čtenář obnoví stránku | Prohlížeč má dostupné místní úložiště | Výběr, vlastní množství, odškrtnutí a krok vaření se obnoví; změna nákupního požadavku zneplatní staré potvrzení dotčené položky | Vysoká | Obnova stavu, změna dávky a kontrola prohlížečem |
-| `REQ-012` | Čtenář otevře obecný návod nebo úvod | Orientuje se v dokumentaci života | Úvod ukazuje dostupné oblasti a rychlé cesty; obecný návod nemá suroviny, vaření ani nákupní lištu | Vysoká | Úvod a veřejný průvodce bez kuchařských ovládacích prvků |
+| `REQ-012` | Čtenář otevře obecný návod nebo úvod | Orientuje se v dokumentaci života | Obecný Úvod ukazuje dostupné oblasti; samostatná Kuchyně obsahuje katalog a podsekce Jídlo, Nápoje a Můj nákup; Úvod a obecné návody nemají receptové ovládání | Vysoká | Průchod hierarchií, obecný úvod a veřejný průvodce |
+| `REQ-013` | Dva lidé mají své nákupy | První zvolí Export nákupu a předá odkaz nebo kód; druhý otevře odkaz nebo Import nákupu | Příjemce vidí náhled a zvolí sloučení nebo převzetí; výběr, dávky, varianty, části, vlastní množství a platné hotové položky se přenesou až po potvrzení | Vysoká | Přenos mezi oddělenými nákupy, konflikty, obnova a vrácení změny |
+| `REQ-014` | Autor upravil recept nebo slovník | Spustí kontrolu obsahu, generování nebo sestavení | Neplatné suroviny a tabulky zastaví zápis s konkrétním místem a nápravou; `neuvedeno` vypíše warning s řádkem a sestavení nezablokuje | Vysoká | Negativní fixture, neblokující warning a obecná stránka bez receptového kontraktu |
 
 ## Chybové a hraniční scénáře
 
@@ -81,6 +83,25 @@ Další oblasti osobního života mohou přibývat jako samostatné návody, kte
 | `REQ-E004` | Odeslání informačního e-mailu selže po úspěšném nasazení | Workflow zachová úspěšně publikovaný web a označí oznámení jako neblokující selhání | Nedostupnost SMTP nesmí vrátit zveřejněný obsah | Kontrola podmínky `continue-on-error` a logu workflow |
 | `REQ-E005` | Úložiště je poškozené nebo zápis není dostupný | Výběr funguje v aktuální stránce, rozhraní přizná omezení a nabídne export | Uživatel nesmí spoléhat na neprovedené uložení | Test obnovy a klientské chybové větve |
 | `REQ-E006` | JavaScript nebo klientský katalog nejsou dostupné | Zdrojové recepty a statické odkazy zůstanou čitelné, společný nákup přizná nedostupnost | Obsah nesmí zmizet kvůli pomocné funkci | Statický HTML výstup a chybová větev |
+| `REQ-E007` | Import je poškozený, příliš velký, obsahuje cizí ID nebo jinou revizi receptu | Import se odmítne před změnou nákupu a nabídne konkrétní nápravu | Cizí data nesmějí vytvořit neplatný nákup ani potvrdit jiné množství | Kontraktní testy, limit rozbalení a chybový dialog |
+
+## Předání nákupu
+
+Export obsahuje celý nákup bez ohledu na filtry; přenos nezahrnuje průběh vaření ani neuložené rozepsané množství, které musí uživatel nejprve uložit.
+
+Sloučení zachová oba výběry bez zdvojení společného receptu a spojí hotové položky, pokud jejich složení a výsledné množství odpovídají.
+
+Rozdílná nastavení společného receptu nebo různá platná vlastní množství vyžadují samostatnou volbu; nedořešený konflikt nelze potvrdit.
+
+Při změně složení společné suroviny se její staré odškrtnutí a vlastní údaj nepřenesou a náhled vyžádá novou kontrolu.
+
+Převzetí celého nákupu nahradí místní výběr, množství a odškrtnutí; poslední import lze v otevřené stránce vrátit.
+
+Sloučení nepřenáší zrušení odškrtnutí jako pokyn druhému člověku; k převzetí přesného stavu včetně zrušených potvrzení slouží převzetí celého nákupu.
+
+Odkaz představuje jednorázovou kopii, ne automaticky synchronizovaný seznam; každý další stav vyžaduje nový export.
+
+Dialog nabízí kopírování odkazu a dostupné systémové sdílení, přiznává délku zprávy i přístup kohokoli s odkazem a neodesílá nákup bez uživatelské akce.
 
 ## Ovládání a PDF
 
@@ -113,7 +134,7 @@ Výběr jídel a nákupní seznam jsou přijatým rozšířením na základě za
 
 | ID | Oblast | Scénář | Měřítko nebo hranice | Priorita |
 |---|---|---|---|---|
-| `QLT-001` | Reprodukovatelnost | Nezměněný checkout projde obnovou, kontrolou a sestavením | Uzamčené npm a DocFX nástroje, automatické vytvoření chybějících výstupů, následný nulový rozdíl generátoru a sestavení bez varování | Kritická |
+| `QLT-001` | Reprodukovatelnost | Nezměněný checkout projde obnovou, kontrolou a sestavením | Uzamčené nástroje, automatická příprava, nulový rozdíl generátoru a DocFX bez varování; obsahová upozornění podle `REQ-014` jsou neblokující | Kritická |
 | `QLT-002` | Konzistence | Změna kanonického nebo obsahového Markdownu vstoupí do CI | Platné interní odkazy, jedinečné `canonical_for`, platná metadata a žádné generované cache artefakty | Vysoká |
 | `QLT-003` | Použitelnost | Čtenář otevře úvod a detail na běžném desktopovém a mobilním viewportu | Hlavní obsah a navigace zůstanou čitelné bez horizontální ztráty kroků receptu | Vysoká |
 | `QLT-004` | Bezpečnost | CI sestavuje nedůvěryhodnou změnu nebo publikuje `main` | Ověření používá pouze čtecí token a publikační tajemství jsou dostupná jen zapisovacímu jobu | Vysoká |
@@ -124,7 +145,7 @@ Výběr jídel a nákupní seznam jsou přijatým rozšířením na základě za
 |---|---|
 | Obsahová položka | Veřejný praktický návod; recepty a nápoje mají zvláštní obsahový kontrakt pod `food/` a `drink/` |
 | Přehled | Generovaná stránka seskupující obsah podle sekce, oblasti, země nebo typu |
-| Katalog receptů | Úplný generovaný seznam jídel a nápojů v části úvodní stránky |
+| Katalog receptů | Úplný generovaný seznam jídel a nápojů na vstupní stránce Kuchyně |
 | Publikovaný web | Statický výstup dostupný na kanonické adrese GitHub Pages |
 
 ## Pravidla změn požadavků

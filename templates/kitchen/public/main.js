@@ -32,6 +32,11 @@ const docfxOptions = {
     ariaLabel: 'Odkaz na nadpis',
   },
   start() {
+    const siteRoot = new URL('../', import.meta.url);
+    if ([siteRoot.pathname, `${siteRoot.pathname}index.html`].includes(location.pathname) && (location.hash === '#recepty' || ['q', 'type', 'selected'].some(key => new URL(location.href).searchParams.has(key)))) {
+      location.replace(new URL(`kuchyne/index.html${location.search}${location.hash}`, siteRoot));
+      return;
+    }
     localizeAriaLabels(document);
     const main = document.querySelector('main');
     if (main) {
@@ -96,7 +101,7 @@ const docfxOptions = {
         const message = document.createElement('p');
         message.textContent = 'Výběr a nákup se nepodařilo načíst. Obnovte stránku nebo otevřete recepty.';
         const link = document.createElement('a');
-        link.href = new URL('../index.html', import.meta.url).href;
+        link.href = new URL('../kuchyne/index.html', import.meta.url).href;
         link.textContent = 'Prohlédnout recepty';
         target.replaceChildren(message, link);
         document.querySelector('.catalog-fallback')?.removeAttribute('hidden');

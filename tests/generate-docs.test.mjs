@@ -164,7 +164,9 @@ test('nový recept vytvoří katalog, kopii, všechny přehledy a TOC; přejmeno
   assert.equal(read(source), newRecipe);
   assert.equal(readFileSync(path.join(root, source), 'utf8'), newRecipe);
   assert(read('data/recipes.json').includes('Zkušební recept'));
-  for (const file of ['index.md', 'food/index.md', 'food/europe/index.md', 'food/europe/france/index.md', 'food/toc.yml']) assert(read(file).includes('zkusebni.md'), file);
+  for (const file of ['kuchyne/index.md', 'food/index.md', 'food/europe/index.md', 'food/europe/france/index.md', 'food/toc.yml']) assert(read(file).includes('zkusebni.md'), file);
+  assert(!read('index.md').includes('kitchen-catalog'));
+  assert(read('index.md').includes('kuchyne/index.md'));
   assert.match(read('toc.yml'), /^# Generováno/);
   assert.equal(generate(root, true).status, 0);
   const renamed = source.replace('zkusebni', 'prejmenovany');
@@ -253,4 +255,39 @@ test('nová země a surovina potřebují jen ruční slovníky; prázdné sekce 
   assert.equal(catalog().recipes.length, 0);
   assert(!existsSync(path.join(root, '_generated/food/europe/austria/index.md')));
   assert.equal(generate(root, true).status, 0);
+});
+
+test('neuvedeno je lokalizovaný warning, samostatná kontrola nic nepíše a obecný návod není recept', context => {
+  const root = createFixture(context);
+  writeFileSync(path.join(root, 'pruvodce.md'), '# Údržba domácnosti\n\nMnožství neuvedeno; tento návod nemá ingredience.\n');
+  writeFileSync(path.join(root, 'food/europe/czech/main-dishes/zkouska.md'), newRecipe.replace('2 ks', 'neuvedeno'));
+  const result = spawnSync(process.execPath, ['scripts/generate-docs.js', '--validate-only'], { cwd: root, encoding: 'utf8', env: { ...process.env, GITHUB_ACTIONS: 'true' } });
+  assert.equal(result.status, 0, result.stderr);
+  assert.match(result.stderr, /WARNING food\/europe\/czech\/main-dishes\/zkouska.md:9 \[RECIPE_QUANTITY_MISSING\]/);
+  assert.match(result.stdout, /::warning file=food\/europe\/czech\/main-dishes\/zkouska.md,line=9/);
+  assert(!result.stderr.includes('pruvodce.md'));
+  assert(!existsSync(path.join(root, '_generated')));
+  assert.equal(generate(root).status, 0);
+  const report = JSON.parse(readFileSync(path.join(root, '_generated/content-report.json'), 'utf8'));
+  assert(report.warnings.some(warning => warning.ingredient === 'Cibule' && warning.line === 9));
+  for (const quantity of ['2 ks', 'dle chuti']) {
+    writeFileSync(path.join(root, 'food/europe/czech/main-dishes/zkouska.md'), newRecipe.replace('2 ks', quantity));
+    assert.equal(generate(root).status, 0);
+    const updated = JSON.parse(readFileSync(path.join(root, '_generated/content-report.json'), 'utf8'));
+    assert(!updated.warnings.some(warning => warning.file.endsWith('/zkouska.md')), 'varování zmizí po doplnění množství');
+  }
+});
+
+test('neúplné řádky a zapomenuté suroviny nemohou tiše zmizet z tabulky', context => {
+  const root = createFixture(context);
+  const file = path.join(root, 'food/europe/czech/main-dishes/zkouska.md');
+  assert.equal(generate(root).status, 0);
+  const original = readFileSync(path.join(root, '_generated/manifest.json'), 'utf8');
+  for (const invalid of [newRecipe.replace('| Cibule | 2 ks | — |', 'Cibule | 2 ks | — |'), newRecipe.replace('| Cibule | 2 ks | — |', '| Cibule | 2 ks | —'), newRecipe.replace('|---|---|---|\n', ''), newRecipe.replace('| Surovina | Množství | Upřesnění |\n|---|---|---|\n', ''), newRecipe.replace('Cibule', 'cibule'), newRecipe.replace('## Postup', '* Zapomenutý cukr\n\n## Postup'), newRecipe.replace('## Postup', '### Zapomenutá příloha (volitelné)\n\n## Postup')]) {
+    writeFileSync(file, invalid);
+    const result = generate(root);
+    assert.equal(result.status, 1, result.stderr);
+    assert.match(result.stderr, /zkouska.md:\d+:/);
+    assert.equal(readFileSync(path.join(root, '_generated/manifest.json'), 'utf8'), original);
+  }
 });

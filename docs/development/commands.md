@@ -54,7 +54,7 @@ Spusť příkazy z kořene repozitáře v uvedeném pořadí.
 |---|---|---|---|---|
 | Příprava celého docsetu | Kořen repozitáře | `npm run docs:generate` | Ignorovaný `_generated/` včetně changelogu a manifestu původu | Generátor ověří vstupy, obnoví výstupy, odstraní nadbytečné soubory a vypíše změněné cesty nebo aktuální stav |
 | Vyčištění statického výstupu | Kořen repozitáře | `npm run docs:clean` | Odstraněný ignorovaný adresář `_site/` | Staré stránky nemohou zůstat v následujícím artefaktu |
-| Vývojové sestavení | Kořen repozitáře | `npm run docs:build` | Ignorované `_generated/` a `_site/` | Automatická příprava, validace, připnutý DocFX a kontrola hotového webu projdou bez varování |
+| Vývojové sestavení | Kořen repozitáře | `npm run docs:build` | Ignorované `_generated/` a `_site/` | Automatická příprava, validace, připnutý DocFX a kontrola hotového webu projdou; obsahová upozornění nezablokují build |
 | Produkční sestavení | Kořen repozitáře | `npm run docs:build` | Stejné `_generated/` a `_site/` | Vznikne tentýž typ artefaktu, který publikuje CI |
 
 Vývojové a produkční sestavení se liší pouze prostředím spuštění, nikoli projektovým vstupem.
@@ -83,6 +83,7 @@ Na stejném portu spouštěj pouze jeden náhled a během průběžného náhled
 | Kontrola | Přesný příkaz | Rozsah | Oprava formátu | Očekávaný výsledek |
 |---|---|---|---|---|
 | Cílené automatické testy | `npm run test:unit` | Hledání, obsahový kontrakt, nákup, obnova stavu, chybové vstupy generátoru a changelog v dočasném Git repozitáři | Ruční oprava příslušného modulu nebo konfigurace | Všechny scénáře projdou a dočasné kopie se odstraní |
+| Obsah bez generování | `npm run docs:validate-content` | Slovník, receptové tabulky, struktura a upozornění na `neuvedeno`; bez zápisu a bez potřeby Git historie | Oprava ručního zdroje podle [receptového kontraktu](../product/recipe-format.md#automatická-kontrola-obsahu) | Kód 0 i s warnings; vadná surovina nebo struktura vrací kód 1 |
 | Konzistence generovaných souborů | `npm run docs:check` | Bez zápisu porovná celý `_generated/` včetně changelogu, kopií zdrojů, manifestu a nepotřebných souborů | `npm run docs:generate` | `Dokumentace je aktuální.` a kód 0 |
 | Struktura dokumentace | `npm run docs:validate` | Interní odkazy, kanonická metadata, adaptéry, pracovní záznamy a zakázané artefakty | Ruční oprava zdroje | Souhrn platných Markdown souborů a kód 0 |
 | Úplná rychlá kontrola | `npm test` | Testy nad aktuálními zdroji, automatické generování, kontrola opakovatelnosti a strukturální validace | Podle konkrétního výstupu | Všechny vrstvy projdou i v čerstvém checkoutu |
@@ -90,6 +91,10 @@ Na stejném portu spouštěj pouze jeden náhled a během průběžného náhled
 | DocFX s varováními jako chybami | `npm run docs:build` | Produktový docset a vlastní šablona | Ruční oprava zdroje nebo konfigurace | `Build succeeded`, 0 varování a 0 chyb |
 
 Projekt nemá samostatný obecný formatter, JavaScript linter ani typovou kompilaci.
+
+Obsahové warnings se zobrazí také při generování, kontrolním režimu, testech a buildu; příprava docsetu uloží jejich aktuální seznam do `_generated/content-report.json` a GitHub Actions přidají anotace řádků.
+
+Varování samotného DocFX nadále platí jako chyby; neblokující obsahová nejistota tento mechanismus nevypíná.
 
 Nový nástroj této kategorie se zavede pouze tehdy, když pokryje konkrétní riziko lépe než současné kontroly.
 
@@ -133,14 +138,14 @@ Chybějící Git metadata nebo mělká historie zastaví generování; nástroj 
 
 ### Výběr, nákup a vaření
 
-Po sestavení ověř úvodní katalog, nákup a detail na šířkách 320, 390, 768 a 1440 px, včetně klávesnice a mobilního dialogu.
+Po sestavení ověř obecný Úvod, katalog v Kuchyni, nákup a detail na šířkách 320, 390, 768 a 1440 px, včetně klávesnice a mobilního dialogu.
 
 | Požadavek | Kroky | Očekávaný výsledek |
 |---|---|---|
 | `REQ-006`, `REQ-008` | Vyhledej `rajska` a `sunkofleky`, oba recepty přidej a otevři „Můj nákup“ | Cibule 2 ks a vejce 3 ks; máslo v gramech a lžičkách zůstává oddělené |
 | `REQ-007`, `REQ-011` | Odškrtni cibuli a změň šunkofleky na 2× dávku | Cibule 3 ks a vejce 5 ks; dotčené odškrtnutí se zruší |
 | `REQ-007` | U rajské zvol ghí a zapni přílohu; u kari zvol broskev | Nákup obsahuje zvolené varianty, nikoli zároveň jejich náhrady |
-| `REQ-009` | U neznámého množství rozbal zdroje, doplň vlastní množství a ulož; zkopíruj nebo stáhni seznam | Vlastní text je označený a export obsahuje také původní údaj a poznámky |
+| `REQ-009` | U neznámého množství rozbal zdroje, doplň vlastní množství a ulož; zkopíruj text nebo stáhni PDF | Vlastní text je označený a export obsahuje také původní údaj a poznámky |
 | `REQ-010`, `REQ-011` | Otevři šunkofleky přes „Vařit krok za krokem“, dokonči první krok, zavři a otevři dialog znovu | Zobrazí se druhý krok a první zůstává označený |
 | `REQ-010` | Přeskoč přímo na poslední krok a dokonči jej | Celé vaření není označené jako hotové, pokud zbývají neoznačené kroky |
 | `REQ-006` | Vyhledej `tikka`, otevři recept a vrať se zpět | Katalog zachová hledání a odpovídající výsledek |
@@ -154,6 +159,10 @@ Po sestavení ověř úvodní katalog, nákup a detail na šířkách 320, 390, 
 | `REQ-010` | V rozměru 844 × 390 otevři tikka masalu a přejdi na další krok | Nadpis a začátek aktuální činnosti jsou viditelné, navigace zůstává mimo posouvaný obsah |
 | `REQ-011` | Po zneplatnění cibule změnou dávky vrať původní dávku | Staré odškrtnutí se nevrátí; totéž platí pro dříve zneplatněné vlastní množství |
 | `REQ-E005` | V izolované kopii sestavené stránky simuluj odmítnutí zápisu klíče `kitchen-plan-v1:` a odškrtni položku | Aktuální stránka funguje a lišta trvale ukazuje neprovedené uložení; export zůstává dostupný |
+| `REQ-013` | Exportuj nákup s hotovou cibulí, v druhém nákupu označ vejce a importuj odkaz | Náhled sloučení zachová obě hotové položky; převzetí použije pouze stav exportu a změnu lze vrátit |
+| `REQ-013`, `REQ-E007` | Změň dávku nebo vlastní množství a importuj odlišný stav; následně vlož neplatný kód | Konflikt vyžaduje volbu; poškozený vstup nesmí měnit nákup a potvrzovací tlačítko zůstane zakázané |
+| `REQ-013` | Otevři sdílený odkaz pod podsložkou webu v jiném místním nákupu | Náhled se otevře automaticky, kód zmizí z adresy a příjemce může import potvrdit i v původně prázdném nákupu |
+| `REQ-014` | Spusť kontrolu obsahu a v izolované fixture změň `neuvedeno` na známé množství, poté přidej neznámou surovinu | První změna odstraní warning; druhá odmítne generování ještě před zápisem |
 
 Poruchové fixture patří pouze do ignorovaného lokálního výstupu a následující `npm run docs:build` je odstraní čistým sestavením.
 
@@ -173,7 +182,7 @@ Na Windows může sandbox odepřít `git-cliff` přístup k repozitáři; dne 20
 
 | Požadavek | Příprava | Kroky nebo příkaz | Očekávaný technický důkaz | Úklid |
 |---|---|---|---|---|
-| `REQ-001`, `REQ-002` | `npm run docs:build` a `npm run docs:serve` | Otevři úvod, zvol `Jídlo` a otevři `Rajská omáčka s masovými koulemi` | Katalog, ingredience, očíslované kroky, tipy a varování jsou viditelné bez chyb konzole | Ukonči server přes `Ctrl+C` |
+| `REQ-001`, `REQ-002` | `npm run docs:build` a `npm run docs:serve` | Otevři Úvod, zvol Kuchyni, Jídlo a `Rajská omáčka s masovými koulemi` | Katalog, ingredience, očíslované kroky, tipy a varování jsou viditelné bez chyb konzole | Ukonči server přes `Ctrl+C` |
 | `REQ-005` | Běžící lokální náhled | Postupně vyhledej `Rajská`, `rajska`, `PIZZA`, `French Press`, indexovaný termín cesty `coffee` a `bez-vysledku-xyz`, poté otevři odpovídající výsledky | České varianty najdou rajskou, anglické termíny najdou pizzu a French Press, poslední dotaz zobrazí český nulový stav a konzole zůstane bez chyb | Vymaž dotaz nebo zavři panel |
 | `REQ-E003` | Běžící lokální náhled | Otevři `/neexistuje.html` | Server vrátí HTTP 404 a neexistující obsah nenahradí jinou stránkou | Vrať se na úvod |
 

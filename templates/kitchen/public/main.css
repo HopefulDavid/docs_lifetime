@@ -660,6 +660,9 @@ html[data-bs-theme="dark"] .kitchen-workflow [aria-current="page"], html[data-bs
 .check-label { display: flex; align-items: center; gap: .65rem; min-height: 44px; cursor: pointer; }
 .recipe-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.15rem; }
 body.kitchen-catalog-page:not([data-search]) > main { display: block; }
+/* Katalog má vlastní karty podsekcí; pevný boční TOC by překrýval jeho široké rozvržení. */
+body.kitchen-catalog-page > main > .toc-offcanvas,
+body.kitchen-catalog-page .actionbar > button[data-bs-target="#tocOffcanvas"] { display: none !important; }
 body.kitchen-catalog-page:not([data-search]) > main > .content { max-width: 1140px; margin-inline: auto; }
 body.kitchen-catalog-page:not([data-search]) article { max-width: none; }
 body.kitchen-catalog-page:not([data-search]) .affix { display: none; }
@@ -838,6 +841,31 @@ body.kitchen-shopping-page:not([data-search]) .affix { display: none; }
 .shopping-filter-row > label:first-child { flex: 1; min-width: 0; }
 .shopping-filter-status { margin: 0; }
 .shopping-exports { padding-bottom: .75rem; border-bottom: 1px solid var(--kitchen-line); }
+.shopping-sharing { display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; margin: 1rem 0 1.5rem; padding: 1rem; border: 1px solid var(--kitchen-line); border-radius: .8rem; background: var(--kitchen-surface); }
+.shopping-sharing p { margin: .3rem 0 0; }
+.shopping-transfer-dialog { width: min(720px, calc(100vw - 2rem)); max-width: 100%; max-height: calc(100dvh - 2rem); padding: 0; color: var(--kitchen-ink); background: var(--kitchen-surface); border: 1px solid var(--kitchen-line); border-radius: 1rem; }
+.shopping-transfer-dialog[open] { display: flex; flex-direction: column; overflow: hidden; }
+.shopping-transfer-dialog::backdrop { background: rgba(15, 24, 15, .65); backdrop-filter: blur(4px); }
+.transfer-header, .transfer-footer { flex-shrink: 0; display: flex; align-items: center; justify-content: space-between; gap: .75rem; padding: 1rem 1.5rem; background: var(--kitchen-surface); }
+.transfer-header { border-bottom: 1px solid var(--kitchen-line); }
+.transfer-header h2 { margin: 0; font: 700 1.6rem/1.2 Georgia, serif; }
+.transfer-footer { border-top: 1px solid var(--kitchen-line); flex-wrap: wrap; }
+.transfer-body { padding: 1.5rem; min-height: 0; overflow-y: auto; overflow-wrap: anywhere; }
+.transfer-body > label, .transfer-source > label { display: block; font-weight: 650; margin-bottom: .8rem; }
+.transfer-source > summary { font-weight: 650; padding: .5rem 0; cursor: pointer; }
+.transfer-body textarea { display: block; width: 100%; min-height: 6rem; max-height: 12rem; padding: .7rem; margin-top: .5rem; font: .9rem/1.5 system-ui, sans-serif; border: 1px solid var(--kitchen-line); border-radius: .5rem; color: var(--kitchen-ink); background: var(--kitchen-surface); resize: vertical; }
+.transfer-mode, .transfer-conflict { margin: 1rem 0; padding: 1rem; border: 1px solid var(--kitchen-line); border-radius: .6rem; }
+.transfer-mode legend, .transfer-conflict legend { float: none; width: auto; font-size: 1rem; font-weight: 700; padding: 0 .3rem; }
+.transfer-mode label, .transfer-conflict label { display: flex; align-items: flex-start; gap: .7rem; margin: .5rem 0; padding: .4rem 0; cursor: pointer; }
+.transfer-mode input, .transfer-conflict input { flex-shrink: 0; width: 1.2rem; height: 1.2rem; margin-top: .15rem; accent-color: var(--kitchen-sage-deep); }
+.transfer-mode small, .transfer-conflict small { display: block; margin-top: .25rem; }
+.transfer-summary { font-weight: 700; }
+.transfer-status { margin-top: 1rem; }
+@media (max-width: 600px), (max-height: 500px) {
+  .shopping-transfer-dialog { width: 100vw; height: 100dvh; max-width: none; max-height: none; margin: 0; border: 0; border-radius: 0; }
+  .transfer-header, .transfer-footer, .transfer-body { padding: 1rem; }
+  .transfer-header h2 { font-size: 1.4rem; }
+}
 .shopping-filters > label:first-child { grid-column: 1 / -1; }
 .shopping-filters label:not(.check-label) { display: flex; flex-direction: column; gap: .35rem; font-size: .85rem; font-weight: 650; }
 .shopping-filters .check-label { align-self: end; font-size: .9rem; }

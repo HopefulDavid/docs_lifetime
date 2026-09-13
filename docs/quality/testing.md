@@ -26,6 +26,8 @@ Projekt kombinuje deterministickou kontrolu generovaných souborů, strukturáln
 | Zastaralé odškrtnutí a poškozený místní stav, `REQ-011`, `REQ-E005` | Změna dávky a zdrojů, validace uložených dat, export | `tests/kitchen-core.test.mjs` |
 | Návrat starého potvrzení nebo posunutý postup po aktualizaci, `REQ-011` | Změna dávky a návrat, shodná a neshodná revize, starší stav bez revize | `tests/kitchen-core.test.mjs` |
 | Obecný návod zaměněný za recept, `REQ-012` | Izolovaný návod bez ingrediencí zůstane mimo JSON a beze změn; návštěva skutečného průvodce | `tests/generate-docs.test.mjs` a lokální web |
+| Zapomenutá nebo vadná surovina a neblokující množství, `REQ-014` | Neznámý název, duplicita, neúplný řádek, chybějící hlavička, prázdná skupina, warning s řádkem a jeho odstranění po doplnění; obecný návod zůstává mimo kontrolu receptů | `tests/generate-docs.test.mjs` a `npm run docs:validate-content` |
+| Vadný nebo rozporný přenos nákupu, `REQ-013` a `REQ-E007` | Gzip i prostý kód, revize, neplatné hodnoty a omezení rozbalení; sloučení, nahrazení, konflikty dávek i vlastních množství a platnost odškrtnutí | `tests/kitchen-transfer.test.mjs` a browser scénáře |
 | Zápis při vadném vstupu | Neplatný recept, duplicitní surovina a neznámá taxonomie nesmějí přepsat zdroje ani katalog | `tests/generate-docs.test.mjs` |
 | Výstupy chybí po klonování | Nákupní testy vytvářejí katalog ze zdrojů v paměti; generování vytvoří celý ignorovaný docset | `npm test` nad čistou kopií |
 | HTML a JSON se rozcházejí nebo mají nefunkční odkazy | Kontrola veřejných stránek podle manifestu, shody katalogu, fulltextu, statických surovin a počtu kroků, interních odkazů a PDF assetů | `npm run docs:verify-site` automaticky na konci buildu |
@@ -126,6 +128,23 @@ Audit zachoval všech 27 ručních receptů a jejich obsah i veřejné URL.
 | Fulltext a konzole | Dotaz French Press našel odpovídající nápoj pod podsložkou, konzole běžných stránek neměla chyby ani varování | Chromium v Codex; nejde o novou úplnou matici prohlížečů |
 
 Dočasný recept i zkušební nákup byly odstraněné a lokální diagnostické kopie a logy patří do ignorovaného `private/generation-audit/`.
+
+### Ověření validace, Kuchyně a přenosu nákupu, 2026-09-13
+
+Změna navazuje na čistý `develop` na `61efdea` a nemění původních 27 receptových souborů ani jejich URL.
+
+| Oblast | Skutečný důkaz | Hranice |
+|---|---|---|
+| Automatická regrese | `npm test` prošel se všemi 45 testy, kontrolou determinismu a strukturální validací | Windows s Node.js 24.13.0, npm 11.6.2 a připnutými nástroji; `git-cliff` potřebuje přístup mimo sandbox |
+| Obsahová kontrola | Samostatná kontrola i sestavení hlásí 68 neblokujících `RECIPE_QUANTITY_MISSING`; negativní fixture odmítají chybný obsah před zápisem a warning uvádí řádek i anotaci GitHub Actions | Množství se nevymýšlí a věcnou úplnost potvrzuje autor receptu |
+| Produkční artefakt | `npm run docs:build` vytvořil 54 stránek, 27 receptů a 4 TOC; DocFX má 0 varování a 0 chyb a závěrečný verifier potvrzuje odkazy, fulltext, PDF assety a nezveřejnění interního reportu | Lokální sestavení, nikoli nové nasazení GitHub Pages |
+| Přenos mezi nákupy | Skutečný export, vložení odkazu, sloučení hotových položek, úplné převzetí, vrácení importu a odmítnutí neplatného textu prošly ovládáním rozhraní | Jde o předání kopie; při sloučení se úmyslné zrušení odškrtnutí nedá odlišit od dosud nekoupené položky |
+| Konflikty | Rozdílná dávka šunkofleků i vlastní údaj 1 versus 2 sklenice blokují potvrzení do výběru varianty; rozepsané množství vyžaduje uložení | Kulinářskou vhodnost zvoleného údaje neurčuje software |
+| Produkční podsložka | Pod `/docs_lifetime/` odkaz automaticky otevřel náhled, odstranil fragment a zrušení ponechalo prázdný nákup; potvrzení přeneslo cibuli i vlastní množství okurek s odškrtnutím a po obnovení stránky je zachovalo | Ověřen samostatný místní origin; skutečná SMS ani systémový výběr příjemce nebyly odesílány |
+| Mobilní import | Náhled ověřen snímky na 320 a 390 px, konflikt také při 844 × 390; posouvá se obsah a potvrzení i zavření zůstávají dostupné | Chromium v Codex; nejde o úplný audit přístupnosti ani fyzických telefonů |
+| Navigace a regrese | Obecný úvod a Kuchyně prošly desktopovým a tabletovým náhledem; opraveno překrytí širokého katalogu novým bočním TOC, původní záložka katalogu přejde do Kuchyně, globální French Press najde nápoj a nákupní PDF vytvoří datový odkaz | PDF exportér se neměnil; systémové stažení a tisk nejsou novým důkazem tohoto auditu |
+
+Zkušební nákupy byly odstraněné přes rozhraní; běžné stránky neměly chyby konzole a diagnostické logy i kopie produkční cesty zůstávají v ignorovaném `private/`.
 
 ## Cíl
 

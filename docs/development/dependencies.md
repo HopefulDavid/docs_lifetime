@@ -29,6 +29,8 @@ Vlastní generátor, validátor, testy, klientské hledání, nákup a režim va
 
 Rozdělení čistého doménového modulu a nativního klientského rozhraní přijímá [`ADR-0004`](../architecture/decisions/ADR-0004-nakup-a-vareni-nad-markdownem.md).
 
+Přenos nákupu podle [ADR-0007](../architecture/decisions/ADR-0007-prenos-nakupu-bez-serveru.md) používá standardní kompresní API a volitelné Web Share; nepřidává knihovnu ani externí úložiště.
+
 Výjimku pro přímé PDF, velikost dopadu, alternativy, důkazy a možnost odstranění vlastní [ADR-0005](../architecture/decisions/ADR-0005-pdf-export-v-prohlizeci.md).
 
 Balíček dodává MIT licenci přes DocFX resource do `public/licenses/pdfmake/LICENSE`.
