@@ -67,15 +67,48 @@ function updateTray() {
 
 function focusSection(node) {
   if (!node) return;
+  if (!node.hasAttribute('tabindex') && !node.matches('a, button, input, select, textarea')) node.tabIndex = -1;
   node.focus({ preventScroll: true });
   node.scrollIntoView({ block: 'start', behavior: 'instant' });
 }
 
-function workflow(active) {
-  return el('nav', { className: 'kitchen-workflow', 'aria-label': 'Od výběru k vaření' },
+function workflow(active, destinations = {}, changed) {
+  const navigation = el('nav', { className: 'kitchen-workflow', 'aria-label': 'Od výběru k vaření' },
     el('a', { href: url('kuchyne/index.html#recepty'), 'aria-current': active === 'recipes' ? 'page' : 'false' }, icon('book'), el('span', {}, 'Vybrat jídla')),
-    el('a', { href: url('nakup.html'), 'aria-current': active === 'shopping' ? 'page' : 'false' }, icon('basket'), el('span', {}, 'Nakoupit')),
-    el('span', { className: active === 'cooking' ? 'current' : '' }, icon('kitchen'), el('span', {}, 'Uvařit')));
+    el('a', { href: destinations.shopping || url('nakup.html'), 'data-phase': 'shopping', 'aria-current': active === 'shopping' ? 'page' : 'false' }, icon('basket'), el('span', {}, 'Nakoupit')),
+    el('a', { href: destinations.cooking || url('nakup.html#uvarit'), 'data-phase': 'cooking', 'aria-current': active === 'cooking' ? 'page' : 'false' }, icon('kitchen'), el('span', {}, 'Uvařit')));
+  if (changed) navigation.addEventListener('click', event => {
+    const link = event.target.closest('a[data-phase]');
+    if (!link || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey || event.button) return;
+    event.preventDefault();
+    if (location.href !== link.href) history.pushState(null, '', link.href);
+    changed();
+    focusSection(navigation);
+  });
+  return navigation;
+}
+
+function cookingSelection(recipes) {
+  const section = el('section', { id: 'cooking-selection', 'aria-labelledby': 'cooking-selection-heading' },
+    el('div', { className: 'section-heading' }, el('h2', { id: 'cooking-selection-heading', tabIndex: -1 }, 'Co budete vařit?')),
+    el('p', { className: 'kitchen-muted' }, 'Vyberte jídlo a otevřete jeho postup.'));
+  if (!recipes.length) {
+    section.append(el('div', { className: 'kitchen-empty' }, icon('kitchen'),
+      el('h3', {}, 'Nejdřív vyberte něco dobrého'),
+      el('a', { href: url('kuchyne/index.html#recepty'), className: 'kitchen-button primary' }, icon('book'), 'Vybrat recepty')));
+    return section;
+  }
+  section.append(el('div', { className: 'cooking-selection-grid' }, recipes.map(recipe => {
+    const config = recipeSettings(recipe, state.selections[recipe.id]);
+    const progress = cookingProgress(recipe, config, state.cooking[recipe.id] || { step: 0, done: [] });
+    return el('section', { className: 'cooking-selection-card' },
+      el('div', { className: 'recipe-card-meta' }, el('span', { className: 'recipe-symbol' }, labelIcon(recipe.typeLabel, 'food')),
+        el('span', {}, recipe.typeLabel), el('span', { className: 'recipe-origin' }, labelIcon(recipe.origin.split(', ').at(-1)), recipe.origin.split(', ').at(-1))),
+      el('h3', {}, el('a', { href: url(`${recipe.id}.html#uvarit`) }, recipe.title)),
+      el('p', { className: 'kitchen-muted' }, `${String(config.factor).replace('.', ',')}× dávka · ${progress.done.length} z ${progress.active.length} kroků hotovo`),
+      el('a', { href: url(`${recipe.id}.html#uvarit`), className: 'kitchen-button primary', 'aria-label': `Otevřít postup: ${recipe.title}` }, icon('list'), 'Otevřít postup'));
+  })));
+  return section;
 }
 
 function renderCatalog(root) {
@@ -110,7 +143,7 @@ function renderCatalog(root) {
         el('h2', {}, el('a', { href: url(`${recipe.id}.html`) }, recipe.title)),
         el('p', {}, recipe.description),
         recipe.preparation ? el('p', { className: 'recipe-card-preparation' }, icon('clock'), el('strong', {}, 'Předem: '), recipe.preparation) : null,
-        el('div', { className: 'recipe-card-actions' }, el('a', { href: url(`${recipe.id}.html`) }, icon('list'), `Postup · ${recipe.steps.length} ${recipe.steps.length === 1 ? 'krok' : recipe.steps.length < 5 ? 'kroky' : 'kroků'}`), control));
+        el('div', { className: 'recipe-card-actions' }, el('a', { href: url(`${recipe.id}.html#uvarit`) }, icon('list'), `Postup · ${recipe.steps.length} ${recipe.steps.length === 1 ? 'krok' : recipe.steps.length < 5 ? 'kroky' : 'kroků'}`), control));
     }));
     if (!recipes.length) grid.append(el('div', { className: 'kitchen-empty' }, icon('search'), el('h2', {}, 'Tady zatím nic není'), el('p', {}, 'Zkuste jiný název, surovinu nebo zrušte filtr.'), button('Zrušit filtry', () => { search.value = ''; type.value = ''; onlySelected.checked = false; renderResults(); search.focus(); }, { className: 'kitchen-button' })));
   };
@@ -169,15 +202,35 @@ function renderPlanner(root) {
   const filters = { search: '', category: '', hideDone: false, missing: false };
   const drafts = new Map();
   let shoppingMode = location.hash === '#nakupovat';
+  let cookingView = location.hash === '#uvarit';
+
+  const syncViews = (focus = false) => {
+    cookingView = location.hash === '#uvarit';
+    shoppingMode = location.hash === '#nakupovat' && Object.keys(state.selections).length > 0;
+    document.body.classList.toggle('kitchen-shopping-mode', shoppingMode);
+    document.body.classList.toggle('kitchen-cooking-view', cookingView);
+    const shopping = root.querySelector('#shopping-view');
+    const cooking = root.querySelector('#cooking-selection');
+    if (shopping) shopping.hidden = cookingView;
+    if (cooking) cooking.hidden = !cookingView;
+    for (const link of root.querySelectorAll('.kitchen-workflow [data-phase]')) {
+      link.setAttribute('aria-current', link.dataset.phase === (cookingView ? 'cooking' : 'shopping') ? 'page' : 'false');
+    }
+    updateTray();
+    if (focus) focusSection(root.querySelector(shoppingMode ? '#shopping-heading' : '.kitchen-workflow'));
+  };
+
+  const finishViews = recipes => {
+    const navigation = root.firstElementChild;
+    const shopping = el('section', { id: 'shopping-view', 'aria-label': 'Nákup' });
+    while (navigation.nextSibling) shopping.append(navigation.nextSibling);
+    root.append(shopping, cookingSelection(recipes));
+    syncViews();
+  };
 
   const setMode = mode => {
-    shoppingMode = mode;
-    document.body.classList.toggle('kitchen-shopping-mode', mode);
-    const address = new URL(location.href);
-    address.hash = mode ? 'nakupovat' : '';
-    history.replaceState(null, '', address);
-    updateTray();
-    focusSection(document.getElementById(mode ? 'shopping-heading' : 'selected-heading'));
+    location.hash = mode ? 'nakupovat' : 'nakup';
+    syncViews(true);
   };
 
   plannerController = {
@@ -191,10 +244,14 @@ function renderPlanner(root) {
     updateTray() {
       const items = buildShoppingList(catalog.recipes, state.selections, catalog.departments);
       const remaining = items.filter(item => state.checked[item.key] !== item.signature).length;
-      if (shoppingMode) {
+      if (cookingView) {
+        tray.replaceChildren(el('span', {}, 'Jídla připravená k vaření'),
+          el('a', { href: '#nakup', className: 'kitchen-button' }, icon('basket'), 'Zpět k nákupu'));
+      } else if (shoppingMode) {
         tray.replaceChildren(el('span', {}, el('strong', {}, String(remaining)), ' položek zbývá'),
           button('Filtr', () => focusSection(document.getElementById('shopping-filter')), { className: 'kitchen-button' }),
-          button('Jídla', () => setMode(false), { className: 'kitchen-button primary', 'aria-label': 'Jídla: upravit výběr a začít vařit' }));
+          button('Jídla', () => setMode(false), { className: 'kitchen-button', 'aria-label': 'Jídla: upravit výběr' }),
+          el('a', { href: '#uvarit', className: 'kitchen-button primary' }, icon('kitchen'), 'Uvařit'));
       } else {
         tray.replaceChildren(el('span', {}, `${items.length} položek v seznamu`),
           button('Začít nakupovat', () => setMode(true), { className: 'kitchen-button primary' }));
@@ -219,7 +276,7 @@ function renderPlanner(root) {
       }
       action();
     };
-    root.replaceChildren(workflow('shopping'), el('section', { className: 'shopping-sharing', 'aria-label': 'Sdílení nákupu' },
+    root.replaceChildren(workflow('shopping', { shopping: '#nakup', cooking: '#uvarit' }, syncViews), el('section', { className: 'shopping-sharing', 'aria-label': 'Sdílení nákupu' },
       el('div', {}, el('strong', {}, 'Nakupujete společně?'), el('p', { className: 'kitchen-muted' }, 'Pošlete si aktuální nákup včetně hotových položek.')),
       el('div', { className: 'button-group' },
         button('Export nákupu', () => transfer(openShoppingExport), { id: 'export-shopping', className: 'kitchen-button', disabled: !recipes.length }),
@@ -229,7 +286,7 @@ function renderPlanner(root) {
         el('h2', {}, 'Co bude dobrého?'), el('p', {}, 'Vyberte si několik jídel a suroviny se spojí do jednoho nákupního seznamu.'),
         el('a', { className: 'kitchen-button primary', href: url('kuchyne/index.html#recepty') }, icon('book'), 'Vybrat recepty')));
       if (undoState) root.append(button('Vrátit vymazaný výběr', restoreUndo, { className: 'kitchen-button' }));
-      updateTray();
+      finishViews(recipes);
       return;
     }
 
@@ -239,8 +296,7 @@ function renderPlanner(root) {
     for (const recipe of recipes) {
       const id = `selection-${recipe.id.replaceAll('/', '-')}`;
       const card = el('div', { className: 'selected-recipe-card' },
-        el('div', { className: 'selected-recipe-title' }, el('h3', {}, el('a', { href: url(`${recipe.id}.html`) }, recipe.title)),
-          el('a', { href: url(`${recipe.id}.html#vareni`), className: 'kitchen-button', 'aria-label': `Vařit: ${recipe.title}` }, 'Vařit')));
+        el('div', { className: 'selected-recipe-title' }, el('h3', {}, el('a', { href: url(`${recipe.id}.html#ingredience`) }, recipe.title))));
       const details = el('details', { className: 'selected-recipe', id },
         el('summary', {}, `${String(state.selections[recipe.id].factor).replace('.', ',')}× dávka · upravit suroviny`),
         recipeEditor(recipe, state.selections[recipe.id], () => { save(); preserveView(render); }, id),
@@ -383,7 +439,7 @@ function renderPlanner(root) {
       if (!visible.size) {
         const allDone = bought === items.length && !filters.search && !filters.category && !filters.missing;
         empty.replaceChildren(el('h3', {}, allDone ? 'Všechno máte připravené' : 'Tomuto filtru nic neodpovídá'),
-          allDone ? button('Vybrat jídlo k vaření', () => setMode(false), { className: 'kitchen-button primary' })
+          allDone ? el('a', { href: '#uvarit', className: 'kitchen-button primary' }, icon('kitchen'), 'Vybrat jídlo k vaření')
             : button('Zrušit filtry', resetFilters, { className: 'kitchen-button' }));
       }
       if (changedKey && !visible.has(changedKey)) {
@@ -395,6 +451,7 @@ function renderPlanner(root) {
       updateTray();
     }
     refreshItems();
+    finishViews(recipes);
   };
 
   function restoreUndo() {
@@ -403,6 +460,9 @@ function renderPlanner(root) {
     save(); render(); focusSection(root.querySelector('#selected-heading')); announce('Původní výběr obnoven.');
   }
   render();
+  window.addEventListener('hashchange', () => {
+    if (!location.hash.startsWith('#nakup=')) syncViews(true);
+  });
 }
 
 function transferDialog(title) {
@@ -614,22 +674,69 @@ function enhanceRecipe(recipe) {
     for (let node = equipmentHeading.nextElementSibling; node && node.tagName !== 'H2'; node = node.nextElementSibling) preparation.push(node.cloneNode(true));
   }
   const config = recipeSettings(recipe, state.selections[recipe.id]);
+  const procedureHeading = article.querySelector('#postup');
+  const shoppingPanel = el('section', { id: 'recipe-shopping', 'aria-labelledby': ingredientsHeading.id, tabIndex: -1 });
+  const cookingPanel = el('section', { id: 'uvarit', className: 'recipe-procedure', 'aria-labelledby': procedureHeading.id, tabIndex: -1 });
+  ingredientsHeading.before(shoppingPanel);
+  for (let node = ingredientsHeading; node && node !== procedureHeading;) {
+    const next = node.nextSibling;
+    shoppingPanel.append(node);
+    node = next;
+  }
+  procedureHeading.before(cookingPanel);
+  for (let node = procedureHeading; node;) {
+    const next = node.nextSibling;
+    cookingPanel.append(node);
+    node = next;
+  }
+  const shoppingActions = el('div', { className: 'kitchen-app recipe-actions' });
+  const cookingActions = el('div', { className: 'kitchen-app recipe-actions' });
+  shoppingPanel.prepend(shoppingActions);
+  cookingPanel.prepend(cookingActions);
+  const navigation = workflow('shopping', { shopping: '#ingredience', cooking: '#uvarit' }, () => syncView());
+  controls.append(navigation, el('p', { className: 'storage-message recipe-storage kitchen-muted' }, storageMessage));
+  (article.querySelector('.recipe-preparation') || shoppingPanel).before(controls);
+  ingredientsHeading.after(editor);
+
+  const syncContents = () => {
+    for (const link of document.querySelectorAll('.affix a[href^="#"]')) {
+      const target = document.getElementById(decodeURIComponent(link.getAttribute('href').slice(1)));
+      const item = link.closest('li');
+      if (item && target) item.hidden = Boolean(target.classList.contains('source-ingredients') || target.closest('#recipe-shopping[hidden], #uvarit[hidden]'));
+    }
+  };
+  const syncView = (focus = false) => {
+    let target;
+    try { target = document.getElementById(decodeURIComponent(location.hash.slice(1))); }
+    catch { target = null; }
+    const cooking = location.hash === '#vareni' || Boolean(target && cookingPanel.contains(target));
+    shoppingPanel.hidden = cooking;
+    cookingPanel.hidden = !cooking;
+    for (const link of navigation.querySelectorAll('[data-phase]')) {
+      link.setAttribute('aria-current', link.dataset.phase === (cooking ? 'cooking' : 'shopping') ? 'page' : 'false');
+    }
+    syncContents();
+    if (focus) focusSection(location.hash === '#uvarit' || location.hash === '#ingredience' ? navigation : target || navigation);
+  };
+  const printButton = () => button('PDF / tisk receptu', () => openRecipePrint(recipe, stepContents, config, preparation), { className: 'kitchen-button' });
   const repaint = () => {
     editor.replaceChildren(recipeEditor(recipe, config, () => { if (selected(recipe)) state.selections[recipe.id] = structuredClone(config); save(); preserveView(repaint); }, 'detail'));
-    controls.replaceChildren(workflow('cooking'), el('div', { className: 'recipe-actions' },
-      button(state.cooking[recipe.id]?.done.length ? 'Pokračovat ve vaření' : 'Vařit krok za krokem', () => openCooking(recipe, stepContents, config, preparation, repaint), { className: 'kitchen-button primary', id: 'start-cooking' }),
+    shoppingActions.replaceChildren(
       button(selected(recipe) ? 'V nákupu' : 'Přidat do nákupu', () => {
         if (selected(recipe)) delete state.selections[recipe.id]; else state.selections[recipe.id] = structuredClone(config);
         save(); preserveView(repaint); announce(selected(recipe) ? 'Recept je v nákupu.' : 'Recept byl odebrán.');
-      }, { id: 'detail-select', className: 'kitchen-button', 'aria-pressed': String(selected(recipe)) })),
-      el('div', { className: 'recipe-secondary-actions' },
-        el('a', { href: '#postup', onClick: event => { event.preventDefault(); const heading = document.getElementById('postup'); heading.tabIndex = -1; focusSection(heading); } }, icon('list'), 'Celý postup'),
-        button('PDF / tisk receptu', () => openRecipePrint(recipe, stepContents, config, preparation), { className: 'kitchen-button' })),
-      el('p', { className: 'storage-message recipe-storage kitchen-muted' }, storageMessage));
+      }, { id: 'detail-select', className: 'kitchen-button', 'aria-pressed': String(selected(recipe)) }), printButton());
+    cookingActions.replaceChildren(
+      button(state.cooking[recipe.id]?.done.length ? 'Pokračovat ve vaření' : 'Vařit krok za krokem', () => openCooking(recipe, stepContents, config, preparation, repaint), { className: 'kitchen-button primary', id: 'start-cooking' }), printButton());
+    syncView();
   };
-  ingredientsHeading.before(controls);
-  ingredientsHeading.after(editor);
   repaint();
+  const contents = document.querySelector('.affix');
+  if (contents) new MutationObserver(syncContents).observe(contents, { childList: true, subtree: true });
+  window.addEventListener('hashchange', () => {
+    syncView(true);
+    if (location.hash === '#vareni' && !document.querySelector('.cooking-dialog')) openCooking(recipe, stepContents, config, preparation, repaint);
+  });
   if (location.hash === '#vareni') openCooking(recipe, stepContents, config, preparation, repaint);
 }
 
@@ -735,7 +842,7 @@ function openCooking(recipe, contents, config, preparation, closed) {
   };
   dialog.addEventListener('close', () => {
     dialog.remove(); closed();
-    if (location.hash === '#vareni') { const address = new URL(location.href); address.hash = ''; history.replaceState(null, '', address); }
+    if (location.hash === '#vareni') { const address = new URL(location.href); address.hash = 'uvarit'; history.replaceState(null, '', address); }
     document.getElementById('start-cooking')?.focus({ preventScroll: true });
   });
   document.body.append(dialog);

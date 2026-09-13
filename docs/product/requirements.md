@@ -59,7 +59,7 @@ Další oblasti osobního života mohou přibývat jako samostatné návody, kte
 | ID | Aktér a výchozí stav | Spouštěcí akce | Pozorovatelný výsledek | Priorita | Způsob ověření |
 |---|---|---|---|---|---|
 | `REQ-001` | Čtenář otevřel úvodní stránku | Zvolí sekci, oblast, zemi nebo typ | Uvidí odpovídající přehled se jmény, původem, typem a stručnými popisy dostupného obsahu | Kritická | Vizuální tok úvod → sekce → oblast |
-| `REQ-002` | Čtenář našel konkrétní položku | Otevře odkaz receptu nebo nápoje | Uvidí název, úvod, ingredience, očíslované kroky a relevantní tipy či varování | Kritická | Vizuální detail reprezentativního receptu a nápoje |
+| `REQ-002` | Čtenář našel konkrétní položku | Otevře recept nebo nápoj a přepne do Uvařit | Detail nejprve nabídne ingredience; postup, jeho kroky a odpovídající obsah článku zobrazí až v části Uvařit | Kritická | Vizuální detail, přepnutí sekcí a přímý odkaz na krok |
 | `REQ-003` | Správce přidal, upravil nebo odstranil platný obsahový soubor | Spustí generování, sestavení nebo uloží změnu při vývojovém náhledu | Katalog, přehledy, navigace a klientská data se deterministicky obnoví bez ručních změn odvozených souborů; nepotřebné výstupy zmizí | Vysoká | Životní cyklus receptu v izolované fixture, čisté sestavení a vývojový náhled |
 | `REQ-004` | Přijatá změna je na větvi `main` | Proběhne publikační workflow | Ověřený statický web je dostupný na kanonické adrese a changelog zachovává úplnou historii, nejnovější rok změn nechává otevřený, roky bez změn vynechává a starší zobrazené roky balí | Vysoká | GitHub Actions, veřejný smoke a víceletý changelogový test |
 | `REQ-005` | Čtenář hledá český nebo anglický termín obsažený v indexu | Odešle libovolnou kombinaci indexovaných slov bez ohledu na velikost písmen a diakritiku | Uvidí položky obsahující všechna stejná normalizovaná slova nebo jednoznačnou informaci, že výsledek nebyl nalezen | Střední | Automatické české i anglické názvy a slova z obsahu, poté vizuální smoke a dotaz bez shody |
@@ -104,6 +104,16 @@ Odkaz představuje jednorázovou kopii, ne automaticky synchronizovaný seznam; 
 Dialog nabízí kopírování odkazu a dostupné systémové sdílení, přiznává délku zprávy i přístup kohokoli s odkazem a neodesílá nákup bez uživatelské akce.
 
 ## Ovládání a PDF
+
+Navigace Výběr → Nakoupit → Uvařit propojuje samostatná zobrazení a ukazuje právě otevřenou část.
+
+V nákupu část Uvařit nabídne vybraná jídla s uloženou dávkou a průběhem; karty nastavení ve části Nakoupit neobsahují tlačítko Vařit.
+
+Detail v části Nakoupit ukazuje ingredience a nastavení, zatímco část Uvařit ukazuje celý postup a vstup do vaření po krocích; pravý obsah článku odkazuje pouze na viditelné části.
+
+Přepínání zachová nastavení a rozepsaná vlastní množství; historii prohlížeče a přímé odkazy na kroky lze použít i po obnovení stránky.
+
+Bez klientského rozšíření zůstávají ingredience i celý postup čitelné ve statickém dokumentu.
 
 Ikony doplňují textové popisky v navigaci, přehledech, nákupních akcích a receptech; jejich vykreslení nezávisí na systémovém emoji fontu.
 

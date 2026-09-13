@@ -155,6 +155,14 @@ Projekt nemá účty, aplikační cookies, serverovou databázi ani vzdálené u
 
 Výběr, vlastní množství, odškrtnutí a průběh vaření se ukládají v prohlížeči pod verzovaným klíčem odděleným podle cesty webu; data lze odstranit novým nákupem nebo vymazáním dat prohlížeče.
 
+Zobrazení nákupu a vaření přepíná klientská vrstva pomocí fragmentu URL; nákup používá `#nakup`, `#nakupovat` a `#uvarit`, detail `#ingredience` a `#uvarit`.
+
+Původní kotvy postupu odkrývají jeho sekci a `#vareni` nadále přímo otevře krokový dialog; po zavření zůstane zobrazená sekce Uvařit.
+
+Panely nákupu se při přepnutí pouze skryjí, aby zůstala zachovaná otevřená nastavení, filtry a rozepsaná množství; receptové panely přeskupují existující HTML a synchronizují viditelnost odkazů obsahu článku.
+
+Bez úspěšného klientského rozšíření zůstává úplný statický recept beze změny.
+
 Uživatelem vyžádané předání nákupu doplňuje [ADR-0007](decisions/ADR-0007-prenos-nakupu-bez-serveru.md); příjemce získává samostatnou kopii a nevzniká serverová synchronizace.
 
 Přenosový modul odvozuje kompaktní data z platného nákupu a na příjmu před jakoukoli změnou ověří formát, velikost i po rozbalení, známé recepty, přesné revize, nastavení a příslušnost surovin.
