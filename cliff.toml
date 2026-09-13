@@ -4,10 +4,17 @@
 header = """
 # Změny
 
-> Tento soubor se automaticky generuje z úplné Git historie. Neupravujte jej ručně.
+<!-- Zdroj: Git historie a cliff.toml. Obnova: npm run docs:generate. -->
+
+> Tento soubor se automaticky generuje z úplné Git historie.
+>
+> Neupravujte jej ručně.
+>
 """
 body = """
-> Zdrojový stav: `{{ commit_id | truncate(length=7, end="") }}`. Zahrnuté commity: **{{ statistics.commit_count }}**.
+> Zdrojový stav: `{{ commit_id | truncate(length=7, end="") }}`.
+>
+> Zahrnuté commity: **{{ statistics.commit_count }}**.
 
 ---
 {% if commits | length == 0 %}\
@@ -39,7 +46,10 @@ body = """
 ## Nejnovější období · {{ period }}
 
 > Počet změn v období: **{{ period_count }}**.
-> Zobrazují se pouze roky, ve kterých vznikla změna; prázdné roky se vynechávají.
+>
+> Zobrazují se pouze roky, ve kterých vznikla změna.
+>
+> Prázdné roky se vynechávají.
 
 {% else %}\
 <details>

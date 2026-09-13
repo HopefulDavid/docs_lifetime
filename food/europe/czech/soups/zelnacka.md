@@ -1,31 +1,39 @@
 # 🥬 Zelňačka
 
-Zelňačka je tradiční česká polévka, která zahřeje a zasytí. Skvělá s čerstvým chlebem!
+Sytá polévka z kysaného zelí, klobásy a brambor zjemněná smetanou.
 
 ## Ingredience
 
-- Máslo
-- Cibule
-- Klobása
-- Brambory
-- Voda nebo vývar
-- Bobkový list
-- Nové koření
-- Pepř celý
-- Kmín
-- Paprika sladká mletá
-- Sůl
-- Cukr
-- Kysané zelí (i trochu láku podle chuti)
-- Smetana ke šlehání
-- Majoránka
+Množství platí pro jednu původní dávku.
 
-## 1. Restování základu
+Počet porcí není uveden.
+
+| Surovina             | Množství   | Upřesnění                 |
+| -------------------- | ---------- | ------------------------- |
+| Máslo                | 2 lžíce    | —                         |
+| Cibule               | 1 ks       | —                         |
+| Klobása              | 2 ks       | —                         |
+| Brambory             | 400 g      | —                         |
+| Voda nebo Vývar      | 1,5–2 l    | —                         |
+| Bobkový list         | dle chuti  | —                         |
+| Nové koření          | dle chuti  | —                         |
+| Pepř celý            | dle chuti  | —                         |
+| Kmín                 | dle chuti  | —                         |
+| Sladká paprika mletá | dle chuti  | —                         |
+| Sůl                  | dle chuti  | —                         |
+| Cukr                 | dle chuti  | —                         |
+| Kysané zelí          | 400–500 g  | i trochu láku podle chuti |
+| Smetana ke šlehání   | 200–250 ml | —                         |
+| Majoránka            | dle chuti  | —                         |
+
+## Postup
+
+### 1. Restování základu
 
 - Na másle osmažte cibuli dozlatova.
 - Přidejte klobásu nakrájenou na kostičky a orestujte.
 
-## 2. Vaření brambor a koření
+### 2. Vaření brambor a koření
 
 - Přidejte brambory nakrájené na kostičky, zalijte vodou nebo vývarem.
 - Ochuťte bobkovým listem, novým kořením, pepřem, kmínem, paprikou, solí a cukrem.
@@ -33,14 +41,14 @@ Zelňačka je tradiční česká polévka, která zahřeje a zasytí. Skvělá s
 
   > **Tip:** Cukr vyvažuje kyselost zelí, přidejte dle chuti.
 
-## 3. Přidání zelí a další vaření
+### 3. Přidání zelí a další vaření
 
 - Přidejte pokrájené kysané zelí (můžete přidat i trochu láku podle chuti).
 - Vařte dalších 10 minut.
 
   > **Varování:** Zelí přidávejte až po změknutí brambor, aby nebyly tvrdé.
 
-## 4. Dokončení a dochucení
+### 4. Dokončení a dochucení
 
 - Vyjměte bobkový list a kuličky koření.
 - Vmíchejte smetanu ke šlehání (můžete ji předem ohřát, aby se nesrazila) a krátce povařte.

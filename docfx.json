@@ -2,16 +2,43 @@
   "build": {
     "content": [
       {
+        "src": "_generated",
         "files": [
-          "index.md",
-          "changelog.md",
-          "toc.yml",
-          "food/**/*.{md,yml}",
-          "drink/**/*.{md,yml}"
+          "**/*.{md,yml}"
         ]
       }
     ],
     "output": "_site",
+    "resource": [
+      {
+        "files": [
+          "data/recipes.json"
+        ],
+        "src": "_generated"
+      },
+      {
+        "files": [
+          "pdfmake.min.js",
+          "vfs_fonts.js"
+        ],
+        "src": "node_modules/pdfmake/build",
+        "dest": "public"
+      },
+      {
+        "files": [
+          "LICENSE"
+        ],
+        "src": "node_modules/pdfmake",
+        "dest": "public/licenses/pdfmake"
+      },
+      {
+        "files": [
+          "public/icons.css",
+          "public/icon-labels.mjs"
+        ],
+        "src": "_generated"
+      }
+    ],
     "template": [
       "default",
       "modern",
@@ -20,10 +47,11 @@
     "globalMetadata": {
       "_appName": "Dokumentace ze života",
       "_appTitle": "Život",
+      "_appFooter": "Praktické návody pro každý den.",
       "_enableSearch": true,
       "_lang": "cs",
       "_disableContribution": true,
-      "pdf": true
+      "pdf": false
     }
   }
 }

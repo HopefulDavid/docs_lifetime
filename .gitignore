@@ -1,7 +1,10 @@
 .idea/
 private/
-_site/
-changelog.md
+# Obnovitelné výstupy; ruční zdroje sem nepatří.
+/_site/
+/_generated/
+# Historická cesta po přechodu na izolované generování.
+/changelog.md
 *.bak
 node_modules/
 __pycache__/

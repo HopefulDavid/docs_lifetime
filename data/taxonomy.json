@@ -1,0 +1,76 @@
+{
+  "continents": {
+    "europe": "Evropa",
+    "asia": "Asie",
+    "north-america": "Severní Amerika",
+    "universal": "Univerzální recepty"
+  },
+  "countries": {
+    "czech": {
+      "title": "Česko",
+      "continent": "europe",
+      "flag": "cz"
+    },
+    "france": {
+      "title": "Francie",
+      "continent": "europe",
+      "flag": "fr"
+    },
+    "general": {
+      "title": "Obecně asijská kuchyně",
+      "continent": "asia"
+    },
+    "greece": {
+      "title": "Řecko",
+      "continent": "europe",
+      "flag": "gr"
+    },
+    "india": {
+      "title": "Indie",
+      "continent": "asia",
+      "flag": "in"
+    },
+    "italy": {
+      "title": "Itálie",
+      "continent": "europe",
+      "flag": "it"
+    },
+    "japan": {
+      "title": "Japonsko",
+      "continent": "asia",
+      "flag": "jp"
+    },
+    "mexico": {
+      "title": "Mexiko",
+      "continent": "north-america",
+      "flag": "mx"
+    },
+    "portugal": {
+      "title": "Portugalsko",
+      "continent": "europe",
+      "flag": "pt"
+    },
+    "spain": {
+      "title": "Španělsko",
+      "continent": "europe",
+      "flag": "es"
+    },
+    "usa": {
+      "title": "USA",
+      "continent": "north-america",
+      "flag": "us"
+    },
+    "vietnam": {
+      "title": "Vietnam",
+      "continent": "asia",
+      "flag": "vn"
+    }
+  },
+  "types": {
+    "soups": "Polévky",
+    "main-dishes": "Hlavní jídla",
+    "desserts": "Dezerty",
+    "dips": "Dipy",
+    "coffee": "Káva"
+  }
+}

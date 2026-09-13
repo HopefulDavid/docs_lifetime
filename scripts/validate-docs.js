@@ -1,5 +1,6 @@
-const fs = require('fs');
-const path = require('path');
+const fs = require('node:fs');
+const path = require('node:path');
+const { execFileSync } = require('node:child_process');
 
 const root = path.resolve(__dirname, '..');
 const allowedCanonicalStatuses = new Set([
@@ -9,7 +10,14 @@ const allowedCanonicalStatuses = new Set([
   'accepted',
   'deprecated',
 ]);
-const ignoredDirectoryNames = new Set(['.git', '.idea', '_site', 'node_modules']);
+const ignoredDirectoryNames = new Set([
+  '.git',
+  '.idea',
+  '_site',
+  '_generated',
+  'node_modules',
+  'private',
+]);
 const initializedProjectDocuments = [
   'README.md',
   'docs/product/requirements.md',
@@ -95,7 +103,7 @@ function validateCanonicalMetadata(markdownFiles) {
     const previous = canonicalKeys.get(metadata.canonical_for);
     if (previous) {
       errors.push(
-        `${relativePath}: canonical_for '${metadata.canonical_for}' už používá ${previous}`
+        `${relativePath}: canonical_for '${metadata.canonical_for}' už používá ${previous}`,
       );
     } else {
       canonicalKeys.set(metadata.canonical_for, relativePath);
@@ -156,9 +164,16 @@ function validateInternalLinks(markdownFiles) {
         continue;
       }
 
-      const resolved = target.startsWith('/')
+      let resolved = target.startsWith('/')
         ? path.resolve(root, `.${target}`)
         : path.resolve(path.dirname(fullPath), target);
+      // Veřejné zdroje se kontrolují v sestaveném docsetu, kde existují odvozené cíle jejich odkazů.
+      const isPublicSource = relativePath === 'pruvodce.md' || /^(food|drink)\//.test(relativePath);
+      if (isPublicSource) {
+        resolved = target.startsWith('/')
+          ? path.resolve(root, '_generated', `.${target}`)
+          : path.resolve(root, '_generated', path.dirname(relativePath), target);
+      }
       const staysInRepository = resolved === root || resolved.startsWith(`${root}${path.sep}`);
 
       if (!staysInRepository) {
@@ -213,7 +228,21 @@ function validateGeneratedArtifacts(allFiles) {
     if (relativePath.endsWith('.pyc') || relativePath.includes('/__pycache__/')) {
       errors.push(`${relativePath}: generovaný Python artefakt nepatří do repozitáře`);
     }
+    if (
+      ['index.md', 'nakup.md', 'toc.yml', 'changelog.md', 'data/recipes.json'].includes(
+        relativePath,
+      ) ||
+      /^(food|drink)\/(?:.*\/)?(?:index\.md|toc\.yml)$/.test(relativePath)
+    ) {
+      errors.push(`${relativePath}: odvozený soubor patří pouze do _generated/`);
+    }
   }
+  const trackedOutputs = execFileSync(
+    'git',
+    ['ls-files', '--', '_generated/', '_site/', 'node_modules/'],
+    { cwd: root, encoding: 'utf8' },
+  ).trim();
+  if (trackedOutputs) errors.push(`Generované adresáře nesmějí být verzované: ${trackedOutputs}`);
 }
 
 function validateWorkflowSecurity() {
@@ -250,9 +279,14 @@ function validateWorkflowSecurity() {
 function main() {
   const allFiles = walkFiles(root);
   const markdownFiles = allFiles.filter((file) => file.endsWith('.md'));
+  const generatedMarkdown = walkFiles(path.join(root, '_generated')).filter((file) =>
+    file.endsWith('.md'),
+  );
+  if (!fs.existsSync(path.join(root, '_generated/manifest.json')))
+    errors.push('_generated/manifest.json: nejprve spusťte npm run docs:generate');
 
   validateCanonicalMetadata(markdownFiles);
-  validateInternalLinks(markdownFiles);
+  validateInternalLinks([...markdownFiles, ...generatedMarkdown]);
   validateInitializedDocuments();
   validateAgentAdapter();
   validateWorkRecords(markdownFiles);

@@ -1,31 +1,40 @@
 # 🥬 Noky se špenátem
 
-Tato lahodná kombinace jemných noků, krémové špenátové omáčky a parmezánu potěší každého milovníka italské kuchyně.
+Noky se špenátem, česnekem a smetanovou omáčkou, posypané parmezánem.
 
 ## Ingredience
 
-- Špenát mražený
-- Noky kuličky
-- Parmezán
-- Smetana ke šlehání
-- Česnek
-- Olej
-- Pepř
-- Sůl
+Množství platí pro jednu původní dávku.
 
-### Postup
+Počet porcí není uveden.
 
-1. Nastrouháme parmezán.
+| Surovina           | Množství   | Upřesnění                 |
+| ------------------ | ---------- | ------------------------- |
+| Mražený špenát     | 1 balení   | hmotnost balení neuvedena |
+| Noky               | 500 g      | —                         |
+| Parmezán           | 1 balení   | hmotnost balení neuvedena |
+| Smetana ke šlehání | 200 ml     | —                         |
+| Česnek             | 2 stroužky | —                         |
+| Rostlinný olej     | 1 lžíce    | —                         |
+| Pepř mletý         | dle chuti  | —                         |
+| Sůl                | dle chuti  | —                         |
 
-2. Dáme vařit noky podle návodu.
+## Postup
 
-3. Připravíme omáčku:
-   - Na oleji krátce osmažíme prolisovaný česnek.
-   - Přidáme špenát a necháme ho změknout.
-   - Jakmile je hotový, zalijeme smetanou ke šlehání.
-   - Promícháme a přidáme většinu nastrouhaného parmezánu.
-   - Osolíme, opepříme a krátce povaříme, dokud omáčka nezhoustne.
+### 1. Příprava sýra a noků
 
-4. Do hotové omáčky zamícháme uvařené noky.
+- Nastrouhejte parmezán.
+- Noky uvařte podle návodu na obalu.
 
-5. Posypeme zbytkem parmezánu – a máme hotovo.
+### 2. Příprava omáčky
+
+- Na oleji krátce osmažte prolisovaný česnek.
+- Přidejte špenát a nechte ho změknout.
+- Zalijte smetanou ke šlehání.
+- Promíchejte a přidejte většinu nastrouhaného parmezánu.
+- Osolte, opepřete a krátce povařte, dokud omáčka nezhoustne.
+
+### 3. Dokončení a podávání
+
+- Do hotové omáčky zamíchejte uvařené noky.
+- Posypte zbytkem parmezánu.

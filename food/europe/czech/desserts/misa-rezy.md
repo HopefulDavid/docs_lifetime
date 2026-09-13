@@ -1,33 +1,45 @@
 # 🍰 Míša řezy
 
-Míša řezy jsou oblíbený český dezert, který potěší milovníky tvarohu a čokolády.
+Nepečený tvarohový dezert do misek s kakaovými sušenkami a čokoládovou polevou.
 
 ## Ingredience
 
-- Tvaroh ve vaničce (1 ks)
-- Vysokoprocentní smetana (1 hrnek)
-- Cukr dle chuti
+Množství platí pro jednu původní dávku.
+
+Počet porcí není uveden.
+
+| Surovina           | Množství  | Upřesnění                                     |
+| ------------------ | --------- | --------------------------------------------- |
+| Tvaroh             | 1 vanička | velikost vaničky zdroj neuvádí                |
+| Smetana ke šlehání | 1 hrnek   | vysokoprocentní, velikost hrnku zdroj neuvádí |
+| Cukr               | dle chuti | —                                             |
 
 ### Poleva
 
-- Čokoláda hořká (1 ks)
-- Čokoláda mléčná (1 ks)
-- Smetana (0,5 hrnku)
-- Máslo (2 lžíce)
+| Surovina        | Množství  | Upřesnění                      |
+| --------------- | --------- | ------------------------------ |
+| Hořká čokoláda  | 1 tabulka | hmotnost tabulky zdroj neuvádí |
+| Mléčná čokoláda | 1 tabulka | hmotnost tabulky zdroj neuvádí |
+| Smetana         | 0,5 hrnku | velikost hrnku zdroj neuvádí   |
+| Máslo           | 2 lžíce   | —                              |
 
-### Dále
+### Sušenkový základ
 
-- Kakaové sušenky
+| Surovina        | Množství | Upřesnění                 |
+| --------------- | -------- | ------------------------- |
+| Kakaové sušenky | 1 balení | hmotnost balení neuvedena |
 
-  > **Tip:** Cukr přidávejte postupně a ochutnávejte, aby náplň nebyla příliš sladká.
+> **Tip:** Cukr přidávejte postupně a ochutnávejte, aby náplň nebyla příliš sladká.
 
-## 1. Příprava smetany a tvarohu
+## Postup
+
+### 1. Příprava smetany a tvarohu
 
 - Smetanu vyšlehejte do tuha.
 - V jiné míse vyšlehejte tvaroh s cukrem a spojte se smetanou.
 - Nechte vychladit v lednici.
 
-## 2. Příprava polevy
+### 2. Příprava polevy
 
 - Do kastrůlku dejte vodu a přiveďte k varu.
 - Na kastrůlek položte misku, do které rozlámejte čokoládu.
@@ -35,7 +47,7 @@ Míša řezy jsou oblíbený český dezert, který potěší milovníky tvarohu
 
   > **Varování:** Polevu zahřívejte pozvolna, aby se čokoláda nesrazila.
 
-## 3. Dokončení
+### 3. Dokončení
 
 - Do misek dejte na dno rozdrobené kakaové sušenky.
 - Přidejte tvarohovou náplň a polevu.

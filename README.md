@@ -1,6 +1,6 @@
 # Dokumentace ze života
 
-Dokumentace ze života je veřejná česká osobní kuchařka, ve které lze rychle dohledat recepty a nápojové postupy podle původu a typu.
+Dokumentace ze života je česká sbírka praktických návodů pro běžný život, která nyní pomáhá s výběrem jídel, společným nákupem a vařením krok za krokem.
 
 ## Stav
 
@@ -10,7 +10,9 @@ Zdrojový obsah, generátor navigace a sestavení DocFX jsou udržované v tomto
 
 ## Rychlá orientace
 
+- Čtenářský průvodce je v [`pruvodce.md`](pruvodce.md).
 - Produktový záměr a chování jsou v [`docs/product/requirements.md`](docs/product/requirements.md).
+- Jednotný zápis a obsahová revize receptů jsou v [`docs/product/recipe-format.md`](docs/product/recipe-format.md).
 - Architektura je v [`docs/architecture/overview.md`](docs/architecture/overview.md).
 - Přesné vývojové příkazy jsou v [`docs/development/commands.md`](docs/development/commands.md).
 - Způsob práce je v [`docs/development/workflow.md`](docs/development/workflow.md).
@@ -19,9 +21,9 @@ Zdrojový obsah, generátor navigace a sestavení DocFX jsou udržované v tomto
 
 ## Obsah a generované soubory
 
-Ručně udržované recepty a nápoje jsou v adresářích [`food/`](food/) a [`drink/`](drink/).
+Rozdělení ručních zdrojů a obnovitelných výstupů vlastní [architektura dat](docs/architecture/overview.md#odvozená-data-a-rozsah-automatizace).
 
-Přehledové stránky a navigaci vytváří [`scripts/generate-docs.js`](scripts/generate-docs.js), proto se jejich seznamy odkazů neupravují ručně.
+Přidání receptu popisuje [kanonický autorský postup](docs/product/recipe-format.md#přidání-nového-receptu).
 
 ## První spuštění
 

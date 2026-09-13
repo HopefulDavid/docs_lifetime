@@ -92,7 +92,7 @@ jobs:
             NR == 1 && $0 == "---" { frontmatter = 1; next }
             frontmatter && $0 == "---" { frontmatter = 0; next }
             !frontmatter { print }
-          ' changelog.md >> "$GITHUB_ENV"
+          ' _generated/changelog.md >> "$GITHUB_ENV"
           echo "EOF" >> "$GITHUB_ENV"
 
       - name: Publikuje GitHub Pages
