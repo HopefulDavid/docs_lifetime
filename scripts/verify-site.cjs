@@ -123,6 +123,16 @@ function main() {
   console.log(
     `Statický web je ověřený (${expectedPages.length} stránek, ${catalog.recipes.length} receptů, odkazy, fulltext, SVG a PDF assety).`,
   );
+  const { warnings } = JSON.parse(
+    fs.readFileSync(path.join(root, '_generated/content-report.json'), 'utf8'),
+  );
+  if (warnings.length) {
+    console.warn(`WARNING: ${warnings.length} obsahových varování (warnings).`);
+    console.warn('Souhrn DocFX výše počítá pouze varování DocFX.');
+    console.warn('Zdrojové soubory a řádky jsou uvedené v _generated/content-report.json.');
+  } else {
+    console.log('Obsahová kontrola: 0 varování (warnings).');
+  }
 }
 
 main();

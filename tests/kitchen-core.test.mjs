@@ -9,7 +9,6 @@ import {
   restoreState,
   selectedIngredients,
   shoppingAmount,
-  shoppingNeedsAmount,
   shoppingText,
 } from '../templates/kitchen/public/kitchen-core.mjs';
 
@@ -41,22 +40,6 @@ test('nákupní filtry kombinují české hledání, oddělení a platné odškr
   );
   assert.equal(filterShoppingItems(items, { search: 'uzen', category: 'neexistující' }).length, 0);
   assert(filterShoppingItems(items, { search: 'uzen' }).some((item) => item.name.includes('Uzen')));
-});
-
-test('filtr chybějícího množství respektuje doplnění a jeho zneplatnění změnou dávky', () => {
-  const items = shoppingList({ [recipe('kokosove-kure').id]: {} });
-  const rice = items.find((item) => item.name === 'Rýže');
-  const amounts = { [rice.key]: { text: '1 balení', signature: rice.signature } };
-
-  assert(shoppingNeedsAmount(rice));
-  assert(!shoppingNeedsAmount(rice, amounts));
-  assert(!filterShoppingItems(items, { missing: true }, {}, amounts).includes(rice));
-  const changed = shoppingList({ [recipe('kokosove-kure').id]: { factor: 2 } }).find(
-    (item) => item.name === 'Rýže',
-  );
-
-  assert(shoppingNeedsAmount(changed, amounts));
-  assert(!shoppingNeedsAmount({ ...rice, text: 'dle chuti' }));
 });
 
 test('dokončení vaření nevyžaduje vynechanou přílohu a po jejím zapnutí se přepočítá', () => {
@@ -206,7 +189,7 @@ test('nákup obsahuje všechny vybrané suroviny včetně dochucení, ale žádn
   assert.match(text, /Cibule/);
 });
 
-test('vlastní množství přežije obnovení a export, ale nepřejde na jinou dávku', () => {
+test('dříve uložené vlastní množství přežije obnovení a export, ale nepřejde na jinou dávku', () => {
   const selected = recipe('sunkofleky');
   const item = shoppingList({ [selected.id]: {} }).find((item) => item.name === 'Kyselé okurky');
   const raw = {

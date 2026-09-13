@@ -4,12 +4,14 @@ Nepečený tvarohový dezert do misek s kakaovými sušenkami a čokoládovou po
 
 ## Ingredience
 
-Množství platí pro jednu původní dávku; počet porcí není uveden.
+Množství platí pro jednu původní dávku.
+
+Počet porcí není uveden.
 
 | Surovina | Množství | Upřesnění |
 |---|---|---|
 | Tvaroh | 1 vanička | velikost vaničky zdroj neuvádí |
-| Smetana ke šlehání | 1 hrnek | vysokoprocentní; velikost hrnku zdroj neuvádí |
+| Smetana ke šlehání | 1 hrnek | vysokoprocentní, velikost hrnku zdroj neuvádí |
 | Cukr | dle chuti | — |
 
 ### Poleva

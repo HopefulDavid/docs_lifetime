@@ -856,11 +856,14 @@ body.kitchen-shopping-page:not([data-search]) .affix { display: none; }
 .selected-recipe-card summary:hover { background: var(--kitchen-sage-soft); }
 .shopping-summary { margin-top: 1.5rem; padding: 1.15rem 1.3rem; }
 .shopping-summary h2 { font-size: 1.6rem; }
-.shopping-summary .kitchen-button { margin-top: .8rem; background: transparent; }
 .shopping-filters { display: grid; grid-template-columns: minmax(0, 1fr); gap: .65rem; padding-block: 1rem .5rem; }
 .shopping-filter-row { display: flex; align-items: center; gap: 1rem; }
 .shopping-filter-row > label:first-child { flex: 1; min-width: 0; }
 .shopping-filter-status { margin: 0; }
+@media (max-width: 360px) {
+  .shopping-filter-row { flex-wrap: wrap; gap: .4rem; }
+  .shopping-filter-row > label:first-child { flex-basis: 100%; }
+}
 .shopping-exports { padding-bottom: .75rem; border-bottom: 1px solid var(--kitchen-line); }
 .shopping-sharing { display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; margin: 1rem 0 1.5rem; padding: 1rem; border: 1px solid var(--kitchen-line); border-radius: .8rem; background: var(--kitchen-surface); }
 .shopping-sharing p { margin: .3rem 0 0; }
@@ -896,7 +899,6 @@ body.kitchen-shopping-page:not([data-search]) .affix { display: none; }
 .shopping-filters label:not(.check-label) { display: flex; flex-direction: column; gap: .35rem; font-size: .85rem; font-weight: 650; }
 .shopping-filters .check-label { align-self: end; font-size: .9rem; }
 .shopping-results { font-size: .85rem; color: var(--kitchen-muted); margin-block: .5rem; }
-.shopping-item.needs-amount .shopping-sources summary { color: var(--kitchen-tomato); font-weight: 650; }
 .shopping-check { min-height: 56px; }
 .shopping-sources { margin-bottom: 0; }
 .shopping-sources summary { padding-block: .5rem; }
@@ -1077,6 +1079,8 @@ main:focus { outline: none; }
 .recipe-provenance { display: flex; align-items: center; flex-wrap: wrap; gap: .4rem; font-size: .85rem; color: var(--kitchen-muted); }
 article h1 > .ui-icon { width: 1em; height: 1em; color: var(--kitchen-link); vertical-align: -.1em; }
 article h2 > .ui-icon, article h3 > .ui-icon { width: 1em; height: 1em; color: var(--kitchen-link); }
+#shopping-heading > .ui-icon { margin-right: .3rem; }
+.cook-top .eyebrow > .ui-icon { margin-right: .3rem; }
 .content-overview a > .ui-icon { margin-right: .3rem; color: var(--kitchen-link); }
 .overview-cards a > .ui-icon { width: 1.6rem; height: 1.6rem; }
 #toc a > .ui-icon, #navbar a > .ui-icon { width: 1.05em; height: 1.05em; }

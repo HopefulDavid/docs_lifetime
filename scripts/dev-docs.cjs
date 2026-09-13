@@ -78,8 +78,8 @@ function finishBuild(code) {
   if (code === 0 && !server) startServer();
   console.log(
     code === 0
-      ? 'Náhled je aktuální; obnovte stránku v prohlížeči.'
-      : 'Sestavení selhalo; opravte zdroj, další uložení spustí nové ověření.',
+      ? 'Náhled je aktuální.\n\nObnovte stránku v prohlížeči.'
+      : 'Sestavení selhalo.\n\nOpravte zdroj, další uložení spustí nové ověření.',
   );
   if (pending) build();
 }

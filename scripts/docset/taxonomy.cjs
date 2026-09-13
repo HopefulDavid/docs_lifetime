@@ -6,8 +6,7 @@ const generatedNotice =
 const kitchen = {
   title: 'Kuchyně',
   path: 'kuchyne/index.md',
-  intro:
-    'Od nápadu na jídlo až k hotovému talíři. Vyberte recepty a nápoje, připravte společný nákup a pusťte se do vaření.',
+  intro: 'Vyberte recepty a nápoje, připravte společný nákup a pusťte se do vaření.',
 };
 
 const sections = {

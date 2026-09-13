@@ -4,11 +4,13 @@ Opečené tortilly s mletým masem, sýrem, rajčatovou salsou a zakysanou smeta
 
 ## Ingredience
 
-Množství platí pro jednu původní dávku; počet porcí není uveden.
+Množství platí pro jednu původní dávku.
+
+Počet porcí není uveden.
 
 | Surovina | Množství | Upřesnění |
 |---|---|---|
-| Tortilly | neuvedeno | malé; původně z Kauflandu |
+| Tortilly | neuvedeno | malé, původně z Kauflandu |
 | Mleté vepřovo-hovězí maso | neuvedeno | původně z Kauflandu |
 | Máslo | neuvedeno | na opékání masa, uvedeno v postupu |
 | Gyros koření | dle chuti | původně z Coopu |

@@ -4,7 +4,9 @@ Kuřecí nudličky na másle s uzenou paprikou a pikantní barbecue omáčkou.
 
 ## Ingredience
 
-Množství platí pro jednu původní dávku; počet porcí není uveden.
+Množství platí pro jednu původní dávku.
+
+Počet porcí není uveden.
 
 | Surovina | Množství | Upřesnění |
 |---|---|---|

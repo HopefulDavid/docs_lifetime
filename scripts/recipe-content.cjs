@@ -193,7 +193,7 @@ function parseRecipeContent(content, file, { onWarning = () => {} } = {}) {
         file,
         line: lineNumber,
         ingredient: name,
-        message: `Surovina '${name}' má množství neuvedeno; doplňte ověřené množství ve zdrojovém receptu.`,
+        message: `Surovina '${name}' má množství neuvedeno, doplňte ověřené množství ve zdrojovém receptu.`,
       });
   }
   if (inIngredients) {

@@ -4,7 +4,9 @@ Bramborový guláš se špekáčky, cibulí a paprikou, dochucený česnekem a m
 
 ## Ingredience
 
-Množství platí pro jednu původní dávku; počet porcí není uveden.
+Množství platí pro jednu původní dávku.
+
+Počet porcí není uveden.
 
 | Surovina | Množství | Upřesnění |
 |---|---|---|
@@ -22,7 +24,7 @@ Množství platí pro jednu původní dávku; počet porcí není uveden.
 | Majoránka | 1 lžíce | sušená |
 | Sůl | dle chuti | — |
 | Pepř mletý | dle chuti | čerstvě namletý |
-| Ocet | dle chuti | volitelné; na dochucení |
+| Ocet | dle chuti | volitelné, na dochucení |
 
 ### Příloha (volitelné)
 

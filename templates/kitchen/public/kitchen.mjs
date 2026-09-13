@@ -1,5 +1,5 @@
 import { icon, labelIcon } from './ui-icons.mjs';
-import { buildShoppingList, cookingProgress, filterShoppingItems, formatQuantity, parseQuantity, pruneShoppingState, recipeSettings, restoreState, selectedIngredients, shoppingAmount, shoppingNeedsAmount, shoppingText } from './kitchen-core.mjs';
+import { buildShoppingList, cookingProgress, filterShoppingItems, formatQuantity, parseQuantity, pruneShoppingState, recipeSettings, restoreState, selectedIngredients, shoppingAmount, shoppingText } from './kitchen-core.mjs';
 import { exportShopping, importShopping, previewShoppingImport } from './kitchen-transfer.mjs';
 
 const base = new URL('../', import.meta.url);
@@ -210,8 +210,7 @@ function preserveView(render) {
 function renderPlanner(root) {
   root.className = 'kitchen-app';
   document.body.classList.add('kitchen-shopping-page');
-  const filters = { search: '', category: '', hideDone: false, missing: false };
-  const drafts = new Map();
+  const filters = { search: '', category: '', hideDone: false };
   let shoppingMode = location.hash === '#nakupovat';
   let cookingView = location.hash === '#uvarit';
 
@@ -248,8 +247,7 @@ function renderPlanner(root) {
     applyImported(imported) {
       undoState = structuredClone(state);
       Object.assign(state, imported);
-      drafts.clear();
-      Object.assign(filters, { search: '', category: '', hideDone: false, missing: false });
+      Object.assign(filters, { search: '', category: '', hideDone: false });
       save(); render();
     },
     updateTray() {
@@ -275,23 +273,11 @@ function renderPlanner(root) {
     const items = buildShoppingList(catalog.recipes, state.selections, catalog.departments);
     if (!recipes.length) shoppingMode = false;
     document.body.classList.toggle('kitchen-shopping-mode', shoppingMode);
-    const transfer = action => {
-      const unsaved = items.find(item => drafts.has(`${item.key}:${item.signature}`));
-      if (unsaved) {
-        const field = document.getElementById(`shopping-${encodeURIComponent(unsaved.key)}-amount`);
-        const details = field?.closest('details');
-        if (details) details.open = true;
-        field?.focus();
-        announce('Nejprve uložte rozepsané vlastní množství, aby se při přenosu neztratilo.');
-        return;
-      }
-      action();
-    };
     root.replaceChildren(workflow('shopping', { shopping: '#nakup', cooking: '#uvarit' }, syncViews), el('section', { className: 'shopping-sharing', 'aria-label': 'Sdílení nákupu' },
       el('div', {}, el('strong', {}, 'Nakupujete společně?'), el('p', { className: 'kitchen-muted' }, 'Pošlete si aktuální nákup včetně hotových položek.')),
       el('div', { className: 'button-group' },
-        button('Export nákupu', () => transfer(openShoppingExport), { id: 'export-shopping', className: 'kitchen-button', disabled: !recipes.length }),
-        button('Import nákupu', () => transfer(() => openShoppingImport()), { id: 'import-shopping', className: 'kitchen-button' }))));
+        button('Export nákupu', openShoppingExport, { id: 'export-shopping', className: 'kitchen-button', disabled: !recipes.length }),
+        button('Import nákupu', () => openShoppingImport(), { id: 'import-shopping', className: 'kitchen-button' }))));
     if (!recipes.length) {
       root.append(el('div', { className: 'kitchen-empty' }, el('div', { className: 'empty-symbol' }, icon('basket')),
         el('h2', {}, 'Co bude dobrého?'), el('p', {}, 'Vyberte si několik jídel a suroviny se spojí do jednoho nákupního seznamu.'),
@@ -325,13 +311,8 @@ function renderPlanner(root) {
 
     const progressText = el('p', { id: 'shopping-progress', role: 'status' });
     const progress = el('progress', { max: Math.max(items.length, 1), 'aria-label': 'Průběh nákupu' });
-    const missingControl = button('', () => {
-      filters.missing = !filters.missing;
-      if (filters.missing) { filters.search = ''; filters.category = ''; filters.hideDone = false; }
-      syncFilters(); refreshItems();
-    }, { className: 'kitchen-button missing-filter', 'aria-pressed': 'false' });
     root.append(el('section', { className: 'shopping-summary' }, el('p', { className: 'eyebrow' }, 'V OBCHODĚ'),
-      el('h2', { id: 'shopping-heading', tabIndex: -1 }, icon('basket'), 'Suroviny k nákupu'), progressText, progress, missingControl));
+      el('h2', { id: 'shopping-heading', tabIndex: -1 }, icon('basket'), 'Suroviny k nákupu'), progressText, progress));
 
     const search = el('input', { type: 'search', id: 'shopping-filter', placeholder: 'Najít surovinu v nákupu…', value: filters.search });
     const category = el('select', { id: 'shopping-category' }, el('option', { value: '' }, 'Všechna oddělení'),
@@ -339,7 +320,7 @@ function renderPlanner(root) {
     const hideDone = el('input', { id: 'hide-done', type: 'checkbox', checked: filters.hideDone });
     const syncFilters = () => { search.value = filters.search; category.value = filters.category; hideDone.checked = filters.hideDone; };
     const resetFilters = () => {
-      Object.assign(filters, { search: '', category: '', hideDone: false, missing: false });
+      Object.assign(filters, { search: '', category: '', hideDone: false });
       syncFilters(); refreshItems(); search.focus();
     };
     search.addEventListener('input', () => { filters.search = search.value; refreshItems(); });
@@ -381,32 +362,14 @@ function renderPlanner(root) {
           save(); refreshItems(item.key);
         } });
         const sources = el('details', { id: `${id}-sources`, className: 'shopping-sources' },
-          el('summary', {}, shoppingNeedsAmount(item, state.amounts) ? 'Doplnit množství' : `Původ a poznámky · ${new Set(item.sources.map(source => source.id)).size}`),
+          el('summary', {}, `Původ a poznámky · ${new Set(item.sources.map(source => source.id)).size}`),
           el('ul', {}, item.sources.map(source => el('li', {}, el('a', { href: url(`${source.id}.html#ingredience`) }, source.recipe),
             ` · ${source.quantity}${source.group !== 'Základ' ? ` · ${source.group}` : ''}${source.note ? ` — ${source.note}` : ''}`))));
-        if (!item.quantity) {
-          const draftKey = `${item.key}:${item.signature}`;
-          const ownAmount = state.amounts[item.key]?.signature === item.signature ? state.amounts[item.key].text : '';
-          const field = el('input', { id: `${id}-amount`, type: 'text', maxLength: 120, value: drafts.get(draftKey) ?? ownAmount,
-            placeholder: 'Např. 1 balení nebo 200 g', 'aria-label': `Vlastní množství: ${item.name}`, onInput: event => drafts.set(draftKey, event.target.value) });
-          sources.append(el('label', { className: 'factor-label' }, 'Vlastní množství pro tento nákup', field),
-            button('Uložit množství', () => {
-              state.amounts[item.key] = { text: field.value.trim(), signature: item.signature };
-              drafts.delete(draftKey);
-              delete state.checked[item.key];
-              save(); preserveView(render);
-              const next = root.querySelector('.shopping-item:not([hidden]) input[type="checkbox"]');
-              const target = filters.missing ? next || root.querySelector('#shopping-filter') : document.getElementById(id);
-              target.focus({ preventScroll: true });
-              announce('Vlastní množství uloženo.');
-            }, { className: 'kitchen-button' }), el('p', {}, 'Při změně jídel nebo dávky se vrátí údaj z receptu.'));
-        }
         const amount = shoppingAmount(item, state.amounts);
         const row = el('div', { className: 'shopping-item' },
           el('label', { htmlFor: id, className: 'shopping-check' }, check,
             el('span', {}, el('strong', {}, item.name), el('small', {}, [...new Set(item.sources.map(source => source.note).filter(Boolean))].join(' · '))),
-            el('span', { className: `ingredient-amount${amount === 'neuvedeno' ? ' amount-unknown' : ''}` }, amount === 'neuvedeno' ? 'Doplnit' : amount)), sources);
-        if (shoppingNeedsAmount(item, state.amounts)) row.classList.add('needs-amount');
+            el('span', { className: `ingredient-amount${amount === 'neuvedeno' ? ' amount-unknown' : ''}` }, amount === 'neuvedeno' ? 'Množství neuvedeno' : amount)), sources);
         rows.set(item.key, { row, check });
         section.append(row);
       }
@@ -419,13 +382,13 @@ function renderPlanner(root) {
       el('p', { className: 'kitchen-muted' }, 'Bez připojení použijte stažený nebo vytištěný seznam.'),
       button('Začít nový nákup', () => {
         undoState = structuredClone(state);
-        state.selections = {}; state.checked = {}; state.amounts = {}; drafts.clear();
+        state.selections = {}; state.checked = {}; state.amounts = {};
         save(); render(); root.querySelector('.kitchen-empty a')?.focus(); announce('Nákup je vymazaný, ale můžete jej vrátit.');
       }, { className: 'kitchen-button' })));
     if (undoState) root.append(button('Vrátit poslední změnu', restoreUndo, { className: 'kitchen-button' }));
 
     function refreshItems(changedKey) {
-      const visible = new Set(filterShoppingItems(items, filters, state.checked, state.amounts).map(item => item.key));
+      const visible = new Set(filterShoppingItems(items, filters, state.checked).map(item => item.key));
       for (const item of items) {
         const { row, check } = rows.get(item.key);
         const done = state.checked[item.key] === item.signature;
@@ -439,16 +402,12 @@ function renderPlanner(root) {
         group.count.textContent = String(visibleCount);
       }
       const bought = items.filter(item => state.checked[item.key] === item.signature).length;
-      const missing = items.filter(item => shoppingNeedsAmount(item, state.amounts)).length;
       progress.value = bought;
       progressText.textContent = `${bought} z ${items.length} položek máte připraveno`;
-      missingControl.textContent = `Chybí množství (${missing})`;
-      missingControl.hidden = !missing && !filters.missing;
-      missingControl.setAttribute('aria-pressed', String(filters.missing));
       filterStatus.textContent = visible.size === items.length ? 'Zaškrtněte, co máte doma nebo v košíku.' : `Zobrazeno ${visible.size} z ${items.length} položek · export obsahuje celý nákup`;
       empty.hidden = visible.size > 0;
       if (!visible.size) {
-        const allDone = bought === items.length && !filters.search && !filters.category && !filters.missing;
+        const allDone = bought === items.length && !filters.search && !filters.category;
         empty.replaceChildren(el('h3', {}, allDone ? 'Všechno máte připravené' : 'Tomuto filtru nic neodpovídá'),
           allDone ? el('a', { href: '#uvarit', className: 'kitchen-button primary' }, icon('kitchen'), 'Vybrat jídlo k vaření')
             : button('Zrušit filtry', resetFilters, { className: 'kitchen-button' }));
@@ -494,7 +453,7 @@ async function openShoppingExport() {
   const status = el('p', { role: 'status', className: 'kitchen-muted' }, 'Připravuji nákup ke sdílení…');
   body.append(el('div', { className: 'transfer-intro' },
     el('p', {}, 'Příjemce otevře odkaz a zvolí sloučení nebo převzetí nákupu.'),
-    el('p', {}, 'Přenesou se jídla, dávky, varianty, uložená vlastní množství a hotové položky.')), status);
+    el('p', {}, 'Přenesou se vybraná jídla, jejich nastavení a hotové položky.')), status);
   try {
     const code = await exportShopping(state, catalog);
     if (!dialog.isConnected) return;
@@ -551,7 +510,7 @@ function openShoppingImport(initial = '') {
     apply.textContent = mode === 'merge' ? 'Sloučit nákupy' : 'Převzít celý nákup';
     preview.replaceChildren(el('fieldset', { className: 'transfer-mode' }, el('legend', {}, 'Jak nákup použít'),
       ...[['merge', 'Sloučit s mým nákupem', ['Zachová vaše jídla a přidá chybějící.', 'U stejného seznamu spojí hotové položky od obou lidí.']],
-        ['replace', 'Převzít celý nákup', ['Nahradí váš výběr, vlastní množství a hotové položky importovaným stavem.']]].map(([value, label, descriptions]) =>
+        ['replace', 'Převzít celý nákup', ['Nahradí váš výběr a hotové položky importovaným stavem.']]].map(([value, label, descriptions]) =>
         el('label', {}, el('input', { type: 'radio', name: 'shopping-import-mode', value, checked: mode === value, onChange: () => { mode = value; renderPreview(); preview.querySelector(`input[value="${value}"]`)?.focus({ preventScroll: true }); } }),
           el('span', {}, el('strong', {}, label), descriptions.map(description => el('span', { className: 'transfer-mode-description' }, description)))))),
       el('p', { className: 'transfer-summary', role: 'status' }, `Výsledný nákup · recepty: ${summary.recipes} · položky: ${summary.items} · hotovo: ${summary.checked}`));

@@ -4,7 +4,9 @@ Káva z hrubě mletých zrn připravená louhováním ve French Pressu.
 
 ## Ingredience
 
-Množství platí pro jednu původní dávku; počet porcí není uveden.
+Množství platí pro jednu původní dávku.
+
+Počet porcí není uveden.
 
 | Surovina | Množství | Upřesnění |
 |---|---|---|
@@ -22,9 +24,11 @@ Množství platí pro jednu původní dávku; počet porcí není uveden.
 ### 1. Předehřátí a mletí kávy
 
 - Předehřejte French Press horkou vodou.
+
   Pomáhá udržet správnou teplotu při extrakci.
 
 - Namelte kávová zrna na hrubo.
+
   Hrubé mletí je klíčové pro správnou chuť.
 
   > **Tip:** Hrubé mletí zabraňuje přeextrakci a hořkosti.
@@ -32,6 +36,7 @@ Množství platí pro jednu původní dávku; počet porcí není uveden.
 - Nasypte kávu do French Pressu.
 
 - Připravte vodu v rychlovarné konvici.
+
   Jakmile začne vřít, vypněte ji a nechte odstát 1 minutu.
 
   > Ideální teplota: 94–96 °C
@@ -43,6 +48,7 @@ Množství platí pro jednu původní dávku; počet porcí není uveden.
 - Promíchejte lžící nebo speciálním nástrojem.
 
 - Nastavte časovač na 4 minuty.
+
   Nechte kávu louhovat bez míchání.
 
 - Stiskněte píst French Pressu dolů.

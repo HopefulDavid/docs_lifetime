@@ -22,7 +22,7 @@ U jídel upravte dávku, zvolte surovinové varianty a případné přílohy.
 
 Společné suroviny se sečtou tam, kde mají slučitelná množství a jednotky.
 
-Chybějící množství doplňte podle potřeby, protože je web sám neodhaduje.
+Množství vychází z receptu a případný chybějící údaj zůstává označený.
 
 Dávka vyjadřuje násobek původního receptu, nikoli počet osob.
 
@@ -50,7 +50,7 @@ Změna dávky přepočítá suroviny, ale časy, teploty a čísla v textu postu
 
 Sdílený odkaz předává kopii vybraných jídel, jejich nastavení a nákupního seznamu včetně odškrtnutých položek.
 
-1. Uložte rozepsané množství a vytvořte odkaz ke sdílení nákupu.
+1. Vytvořte odkaz ke sdílení nákupu.
 2. Pošlete celý odkaz druhému člověku, nejlépe přes chat.
 3. Příjemce otevře náhled a potvrdí, jak chce nákup použít.
 
@@ -59,7 +59,7 @@ Sdílený odkaz předává kopii vybraných jídel, jejich nastavení a nákupn�
 | Sloučení | Zachová vlastní jídla, přidá chybějící a spojí platná odškrtnutí. |
 | Převzetí | Nahradí vlastní nákup přesnou kopií přijatého nákupu. |
 
-Pokud se dávky nebo množství liší, příjemce nejprve vybere správnou variantu.
+Pokud se nastavení jídel liší, příjemce nejprve vybere správnou variantu.
 
 Další změny se mezi lidmi automaticky nepřenášejí, proto po změně nákupu pošlete nový odkaz.
 

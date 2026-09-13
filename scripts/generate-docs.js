@@ -45,9 +45,7 @@ async function main() {
   const { warnings } = JSON.parse(files.get('content-report.json'));
   reportWarnings(warnings);
   if (args.includes('--validate-only')) {
-    console.log(
-      `Obsah je platný; ${warnings.length} neblokujících upozornění na chybějící množství.`,
-    );
+    console.log(`Obsah je platný.\n\nObsahová varování (warnings): ${warnings.length}.`);
     return;
   }
   const { createChangelog } = require('./generate-changelog.cjs');
@@ -59,7 +57,7 @@ async function main() {
   const pendingChanges = synchronizeDocset(root, files, { checkOnly });
   if (!pendingChanges.length) return console.log('Dokumentace je aktuální.');
   console.log(
-    checkOnly ? 'Dokumentace není aktuální; spusťte npm run docs:generate:' : 'Aktualizováno:',
+    checkOnly ? 'Dokumentace není aktuální.\n\nSpusťte npm run docs:generate:' : 'Aktualizováno:',
   );
   for (const file of pendingChanges) console.log('- ' + file);
   if (checkOnly) process.exitCode = 1;

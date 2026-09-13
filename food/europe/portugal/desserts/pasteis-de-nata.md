@@ -4,7 +4,9 @@ Košíčky z listového těsta s mléčnou žloutkovou náplní, citronovou kůr
 
 ## Ingredience
 
-Množství platí pro jednu původní dávku; počet porcí není uveden.
+Množství platí pro jednu původní dávku.
+
+Počet porcí není uveden.
 
 | Surovina | Množství | Upřesnění |
 |---|---|---|

@@ -32,7 +32,7 @@ Kontroly prováděj v uvedeném pořadí od nejméně invazivní.
 | Reprezentativní detail | Otevři známý recept z katalogu | Nadpis, ingredience a kroky se vykreslí, ovládací texty jsou české a editační odkaz chybí | Odkaz 404, anglický token, editační odkaz, chybějící styly nebo prázdný článek | Porovnej zdroj, TOC, `docfx.json`, tokeny šablony a `_site/` |
 | České a anglické hledání | Vyhledej `Rajská`, `rajska`, `PIZZA`, `French Press`, `coffee` a dotaz bez shody | Správné výsledky, český nulový stav a konzole bez chyb | Prázdný výsledek pro známé slovo, anglický stav nebo chyba workeru | Ověř vlastní assety, `index.json` a verzi DocFX |
 | Changelog | Otevři stránku `Změny` z hlavní navigace | Zdrojový stav odpovídá `HEAD`, nejnovější rok je otevřený, roky bez změn nejsou zobrazené a každý starší zobrazený rok je sbalený s vlastním počtem a uvnitř zůstávají kategorie i technické záznamy | Chybějící starší změny, chybný roční přechod, zastaralý zdrojový stav, posunuté datum nebo neformátovaný podporovaný typ | Reprodukuj generátor podle diagnostického stromu |
-| Lokální reprodukce | Spusť úplnou lokální kontrolu z [`../development/commands.md`](../development/commands.md) | `npm test` a build projdou; obsahová upozornění nezastaví výsledek | Zastaralý generovaný soubor, vadný odkaz nebo neobnovený nástroj | Oprav nejbližší potvrzenou příčinu |
+| Lokální reprodukce | Spusť úplnou lokální kontrolu z [`../development/commands.md`](../development/commands.md) | `npm test` a build projdou, obsahová upozornění nezastaví výsledek | Zastaralý generovaný soubor, vadný odkaz nebo neobnovený nástroj | Oprav nejbližší potvrzenou příčinu |
 | CI | Otevři běh workflow `Dokumentace` pro dotčený commit | `verify-docs` a u `main` také `publish-docs` jsou úspěšné | Registry, oprávnění, sestavení, Pages nebo SMTP | Postupuj podle názvu prvního selhaného kroku |
 
 ## Pozorovatelnost
@@ -42,7 +42,7 @@ Kontroly prováděj v uvedeném pořadí od nejméně invazivní.
 | Build log | GitHub Actions a lokální terminál | Obnova nástrojů, validace, sestavení a nasazení | Podle nastavení GitHubu, lokálně pouze po dobu relace | Nesmí obsahovat hodnoty secrets |
 | HTTP výsledek | Veřejná URL nebo lokální server | Dostupnost konkrétního statického souboru | Bez projektové retence | Veřejný údaj |
 | Konzole prohlížeče | Vývojářské nástroje při smoke scénáři | Klientské chyby šablony, hledání nebo načítání zdrojů | Standardně se neuchovává | Veřejný obsah a technické URL |
-| Git historie | Repozitář; `_generated/changelog.md` je její generovaná projekce | Zdrojový stav a posloupnost obsahových změn | Trvalá podle Git hostingu a klonů | Veřejná metadata commitů |
+| Git historie | Repozitář, `_generated/changelog.md` je její generovaná projekce | Zdrojový stav a posloupnost obsahových změn | Trvalá podle Git hostingu a klonů | Veřejná metadata commitů |
 | Aplikační logy, metriky a trasování | Nepoužívá se | Web nemá vlastní runtime proces | Není relevantní | Není relevantní |
 
 Projekt nemá serverový health endpoint, protože na Pages běží pouze statické soubory.
@@ -90,14 +90,18 @@ Projekt nemá serverový health endpoint, protože na Pages běží pouze static
 
 ### Symptom: změna receptu se neprojevila v lokálním náhledu
 
-1. Ověř zvolený [režim náhledu](../development/commands.md#spuštění); jednorázové spuštění nesleduje další změny.
+1. Ověř zvolený [režim náhledu](../development/commands.md#spuštění), jednorázové spuštění nesleduje další změny.
 2. V průběžném režimu počkej na úspěšné dokončení sestavení v terminálu a ručně obnov stránku prohlížeče.
-3. Pokud generování odmítlo zdroj, oprav uvedený recept nebo slovník; další uložení spustí nové ověření.
-4. Při chybě sledovače jej ukonči, spusť úplný build a náhled znovu; při plném disku nejprve uvolni místo pro obnovitelné výstupy.
+3. Pokud generování odmítlo zdroj, oprav uvedený recept nebo slovník, další uložení spustí nové ověření.
+4. Při chybě sledovače jej ukonči, spusť úplný build a náhled znovu, při plném disku nejprve uvolni místo pro obnovitelné výstupy.
 
-**Potvrzení příčiny:** Terminál rozliší neplatný zdroj, nedokončené sestavení a selhaný sledovač; porovnej výsledek s jednorázovým buildem.
+**Potvrzení příčiny:** Terminál rozliší neplatný zdroj, nedokončené sestavení a selhaný sledovač.
 
-**Bezpečná náprava:** Oprav zdroj nebo prostředí a regeneruj; ruční zásah do `_generated/` nebo `_site/` příčinu neřeší.
+Porovnej výsledek s jednorázovým buildem.
+
+**Bezpečná náprava:** Oprav zdroj nebo prostředí a regeneruj.
+
+Ruční zásah do `_generated/` nebo `_site/` příčinu neřeší.
 
 **Eskalace:** Opakovaně ztracené změny při úspěšném jednorázovém buildu předej engineeringu s operačním systémem, typem disku a konkrétní cestou.
 
@@ -125,7 +129,9 @@ Projekt nemá serverový health endpoint, protože na Pages běží pouze static
 
 **Potvrzení příčiny:** Konkrétní commit chybí nebo má jinou skupinu v reprodukovaném CLI výstupu nad stejnou Git historií.
 
-**Bezpečná náprava:** Oprav zdrojovou commit zprávu pouze novým commitem, nebo kompatibilně oprav generátor a znovu sestav artefakt; vygenerovaný soubor necommituj.
+**Bezpečná náprava:** Oprav zdrojovou commit zprávu pouze novým commitem, nebo kompatibilně oprav generátor a znovu sestav artefakt.
+
+Vygenerovaný soubor necommituj.
 
 **Eskalace:** Přepis publikované Git historie, změna verzovacího modelu nebo ruční udržování changelogu vyžaduje samostatné rozhodnutí maintainera.
 
@@ -154,7 +160,9 @@ V době obnovy ukazovaly vzdálené `main` a `develop` shodně na `74dfda6750792
 
 Index byl načten z `origin/main` bez aktualizace pracovních souborů a lokální `develop` vznikl z obnoveného `main` se sledováním `origin/develop`.
 
-Kontrolní součty SHA-256 všech 107 kontrolovaných projektových souborů před obnovou a bezprostředně po ní byly shodné; existující úpravy zůstaly necommitované a index neobsahoval připravené změny.
+Kontrolní součty SHA-256 všech 107 kontrolovaných projektových souborů před obnovou a bezprostředně po ní byly shodné.
+
+Existující úpravy zůstaly necommitované a index neobsahoval připravené změny.
 
 SSH klíče ani globální nastavení se neměnily, neproběhl push a kontrola `git fsck --full` nezjistila chyby.
 
@@ -173,40 +181,53 @@ Přesné diagnostické příkazy vlastní [ověření Git a SSH](../development/
 
 Samostatná databázová záloha není použitelná, protože projekt nemá serverovou databázi.
 
-Místní nákupní data chrání uživatel exportem přenositelného odkazu; vymazání dat prohlížeče není obnovitelné z Gitu.
+Místní nákupní data chrání uživatel exportem přenositelného odkazu.
+
+Vymazání dat prohlížeče není obnovitelné z Gitu.
 
 Při oznámeném selhání ukládání nejprve exportuj aktuální nákup a teprve potom obnovuj stránku nebo opravuj oprávnění úložiště.
 
-Průběh vaření se při změně zdrojové revize receptu obnoví od začátku; totéž nastane jednou u staršího uloženého postupu bez revize.
+Průběh vaření se při změně zdrojové revize receptu obnoví od začátku.
+
+Totéž nastane jednou u staršího uloženého postupu bez revize.
 
 Jde o ochranu proti potvrzení jiných kroků po aktualizaci, nikoli o důvod vracet starý klientský stav ruční úpravou úložiště.
 
 Při nečekané ztrátě odškrtnutí ověř změnu dávky, varianty, přílohy nebo zdrojového množství podle [datového životního cyklu](../architecture/overview.md#odvozená-data-a-rozsah-automatizace).
 
-PDF nebo běžný textový seznam slouží ke čtení mimo web; editovatelný stav obnoví pouze platný Export nákupu ze stejné revize receptů.
+PDF nebo běžný textový seznam slouží ke čtení mimo web.
+
+Editovatelný stav obnoví pouze platný Export nákupu ze stejné revize receptů.
 
 ### Symptom: import nákupu je odmítnutý nebo ukazuje rozdíly
 
 1. Ověř, že příjemce vložil celý odkaz nebo kód z Exportu nákupu, nikoli PDF či čitelný seznam.
-2. Při rozdílné revizi obnov oba weby a připrav nový export; při chybějícím receptu ověř shodnou verzi a adresu webu.
+2. Při rozdílné revizi obnov oba weby a připrav nový export, při chybějícím receptu ověř shodnou verzi a adresu webu.
 3. Při rozdílných dávkách nebo vlastních množstvích vyřeš každou nabídnutou volbu podle skutečného zamýšleného nákupu.
-4. Při poškození nebo překročení limitu předávej nový úplný odkaz, případně menší nákup; nepřepisuj ručně jeho kód.
+4. Při poškození nebo překročení limitu předávej nový úplný odkaz, případně menší nákup, nepřepisuj ručně jeho kód.
 
-**Bezpečná náprava:** Odmítnutý import původní nákup nezmění; potvrzený import lze v otevřené stránce vrátit tlačítkem „Vrátit poslední změnu“.
+**Bezpečná náprava:** Odmítnutý import původní nákup nezmění.
 
-**Eskalace:** Reprodukovatelný rozpor platné kopie předej engineeringu s neosobní fixture a verzí webu; cizí nákupní odkazy nepatří do veřejných logů.
+Potvrzený import lze v otevřené stránce vrátit tlačítkem „Vrátit poslední změnu“.
+
+**Eskalace:** Reprodukovatelný rozpor platné kopie předej engineeringu s neosobní fixture a verzí webu.
+
+Cizí nákupní odkazy nepatří do veřejných logů.
 
 ### Symptom: sestavení vypisuje chybějící množství
 
-1. Rozliš obsahový warning `RECIPE_QUANTITY_MISSING` od chyby slovníku, tabulky nebo samotného DocFX.
-2. Zkontroluj konkrétní soubor a řádek z výpisu nebo z `_generated/content-report.json` a doplň množství podle skutečného receptu.
-3. Zopakuj [samostatnou kontrolu obsahu](../development/commands.md#statické-kontroly); po doplnění warning daného řádku zmizí.
+1. Zkontroluj závěrečný počet obsahových warnings za kontrolou hotového webu, nulové počítadlo DocFX se vztahuje pouze na jeho fázi.
+2. Rozliš obsahový warning `RECIPE_QUANTITY_MISSING` od chyby slovníku, tabulky nebo samotného DocFX.
+3. Zkontroluj konkrétní soubor a řádek z výpisu nebo z `_generated/content-report.json` a doplň množství podle skutečného receptu.
+4. Zopakuj [samostatnou kontrolu obsahu](../development/commands.md#statické-kontroly), po doplnění warning daného řádku zmizí.
 
 **Hranice:** Obsahové warnings neblokují sestavení a nesmějí vést k odhadu dávky nebo oslabení strukturálních kontrol.
 
 Při selhání PDF otevři náhled znovu nebo použij jeho tlačítko „Tisk“ a systémovou volbu uložení PDF.
 
-Při diagnostice ověř po `npm ci` a čistém sestavení dostupnost `public/kitchen-pdf.mjs`, `public/pdfmake.min.js` a `public/vfs_fonts.js`; jejich cesty musí fungovat i pod podsložkou GitHub Pages.
+Při diagnostice ověř po `npm ci` a čistém sestavení dostupnost `public/kitchen-pdf.mjs`, `public/pdfmake.min.js` a `public/vfs_fonts.js`.
+
+Jejich cesty musí fungovat i pod podsložkou GitHub Pages.
 
 ## Rollback a bezpečné pokračování
 

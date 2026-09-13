@@ -1,10 +1,12 @@
 # 🍝 Penne Quattro Formaggi
 
-Penne s krémovou omáčkou ze smetany, másla a nivy; domácí varianta sýrových těstovin.
+Penne s krémovou omáčkou ze smetany, másla a nivy, domácí varianta sýrových těstovin.
 
 ## Ingredience
 
-Množství platí pro jednu původní dávku; počet porcí není uveden.
+Množství platí pro jednu původní dávku.
+
+Počet porcí není uveden.
 
 | Surovina | Množství | Upřesnění |
 |---|---|---|

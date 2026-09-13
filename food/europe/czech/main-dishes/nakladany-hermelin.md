@@ -4,7 +4,9 @@ Hermelín plněný cibulí, česnekem a chilli pastou, naložený v oleji a něk
 
 ## Ingredience
 
-Množství platí pro jednu původní dávku; počet porcí není uveden.
+Množství platí pro jednu původní dávku.
+
+Počet porcí není uveden.
 
 | Surovina | Množství | Upřesnění |
 |---|---|---|
@@ -12,7 +14,7 @@ Množství platí pro jednu původní dávku; počet porcí není uveden.
 | Cibule | 2 ks | — |
 | Česnek | 6 stroužků | — |
 | Řepkový olej | neuvedeno | na úplné ponoření sýrů |
-| Chilli pasta | neuvedeno | tenká vrstva; původně Kaufland |
+| Chilli pasta | neuvedeno | tenká vrstva, původně Kaufland |
 | Koření na grilovaný sýr | dle chuti | původně Avokádo |
 
 ## Než začnete

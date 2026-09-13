@@ -118,6 +118,8 @@ Běžný souvislý text piš tak, aby každá věta tvořila samostatný Markdow
 
 Mezi dvěma větami proto vždy ponech právě jeden prázdný řádek.
 
+Věty nespojuj středníkem, rozděl je do samostatných odstavců.
+
 Samotné zalomení řádku je v Markdownu pouze soft line break a běžný renderer jej uvnitř odstavce zobrazí jako mezeru, nikoli jako viditelné oddělení.
 
 Stejné pravidlo platí pro závěrečné shrnutí (`summary`) a jiné souvislé textové výstupy agenta.

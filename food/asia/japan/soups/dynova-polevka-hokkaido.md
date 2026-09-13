@@ -4,7 +4,9 @@ Krémová polévka z dýně Hokkaidó, zeleninového vývaru a smetany.
 
 ## Ingredience
 
-Množství platí pro jednu původní dávku; počet porcí není uveden.
+Množství platí pro jednu původní dávku.
+
+Počet porcí není uveden.
 
 | Surovina | Množství | Upřesnění |
 |---|---|---|

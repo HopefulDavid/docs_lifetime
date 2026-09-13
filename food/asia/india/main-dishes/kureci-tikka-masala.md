@@ -4,7 +4,9 @@ Marinované kuřecí maso v kořeněné rajčatové omáčce se smetanou a volit
 
 ## Ingredience
 
-Množství platí pro jednu původní dávku; počet porcí není uveden.
+Množství platí pro jednu původní dávku.
+
+Počet porcí není uveden.
 
 ### Marináda na maso
 

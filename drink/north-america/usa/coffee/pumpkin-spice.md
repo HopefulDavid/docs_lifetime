@@ -4,7 +4,9 @@ Teplý mléčný nápoj s obilným Caro, medem, skořicovým cukrem a šlehačko
 
 ## Ingredience
 
-Množství platí pro jednu původní dávku; počet porcí není uveden.
+Množství platí pro jednu původní dávku.
+
+Počet porcí není uveden.
 
 | Surovina | Množství | Upřesnění |
 |---|---|---|
@@ -20,6 +22,7 @@ Množství platí pro jednu původní dávku; počet porcí není uveden.
 
 - Naplňte polovinu hrnku mlékem.
 - Ohřejte mléko v mikrovlnné troubě.
+
   Pomáhá dosáhnout správné teploty pro míchání.
 
   > **Tip:** Mléko neohřívejte příliš dlouho, aby se nespálilo.

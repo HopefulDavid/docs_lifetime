@@ -4,7 +4,9 @@ Vývar z pečených hovězích kostí, kořenové zeleniny a koření jako polé
 
 ## Ingredience
 
-Množství platí pro jednu původní dávku; počet porcí není uveden.
+Množství platí pro jednu původní dávku.
+
+Počet porcí není uveden.
 
 | Surovina | Množství | Upřesnění |
 |---|---|---|
@@ -48,6 +50,8 @@ Tento údaj nejprve ověřte s autorem receptu a s návodem svého hrnce.
 
 ### 3. Vaření a dochucení
 
-- Dobu a režim vaření nejprve ověřte pro svůj hrnec; původní údaj „5 hodin v tlakovém hrnci“ není ověřený a chybí objem vody.
+- Dobu a režim vaření nejprve ověřte pro svůj hrnec.
+
+  Původní údaj „5 hodin v tlakovém hrnci“ není ověřený a chybí objem vody.
 
   > **Varování:** Sušený libeček přidávejte až po prvním převaření vývaru.

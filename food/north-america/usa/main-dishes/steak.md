@@ -4,7 +4,9 @@ Hovězí steak z pánve nebo grilu s máslem, bylinkami a přílohou podle výb�
 
 ## Ingredience
 
-Množství platí pro jednu původní dávku; počet porcí není uveden.
+Množství platí pro jednu původní dávku.
+
+Počet porcí není uveden.
 
 | Surovina | Množství | Upřesnění |
 |---|---|---|
@@ -29,7 +31,9 @@ Množství platí pro jednu původní dávku; počet porcí není uveden.
 ### 1. Příprava masa
 
 - Maso vyndejte z lednice alespoň 30 minut před přípravou, aby mělo pokojovou teplotu.
-- Maso osušte papírovou utěrkou; syrové hovězí neoplachujte.
+- Maso osušte papírovou utěrkou.
+
+  Syrové hovězí neoplachujte.
 
   > **Poznámka:** Oplachování může roznést bakterie na okolní povrchy, viz [doporučení USDA](https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/washing-food-does-it-promote-food).
 - Potřete olivovým olejem, osolte a opepřete z obou stran.

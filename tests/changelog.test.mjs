@@ -44,7 +44,7 @@ test('generuje úplnou čtenářskou historii po ročních obdobích nezávisle 
   assert.match(utc, /Počet změn v období: \*\*3\*\*\./u);
   assert.match(
     utc,
-    /Zobrazují se pouze roky, ve kterých vznikla změna; prázdné roky se vynechávají\./u,
+    /Zobrazují se pouze roky, ve kterých vznikla změna\.\r?\n>\r?\n> Prázdné roky se vynechávají\./u,
   );
   assert.doesNotMatch(utc, /<summary><strong>2026<\/strong>/u);
   assert.match(

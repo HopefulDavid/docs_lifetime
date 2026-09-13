@@ -41,7 +41,11 @@ Přesné lokální příkazy jsou v [`../development/commands.md`](../developmen
 
 Obsahová upozornění `RECIPE_QUANTITY_MISSING` jsou podle [receptového kontraktu](../product/recipe-format.md#automatická-kontrola-obsahu) neblokující a generátor je v Actions vypíše jako anotace konkrétních řádků.
 
-Neznámé suroviny, vadné slovníky a neúplné tabulky vracejí chybu před zápisem; varování DocFX se nadále považují za chyby sestavení.
+Po kontrole artefaktu se vypíše počet obsahových varování ze stejného reportu, aby nezanikla za nulovým souhrnem DocFX.
+
+Neznámé suroviny, vadné slovníky a neúplné tabulky vracejí chybu před zápisem.
+
+Varování DocFX se nadále považují za chyby sestavení.
 
 Generátor vždy přepisuje changelog z celé dosažitelné historie a `tag_pattern = "^$"` záměrně vypíná release segmentaci, takže Git tag neodřízne starší záznamy.
 
@@ -107,9 +111,13 @@ Statický artefakt se v publikačním jobu sestaví jednou a beze změny se ode�
 | Ruční spuštění na jiné větvi | Pouze `verify-docs` | Obnova, `npm test`, sestavení bez varování | `contents: read` | Podmínka jobu zabrání publikování |
 | Tag nebo release | Žádný samostatný tok | — | — | Projekt nepoužívá verzované release artefakty |
 
-Publikační job nikdy nezapisuje do `main`; docset v `_generated/` vzniká automaticky z ručních zdrojů a nasazovací větev obsahuje jediný orphan commit posledního artefaktu.
+Publikační job nikdy nezapisuje do `main`.
 
-Oznámení čte `_generated/changelog.md`; jeho cesta je stejná jako vstup sestavení.
+Docset v `_generated/` vzniká automaticky z ručních zdrojů a nasazovací větev obsahuje jediný orphan commit posledního artefaktu.
+
+Oznámení čte `_generated/changelog.md`.
+
+Jeho cesta je stejná jako vstup sestavení.
 
 ### Ochrana větví
 
@@ -130,7 +138,7 @@ Nechráněná nasazovací větev `gh-pages` je záměrná, protože její ochran
 | Prostředí | Účel | Zdroj artefaktu | Schválení | Ověření po nasazení | Rollback |
 |---|---|---|---|---|---|
 | Lokální `_site/` | Vývojový náhled a vizuální kontrola | Aktuální checkout | Žádné | Reprezentativní smoke v prohlížeči | Odstranit a znovu sestavit |
-| GitHub Actions | Ověření a vytvoření artefaktu | Commit události | `main` vyžaduje pull request a úspěšné `Ověření dokumentace`; `develop` povoluje přímý push | Log sestavení a obsah `_site/` | Opravit nebo revertovat zdrojovou změnu |
+| GitHub Actions | Ověření a vytvoření artefaktu | Commit události | `main` vyžaduje pull request a úspěšné `Ověření dokumentace`, `develop` povoluje přímý push | Log sestavení a obsah `_site/` | Opravit nebo revertovat zdrojovou změnu |
 | GitHub Pages | Veřejné čtení | `_site/` z `publish-docs` | Úspěšný `verify-docs` a větev `main` | Veřejná úvodní stránka a reprezentativní recept | [`../operations/runbook.md`](../operations/runbook.md#rollback-a-bezpečné-pokračování) |
 
 Projekt nemá staging prostředí ani runtime datovou migraci.

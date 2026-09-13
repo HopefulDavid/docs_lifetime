@@ -4,7 +4,9 @@ Hovězí masové koule se sladkokyselou rajčatovou omáčkou a přílohou podle
 
 ## Ingredience
 
-Množství platí pro jednu původní dávku; počet porcí není uveden.
+Množství platí pro jednu původní dávku.
+
+Počet porcí není uveden.
 
 ### Na maso
 

@@ -4,11 +4,13 @@ Svěží dip ze zakysané smetany, česneku a bylinek k zelenině, pečivu nebo 
 
 ## Ingredience
 
-Množství platí pro jednu původní dávku; počet porcí není uveden.
+Množství platí pro jednu původní dávku.
+
+Počet porcí není uveden.
 
 | Surovina | Množství | Upřesnění |
 |---|---|---|
-| Zakysaná smetana | 0,5 kelímku | velký kelímek; jeho hmotnost zdroj neuvádí |
+| Zakysaná smetana | 0,5 kelímku | velký kelímek, jeho hmotnost zdroj neuvádí |
 | Sladká paprika mletá | dle chuti | — |
 | Pizza koření | dle chuti | — |
 | Bazalka | dle chuti | čerstvá nasekaná nebo sušená |

@@ -4,7 +4,9 @@ Kuřecí maso v kokosové kari omáčce s mangem nebo broskví, podávané s rý
 
 ## Ingredience
 
-Množství platí pro jednu původní dávku; počet porcí není uveden.
+Množství platí pro jednu původní dávku.
+
+Počet porcí není uveden.
 
 | Surovina | Množství | Upřesnění |
 |---|---|---|

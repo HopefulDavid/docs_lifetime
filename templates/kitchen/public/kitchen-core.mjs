@@ -97,25 +97,18 @@ export function pruneShoppingState(state, items) {
   }
 }
 
-/** Použije vlastní nákupní množství jen pro nezměněný výběr a dávku. */
+/** Zachová dříve uložené vlastní množství pouze pro nezměněný výběr a dávku. */
 export function shoppingAmount(item, amounts = {}) {
   const custom = amounts[item.key];
   return custom?.signature === item.signature && custom.text.trim() ? `${custom.text.trim()} (vlastní)` : item.amount;
 }
 
-/** Určí neznámé množství, které ještě nemá platné vlastní doplnění. */
-export function shoppingNeedsAmount(item, amounts = {}) {
-  const custom = amounts[item.key];
-  return item.text === 'neuvedeno' && !(custom?.signature === item.signature && custom.text.trim());
-}
-
-/** Vyfiltruje nákup podle oddělení, názvu, doplnění a hotových položek bez změny celkového seznamu. */
-export function filterShoppingItems(items, filters = {}, checked = {}, amounts = {}) {
+/** Vyfiltruje nákup podle oddělení, názvu a hotových položek bez změny celkového seznamu. */
+export function filterShoppingItems(items, filters = {}, checked = {}) {
   const normalize = value => value.normalize('NFD').replace(/\p{M}/gu, '').toLocaleLowerCase('cs');
   const words = normalize(filters.search || '').split(/\s+/).filter(Boolean);
   return items.filter(item => (!filters.category || item.category === filters.category)
     && (!filters.hideDone || checked[item.key] !== item.signature)
-    && (!filters.missing || shoppingNeedsAmount(item, amounts))
     && words.every(word => normalize(item.name).includes(word)));
 }
 

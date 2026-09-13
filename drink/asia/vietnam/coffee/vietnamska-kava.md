@@ -4,13 +4,15 @@ Překapávaná káva ze filtru Phin se slazeným kondenzovaným mlékem, podáva
 
 ## Ingredience
 
-Množství platí pro jednu původní dávku; počet porcí není uveden.
+Množství platí pro jednu původní dávku.
+
+Počet porcí není uveden.
 
 | Surovina | Množství | Upřesnění |
 |---|---|---|
 | Káva | 2 lžíce | středně hrubě mletá |
 | Slazené kondenzované mléko | neuvedeno | — |
-| Voda | 60–90 ml | vroucí; přibližně 2–3 fl oz |
+| Voda | 60–90 ml | vroucí, přibližně 2–3 fl oz |
 | Led | neuvedeno | volitelné |
 
 ## Pomůcky

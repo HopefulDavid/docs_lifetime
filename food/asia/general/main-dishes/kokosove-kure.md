@@ -4,7 +4,9 @@ Kuřecí nudličky se zeleninou, rajčaty a kokosovým mlékem, podávané s rý
 
 ## Ingredience
 
-Množství platí pro jednu původní dávku; počet porcí není uveden.
+Množství platí pro jednu původní dávku.
+
+Počet porcí není uveden.
 
 | Surovina | Množství | Upřesnění |
 |---|---|---|
@@ -15,7 +17,7 @@ Množství platí pro jednu původní dávku; počet porcí není uveden.
 | Mrkev | 200 g | — |
 | Zelená paprika | 200 g | — |
 | Kari koření | 2 lžíce | — |
-| Bílá cibule | 150 g | najemno; ověřte, zda jde o další cibuli |
+| Bílá cibule | 150 g | najemno, ověřte, zda jde o další cibuli |
 | Loupaná rajčata v konzervě | 400 g | drcená |
 | Kokosové mléko | 400 ml | — |
 | Sůl | dle chuti | — |
@@ -27,7 +29,9 @@ Množství platí pro jednu původní dávku; počet porcí není uveden.
 
 Zdroj uvádí zároveň 1 cibuli a 150 g bílé cibule.
 
-Nákup zachovává obě položky; před přípravou ověřte, zda jde o dvě samostatná množství.
+Nákup zachovává obě položky.
+
+Před přípravou ověřte, zda jde o dvě samostatná množství.
 
 ## Postup
 
