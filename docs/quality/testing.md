@@ -42,13 +42,30 @@ Projekt kombinuje deterministickou kontrolu generovaných souborů, strukturáln
 | Mobilní nákup a vaření, `REQ-006` až `REQ-010` | Skutečné ovládání katalogu, nastavení, checklistu a dialogu | [Smoke scénáře](../development/commands.md#výběr-nákup-a-vaření) |
 | Oprávnění, neměnné akce a publikační pořadí, `QLT-004` | Automatická strukturální kontrola workflow a review oddělených jobů | `npm run docs:validate` a `.github/workflows/main.yml` |
 
-### Ověření SVG ikon a zjednodušeného vaření, 2026-09-13
+### Ověření SVG ikon, vaření a čitelnosti nástrojů, 2026-09-13
 
-Po zavedení ikon a změně dialogu prošlo 46 Node testů a sestavení 54 stránek s nulovým počtem chyb a varování DocFX; 68 známých upozornění na neuvedené množství zůstalo beze změny.
+Po zavedení ikon prošlo 46 Node testů; závěrečná regrese po refaktoringu obsahuje 73 úspěšných testů a subtestů díky samostatnému pojmenování již kontrolovaných chybových variant.
+
+Prošel celý `npm test` včetně formátování, generování, kontroly shody a strukturální validace; `git-cliff` potřeboval přístup mimo sandbox k dočasnému testovacímu repozitáři.
+
+Sestavení a následná kontrola artefaktu ověřily 54 veřejných stránek, 27 receptů a čtyři TOC s nulovým počtem chyb a varování DocFX; 68 známých upozornění na neuvedené množství zůstalo beze změny.
+
+| Oblast | Skutečný důkaz | Hranice ověření |
+|---|---|---|
+| Všechny stránky | Výchozí i finální snímky všech 54 URL; závěrečný průchod na 1440 × 1000 a 390 × 844 bez vodorovného přesahu a chybějícího SVG | Vizuální přehledy horní, střední a dolní části doplněné detailními snímky; nikoli všechny kombinace stavu každé stránky |
+| Ikony | Vlajky s názvem země, katalog, nadpisy, asynchronní obsah navigace, prázdný nákup a oddělení skutečného seznamu jsou vykreslené | SVG jsou dekorativní, význam zůstává v textu; kontrolované jsou vybrané lokální ikony |
+| Nákup a hledání | Nulový výsledek a zrušení filtrů, rajská se šunkofleky, součet cibule 2 ks a vajec 3 ks, odškrtnutí cibule a obnova po načtení | Jde o místní stav jednoho prohlížeče |
+| Motiv a úzký displej | Nákup i vaření vizuálně na tmavém tabletu 768 × 1024; aktivní krok s dostupným hlavním tlačítkem také na 320 × 740 | Chromium v Codex; fyzické iOS/Android a jiné enginy nejsou zahrnuté |
+| Refaktoring generátoru | Obsahový docset před a po rozdělení odpovědností byl shodný v názvech, pořadí i jednotlivých bytech | Následné úmyslné změny ikon a veřejného návodu mění vlastní výstupy |
+| Vývojový server | `docs:dev` sestavil web, znovu sestavil po uložení zdroje a po Ctrl+C uvolnil port 8765 | Automatické obnovení stránky není součástí serveru |
+
+Průběžné logy, inventura a snímky jsou v ignorovaném `private/ui-audit/`; trvalý důkaz představuje tento záznam a [opakovatelný smoke](../development/commands.md#výběr-nákup-a-vaření).
 
 V prohlížeči Chromium byl ověřen mobilní dialog na 390 px a nízký displej 844 × 390, obnova druhého kroku, vrácení hotového kroku, přechod na poslední krok s návratem k nedokončenému a dokončení čtyř kroků tikka masaly bez volitelného naanu.
 
 Zavření tlačítkem i Escape vrátilo fokus na spouštěcí tlačítko a odstranilo kotvu vaření; tento průchod nenahrazuje test fyzických mobilních zařízení ani úplný audit přístupnosti.
+
+Zkušební nákup byl vymazán přes rozhraní a motiv vrácen na automatický.
 
 ### Trvalá obsahová kontrola
 

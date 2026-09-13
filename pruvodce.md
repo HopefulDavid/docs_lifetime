@@ -46,7 +46,11 @@ Pod každou surovinou lze rozbalit její původ, jednotlivá množství a pozná
 
 U vybraného jídla zvolte „Vařit“, případně v jeho detailu „Vařit krok za krokem“.
 
-Označením „Hotovo, další krok“ uložíte dokončení a přejdete dál; samotné přepnutí kroku v nabídce jej neoznačí za hotový.
+Tlačítkem „Hotovo, pokračovat“ uložíte dokončení a přejdete dál; poslední krok potvrdíte tlačítkem „Dokončit krok“.
+
+V „Přehledu kroků“ můžete přejít na jinou část postupu bez označení za hotovou.
+
+Chybně potvrzený krok otevřete a zvolte „Vrátit mezi nedokončené“.
 
 Suroviny, varianty a přípravné poznámky lze rozbalit přímo ve vaření.
 

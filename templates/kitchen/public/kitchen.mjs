@@ -304,7 +304,7 @@ function renderPlanner(root) {
       const categoryItems = items.filter(item => item.category === name);
       if (!categoryItems.length) continue;
       const count = el('span', { className: 'count-badge' });
-      const section = el('section', { className: 'shopping-department' }, el('h3', {}, name, count));
+      const section = el('section', { className: 'shopping-department' }, el('h3', {}, labelIcon(name, 'basket'), name, count));
       sections.push({ section, count, items: categoryItems });
       for (const item of categoryItems) {
         const id = `shopping-${encodeURIComponent(item.key)}`;
@@ -686,7 +686,7 @@ function openCooking(recipe, contents, config, preparation, closed) {
     if (completed) {
       body.append(el('div', { className: 'cook-success', role: 'status' },
         icon('check-circle'), el('h2', { id: 'cook-title', tabIndex: -1 }, 'Dobrou chuť!'),
-        el('p', {}, `Všech ${progress.active.length} kroků máte hotových.`),
+        el('p', {}, 'Všechny kroky máte hotové.'),
         button('Prohlédnout hotové kroky', () => move(progress.active[0]), { className: 'kitchen-button' })));
     } else {
       body.append(el('div', { className: 'cook-step-heading' },

@@ -153,7 +153,8 @@ Po sestavení ověř obecný Úvod, katalog v Kuchyni, nákup a detail na šíř
 | `REQ-007` | U rajské zvol ghí a zapni přílohu; u kari zvol broskev | Nákup obsahuje zvolené varianty, nikoli zároveň jejich náhrady |
 | `REQ-009` | U neznámého množství rozbal zdroje, doplň vlastní množství a ulož; zkopíruj text nebo stáhni PDF | Vlastní text je označený a export obsahuje také původní údaj a poznámky |
 | `REQ-010`, `REQ-011` | Otevři šunkofleky přes „Vařit krok za krokem“, dokonči první krok, zavři a otevři dialog znovu | Zobrazí se druhý krok a první zůstává označený |
-| `REQ-010` | Přeskoč přímo na poslední krok a dokonči jej | Celé vaření není označené jako hotové, pokud zbývají neoznačené kroky |
+| `REQ-010` | V „Přehledu kroků“ přeskoč na poslední krok a dokonči jej | Celé vaření není označené jako hotové, pokud zbývají neoznačené kroky; hlavní tlačítko nabídne návrat k nedokončenému |
+| `REQ-010` | Otevři již hotový krok a zvol „Vrátit mezi nedokončené“ | Průběh se sníží a jedinou hlavní akcí je opět dokončení kroku |
 | `REQ-006` | Vyhledej `tikka`, otevři recept a vrať se zpět | Katalog zachová hledání a odpovídající výsledek |
 | `REQ-008` | Zvol „Začít nakupovat“, filtruj oddělení i název a skryj hotové | Výběr jídel ustoupí surovinám; prázdný výsledek nabídne zrušení filtrů |
 | `REQ-009` | Rozepsané množství ponech neuložené a odškrtni jinou surovinu | Rozepsaný údaj a otevřená editace zůstanou zachované |

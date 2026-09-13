@@ -35,6 +35,7 @@
     "carrot": "tabler:carrot",
     "meat": "tabler:meat",
     "milk": "tabler:milk",
+    "snowflake": "tabler:snowflake",
     "bread": "tabler:bread",
     "salt": "tabler:salt",
     "bottle": "tabler:bottle"
@@ -86,6 +87,9 @@
     "Trvanlivé potraviny": "basket",
     "Konzervy, omáčky a oleje": "bottle",
     "Koření": "salt",
+    "Maso a uzeniny": "meat",
+    "Mléčné výrobky a vejce": "milk",
+    "Mražené": "snowflake",
     "Doma připravit": "home"
   }
 }

@@ -115,7 +115,7 @@ const docfxOptions = {
       }
     });
 
-    for (const root of [document.getElementById('search-results'), document.querySelector('header')].filter(Boolean)) {
+    for (const root of [document.getElementById('search-results'), document.querySelector('header'), document.querySelector('.toc-offcanvas')].filter(Boolean)) {
       new MutationObserver(() => { localizeAriaLabels(root); decoratePage(root); showResults(); }).observe(root, {
         childList: true,
         subtree: true,

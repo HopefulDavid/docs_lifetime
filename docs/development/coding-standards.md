@@ -1,7 +1,7 @@
 ---
 canonical_for: coding-standards
 status: accepted
-last_verified: 2026-08-28
+last_verified: 2026-09-13
 owner: engineering
 ---
 
@@ -137,6 +137,8 @@ Varianty chybových vstupů mají vlastní názvy; nepřidává se obecný testo
 Ruční styl bez kontroly byl odmítnut kvůli opakovanému zhušťování kódu a nový testovací framework kvůli absenci požadavku, který by vestavěný runner nepokrýval.
 
 Změna je vratná odebráním formatteru a jeho kontroly; datové formáty ani klientské závislosti se tím nemění.
+
+### Obecné zásady
 
 Jeden prvek má mít srozumitelnou odpovědnost a název odpovídající doménovému nebo technickému významu.
 
