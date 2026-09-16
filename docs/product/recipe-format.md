@@ -206,8 +206,6 @@ Věcné změny receptu vyžadují kontrolu člověkem znalým receptu podle [tes
 | Doporučené dávky nápojů potřebují ověření při vlastní přípravě | Zdrojové poznámky u French Pressu, vietnamské kávy a Pumpkin Spice | Správce obsahu případně upraví doložené výchozí dávky podle své přípravy |
 | U části balení, hrnků, kusů a porcí chybí velikost | Upřesnění příslušných ingrediencí | Správce obsahu doplní skutečnou hmotnost nebo objem, nelze je odvodit z běžného obchodního balení |
 
-Duplicitu bílé cibule v kokosovém kuřeti potvrdil uživatel dne 2026-09-13, recept proto obsahuje pouze jednu cibuli.
-
 Generátor zdrojové recepty neformátuje ani nepřepisuje.
 
 Chybný vstup odmítne před zápisem odvozených souborů.

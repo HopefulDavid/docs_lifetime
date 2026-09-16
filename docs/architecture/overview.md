@@ -326,10 +326,6 @@ Vizuální orientaci podporují místní SVG assety generované z `data/icons.js
 
 ## 11. Zbytková rizika a trvalé kontroly
 
-Technické přechody původně vedené jako `ARCH-RISK-001` a `ARCH-RISK-005` uzavřelo přijaté [`ADR-0002`](decisions/ADR-0002-vyhledavani-nad-docfx-indexem.md), automatické scénáře a ověřený upgrade DocFX.
-
-Dřívější `DELIVERY-RISK-001` uzavřely aktivní GitHub rulesety pro `main` a `develop`, jejichž aktuální nastavení vlastní [`../delivery/ci-cd.md`](../delivery/ci-cd.md#ochrana-větví).
-
 | ID | Skutečnost | Dopad | Povinná kontrola nebo cílový stav | Vlastník | Podmínka změny nebo přezkoumání |
 |---|---|---|---|---|---|
 | `CONTENT-CONTROL-001` | Technické kontroly neumějí spolehlivě posoudit kulinářskou správnost ingrediencí, množství a postupu | Věcná chyba může projít sestavením | Každou věcnou obsahovou změnu potvrdí člověk znalý receptu, konkrétní nejasnosti vlastní [formát receptu](../product/recipe-format.md#obsahová-revize) | Správce obsahu | Při změně produktového modelu nebo zavedení odborného validačního zdroje |

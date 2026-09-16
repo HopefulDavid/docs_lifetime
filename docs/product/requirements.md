@@ -93,8 +93,6 @@ Rozhraní nenabízí vlastní zadání množství ani tlačítko nebo filtr chyb
 
 Pokud autor množství dosud nedoplnil, recept a nákup zobrazí „Množství neuvedeno“ a export zachová původní údaj.
 
-Toto chování nahrazuje ruční doplňování podle zadání uživatele ze dne 2026-09-13.
-
 Platné vlastní údaje uložené ve starší verzi zůstanou označené pro čtení a přenos, aby aktualizace neztratila existující data.
 
 Jejich zneplatnění změnou nákupu a řešení rozdílů při importu zachovávají dosavadní kontrakt.
@@ -159,7 +157,7 @@ Zahrnutí volitelné suroviny má samostatnou akci „Zahrnout“ nebo „Vynech
 
 Volitelná skupina má samostatně popsaný přepínač zahrnutí.
 
-Toto doplnění reaguje na uživatelem nahlášené chybějící checkboxy v detailu dne 2026-09-13 a zachovává pravidla platnosti odškrtnutí podle `REQ-011`.
+Platnost odškrtnutí se řídí `REQ-011`.
 
 Pravý obsah článku odkazuje pouze na viditelné části.
 
@@ -196,13 +194,11 @@ Obecné oblasti používají symbol světa a nepředstírají konkrétní zemi.
 - Návrat ke staré dávce neobnoví dříve zneplatněné odškrtnutí ani vlastní množství.
 - Selhání zápisu místního nákupu zůstane viditelné v nákupní liště a nabídnuté exporty zůstanou dostupné.
 
-Tyto scénáře rozvíjejí `REQ-006`, `REQ-008`, `REQ-009`, `REQ-010` a `QLT-003` podle upřesnění uživatele, který zdůraznil celkový design a zachování PDF.
+Tyto scénáře rozvíjejí `REQ-006`, `REQ-008`, `REQ-009`, `REQ-010` a `QLT-003`.
 
 ## Obsahový kontrakt receptů
 
 Jednotný zápis surovin, dávky, alternativ a postupu vlastní [formát receptu](recipe-format.md).
-
-Výběr jídel a nákupní seznam jsou přijatým rozšířením na základě zadání uživatele ze dne 2026-09-12, které nahrazuje jejich původní vyloučení z rozsahu.
 
 ## Kvalitativní očekávání
 

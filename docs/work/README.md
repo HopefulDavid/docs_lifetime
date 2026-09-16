@@ -132,6 +132,8 @@ Dva agenti nesmějí nezávisle přijmout dvě odlišné normativní změny stej
 
 Před odstraněním záznamu proveď kontrolu přenosu znalostí.
 
+Přenos a nahrazování historických detailů se řídí [pravidly udržování rozsahu](../governance/documentation.md#historie-a-udržování-rozsahu).
+
 - Produktové změny jsou v kanonických požadavcích.
 - Architektonické změny jsou v architektonickém přehledu.
 - Významná rozhodnutí jsou v ADR.
