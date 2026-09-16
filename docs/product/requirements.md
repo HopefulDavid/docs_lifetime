@@ -63,7 +63,7 @@ Další oblasti osobního života mohou přibývat jako samostatné návody, kte
 | `REQ-003` | Správce přidal, upravil nebo odstranil platný obsahový soubor | Spustí generování, sestavení nebo uloží změnu při vývojovém náhledu | Katalog, přehledy, navigace a klientská data se deterministicky obnoví bez ručních změn odvozených souborů, nepotřebné výstupy zmizí | Vysoká | Životní cyklus receptu v izolované fixture, čisté sestavení a vývojový náhled |
 | `REQ-004` | Přijatá změna je na větvi `main` | Proběhne publikační workflow | Ověřený statický web je dostupný na kanonické adrese a changelog zachovává úplnou historii, nejnovější rok změn nechává otevřený, roky bez změn vynechává a starší zobrazené roky balí | Vysoká | GitHub Actions, veřejný smoke a víceletý changelogový test |
 | `REQ-005` | Čtenář hledá český nebo anglický termín obsažený v indexu | Odešle libovolnou kombinaci indexovaných slov bez ohledu na velikost písmen a diakritiku | Uvidí položky obsahující všechna stejná normalizovaná slova nebo jednoznačnou informaci, že výsledek nebyl nalezen | Střední | Automatické české i anglické názvy a slova z obsahu, poté vizuální smoke a dotaz bez shody |
-| `REQ-006` | Čtenář vybírá jídla | Filtruje katalog podle názvu, suroviny nebo typu a vybere více položek | Karty ukazují stručný popis a postup, výběr je viditelný a dostupný v „Můj nákup“ | Vysoká | Mobilní katalog, filtr bez diakritiky a nulový stav |
+| `REQ-006` | Čtenář vybírá jídla a nápoje | Hledá jídlo nebo pití podle názvu, filtruje katalog podle typu a vybere více položek | Karty ukazují stručný popis a postup, výběr je viditelný a dostupný v „Můj nákup“ | Vysoká | Mobilní katalog, filtr bez diakritiky a nulový stav |
 | `REQ-007` | Čtenář má vybraná jídla | Změní násobek dávky, surovinovou alternativu nebo volitelnou část | Nákup obsahuje pouze zvolenou alternativu a zahrnuté části, uvedená čísla se přepočítají a chybějící množství zůstane přiznané | Kritická | Doménové testy a skutečné ovládání výběru |
 | `REQ-008` | Čtenář nakupuje více jídel | Otevře nákup a označí připravené položky | Slučitelné suroviny jsou sečtené, uspořádané podle oddělení a mají dohledatelné zdrojové recepty, rozdílné jednotky se nemíchají | Kritická | Součet rajské a šunkofleků, koření, pomůcky a změna dávky |
 | `REQ-009` | Čtenář jde do obchodu bez připojení | Kopíruje text, uloží PDF nebo vytiskne seznam | Export zachová suroviny, poznámky, zdrojová množství i odškrtnutí, samostatné stažení TXT se nenabízí | Vysoká | Test exportu a prohlížeč |
@@ -132,6 +132,10 @@ Vysvětlující texty rozhraní oddělují jednotlivé věty do viditelných ods
 Průvodce vysvětluje stabilní principy výběru, nákupu, vaření a sdílené kopie bez přepisování každého názvu tlačítka.
 
 ## Ovládání a PDF
+
+Popisek, příklady a nápověda katalogového hledání popisují hledání jídel a nápojů, jeho výsledkem jsou recepty.
+
+Hledání samostatných surovin patří do nákupního seznamu.
 
 Navigace Výběr → Nakoupit → Uvařit propojuje samostatná zobrazení a ukazuje právě otevřenou část.
 

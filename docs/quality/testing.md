@@ -48,6 +48,22 @@ Projekt kombinuje deterministickou kontrolu generovaných souborů, strukturáln
 | Mobilní nákup a vaření, `REQ-006` až `REQ-010` | Skutečné ovládání katalogu, nastavení, checklistu a dialogu | [Smoke scénáře](../development/commands.md#výběr-nákup-a-vaření) |
 | Oprávnění, neměnné akce a publikační pořadí, `QLT-004` | Automatická strukturální kontrola workflow a review oddělených jobů | `npm run docs:validate` a `.github/workflows/main.yml` |
 
+### Texty katalogového hledání, 2026-09-16
+
+Revize `REQ-006` sjednotila popisek, příklad, nulovou nápovědu a průvodce na hledání jídel a nápojů bez změny vyhledávacího algoritmu.
+
+Prošly kontroly formátování, struktury dokumentace, obsahu s nulovým počtem warnings, syntaxe `kitchen.mjs` a `git diff --check`.
+
+Příprava obsahu v paměti přes `createContentFiles()` potvrdila nový text veřejného průvodce a existenci obou příkladů, rajské i French Press, v katalogu.
+
+`npm test` dokončil 75 ze 76 testů úspěšně, test changelogu selhal při spuštění `git-cliff.exe` na `spawn UNKNOWN`.
+
+Stejná chyba blokovala `npm run docs:serve` již před změnou i při spuštění mimo sandbox, přímé spuštění nástroje potvrdilo blokaci zásadou řízení aplikací Windows.
+
+Úplné sestavení ani nový vizuální náhled proto nebyly ověřené a změna nebyla nasazená.
+
+Log testů zůstává v ignorovaném `private/copy-review/npm-test.log`.
+
 ### Zaškrtávání ingrediencí v detailu, 2026-09-13
 
 Výchozí stav `262caae` prošel 76 testy, ale skutečný detail vietnamské kávy obsahoval checkbox pouze pro volitelný led.

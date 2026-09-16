@@ -10,7 +10,7 @@ V kuchyni vás provází tři části: výběr jídel, nákup a vaření.
 
 ## Najděte, co potřebujete
 
-Na [úvodu](index.md) si vyberte oblast, v [Kuchyni](kuchyne/index.md) můžete procházet recepty nebo hledat podle názvu a surovin.
+Na [úvodu](index.md) si vyberte oblast, v [Kuchyni](kuchyne/index.md) můžete procházet jídla a nápoje nebo je hledat podle názvu.
 
 Recept si můžete přečíst i bez přidání do nákupu.
 
