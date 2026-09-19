@@ -34,7 +34,7 @@ Generování changelogu vyžaduje úplnou Git historii, nikoli mělký checkout.
 | Úplnost stažené historie | `git rev-parse --is-shallow-repository` | `false` |
 | Integrita Git objektů | `git fsck --full` | Kód 0 bez chyb |
 
-Obnova chybějících metadat a zachování pracovních souborů jsou zaznamenané v [runbooku](../operations/runbook.md#obnova-lokálního-git-propojení).
+Postup obnovy chybějících metadat se zachováním pracovních souborů vlastní [runbook](../operations/runbook.md#obnova-lokálního-git-propojení).
 
 ## Inicializace prostředí
 
@@ -97,6 +97,8 @@ Při chybě vypíše konkrétní příčinu a po dalším uložení zkusí sesta
 Úspěch oznámí textem „Náhled je aktuální“.
 
 Prohlížeč po oznámeném úspěchu obnov ručně, protože projekt nevkládá klientský hot reload.
+
+Během sestavení může být místní výstup krátce neúplný, stránku proto kontroluj až po jeho úspěšném dokončení.
 
 `docs:serve` provede sestavení jednou při spuštění.
 
@@ -236,9 +238,7 @@ Test runner objevuje soubory `tests/**/*.test.mjs`.
 
 Ignorované diagnostické kopie mimo `tests/` se do projektových kontrol nezahrnují.
 
-Na Windows může sandbox odepřít `git-cliff` přístup k repozitáři.
-
-Dne 2026-09-13 prošly stejné příkazy mimo sandbox bez oslabení kontrol.
+Při chybě spuštění `git-cliff` ve Windows použij [diagnostiku v runbooku](../operations/runbook.md#symptom-windows-blokuje-spuštění-git-cliff).
 
 ### Původní katalog a hledání
 

@@ -136,7 +136,7 @@ function cookingSelection(recipes) {
 function renderCatalog(root) {
   document.body.classList.add('kitchen-catalog-page');
   root.className = 'kitchen-app';
-  const search = el('input', { type: 'search', id: 'recipe-filter', placeholder: 'Třeba kuře, rajská nebo česnek…' });
+  const search = el('input', { type: 'search', id: 'recipe-filter', placeholder: 'Třeba rajská nebo French Press…' });
   const type = el('select', { id: 'recipe-type' }, el('option', { value: '' }, 'Všechny typy'), [...new Set(catalog.recipes.map(recipe => recipe.typeLabel))].map(label => el('option', { value: label }, label)));
   const onlySelected = el('input', { type: 'checkbox', id: 'selected-only' });
   const query = new URL(location.href).searchParams;
@@ -167,12 +167,12 @@ function renderCatalog(root) {
         recipe.preparation ? el('p', { className: 'recipe-card-preparation' }, icon('clock'), el('strong', {}, 'Předem: '), recipe.preparation) : null,
         el('div', { className: 'recipe-card-actions' }, el('a', { href: url(`${recipe.id}.html#uvarit`) }, icon('list'), `Postup · ${recipe.steps.length} ${recipe.steps.length === 1 ? 'krok' : recipe.steps.length < 5 ? 'kroky' : 'kroků'}`), control));
     }));
-    if (!recipes.length) grid.append(el('div', { className: 'kitchen-empty' }, icon('search'), el('h2', {}, 'Tady zatím nic není'), el('p', {}, 'Zkuste jiný název, surovinu nebo zrušte filtr.'), button('Zrušit filtry', () => { search.value = ''; type.value = ''; onlySelected.checked = false; renderResults(); search.focus(); }, { className: 'kitchen-button' })));
+    if (!recipes.length) grid.append(el('div', { className: 'kitchen-empty' }, icon('search'), el('h2', {}, 'Tady zatím nic není'), el('p', {}, 'Zkuste jiný název jídla nebo pití, případně zrušte filtr.'), button('Zrušit filtry', () => { search.value = ''; type.value = ''; onlySelected.checked = false; renderResults(); search.focus(); }, { className: 'kitchen-button' })));
   };
   search.addEventListener('input', renderResults);
   type.addEventListener('change', renderResults);
   onlySelected.addEventListener('change', renderResults);
-  root.replaceChildren(workflow('recipes'), el('div', { className: 'catalog-tools' }, el('label', { htmlFor: search.id }, 'Najít jídlo nebo surovinu', search), el('div', { className: 'catalog-filter-row' }, el('label', { htmlFor: type.id }, el('span', { className: 'visually-hidden' }, 'Druh receptu'), type), el('label', { className: 'check-label' }, onlySelected, 'Jen vybrané'))), resultCount, grid, el('p', { className: 'storage-message catalog-storage kitchen-muted' }, storageMessage));
+  root.replaceChildren(workflow('recipes'), el('div', { className: 'catalog-tools' }, el('label', { htmlFor: search.id }, 'Najít jídlo nebo pití', search), el('div', { className: 'catalog-filter-row' }, el('label', { htmlFor: type.id }, el('span', { className: 'visually-hidden' }, 'Druh receptu'), type), el('label', { className: 'check-label' }, onlySelected, 'Jen vybrané'))), resultCount, grid, el('p', { className: 'storage-message catalog-storage kitchen-muted' }, storageMessage));
   document.querySelector('.catalog-fallback')?.setAttribute('hidden', '');
   renderResults();
 }

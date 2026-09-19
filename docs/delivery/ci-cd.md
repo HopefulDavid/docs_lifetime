@@ -23,8 +23,6 @@ Přesná workflow konfigurace zůstává strojově kanonická v [`.github/workfl
 | Runner nebo executor | GitHub-hosted `ubuntu-latest` | Oba joby ve workflow |
 | Veřejné prostředí | GitHub Pages | `https://hopefuldavid.github.io/docs_lifetime/` a publikační krok |
 
-Veřejný web a reprezentativní nejnovější recept byly dne 2026-08-28 dostupné bez chyb konzole.
-
 ## Lokální ekvivalence
 
 Každý ověřovací krok CI volá stejný projektový vstup jako lokální vývoj.

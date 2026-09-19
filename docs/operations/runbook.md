@@ -135,6 +135,18 @@ Vygenerovaný soubor necommituj.
 
 **Eskalace:** Přepis publikované Git historie, změna verzovacího modelu nebo ruční udržování changelogu vyžaduje samostatné rozhodnutí maintainera.
 
+### Symptom: Windows blokuje spuštění git-cliff
+
+**Ověřená překážka k 2026-09-16:** Generování a test changelogu končí na `spawn UNKNOWN`, přímé spuštění `git-cliff.exe --version` hlásí blokaci zásadou řízení aplikací Windows.
+
+Stejný stav nastal také mimo sandbox, samotné opakování s vyšším oprávněním jej nevyřešilo.
+
+Při této chybě rozliš systémové odmítnutí spuštění od chybějící Git historie nebo oprávnění k testovacímu repozitáři.
+
+Generátor se nenahrazuje náhradním changelogem a starý artefakt není důkazem nového sestavení.
+
+**Vlastník a uzavření:** Správce prostředí vyřeší dostupnost nástroje podle místní politiky a opravu potvrdí úspěšný `npm test` a `npm run docs:build` podle [projektových příkazů](../development/commands.md).
+
 ### Symptom: web je nasazený, ale oznámení nepřišlo
 
 1. Potvrď úspěšný krok `Publikuje GitHub Pages` a veřejný smoke.
@@ -152,21 +164,14 @@ Vygenerovaný soubor necommituj.
 
 ### Obnova lokálního Git propojení
 
-Dne 2026-09-12 chyběl v pracovní kopii adresář `.git`, zatímco existující SSH přihlášení ke GitHubu fungovalo pod účtem `HopefulDavid`.
+Při chybějícím `.git` obnov skutečnou historii z kanonického repozitáře v [hostingu a VCS](../delivery/ci-cd.md#hosting-a-vcs).
 
-Metadata byla obnovena stažením úplné skutečné historie z kanonického SSH repozitáře uvedeného v [hostingu a VCS](../delivery/ci-cd.md#hosting-a-vcs).
+1. Zajisti kopii pracovních souborů a jejich kontrolní součty, poté ověř remote a přístup.
+2. Z úplné historie zjisti odpovídající výchozí revizi a vztah větví `main` a `develop`, jejich shodu nepředpokládej.
+3. Obnov metadata a index bez přepsání pracovních souborů, větve a sledování nastav podle [Git workflow](../development/workflow.md).
+4. Porovnej kontrolní součty a stav pracovního stromu, potvrď zachování místních změn, úplnost historie a integritu Git objektů.
 
-V době obnovy ukazovaly vzdálené `main` a `develop` shodně na `74dfda67507926ad6f3c864af113acb3a513e864`, z něhož bylo dosažitelných 10 commitů.
-
-Index byl načten z `origin/main` bez aktualizace pracovních souborů a lokální `develop` vznikl z obnoveného `main` se sledováním `origin/develop`.
-
-Kontrolní součty SHA-256 všech 107 kontrolovaných projektových souborů před obnovou a bezprostředně po ní byly shodné.
-
-Existující úpravy zůstaly necommitované a index neobsahoval připravené změny.
-
-SSH klíče ani globální nastavení se neměnily, neproběhl push a kontrola `git fsck --full` nezjistila chyby.
-
-Přístup pro push byl ověřen pomocí `git push --dry-run origin develop`, který skončil kódem 0 bez odeslání změn.
+Obnova nepotřebuje smyšlené commity, změnu SSH klíčů ani automatické publikování.
 
 Přesné diagnostické příkazy vlastní [ověření Git a SSH](../development/commands.md#ověření-git-a-ssh).
 

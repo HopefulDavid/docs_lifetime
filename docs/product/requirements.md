@@ -63,7 +63,7 @@ Další oblasti osobního života mohou přibývat jako samostatné návody, kte
 | `REQ-003` | Správce přidal, upravil nebo odstranil platný obsahový soubor | Spustí generování, sestavení nebo uloží změnu při vývojovém náhledu | Katalog, přehledy, navigace a klientská data se deterministicky obnoví bez ručních změn odvozených souborů, nepotřebné výstupy zmizí | Vysoká | Životní cyklus receptu v izolované fixture, čisté sestavení a vývojový náhled |
 | `REQ-004` | Přijatá změna je na větvi `main` | Proběhne publikační workflow | Ověřený statický web je dostupný na kanonické adrese a changelog zachovává úplnou historii, nejnovější rok změn nechává otevřený, roky bez změn vynechává a starší zobrazené roky balí | Vysoká | GitHub Actions, veřejný smoke a víceletý changelogový test |
 | `REQ-005` | Čtenář hledá český nebo anglický termín obsažený v indexu | Odešle libovolnou kombinaci indexovaných slov bez ohledu na velikost písmen a diakritiku | Uvidí položky obsahující všechna stejná normalizovaná slova nebo jednoznačnou informaci, že výsledek nebyl nalezen | Střední | Automatické české i anglické názvy a slova z obsahu, poté vizuální smoke a dotaz bez shody |
-| `REQ-006` | Čtenář vybírá jídla | Filtruje katalog podle názvu, suroviny nebo typu a vybere více položek | Karty ukazují stručný popis a postup, výběr je viditelný a dostupný v „Můj nákup“ | Vysoká | Mobilní katalog, filtr bez diakritiky a nulový stav |
+| `REQ-006` | Čtenář vybírá jídla a nápoje | Hledá jídlo nebo pití podle názvu, filtruje katalog podle typu a vybere více položek | Karty ukazují stručný popis a postup, výběr je viditelný a dostupný v „Můj nákup“ | Vysoká | Mobilní katalog, filtr bez diakritiky a nulový stav |
 | `REQ-007` | Čtenář má vybraná jídla | Změní násobek dávky, surovinovou alternativu nebo volitelnou část | Nákup obsahuje pouze zvolenou alternativu a zahrnuté části, uvedená čísla se přepočítají a chybějící množství zůstane přiznané | Kritická | Doménové testy a skutečné ovládání výběru |
 | `REQ-008` | Čtenář nakupuje více jídel | Otevře nákup a označí připravené položky | Slučitelné suroviny jsou sečtené, uspořádané podle oddělení a mají dohledatelné zdrojové recepty, rozdílné jednotky se nemíchají | Kritická | Součet rajské a šunkofleků, koření, pomůcky a změna dávky |
 | `REQ-009` | Čtenář jde do obchodu bez připojení | Kopíruje text, uloží PDF nebo vytiskne seznam | Export zachová suroviny, poznámky, zdrojová množství i odškrtnutí, samostatné stažení TXT se nenabízí | Vysoká | Test exportu a prohlížeč |
@@ -92,8 +92,6 @@ Množství určuje zdrojový recept, čtenář mění pouze dávku, varianty a z
 Rozhraní nenabízí vlastní zadání množství ani tlačítko nebo filtr chybějících množství.
 
 Pokud autor množství dosud nedoplnil, recept a nákup zobrazí „Množství neuvedeno“ a export zachová původní údaj.
-
-Toto chování nahrazuje ruční doplňování podle zadání uživatele ze dne 2026-09-13.
 
 Platné vlastní údaje uložené ve starší verzi zůstanou označené pro čtení a přenos, aby aktualizace neztratila existující data.
 
@@ -133,6 +131,10 @@ Průvodce vysvětluje stabilní principy výběru, nákupu, vaření a sdílené
 
 ## Ovládání a PDF
 
+Popisek, příklady a nápověda katalogového hledání popisují hledání jídel a nápojů, jeho výsledkem jsou recepty.
+
+Hledání samostatných surovin patří do nákupního seznamu.
+
 Navigace Výběr → Nakoupit → Uvařit propojuje samostatná zobrazení a ukazuje právě otevřenou část.
 
 V nákupu část Uvařit nabídne vybraná jídla s uloženou dávkou, průběhem, přímým vstupem do vaření po krocích a vedlejším odkazem na celý postup.
@@ -155,7 +157,7 @@ Zahrnutí volitelné suroviny má samostatnou akci „Zahrnout“ nebo „Vynech
 
 Volitelná skupina má samostatně popsaný přepínač zahrnutí.
 
-Toto doplnění reaguje na uživatelem nahlášené chybějící checkboxy v detailu dne 2026-09-13 a zachovává pravidla platnosti odškrtnutí podle `REQ-011`.
+Platnost odškrtnutí se řídí `REQ-011`.
 
 Pravý obsah článku odkazuje pouze na viditelné části.
 
@@ -192,13 +194,11 @@ Obecné oblasti používají symbol světa a nepředstírají konkrétní zemi.
 - Návrat ke staré dávce neobnoví dříve zneplatněné odškrtnutí ani vlastní množství.
 - Selhání zápisu místního nákupu zůstane viditelné v nákupní liště a nabídnuté exporty zůstanou dostupné.
 
-Tyto scénáře rozvíjejí `REQ-006`, `REQ-008`, `REQ-009`, `REQ-010` a `QLT-003` podle upřesnění uživatele, který zdůraznil celkový design a zachování PDF.
+Tyto scénáře rozvíjejí `REQ-006`, `REQ-008`, `REQ-009`, `REQ-010` a `QLT-003`.
 
 ## Obsahový kontrakt receptů
 
 Jednotný zápis surovin, dávky, alternativ a postupu vlastní [formát receptu](recipe-format.md).
-
-Výběr jídel a nákupní seznam jsou přijatým rozšířením na základě zadání uživatele ze dne 2026-09-12, které nahrazuje jejich původní vyloučení z rozsahu.
 
 ## Kvalitativní očekávání
 
