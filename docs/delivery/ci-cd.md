@@ -1,7 +1,7 @@
 ---
 canonical_for: ci-cd-and-delivery
 status: accepted
-last_verified: 2026-08-28
+last_verified: 2026-09-21
 owner: delivery
 ---
 
@@ -105,7 +105,7 @@ Statický artefakt se v publikačním jobu sestaví jednou a beze změny se ode�
 | Push do `develop` | `verify-docs` | Obnova, `npm test`, sestavení bez varování | `contents: read` | Nic se nepublikuje |
 | Pull request do `develop` nebo `main` | `verify-docs` | Obnova, `npm test`, sestavení bez varování | `contents: read` | Tajemství publikování se nepoužijí |
 | Push do `main` | `verify-docs` a po něm `publish-docs` | Stejné kontroly, changelog, sestavení, nasazení | Čtení, poté izolované `contents: write` | Jediný automatický publikační tok |
-| Ruční spuštění na `main` | Ověření a publikování | Stejné jako push do `main` | Stejné jako push do `main` | Vhodné pro opakování po dočasném selhání platformy |
+| Ruční spuštění na `main` | Ověření a kontrola publikovaného zdroje | Nová dosud nenasazená revize se sestaví a publikuje | Stejné jako push do `main` | Již publikovaná nebo zastaralá revize nevytvoří další nasazení ani oznámení |
 | Ruční spuštění na jiné větvi | Pouze `verify-docs` | Obnova, `npm test`, sestavení bez varování | `contents: read` | Podmínka jobu zabrání publikování |
 | Tag nebo release | Žádný samostatný tok | — | — | Projekt nepoužívá verzované release artefakty |
 
@@ -113,9 +113,11 @@ Publikační job nikdy nezapisuje do `main`.
 
 Docset v `_generated/` vzniká automaticky z ručních zdrojů a nasazovací větev obsahuje jediný orphan commit posledního artefaktu.
 
-Oznámení čte `_generated/changelog.md`.
+Publikační job před sestavením porovná zdrojový SHA s aktuální větví `main` a s identifikátorem posledního nasazeného zdroje v commit zprávě větve `gh-pages`.
 
-Jeho cesta je stejná jako vstup sestavení.
+Opakovaný nebo zastaralý běh přeskočí sestavení, publikování i oznámení.
+
+Po úspěšném nasazení nové revize odešle krátký e-mail s odkazem na veřejný changelog.
 
 ### Ochrana větví
 

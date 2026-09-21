@@ -1,7 +1,7 @@
 ---
 canonical_for: product-requirements
 status: accepted
-last_verified: 2026-09-13
+last_verified: 2026-09-21
 owner: product
 ---
 
@@ -61,7 +61,7 @@ Další oblasti osobního života mohou přibývat jako samostatné návody, kte
 | `REQ-001` | Čtenář otevřel úvodní stránku | Zvolí sekci, oblast, zemi nebo typ | Uvidí odpovídající přehled se jmény, původem, typem a stručnými popisy dostupného obsahu | Kritická | Vizuální tok úvod → sekce → oblast |
 | `REQ-002` | Čtenář našel konkrétní položku | Otevře recept nebo nápoj a přepne do Uvařit | Detail nejprve nabídne ingredience a teprve část Uvařit zobrazí postup, jeho kroky a odpovídající obsah článku | Kritická | Vizuální detail, přepnutí sekcí a přímý odkaz na krok |
 | `REQ-003` | Správce přidal, upravil nebo odstranil platný obsahový soubor | Spustí generování, sestavení nebo uloží změnu při vývojovém náhledu | Katalog, přehledy, navigace a klientská data se deterministicky obnoví bez ručních změn odvozených souborů, nepotřebné výstupy zmizí | Vysoká | Životní cyklus receptu v izolované fixture, čisté sestavení a vývojový náhled |
-| `REQ-004` | Přijatá změna je na větvi `main` | Proběhne publikační workflow | Ověřený statický web je dostupný na kanonické adrese a changelog zachovává úplnou historii, nejnovější rok změn nechává otevřený, roky bez změn vynechává a starší zobrazené roky balí | Vysoká | GitHub Actions, veřejný smoke a víceletý changelogový test |
+| `REQ-004` | Přijatá změna je na větvi `main` | Proběhne publikační workflow | Ověřený statický web je dostupný na kanonické adrese, oznámení se odešle až po nasazení nové revize `main` nejvýše jednou a changelog řadí úplnou historii od nejnovějších změn, odkazuje na dostupné změněné články, nejnovější rok nechává otevřený a starší roky balí | Vysoká | GitHub Actions, veřejný smoke a víceletý changelogový test |
 | `REQ-005` | Čtenář hledá český nebo anglický termín obsažený v indexu | Odešle libovolnou kombinaci indexovaných slov bez ohledu na velikost písmen a diakritiku | Uvidí položky obsahující všechna stejná normalizovaná slova nebo jednoznačnou informaci, že výsledek nebyl nalezen | Střední | Automatické české i anglické názvy a slova z obsahu, poté vizuální smoke a dotaz bez shody |
 | `REQ-006` | Čtenář vybírá jídla a nápoje | Hledá jídlo nebo pití podle názvu, filtruje katalog podle typu a vybere více položek | Karty ukazují stručný popis a postup, výběr je viditelný a dostupný v „Můj nákup“ | Vysoká | Mobilní katalog, filtr bez diakritiky a nulový stav |
 | `REQ-007` | Čtenář má vybraná jídla | Změní násobek dávky, surovinovou alternativu nebo volitelnou část | Nákup obsahuje pouze zvolenou alternativu a zahrnuté části, uvedená čísla se přepočítají a chybějící množství zůstane přiznané | Kritická | Doménové testy a skutečné ovládání výběru |

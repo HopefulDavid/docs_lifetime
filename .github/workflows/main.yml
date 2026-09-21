@@ -50,7 +50,7 @@ jobs:
 
   publish-docs:
     name: Publikování dokumentace
-    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+    if: (github.event_name == 'push' || github.event_name == 'workflow_dispatch') && github.ref == 'refs/heads/main'
     needs: verify-docs
     runs-on: ubuntu-latest
     concurrency:
@@ -64,7 +64,32 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Ověří, zda už je revize publikovaná
+        id: publication
+        env:
+          SOURCE_SHA: ${{ github.sha }}
+        run: |
+          current_main="$(git ls-remote --exit-code origin refs/heads/main)" || exit $?
+          current_main="${current_main%%$'\t'*}"
+          if [ "$current_main" != "$SOURCE_SHA" ]; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          if git ls-remote --exit-code --heads origin gh-pages >/dev/null; then
+            git fetch --quiet --no-tags origin gh-pages
+            published_message="$(git log -1 --format=%B FETCH_HEAD)"
+            if [ "$published_message" = "docs-source: $SOURCE_SHA" ]; then
+              echo "changed=false" >> "$GITHUB_OUTPUT"
+              exit 0
+            fi
+          else
+            status=$?
+            if [ "$status" -ne 2 ]; then exit "$status"; fi
+          fi
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+
       - name: Připraví Node.js
+        if: steps.publication.outputs.changed == 'true'
         uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
         with:
           node-version-file: package.json
@@ -72,37 +97,34 @@ jobs:
           cache-dependency-path: package-lock.json
 
       - name: Připraví .NET
+        if: steps.publication.outputs.changed == 'true'
         uses: actions/setup-dotnet@26b0ec14cb23fa6904739307f278c14f94c95bf1 # v5
         with:
           dotnet-version: 8.x
 
       - name: Obnoví npm závislosti
+        if: steps.publication.outputs.changed == 'true'
         run: npm ci --ignore-scripts --no-audit --no-fund
 
       - name: Obnoví DocFX
+        if: steps.publication.outputs.changed == 'true'
         run: dotnet tool restore
 
       - name: Sestaví web
+        if: steps.publication.outputs.changed == 'true'
         run: npm run docs:build
 
-      - name: Připraví obsah oznámení
-        run: |
-          echo "changelog<<EOF" >> "$GITHUB_ENV"
-          awk '
-            NR == 1 && $0 == "---" { frontmatter = 1; next }
-            frontmatter && $0 == "---" { frontmatter = 0; next }
-            !frontmatter { print }
-          ' _generated/changelog.md >> "$GITHUB_ENV"
-          echo "EOF" >> "$GITHUB_ENV"
-
       - name: Publikuje GitHub Pages
+        if: steps.publication.outputs.changed == 'true'
         uses: peaceiris/actions-gh-pages@84c30a85c19949d7eee79c4ff27748b70285e453 # v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: _site
           force_orphan: true
+          full_commit_message: "docs-source: ${{ github.sha }}"
 
       - name: Odešle oznámení o změnách
+        if: steps.publication.outputs.changed == 'true' && success()
         uses: dawidd6/action-send-mail@42942bc2f8fba4e611b459a018967a6a7c78c68c # v17
         continue-on-error: true
         with:
@@ -114,8 +136,6 @@ jobs:
           from: ${{ secrets.MAIL_USERNAME }}
           subject: "Nové změny v dokumentaci"
           to: ${{ secrets.MAIL_RECIPIENTS }}
-          convert_markdown: true
           html_body: |
-            <p>Nové změny v dokumentaci jsou k dispozici. Podívejte se na ně <a href="https://hopefuldavid.github.io/docs_lifetime/">zde</a>.</p>
-            <hr>
-            ${{ env.changelog }}
+            <p>Na webu Dokumentace ze života jsou zveřejněné nové změny.</p>
+            <p><a href="https://hopefuldavid.github.io/docs_lifetime/changelog.html">Prohlédnout změny</a></p>

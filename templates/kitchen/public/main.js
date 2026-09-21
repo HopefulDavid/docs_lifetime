@@ -34,6 +34,7 @@ const docfxOptions = {
   },
   start() {
     const siteRoot = new URL('../', import.meta.url);
+    if (location.pathname === `${siteRoot.pathname}changelog.html`) document.body.classList.add('changelog-page');
     if ([siteRoot.pathname, `${siteRoot.pathname}index.html`].includes(location.pathname) && (location.hash === '#recepty' || ['q', 'type', 'selected'].some(key => new URL(location.href).searchParams.has(key)))) {
       location.replace(new URL(`kuchyne/index.html${location.search}${location.hash}`, siteRoot));
       return;
