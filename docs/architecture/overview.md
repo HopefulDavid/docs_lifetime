@@ -25,7 +25,7 @@ Důvody významných voleb jsou zaznamenané v [`decisions/`](decisions/README.m
 
 | Priorita | Kvalitativní cíl | Navázaný požadavek | Jak architektura podporuje ověření |
 |---|---|---|---|
-| 1 | Reprodukovatelné sestavení | `QLT-001` | npm lockfile, lokální manifest DocFX a společné npm vstupy pro lokální prostředí i CI |
+| 1 | Reprodukovatelné sestavení | `QLT-001` | pnpm lockfile, lokální manifest DocFX a společné pnpm vstupy pro lokální prostředí i CI |
 | 2 | Konzistentní katalog a navigace | `REQ-003`, `QLT-002` | Jediný generátor odvozuje všechny přehledy a TOC přímo ze zdrojových položek |
 | 3 | Rychlý veřejný přístup | `REQ-001`, `REQ-002` | Předem vytvořený statický web bez runtime databáze nebo serverové aplikace |
 | 4 | Bezpečné publikování | `REQ-004`, `QLT-004` | Čtecí ověřovací job je oddělený od zapisovacího publikačního jobu a jeho tajemství |
@@ -92,7 +92,7 @@ Diagram ukazuje jednosměrné odvozování výstupů a odděluje obsahovou a zm�
 | Blok | Odpovědnost | Veřejná hranice | Povolené závislosti | Vlastník dat |
 |---|---|---|---|---|
 | Zdrojový obsah | Definuje recept nebo nápoj | Markdown soubor v podporované cestě | Žádná generovaná stránka | Správce obsahu |
-| `scripts/generate-docs.js` | Ověří celý obsah a poté sestaví katalog, přehledy, TOC, changelog a klientská data bez změn receptů | npm skripty `docs:generate` a `docs:check` | Node.js, zdrojový obsah, slovníky a `git-cliff` | Engineering |
+| `scripts/generate-docs.js` | Ověří celý obsah a poté sestaví katalog, přehledy, TOC, changelog a klientská data bez změn receptů | pnpm skripty `docs:generate` a `docs:check` | Node.js, zdrojový obsah, slovníky a `git-cliff` | Engineering |
 | `scripts/docset/` | Odděluje taxonomii, čtení katalogu, vykreslení přehledů a synchronizaci výstupů | `taxonomy.cjs`, `catalog.cjs`, `pages.cjs`, `output.cjs` | CLI skládá moduly, diagnostika a kolekce souborů patří jedinému běhu | Engineering |
 | Parser receptů | Ověřuje tabulky, kanonické názvy, stabilní identifikátory a navazující kroky | `scripts/recipe-content.cjs` | Zdrojové recepty a `data/ingredients.json` | Engineering |
 | Klientská kuchařka | Řídí výběr, nákup a vaření | `templates/kitchen/public/kitchen.mjs` | DOM, standardní webová API, `kitchen-core.mjs` a generovaný `data/recipes.json` | Engineering |
@@ -100,7 +100,7 @@ Diagram ukazuje jednosměrné odvozování výstupů a odděluje obsahovou a zm�
 | Přenos nákupu | Ověřuje sdílenou kopii a připravuje výslovné řešení konfliktů | `templates/kitchen/public/kitchen-transfer.mjs` | Doménové jádro, aktuální katalog a standardní kompresní API prohlížeče | Čtenář a zvolený příjemce |
 | PDF export | Převádí aktuální exportní náhled na stránkovaný soubor | `templates/kitchen/public/kitchen-pdf.mjs` | DOM náhledu a odloženě načtené lokální assety pdfmake podle [ADR-0005](decisions/ADR-0005-pdf-export-v-prohlizeci.md) | Engineering |
 | Generovaný docset | Obsahuje odvozenou navigaci, katalog a kopie veřejného Markdownu | Ignorovaný `_generated/`, jeho manifest a `docfx.json` | Pouze ruční zdroje a generátor | Generátor |
-| Changelog | Odvozuje veřejný přehled úplné historie po ročních obdobích a uvnitř zachovává kategorie | `cliff.toml` a npm skript | Git historie a `git-cliff` uzamčený npm lockfilem, výstup je ignorovaný build vstup | Delivery |
+| Changelog | Odvozuje veřejný přehled úplné historie po ročních obdobích a uvnitř zachovává kategorie | `cliff.toml` a pnpm skript | Git historie a `git-cliff` uzamčený pnpm lockfilem, výstup je ignorovaný build vstup | Delivery |
 | DocFX sestavení | Čistí starý výstup a převádí produktový Markdown a YAML do HTML a indexu hledání | `docs:clean`, `docfx.json` a lokální .NET tool manifest | Obsah, přehledy, changelog a šablona | Engineering |
 | Vlastní šablona | Přizpůsobuje vzhled, české popisky a klientské vstupy moderního tématu a ponechává příspěvkový blok DocFX vypnutý | `templates/kitchen/` a `docfx.json` | Podporované veřejné assety, tokeny a globální metadata DocFX | Design a engineering |
 | Klientské hledání | Normalizuje libovolné české nebo anglické termíny, porovnává je s `index.json` a vrací výsledky rendereru DocFX | `templates/kitchen/public/search-core.mjs` a workerový kontrakt DocFX | Standardní webová API a statický index vytvořený DocFX | Engineering |
@@ -145,7 +145,7 @@ Receptová validace se rozhoduje podle explicitně vybraných receptových zdroj
 | Scénář | Navázaný požadavek | Konzistenční hranice | Selhání a zotavení |
 |---|---|---|---|
 | Lokální změna obsahu | `REQ-003`, `REQ-E001`, `REQ-E002` | Jedno spuštění generátoru nejprve načte a ověří celý katalog a poté zapisuje odvozené soubory | Chyba vypíše soubor a ukončí proces nenulově, správce opraví zdroj a spustí kontrolu znovu |
-| Ověření změny | `QLT-001`, `QLT-002` | `npm test` odvozuje výstupy z aktuálních zdrojů, ověřuje jejich determinismus a strukturu repozitáře | Pull request ani větev se nesmějí publikovat při selhání |
+| Ověření změny | `QLT-001`, `QLT-002` | `pnpm test` odvozuje výstupy z aktuálních zdrojů, ověřuje jejich determinismus a strukturu repozitáře | Pull request ani větev se nesmějí publikovat při selhání |
 | Publikování `main` | `REQ-004` | Jeden publikační job ověří aktuální dosud nenasazenou revizi, v dočasném workspace vygeneruje changelog, sestaví `_site/` a nasadí tentýž artefakt bez změny `main` | Selhání před nasazením zachová předchozí web; opakování již nasazené revize přeskočí publikování i oznámení |
 | Čtení receptu | `REQ-001`, `REQ-002` | Jedna verze statických souborů na GitHub Pages | Chybějící cesta vrátí 404 a správce ověří zdroj, TOC a nasazený commit |
 | Hledání | `REQ-005` | Worker jednou připraví statický `index.json` a každý dotaz vyžaduje shodu všech normalizovaných slov | Dotaz bez shody zobrazí českou nulovou informaci a klientská chyba se diagnostikuje konzolí a smoke scénářem |
@@ -282,7 +282,7 @@ Databáze, CMS ani druhá ručně udržovaná reprezentace receptů nejsou potř
 
 Build kopie v izolovaném docsetu jsou plně obnovitelné.
 
-Přesné uzamčené závislosti jsou zvláštní případ strojově vytvořeného vstupu: `package-lock.json` se commituje spolu s manifestem, protože určuje reprodukovatelnou obnovu nástrojů.
+Přesné uzamčené závislosti jsou zvláštní případ strojově vytvořeného vstupu: `pnpm-lock.yaml` se commituje spolu s manifestem, protože určuje reprodukovatelnou obnovu nástrojů.
 
 Kód v `templates/kitchen/` je ruční projektový zdroj i u názvu `search-worker.min.js`.
 
@@ -292,7 +292,7 @@ Převzaté licence a distribuční assety vlastní [politika závislostí](../de
 
 | Prostředí | Běhové jednotky | Stav | Síťová hranice | Škálování | Pozorovatelnost |
 |---|---|---|---|---|---|
-| Lokální vývoj | Node.js generátor, lokální DocFX a statický server | Zdrojový checkout a odstranitelný `_site/` | npm a NuGet pouze při obnově nástrojů | Není potřeba | Výstup příkazů, HTTP a konzole prohlížeče |
+| Lokální vývoj | Node.js generátor, lokální DocFX a statický server | Zdrojový checkout a odstranitelný `_site/` | npm registry a NuGet.org pouze při obnově nástrojů | Není potřeba | Výstup příkazů, HTTP a konzole prohlížeče |
 | GitHub Actions | Oddělený ověřovací a publikační job | Dočasný checkout a cache závislostí | Registry, GitHub, Pages a SMTP | Spravuje GitHub | Logy jednotlivých kroků |
 | GitHub Pages | Statické HTML, CSS, JavaScript a JSON | Bez serverového stavu projektu | Veřejné HTTPS | Spravuje GitHub Pages | HTTP dostupnost a klientská konzole |
 

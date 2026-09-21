@@ -302,7 +302,7 @@ function main() {
     file.endsWith('.md'),
   );
   if (!fs.existsSync(path.join(root, '_generated/manifest.json')))
-    errors.push('_generated/manifest.json: nejprve spusťte npm run docs:generate');
+    errors.push('_generated/manifest.json: nejprve spusťte pnpm run docs:generate');
 
   validateCanonicalMetadata(markdownFiles);
   validateInternalLinks([...markdownFiles, ...generatedMarkdown]);

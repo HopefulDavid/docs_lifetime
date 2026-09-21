@@ -31,10 +31,10 @@ Přesné lokální příkazy jsou v [`../development/commands.md`](../developmen
 
 | Fáze CI | Projektový příkaz | Platformní obal | Výstupní důkaz |
 |---|---|---|---|
-| Obnova JavaScript nástrojů | `npm ci --ignore-scripts --no-audit --no-fund` | Node.js z `actions/setup-node` a npm cache podle lockfilu | Úspěšná čistá instalace |
+| Obnova JavaScript nástrojů | `pnpm install --frozen-lockfile --ignore-scripts` | pnpm z `pnpm/action-setup`, Node.js z `actions/setup-node` a pnpm cache podle lockfilu | Úspěšná čistá instalace |
 | Obnova DocFX | `dotnet tool restore` | .NET 8 z `actions/setup-dotnet` | Přesná verze z tool manifestu |
-| Kontrola zdrojů | `npm test` | Čtecí checkout s úplnou historií | Testy nad zdroji, automatická příprava docsetu, kontrola opakovatelnosti a strukturální validace projdou |
-| Sestavení | `npm run docs:build` | Varování DocFX jsou chybou a následuje kontrola veřejného artefaktu | `_site/` z jednoho checkoutu, platné odkazy, fulltext a shoda receptů |
+| Kontrola zdrojů | `pnpm test` | Čtecí checkout s úplnou historií | Testy nad zdroji, automatická příprava docsetu, kontrola opakovatelnosti a strukturální validace projdou |
+| Sestavení | `pnpm run docs:build` | Varování DocFX jsou chybou a následuje kontrola veřejného artefaktu | `_site/` z jednoho checkoutu, platné odkazy, fulltext a shoda receptů |
 | Changelog | Společný generátor jako součást sestavení | Každý build s úplnou historií | `_generated/changelog.md` zahrnutý do `_site/` |
 
 Obsahová upozornění `RECIPE_QUANTITY_MISSING` jsou podle [receptového kontraktu](../product/recipe-format.md#automatická-kontrola-obsahu) neblokující a generátor je v Actions vypíše jako anotace konkrétních řádků.
@@ -62,12 +62,13 @@ Technické identifikátory `verify-docs` a `publish-docs` zůstávají stabilní
 | Závislost | Účel | Aktuální odkaz | Oprávnění nebo tajemství | Známé omezení |
 |---|---|---|---|---|
 | `actions/checkout` | Načtení úplného repozitáře | Ověřený commit SHA s komentářem `v7` | Čtení obsahu, v publikačním jobu token zdědí jeho zápis | Aktualizace vyžaduje kontrolu nového SHA |
-| `actions/setup-node` | Řízený Node.js 24 a npm cache | Ověřený commit SHA s komentářem `v6` | Bez publikačních tajemství | Aktualizace vyžaduje kontrolu nového SHA |
+| `pnpm/action-setup` | Připravuje verzi pnpm podle `packageManager` | Ověřený commit SHA s komentářem `v6.0.10` | Bez publikačních tajemství | Aktualizace vyžaduje kontrolu nového SHA |
+| `actions/setup-node` | Řízený Node.js 24 a pnpm cache | Ověřený commit SHA s komentářem `v6` | Bez publikačních tajemství | Aktualizace vyžaduje kontrolu nového SHA |
 | `actions/setup-dotnet` | Řízené .NET SDK 8 | Ověřený commit SHA s komentářem `v5` | Bez publikačních tajemství | Aktualizace vyžaduje kontrolu nového SHA |
 | `peaceiris/actions-gh-pages` | Push statického artefaktu do Pages větve | Ověřený commit SHA odpovídající `v4` | `GITHUB_TOKEN` s `contents: write` | Větev vzniká jako jediný orphan commit posledního nasazení |
 | `dawidd6/action-send-mail` | Odeslání oznámení po nasazení | Ověřený commit SHA s komentářem `v17` | SMTP identita, heslo a příjemci | Krok je neblokující |
 
-Přesné revize zůstávají pouze ve workflow a kontroluje je `npm run docs:validate`.
+Přesné revize zůstávají pouze ve workflow a kontroluje je `pnpm run docs:validate`.
 
 ## Oprávnění a tajemství
 
@@ -88,9 +89,9 @@ Hodnoty tajemství se nesmějí objevit v repozitáři, logu, changelogu ani sta
 
 ## Reprodukovatelnost a dostupnost
 
-Node.js používá řadu 24 z `package.json`, npm používá commitnutý lockfile a DocFX přesnou verzi z `.config/dotnet-tools.json`.
+Node.js používá řadu 24 a pnpm verzi z `package.json` s commitnutým lockfilem a DocFX přesnou verzi z `.config/dotnet-tools.json`.
 
-CI obnovuje npm a NuGet nástroje před ověřením a nespoléhá na globální náhodnou verzi DocFX.
+CI obnovuje pnpm balíčky a NuGet nástroje před ověřením a nespoléhá na globální náhodnou verzi DocFX.
 
 Cache pouze urychluje obnovu a autoritativní identitu balíčků určují lockfile, integritní údaje a tool manifest.
 
@@ -102,11 +103,11 @@ Statický artefakt se v publikačním jobu sestaví jednou a beze změny se ode�
 
 | Událost | Workflow | Povinné kontroly | Oprávnění | Poznámka |
 |---|---|---|---|---|
-| Push do `develop` | `verify-docs` | Obnova, `npm test`, sestavení bez varování | `contents: read` | Nic se nepublikuje |
-| Pull request do `develop` nebo `main` | `verify-docs` | Obnova, `npm test`, sestavení bez varování | `contents: read` | Tajemství publikování se nepoužijí |
+| Push do `develop` | `verify-docs` | Obnova, `pnpm test`, sestavení bez varování | `contents: read` | Nic se nepublikuje |
+| Pull request do `develop` nebo `main` | `verify-docs` | Obnova, `pnpm test`, sestavení bez varování | `contents: read` | Tajemství publikování se nepoužijí |
 | Push do `main` | `verify-docs` a po něm `publish-docs` | Stejné kontroly, changelog, sestavení, nasazení | Čtení, poté izolované `contents: write` | Jediný automatický publikační tok |
 | Ruční spuštění na `main` | Ověření a kontrola publikovaného zdroje | Nová dosud nenasazená revize se sestaví a publikuje | Stejné jako push do `main` | Již publikovaná nebo zastaralá revize nevytvoří další nasazení ani oznámení |
-| Ruční spuštění na jiné větvi | Pouze `verify-docs` | Obnova, `npm test`, sestavení bez varování | `contents: read` | Podmínka jobu zabrání publikování |
+| Ruční spuštění na jiné větvi | Pouze `verify-docs` | Obnova, `pnpm test`, sestavení bez varování | `contents: read` | Podmínka jobu zabrání publikování |
 | Tag nebo release | Žádný samostatný tok | — | — | Projekt nepoužívá verzované release artefakty |
 
 Publikační job nikdy nezapisuje do `main`.
@@ -149,9 +150,9 @@ Projekt používá průběžné vydávání z větve `main` bez samostatného č
 
 | Krok | Spouštěč | Kanonický nástroj nebo soubor | Ověření |
 |---|---|---|---|
-| Ověření zdroje | Push nebo ruční běh na `main` | `npm test` a `npm run docs:build` | Job `verify-docs` projde |
+| Ověření zdroje | Push nebo ruční běh na `main` | `pnpm test` a `pnpm run docs:build` | Job `verify-docs` projde |
 | Vytvoření historie změn | Sestavení artefaktu | `cliff.toml`, uzamčený `git-cliff` a společný generátor | Ignorovaný changelog odpovídá úplné dosažitelné historii bez ohledu na tag a časové pásmo procesu |
-| Sestavení artefaktu | Ověřený checkout publikačního jobu | `npm run docs:build` | DocFX skončí bez varování a chyb |
+| Sestavení artefaktu | Ověřený checkout publikačního jobu | `pnpm run docs:build` | DocFX skončí bez varování a chyb |
 | Publikování | Úspěšné sestavení | `peaceiris/actions-gh-pages` | Veřejný smoke GitHub Pages |
 | Oznámení | Úspěšné nasazení | `dawidd6/action-send-mail` | Výsledek kroku v logu, selhání je neblokující |
 

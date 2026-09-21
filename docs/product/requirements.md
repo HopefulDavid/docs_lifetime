@@ -78,7 +78,7 @@ Další oblasti osobního života mohou přibývat jako samostatné návody, kte
 | ID | Podmínka | Očekávané chování | Dopad při selhání | Způsob ověření |
 |---|---|---|---|---|
 | `REQ-E001` | Obsahový soubor nemá hlavní nadpis nebo jeho cesta neodpovídá podporované struktuře | Generátor skončí nenulovým kódem a vypíše konkrétní soubor a příčinu | Vadný obsah by mohl zmizet z navigace nebo poškodit katalog | Izolovaný negativní scénář generátoru |
-| `REQ-E002` | Generované soubory neodpovídají zdrojovému obsahu | Samostatná kontrola skončí nenulovým kódem a vypíše všechny očekávané změny včetně changelogu a mazání bez zápisu | CI by jinak publikovalo zastaralou navigaci | `npm run docs:check` nad řízenou odchylkou |
+| `REQ-E002` | Generované soubory neodpovídají zdrojovému obsahu | Samostatná kontrola skončí nenulovým kódem a vypíše všechny očekávané změny včetně changelogu a mazání bez zápisu | CI by jinak publikovalo zastaralou navigaci | `pnpm run docs:check` nad řízenou odchylkou |
 | `REQ-E003` | Čtenář otevře neexistující veřejnou cestu | Hosting vrátí HTTP 404 a nezobrazí jiný recept jako náhradu | Čtenář musí rozpoznat neplatný nebo zastaralý odkaz | HTTP požadavek na neexistující cestu |
 | `REQ-E004` | Odeslání informačního e-mailu selže po úspěšném nasazení | Workflow zachová úspěšně publikovaný web a označí oznámení jako neblokující selhání | Nedostupnost SMTP nesmí vrátit zveřejněný obsah | Kontrola podmínky `continue-on-error` a logu workflow |
 | `REQ-E005` | Úložiště je poškozené nebo zápis není dostupný | Výběr funguje v aktuální stránce, rozhraní přizná omezení a nabídne export | Uživatel nesmí spoléhat na neprovedené uložení | Test obnovy a klientské chybové větve |

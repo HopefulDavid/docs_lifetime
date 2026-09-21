@@ -21,32 +21,32 @@ Chybné tabulky a přenosové payloady jsou pojmenované, aby výstup runneru ur
 
 Dočasné adresáře uklízí kontext testu také po selhání.
 
-Kontrola formátování přes připnutý Prettier je součástí `npm test`.
+Kontrola formátování přes připnutý Prettier je součástí `pnpm test`.
 
 Projekt kombinuje deterministickou kontrolu generovaných souborů, strukturální validaci repozitáře, integrační sestavení DocFX a několik reprezentativních vizuálních scénářů.
 
 | Riziko nebo požadavek | Primární důkaz | Projektový vstup |
 |---|---|---|
-| Zastaralý nebo chybějící docset, `REQ-003` a `REQ-E002` | Přidání, změna, přesun a odstranění receptu, samostatná kontrola bez zápisu včetně changelogu | `tests/generate-docs.test.mjs` a `npm run docs:check` |
-| Vadné odkazy, metadata nebo cache artefakty, `QLT-002` | Strukturální Node.js validátor | `npm run docs:validate` |
-| Nekompatibilní Markdown, šablona nebo DocFX konfigurace, `QLT-001` | Sestavení s varováními jako chybami | `npm run docs:build` |
-| České rozhraní bez editačních odkazů | Node test globálních metadat a tokenů, poté skutečný DocFX build | `npm run test:unit` a `npm run docs:build` |
-| Neúplný, nečitelný nebo nedeterministický changelog, `REQ-004` | Skutečný `git-cliff` nad víceletou dočasnou historií s tagem, conventional, breaking i legacy commitem a přelomem roku ve dvou časových prostředích kontroluje chronologické pořadí, zdrojový commit, sbalené starší roky, kategorie, kotvy a odkazy na existující i odstraněné články | `npm run test:unit` |
-| Procházení katalogu a čitelnost detailu, `REQ-001`, `REQ-002`, `QLT-003` | Krokovatelný lokální scénář v prohlížeči | `npm run docs:serve` po sestavení |
-| České a anglické vyhledání i nulový výsledek, `REQ-005` | Automatické termíny ze všech reprezentativních názvů, obsahu a cest, následované vizuálním smoke | `npm run test:unit` a lokální web |
-| Vadná cesta nebo chybějící nadpis, `REQ-E001` | Izolované negativní obsahové fixture | `npm run test:unit` nad dočasnými kopiemi |
+| Zastaralý nebo chybějící docset, `REQ-003` a `REQ-E002` | Přidání, změna, přesun a odstranění receptu, samostatná kontrola bez zápisu včetně changelogu | `tests/generate-docs.test.mjs` a `pnpm run docs:check` |
+| Vadné odkazy, metadata nebo cache artefakty, `QLT-002` | Strukturální Node.js validátor | `pnpm run docs:validate` |
+| Nekompatibilní Markdown, šablona nebo DocFX konfigurace, `QLT-001` | Sestavení s varováními jako chybami | `pnpm run docs:build` |
+| České rozhraní bez editačních odkazů | Node test globálních metadat a tokenů, poté skutečný DocFX build | `pnpm run test:unit` a `pnpm run docs:build` |
+| Neúplný, nečitelný nebo nedeterministický changelog, `REQ-004` | Skutečný `git-cliff` nad víceletou dočasnou historií s tagem, conventional, breaking i legacy commitem a přelomem roku ve dvou časových prostředích kontroluje chronologické pořadí, zdrojový commit, sbalené starší roky, kategorie, kotvy a odkazy na existující i odstraněné články | `pnpm run test:unit` |
+| Procházení katalogu a čitelnost detailu, `REQ-001`, `REQ-002`, `QLT-003` | Krokovatelný lokální scénář v prohlížeči | `pnpm run docs:serve` po sestavení |
+| České a anglické vyhledání i nulový výsledek, `REQ-005` | Automatické termíny ze všech reprezentativních názvů, obsahu a cest, následované vizuálním smoke | `pnpm run test:unit` a lokální web |
+| Vadná cesta nebo chybějící nadpis, `REQ-E001` | Izolované negativní obsahové fixture | `pnpm run test:unit` nad dočasnými kopiemi |
 | Neexistující veřejná cesta, `REQ-E003` | HTTP 404 bez náhradního obsahu | Lokální server nebo GitHub Pages |
 | Chybný společný nákup, `REQ-007` až `REQ-009` | Součty skutečných receptů, alternativy, volitelné přílohy, neslučitelné jednotky a kompatibilita dříve uložených množství | `tests/kitchen-core.test.mjs` |
 | Zastaralé odškrtnutí a poškozený místní stav, `REQ-011`, `REQ-E005` | Změna dávky a zdrojů, validace uložených dat, export | `tests/kitchen-core.test.mjs` |
 | Návrat starého potvrzení nebo posunutý postup po aktualizaci, `REQ-011` | Změna dávky a návrat, shodná a neshodná revize, starší stav bez revize | `tests/kitchen-core.test.mjs` |
 | Obecný návod zaměněný za recept, `REQ-012` | Izolovaný návod bez ingrediencí zůstane mimo JSON a beze změn, návštěva skutečného průvodce | `tests/generate-docs.test.mjs` a lokální web |
-| Zapomenutá nebo vadná surovina a neblokující množství, `REQ-014` | Neznámý název, duplicita, neúplný řádek, chybějící hlavička, prázdná skupina, warning s řádkem a jeho odstranění po doplnění, obecný návod zůstává mimo kontrolu receptů | `tests/generate-docs.test.mjs` a `npm run docs:validate-content` |
+| Zapomenutá nebo vadná surovina a neblokující množství, `REQ-014` | Neznámý název, duplicita, neúplný řádek, chybějící hlavička, prázdná skupina, warning s řádkem a jeho odstranění po doplnění, obecný návod zůstává mimo kontrolu receptů | `tests/generate-docs.test.mjs` a `pnpm run docs:validate-content` |
 | Vadný nebo rozporný přenos nákupu, `REQ-013` a `REQ-E007` | Gzip i prostý kód, revize, neplatné hodnoty a omezení rozbalení, sloučení, nahrazení, konflikty dávek i vlastních množství a platnost odškrtnutí | `tests/kitchen-transfer.test.mjs` a browser scénáře |
 | Zápis při vadném vstupu | Neplatný recept, duplicitní surovina a neznámá taxonomie nesmějí přepsat zdroje ani katalog | `tests/generate-docs.test.mjs` |
-| Výstupy chybí po klonování | Nákupní testy vytvářejí katalog ze zdrojů v paměti, generování vytvoří celý ignorovaný docset | `npm test` nad čistou kopií |
-| HTML a JSON se rozcházejí nebo mají nefunkční odkazy | Kontrola veřejných stránek podle manifestu, shody katalogu, fulltextu, statických surovin a počtu kroků, interních odkazů a PDF assetů | `npm run docs:verify-site` automaticky na konci buildu |
+| Výstupy chybí po klonování | Nákupní testy vytvářejí katalog ze zdrojů v paměti, generování vytvoří celý ignorovaný docset | `pnpm test` nad čistou kopií |
+| HTML a JSON se rozcházejí nebo mají nefunkční odkazy | Kontrola veřejných stránek podle manifestu, shody katalogu, fulltextu, statických surovin a počtu kroků, interních odkazů a PDF assetů | `pnpm run docs:verify-site` automaticky na konci buildu |
 | Mobilní nákup a vaření, `REQ-006` až `REQ-010` | Skutečné ovládání katalogu, nastavení, checklistu a dialogu | [Smoke scénáře](../development/commands.md#výběr-nákup-a-vaření) |
-| Oprávnění, neměnné akce a publikační pořadí, `QLT-004` | Automatická strukturální kontrola workflow a review oddělených jobů | `npm run docs:validate` a `.github/workflows/main.yml` |
+| Oprávnění, neměnné akce a publikační pořadí, `QLT-004` | Automatická strukturální kontrola workflow a review oddělených jobů | `pnpm run docs:validate` a `.github/workflows/main.yml` |
 
 ### Poslední ověření podle oblasti
 
@@ -57,8 +57,8 @@ Aktualizaci tohoto přehledu a uchování starších důkazů řídí [pravidla 
 | Oblast | Datum | Poslední doložený výsledek | Hranice důkazu nebo zbývající omezení |
 |---|---|---|---|
 | Dokumentace a obsah | 2026-09-16 | Strukturální a obsahová validace prošly, obsahová kontrola měla 0 warnings | Technická validace nezaručuje věcnou správnost receptů |
-| Automatická regrese | 2026-09-21 | `npm test`: 77 testů prošlo, generování i kontrola docsetu a strukturální validace prošly | Test v místním prostředí, nikoli běh GitHub Actions |
-| Úplné sestavení | 2026-09-21 | `npm run docs:build`: 54 stránek, 27 receptů, 0 varování a ověřené interní odkazy | Místní DocFX build, bez nového nasazení GitHub Pages |
+| Automatická regrese | 2026-09-21 | `pnpm test`: 77 testů prošlo, generování i kontrola docsetu a strukturální validace prošly | Test v místním prostředí, nikoli běh GitHub Actions |
+| Úplné sestavení | 2026-09-21 | `pnpm run docs:build`: 54 stránek, 27 receptů, 0 varování a ověřené interní odkazy | Místní DocFX build, bez nového nasazení GitHub Pages |
 | Časová osa změn | 2026-09-21 | Místní prohlížeč na 320 a 390 px potvrdil pořadí, čitelnost karet a otevření odkazu na článek | Vizuální průchod v jednom enginu, bez produkčního nasazení |
 | Ingredience a nákup | 2026-09-13 | Všech 279 ingrediencí ve 27 detailech mělo checkbox, první potvrzení přidalo recept, obnova, synchronizace a zneplatnění změnou dávky prošly | Kontrola DOM doplněná cílenými snímky, potvrzení se vztahuje na celý společný nákup |
 | Vzhled, navigace a vaření | 2026-09-13 | Reprezentativní průchody na 320, 390, 768 a 1440 px, nízký dialog na 844 × 390, oba motivy, klávesnice, obnova kroku a vynechaná příloha prošly | Chromium v Codex, bez fyzických telefonů, dalších enginů a úplného auditu přístupnosti |

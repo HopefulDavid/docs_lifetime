@@ -1,7 +1,7 @@
 const collator = new Intl.Collator('cs', { sensitivity: 'base' });
 
 const generatedNotice =
-  '<!-- Generováno z food/**/*.md, drink/**/*.md a data/*.json pomocí scripts/generate-docs.js. Obnova: npm run docs:generate. Neupravujte ručně. -->';
+  '<!-- Generováno z food/**/*.md, drink/**/*.md a data/*.json pomocí scripts/generate-docs.js. Obnova: pnpm run docs:generate. Neupravujte ručně. -->';
 
 const kitchen = {
   title: 'Kuchyně',

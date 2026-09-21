@@ -38,3 +38,4 @@ Nový záznam vzniká ze šablony [`../../templates/adr.md`](../../templates/adr
 | [`ADR-0007-prenos-nakupu-bez-serveru.md`](ADR-0007-prenos-nakupu-bez-serveru.md) | Předání nákupu bez serverového úložiště | Přijato; doplňuje ADR-0004 a ADR-0005 | — |
 | [`ADR-0008-lokalni-svg-ikony.md`](ADR-0008-lokalni-svg-ikony.md) | Místní SVG ikony z knihoven Iconify | Přijato | — |
 | [`ADR-0009-ctenarska-casova-osa-zmen.md`](ADR-0009-ctenarska-casova-osa-zmen.md) | Čtenářská časová osa změn | Přijato | — |
+| [`ADR-0010-pnpm-pro-spravu-balicku.md`](ADR-0010-pnpm-pro-spravu-balicku.md) | pnpm pro správu JavaScript balíčků | Přijato | — |

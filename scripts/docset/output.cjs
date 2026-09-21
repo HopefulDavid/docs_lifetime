@@ -23,7 +23,7 @@ function createManifest(files) {
     JSON.stringify(
       {
         generatedBy: 'scripts/generate-docs.js',
-        regenerate: 'npm run docs:generate',
+        regenerate: 'pnpm run docs:generate',
         files: [...files].map(([file, content]) => {
           const copied =
             file === 'pruvodce.md' ||

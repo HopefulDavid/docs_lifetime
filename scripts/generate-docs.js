@@ -57,7 +57,7 @@ async function main() {
   const pendingChanges = synchronizeDocset(root, files, { checkOnly });
   if (!pendingChanges.length) return console.log('Dokumentace je aktuální.');
   console.log(
-    checkOnly ? 'Dokumentace není aktuální.\n\nSpusťte npm run docs:generate:' : 'Aktualizováno:',
+    checkOnly ? 'Dokumentace není aktuální.\n\nSpusťte pnpm run docs:generate:' : 'Aktualizováno:',
   );
   for (const file of pendingChanges) console.log('- ' + file);
   if (checkOnly) process.exitCode = 1;
