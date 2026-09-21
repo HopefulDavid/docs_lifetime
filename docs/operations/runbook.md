@@ -1,7 +1,7 @@
 ---
 canonical_for: operations-runbook
 status: accepted
-last_verified: 2026-09-13
+last_verified: 2026-09-21
 owner: operations
 ---
 
@@ -124,7 +124,7 @@ Ruční zásah do `_generated/` nebo `_site/` příčinu neřeší.
 1. Spusť `npm run test:unit` a potvrď víceletou fixture, počty období, typy commitů, časová pásma a historii oddělenou Git tagem.
 2. Spusť `npm run docs:generate`, porovnej hlavičku s `git rev-parse HEAD` a `_generated/changelog.md` s `git log` bez ruční úpravy výstupu.
 3. Ověř úplný checkout a hodnotu `tag_pattern = "^$"` v kanonickém `cliff.toml`.
-4. Spusť `npm run docs:build` a potvrď, že `_site/changelog.html` obsahuje stejnou historii, otevřené nejnovější období, sdělení o vynechávání prázdných roků, sbalené starší roky, počty, kategorie a stabilní kotvy.
+4. Spusť `npm run docs:build` a potvrď, že `_site/changelog.html` obsahuje historii od nejnovějších záznamů, otevřené nejnovější období, sbalené starší roky, české štítky, odkazy na dostupné články a stabilní kotvy.
 5. V CI ověř `fetch-depth: 0` a první selhaný krok `verify-docs` nebo `publish-docs`.
 
 **Potvrzení příčiny:** Konkrétní commit chybí nebo má jinou skupinu v reprodukovaném CLI výstupu nad stejnou Git historií.
@@ -137,9 +137,13 @@ Vygenerovaný soubor necommituj.
 
 ### Symptom: Windows blokuje spuštění git-cliff
 
-**Ověřená překážka k 2026-09-16:** Generování a test changelogu končí na `spawn UNKNOWN`, přímé spuštění `git-cliff.exe --version` hlásí blokaci zásadou řízení aplikací Windows.
+**Historická překážka k 2026-09-16:** Generování a test changelogu končily na `spawn UNKNOWN`, přímé spuštění `git-cliff.exe --version` hlásilo blokaci zásadou řízení aplikací Windows.
 
 Stejný stav nastal také mimo sandbox, samotné opakování s vyšším oprávněním jej nevyřešilo.
+
+K 2026-09-21 prošly `npm test` a `npm run docs:build` v ověřeném prostředí.
+
+Při nové chybě nejprve rozliš dostupnost binárky od oprávnění k dočasnému testovacímu repozitáři.
 
 Při této chybě rozliš systémové odmítnutí spuštění od chybějící Git historie nebo oprávnění k testovacímu repozitáři.
 
@@ -152,11 +156,11 @@ Generátor se nenahrazuje náhradním changelogem a starý artefakt není důkaz
 1. Potvrď úspěšný krok `Publikuje GitHub Pages` a veřejný smoke.
 2. Zkontroluj výsledek kroku `Odešle oznámení o změnách` bez zobrazení hodnot tajemství.
 3. Rozliš chybějící secret, odmítnuté přihlášení, limit poskytovatele a neplatného příjemce.
-4. Po nápravě spusť řízený ruční běh na `main` pouze tehdy, když opakované oznámení nezpůsobí nežádoucí duplicitu.
+4. Po nápravě ověř, zda poslední publikovaný commit `gh-pages` nese značku `docs-source` pro aktuální revizi `main`; opakování stejné revize oznámení záměrně neodešle.
 
 **Potvrzení příčiny:** SMTP krok obsahuje konkrétní neúspěch a veřejný web je současně zdravý.
 
-**Bezpečná náprava:** Oprava řízeného tajemství nebo konfigurace poskytovatele bez změny již publikovaného artefaktu.
+**Bezpečná náprava:** Oprav řízené tajemství nebo konfiguraci poskytovatele; další nová revize `main` odešle další oznámení až po svém nasazení.
 
 **Eskalace:** Správce poštovní identity nebo vlastník GitHub Secrets.
 

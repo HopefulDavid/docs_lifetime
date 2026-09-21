@@ -267,6 +267,25 @@ function validateWorkflowSecurity() {
     errors.push(`${relativePath}: příjemci oznámení musí pocházet z MAIL_RECIPIENTS`);
   }
 
+  if (!content.includes("github.ref == 'refs/heads/main'")) {
+    errors.push(`${relativePath}: publikační job musí být omezený na main`);
+  }
+
+  if (
+    !content.includes('full_commit_message: "docs-source: ${{ github.sha }}"') ||
+    !content.includes('published_message" = "docs-source: $SOURCE_SHA"')
+  ) {
+    errors.push(`${relativePath}: publikační job musí rozpoznat již nasazenou revizi`);
+  }
+
+  if (
+    !/name: Odešle oznámení o změnách\s+if: steps\.publication\.outputs\.changed == 'true' && success\(\)/.test(
+      content,
+    )
+  ) {
+    errors.push(`${relativePath}: oznámení musí následovat pouze po novém úspěšném nasazení`);
+  }
+
   if (/[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/i.test(content)) {
     errors.push(`${relativePath}: workflow obsahuje veřejně zapsanou e-mailovou adresu`);
   }

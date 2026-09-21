@@ -1,7 +1,7 @@
 ---
 canonical_for: project-commands
 status: accepted
-last_verified: 2026-09-13
+last_verified: 2026-09-21
 owner: engineering
 ---
 
@@ -161,13 +161,15 @@ Strategie výběru testů je v [`../quality/testing.md`](../quality/testing.md).
 
 Každé sestavení odvozuje `_generated/changelog.md` z úplné Git historie a zahrne jej do statického artefaktu.
 
-Konfigurace v [`../../cliff.toml`](../../cliff.toml) zachovává nekonvenční commity, uvádí přesný zdrojový commit a celkový počet záznamů a seskupuje změny podle kalendářního roku v časovém pásmu `Europe/Prague`.
+Konfigurace v [`../../cliff.toml`](../../cliff.toml) zachovává nekonvenční commity, uvádí krátký identifikátor zdrojového commitu a celkový počet záznamů a řadí změny od nejnovější po nejstarší podle kalendářního roku v časovém pásmu `Europe/Prague`.
 
 Rok nejnovějšího zahrnutého commitu je nejnovější otevřené období a uvádí vlastní počet změn.
 
 Roky bez zahrnutých změn se nevykreslují a každý starší zobrazený rok je samostatný sbalený blok `<details>` se stejným údajem.
 
-Uvnitř každého období zůstávají české kategorie, zvýrazněné breaking changes a sbalené technické typy.
+Každá položka má český štítek typu změny a případná nekompatibilní změna je zvýrazněná.
+
+Upravený recept, nápoj nebo obecný návod, který stále existuje na stejné cestě, dostane přímý odkaz na veřejný článek.
 
 Dosavadní stabilní kotva každé kategorie směřuje na její nejnovější výskyt a všechna období přidávají kotvy rozlišené rokem.
 
@@ -178,7 +180,7 @@ Soubor není verzovaný a nevytváří samostatný commit.
 | Účel | Přesný příkaz | Vedlejší účinek | Očekávaný výsledek |
 |---|---|---|---|
 | Náhled bez zápisu | `npm exec -- git-cliff --config cliff.toml` | Žádný soubor se nezmění | Úplný Markdown na standardním výstupu |
-| Samostatný náhled changelogu | `npm run changelog:generate` | Přepíše pouze `_generated/changelog.md`, úplný manifest obnovuje `docs:generate` | Úplný přehled s identitou zdroje, otevřeným nejnovějším obdobím, sdělením o vynechávání roků bez změn, sbalenými staršími roky, počty změn a kategoriemi |
+| Samostatný náhled changelogu | `npm run changelog:generate` | Přepíše pouze `_generated/changelog.md`, úplný manifest obnovuje `docs:generate` | Úplná časová osa s identitou zdroje, odkazy na dostupné články, otevřeným nejnovějším rokem a sbalenými staršími roky |
 
 `npm run docs:build` používá stejné odvození changelogu prostřednictvím celkového generování před DocFX.
 

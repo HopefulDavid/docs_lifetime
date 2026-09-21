@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import { writeFileSync } from 'node:fs';
+import { mkdirSync, unlinkSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
 import test from 'node:test';
 import {
@@ -37,54 +37,59 @@ test('generuje úplnou čtenářskou historii po ročních obdobích nezávisle 
   // Přelom roku se má řídit Prahou bez ohledu na časovou zónu procesu.
   assert.equal(prague, utc);
   assert.match(utc, /^# Změny/m);
-  assert.match(utc, /automaticky generuje z úplné Git historie/);
-  assert.ok(utc.includes(`> Zdrojový stav: \`${head.slice(0, 7)}\`.`));
-  assert.match(utc, /Zahrnuté commity: \*\*6\*\*\./);
-  assert.match(utc, /<a id="obdobi-2026"><\/a>\r?\n## Nejnovější období · 2026/u);
-  assert.match(utc, /Počet změn v období: \*\*3\*\*\./u);
+  assert.match(utc, /Každodenní život/u);
+  assert.match(utc, /Co je nového v návodech, receptech a na webu/u);
+  assert.match(utc, /change-hero-icon"><span class="ui-icon ui-icon--book"><\/span>/u);
+  assert.doesNotMatch(utc, /change-hero-icon"><span class="ui-icon ui-icon--kitchen"><\/span>/u);
+  assert.ok(utc.includes(`Zdrojový stav: \`${head.slice(0, 7)}\``));
+  assert.match(utc, /Celkem 6 změn\./u);
   assert.match(
     utc,
-    /Zobrazují se pouze roky, ve kterých vznikla změna\.\r?\n>\r?\n> Prázdné roky se vynechávají\./u,
+    /<a id="obdobi-2026"><\/a>\r?\n## Nejnovější změny · 2026 <small>\(počet změn: 3\)<\/small>/u,
   );
-  assert.doesNotMatch(utc, /<summary><strong>2026<\/strong>/u);
+  assert.match(utc, /Starší roky jsou sbalené a roky bez změn se nezobrazují\./u);
+  assert.doesNotMatch(utc, /<summary><strong>Rok 2026<\/strong>/u);
   assert.match(
     utc,
-    /<a id="nove-funkce"><\/a>\r?\n<a id="nove-funkce-2026"><\/a>\r?\n### ✨ Nové funkce/u,
+    /<a id="nove-funkce"><\/a><a id="nove-funkce-2026"><\/a><span class="change-kind change-kind--nove-funkce">/u,
   );
   assert.match(
     utc,
-    /<a id="technicke-zmeny"><\/a>\r?\n<a id="technicke-zmeny-2026"><\/a>\r?\n### 🔩 Technické změny/u,
+    /<a id="technicke-zmeny"><\/a><a id="technicke-zmeny-2026"><\/a><span class="change-kind change-kind--technicke-zmeny">/u,
   );
   // Starší období mají vlastní kotvy a zůstávají sbalená.
-  assert.match(utc, /<a id="opravy"><\/a>\r?\n<a id="opravy-2025"><\/a>/u);
+  assert.match(utc, /<a id="opravy"><\/a><a id="opravy-2025"><\/a>/u);
   assert.match(
     utc,
-    /<a id="obdobi-2025"><\/a>\s*<details>\s*<summary><strong>2025<\/strong> · počet změn: 2<\/summary>[\s\S]*?<a id="opravy-2025"><\/a>\s*### 🐛 Opravy[\s\S]*?Oprav starší změnu[\s\S]*?<a id="dokumentace-2025"><\/a>\s*### 📚 Dokumentace[\s\S]*?Doplň starší návod[\s\S]*?<\/details>/u,
+    /<a id="obdobi-2025"><\/a>\s*<details class="change-year">\s*<summary><strong>Rok 2025<\/strong> · počet změn: 2<\/summary>[\s\S]*?<a id="dokumentace-2025"><\/a>[\s\S]*?Doplň starší návod[\s\S]*?<a id="opravy-2025"><\/a>[\s\S]*?Oprav starší změnu[\s\S]*?<\/details>/u,
   );
   assert.match(
     utc,
-    /<a id="obdobi-2024"><\/a>\s*<details>\s*<summary><strong>2024<\/strong> · počet změn: 1<\/summary>[\s\S]*?<a id="nove-funkce-2024"><\/a>\s*### ✨ Nové funkce[\s\S]*?Přidej první změnu[\s\S]*?<\/details>/u,
+    /<a id="obdobi-2024"><\/a>\s*<details class="change-year">\s*<summary><strong>Rok 2024<\/strong> · počet změn: 1<\/summary>[\s\S]*?<a id="nove-funkce-2024"><\/a>[\s\S]*?Přidej první změnu[\s\S]*?<\/details>/u,
   );
-  assert.match(
-    utc,
-    /<details>\s*<summary>Zobrazit technické záznamy \(1\)<\/summary>[\s\S]*Ověř aktuální změnu[\s\S]*<\/details>/u,
-  );
-  assert.ok(utc.indexOf('### ✨ Nové funkce') < utc.indexOf('### 🔩 Technické změny'));
-  assert.ok(utc.indexOf('<strong>2025</strong>') < utc.indexOf('<strong>2024</strong>'));
+  assert.match(utc, /Zákulisí webu[\s\S]*?Ověř aktuální změnu/u);
+  assert.ok(utc.indexOf('Historický záznam') < utc.indexOf('Změň veřejný kontrakt'));
+  assert.ok(utc.indexOf('Změň veřejný kontrakt') < utc.indexOf('Ověř aktuální změnu'));
+  assert.ok(utc.indexOf('Ověř aktuální změnu') < utc.indexOf('Doplň starší návod'));
+  assert.ok(utc.indexOf('Doplň starší návod') < utc.indexOf('Oprav starší změnu'));
+  assert.ok(utc.indexOf('<strong>Rok 2025</strong>') < utc.indexOf('<strong>Rok 2024</strong>'));
   assert.doesNotMatch(utc, /## 🏗️ Sestavení a CI/);
-  assert.match(utc, /⚠️ \*\*Nekompatibilní změna:\*\*/u);
-  assert.match(utc, /\*\*core:\*\* Změň veřejný kontrakt/);
+  assert.match(utc, /<span class="change-breaking">Důležitá nekompatibilní změna<\/span>/u);
+  assert.match(
+    utc,
+    /<small class="change-meta">[^<]+ · core · [0-9a-f]{7}<\/small>[^\n]+\*\*Změň veřejný kontrakt\*\*/u,
+  );
   assert.match(utc, /Přidej první změnu/);
   assert.match(utc, /Oprav starší změnu/);
   assert.match(utc, /Doplň starší návod/);
   assert.match(utc, /Ověř aktuální změnu/);
   assert.match(utc, /Historický záznam/);
-  assert.match(utc, /2024-08-27/);
-  assert.match(utc, /2025-05-10/);
-  assert.match(utc, /2025-06-11/);
-  assert.match(utc, /2026-01-01/);
-  assert.match(utc, /2026-08-28/);
-  assert.match(utc, /· `[0-9a-f]{7}`/);
+  assert.match(utc, /27\. 08\. 2024/);
+  assert.match(utc, /10\. 05\. 2025/);
+  assert.match(utc, /11\. 06\. 2025/);
+  assert.match(utc, /01\. 01\. 2026/);
+  assert.match(utc, /28\. 08\. 2026/);
+  assert.match(utc, /· [0-9a-f]{7}<\/small>/);
   assert.doesNotMatch(utc, /https:\/\/github\.com\/.+\/commit\//);
   assert.doesNotMatch(utc, /## 1\.0\.0/);
 });
@@ -100,4 +105,36 @@ test('changelog odmítne mělkou a chybějící historii', async (context) => {
   const head = runGit(root, ['rev-parse', 'HEAD']).output.trim();
   writeFileSync(path.join(root, '.git/shallow'), head + '\n');
   await assert.rejects(createChangelog(root), /mělký checkout/);
+});
+
+test('odkazuje na aktuální články změněné commitem a neodkazuje na odstraněný článek', (context) => {
+  const root = createChangelogFixture(context);
+  runGit(root, ['init', '--quiet']);
+  runGit(root, ['config', 'user.name', 'Test']);
+  runGit(root, ['config', 'user.email', 'test@example.invalid']);
+  mkdirSync(path.join(root, 'food'));
+  writeFileSync(path.join(root, 'food/prvni.md'), '# První návod\n');
+  runGit(root, ['add', 'food/prvni.md']);
+  runGit(root, ['commit', '--quiet', '-m', 'docs: přidává první návod']);
+
+  const single = generateChangelogInTimezone(root, 'Europe/Prague');
+  assert.match(single, /\[Otevřít článek: První návod\]\(food\/prvni\.md\)/u);
+
+  writeFileSync(path.join(root, 'food/prvni.md'), '# První návod\n\nÚprava.\n');
+  writeFileSync(path.join(root, 'food/druhy.md'), '# Druhý návod\n');
+  runGit(root, ['add', 'food/prvni.md', 'food/druhy.md']);
+  runGit(root, ['commit', '--quiet', '-m', 'docs: upravuje návody']);
+
+  const multiple = generateChangelogInTimezone(root, 'Europe/Prague');
+  assert.match(multiple, /<summary>Otevřít 2 upravené články<\/summary>/u);
+  assert.match(multiple, /href="food\/prvni\.md">První návod<\/a>/u);
+  assert.match(multiple, /href="food\/druhy\.md">Druhý návod<\/a>/u);
+
+  unlinkSync(path.join(root, 'food/prvni.md'));
+  runGit(root, ['add', '-u']);
+  runGit(root, ['commit', '--quiet', '-m', 'docs: odstraňuje první návod']);
+
+  const deleted = generateChangelogInTimezone(root, 'Europe/Prague');
+  assert.doesNotMatch(deleted, /food\/prvni\.md/u);
+  assert.match(deleted, /\[Otevřít článek: Druhý návod\]\(food\/druhy\.md\)/u);
 });

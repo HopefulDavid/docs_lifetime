@@ -1,4 +1,4 @@
-# Sdílená konfigurace generátoru changelogu pro oba dokumentační projekty.
+# Konfigurace veřejného changelogu tohoto projektu.
 
 [changelog]
 header = """
@@ -6,33 +6,39 @@ header = """
 
 <!-- Zdroj: Git historie a cliff.toml. Obnova: npm run docs:generate. -->
 
-> Tento soubor se automaticky generuje z úplné Git historie.
->
-> Neupravujte jej ručně.
->
+<div class="change-hero">
+<div class="change-hero-icons" aria-hidden="true"><span class="change-hero-icon"><span class="ui-icon ui-icon--book"></span></span></div>
+<div><p class="change-eyebrow">Každodenní život</p><p class="change-lead">Co je nového v návodech, receptech a na webu</p></div>
+</div>
+
+<details class="change-about">
+<summary>O tomto přehledu</summary>
+
+Přehled se automaticky vytváří z úplné historie projektu.
+
+Starší roky jsou sbalené a roky bez změn se nezobrazují.
+
+Technické záznamy zůstávají součástí historie.
+
 """
 body = """
-> Zdrojový stav: `{{ commit_id | truncate(length=7, end="") }}`.
->
-> Zahrnuté commity: **{{ statistics.commit_count }}**.
+Zdrojový stav: `{{ commit_id | truncate(length=7, end="") }}` · Celkem {{ statistics.commit_count }} změn.
 
----
+</details>
+
 {% if commits | length == 0 %}\
 > V dostupné historii nejsou žádné změny.
 {% else %}\
 {% set newest_commit = commits | first %}\
 {% set latest_period = newest_commit.author.timestamp | date(format="%Y", timezone="Europe/Prague") %}\
 {% set_global rendered_period = "" %}\
-{% set_global features_anchor_rendered = false %}\
-{% set_global fixes_anchor_rendered = false %}\
-{% set_global performance_anchor_rendered = false %}\
-{% set_global documentation_anchor_rendered = false %}\
-{% set_global reverts_anchor_rendered = false %}\
-{% set_global other_anchor_rendered = false %}\
-{% set_global technical_anchor_rendered = false %}\
-{% for period_marker in commits %}\
-{% set period = period_marker.author.timestamp | date(format="%Y", timezone="Europe/Prague") %}\
+{% for commit in commits %}\
+{% set period = commit.author.timestamp | date(format="%Y", timezone="Europe/Prague") %}\
 {% if period != rendered_period %}\
+{% if rendered_period != "" and rendered_period != latest_period %}\
+</details>
+
+{% endif %}\
 {% set_global rendered_period = period %}\
 {% set_global period_count = 0 %}\
 {% for period_commit in commits %}\
@@ -43,99 +49,50 @@ body = """
 {% endfor %}\
 <a id="obdobi-{{ period }}"></a>
 {% if period == latest_period %}\
-## Nejnovější období · {{ period }}
-
-> Počet změn v období: **{{ period_count }}**.
->
-> Zobrazují se pouze roky, ve kterých vznikla změna.
->
-> Prázdné roky se vynechávají.
+## Nejnovější změny · {{ period }} <small>(počet změn: {{ period_count }})</small>
 
 {% else %}\
-<details>
-<summary><strong>{{ period }}</strong> · počet změn: {{ period_count }}</summary>
+<details class="change-year">
+<summary><strong>Rok {{ period }}</strong> · počet změn: {{ period_count }}</summary>
 
 {% endif %}\
-{% for group, grouped_commits in commits | group_by(attribute="group") %}\
-{% set_global category_count = 0 %}\
-{% for grouped_commit in grouped_commits %}\
-{% set grouped_commit_year = grouped_commit.author.timestamp | date(format="%Y", timezone="Europe/Prague") %}\
-{% if grouped_commit_year == period %}\
-{% set_global category_count = category_count + 1 %}\
 {% endif %}\
-{% endfor %}\
-{% if category_count > 0 %}\
-{% set title = group | striptags | trim %}\
+{% set title = commit.group | striptags | trim %}\
 {% if title == "✨ Nové funkce" %}\
-{% if not features_anchor_rendered %}\
-<a id="nove-funkce"></a>
-{% set_global features_anchor_rendered = true %}\
-{% endif %}\
-<a id="nove-funkce-{{ period }}"></a>
+{% set kind = "Novinka" %}\
+{% set icon = "leaf" %}\
+{% set slug = "nove-funkce" %}\
 {% elif title == "🐛 Opravy" %}\
-{% if not fixes_anchor_rendered %}\
-<a id="opravy"></a>
-{% set_global fixes_anchor_rendered = true %}\
-{% endif %}\
-<a id="opravy-{{ period }}"></a>
+{% set kind = "Oprava" %}\
+{% set icon = "check-circle" %}\
+{% set slug = "opravy" %}\
 {% elif title == "⚡ Výkon" %}\
-{% if not performance_anchor_rendered %}\
-<a id="vykon"></a>
-{% set_global performance_anchor_rendered = true %}\
-{% endif %}\
-<a id="vykon-{{ period }}"></a>
+{% set kind = "Zrychlení" %}\
+{% set icon = "clock" %}\
+{% set slug = "vykon" %}\
 {% elif title == "📚 Dokumentace" %}\
-{% if not documentation_anchor_rendered %}\
-<a id="dokumentace"></a>
-{% set_global documentation_anchor_rendered = true %}\
-{% endif %}\
-<a id="dokumentace-{{ period }}"></a>
+{% set kind = "Dokumentace" %}\
+{% set icon = "book" %}\
+{% set slug = "dokumentace" %}\
 {% elif title == "⏪ Vrácené změny" %}\
-{% if not reverts_anchor_rendered %}\
-<a id="vracene-zmeny"></a>
-{% set_global reverts_anchor_rendered = true %}\
-{% endif %}\
-<a id="vracene-zmeny-{{ period }}"></a>
-{% elif title == "🧾 Ostatní změny" %}\
-{% if not other_anchor_rendered %}\
-<a id="ostatni-zmeny"></a>
-{% set_global other_anchor_rendered = true %}\
-{% endif %}\
-<a id="ostatni-zmeny-{{ period }}"></a>
+{% set kind = "Vrácená změna" %}\
+{% set icon = "reset" %}\
+{% set slug = "vracene-zmeny" %}\
 {% elif title == "🔩 Technické změny" %}\
-{% if not technical_anchor_rendered %}\
-<a id="technicke-zmeny"></a>
-{% set_global technical_anchor_rendered = true %}\
+{% set kind = "Zákulisí webu" %}\
+{% set icon = "kitchen" %}\
+{% set slug = "technicke-zmeny" %}\
+{% else %}\
+{% set kind = "Další změna" %}\
+{% set icon = "info" %}\
+{% set slug = "ostatni-zmeny" %}\
 {% endif %}\
-<a id="technicke-zmeny-{{ period }}"></a>
-{% endif %}\
-### {{ title }}
-
-{% if title == "🔩 Technické změny" %}\
-<details>
-<summary>Zobrazit technické záznamy ({{ category_count }})</summary>
-
-{% endif %}\
-{% for commit in grouped_commits %}\
-{% set commit_year = commit.author.timestamp | date(format="%Y", timezone="Europe/Prague") %}\
-{% if commit_year == period %}\
-- {% if commit.breaking %}⚠️ **Nekompatibilní změna:** {% endif %}{% if commit.scope %}**{{ commit.scope }}:** {% endif %}{{ commit.message | upper_first }} · {{ commit.author.timestamp | date(format="%Y-%m-%d", timezone="Europe/Prague") }} · `{{ commit.id | truncate(length=7, end="") }}`
-{% endif %}\
-{% endfor %}
-{% if title == "🔩 Technické změny" %}\
-</details>
-
-{% endif %}\
-{% endif %}\
-{% endfor %}
-{% if period != latest_period %}\
-</details>
-
-{% endif %}\
-{% endif %}\
+- <!-- category:{{ slug }}:{{ period }} --><span class="change-kind change-kind--{{ slug }}"><span class="ui-icon ui-icon--{{ icon }}" aria-hidden="true"></span>{{ kind }}</span> <small class="change-meta">{{ commit.author.timestamp | date(format="%d. %m. %Y", timezone="Europe/Prague") }}{% if commit.scope %} · {{ commit.scope }}{% endif %} · {{ commit.id | truncate(length=7, end="") }}</small> {% if commit.breaking %}<span class="change-breaking">Důležitá nekompatibilní změna</span> {% endif %}**{{ commit.message | upper_first }}**<!-- article:{{ commit.id }} -->
 {% endfor %}\
-{% endif %}
-"""
+{% if rendered_period != latest_period %}\
+</details>
+{% endif %}\
+{% endif %}"""
 trim = true
 render_always = true
 footer = """

@@ -1,7 +1,7 @@
 ---
 canonical_for: testing-strategy
 status: accepted
-last_verified: 2026-09-13
+last_verified: 2026-09-21
 owner: quality
 ---
 
@@ -31,7 +31,7 @@ Projekt kombinuje deterministickou kontrolu generovaných souborů, strukturáln
 | Vadné odkazy, metadata nebo cache artefakty, `QLT-002` | Strukturální Node.js validátor | `npm run docs:validate` |
 | Nekompatibilní Markdown, šablona nebo DocFX konfigurace, `QLT-001` | Sestavení s varováními jako chybami | `npm run docs:build` |
 | České rozhraní bez editačních odkazů | Node test globálních metadat a tokenů, poté skutečný DocFX build | `npm run test:unit` a `npm run docs:build` |
-| Neúplný, nečitelný nebo nedeterministický changelog, `REQ-004` | Skutečný `git-cliff` nad víceletou dočasnou historií s tagem, conventional, breaking i legacy commitem a přelomem roku ve dvou časových prostředích, kontroluje zdrojový commit, otevřené nejnovější období, sdělení o vynechávání prázdných roků, sbalené starší roky, jejich počty a kategorie i stabilní kotvy | `npm run test:unit` |
+| Neúplný, nečitelný nebo nedeterministický changelog, `REQ-004` | Skutečný `git-cliff` nad víceletou dočasnou historií s tagem, conventional, breaking i legacy commitem a přelomem roku ve dvou časových prostředích kontroluje chronologické pořadí, zdrojový commit, sbalené starší roky, kategorie, kotvy a odkazy na existující i odstraněné články | `npm run test:unit` |
 | Procházení katalogu a čitelnost detailu, `REQ-001`, `REQ-002`, `QLT-003` | Krokovatelný lokální scénář v prohlížeči | `npm run docs:serve` po sestavení |
 | České a anglické vyhledání i nulový výsledek, `REQ-005` | Automatické termíny ze všech reprezentativních názvů, obsahu a cest, následované vizuálním smoke | `npm run test:unit` a lokální web |
 | Vadná cesta nebo chybějící nadpis, `REQ-E001` | Izolované negativní obsahové fixture | `npm run test:unit` nad dočasnými kopiemi |
@@ -57,8 +57,9 @@ Aktualizaci tohoto přehledu a uchování starších důkazů řídí [pravidla 
 | Oblast | Datum | Poslední doložený výsledek | Hranice důkazu nebo zbývající omezení |
 |---|---|---|---|
 | Dokumentace a obsah | 2026-09-16 | Strukturální a obsahová validace prošly, obsahová kontrola měla 0 warnings | Technická validace nezaručuje věcnou správnost receptů |
-| Automatická regrese | 2026-09-16 | Formátování prošlo, z 76 testů uspělo 75 | Test changelogu a následné úplné generování blokuje [spuštění git-cliff ve Windows](../operations/runbook.md#symptom-windows-blokuje-spuštění-git-cliff) |
-| Úplné sestavení | 2026-09-13 | Sestavení ověřilo 54 stránek, 27 receptů a 4 navigace bez chyb a varování DocFX i obsahové kontroly | Po novější úpravě katalogových textů nebyl kvůli blokaci git-cliff ověřen nový build ani vizuální náhled |
+| Automatická regrese | 2026-09-21 | `npm test`: 77 testů prošlo, generování i kontrola docsetu a strukturální validace prošly | Test v místním prostředí, nikoli běh GitHub Actions |
+| Úplné sestavení | 2026-09-21 | `npm run docs:build`: 54 stránek, 27 receptů, 0 varování a ověřené interní odkazy | Místní DocFX build, bez nového nasazení GitHub Pages |
+| Časová osa změn | 2026-09-21 | Místní prohlížeč na 320 a 390 px potvrdil pořadí, čitelnost karet a otevření odkazu na článek | Vizuální průchod v jednom enginu, bez produkčního nasazení |
 | Ingredience a nákup | 2026-09-13 | Všech 279 ingrediencí ve 27 detailech mělo checkbox, první potvrzení přidalo recept, obnova, synchronizace a zneplatnění změnou dávky prošly | Kontrola DOM doplněná cílenými snímky, potvrzení se vztahuje na celý společný nákup |
 | Vzhled, navigace a vaření | 2026-09-13 | Reprezentativní průchody na 320, 390, 768 a 1440 px, nízký dialog na 844 × 390, oba motivy, klávesnice, obnova kroku a vynechaná příloha prošly | Chromium v Codex, bez fyzických telefonů, dalších enginů a úplného auditu přístupnosti |
 | Přenos a produkční podsložka | 2026-09-13 | Export, sloučení, převzetí, vrácení importu a odmítnutí neplatných dat prošly, odkaz fungoval také pod /docs_lifetime/ | Místní artefakt, bez skutečného odeslání zprávy a nového nasazení GitHub Pages |

@@ -1,7 +1,7 @@
 ---
 canonical_for: system-architecture
 status: accepted
-last_verified: 2026-09-13
+last_verified: 2026-09-21
 owner: architecture
 ---
 
@@ -146,7 +146,7 @@ Receptová validace se rozhoduje podle explicitně vybraných receptových zdroj
 |---|---|---|---|
 | Lokální změna obsahu | `REQ-003`, `REQ-E001`, `REQ-E002` | Jedno spuštění generátoru nejprve načte a ověří celý katalog a poté zapisuje odvozené soubory | Chyba vypíše soubor a ukončí proces nenulově, správce opraví zdroj a spustí kontrolu znovu |
 | Ověření změny | `QLT-001`, `QLT-002` | `npm test` odvozuje výstupy z aktuálních zdrojů, ověřuje jejich determinismus a strukturu repozitáře | Pull request ani větev se nesmějí publikovat při selhání |
-| Publikování `main` | `REQ-004` | Jeden publikační job v dočasném workspace vygeneruje changelog, sestaví `_site/` a nasadí tentýž artefakt bez změny `main` | Selhání před nasazením zachová předchozí web, po opravě lze workflow bezpečně zopakovat |
+| Publikování `main` | `REQ-004` | Jeden publikační job ověří aktuální dosud nenasazenou revizi, v dočasném workspace vygeneruje changelog, sestaví `_site/` a nasadí tentýž artefakt bez změny `main` | Selhání před nasazením zachová předchozí web; opakování již nasazené revize přeskočí publikování i oznámení |
 | Čtení receptu | `REQ-001`, `REQ-002` | Jedna verze statických souborů na GitHub Pages | Chybějící cesta vrátí 404 a správce ověří zdroj, TOC a nasazený commit |
 | Hledání | `REQ-005` | Worker jednou připraví statický `index.json` a každý dotaz vyžaduje shodu všech normalizovaných slov | Dotaz bez shody zobrazí českou nulovou informaci a klientská chyba se diagnostikuje konzolí a smoke scénářem |
 | Oznámení | `REQ-E004` | E-mail následuje až po nasazení | SMTP chyba nezmění výsledek nasazení a zůstane v logu Actions |
@@ -157,7 +157,7 @@ Receptová validace se rozhoduje podle explicitně vybraných receptových zdroj
 |---|---|---|---|---|---|
 | Recepty a nápoje | Ruční verzované Markdown soubory pod `food/` a `drink/` | Správce obsahu | Git commit | Git historie podle repozitáře, odstranění přes běžnou změnu | Přesuny cest musí aktualizovat nebo přesměrovat veřejné odkazy |
 | Katalog a navigace | Generátor a zdrojový obsah | Generátor | Přepočet při každé změně | Výstupy lze odstranit a znovu vytvořit | Změna struktury vyžaduje kompatibilní úpravu parseru cest |
-| Changelog | Git historie a `cliff.toml` | Delivery | Regenerace při každém sestavení | Ignorovaný lokální výstup a kopie ve statickém artefaktu | Nejnovější rok změn zůstává otevřený, roky bez změn se nezobrazují a starší zobrazené roky jsou sbalené, změna formátu nesmí skrýt dosažitelný commit |
+| Changelog | Git historie, `cliff.toml` a současné veřejné články | Delivery | Regenerace při každém sestavení | Ignorovaný lokální výstup a kopie ve statickém artefaktu | Časová osa řadí všechny commity od nejnovějších, nejnovější rok zůstává otevřený, starší roky jsou sbalené a dostupné články mají přímé odkazy |
 | Statický web | `_site/` vytvořený z jednoho checkoutu | Build | Neměnný artefakt jednoho běhu | Lokálně ignorovaný, publikovaná kopie se nahrazuje nasazením | Nová verze se nasazuje bez runtime datové migrace |
 | Tajemství CI | GitHub Actions secrets | Maintainers | Mimo repozitář | Rotace podle správy účtu | Přesun poskytovatele vyžaduje nové řízené identity |
 

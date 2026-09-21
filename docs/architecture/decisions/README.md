@@ -1,7 +1,7 @@
 ---
 canonical_for: architecture-decision-index
 status: accepted
-last_verified: 2026-08-28
+last_verified: 2026-09-21
 owner: architecture
 ---
 
@@ -31,9 +31,10 @@ Nový záznam vzniká ze šablony [`../../templates/adr.md`](../../templates/adr
 |---|---|---|---|
 | [`ADR-0001-kanonicky-system-dokumentace.md`](ADR-0001-kanonicky-system-dokumentace.md) | Kanonický systém dokumentace pro lidi a AI agenty | Přijato | — |
 | [`ADR-0002-vyhledavani-nad-docfx-indexem.md`](ADR-0002-vyhledavani-nad-docfx-indexem.md) | Vyhledávání nad indexem DocFX | Přijato | — |
-| [`ADR-0003-generovani-changelogu-pomoci-git-cliff.md`](ADR-0003-generovani-changelogu-pomoci-git-cliff.md) | Generování changelogu pomocí git-cliff | Přijato | — |
+| [`ADR-0003-generovani-changelogu-pomoci-git-cliff.md`](ADR-0003-generovani-changelogu-pomoci-git-cliff.md) | Generování changelogu pomocí git-cliff | Nahrazeno | ADR-0009 |
 | [`ADR-0004-nakup-a-vareni-nad-markdownem.md`](ADR-0004-nakup-a-vareni-nad-markdownem.md) | Nákup a vaření nad jednotným Markdownem | Přijato | — |
 | [`ADR-0005-pdf-export-v-prohlizeci.md`](ADR-0005-pdf-export-v-prohlizeci.md) | Přímý export PDF v prohlížeči | Přijato; doplňuje ADR-0004 | — |
 | [`ADR-0006-izolovane-generovani-docsetu.md`](ADR-0006-izolovane-generovani-docsetu.md) | Izolované generování veřejného docsetu | Přijato; doplňuje ADR-0003 a ADR-0004 | — |
 | [`ADR-0007-prenos-nakupu-bez-serveru.md`](ADR-0007-prenos-nakupu-bez-serveru.md) | Předání nákupu bez serverového úložiště | Přijato; doplňuje ADR-0004 a ADR-0005 | — |
 | [`ADR-0008-lokalni-svg-ikony.md`](ADR-0008-lokalni-svg-ikony.md) | Místní SVG ikony z knihoven Iconify | Přijato | — |
+| [`ADR-0009-ctenarska-casova-osa-zmen.md`](ADR-0009-ctenarska-casova-osa-zmen.md) | Čtenářská časová osa změn | Přijato | — |

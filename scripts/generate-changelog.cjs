@@ -3,6 +3,50 @@ const path = require('node:path');
 const { execFileSync } = require('node:child_process');
 const { runGitCliff } = require('git-cliff');
 
+function changedArticles(root, commitId) {
+  const paths = execFileSync(
+    'git',
+    ['diff-tree', '--root', '--no-commit-id', '--name-only', '-r', '-z', commitId],
+    { cwd: root, encoding: 'utf8', stdio: ['ignore', 'pipe', 'pipe'] },
+  );
+  return paths
+    .split('\0')
+    .filter((file) => /^(?:food|drink)\/.+\.md$/.test(file) || file === 'pruvodce.md')
+    .filter((file) => fs.existsSync(path.join(root, file)))
+    .sort();
+}
+
+function articleTitle(root, file) {
+  const source = fs.readFileSync(path.join(root, file), 'utf8');
+  return source.match(/^#\s+(.+)$/m)?.[1].trim() || path.basename(file, '.md');
+}
+
+function articleUrl(file, extension) {
+  return file.replace(/\.md$/, extension).split('/').map(encodeURIComponent).join('/');
+}
+
+function articleLinks(root, commitId) {
+  const articles = changedArticles(root, commitId);
+  if (articles.length === 0) return '';
+  if (articles.length === 1) {
+    const file = articles[0];
+    const title = articleTitle(root, file).replace(/([\\\[\]])/g, '\\$1');
+    return ` [Otevřít článek: ${title}](${articleUrl(file, '.md')})`;
+  }
+  const links = articles
+    .map((file) => {
+      const title = articleTitle(root, file)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;');
+      return `<li><a href="${articleUrl(file, '.md')}">${title}</a></li>`;
+    })
+    .join('');
+  const countLabel = articles.length < 5 ? 'upravené články' : 'upravených článků';
+  return ` <details class="change-articles"><summary>Otevřít ${articles.length} ${countLabel}</summary><ul>${links}</ul></details>`;
+}
+
 /** Odvodí changelog z úplné historie daného repozitáře bez zápisu souborů a odmítne mělký checkout. */
 async function createChangelog(root) {
   let shallow;
@@ -20,7 +64,23 @@ async function createChangelog(root) {
       'Changelog vyžaduje úplnou historii; mělký checkout není podporovaný (v CI použijte fetch-depth: 0).',
     );
   const result = await runGitCliff(['--config', 'cliff.toml'], { cwd: root, stdio: 'pipe' });
-  return result.stdout.replace(/\r\n/g, '\n').trimEnd() + '\n';
+  const seenAnchors = new Set();
+  return (
+    result.stdout
+      .replace(/\r\n/g, '\n')
+      .replace(/<!-- category:([a-z-]+):(\d{4}) -->/g, (_, category, year) => {
+        const anchors = [];
+        for (const id of [category, `${category}-${year}`]) {
+          if (!seenAnchors.has(id)) {
+            seenAnchors.add(id);
+            anchors.push(`<a id="${id}"></a>`);
+          }
+        }
+        return anchors.join('');
+      })
+      .replace(/<!-- article:([0-9a-f]{40}) -->/g, (_, commitId) => articleLinks(root, commitId))
+      .trimEnd() + '\n'
+  );
 }
 
 module.exports = { createChangelog };

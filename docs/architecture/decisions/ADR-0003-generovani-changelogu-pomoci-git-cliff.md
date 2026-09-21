@@ -1,13 +1,13 @@
 ---
 canonical_for: decision-0003-git-cliff-changelog
-status: accepted
+status: deprecated
 date: 2026-08-28
-last_verified: 2026-08-28
+last_verified: 2026-09-21
 owners:
   - engineering
   - delivery
 supersedes: null
-superseded_by: null
+superseded_by: ADR-0009
 ---
 
 # ADR-0003: Generování changelogu pomocí git-cliff
