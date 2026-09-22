@@ -27,6 +27,7 @@ function createManifest(files) {
         files: [...files].map(([file, content]) => {
           const copied =
             file === 'pruvodce.md' ||
+            /^media\//.test(file) ||
             (/^(food|drink)\/.+\.md$/.test(file) && !file.endsWith('/index.md'));
           return {
             path: file,
@@ -51,11 +52,17 @@ function synchronizeDocset(root, files, { checkOnly = false } = {}) {
   // Volající předává kompletní ověřený docset; ruční zdroje zůstávají mimo výstup.
   for (const [file, content] of files) {
     const target = path.join(output, file);
-    if (fs.existsSync(target) && fs.readFileSync(target, 'utf8') === content) continue;
+    // Textové výstupy se porovnávají jako řetězec, binární kopie médií po bajtech.
+    const unchanged =
+      fs.existsSync(target) &&
+      (Buffer.isBuffer(content)
+        ? fs.readFileSync(target).equals(content)
+        : fs.readFileSync(target, 'utf8') === content);
+    if (unchanged) continue;
     pendingChanges.push('_generated/' + file);
     if (!checkOnly) {
       fs.mkdirSync(path.dirname(target), { recursive: true });
-      fs.writeFileSync(target, content, 'utf8');
+      fs.writeFileSync(target, content);
     }
   }
   for (const file of obsolete) {

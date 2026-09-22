@@ -11,7 +11,7 @@ import {
   selectedIngredients,
   shoppingAmount,
   shoppingText,
-} from '../templates/kitchen/public/kitchen-core.mjs';
+} from '../templates/life/public/kitchen-core.mjs';
 
 import { createKitchenFixture } from './fixtures/kitchen.mjs';
 const { catalog, recipe, shoppingList } = createKitchenFixture();

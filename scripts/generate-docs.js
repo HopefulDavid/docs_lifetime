@@ -5,9 +5,38 @@ const { renderContentPages } = require('./docset/pages.cjs');
 const { createManifest, synchronizeDocset } = require('./docset/output.cjs');
 const root = path.resolve(__dirname, '..');
 
+const mediaExtensions = new Set(['.mp4', '.jpg']);
+
+/** Vybere vlastní mediální zdroje receptů jako bajtové kopie veřejného docsetu. */
+function readMediaFiles(files) {
+  const media = path.join(root, 'media');
+  if (!fs.existsSync(media)) return;
+  const relative = (fullPath) => path.relative(root, fullPath).replace(/\\/g, '/');
+
+  function walk(directory) {
+    for (const entry of fs.readdirSync(directory, { withFileTypes: true })) {
+      const fullPath = path.join(directory, entry.name);
+      if (entry.isSymbolicLink())
+        throw new Error(relative(fullPath) + ': symbolické odkazy nejsou povolené');
+      if (entry.isDirectory()) {
+        walk(fullPath);
+      } else if (mediaExtensions.has(path.extname(entry.name).toLowerCase())) {
+        files.set(relative(fullPath), fs.readFileSync(fullPath));
+      } else {
+        throw new Error(
+          `${relative(fullPath)}: podporované mediální přípony jsou ${[...mediaExtensions].join(', ')}`,
+        );
+      }
+    }
+  }
+
+  walk(media);
+}
+
 /** Připraví veřejné zdroje a odvozené přehledy v paměti bez zápisu a Git historie. */
 function createContentFiles() {
   const { recipes, files, warnings } = readRecipeSources(root);
+  readMediaFiles(files);
   for (const [file, content] of renderContentPages(recipes)) files.set(file, content);
   const guide = fs.readFileSync(path.join(root, 'pruvodce.md'), 'utf8').replace(/\r\n/g, '\n');
   files.set('pruvodce.md', guide.endsWith('\n') ? guide : guide + '\n');

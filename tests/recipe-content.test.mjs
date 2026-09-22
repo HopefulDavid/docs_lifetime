@@ -26,7 +26,54 @@ test('parser načte surovinu a nepovažuje číslovanou poznámku za krok', () =
   assert.equal(recipe.steps.length, 1);
 });
 
+const withSource = (items) =>
+  source.replace('## Ingredience', `## Video postup\n\n${items}\n\n## Ingredience`);
+const sourceItems = `- Soubor: [Ukázka](../../media/videos/ukazka.mp4)`;
+
+test('parser přečte lokální zdrojové video', () => {
+  const recipe = parseRecipeContent(withSource(sourceItems), 'test.md');
+
+  assert.deepEqual(recipe.sourceVideo, {
+    title: 'Ukázka',
+    file: '../../media/videos/ukazka.mp4',
+  });
+});
+
+test('recept bez sekce zdroje nemá pole sourceVideo', () => {
+  assert.equal(Object.hasOwn(parseRecipeContent(source, 'test.md'), 'sourceVideo'), false);
+});
+
 const invalidRecipes = [
+  {
+    name: 'zdrojové video bez položky Soubor',
+    content: withSource(''),
+    error: /musí uvádět položku Soubor/,
+  },
+  {
+    name: 'neznámá položka zdrojového videa',
+    content: withSource('- Video: [Ukázka](https://example.com/ukazka.mp4)'),
+    error: /neznámá položka 'Video'/,
+  },
+  {
+    name: 'opakovaná sekce zdrojového videa',
+    content: withSource(sourceItems).replace('## Postup', '## Video postup\n\n## Postup'),
+    error: /pouze jednou/,
+  },
+  {
+    name: 'položka zdroje bez odkazu',
+    content: withSource('- Soubor: ../../media/videos/ukazka.mp4'),
+    error: /musí mít tvar/,
+  },
+  {
+    name: 'kopie videa mimo repozitář',
+    content: withSource('- Soubor: [Kopie](https://example.com/ukazka.mp4)'),
+    error: /relativní cesta k vlastní kopii/,
+  },
+  {
+    name: 'kopie videa v nepodporovaném formátu',
+    content: withSource('- Soubor: [Kopie](../../media/videos/ukazka.mov)'),
+    error: /relativní cesta k vlastní kopii/,
+  },
   {
     name: 'neznámá surovina',
     content: source.replace('Máslo |', 'Neznámá surovina |'),

@@ -200,6 +200,8 @@ Tyto scénáře rozvíjejí `REQ-006`, `REQ-008`, `REQ-009`, `REQ-010` a `QLT-00
 
 Jednotný zápis surovin, dávky, alternativ a postupu vlastní [formát receptu](recipe-format.md).
 
+Zápis zdrojového videa a podmínky jeho lokální kopie vlastní [video postup](recipe-format.md#video-postup).
+
 ## Kvalitativní očekávání
 
 | ID | Oblast | Scénář | Měřítko nebo hranice | Priorita |

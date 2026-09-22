@@ -5,6 +5,8 @@ const path = require('node:path');
 const root = path.resolve(__dirname, '..');
 const site = path.join(root, '_site');
 const read = (file) => fs.readFileSync(path.join(site, file), 'utf8');
+const mediaFileBudget = 4;
+const mediaBudgetBytes = mediaFileBudget * 1024 * 1024;
 
 function verifyPageInventory(manifest) {
   const expectedHtml = manifest.files
@@ -64,6 +66,45 @@ function verifyStaticRecipes(catalog) {
   }
 }
 
+function verifySourceVideos(catalog) {
+  for (const recipe of catalog.recipes.filter((item) => item.sourceVideo)) {
+    const htmlPath = `${recipe.id}.html`;
+    const html = read(htmlPath);
+    const { title, file } = recipe.sourceVideo;
+    assert.match(
+      html,
+      /<h2 id="video-postup">Video postup<\/h2>/,
+      `${recipe.id}: chybí sekce videa`,
+    );
+    assert(html.includes(title), `${recipe.id}: chybí název zdrojového videa`);
+    assert(html.includes(file), `${recipe.id}: chybí odkaz na lokální kopii videa`);
+    const resolved = new URL(file, `https://preview.invalid/${htmlPath}`).pathname.replace(
+      /^\/+/,
+      '',
+    );
+    const asset = path.resolve(site, decodeURIComponent(resolved));
+    assert(asset.startsWith(site + path.sep), `${recipe.id}: kopie videa opouští web`);
+    assert(fs.existsSync(asset), `${recipe.id}: chybí lokální kopie videa ${resolved}`);
+  }
+}
+
+function verifyMediaBudget() {
+  const mediaRoot = path.join(site, 'media');
+  if (!fs.existsSync(mediaRoot)) return 0;
+  const files = fs
+    .readdirSync(mediaRoot, { recursive: true })
+    .filter((file) => fs.statSync(path.join(mediaRoot, file)).isFile());
+  for (const file of files) {
+    const fullPath = path.join(mediaRoot, file);
+    const size = fs.statSync(fullPath).size;
+    assert(
+      size <= mediaBudgetBytes,
+      `Mediální soubor ${`media/${file}`.replace(/\\/g, '/')} překračuje limit ${mediaFileBudget} MB.`,
+    );
+  }
+  return files.length;
+}
+
 function verifyResources() {
   for (const resource of [
     'public/pdfmake.min.js',
@@ -73,6 +114,7 @@ function verifyResources() {
     'public/icons.css',
     'public/icon-labels.mjs',
     'public/ui-icons.mjs',
+    'public/source-video.mjs',
     'public/licenses/Tabler-MIT.txt',
     'public/licenses/Circle-Flags-MIT.txt',
   ]) {
@@ -118,10 +160,12 @@ function main() {
   verifyCatalogAndSearch(search, expectedPages);
   verifyPublicLinks(expectedPages);
   verifyStaticRecipes(catalog);
+  verifySourceVideos(catalog);
+  const mediaFiles = verifyMediaBudget();
   verifyResources();
   verifyPublicationBoundary();
   console.log(
-    `Statický web je ověřený (${expectedPages.length} stránek, ${catalog.recipes.length} receptů, odkazy, fulltext, SVG a PDF assety).`,
+    `Statický web je ověřený (${expectedPages.length} stránek, ${catalog.recipes.length} receptů, ${mediaFiles} mediálních souborů do ${mediaFileBudget} MB, odkazy, fulltext, SVG a PDF assety).`,
   );
   const { warnings } = JSON.parse(
     fs.readFileSync(path.join(root, '_generated/content-report.json'), 'utf8'),

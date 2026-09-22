@@ -37,7 +37,7 @@ Výjimku pro přímé PDF, velikost dopadu, alternativy, důkazy a možnost odst
 
 Balíček dodává MIT licenci přes DocFX resource do `public/licenses/pdfmake/LICENSE`.
 
-Chybějící distribuční text licence písma doplňuje `templates/kitchen/public/licenses/Roboto-OFL.txt` z oficiálního repozitáře autorů, ověřený proti licenčním metadatům všech vložených fontů při aktualizaci balíčku.
+Chybějící distribuční text licence písma doplňuje `templates/life/public/licenses/Roboto-OFL.txt` z oficiálního repozitáře autorů, ověřený proti licenčním metadatům všech vložených fontů při aktualizaci balíčku.
 
 Volbu changelog nástroje a její migrační hranice přijímá [`ADR-0003`](../architecture/decisions/ADR-0003-generovani-changelogu-pomoci-git-cliff.md).
 

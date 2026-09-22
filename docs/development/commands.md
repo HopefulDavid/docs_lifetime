@@ -115,7 +115,7 @@ Na stejném portu spouštěj pouze jeden náhled a během průběžného náhled
 | Konzistence generovaných souborů | `pnpm run docs:check` | Bez zápisu porovná celý `_generated/` včetně changelogu, kopií zdrojů, manifestu a nepotřebných souborů | `pnpm run docs:generate` | `Dokumentace je aktuální.` a kód 0 |
 | Struktura dokumentace | `pnpm run docs:validate` | Interní odkazy, kanonická metadata, adaptéry, pracovní záznamy a zakázané artefakty | Ruční oprava zdroje | Souhrn platných Markdown souborů a kód 0 |
 | Úplná rychlá kontrola | `pnpm test` | Testy nad aktuálními zdroji, automatické generování, kontrola opakovatelnosti a strukturální validace | Podle konkrétního výstupu | Všechny vrstvy projdou i v čerstvém checkoutu |
-| Kontrola hotového webu | `pnpm run docs:verify-site` | Shoda HTML, JSON a fulltextu, odkazy a PDF assety | Oprava zdrojů a nový build | Souhrn ověřených stránek a receptů, běží automaticky na konci buildu |
+| Kontrola hotového webu | `pnpm run docs:verify-site` | Shoda HTML, JSON a fulltextu, odkazy, PDF assety, lokální zdrojová videa a velikost mediálních souborů | Oprava zdrojů a nový build | Souhrn ověřených stránek, receptů a médií, běží automaticky na konci buildu |
 | DocFX s varováními jako chybami | `pnpm run docs:build` | Produktový docset a vlastní šablona | Ruční oprava zdroje nebo konfigurace | `Build succeeded`, 0 varování a 0 chyb |
 
 Projekt nemá samostatný obecný formatter, JavaScript linter ani typovou kompilaci.

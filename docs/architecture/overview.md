@@ -95,15 +95,15 @@ Diagram ukazuje jednosměrné odvozování výstupů a odděluje obsahovou a zm�
 | `scripts/generate-docs.js` | Ověří celý obsah a poté sestaví katalog, přehledy, TOC, changelog a klientská data bez změn receptů | pnpm skripty `docs:generate` a `docs:check` | Node.js, zdrojový obsah, slovníky a `git-cliff` | Engineering |
 | `scripts/docset/` | Odděluje taxonomii, čtení katalogu, vykreslení přehledů a synchronizaci výstupů | `taxonomy.cjs`, `catalog.cjs`, `pages.cjs`, `output.cjs` | CLI skládá moduly, diagnostika a kolekce souborů patří jedinému běhu | Engineering |
 | Parser receptů | Ověřuje tabulky, kanonické názvy, stabilní identifikátory a navazující kroky | `scripts/recipe-content.cjs` | Zdrojové recepty a `data/ingredients.json` | Engineering |
-| Klientská kuchařka | Řídí výběr, nákup a vaření | `templates/kitchen/public/kitchen.mjs` | DOM, standardní webová API, `kitchen-core.mjs` a generovaný `data/recipes.json` | Engineering |
-| Doménové jádro nákupu | Slučuje množství a validuje lokální stav | `templates/kitchen/public/kitchen-core.mjs` | Pouze standardní JavaScript | Engineering |
-| Přenos nákupu | Ověřuje sdílenou kopii a připravuje výslovné řešení konfliktů | `templates/kitchen/public/kitchen-transfer.mjs` | Doménové jádro, aktuální katalog a standardní kompresní API prohlížeče | Čtenář a zvolený příjemce |
-| PDF export | Převádí aktuální exportní náhled na stránkovaný soubor | `templates/kitchen/public/kitchen-pdf.mjs` | DOM náhledu a odloženě načtené lokální assety pdfmake podle [ADR-0005](decisions/ADR-0005-pdf-export-v-prohlizeci.md) | Engineering |
+| Klientská kuchařka | Řídí výběr, nákup a vaření | `templates/life/public/kitchen.mjs` | DOM, standardní webová API, `kitchen-core.mjs` a generovaný `data/recipes.json` | Engineering |
+| Doménové jádro nákupu | Slučuje množství a validuje lokální stav | `templates/life/public/kitchen-core.mjs` | Pouze standardní JavaScript | Engineering |
+| Přenos nákupu | Ověřuje sdílenou kopii a připravuje výslovné řešení konfliktů | `templates/life/public/kitchen-transfer.mjs` | Doménové jádro, aktuální katalog a standardní kompresní API prohlížeče | Čtenář a zvolený příjemce |
+| PDF export | Převádí aktuální exportní náhled na stránkovaný soubor | `templates/life/public/kitchen-pdf.mjs` | DOM náhledu a odloženě načtené lokální assety pdfmake podle [ADR-0005](decisions/ADR-0005-pdf-export-v-prohlizeci.md) | Engineering |
 | Generovaný docset | Obsahuje odvozenou navigaci, katalog a kopie veřejného Markdownu | Ignorovaný `_generated/`, jeho manifest a `docfx.json` | Pouze ruční zdroje a generátor | Generátor |
 | Changelog | Odvozuje veřejný přehled úplné historie po ročních obdobích a uvnitř zachovává kategorie | `cliff.toml` a pnpm skript | Git historie a `git-cliff` uzamčený pnpm lockfilem, výstup je ignorovaný build vstup | Delivery |
 | DocFX sestavení | Čistí starý výstup a převádí produktový Markdown a YAML do HTML a indexu hledání | `docs:clean`, `docfx.json` a lokální .NET tool manifest | Obsah, přehledy, changelog a šablona | Engineering |
-| Vlastní šablona | Přizpůsobuje vzhled, české popisky a klientské vstupy moderního tématu a ponechává příspěvkový blok DocFX vypnutý | `templates/kitchen/` a `docfx.json` | Podporované veřejné assety, tokeny a globální metadata DocFX | Design a engineering |
-| Klientské hledání | Normalizuje libovolné české nebo anglické termíny, porovnává je s `index.json` a vrací výsledky rendereru DocFX | `templates/kitchen/public/search-core.mjs` a workerový kontrakt DocFX | Standardní webová API a statický index vytvořený DocFX | Engineering |
+| Vlastní šablona | Přizpůsobuje vzhled, české popisky a klientské vstupy moderního tématu a ponechává příspěvkový blok DocFX vypnutý | `templates/life/` a `docfx.json` | Podporované veřejné assety, tokeny a globální metadata DocFX | Design a engineering |
+| Klientské hledání | Normalizuje libovolné české nebo anglické termíny, porovnává je s `index.json` a vrací výsledky rendereru DocFX | `templates/life/public/search-core.mjs` a workerový kontrakt DocFX | Standardní webová API a statický index vytvořený DocFX | Engineering |
 | GitHub workflow | Ověřuje, sestavuje, publikuje a oznamuje | `.github/workflows/main.yml` | Projektové příkazy, GitHub Actions, Pages a SMTP | Delivery |
 
 Závislosti tečou pouze směrem ke generovanému výstupu a zdrojový obsah nikdy nezávisí na `_site/`.
@@ -213,6 +213,8 @@ Markdown přehledy a TOC mají komentář se zdrojem a příkazem obnovy.
 
 Receptový JSON obsahuje `generatedFrom`, zatímco kopie receptů zachovávají obsah originálu s normalizovanými konci řádků.
 
+Mediální soubory z `media/` se kopírují po bajtech, porovnávají se bajtově a manifest je vede jako kopii s cestou k ručnímu originálu.
+
 Generátor připraví celý docset a changelog v paměti před prvním zápisem a odstraní nepotřebné soubory pouze uvnitř `_generated/`.
 
 `createContentFiles()` zůstává vstupem pro přípravu obsahu bez Git historie a bez zápisu.
@@ -284,7 +286,7 @@ Build kopie v izolovaném docsetu jsou plně obnovitelné.
 
 Přesné uzamčené závislosti jsou zvláštní případ strojově vytvořeného vstupu: `pnpm-lock.yaml` se commituje spolu s manifestem, protože určuje reprodukovatelnou obnovu nástrojů.
 
-Kód v `templates/kitchen/` je ruční projektový zdroj i u názvu `search-worker.min.js`.
+Kód v `templates/life/` je ruční projektový zdroj i u názvu `search-worker.min.js`.
 
 Převzaté licence a distribuční assety vlastní [politika závislostí](../development/dependencies.md).
 

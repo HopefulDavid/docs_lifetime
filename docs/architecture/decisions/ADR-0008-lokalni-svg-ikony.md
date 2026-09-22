@@ -51,7 +51,7 @@ Zdroje byly ověřené 2026-09-13; přesné verze vlastní npm manifest a lockfi
 
 ## Licence, aktualizace a návrat
 
-Distribuční licence jsou v `templates/kitchen/public/licenses/Tabler-MIT.txt` a `Circle-Flags-MIT.txt`, protože datové balíčky je neobsahují.
+Distribuční licence jsou v `templates/life/public/licenses/Tabler-MIT.txt` a `Circle-Flags-MIT.txt`, protože datové balíčky je neobsahují.
 
 Původem jsou [Tabler v3.45.0](https://raw.githubusercontent.com/tabler/tabler-icons/v3.45.0/LICENSE) a [Circle Flags](https://raw.githubusercontent.com/HatScripts/circle-flags/gh-pages/LICENSE.md), stažené 2026-09-13.
 

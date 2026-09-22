@@ -1132,6 +1132,16 @@ body.kitchen-shopping-page:not([data-search]) .affix { display: none; }
 .kitchen-shopping-mode > main { padding-top: .75rem !important; }
 .recipe-secondary-actions { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-top: .75rem; }
 .recipe-secondary-actions > a { display: inline-flex; align-items: center; min-height: 44px; }
+.recipe-video { margin-block: 1.25rem; }
+.recipe-video-frame { position: relative; aspect-ratio: 16 / 9; width: 100%; margin-inline: auto; border: 1px solid var(--kitchen-line); border-radius: .6rem; overflow: hidden; background: var(--kitchen-surface-soft); }
+.recipe-video--portrait .recipe-video-frame { aspect-ratio: 9 / 16; max-width: min(400px, 100%); }
+.recipe-video-frame :where(iframe, video) { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.recipe-video-frame video { object-fit: contain; background: #12140f; }
+.recipe-video-start { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .7rem; width: 100%; padding: 1rem; border: 0; background: transparent; color: var(--kitchen-ink); font: inherit; cursor: pointer; }
+.recipe-video-start:hover, .recipe-video-start:focus-visible { background: var(--kitchen-sage-soft); }
+.recipe-video-play { display: grid; place-items: center; width: 4rem; height: 4rem; border-radius: 50%; background: var(--kitchen-sage-deep); box-shadow: var(--kitchen-soft-shadow); }
+.recipe-video-play svg { width: 2.2rem; height: 2.2rem; fill: var(--kitchen-table-head-color); }
+.recipe-video-action { font-weight: 650; }
 .recipe-preparation { background: var(--kitchen-sage-soft); border-left: 3px solid var(--kitchen-sage); border-radius: .3rem; padding: 1rem 1.2rem; margin-block: 1.5rem; }
 article .recipe-preparation h2 { font: 700 1.1rem/1.4 "Segoe UI", sans-serif; border: 0; margin: 0 0 .5rem; padding: 0; }
 .recipe-preparation p:last-child, .recipe-preparation ul:last-child { margin-bottom: 0; }

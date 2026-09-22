@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { kitchenPdfDefinition } from '../templates/kitchen/public/kitchen-pdf.mjs';
+import { kitchenPdfDefinition } from '../templates/life/public/kitchen-pdf.mjs';
 
 // Úzká DOM fixture obsahuje jen kontrakt čtený PDF převodníkem, bez prohlížeče.
 function element(tag, ...content) {

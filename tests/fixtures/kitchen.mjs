@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import { createContentFiles } from '../../scripts/generate-docs.js';
-import { buildShoppingList } from '../../templates/kitchen/public/kitchen-core.mjs';
+import { buildShoppingList } from '../../templates/life/public/kitchen-core.mjs';
 
 /** Připraví nový katalog ze skutečných zdrojů bez závislosti na _generated. */
 export function createKitchenFixture() {

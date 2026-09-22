@@ -1,5 +1,6 @@
 import { decoratePage } from './ui-icons.mjs';
 import { startKitchen } from './kitchen.mjs';
+import { enhanceSourceVideo } from './source-video.mjs';
 
 const ariaLabels = {
   'Toggle navigation': 'Přepnout navigaci',
@@ -41,6 +42,8 @@ const docfxOptions = {
     }
     localizeAriaLabels(document);
     decoratePage();
+    try { enhanceSourceVideo(); }
+    catch (error) { console.error('Video postup:', error); }
     const main = document.querySelector('main');
     if (main) {
       main.id = 'main-content';
