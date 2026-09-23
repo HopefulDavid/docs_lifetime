@@ -16,7 +16,7 @@ Skripty, manifesty a build konfigurace zůstávají kanonické pro prováděnou 
 | Nástroj nebo služba | Podporovaná verze | Kanonický zdroj verze | Lokální nebo řízená dostupnost | Ověření |
 |---|---|---|---|---|
 | Node.js | Řada 24 LTS | [`../../package.json`](../../package.json) | Lokální instalace a `actions/setup-node` | `node --version` |
-| npm | Verze kompatibilní s Node.js 24 a lockfile v3, ověřeno s 11.6.2 | Distribuce Node.js a [`../../package-lock.json`](../../package-lock.json) | Lokální instalace a `actions/setup-node` | `npm --version` |
+| pnpm | 12.4.0 | [`../../package.json`](../../package.json) a [`../../pnpm-lock.yaml`](../../pnpm-lock.yaml) | Lokální instalace a `pnpm/action-setup` v CI | `pnpm --version` |
 | .NET SDK | 8.0 nebo vyšší, lokálně ověřeno s 10.0.401 | [Workflow](../../.github/workflows/main.yml) a požadavek DocFX | Lokální instalace a `actions/setup-dotnet` | `dotnet --version` |
 | DocFX | Přesná verze z manifestu, ověřeno s 2.78.5 | [`../../.config/dotnet-tools.json`](../../.config/dotnet-tools.json) | Lokální .NET tool cache nebo NuGet.org | `dotnet tool run docfx --version` |
 | Git | Verze podporující běžné checkout a log operace | Systémová instalace | Lokální prostředí a GitHub Actions | `git --version` |
@@ -42,27 +42,27 @@ Spusť příkazy z kořene repozitáře v uvedeném pořadí.
 
 | Účel | Pracovní adresář | Přesný příkaz | Očekávaný výsledek | Síťové požadavky |
 |---|---|---|---|---|
-| Obnovení npm závislostí | Kořen repozitáře | `npm ci --ignore-scripts --no-audit --no-fund` | Přesné balíčky z lockfilu a kód 0 | npm registry při prázdné cache |
+| Obnovení pnpm závislostí | Kořen repozitáře | `pnpm install --frozen-lockfile --ignore-scripts` | Přesné balíčky z lockfilu a kód 0 | npm registry při prázdné cache |
 | Obnovení DocFX | Kořen repozitáře | `dotnet tool restore` | DocFX z lokálního manifestu a kód 0 | NuGet.org při prázdné cache |
-| Kontrola instalovaných npm balíčků | Kořen repozitáře | `npm ls --depth=0` | Pouze deklarované přímé balíčky bez `UNMET DEPENDENCY` | Žádné po obnově |
+| Kontrola instalovaných balíčků | Kořen repozitáře | `pnpm list --depth=0` | Pouze deklarované přímé balíčky | Žádné po obnově |
 
-`npm ci` znovu vytvoří ignorovaný adresář `node_modules/` a nesmí měnit `package-lock.json`.
+`pnpm install --frozen-lockfile --ignore-scripts` znovu vytvoří ignorovaný adresář `node_modules/` a nesmí měnit `pnpm-lock.yaml`.
 
 ## Generování a sestavení
 
-Pro kontrolu stylu skriptů a testů použij `npm run format:check`.
+Pro kontrolu stylu skriptů a testů použij `pnpm run format:check`.
 
-Pro jejich automatické formátování použij `npm run format:write`.
+Pro jejich automatické formátování použij `pnpm run format:write`.
 
 Oba příkazy používají lokální připnutý Prettier a nevyžadují síť po obnově závislostí.
 
-Kontrola vrátí kód 0 při shodě nebo 1 při odlišném formátování a je prvním krokem `npm test`.
+Kontrola vrátí kód 0 při shodě nebo 1 při odlišném formátování a je prvním krokem `pnpm test`.
 
 Rozsah tvoří JavaScript v `scripts/` a `tests/`.
 
 Markdown se řídí vlastním [kanonickým stylem](../governance/documentation.md#styl-markdownu).
 
-Pro vyžádané formátování zdrojových receptů použij `npm exec -- prettier --ignore-path .gitignore --write --prose-wrap preserve "food/**/*.md" "drink/**/*.md"`.
+Pro vyžádané formátování zdrojových receptů použij `pnpm exec prettier --ignore-path .gitignore --write --prose-wrap preserve "food/**/*.md" "drink/**/*.md"`.
 
 Kontrolní varianta nahrazuje `--write` přepínačem `--check` a zachování odstavců zajišťuje `--prose-wrap preserve`.
 
@@ -72,10 +72,10 @@ Generované adresáře se tímto příkazem neupravují.
 
 | Varianta | Pracovní adresář | Přesný příkaz | Výstup | Úspěch znamená |
 |---|---|---|---|---|
-| Příprava celého docsetu | Kořen repozitáře | `npm run docs:generate` | Ignorovaný `_generated/` včetně changelogu a manifestu původu | Generátor ověří vstupy, obnoví výstupy, odstraní nadbytečné soubory a vypíše změněné cesty nebo aktuální stav |
-| Vyčištění statického výstupu | Kořen repozitáře | `npm run docs:clean` | Odstraněný ignorovaný adresář `_site/` | Staré stránky nemohou zůstat v následujícím artefaktu |
-| Vývojové sestavení | Kořen repozitáře | `npm run docs:build` | Ignorované `_generated/` a `_site/` | Automatická příprava, validace, připnutý DocFX a kontrola hotového webu projdou, obsahová upozornění nezablokují build |
-| Produkční sestavení | Kořen repozitáře | `npm run docs:build` | Stejné `_generated/` a `_site/` | Vznikne tentýž typ artefaktu, který publikuje CI |
+| Příprava celého docsetu | Kořen repozitáře | `pnpm run docs:generate` | Ignorovaný `_generated/` včetně changelogu a manifestu původu | Generátor ověří vstupy, obnoví výstupy, odstraní nadbytečné soubory a vypíše změněné cesty nebo aktuální stav |
+| Vyčištění statického výstupu | Kořen repozitáře | `pnpm run docs:clean` | Odstraněný ignorovaný adresář `_site/` | Staré stránky nemohou zůstat v následujícím artefaktu |
+| Vývojové sestavení | Kořen repozitáře | `pnpm run docs:build` | Ignorované `_generated/` a `_site/` | Automatická příprava, validace, připnutý DocFX a kontrola hotového webu projdou, obsahová upozornění nezablokují build |
+| Produkční sestavení | Kořen repozitáře | `pnpm run docs:build` | Stejné `_generated/` a `_site/` | Vznikne tentýž typ artefaktu, který publikuje CI |
 
 Vývojové a produkční sestavení se liší pouze prostředím spuštění, nikoli projektovým vstupem.
 
@@ -85,8 +85,8 @@ Oba náhledové příkazy nejprve automaticky provedou společné sestavení, ta
 
 | Scénář | Pracovní adresář | Přesný příkaz | Adresa nebo rozhraní | Bezpečné zastavení |
 |---|---|---|---|---|
-| Jednorázový lokální náhled | Kořen repozitáře | `npm run docs:serve` | `http://127.0.0.1:8765/` | `Ctrl+C` v běžícím terminálu |
-| Průběžné ladění obsahu a šablony | Kořen repozitáře | `npm run docs:dev` | Stejná adresa, změna zdroje automaticky spustí nové sestavení | `Ctrl+C` ukončí sledování i vlastní podprocesy |
+| Jednorázový lokální náhled | Kořen repozitáře | `pnpm run docs:serve` | `http://127.0.0.1:8765/` | `Ctrl+C` v běžícím terminálu |
+| Průběžné ladění obsahu a šablony | Kořen repozitáře | `pnpm run docs:dev` | Stejná adresa, změna zdroje automaticky spustí nové sestavení | `Ctrl+C` ukončí sledování i vlastní podprocesy |
 
 `docs:dev` zachytí přidání, změnu a odstranění zdrojových souborů i nové adresáře.
 
@@ -110,13 +110,13 @@ Na stejném portu spouštěj pouze jeden náhled a během průběžného náhled
 
 | Kontrola | Přesný příkaz | Rozsah | Oprava formátu | Očekávaný výsledek |
 |---|---|---|---|---|
-| Cílené automatické testy | `npm run test:unit` | Hledání, obsahový kontrakt, nákup, obnova stavu, chybové vstupy generátoru a changelog v dočasném Git repozitáři | Ruční oprava příslušného modulu nebo konfigurace | Všechny scénáře projdou a dočasné kopie se odstraní |
-| Obsah bez generování | `npm run docs:validate-content` | Slovník, receptové tabulky, struktura a upozornění na `neuvedeno`, bez zápisu a bez potřeby Git historie | Oprava ručního zdroje podle [receptového kontraktu](../product/recipe-format.md#automatická-kontrola-obsahu) | Kód 0 i s warnings, vadná surovina nebo struktura vrací kód 1 |
-| Konzistence generovaných souborů | `npm run docs:check` | Bez zápisu porovná celý `_generated/` včetně changelogu, kopií zdrojů, manifestu a nepotřebných souborů | `npm run docs:generate` | `Dokumentace je aktuální.` a kód 0 |
-| Struktura dokumentace | `npm run docs:validate` | Interní odkazy, kanonická metadata, adaptéry, pracovní záznamy a zakázané artefakty | Ruční oprava zdroje | Souhrn platných Markdown souborů a kód 0 |
-| Úplná rychlá kontrola | `npm test` | Testy nad aktuálními zdroji, automatické generování, kontrola opakovatelnosti a strukturální validace | Podle konkrétního výstupu | Všechny vrstvy projdou i v čerstvém checkoutu |
-| Kontrola hotového webu | `npm run docs:verify-site` | Shoda HTML, JSON a fulltextu, odkazy a PDF assety | Oprava zdrojů a nový build | Souhrn ověřených stránek a receptů, běží automaticky na konci buildu |
-| DocFX s varováními jako chybami | `npm run docs:build` | Produktový docset a vlastní šablona | Ruční oprava zdroje nebo konfigurace | `Build succeeded`, 0 varování a 0 chyb |
+| Cílené automatické testy | `pnpm run test:unit` | Hledání, obsahový kontrakt, nákup, obnova stavu, chybové vstupy generátoru a changelog v dočasném Git repozitáři | Ruční oprava příslušného modulu nebo konfigurace | Všechny scénáře projdou a dočasné kopie se odstraní |
+| Obsah bez generování | `pnpm run docs:validate-content` | Slovník, receptové tabulky, struktura a upozornění na `neuvedeno`, bez zápisu a bez potřeby Git historie | Oprava ručního zdroje podle [receptového kontraktu](../product/recipe-format.md#automatická-kontrola-obsahu) | Kód 0 i s warnings, vadná surovina nebo struktura vrací kód 1 |
+| Konzistence generovaných souborů | `pnpm run docs:check` | Bez zápisu porovná celý `_generated/` včetně changelogu, kopií zdrojů, manifestu a nepotřebných souborů | `pnpm run docs:generate` | `Dokumentace je aktuální.` a kód 0 |
+| Struktura dokumentace | `pnpm run docs:validate` | Interní odkazy, kanonická metadata, adaptéry, pracovní záznamy a zakázané artefakty | Ruční oprava zdroje | Souhrn platných Markdown souborů a kód 0 |
+| Úplná rychlá kontrola | `pnpm test` | Testy nad aktuálními zdroji, automatické generování, kontrola opakovatelnosti a strukturální validace | Podle konkrétního výstupu | Všechny vrstvy projdou i v čerstvém checkoutu |
+| Kontrola hotového webu | `pnpm run docs:verify-site` | Shoda HTML, JSON a fulltextu, odkazy, PDF assety, lokální zdrojová videa a velikost mediálních souborů | Oprava zdrojů a nový build | Souhrn ověřených stránek, receptů a médií, běží automaticky na konci buildu |
+| DocFX s varováními jako chybami | `pnpm run docs:build` | Produktový docset a vlastní šablona | Ruční oprava zdroje nebo konfigurace | `Build succeeded`, 0 varování a 0 chyb |
 
 Projekt nemá samostatný obecný formatter, JavaScript linter ani typovou kompilaci.
 
@@ -150,12 +150,12 @@ Strategie výběru testů je v [`../quality/testing.md`](../quality/testing.md).
 
 | Úroveň | Přesný příkaz nebo scénář | Potřebné služby | Výstupní artefakty | Typická doba nebo rozsah |
 |---|---|---|---|---|
-| Rychlé chování | `npm run test:unit` | Lokální Git a obnovený `git-cliff` | Konzolový výstup všech scénářů | Jednotky sekund bez obnovy nástrojů |
-| Cílený test generátoru | `npm run docs:check` | Obnovený `git-cliff`, úplný lokální Git a připravený docset | Konzolový seznam očekávaných změn při selhání, nic neopravuje | Sekundy, celý docset |
-| Automatizované testy | `npm test` | Lokální Git historie a obnovený `git-cliff` | Konzolový výstup | Sekundy, celý repozitář |
-| Integrační sestavení | `npm run docs:build` | Obnovený lokální DocFX | `_site/`, `index.json` a `manifest.json` | Jednotky sekund |
-| Vizuální scénáře | `npm run docs:serve`, poté kroky z reprezentativního smoke scénáře | Lokální HTTP port 8765 a prohlížeč | Viditelná stránka, volitelný screenshot a konzole | Úvod, hledání, detail a chybová cesta |
-| Úplná lokální kontrola | Inicializace prostředí, `npm test` a `npm run docs:build` v tomto pořadí | npm a NuGet pouze při prázdné cache | Čistý Git diff a `_site/` | Desítky sekund bez prvního stahování |
+| Rychlé chování | `pnpm run test:unit` | Lokální Git a obnovený `git-cliff` | Konzolový výstup všech scénářů | Jednotky sekund bez obnovy nástrojů |
+| Cílený test generátoru | `pnpm run docs:check` | Obnovený `git-cliff`, úplný lokální Git a připravený docset | Konzolový seznam očekávaných změn při selhání, nic neopravuje | Sekundy, celý docset |
+| Automatizované testy | `pnpm test` | Lokální Git historie a obnovený `git-cliff` | Konzolový výstup | Sekundy, celý repozitář |
+| Integrační sestavení | `pnpm run docs:build` | Obnovený lokální DocFX | `_site/`, `index.json` a `manifest.json` | Jednotky sekund |
+| Vizuální scénáře | `pnpm run docs:serve`, poté kroky z reprezentativního smoke scénáře | Lokální HTTP port 8765 a prohlížeč | Viditelná stránka, volitelný screenshot a konzole | Úvod, hledání, detail a chybová cesta |
+| Úplná lokální kontrola | Inicializace prostředí, `pnpm test` a `pnpm run docs:build` v tomto pořadí | npm registry a NuGet.org pouze při prázdné cache | Čistý Git diff a `_site/` | Desítky sekund bez prvního stahování |
 
 ## Changelog
 
@@ -179,10 +179,10 @@ Soubor není verzovaný a nevytváří samostatný commit.
 
 | Účel | Přesný příkaz | Vedlejší účinek | Očekávaný výsledek |
 |---|---|---|---|
-| Náhled bez zápisu | `npm exec -- git-cliff --config cliff.toml` | Žádný soubor se nezmění | Úplný Markdown na standardním výstupu |
-| Samostatný náhled changelogu | `npm run changelog:generate` | Přepíše pouze `_generated/changelog.md`, úplný manifest obnovuje `docs:generate` | Úplná časová osa s identitou zdroje, odkazy na dostupné články, otevřeným nejnovějším rokem a sbalenými staršími roky |
+| Náhled bez zápisu | `pnpm exec git-cliff --config cliff.toml` | Žádný soubor se nezmění | Úplný Markdown na standardním výstupu |
+| Samostatný náhled changelogu | `pnpm run changelog:generate` | Přepíše pouze `_generated/changelog.md`, úplný manifest obnovuje `docs:generate` | Úplná časová osa s identitou zdroje, odkazy na dostupné články, otevřeným nejnovějším rokem a sbalenými staršími roky |
 
-`npm run docs:build` používá stejné odvození changelogu prostřednictvím celkového generování před DocFX.
+`pnpm run docs:build` používá stejné odvození changelogu prostřednictvím celkového generování před DocFX.
 
 Chybějící Git metadata nebo mělká historie zastaví generování.
 
@@ -224,7 +224,7 @@ Po sestavení ověř obecný Úvod, katalog v Kuchyni, nákup a detail na šíř
 | `REQ-013` | Otevři sdílený odkaz pod podsložkou webu v jiném místním nákupu | Náhled se otevře automaticky, kód zmizí z adresy a příjemce může import potvrdit i v původně prázdném nákupu |
 | `REQ-014` | Spusť kontrolu obsahu a v izolované fixture změň `neuvedeno` na známé množství, poté přidej neznámou surovinu | První změna odstraní warning, druhá odmítne generování ještě před zápisem |
 
-Poruchové fixture patří pouze do ignorovaného lokálního výstupu a následující `npm run docs:build` je odstraní čistým sestavením.
+Poruchové fixture patří pouze do ignorovaného lokálního výstupu a následující `pnpm run docs:build` je odstraní čistým sestavením.
 
 Nesimuluj poruchy v nasazeném webu ani nad skutečným osobním nákupem.
 
@@ -234,7 +234,7 @@ Nesimuluj poruchy v nasazeném webu ani nad skutečným osobním nákupem.
 
 Postup [obnovy Git propojení](../operations/runbook.md#obnova-lokálního-git-propojení) nesmí nahradit smyšlené commity.
 
-Samostatný `npm run test:unit` připravuje nákupní katalog přímo z ručních zdrojů v paměti a používá vlastní dočasnou historii pro changelogové testy.
+Samostatný `pnpm run test:unit` připravuje nákupní katalog přímo z ručních zdrojů v paměti a používá vlastní dočasnou historii pro changelogové testy.
 
 Test runner objevuje soubory `tests/**/*.test.mjs`.
 
@@ -246,13 +246,13 @@ Při chybě spuštění `git-cliff` ve Windows použij [diagnostiku v runbooku](
 
 | Požadavek | Příprava | Kroky nebo příkaz | Očekávaný technický důkaz | Úklid |
 |---|---|---|---|---|
-| `REQ-001`, `REQ-002` | `npm run docs:build` a `npm run docs:serve` | Otevři Úvod, zvol Kuchyni, Jídlo a `Rajská omáčka s masovými koulemi` | Katalog, ingredience, očíslované kroky, tipy a varování jsou viditelné bez chyb konzole | Ukonči server přes `Ctrl+C` |
+| `REQ-001`, `REQ-002` | `pnpm run docs:build` a `pnpm run docs:serve` | Otevři Úvod, zvol Kuchyni, Jídlo a `Rajská omáčka s masovými koulemi` | Katalog, ingredience, očíslované kroky, tipy a varování jsou viditelné bez chyb konzole | Ukonči server přes `Ctrl+C` |
 | `REQ-005` | Běžící lokální náhled | Postupně vyhledej `Rajská`, `rajska`, `PIZZA`, `French Press`, indexovaný termín cesty `coffee` a `bez-vysledku-xyz`, poté otevři odpovídající výsledky | České varianty najdou rajskou, anglické termíny najdou pizzu a French Press, poslední dotaz zobrazí český nulový stav a konzole zůstane bez chyb | Vymaž dotaz nebo zavři panel |
 | `REQ-E003` | Běžící lokální náhled | Otevři `/neexistuje.html` | Server vrátí HTTP 404 a neexistující obsah nenahradí jinou stránkou | Vrať se na úvod |
 
 ## Shoda lokálního prostředí a CI
 
-Ověřovací i publikační job používají `npm ci`, `dotnet tool restore`, `npm test` a `npm run docs:build` ze stejného repozitáře.
+Ověřovací i publikační job používají `pnpm install --frozen-lockfile --ignore-scripts`, `dotnet tool restore`, `pnpm test` a `pnpm run docs:build` ze stejného repozitáře.
 
 Workflow smí přidat Git checkout, cache, nasazení a oznámení, ale nesmí měnit zdrojovou historii ani skrývat alternativní generátor nebo sestavení.
 

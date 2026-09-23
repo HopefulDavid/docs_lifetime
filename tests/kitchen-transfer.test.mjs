@@ -2,12 +2,12 @@ import assert from 'node:assert/strict';
 import test from 'node:test';
 import { gzipSync } from 'node:zlib';
 import { createKitchenFixture } from './fixtures/kitchen.mjs';
-import { recipeSettings, restoreState } from '../templates/kitchen/public/kitchen-core.mjs';
+import { recipeSettings, restoreState } from '../templates/life/public/kitchen-core.mjs';
 import {
   exportShopping,
   importShopping,
   previewShoppingImport,
-} from '../templates/kitchen/public/kitchen-transfer.mjs';
+} from '../templates/life/public/kitchen-transfer.mjs';
 
 const { catalog, recipe, shoppingList } = createKitchenFixture();
 const pasta = recipe('sunkofleky');

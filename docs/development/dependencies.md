@@ -12,11 +12,11 @@ owner: engineering
 | Závislost | Úloha | Kanonická verze | Důvod a hranice |
 |---|---|---|---|
 | Node.js | Spouští generátor, validátor a changelog nástroj | Řada v [`../../package.json`](../../package.json) | Node.js 24 je k datu ověření LTS a projekt používá pouze jeho standardní knihovnu pro vlastní skripty |
-| `git-cliff` | Odvozuje kategorizovaný veřejný changelog z Git historie | [`../../package.json`](../../package.json) a [`../../package-lock.json`](../../package-lock.json) | Přesně uzamčená vývojová závislost; běží offline a nevstupuje do publikovaného webu jako runtime kód |
+| `git-cliff` | Odvozuje kategorizovaný veřejný changelog z Git historie | [`../../package.json`](../../package.json) a [`../../pnpm-lock.yaml`](../../pnpm-lock.yaml) | Přesně uzamčená vývojová závislost; běží offline a nevstupuje do publikovaného webu jako runtime kód |
 | DocFX | Převádí produktový Markdown a YAML do statického webu | [`../../.config/dotnet-tools.json`](../../.config/dotnet-tools.json) | Lokální .NET tool manifest připíná stejný nástroj pro vývoj i CI |
 | `pdfmake` | Vytváří PDF aktuálního receptu nebo nákupu v prohlížeči | [`../../package.json`](../../package.json) a lockfile | Vývojová závislost dodává statické klientské assety načítané až při exportu; MIT a vložené Roboto pod SIL OFL |
-| Iconify Utils, Tabler a Circle Flags | Sestaví vybrané SVG pro rozhraní | npm manifest a lockfile | Pouze build, bez Iconify API; srovnání, licence a aktualizace vlastní [ADR-0008](../architecture/decisions/ADR-0008-lokalni-svg-ikony.md) |
-| Prettier | Formátování scripts a tests v editoru a CI | Přesná verze v npm manifestu a lockfilu | MIT, pouze vývoj; rozsah a výzkumné podklady vlastní [standardy kódu](coding-standards.md#skripty-a-testy-projektu) |
+| Iconify Utils, Tabler a Circle Flags | Sestaví vybrané SVG pro rozhraní | projektový manifest a pnpm lockfile | Pouze build, bez Iconify API; srovnání, licence a aktualizace vlastní [ADR-0008](../architecture/decisions/ADR-0008-lokalni-svg-ikony.md) |
+| Prettier | Formátování scripts a tests v editoru a CI | Přesná verze v projektovém manifestu a pnpm lockfilu | MIT, pouze vývoj; rozsah a výzkumné podklady vlastní [standardy kódu](coding-standards.md#skripty-a-testy-projektu) |
 | GitHub Actions | Připravují prostředí, nasazují Pages a odesílají oznámení | [Workflow](../../.github/workflows/main.yml) | Každá akce je připnutá na ověřený commit SHA a čitelný hlavní tag zůstává v komentáři |
 
 Node.js 24 byl dne 2026-08-28 ověřený jako podporovaná LTS řada podle [oficiálního přehledu vydání](https://nodejs.org/en/about/previous-releases).
@@ -37,7 +37,7 @@ Výjimku pro přímé PDF, velikost dopadu, alternativy, důkazy a možnost odst
 
 Balíček dodává MIT licenci přes DocFX resource do `public/licenses/pdfmake/LICENSE`.
 
-Chybějící distribuční text licence písma doplňuje `templates/kitchen/public/licenses/Roboto-OFL.txt` z oficiálního repozitáře autorů, ověřený proti licenčním metadatům všech vložených fontů při aktualizaci balíčku.
+Chybějící distribuční text licence písma doplňuje `templates/life/public/licenses/Roboto-OFL.txt` z oficiálního repozitáře autorů, ověřený proti licenčním metadatům všech vložených fontů při aktualizaci balíčku.
 
 Volbu changelog nástroje a její migrační hranice přijímá [`ADR-0003`](../architecture/decisions/ADR-0003-generovani-changelogu-pomoci-git-cliff.md).
 

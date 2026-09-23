@@ -113,7 +113,7 @@ Komentář nesmí zakrývat zbytečnou složitost.
 
 ### Skripty a testy projektu
 
-JavaScript v `scripts/` a `tests/` formátuje připnutý Prettier podle `.prettierrc.json`; kontrola je součástí `npm test` a přesné příkazy vlastní [příkazy](commands.md).
+JavaScript v `scripts/` a `tests/` formátuje připnutý Prettier podle `.prettierrc.json`; kontrola je součástí `pnpm test` a přesné příkazy vlastní [příkazy](commands.md).
 
 Formátování používá jednotlivé příkazy na samostatných řádcích, šířku 100 znaků a LF včetně checkoutu na Windows; dlouhé textové literály a regulární výrazy mohou limit překročit.
 

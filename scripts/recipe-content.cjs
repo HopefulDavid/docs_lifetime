@@ -7,6 +7,8 @@ const identifier = (text) =>
     .replace(/[^a-z0-9]+/g, '-')
     .replace(/^-|-$/g, '');
 
+const sourceFields = { Soubor: 'file' };
+
 function indexIngredientNames(departments) {
   const names = new Map();
   if (
@@ -71,6 +73,8 @@ function parseRecipeContent(content, file, { onWarning = () => {} } = {}) {
   const steps = [];
   let inIngredients = false;
   let inSteps = false;
+  let inSource = false;
+  let source = null;
   let stepHasContent = false;
   let ingredientSections = 0;
   let table = null;
@@ -100,6 +104,11 @@ function parseRecipeContent(content, file, { onWarning = () => {} } = {}) {
         finishGroup();
       }
       inSteps = line === '## Postup';
+      inSource = line === '## Video postup';
+      if (inSource) {
+        if (source) fail('sekce Video postup smí být v receptu pouze jednou');
+        source = { line: lineNumber };
+      }
     }
     if (/^## Ingredience$/.test(line)) {
       if (++ingredientSections > 1) fail('sekce Ingredience smí být v receptu pouze jednou');
@@ -125,6 +134,18 @@ function parseRecipeContent(content, file, { onWarning = () => {} } = {}) {
       const target = groups.find((group) => group.title === optionalStep[1] && group.optional);
       if (!target || !steps.length || !inSteps) fail('krok odkazuje na neznámou volitelnou část');
       steps.at(-1).optionalGroup = target.id;
+    }
+    if (inSource && line.startsWith('- ')) {
+      const item = line.match(/^- ([^:]+): \[([^\]]+)\]\((\S+)\)$/);
+      if (!item) fail('položka zdrojového videa musí mít tvar - Soubor: [název](cesta)');
+      const [, label, text, address] = item;
+      if (!Object.hasOwn(sourceFields, label))
+        fail(`neznámá položka '${label}' ve zdrojovém videu; použijte pouze Soubor`);
+      if (source[sourceFields[label]]) fail(`opakovaná položka '${label}' ve zdrojovém videu`);
+      if (!/^[^/:][^:\s]*\.mp4$/.test(address))
+        fail(`'${address}' musí být relativní cesta k vlastní kopii videa ve formátu MP4`);
+      source[sourceFields[label]] = { title: text, url: address };
+      continue;
     }
     if (!inIngredients) continue;
     const heading = line.match(/^### (.+)$/);
@@ -204,7 +225,21 @@ function parseRecipeContent(content, file, { onWarning = () => {} } = {}) {
   if (!ingredients.length) fail('chybí tabulka ingrediencí');
   if (!steps.length || steps.some((step, index) => step.number !== index + 1))
     fail('postup musí obsahovat navazující očíslované kroky od 1');
-  return { ingredients, groups, steps };
+  if (source) {
+    lineNumber = source.line;
+    if (!source.file) fail('sekce Video postup musí uvádět položku Soubor');
+  }
+  return {
+    ingredients,
+    groups,
+    steps,
+    ...(source && {
+      sourceVideo: {
+        title: source.file.title,
+        file: source.file.url,
+      },
+    }),
+  };
 }
 
 module.exports = { parseRecipeContent, departments };

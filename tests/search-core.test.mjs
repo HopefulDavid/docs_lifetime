@@ -5,7 +5,7 @@ import {
   createSearchIndex,
   normalizeSearchText,
   searchIndex,
-} from '../templates/kitchen/public/search-core.mjs';
+} from '../templates/life/public/search-core.mjs';
 
 const searchDocuments = {
   rajska: {

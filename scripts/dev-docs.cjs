@@ -3,8 +3,8 @@ const path = require('node:path');
 const { spawn, spawnSync } = require('node:child_process');
 
 const root = path.resolve(__dirname, '..');
-const npmCli = process.env.npm_execpath;
-if (!npmCli) throw new Error('Vývojový náhled spouštějte pomocí npm run docs:dev.');
+if (!process.env.npm_config_user_agent?.startsWith('pnpm/'))
+  throw new Error('Vývojový náhled spouštějte pomocí pnpm run docs:dev.');
 
 let building;
 let server;
@@ -47,12 +47,17 @@ function build() {
   if (building || stopping || !pending) return;
   pending = false;
   console.log('Sestavuji aktuální zdroje…');
-  building = spawn(process.execPath, [npmCli, 'run', 'docs:build'], {
-    cwd: root,
-    stdio: 'inherit',
-    windowsHide: true,
-    detached: process.platform !== 'win32',
-  });
+  const windows = process.platform === 'win32';
+  building = spawn(
+    windows ? process.env.ComSpec || 'cmd.exe' : 'pnpm',
+    windows ? ['/d', '/s', '/c', 'pnpm run docs:build'] : ['run', 'docs:build'],
+    {
+      cwd: root,
+      stdio: 'inherit',
+      windowsHide: true,
+      detached: process.platform !== 'win32',
+    },
+  );
   building.on('error', fail);
   building.on('exit', finishBuild);
 }
@@ -91,7 +96,7 @@ function scheduleSourceChange(_event, filename) {
     relative,
   );
   const sourceFile =
-    /^(package(?:-lock)?\.json|docfx\.json|cliff\.toml|pruvodce\.md|README\.md|AGENTS\.md|CLAUDE\.md|\.gitignore)$/.test(
+    /^(package\.json|pnpm-lock\.yaml|docfx\.json|cliff\.toml|pruvodce\.md|README\.md|AGENTS\.md|CLAUDE\.md|\.gitignore)$/.test(
       relative,
     );
   const history = /^\.git\/(HEAD|packed-refs|refs\/(heads|tags)(\/.*)?)$/.test(relative);

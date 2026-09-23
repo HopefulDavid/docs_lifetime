@@ -69,6 +69,7 @@
   "types": {
     "soups": "Polévky",
     "main-dishes": "Hlavní jídla",
+    "snacks": "Chuťovky",
     "desserts": "Dezerty",
     "dips": "Dipy",
     "coffee": "Káva"

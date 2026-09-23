@@ -21,7 +21,7 @@ Volitelné pole `flag` země označuje ikonu v připnuté sadě Circle Flags pod
 
 Emoji v původním názvu není zdrojem vlajky ani ovládací ikony.
 
-Používá jeden hlavní nadpis, krátký věcný popis, sekci `## Ingredience`, případné `## Pomůcky` a `## Než začnete`, potom `## Postup` s nadpisy `### 1. Název kroku` pokračujícími bez mezer v číslování.
+Používá jeden hlavní nadpis, krátký věcný popis, případné [`## Video postup`](#video-postup), sekci `## Ingredience`, případné `## Pomůcky` a `## Než začnete`, potom `## Postup` s nadpisy `### 1. Název kroku` pokračujícími bez mezer v číslování.
 
 Úvod popisuje skutečné jídlo a jeho hlavní složky.
 
@@ -42,6 +42,18 @@ Prázdný krok nebo další hlavní nadpis generátor odmítne.
 Obecné životní návody mimo receptové oblasti tento formát nepřebírají.
 
 Jejich zařazení vlastní [hranice veřejného obsahu](../architecture/overview.md#obecné-návody-a-další-oblasti).
+
+## Video postup
+
+Sekce je volitelná a slouží pouze pro vlastní lokální kopii videa uloženou v `media/`.
+
+Obsahuje jedinou položku:
+
+```markdown
+- Soubor: [Název videa](../../../../media/videos/video.mp4)
+```
+
+Externí video služby ani další položky se v receptu nepoužívají.
 
 ## Suroviny
 
@@ -112,7 +124,7 @@ Jednotka musí odpovídat způsobu odměření suroviny.
 | Kuchařská míra | `1 lžíce`, `0,5 lžičky`, `2 stroužky`, `1 hrst`, `1–2 snítky`, `1 svazek` | Zachovat skutečnou autorskou míru bez odhadu gramů |
 | Obal nebo porce | `1 balení`, `2 sáčky`, `1 kelímek`, `1 porce` | Uvést známou hmotnost či objem v upřesnění, jinak výslovně přiznat chybějící velikost |
 
-Podporované převody vlastní [`kitchen-core.mjs`](../../templates/kitchen/public/kitchen-core.mjs).
+Podporované převody vlastní [`kitchen-core.mjs`](../../templates/life/public/kitchen-core.mjs).
 
 Převádí pouze kg na g a l na ml, nikdy lžíce na gramy ani kusy na hmotnost.
 

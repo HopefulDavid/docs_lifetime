@@ -235,7 +235,7 @@ function renderPages(files, catalog) {
       {
         version: 1,
         generatedFrom:
-          'food/**/*.md, drink/**/*.md, data/ingredients.json, data/taxonomy.json; npm run docs:generate',
+          'food/**/*.md, drink/**/*.md, data/ingredients.json, data/taxonomy.json; pnpm run docs:generate',
         departments: Object.keys(departments),
         recipes: catalog.map((entry) => ({
           ...entry,
@@ -292,7 +292,7 @@ function renderRootToc(files) {
   writeFile(
     files,
     'toc.yml',
-    `# Generováno ze zdrojového obsahu a scripts/generate-docs.js; obnova: npm run docs:generate. Neupravujte ručně.
+    `# Generováno ze zdrojového obsahu a scripts/generate-docs.js; obnova: pnpm run docs:generate. Neupravujte ručně.
 ${yaml([
   { name: 'Úvod', href: 'index.md' },
   { name: kitchen.title, href: 'kuchyne/' },
@@ -348,7 +348,7 @@ function renderSectionToc(files, section, entries) {
   writeFile(
     files,
     `${section}/toc.yml`,
-    `# Generováno ze zdrojového obsahu a scripts/generate-docs.js; obnova: npm run docs:generate. Neupravujte ručně.\n${yaml(items)}\n`,
+    `# Generováno ze zdrojového obsahu a scripts/generate-docs.js; obnova: pnpm run docs:generate. Neupravujte ručně.\n${yaml(items)}\n`,
   );
 }
 
@@ -357,7 +357,7 @@ function renderTocs(files, catalog) {
   writeFile(
     files,
     'kuchyne/toc.yml',
-    `# Generováno pomocí scripts/generate-docs.js; obnova: npm run docs:generate. Neupravujte ručně.\n${yaml(
+    `# Generováno pomocí scripts/generate-docs.js; obnova: pnpm run docs:generate. Neupravujte ručně.\n${yaml(
       [
         { name: kitchen.title, href: 'index.md' },
         ...order.sections.map((section) => ({
