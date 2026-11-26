@@ -33,7 +33,7 @@ jobs:
           bun-version-file: package.json
 
       - name: Připraví .NET
-        uses: actions/setup-dotnet@26b0ec14cb23fa6904739307f278c14f94c95bf1 # v5
+        uses: actions/setup-dotnet@0f4a354dd5547a28c70b7853dbd95d5b67886e73 # v6.1.0
         with:
           dotnet-version: 10.x
 
@@ -94,7 +94,7 @@ jobs:
 
       - name: Připraví .NET
         if: steps.publication.outputs.changed == 'true'
-        uses: actions/setup-dotnet@26b0ec14cb23fa6904739307f278c14f94c95bf1 # v5
+        uses: actions/setup-dotnet@0f4a354dd5547a28c70b7853dbd95d5b67886e73 # v6.1.0
         with:
           dotnet-version: 10.x
 
@@ -121,7 +121,7 @@ jobs:
 
       - name: Odešle oznámení o změnách
         if: steps.publication.outputs.changed == 'true' && success()
-        uses: dawidd6/action-send-mail@42942bc2f8fba4e611b459a018967a6a7c78c68c # v17
+        uses: dawidd6/action-send-mail@27bf7a883db6de205849f760badd38a1a3ce0dd0 # v24
         continue-on-error: true
         with:
           server_address: smtp.gmail.com
