@@ -15,11 +15,19 @@ const patterns = [
 
 /** Ponechá prózu bez bloků kódu, kódu v textu, adres odkazů a HTML. Čísla řádků zůstanou. */
 function prose(source) {
-  return source
-    .replace(/^(`{3,}|~{3,})[\s\S]*?^\1/gm, (block) => block.replace(/[^\n]/g, ''))
-    .replace(/`[^`\n]*`/g, '')
-    .replace(/\]\([^)]*\)/g, ']')
-    .replace(/<[^>\n]*>/g, '');
+  let current = source;
+  let previous;
+
+  do {
+    previous = current;
+    current = current
+      .replace(/^(`{3,}|~{3,})[\s\S]*?^\1/gm, (block) => block.replace(/[^\n]/g, ''))
+      .replace(/`[^`\n]*`/g, '')
+      .replace(/\]\([^)]*\)/g, ']')
+      .replace(/<[^>\n]*>/g, '');
+  } while (current !== previous);
+
+  return current;
 }
 
 function addressing(source) {
