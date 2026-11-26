@@ -19,11 +19,11 @@
     "printWidth": 100
   },
   "devDependencies": {
-    "@iconify-json/circle-flags": "1.2.11",
-    "@iconify-json/tabler": "1.2.38",
+    "@iconify-json/circle-flags": "1.2.14",
+    "@iconify-json/tabler": "1.2.46",
     "@iconify/utils": "3.1.7",
-    "git-cliff": "2.13.1",
-    "pdfmake": "0.3.11",
-    "prettier": "3.9.6"
+    "git-cliff": "2.14.2",
+    "pdfmake": "0.3.14",
+    "prettier": "3.10.1"
   }
 }
