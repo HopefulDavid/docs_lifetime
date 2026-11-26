@@ -12,6 +12,11 @@ on:
 permissions:
   contents: read
 
+# Kontroly pull requestů se při novém pushi ruší, publikování z main nikdy.
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
 jobs:
   verify-docs:
     name: Ověření dokumentace
@@ -130,3 +135,15 @@ jobs:
           html_body: |
             <p>Na webu Dokumentace ze života jsou zveřejněné nové změny.</p>
             <p><a href="https://hopefuldavid.github.io/docs_lifetime/changelog.html">Prohlédnout změny</a></p>
+
+  # Jediná povinná kontrola v pravidlech větve main, selže, pokud některá potřebná úloha neuspěla.
+  ci-ok:
+    if: ${{ always() }}
+    needs: [verify-docs]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Shrne výsledky potřebných úloh
+        run: |
+          for r in "${{ needs.verify-docs.result }}"; do
+            [ "$r" = "success" ] || { echo "Výsledek potřebné úlohy: $r"; exit 1; }
+          done
