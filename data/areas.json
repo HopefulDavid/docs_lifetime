@@ -1,0 +1,12 @@
+{
+  "areas": [
+    {
+      "id": "kitchen",
+      "type": "kitchen",
+      "path": "kuchyne",
+      "title": "Kuchyně",
+      "intro": "Recepty a nápoje, společný nákup a vaření krok za krokem.",
+      "icon": "kitchen"
+    }
+  ]
+}

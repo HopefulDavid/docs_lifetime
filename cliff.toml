@@ -1,0 +1,100 @@
+# Veřejná stránka Změny. Značku article:<commit> nahrazuje scripts/docset/changelog.js odkazy na články.
+
+[changelog]
+header = """
+# Změny
+
+<div class="change-hero">
+<div class="change-hero-icons" aria-hidden="true"><span class="change-hero-icon"><span class="ui-icon ui-icon--book"></span></span></div>
+<div><p class="change-eyebrow">Každodenní život</p><p class="change-lead">Co je nového v návodech, receptech a na webu</p></div>
+</div>
+
+<details class="change-about">
+<summary>O tomto přehledu</summary>
+
+Přehled se automaticky vytváří z úplné historie projektu.
+
+Starší roky jsou sbalené a roky bez změn se nezobrazují.
+
+Technické záznamy zůstávají součástí historie.
+
+"""
+body = """
+Zdrojový stav: `{{ commit_id | truncate(length=7, end="") }}` · Celkem {{ statistics.commit_count }} změn.
+
+</details>
+
+{% if commits | length == 0 %}\
+> V dostupné historii nejsou žádné změny.
+{% else %}\
+{% set newest_commit = commits | first %}\
+{% set latest_period = newest_commit.author.timestamp | date(format="%Y", timezone="Europe/Prague") %}\
+{% set_global rendered_period = "" %}\
+{% set_global anchors = [] %}\
+{% for commit in commits %}\
+{% set period = commit.author.timestamp | date(format="%Y", timezone="Europe/Prague") %}\
+{% if period != rendered_period %}\
+{% if rendered_period != "" and rendered_period != latest_period %}\
+</details>
+
+{% endif %}\
+{% set_global rendered_period = period %}\
+{% set_global period_count = 0 %}\
+{% for period_commit in commits %}\
+{% set period_commit_year = period_commit.author.timestamp | date(format="%Y", timezone="Europe/Prague") %}\
+{% if period_commit_year == period %}\
+{% set_global period_count = period_count + 1 %}\
+{% endif %}\
+{% endfor %}\
+<a id="obdobi-{{ period }}"></a>
+{% if period == latest_period %}\
+## Nejnovější změny · {{ period }} <small>(počet změn: {{ period_count }})</small>
+
+{% else %}\
+<details class="change-year">
+<summary><strong>Rok {{ period }}</strong> · počet změn: {{ period_count }}</summary>
+
+{% endif %}\
+{% endif %}\
+{% set slug = commit.group %}\
+{% if slug == "nove-funkce" %}{% set kind = "Novinka" %}{% set icon = "leaf" %}\
+{% elif slug == "opravy" %}{% set kind = "Oprava" %}{% set icon = "check-circle" %}\
+{% elif slug == "vykon" %}{% set kind = "Zrychlení" %}{% set icon = "clock" %}\
+{% elif slug == "dokumentace" %}{% set kind = "Dokumentace" %}{% set icon = "book" %}\
+{% elif slug == "vracene-zmeny" %}{% set kind = "Vrácená změna" %}{% set icon = "reset" %}\
+{% elif slug == "technicke-zmeny" %}{% set kind = "Zákulisí webu" %}{% set icon = "kitchen" %}\
+{% else %}{% set kind = "Další změna" %}{% set icon = "info" %}{% endif %}\
+- \
+{% for anchor in [slug, slug ~ "-" ~ period] %}\
+{% if anchor not in anchors %}<a id="{{ anchor }}"></a>{% set_global anchors = anchors | concat(with=anchor) %}{% endif %}\
+{% endfor %}\
+<span class="change-kind change-kind--{{ slug }}"><span class="ui-icon ui-icon--{{ icon }}" aria-hidden="true"></span>{{ kind }}</span> <small class="change-meta">{{ commit.author.timestamp | date(format="%d. %m. %Y", timezone="Europe/Prague") }}{% if commit.scope %} · {{ commit.scope }}{% endif %} · {{ commit.id | truncate(length=7, end="") }}</small> {% if commit.breaking %}<span class="change-breaking">Důležitá nekompatibilní změna</span> {% endif %}**{{ commit.message | upper_first }}**<!-- article:{{ commit.id }} -->
+{% endfor %}\
+{% if rendered_period != latest_period %}\
+</details>
+{% endif %}\
+{% endif %}"""
+trim = true
+render_always = true
+
+[git]
+conventional_commits = true
+filter_unconventional = false
+commit_parsers = [
+  { message = "(?i)^chore(?:\\([^)]*\\))?: (?:update changelog|release)", skip = true },
+  { message = "^Merge ", skip = true },
+  { message = "^feat", group = "nove-funkce" },
+  { message = "^fix", group = "opravy" },
+  { message = "^perf", group = "vykon" },
+  { message = "^docs?", group = "dokumentace" },
+  { message = "^revert", group = "vracene-zmeny" },
+  { message = "^(?:refactor|build|ci|test|style|chore)", group = "technicke-zmeny" },
+  { message = ".*", group = "ostatni-zmeny" },
+]
+protect_breaking_commits = true
+tag_pattern = "^$"
+topo_order_commits = false
+sort_commits = "newest"
+
+[remote]
+offline = true

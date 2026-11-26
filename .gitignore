@@ -1,0 +1,8 @@
+/_generated/
+/_site/
+/private/
+node_modules/
+.idea/
+
+# Místní index Repowise, vzniká znovu příkazem repowise init nebo update.
+.repowise/

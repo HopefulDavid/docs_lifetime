@@ -1,0 +1,29 @@
+{
+  "name": "docs_lifetime",
+  "private": true,
+  "type": "module",
+  "description": "Praktické návody pro každodenní život publikované jako statický web.",
+  "repository": "git@github.com:HopefulDavid/docs_lifetime.git",
+  "packageManager": "bun@1.4.3",
+  "scripts": {
+    "dev": "bun scripts/dev.js",
+    "validate": "bun run check && bun run test && bun run build",
+    "check": "bun run --sequential \"check:*\"",
+    "check:format": "prettier --check . \"!**/*.md\"",
+    "test": "bun test",
+    "build": "bun scripts/generate.js && rm -rf _site && dotnet docfx build docfx.json --warningsAsErrors && bun scripts/verify-site.js",
+    "fix": "prettier --write . \"!**/*.md\""
+  },
+  "prettier": {
+    "singleQuote": true,
+    "printWidth": 100
+  },
+  "devDependencies": {
+    "@iconify-json/circle-flags": "1.2.11",
+    "@iconify-json/tabler": "1.2.38",
+    "@iconify/utils": "3.1.7",
+    "git-cliff": "2.13.1",
+    "pdfmake": "0.3.11",
+    "prettier": "3.9.6"
+  }
+}
