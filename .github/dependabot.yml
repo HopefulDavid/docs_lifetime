@@ -1,0 +1,27 @@
+version: 2
+updates:
+  - package-ecosystem: 'github-actions'
+    directory: '/'
+    schedule:
+      interval: 'weekly'
+    groups:
+      actions:
+        patterns: ['*']
+    cooldown:
+      default-days: 7
+  - package-ecosystem: 'bun'
+    directory: '/'
+    schedule:
+      interval: 'weekly'
+    groups:
+      minor-patch:
+        update-types: ['minor', 'patch']
+    cooldown:
+      default-days: 7
+      semver-major-days: 30
+  - package-ecosystem: 'nuget'
+    directory: '/'
+    schedule:
+      interval: 'weekly'
+    cooldown:
+      default-days: 7
